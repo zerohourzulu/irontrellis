@@ -23,9 +23,27 @@
  *   viemAccounts               `viem/accounts` resolved from the reference package (privateKeyToAccount, generatePrivateKey)
  *   DEMO_CASE                  absolute path of the demo case directory (history.jsonl, export/history.json)
  */
-import { readFileSync } from "node:fs";
-import { createRequire } from "node:module";
+import fs, { readFileSync } from "node:fs";
+import { createRequire, syncBuiltinESMExports } from "node:module";
 import { fileURLToPath, pathToFileURL } from "node:url";
+
+/**
+ * win32 only: fsyncSync on a DIRECTORY descriptor is a no-op in this test process. The frozen reference store fsyncs
+ * the history's directory after every append (core-0.2/src/indexer/portable-file-event-store.ts), and Windows refuses
+ * to flush a directory handle (EPERM). The engine skips that step on win32 (src/platform.ts syncDirectorySync); the
+ * reference sources may not be edited (packages/reference-0.2/README.md), so the tests skip it the same way.
+ * File descriptors are still synced. syncBuiltinESMExports() carries the wrapper to the reference's named import.
+ * Exported (and idempotent) so a test can check the wrapper on any platform.
+ */
+export function skipDirectoryFsync() {
+  if (fs.fsyncSync.skipsDirectories === true) return;
+  const original = fs.fsyncSync;
+  const wrapped = (fd) => (fs.fstatSync(fd).isDirectory() ? undefined : original(fd));
+  wrapped.skipsDirectories = true;
+  fs.fsyncSync = wrapped;
+  syncBuiltinESMExports();
+}
+if (process.platform === "win32") skipDirectoryFsync();
 
 export const referenceRoot = fileURLToPath(new URL("../../reference-0.2/", import.meta.url));
 export const referencePath = (relative) => `${referenceRoot}${relative}`;
