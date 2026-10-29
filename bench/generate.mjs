@@ -102,6 +102,9 @@ manifest.domain = DOMAIN;
 manifest.owner = OWNER;
 manifest.controller = CONTROLLER;
 const config = { historyFile, domain: DOMAIN, owner: OWNER, controller: CONTROLLER, now, ids, format: core.TRELLIS_FORMAT, [internal.FORMAT1_TEST_TOOLING]: true };
+// The raw store opens below append to this format-1 file too, so they name the format-1 test writer as well (A-185.3);
+// without it the store opens the file read only (FORMAT_READ_ONLY).
+const FORMAT1_WRITER = { readOnlyFormats: false, [internal.FORMAT1_TEST_TOOLING]: true };
 
 // ---------------------------------------------------------------- owner phase: the owner API
 
@@ -129,7 +132,7 @@ async function ownerPhase() {
   const ownerKey = signerLib.loadOwnerKeyFile(signerLib.ownerKeyPathFor(historyFile));
   const sim = core.openLocalSimulation({ ...config, session: "session:worker", signHash: worker.signHash });
   const runtime = core.openLocalRuntime({ ...config, session: "session:worker", signHash: worker.signHash });
-  const anchorStore = core.openHistoryStore(historyFile, { signer: ownerKey });
+  const anchorStore = core.openHistoryStore(historyFile, { signer: ownerKey, ...FORMAT1_WRITER });
   let events = count();
   let nextAnchor = (Math.floor(events / args["anchor-every"]) + 1) * args["anchor-every"];
   let lastReport = performance.now();
@@ -186,7 +189,7 @@ async function directPhase() {
   const startEvents = manifest.events;
   const ownerKey = signerLib.loadOwnerKeyFile(signerLib.ownerKeyPathFor(historyFile));
   log(`direct phase: opening ${historyFile} (${manifest.events} events)`);
-  const store = core.openHistoryStore(historyFile, { signer: ownerKey, fsync: false });
+  const store = core.openHistoryStore(historyFile, { signer: ownerKey, fsync: false, ...FORMAT1_WRITER });
   log(`opened in ${fmtMs(performance.now() - started)}`);
   const state = () => store.state();
   const genesis = state().genesis;

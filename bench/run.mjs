@@ -153,6 +153,10 @@ function copyHistory(dir, work) {
 async function taskAppend() {
   const core = await load(ROOT, "packages/core/dist/index.js");
   const signerLib = await load(ROOT, "packages/core/dist/signer.js");
+  // The generated histories are format 1 (bench/generate.mjs), which the engine opens read only; this task appends to a
+  // copy, so it names the format-1 test writer (A-185.3), as the generator does.
+  const internal = await load(ROOT, "packages/core/dist/internal-format1.js");
+  const format1Writer = { readOnlyFormats: false, [internal.FORMAT1_TEST_TOOLING]: true };
   const manifest = manifestOf(args.dir);
   const work = args.work ?? tmpdir();
   const copy = copyHistory(args.dir, work);
@@ -167,7 +171,7 @@ async function taskAppend() {
         constraints: { actions: ["read"], resources: [`doc:bench:${seq}`], quantitative: false, maxDelegationDepth: 0, requiredIntersectionIds: [] } } },
     }, manifest.domain, store.head(), "sha256");
     const storeLevel = async (fsync) => {
-      const [openMs, store] = time(() => core.openHistoryStore(file, { signer: ownerKey, fsync }));
+      const [openMs, store] = time(() => core.openHistoryStore(file, { signer: ownerKey, fsync, ...format1Writer }));
       const times = [];
       for (let i = 0; i < n; i += 1) {
         const event = await grantEvent(store);
@@ -179,7 +183,7 @@ async function taskAppend() {
     };
     const plain = await storeLevel(false);
     const fsync = await storeLevel(true);
-    const config = ownerConfig(core, copy, manifest);
+    const config = ownerConfig(core, copy, manifest, { format: core.TRELLIS_FORMAT, [internal.FORMAT1_TEST_TOOLING]: true });
     config.now = () => (tick += 1);
     const [ownerOpenMs, owner] = time(() => core.openLocalOwner(config));
     const grants = [];
@@ -251,8 +255,9 @@ async function taskWitnessAppend() {
     const server = await startWitnessServer(join(work, "witness-data"));
     const run = async (name, witness) => {
       let tick = 1_000, id = 0;
+      // A new history is format 2 (the default), whose domain version is "2".
       const owner = await core.createLocalOwner({
-        historyFile: join(work, `${name}.jsonl`), domain: { protocol: "irontrellis", version: "1", deploymentId: `deployment:${name}` }, owner: "operations", controller: "operator",
+        historyFile: join(work, `${name}.jsonl`), domain: { protocol: "irontrellis", version: "2", deploymentId: `deployment:${name}` }, owner: "operations", controller: "operator",
         now: () => (tick += 1), ids: () => `${name}:${(id += 1)}`, ...(witness === undefined ? { witness: false } : { witness }),
       });
       await owner.createAgent({ id: "worker" });
