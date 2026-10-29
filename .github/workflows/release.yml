@@ -112,7 +112,8 @@ jobs:
     name: test (node ${{ matrix.node }})
     needs: verify
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    # The same pnpm -r test as ci.yml, which took 41 minutes on a 2-core runner.
+    timeout-minutes: 90
     strategy:
       fail-fast: true
       matrix:

@@ -22,7 +22,8 @@ jobs:
   test:
     name: node ${{ matrix.node }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 45
+    # "Test" (pnpm -r test) alone took 41 minutes on a 2-core runner (node 24, ubuntu); the steps after it need room too.
+    timeout-minutes: 90
     strategy:
       fail-fast: false
       matrix:
