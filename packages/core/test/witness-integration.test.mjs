@@ -613,15 +613,17 @@ test("A-24.1 / A-176.2: at maxUnwitnessedEvents a power-reducing event and a STA
 test("A-176.2 (DEVIATIONS r2.2 83): at maxUnwitnessedEvents a STATE_CHECKPOINT signed by a key LAPSED under ATTESTED is still written", async (t) => {
   const w = await startFakeWitness();
   t.after(() => w.close());
-  const { keyPairFromPrivateKey } = await import("../src/crypto/suites.ts");
+  // The attester's statements are fixture data: sign them with the plain async helper, which works in both signer modes
+  // (IRONTRELLIS_TEST_ASYNC_SIGNERS=1 removes signHashSync from signerFromKeyPair).
+  const { keyPairFromPrivateKey, signHashWith } = await import("../src/crypto/suites.ts");
   const { signerFromKeyPair } = await import("../src/signer.ts");
   const { humanAttestationHash, signerClass } = await import("../src/index.ts");
   const pair = (keyId, n) => keyPairFromPrivateKey("ed25519", keyId, `0x${n.toString(16).padStart(64, "0")}`);
   const pub = (p) => ({ keyId: p.keyId, scheme: "ed25519", credential: p.credential });
   const O1 = pair("owner:1", 0x8001), O2 = pair("owner:2", 0x8002), AT1 = pair("attester:1", 0x8301), AT2 = pair("attester:2", 0x8302);
-  const statement = (domain, subject, attester, notBefore, expiresAt) => {
+  const statement = async (domain, subject, attester, notBefore, expiresAt) => {
     const body = { version: "irontrellis-human-attestation/1", audience: domain, subject: pub(subject), profile: "phl:ceremony/1", attesterKeyId: attester.keyId, evidenceDigest: `0x${"cd".repeat(32)}`, notBefore, expiresAt };
-    return { ...body, signature: signerFromKeyPair(attester).signHashSync(humanAttestationHash({ ...body, signature: "" })) };
+    return { ...body, signature: await signHashWith(attester)(humanAttestationHash({ ...body, signature: "" })) };
   };
   const directory = mkdtempSync(join(tmpdir(), "wint-lapsed-"));
   t.after(() => rmSync(directory, { recursive: true, force: true }));
@@ -629,7 +631,7 @@ test("A-176.2 (DEVIATIONS r2.2 83): at maxUnwitnessedEvents a STATE_CHECKPOINT s
   const domain = createLocalDomainDefault();
   let tick = 1000;
   // owner:1 (the handle's key) is HUMAN until 1500, then LAPSED; owner:2 is HUMAN until 5000, the attestation horizon.
-  const ownerPolicy = { threshold: 1, byType: { STATE_CHECKPOINT: 1 }, humanFloor: "ATTESTED", attesters: [pub(AT1), pub(AT2)], attestations: [statement(domain, O1, AT1, 0, 1500), statement(domain, O2, AT2, 0, 5000)] };
+  const ownerPolicy = { threshold: 1, byType: { STATE_CHECKPOINT: 1 }, humanFloor: "ATTESTED", attesters: [pub(AT1), pub(AT2)], attestations: [await statement(domain, O1, AT1, 0, 1500), await statement(domain, O2, AT2, 0, 5000)] };
   const owner = await createLocalOwnerDefault({ historyFile, domain, owner: "owner", controller: "controller", now: () => tick, signer: signerFromKeyPair(O1), coOwnerKeys: [pub(O2)], ownerPolicy,
     witness: policyOf([w], { mode: "async", maxUnwitnessedEvents: 2 }) });
   const state = () => openHistoryStoreStrict(historyFile, { inspect: true, witness: false }).state();
