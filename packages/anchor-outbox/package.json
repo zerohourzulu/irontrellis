@@ -30,7 +30,7 @@
   "dependencies": {
     "@ramex-labs/irontrellis": "workspace:*",
     "@ramex-labs/irontrellis-mcp-gateway": "workspace:*",
-    "viem": "2.55.19"
+    "viem": "2.57.11"
   },
   "devDependencies": {
     "@types/node": "^24.6.0",
