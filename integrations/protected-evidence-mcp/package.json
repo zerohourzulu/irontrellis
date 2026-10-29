@@ -10,7 +10,7 @@
   "dependencies": {
     "@ramex-labs/irontrellis": "workspace:*",
     "@modelcontextprotocol/client": "2.2.0",
-    "@modelcontextprotocol/server": "2.2.0",
+    "@modelcontextprotocol/server": "2.4.0",
     "zod": "4.6.5"
   },
   "scripts": {
