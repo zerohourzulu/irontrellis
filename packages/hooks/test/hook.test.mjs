@@ -13,7 +13,7 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { commitTerms, createLocalDomain, createLocalOwner, keyPairFromPrivateKey, openHistoryStore, openLocalOwner, openLocalRuntime, openLocalSimulation, signHashWith } from "@ramex-labs/irontrellis";
-import { mergeSettings, planSettings, writeSettingsAtomically, validateConfig, renderTemplate, mapTool, PROTOCOLS, controlCommand, protection, protectedTargets, hookEntryProgram } from "../dist/index.js";
+import { mergeSettings, planSettings, writeSettingsAtomically, validateConfig, renderTemplate, mapTool, PROTOCOLS, controlCommand, protection, protectedTargets, hookEntryProgram, runHook } from "../dist/index.js";
 const { FORMAT1_TEST_TOOLING } = await import("@ramex-labs/irontrellis/internal-format1"); // A-185.3 / A-194: older formats are test tooling
 
 const BIN = resolve(fileURLToPath(new URL("../bin/irontrellis-hook.mjs", import.meta.url)));
@@ -1195,6 +1195,24 @@ test("A-22.4: a side-effecting call is denied with CLOCK_AHEAD_OF_READER when th
   assert.equal(r.code, 2, "the clock refusal is exit 2 (item 4)"); assert.equal(r.stdout, "");
   assert.equal(r.json.hookSpecificOutput.permissionDecision, "deny");
   assert.match(r.json.hookSpecificOutput.permissionDecisionReason, /CLOCK_AHEAD_OF_READER/);
+});
+
+test("A-22.4 with a clock that stepped back between the guard's two readings: the call is decided at the later (lower) reading, so the head 400 s ahead is still CLOCK_AHEAD_OF_READER (never decided at the earlier, future reading)", async () => {
+  const dir = project();
+  run(["init", "--allow", "run-shell", "--expires", "+1d", RISK], { cwd: dir });
+  hook("claude-code", "SessionStart", claude.sessionStart(dir), dir);
+  const config = configOf(dir);
+  const base = Date.now();
+  const ahead = openLocalOwner({ historyFile: historyOf(dir), domain: config.domain, owner: config.owner, controller: config.controller, now: () => base + 400_000 });
+  await ahead.createRole({ id: "role:stepped-back" });
+  ahead.close();
+  // The guard's first reading is base + 400 s (the clock before it stepped back); every later reading is base.
+  let readings = 0;
+  const io = { env: { ...process.env, NO_COLOR: "1", IRONTRELLIS_HOME: STATE_HOME }, cwd: dir, now: () => (readings++ === 0 ? base + 400_000 : base) };
+  const reply = await runHook(PROTOCOLS["claude-code"], "PreToolUse", claude.preToolUse(dir, "Bash", { command: "npm test", description: "Run tests" }), io);
+  assert.equal(reply.exitCode, 2, `${reply.stdout}${reply.stderr}`);
+  assert.match(reply.stderr, /CLOCK_AHEAD_OF_READER/);
+  assert.ok(readings >= 2, "the guard took a reading after opening the history");
 });
 
 test("A-38.4: a side-effecting call of an agent whose session was released is refused and recorded as a CONNECTOR refusal of the hook's own session; init admits that session once and reuses it", async () => {

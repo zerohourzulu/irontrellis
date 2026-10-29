@@ -350,11 +350,38 @@ export const OWN_SKILL = "irontrellis:irontrellis-handover";
 export type DecideOptions = Readonly<{
   /** Check the host session against the history (default true; `check` turns it off). */ checkSession?: boolean;
   /** The route's project, protected beside the config's (protect.ts guardProjects): CLAUDE_PROJECT_DIR, else the project the session was admitted in. */ routeProject?: string;
-  /** A fresh clock reading, for deciding again when another writer moved the head past `now` (CAUSAL_TIME_INVALID). */ clock?: () => number;
+  /** The clock, for deciding again (bounded) when another writer moved the head past `now` (CAUSAL_TIME_INVALID); see authorizeAtReading. */ clock?: () => number;
 }>;
 
 const passed = (config: HookConfig, which: "onAllow" | "onReadOnly", reason: string): ToolDecision =>
   config.decisions[which] === "allow" ? { verdict: "allow", reason } : { verdict: "defer", reason: `${reason}; left to the host's own permission check` };
+
+/** At most this many further decisions after a CAUSAL_TIME_INVALID answer (authorizeAtReading). */
+export const MAX_REDECIDE = 3;
+
+/**
+ * Decides at `at`, a real clock reading (the hook passes one taken after the history is open). Another copy of the guard
+ * may append (its refusal) after that reading and before the head is read; a time before the head is CAUSAL_TIME_INVALID
+ * (INDETERMINATE, so "ask"). This mitigates that race, bounded: up to MAX_REDECIDE further decisions, each at a fresh
+ * reading of `clock` that is later than the last one used and not before the head. Every time used is a real reading,
+ * never the larger of two, so a clock that stepped back still shows a head ahead of it (A-22.4 sees the skew). It is not a
+ * race-free guarantee: a head that keeps moving leaves the last INDETERMINATE answer, never an ALLOW. Returns the
+ * decision and the reading it was made at.
+ */
+export function authorizeAtReading<D extends Readonly<{ evidence: Readonly<{ decision: string }>; head: Readonly<{ canonicalTime: number }> }>>(
+  authorize: (at: number) => D, at: number, clock?: () => number,
+): Readonly<{ d: D; at: number; redecided: number }> {
+  let d = authorize(at), used = at, redecided = 0;
+  const causal = (x: D): boolean => x.evidence.decision === "INDETERMINATE" && (x.evidence as Readonly<{ code?: unknown }>).code === "CAUSAL_TIME_INVALID";
+  while (clock !== undefined && redecided < MAX_REDECIDE && causal(d)) {
+    const fresh = clock();
+    if (fresh <= used || fresh < d.head.canonicalTime) break;
+    used = fresh;
+    redecided += 1;
+    d = authorize(used);
+  }
+  return Object.freeze({ d, at: used, redecided });
+}
 
 export function decideTool(owner: LocalOwner, config: HookConfig, event: Extract<HookEvent, { kind: "tool" }>, now: number, options: DecideOptions = {}): ToolDecision {
   // 1. Protective rules: IronTrellis state and control commands. Not configurable, not affected by failOpen.
@@ -392,16 +419,7 @@ export function decideTool(owner: LocalOwner, config: HookConfig, event: Extract
       break;
     case "side-effect": {
       const request = { actor: config.agentId, action: mapping.action, resource: mapping.resource };
-      let at = now, d = owner.authorize(request, { at });
-      // Another copy of the guard may append (its refusal) between the clock reading and the read of the head, and a time
-      // before the head is CAUSAL_TIME_INVALID (INDETERMINATE). Decide again at a fresh reading once the clock has reached
-      // the head; never at a time ahead of this host's clock (a head ahead of the clock stays as it is, A-22.4 below).
-      for (let tries = 0; tries < 3 && options.clock !== undefined && d.evidence.decision === "INDETERMINATE" && d.evidence.code === "CAUSAL_TIME_INVALID"; tries += 1) {
-        const fresh = options.clock();
-        if (fresh <= at || fresh < d.head.canonicalTime) break;
-        at = fresh;
-        d = owner.authorize(request, { at });
-      }
+      const { d, at } = authorizeAtReading((time) => owner.authorize(request, { at: time }), now, options.clock);
       const e = d.evidence, subject = `${config.agentId} ${mapping.action} on ${mapping.resource}`;
       // A-22.4: a head dated more than 300 s past this host's clock is not decided from (deny).
       if (clockAheadOfReader(d.head, at)) {
@@ -595,9 +613,9 @@ async function answer(protocol: Protocol, event: Exclude<HookEvent, { kind: "ign
       }
       case "tool": {
         const routeProject = io.env.CLAUDE_PROJECT_DIR || readRouteSession(io.env, event.sessionId)?.project || io.cwd;
-        // Decide at a clock reading taken after the history is open, as session-start does: another copy of the guard may
-        // have recorded a refusal since `now` was read, and a time before the head is CAUSAL_TIME_INVALID (INDETERMINATE).
-        const decision = decideTool(owner, config, event, Math.max(io.now(), now), { routeProject, clock: io.now });
+        // Decide at a reading taken after the history is open (not the larger of it and `now`: a clock that stepped back must
+        // still show a head ahead of it, A-22.4). authorizeAtReading mitigates, bounded, a head another copy of the guard moves.
+        const decision = decideTool(owner, config, event, io.now(), { routeProject, clock: io.now });
         // A-38: verdict first; a format-2 history records the grant DENY through the agent's session, bounded by
         // recordBudgetMs (spooled past it), and a CONNECTOR refusal through the hook's own session (A-42, A-38.4);
         // nothing is recorded for format 1 or legacy (as in format 1).
