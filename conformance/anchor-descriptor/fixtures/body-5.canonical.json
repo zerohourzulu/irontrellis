@@ -1,0 +1,1 @@
+{"data":{"agentId":"alex","controlAuthorization":{"keyId":"owner:rotated","signature":"0xf618c05540a208a61d6578551ec51f4a731e54c23485d7fca884b0ee372e6fe831c285cef6cffa5a1b1bf19946cce8ee390d41c910929088737699552e75ce0f"},"controllerId":"operator","initialControlEpoch":1,"principalId":"operations"},"id":"event:rotation:8","timestamp":103,"type":"AGENT_CREATED"}

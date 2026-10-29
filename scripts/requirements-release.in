@@ -1,0 +1,6 @@
+# The Python release tooling scripts/verify-install.mjs installs (python -m build --no-isolation, twine check).
+# Regenerate the hashed lock with:
+#   uv pip compile scripts/requirements-release.in --universal --python-version 3.11 --generate-hashes -o scripts/requirements-release.txt
+build
+twine
+setuptools

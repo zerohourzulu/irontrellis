@@ -1,0 +1,22 @@
+{
+ "id": "latest-note-null-expectation",
+ "target": "transparency",
+ "found": "pre-release fuzzing, 2026-09-26 (transparency target, seed 4)",
+ "description": "verifyLatestNote with a null expectation never throws: it fails closed with EXPECTATION_INVALID in both cores.",
+ "rootCause": "transparency/latest.ts defaulted `expect` only for undefined and then read expect.origin: TypeError from a function documented to never throw. Reading a non-record expectation as \"expect nothing\" would fail open: a Map, an array or a Python MappingProxyType carrying the nonce would skip every check.",
+ "fix": "latest.ts and transparency.py: the expectation must be a plain object/dict whose fields are exactly historyId, nonce and optionally origin, each well-formed; anything else is EXPECTATION_INVALID, checked first.",
+ "input": {
+  "kind": "latestVerify",
+  "note": "irontrellis-witness-latest/1\nirontrellis-witness/vectors\n0x49af76147ad14d237097d1171a7792d8bea58defb857a8553d384d38c6dcbe76\nERERERERERERERERERERERERERERERERERERERERERE\n6\n0x13c3cfe33cdeee40c29cc1395f44f3e06ce82b38edbcc294e2f657493c1a6ba9\n5\n7\n1\n1\n\n— irontrellis-witness/vectors vuPJ7UrVPK8okT6rzSJg2gXzJI2Sg08r6suhdrAJNB/KBAr3EEhQx4IRh2Um2Gv+sGB4yyb7NASaHuukDmCNCPvFTgI=\n",
+  "keys": [
+   "irontrellis-witness/vectors+bee3c9ed+AchTrQ8M0rYZrqks7sT9VqJNZJnVhM55JX5Fz9gTm2Cn"
+  ],
+  "expect": null
+ },
+ "expect": {
+  "ts": {
+   "ok": false,
+   "reason": "EXPECTATION_INVALID"
+  }
+ }
+}

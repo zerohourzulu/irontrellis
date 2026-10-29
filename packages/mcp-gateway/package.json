@@ -1,0 +1,47 @@
+{
+  "name": "@ramex-labs/irontrellis-mcp-gateway",
+  "version": "1.0.0-rc.2",
+  "description": "IronTrellis MCP gateway: operator-approved upstream MCP tools behind a recorded authority check, as exactly-once jobs (reconciled, never repeated) or as per-call authorized tools. Agents change. The structure holds.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": { "node": ">=22.18.0" },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./operations": { "types": "./dist/operations.d.ts", "default": "./dist/operations.js" },
+    "./data": { "types": "./dist/data.d.ts", "default": "./dist/data.js" },
+    "./access-policy": { "types": "./dist/access-policy.d.ts", "default": "./dist/access-policy.js" },
+    "./server": { "types": "./dist/server.d.ts", "default": "./dist/server.js" },
+    "./http": { "types": "./dist/http.d.mts", "default": "./dist/http.mjs" },
+    "./cooperative": { "types": "./dist/cooperative.d.mts", "default": "./dist/cooperative.mjs" },
+    "./tasks": { "types": "./dist/tasks.d.mts", "default": "./dist/tasks.mjs" },
+    "./access-http": { "types": "./dist/access-http.d.mts", "default": "./dist/access-http.mjs" },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "irontrellis-mcp-gateway": "./dist/cli.js",
+    "irontrellis-mcp-ops": "./dist/ops-cli.js"
+  },
+  "mcpName": "io.github.zerohourzulu/irontrellis-gateway",
+  "files": ["dist", "docs", "server.json", "README.md", "LICENSE", "NOTICE"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node scripts/copy-esm.mjs",
+    "test": "node --test --experimental-strip-types \"test/**/*.test.mjs\" \"src/*-test.test.mjs\"",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@ramex-labs/irontrellis": "workspace:*",
+    "@ramex-labs/irontrellis-remote": "workspace:*",
+    "@modelcontextprotocol/client": "2.2.0",
+    "@modelcontextprotocol/server": "2.2.0",
+    "jose": "6.2.12"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "typescript": "^5.9.2"
+  },
+  "publishConfig": { "access": "public", "provenance": true },
+  "repository": { "type": "git", "url": "https://github.com/zerohourzulu/irontrellis.git", "directory": "packages/mcp-gateway" },
+  "keywords": ["mcp", "mcp-gateway", "ai-agents", "authorization", "exactly-once", "audit"]
+}

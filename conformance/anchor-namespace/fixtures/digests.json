@@ -1,0 +1,28 @@
+{
+  "manifestHash": "0x530a3ac1d7346d15c3f850a56a6e78c1b1683cfbfc797de5dffb6d193713a6c7",
+  "namespaceId": "0x4443391617501a8071b39ac397cde4e6b9c1bb7bf55997dd72ce6eb9c9d3bc1c",
+  "statementDigest": "0xa29a7351a94399e6cd42e9c6ba4b617615e6f241717a53ac474d1beb2d5a58a8",
+  "trustRootEnvelopeDigestDiagnosticOnly": "0x36b1dbf2dd01831be5467c7212d6160ab96d7b647ce2556def63d4551e69f1f6",
+  "canonicalFiles": {
+    "manifest.json": {
+      "bytes": 837,
+      "sha256": "0x530a3ac1d7346d15c3f850a56a6e78c1b1683cfbfc797de5dffb6d193713a6c7"
+    },
+    "trust-root.json": {
+      "bytes": 1121,
+      "sha256": "0x36b1dbf2dd01831be5467c7212d6160ab96d7b647ce2556def63d4551e69f1f6"
+    },
+    "namespace.json": {
+      "bytes": 532,
+      "sha256": "0x4443391617501a8071b39ac397cde4e6b9c1bb7bf55997dd72ce6eb9c9d3bc1c"
+    },
+    "statement.json": {
+      "bytes": 1074,
+      "sha256": "0xa29a7351a94399e6cd42e9c6ba4b617615e6f241717a53ac474d1beb2d5a58a8"
+    },
+    "manifest-maxLag-zero.json": {
+      "bytes": 834,
+      "sha256": "0xf491159fb16f32e3ae1c3cb4d4624a19a70cf1f7e0c249f5532c6ee6b10b5d1a"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+our own Tezos node: NetXdQprcVkpaWU, head 15531815 2026-10-25T22:03:25Z
+statement 0 (position 27): tx 0x18c531f030… L2 56456115 → L1 15531560 opXNb56TdVjh… | own node: carrier same, block hash same, final true → PASS
+statement 1 (position 129): tx 0x4ce17d4bf0… L2 56456585 → L1 15531652 opMGVMbuKHDB… | own node: carrier same, block hash same, final true → PASS
+statement 2 (position 133): tx 0x3232be386c… L2 56456631 → L1 15531660 opLwMtzhXXUK… | own node: carrier same, block hash same, final true → PASS
+statement 3 (position 134): tx 0x3a1549a4d7… L2 56456654 → L1 15531665 ooPm5wYzgchc… | own node: carrier same, block hash same, final true → PASS
+statement 4 (position 158): tx 0x8eebc42cb5… L2 56457059 → L1 15531756 opY8KMYHMJtD… | own node: carrier same, block hash same, final true → PASS
+statement 5 (position 176): tx 0x6e6127b4e8… L2 56457151 → L1 15531770 ooFBW3bhjPPt… | own node: carrier same, block hash same, final true → PASS
+ALL SIX PASS through our own Tezos node (14 read-only L1 calls)

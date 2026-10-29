@@ -1,0 +1,20 @@
+name = "SelectLeanProofs"
+defaultTargets = ["SelectLeanProofs"]
+
+# Lean 4.34.1 core and Std only; no dependencies. The nine roots import the other 23 modules.
+[[lean_lib]]
+name = "SelectLeanProofs"
+srcDir = "src"
+roots = [
+  "AuthorityModel.Properties",
+  "AuthorityModel.Completeness",
+  "AuthorityModel.Bounds",
+  "G65.Revocation",
+  "OwnerPolicy.IronTrellis.Safety",
+  "Committee.Threshold",
+  "AccountingFamily.Faithful",
+  "Anchor.Protocol",
+  "Anchor.Chain",
+]
+# Lake 5 builds only modules that belong to a library: the globs make all 32 selected modules members.
+globs = ["AuthorityModel.+", "G65.+", "OwnerPolicy.+", "Committee.+", "Termination.+", "AccountingFamily.+", "Anchor.+"]

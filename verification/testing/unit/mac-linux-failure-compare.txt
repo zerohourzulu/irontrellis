@@ -1,0 +1,30 @@
+mac56 failures 26 | same set as build2-55: True | new vs 55: [] | gone vs 55: []
+vm28 failures 0 | every mac56 failure passes on the VM: True | not passing on VM: []
+  VM-PASS  CLI signer to-ssh: an existing owner key file moves into a real ssh-agent and the history keeps working through a reference
+  VM-PASS  CLI with the owner key in a real ssh-agent: init, grant, verify, owner status, signer test/list; pre-rotation onto a second agent key; a removed key a
+  VM-PASS  CLI: a fake ssh-agent that returns a signature by another key is refused at init (nothing created)
+  VM-PASS  L6: the ssh-agent client parses answers dripped byte by byte and fails at once on a second, unsolicited message in the same chunk
+  VM-PASS  a prepared rotation onto an external next key that is never committed leaves the next-key reference in place; the staged files go on the next open
+  VM-PASS  crash window after-append with the owner and next keys in an ssh-agent: recovered on the next open or write
+  VM-PASS  crash window after-delivery with the owner and next keys in an ssh-agent: recovered on the next open or write
+  VM-PASS  crash window after-owner-key-swap with the owner and next keys in an ssh-agent: recovered on the next open or write
+  VM-PASS  crash window after-record with the owner and next keys in an ssh-agent: recovered on the next open or write
+  VM-PASS  crash window after-stage with the owner and next keys in an ssh-agent: recovered on the next open or write
+  VM-PASS  doctor with a real ssh-agent holding both keys: NEXT_KEY_SAME_SIGNER and the next key's signer checked by listing
+  VM-PASS  doctor with the owner key in an ssh-agent only LISTS identities: reachable, key not listed, unreachable, no socket, --offline, --as-agent; a loose ref
+  VM-PASS  e2e custody: a witness-bound history whose owner and next keys live only in a real ssh-agent (init, grants, two-phase pre-rotation, a removed key, a d
+  VM-PASS  format 1: a simulated job on a 2,000-event history completes in under 200 ms
+  VM-PASS  migrate --signer ssh-agent / --owner-key-ref: the migrated history's owner key is held by a real ssh-agent
+  VM-PASS  migrate to a key reference: the target's owner key is held by a real OpenSSH agent; no key material is written
+  VM-PASS  owner key held by a fake agent that returns a wrong signature: SIGNER_FAILED at creation (no history file) and on a write (nothing appended)
+  VM-PASS  owner key held by a real ssh-agent: init, grant and pin (attested through the agent); a dead agent is SIGNER_FAILED and a removed key KEY_UNAVAILABLE,
+  VM-PASS  performance: 2,000 format-1 appends average ≤ 3 ms each without fsync
+  VM-PASS  pre-rotation where the next key is a second key of the same real ssh-agent: committed by reference, NEXT_KEY_SAME_SIGNER, rotated without the next key
+  VM-PASS  protected evidence closes and restores actual reviewer access under Core authorization
+  VM-PASS  ssh-agent (fake agent): a wrong, altered, malformed or mislabelled signature is SIGNER_FAILED and never returned; silence times out; a FIDO-only key i
+  VM-PASS  ssh-agent (real OpenSSH agent): signs the 32-byte hash as plain Ed25519; a key removed from the agent is KEY_UNAVAILABLE; a declined confirmation and 
+  VM-PASS  ssh-agent on Windows: the default is the OpenSSH named pipe \\.\pipe\openssh-ssh-agent (SSH_AUTH_SOCK wins when set); the pipe code path runs against 
+  VM-PASS  ssh-agent: an IronTrellis key file converted to OpenSSH format (signer to-ssh) is loaded by ssh-add and signs as the same key
+  VM-PASS  the hook with the owner key in a real ssh-agent: init reuses the history, SessionStart admits through the agent, tool calls cannot reach the agent, th
+verify-install mac56 failed 1 / 70 | same as 55: True | vm 0 / 70 PASS
+   custody: init --owner-key-ref (command signer), signer test/ref/list/to-ssh, doctor, commit by public key, rotate-key --next-key-ref (ssh-agent)

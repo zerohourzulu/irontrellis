@@ -1,0 +1,92 @@
+[
+ {
+  "id": "event:horizon-max:3",
+  "type": "DEPLOYMENT_INITIALIZED",
+  "timestamp": 9007199254740985,
+  "data": {
+   "adapterPolicyHash": "0x00c3498e2744943663475d0187ca979cdd09763b88427781883693c4b8c163a7",
+   "canonicalLineageId": "lineage:horizon-max:1",
+   "domain": {
+    "deploymentId": "irontrellis-conformance-v2",
+    "protocol": "irontrellis",
+    "version": "2"
+   },
+   "finality": "LOCAL_ONLY",
+   "globalPolicySourceId": "policy:horizon-max:2",
+   "nextKeyDigests": [
+    "0xec02d39d050ad408f7a0fa6a75604753cc9e4fafc6f78262a2026f3181832762"
+   ],
+   "ownerKeys": [
+    {
+     "credential": "0x967e264fa6b2e89fcfab4df3d4291cd1482a3a5a9f3836c9ce8f80d112d2ac4d",
+     "keyId": "owner:1",
+     "scheme": "ed25519"
+    }
+   ],
+   "policyVersion": "irontrellis-local-owner/2",
+   "rootRecognitionPolicy": "declared-principal-root/0.2",
+   "sessionTimeHorizonMs": 1,
+   "timeSource": "EVENT_TIMESTAMP",
+   "versions": {
+    "administrativeAuthorizationVersion": "irontrellis-administrative-authorization/2",
+    "authorizationProofVersion": "irontrellis-authorization-proof/2",
+    "controlAuthorizationVersion": "irontrellis-control-authorization/2",
+    "eventSchemaVersion": "irontrellis-event/2",
+    "historyHashAlgorithm": "sha256",
+    "projectionVersion": "irontrellis-projection/2",
+    "queryEnvelopeVersion": "continuity-query-envelope/0.2",
+    "receiptSchemaVersion": "irontrellis-receipt/2",
+    "recordChainVersion": "irontrellis-record/2",
+    "runtimeAuthorizationVersion": "irontrellis-runtime-authorization/2",
+    "signatureScheme": "ed25519",
+    "stateDerivationVersion": "irontrellis-state/2"
+   }
+  }
+ },
+ {
+  "id": "event:horizon-max:4",
+  "type": "PRINCIPAL_CREATED",
+  "timestamp": 9007199254740985,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xcb1bd37571dd1d6bbf5420cddc947595005da008d5871fe797bba0a3297bf316b6c45387dca722b391be14bbebea350d3c90a8f242302524f5623a1ea9199402"
+   },
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:horizon-max:5",
+  "type": "AGENT_CREATED",
+  "timestamp": 9007199254740985,
+  "data": {
+   "agentId": "bea",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x8659dacd6fceb20072bb9de9bc64e21bf44f333649c9a345702c60a6a422b264db9e3068a56b531ae97fb1425e500ae375e3d40344d34eb8bd741497e1ddb30b"
+   },
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:horizon-max:6",
+  "type": "RUNTIME_SESSION_ADMITTED",
+  "timestamp": 9007199254740985,
+  "data": {
+   "agentId": "bea",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x60c20bf39620ae25ac8d0387cd1d6de8623a4df9634d5561bb3d5102797f2592685f5e0c6033cf3df7afe69dd1836c0d2176befcfe76c62940d1a990f38c7902"
+   },
+   "controlEpoch": 1,
+   "controllerId": "operator",
+   "credentialKeyId": "key:bea",
+   "credentialPublicKey": "0xf1891039752e1e3e5a1cfbc8fb2bf1d72cf103106f8eb97a47b076c37ab31fcb",
+   "credentialScheme": "ed25519",
+   "expiresAt": 9007199254740991,
+   "sessionId": "session:bea"
+  }
+ }
+]

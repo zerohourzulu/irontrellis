@@ -1,0 +1,76 @@
+{
+  "source": "packages/reference-0.3/packages/core-0.2/src/core/canonical.ts",
+  "sourceSha256": "06ce5f6b978e1b9641e4736e6a3c9de16ee6d2bf560fd4715f76c2dafd99b0f8",
+  "rule": "The frozen domain literals are preserved. New tool IDs use an explicit SHA-256, which intentionally changes the old Keccak-256 digests; canonical byte parity is verified.",
+  "vectors": [
+    {
+      "name": "ticket",
+      "config": {
+        "serviceId": "digest:fixture",
+        "account": "synthetic",
+        "tools": [
+          {
+            "id": "ticket.create",
+            "action": "create-ticket",
+            "resource": "queue:security",
+            "fields": {
+              "title": "text"
+            }
+          }
+        ]
+      },
+      "arguments": {
+        "title": "Synthetic parity"
+      },
+      "amountFields": [],
+      "businessKey": "case:1",
+      "contractCanonical": "{\"account\":\"synthetic\",\"serviceId\":\"digest:fixture\",\"tools\":[{\"action\":\"create-ticket\",\"fields\":{\"title\":\"text\"},\"id\":\"ticket.create\",\"resource\":\"queue:security\"}],\"version\":\"continuity-tool-contract/1\"}",
+      "oldContractId": "0x9d31ebe821c57e4e5d41cf0cfd911ec1afa4966c68606395308d295f4dfba43c",
+      "newContractId": "0x2b4d2439167f16984219929ac8ddef7bd85931497c03c508afdf49626300fae8",
+      "oldTermsCanonical": "{\"account\":\"synthetic\",\"arguments\":{\"title\":\"Synthetic parity\"},\"businessKey\":\"case:1\",\"contractId\":\"0x9d31ebe821c57e4e5d41cf0cfd911ec1afa4966c68606395308d295f4dfba43c\",\"serviceId\":\"digest:fixture\",\"tool\":\"ticket.create\",\"version\":\"continuity-tool-terms/1\"}",
+      "oldTermsDigest": "0x0c63f64ab0eaa135415159e961c4901d032973282d5732396098f3e33fcb8cee",
+      "newTermsCanonical": "{\"account\":\"synthetic\",\"arguments\":{\"title\":\"Synthetic parity\"},\"businessKey\":\"case:1\",\"contractId\":\"0x2b4d2439167f16984219929ac8ddef7bd85931497c03c508afdf49626300fae8\",\"serviceId\":\"digest:fixture\",\"tool\":\"ticket.create\",\"version\":\"continuity-tool-terms/1\"}",
+      "newTermsDigest": "0x945a5ea84c8aa14d9da5bd87c1aef1f2e12a385dcf066d4a53a33aab87654820",
+      "samePayloadLegacyKeccak": "0xc54c830aaa12037ee7ed5214e43de5aa85d4105db4c9a2822eecef44703741f3"
+    },
+    {
+      "name": "amount-counterparty",
+      "config": {
+        "serviceId": "digest:fixture",
+        "account": "synthetic",
+        "tools": [
+          {
+            "id": "pay",
+            "action": "pay",
+            "resource": "vendor",
+            "fields": {
+              "amount": "amount",
+              "counterparty": "identifier"
+            },
+            "projection": {
+              "amount": "amount",
+              "counterparty": "counterparty",
+              "unit": "cent"
+            }
+          }
+        ]
+      },
+      "arguments": {
+        "amount": "1200",
+        "counterparty": "vendor:1"
+      },
+      "amountFields": [
+        "amount"
+      ],
+      "businessKey": "case:1",
+      "contractCanonical": "{\"account\":\"synthetic\",\"serviceId\":\"digest:fixture\",\"tools\":[{\"action\":\"pay\",\"fields\":{\"amount\":\"amount\",\"counterparty\":\"identifier\"},\"id\":\"pay\",\"projection\":{\"amount\":\"amount\",\"counterparty\":\"counterparty\",\"unit\":\"cent\"},\"resource\":\"vendor\"}],\"version\":\"continuity-tool-contract/1\"}",
+      "oldContractId": "0x2c36ca11e0d79a159b4294b33b4c904f4a90a9e2623fe342749622fe0d228e61",
+      "newContractId": "0x7819298f37ed4b5baac17642486f214f88ce2d16d6f7d0f9033d60289cf3de74",
+      "oldTermsCanonical": "{\"account\":\"synthetic\",\"arguments\":{\"amount\":{\"$continuity.bigint\":\"1200\"},\"counterparty\":\"vendor:1\"},\"businessKey\":\"case:1\",\"contractId\":\"0x2c36ca11e0d79a159b4294b33b4c904f4a90a9e2623fe342749622fe0d228e61\",\"serviceId\":\"digest:fixture\",\"tool\":\"pay\",\"version\":\"continuity-tool-terms/1\"}",
+      "oldTermsDigest": "0xe6b565d3a79ac6d8014d5f48a68a2240cd8073f2024aff4c5232871d25a14543",
+      "newTermsCanonical": "{\"account\":\"synthetic\",\"arguments\":{\"amount\":{\"$continuity.bigint\":\"1200\"},\"counterparty\":\"vendor:1\"},\"businessKey\":\"case:1\",\"contractId\":\"0x7819298f37ed4b5baac17642486f214f88ce2d16d6f7d0f9033d60289cf3de74\",\"serviceId\":\"digest:fixture\",\"tool\":\"pay\",\"version\":\"continuity-tool-terms/1\"}",
+      "newTermsDigest": "0xe6261438c8b1d29065d4ea17ca03f82ad456007e29969267d9c132b3bdcbcab3",
+      "samePayloadLegacyKeccak": "0xfcec915ebb1eb0627dcf4f251cc3ebc02d325e6959b48242350d68f71b3c20c6"
+    }
+  ]
+}

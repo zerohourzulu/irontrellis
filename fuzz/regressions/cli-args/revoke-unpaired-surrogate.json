@@ -1,0 +1,20 @@
+{
+ "id": "revoke-unpaired-surrogate",
+ "target": "cli-args",
+ "found": "pre-release fuzzing, 2026-09-26 (cli-args target, initial campaign seed 11)",
+ "description": "irontrellis revoke with an identifier holding an unpaired surrogate is a USAGE-level INVALID_INPUT, not the unclassified FAILED (possible on Windows, where argv is UTF-16).",
+ "rootCause": "The CLI's checkIdentifier and the owner API's identifier() (packages/core/src/input.ts) checked length and control characters but not well-formedness, so the id reached the owner write (event capture), whose canonical capture threw a raw CanonicalError: the CLI printed error FAILED and the owner API broke its \"errors are IronTrellisError\" contract.",
+ "fix": "input.ts identifier() requires a well-formed ProtocolString (INVALID_INPUT); the CLI checkIdentifier rejects it first with a message naming the argument.",
+ "input": {
+  "argv": [
+   "revoke",
+   "g\ud800:1",
+   "--json"
+  ],
+  "json": true
+ },
+ "expect": {
+  "code": 1,
+  "error": "INVALID_INPUT"
+ }
+}

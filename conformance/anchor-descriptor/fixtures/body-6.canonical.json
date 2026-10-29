@@ -1,0 +1,1 @@
+{"data":{"authorityId":"read","controlAuthorization":{"keyId":"owner:rotated","signature":"0x5815b04b757efc81bb2a24a9400399efd80bc1fa0478527b626a2b3213151cac96d740790e81fa4d8833e8f19855fd3a47862076376a204f9d14f769ce390103"},"revokerId":"operations"},"id":"event:rotation:9","timestamp":104,"type":"AUTHORITY_REVOKED"}

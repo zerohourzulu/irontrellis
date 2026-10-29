@@ -1,0 +1,147 @@
+verify-install: 11 publishable packages at 1.0.0-rc.2, node v24.19.0 on linux/arm64; temporary directory <RUN>/tmp/verify-install/irontrellis-verify-install-QRgMSW
+
+PASS  build    pnpm -r build  (15.0s)  all packages built
+PASS  build    pnpm 11.19.0 (the packageManager pin) packs  (0.0s)  pnpm 11.19.0
+PASS  pack     pnpm pack (pnpm 11.19.0) of 11 packages  (3.5s)  ramex-labs-irontrellis-agent-shims-1.0.0-rc.2.tgz 9 KiB sha512-zcKdbvK8cOyweZU2Dh9SUlsgGxBIocjLbKNFoLxrqdt5CTfcNQwYokkjw5XyDjuKOuo1B5l5cGdlSvR3Tm2qqA==, ramex-labs-irontrellis-anchor-outbox-1.0.0-rc.2.tgz 74 KiB sha512-b7nSB8iULK+8UvXUONzMGCI4vB0H9Iaa/euvhIhFz48eDNtisdS4FU1UvTgW+pdx8vurpCpPe40xyD4sG6nShw==, irontrellis-1.0.0-rc.2.tgz 279 KiB sha512-kIWz9wTqkwCTogWtCL7pEqv+uqsTxeLlUNIibtVmSXqDy+OsMII48Dzh9cTtWxeSxWADUhhImb20fzpdHewsVQ==, ramex-labs-irontrellis-1.0.0-rc.2.tgz 1657 KiB sha512-jXWhjJRxZ1OXXmIC2RZ/VFzTN3Y6B9GTE42A/tb2Z8X1MV1anjO9O2YpidXrdoLpwRRbc7WyV2z4xJTm6d3u3Q==, ramex-labs-irontrellis-hooks-1.0.0-rc.2.tgz 233 KiB sha512-Sw8YwumdAluNV4vuItZcrYQ0qHKNGoPcV6BRaOC4M2PzEjXUHgXNvFDMJcRTk1/YT0OKFprAxClQW8ZvB50ccA==, ramex-labs-irontrellis-managed-agents-1.0.0-rc.2.tgz 21 KiB sha512-XbncbrHBWY80JHLtjsY2pnSkRphLYEuKPMFw90YJOC+yrP1ae4IxgpQlW2Lc12J1uCQ4bFzyWU/Ak+C2UCKkPw==, ramex-labs-irontrellis-mcp-1.0.0-rc.2.tgz 38 KiB sha512-2Vg2KQL3mFBTYx8lm1FgDRyq5eyl9lritUNPV1vnEUXvCsYwI0ZQxwiv4X681C4XaSEp3PFw5hTrTeyEoPIfYA==, ramex-labs-irontrellis-mcp-gateway-1.0.0-rc.2.tgz 214 KiB sha512-vIahPxzrHfqjUMX5moB00h9sqhIz68gZyYpEp8vl2ZpcciDaAQjktWlkPog2AovLNwJ0ljI2+yI+jsbdsGSP1w==, ramex-labs-irontrellis-remote-1.0.0-rc.2.tgz 8 KiB sha512-2DOV6dQz4ggtBa+PNdGUSlI2Q8m72MTBU7sqmx4qN4sj4W6UdHoIEvJuQxq1jUFuGlv03F/mgbjo9a3k/SVG5g==, ramex-labs-irontrellis-remote-tools-1.0.0-rc.2.tgz 32 KiB sha512-q6FUIJcZUKXpUC23cNJqBRiQIcnghMX5bW/CSIRY8YZJro90RV3iJgwDXByQcWS+ya7SuwkAMeUHh5r/18cHmg==, ramex-labs-irontrellis-witness-1.0.0-rc.2.tgz 133 KiB sha512-E5ON1nHkn7xLGYtchf621nWUjPi5cTiTVpreruuKxrx6IVy/ya6RHpTsZ53cCK2my0dZfCMTqdUvMWFX8XXLmg==
+PASS  tarball  @ramex-labs/irontrellis-agent-shims: files  (0.0s)  6 files, 25 KiB unpacked (budget 1465 KiB)
+PASS  tarball  @ramex-labs/irontrellis-agent-shims: manifest, exports, bin  (0.0s)  2 exports, 0 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2, @ramex-labs/irontrellis-managed-agents: workspace:* → 1.0.0-rc.2
+PASS  tarball  @ramex-labs/irontrellis-agent-shims: imports resolve and are declared  (0.0s)  2 modules scanned; imports @langchain/langgraph, @openai/agents, @ramex-labs/irontrellis, @ramex-labs/irontrellis-managed-agents
+PASS  tarball  @ramex-labs/irontrellis-anchor-outbox: files  (0.0s)  37 files, 309 KiB unpacked (budget 1465 KiB)
+PASS  tarball  @ramex-labs/irontrellis-anchor-outbox: manifest, exports, bin  (0.0s)  2 exports, 0 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2, @ramex-labs/irontrellis-mcp-gateway: workspace:* → 1.0.0-rc.2
+PASS  tarball  @ramex-labs/irontrellis-anchor-outbox: imports resolve and are declared  (0.0s)  22 modules scanned; imports @ramex-labs/irontrellis, @ramex-labs/irontrellis-mcp-gateway, viem
+PASS  tarball  irontrellis: files  (0.0s)  44 files, 1112 KiB unpacked (budget 1465 KiB)
+PASS  tarball  irontrellis: manifest, exports, bin  (0.0s)  2 exports, 1 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2
+PASS  tarball  irontrellis: imports resolve and are declared  (0.0s)  27 modules scanned; imports @ramex-labs/irontrellis
+PASS  tarball  @ramex-labs/irontrellis: files  (0.0s)  268 files, 6856 KiB unpacked (budget 7813 KiB)
+PASS  tarball  @ramex-labs/irontrellis: manifest, exports, bin  (0.0s)  15 exports, 0 bins
+PASS  tarball  @ramex-labs/irontrellis: imports resolve and are declared  (0.0s)  176 modules scanned; imports only node: builtins
+PASS  tarball  @ramex-labs/irontrellis-hooks: files  (0.0s)  50 files, 845 KiB unpacked (budget 1465 KiB)
+PASS  tarball  @ramex-labs/irontrellis-hooks: manifest, exports, bin  (0.0s)  2 exports, 1 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2
+PASS  tarball  @ramex-labs/irontrellis-hooks: imports resolve and are declared  (0.0s)  31 modules scanned; imports @ramex-labs/irontrellis
+PASS  tarball  @ramex-labs/irontrellis-managed-agents: files  (0.0s)  10 files, 77 KiB unpacked (budget 1465 KiB)
+PASS  tarball  @ramex-labs/irontrellis-managed-agents: manifest, exports, bin  (0.0s)  2 exports, 0 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2
+PASS  tarball  @ramex-labs/irontrellis-managed-agents: imports resolve and are declared  (0.0s)  6 modules scanned; imports @ramex-labs/irontrellis
+PASS  tarball  @ramex-labs/irontrellis-mcp: files  (0.0s)  29 files, 130 KiB unpacked (budget 1465 KiB)
+PASS  tarball  @ramex-labs/irontrellis-mcp: manifest, exports, bin  (0.0s)  2 exports, 4 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2
+PASS  tarball  @ramex-labs/irontrellis-mcp: imports resolve and are declared  (0.0s)  16 modules scanned; imports @modelcontextprotocol/client, @modelcontextprotocol/server, @ramex-labs/irontrellis
+PASS  tarball  @ramex-labs/irontrellis-mcp-gateway: files  (0.0s)  95 files, 784 KiB unpacked (budget 1465 KiB)
+PASS  tarball  @ramex-labs/irontrellis-mcp-gateway: manifest, exports, bin  (0.0s)  10 exports, 2 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2, @ramex-labs/irontrellis-remote: workspace:* → 1.0.0-rc.2
+PASS  tarball  @ramex-labs/irontrellis-mcp-gateway: imports resolve and are declared  (0.0s)  62 modules scanned; imports @modelcontextprotocol/client, @modelcontextprotocol/server, @ramex-labs/irontrellis, @ramex-labs/irontrellis-remote, jose
+PASS  tarball  @ramex-labs/irontrellis-remote: files  (0.0s)  16 files, 21 KiB unpacked (budget 1465 KiB)
+PASS  tarball  @ramex-labs/irontrellis-remote: manifest, exports, bin  (0.0s)  6 exports, 0 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2, @ramex-labs/irontrellis-remote-tools: workspace:* → 1.0.0-rc.2
+PASS  tarball  @ramex-labs/irontrellis-remote: imports resolve and are declared  (0.0s)  10 modules scanned; imports @ramex-labs/irontrellis, @ramex-labs/irontrellis-remote-tools; declared but not imported: @langchain/core, zod
+PASS  tarball  @ramex-labs/irontrellis-remote-tools: files  (0.0s)  19 files, 110 KiB unpacked (budget 1465 KiB)
+PASS  tarball  @ramex-labs/irontrellis-remote-tools: manifest, exports, bin  (0.0s)  11 exports, 0 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2
+PASS  tarball  @ramex-labs/irontrellis-remote-tools: imports resolve and are declared  (0.0s)  13 modules scanned; imports @langchain/core, @ramex-labs/irontrellis, zod
+PASS  tarball  @ramex-labs/irontrellis-witness: files  (0.0s)  29 files, 527 KiB unpacked (budget 1465 KiB)
+PASS  tarball  @ramex-labs/irontrellis-witness: manifest, exports, bin  (0.0s)  2 exports, 1 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2
+PASS  tarball  @ramex-labs/irontrellis-witness: imports resolve and are declared  (0.0s)  17 modules scanned; imports @ramex-labs/irontrellis
+PASS  npm      npm install <tarball files> (no registry for @ramex-labs)  (10.1s)  11 packages from their tarballs; the core resolved once, from its tarball, for every dependent; npm ls --all clean
+PASS  npm      every bin: --help and --version  (2.1s)  9 bins: --help and --version exit 0 and print 1.0.0-rc.2
+PASS  npm      ESM import and require() of every public subpath  (1.1s)  45 subpaths import (ESM) and require() cleanly; 11 package.json exports
+PASS  npm      consumer type-check (tsc --noEmit)  (16.5s)  tsc --noEmit (skipLibCheck off) over 37 subpaths with moduleResolution nodenext and bundler; 8 subpaths publish no declarations
+PASS  anchor-outbox installed public exports, raw-call preparation and closed inputs  (0.2s)  anchor-outbox installed public exports/raw preparation/closed-input smoke PASS
+PASS  docs     core README quickstart (the JS block, verbatim)  (0.2s)  printed ALLOW / [ 'collect' ] / DENY REVOKED / true MATCHES VERIFIED as documented; the read-only block verifies the history
+PASS  docs     README dependency claims match the packed manifests  (0.0s)  core: none; CLI: the core only; MCP packages: the core and the MCP SDK, pinned exactly (@modelcontextprotocol/client@2.2.0, @modelcontextprotocol/server@2.2.0)
+PASS  cli      README 'your own history' + owner rotate-key (pre-rotation)  (1.6s)  init, grant, authorize ALLOW, why, verify, status (4 events), owner status (next key offline), rotate-key --next-key: VERIFIED with owner:2
+PASS  cli      custody: init --owner-key-ref (command signer), signer test/ref/list/to-ssh, doctor, commit by public key, rotate-key --next-key-ref (ssh-agent)  (2.2s)  command signer: init --owner-key-ref, write, signer test, custody OK, verify, doctor OK; ssh-agent: to-ssh, ssh-add, signer list, rotate-key --next-key-ref onto the agent key: VERIFIED
+PASS  witness  README quickstart: init, token create, serve, GET /v1/witness  (0.3s)  serving irontrellis-witness 1.0.0-rc.2 on a free port; verifier key witness.example.com+1b44a4aa+…
+PASS  cli      init --witness (bound from the first write), writes, witness status/sync, verify  (1.1s)  bound, registered, witnessed up to position 4; verify OK against the running witness
+PASS  cli      witness add on an existing history, status, sync; rotate-key again (two-phase with a bound witness)  (1.1s)  witness add + sync, 2 rotations recorded by the witness, verify OK (7 events)
+PASS  cli      demo, and the follow-up commands it prints  (1.4s)  demo and its 8 printed commands ran (history under TMPDIR)
+PASS  hooks    README quickstart: init, install --write, check  (0.5s)  init + install --write (SessionStart, PreToolUse, Stop, SessionEnd); check Write DEFER, check Bash DENY ACTION_NOT_ALLOWED (exit 2)
+PASS  hooks    Claude Code payloads via the settings command, npx --no-install and npx  (7.9s)  SessionStart (context), PreToolUse Write (no decision), Bash (deny ACTION_NOT_ALLOWED), owner key (deny PROTECTED_PATH), Read (no decision), unmapped (ask), malformed (exit 2), PostToolUse (ignored), Stop and SessionEnd (handover record) — via the settings command, npx --no-install and npx
+PASS  mcp      gateway and evidence servers: README quickstarts and a real MCP client over stdio  (5.8s)  gateway (exactly-once: RESPONSE_RETAINED, RECONCILIATION_ONLY, revoke; per-call: FORWARDED, also at 2026-07-28) and evidence server (irontrellis-evidence and irontrellis-mcp, 2025 era and 2026-07-28: RECORDED, RECONCILIATION_ONLY) over stdio with @modelcontextprotocol/client 2.2.0
+PASS  python   sdist + wheel (1.0.0rc1)  (6.2s)  irontrellis-1.0.0rc1.tar.gz, irontrellis-1.0.0rc1-py3-none-any.whl via python -m build --no-isolation (wheel built from the sdist; pinned build 1.6.1 setuptools 84.0.0 twine 7.0.0); twine check --strict passes
+PASS  python   sdist and wheel contents  (0.0s)  wheel: 27 files (package, crypto/, py.typed, LICENSE, NOTICE, irontrellis-py); sdist: 45 files; no caches or tests in the wheel
+PASS  python   fresh venv: README 'pip install --pre irontrellis' from the wheel only  (2.0s)  irontrellis 1.0.0rc1 installed with --no-index from the built wheel
+PASS  python   python -m irontrellis refuses the format-2 histories the packed CLI wrote (UNSUPPORTED_VERSION; frozen at format 1)  (0.2s)  UNSUPPORTED_VERSION for the CLI's, the witnessed and the demo history
+PASS  python   python -m irontrellis verify-receipt on a receipt the packed witness signed  (0.1s)  INVALID (ENTRY_MALFORMED): the format-1 Python verifier does not read a format-2 statement
+PASS  python   a second venv installs from the sdist (isolated build)  (3.2s)  built from the sdist; verifies a format-1 history (conformance/v1 authority-v1) and refuses the CLI's format-2 history (UNSUPPORTED_VERSION)
+PASS  witness  SIGTERM stops the server with exit 0  (0.0s)  exit 0
+PASS  registry local registry serving only the packed tarballs  (0.0s)  11 packages under dist-tag next (as release.yml publishes); everything else redirected to https://registry.npmjs.org
+PASS  pnpm     pnpm add <every package>@next (strict node_modules)  (1.6s)  11 packages with the packed tarballs' integrity; workspace:* resolved to the one packed core (@ramex-labs+irontrellis@1.0.0-rc.2)
+PASS  pnpm     every bin: --help and --version  (2.5s)  9 bins: --help and --version exit 0 and print 1.0.0-rc.2
+PASS  pnpm     ESM import and require() of every public subpath  (1.3s)  45 subpaths import (ESM) and require() cleanly; 11 package.json exports
+PASS  pnpm     consumer type-check (tsc --noEmit)  (17.8s)  tsc --noEmit (skipLibCheck off) over 37 subpaths with moduleResolution nodenext and bundler; 8 subpaths publish no declarations
+PASS  pnpm     CLI demo, hooks through pnpm exec, MCP servers  (7.0s)  demo; hooks via pnpm exec; gateway (exactly-once: RESPONSE_RETAINED, RECONCILIATION_ONLY, revoke; per-call: FORWARDED, also at 2026-07-28) and evidence server (irontrellis-evidence and irontrellis-mcp, 2025 era and 2026-07-28: RECORDED, RECONCILIATION_ONLY) over stdio with @modelcontextprotocol/client 2.2.0
+PASS  global   the docs' 6 'npm install -g …@next' commands, verbatim, into a temporary prefix  (2.4s)  9 commands on the prefix's PATH
+PASS  global   every global bin: --help and --version  (2.1s)  9 bins: --help and --version exit 0 and print 1.0.0-rc.2
+PASS  global   irontrellis demo; irontrellis-hook from PATH (the command install writes); witness serve; gateway and evidence setup  (3.4s)  demo; hook session via PATH; witness serve/healthz/SIGTERM; gateway setup + MCP call; evidence setup + demo
+PASS  global   npm i -g <cli tarball> into a temporary prefix  (0.7s)  irontrellis 1.0.0-rc.2; its core dependency resolved from the registry to the packed tarball; demo runs
+PASS  docs     'npx irontrellis@next demo', npx -p <hooks>, 'npm install @ramex-labs/irontrellis@next'  (1.4s)  npx demo prints the three answers; npx -p @ramex-labs/irontrellis-hooks@next irontrellis-hook runs; the core installs with zero runtime dependencies and its quickstart runs
+
+  #  section   check                                                                                       result    time
+---  --------  ------------------------------------------------------------------------------------------  ------  ------
+  1  build     pnpm -r build                                                                               PASS     15.0s
+  2  build     pnpm 11.19.0 (the packageManager pin) packs                                                 PASS      0.0s
+  3  pack      pnpm pack (pnpm 11.19.0) of 11 packages                                                     PASS      3.5s
+  4  tarball   @ramex-labs/irontrellis-agent-shims: files                                                  PASS      0.0s
+  5  tarball   @ramex-labs/irontrellis-agent-shims: manifest, exports, bin                                 PASS      0.0s
+  6  tarball   @ramex-labs/irontrellis-agent-shims: imports resolve and are declared                       PASS      0.0s
+  7  tarball   @ramex-labs/irontrellis-anchor-outbox: files                                                PASS      0.0s
+  8  tarball   @ramex-labs/irontrellis-anchor-outbox: manifest, exports, bin                               PASS      0.0s
+  9  tarball   @ramex-labs/irontrellis-anchor-outbox: imports resolve and are declared                     PASS      0.0s
+ 10  tarball   irontrellis: files                                                                          PASS      0.0s
+ 11  tarball   irontrellis: manifest, exports, bin                                                         PASS      0.0s
+ 12  tarball   irontrellis: imports resolve and are declared                                               PASS      0.0s
+ 13  tarball   @ramex-labs/irontrellis: files                                                              PASS      0.0s
+ 14  tarball   @ramex-labs/irontrellis: manifest, exports, bin                                             PASS      0.0s
+ 15  tarball   @ramex-labs/irontrellis: imports resolve and are declared                                   PASS      0.0s
+ 16  tarball   @ramex-labs/irontrellis-hooks: files                                                        PASS      0.0s
+ 17  tarball   @ramex-labs/irontrellis-hooks: manifest, exports, bin                                       PASS      0.0s
+ 18  tarball   @ramex-labs/irontrellis-hooks: imports resolve and are declared                             PASS      0.0s
+ 19  tarball   @ramex-labs/irontrellis-managed-agents: files                                               PASS      0.0s
+ 20  tarball   @ramex-labs/irontrellis-managed-agents: manifest, exports, bin                              PASS      0.0s
+ 21  tarball   @ramex-labs/irontrellis-managed-agents: imports resolve and are declared                    PASS      0.0s
+ 22  tarball   @ramex-labs/irontrellis-mcp: files                                                          PASS      0.0s
+ 23  tarball   @ramex-labs/irontrellis-mcp: manifest, exports, bin                                         PASS      0.0s
+ 24  tarball   @ramex-labs/irontrellis-mcp: imports resolve and are declared                               PASS      0.0s
+ 25  tarball   @ramex-labs/irontrellis-mcp-gateway: files                                                  PASS      0.0s
+ 26  tarball   @ramex-labs/irontrellis-mcp-gateway: manifest, exports, bin                                 PASS      0.0s
+ 27  tarball   @ramex-labs/irontrellis-mcp-gateway: imports resolve and are declared                       PASS      0.0s
+ 28  tarball   @ramex-labs/irontrellis-remote: files                                                       PASS      0.0s
+ 29  tarball   @ramex-labs/irontrellis-remote: manifest, exports, bin                                      PASS      0.0s
+ 30  tarball   @ramex-labs/irontrellis-remote: imports resolve and are declared                            PASS      0.0s
+ 31  tarball   @ramex-labs/irontrellis-remote-tools: files                                                 PASS      0.0s
+ 32  tarball   @ramex-labs/irontrellis-remote-tools: manifest, exports, bin                                PASS      0.0s
+ 33  tarball   @ramex-labs/irontrellis-remote-tools: imports resolve and are declared                      PASS      0.0s
+ 34  tarball   @ramex-labs/irontrellis-witness: files                                                      PASS      0.0s
+ 35  tarball   @ramex-labs/irontrellis-witness: manifest, exports, bin                                     PASS      0.0s
+ 36  tarball   @ramex-labs/irontrellis-witness: imports resolve and are declared                           PASS      0.0s
+ 37  npm       npm install <tarball files> (no registry for @ramex-labs)                                   PASS     10.1s
+ 38  npm       every bin: --help and --version                                                             PASS      2.1s
+ 39  npm       ESM import and require() of every public subpath                                            PASS      1.1s
+ 40  npm       consumer type-check (tsc --noEmit)                                                          PASS     16.5s
+ 41  anchor-outbox  installed public exports, raw-call preparation and closed inputs                            PASS      0.2s
+ 42  docs      core README quickstart (the JS block, verbatim)                                             PASS      0.2s
+ 43  docs      README dependency claims match the packed manifests                                         PASS      0.0s
+ 44  cli       README 'your own history' + owner rotate-key (pre-rotation)                                 PASS      1.6s
+ 45  cli       custody: init --owner-key-ref (command signer), signer test/ref/list/to-ssh, doctor, comm…  PASS      2.2s
+ 46  witness   README quickstart: init, token create, serve, GET /v1/witness                               PASS      0.3s
+ 47  cli       init --witness (bound from the first write), writes, witness status/sync, verify            PASS      1.1s
+ 48  cli       witness add on an existing history, status, sync; rotate-key again (two-phase with a boun…  PASS      1.1s
+ 49  cli       demo, and the follow-up commands it prints                                                  PASS      1.4s
+ 50  hooks     README quickstart: init, install --write, check                                             PASS      0.5s
+ 51  hooks     Claude Code payloads via the settings command, npx --no-install and npx                     PASS      7.9s
+ 52  mcp       gateway and evidence servers: README quickstarts and a real MCP client over stdio           PASS      5.8s
+ 53  python    sdist + wheel (1.0.0rc1)                                                                    PASS      6.2s
+ 54  python    sdist and wheel contents                                                                    PASS      0.0s
+ 55  python    fresh venv: README 'pip install --pre irontrellis' from the wheel only                      PASS      2.0s
+ 56  python    python -m irontrellis refuses the format-2 histories the packed CLI wrote (UNSUPPORTED_VE…  PASS      0.2s
+ 57  python    python -m irontrellis verify-receipt on a receipt the packed witness signed                 PASS      0.1s
+ 58  python    a second venv installs from the sdist (isolated build)                                      PASS      3.2s
+ 59  witness   SIGTERM stops the server with exit 0                                                        PASS      0.0s
+ 60  registry  local registry serving only the packed tarballs                                             PASS      0.0s
+ 61  pnpm      pnpm add <every package>@next (strict node_modules)                                         PASS      1.6s
+ 62  pnpm      every bin: --help and --version                                                             PASS      2.5s
+ 63  pnpm      ESM import and require() of every public subpath                                            PASS      1.3s
+ 64  pnpm      consumer type-check (tsc --noEmit)                                                          PASS     17.8s
+ 65  pnpm      CLI demo, hooks through pnpm exec, MCP servers                                              PASS      7.0s
+ 66  global    the docs' 6 'npm install -g …@next' commands, verbatim, into a temporary prefix             PASS      2.4s
+ 67  global    every global bin: --help and --version                                                      PASS      2.1s
+ 68  global    irontrellis demo; irontrellis-hook from PATH (the command install writes); witness serve;…  PASS      3.4s
+ 69  global    npm i -g <cli tarball> into a temporary prefix                                              PASS      0.7s
+ 70  docs      'npx irontrellis@next demo', npx -p <hooks>, 'npm install @ramex-labs/irontrellis@next'     PASS      1.4s
+
+verify-install PASS: 70 passed, 0 failed, 0 skipped (11 packages at 1.0.0-rc.2, node v24.19.0, linux)

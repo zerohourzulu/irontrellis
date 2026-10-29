@@ -1,0 +1,44 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build output
+dist/
+*.tsbuildinfo
+*.tgz
+
+# test and coverage output
+coverage/
+.nyc_output/
+python/.pytest_cache/
+.pytest_cache/
+.ruff_cache/
+python/**/__pycache__/
+__pycache__/
+*.pyc
+python/build/
+python/dist/
+python/*.egg-info/
+
+# history scratch files written by local runs (never commit a real history)
+*.jsonl.head
+*.jsonl.writer-lock
+*.jsonl.owner-key.json
+*.jsonl.owner-key.*.json
+*.jsonl.owner-next-key*.json
+*.jsonl.rotation.pending.json
+*.jsonl.anchors
+scratch/
+tmp/
+
+# editors and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# scratch directory the frozen reference-0.3 common-engine test retains when its case 15 fails
+packages/reference-0.3/integrations/.core02-reader-check-*/
+# the frozen reference-0.3 oracle ships prebuilt SDK dist/ trees as frozen material (packages/reference-0.3/FREEZE-LIST.txt)
+!/packages/reference-0.3/sdk/**/dist/

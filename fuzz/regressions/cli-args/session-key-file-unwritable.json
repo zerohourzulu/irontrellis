@@ -1,0 +1,31 @@
+{
+ "id": "session-key-file-unwritable",
+ "target": "cli-args",
+ "found": "pre-release fuzzing, 2026-09-26 (cli-args target, initial campaign seed 11)",
+ "description": "irontrellis session admit --new-key into a directory that does not exist is FILE_UNWRITABLE (nothing admitted), not the unclassified FAILED.",
+ "rootCause": "commands.ts turned only EEXIST from creating the key file into a CLI error and rethrew every other file-system error (ENOENT, EACCES, ENAMETOOLONG…) as is: the CLI printed error FAILED with the raw errno message.",
+ "fix": "commands.ts: any other failure to create the key file is CliError FILE_UNWRITABLE (message in messages.ts); nothing was written or admitted.",
+ "input": {
+  "argv": [
+   "session",
+   "admit",
+   "s:unwritable",
+   "--agent",
+   "bea",
+   "--epoch",
+   "1",
+   "--key",
+   "k:unwritable",
+   "--expires",
+   "+1h",
+   "--new-key",
+   "{dir}/no-such-directory/key.json",
+   "--json"
+  ],
+  "json": true
+ },
+ "expect": {
+  "code": 1,
+  "error": "FILE_UNWRITABLE"
+ }
+}

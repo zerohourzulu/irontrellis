@@ -1,0 +1,113 @@
+{
+ "regressions": [],
+ "campaigns": [
+  {
+   "target": "cli-args",
+   "seed": 108,
+   "start": 0,
+   "iterations": 10227287,
+   "seconds": 82800,
+   "execPerSecond": 123.5,
+   "features": 277431,
+   "python": true,
+   "failures": [
+    {
+     "target": "cli-args",
+     "seed": 108,
+     "iteration": 104444,
+     "key": "CLI_JSON:--json status",
+     "invariant": "CLI_OUTPUT",
+     "message": "--json output is not one JSON document: ◆ irontrellis 1.0.0-rc.2 — agents change. the structure holds.\n\n  history           <FUZZ-TMP>/irontrellis-fuzz-cli-gHJJZa/case-104425/h.jsonl\n  format            irontrellis-event/2\n  ",
+     "count": 6,
+     "input": {
+      "argv": [
+       "--json",
+       "status",
+       "false"
+      ],
+      "json": true
+     },
+     "minimized": {
+      "argv": [
+       "--json",
+       "status",
+       "false"
+      ]
+     }
+    },
+    {
+     "target": "cli-args",
+     "seed": 108,
+     "iteration": 1545780,
+     "key": "CLI_JSON:--json verify",
+     "invariant": "CLI_OUTPUT",
+     "message": "--json output is not one JSON document: ◆ irontrellis 1.0.0-rc.2 — agents change. the structure holds.\n\nVERIFIED  <FUZZ-TMP>/irontrellis-fuzz-cli-gHJJZa/case-1545825/h.jsonl\n  history id          0x153708c3b4304c44506a4294e39",
+     "count": 6,
+     "input": {
+      "argv": [
+       "--json",
+       "verify",
+       "false"
+      ],
+      "json": true
+     },
+     "minimized": {
+      "argv": [
+       "--json",
+       "verify",
+       "false"
+      ]
+     }
+    },
+    {
+     "target": "cli-args",
+     "seed": 108,
+     "iteration": 2519618,
+     "key": "CLI_JSON:--json repin",
+     "invariant": "CLI_OUTPUT",
+     "message": "--json output is not one JSON document: ◆ irontrellis 1.0.0-rc.2 — agents change. the structure holds.\n\nREPINNED  <FUZZ-TMP>/irontrellis-fuzz-cli-gHJJZa/case-2519700/h.jsonl\n  pinned head  MATCHES at position 7 · owner-attest",
+     "count": 1,
+     "input": {
+      "argv": [
+       "--json",
+       "repin",
+       "false"
+      ],
+      "json": true
+     },
+     "minimized": {
+      "argv": [
+       "--json",
+       "repin",
+       "false"
+      ]
+     }
+    },
+    {
+     "target": "cli-args",
+     "seed": 108,
+     "iteration": 2790633,
+     "key": "CLI_JSON:--json capacity",
+     "invariant": "CLI_OUTPUT",
+     "message": "--json output is not one JSON document: ◆ irontrellis 1.0.0-rc.2 — agents change. the structure holds.\n\nOPEN  irontrellis-capacity/1\n  events             9 of unlimited\n  remaining          unlimited\n  reserved           0 for 0 declared jo",
+     "count": 1,
+     "input": {
+      "argv": [
+       "--json",
+       "capacity",
+       "false"
+      ],
+      "json": true
+     },
+     "minimized": {
+      "argv": [
+       "--json",
+       "capacity",
+       "false"
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

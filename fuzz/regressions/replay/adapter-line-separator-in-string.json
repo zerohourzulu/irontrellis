@@ -1,0 +1,26 @@
+{
+ "id": "adapter-line-separator-in-string",
+ "target": "replay",
+ "found": "campaign seed 103, iteration 2560 (ADAPTER_REPLAY:ts=Unterminated string in JSON at position :py=INVALID_QUANTITY_ENCODING)",
+ "description": "a replay request whose event data contains U+2028 gets one answer",
+ "rootCause": "the conformance adapter read stdin with readline, which also ends lines at U+2028, U+2029 and a lone CR, so a request with U+2028 in a string was cut in two",
+ "fix": "the adapter splits stdin on \\n only and drops one trailing \\r",
+ "input": {
+  "events": [
+   {
+    "data": {
+     " ": {
+      "$continuity.bigint": 0
+     }
+    }
+   }
+  ]
+ },
+ "expect": {
+  "ts": {
+   "status": "REJECTED",
+   "code": "INVALID_INPUT",
+   "position": 0
+  }
+ }
+}

@@ -1,0 +1,61 @@
+{
+ "tool": "g25/12 (post-A-157 complete; A-127.2, A-128, A-129 defaults; 2026-10-14)",
+ "command": "vectors",
+ "checks": 460,
+ "failures": 14,
+ "firstFailures": [
+  {
+   "subject": "replay/v2r/session-time-horizon/accepts-at-the-bound",
+   "check": "accepted",
+   "pass": false,
+   "detail": [
+    "EVENT_DATA_INVALID",
+    0,
+    "genesis keys"
+   ]
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/accepts-refusal-at-the-bound",
+   "check": "accepted",
+   "pass": false,
+   "detail": [
+    "EVENT_DATA_INVALID",
+    0,
+    "genesis keys"
+   ]
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/rejects-refusal-past-the-bound",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": false,
+   "detail": {
+    "vector": "TRANSITION_INVALID",
+    "g25": [
+     "EVENT_DATA_INVALID",
+     0,
+     "genesis keys"
+    ]
+   }
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/accepts-past-the-old-bound-after-a-checkpoint",
+   "check": "accepted",
+   "pass": false,
+   "detail": [
+    "EVENT_DATA_INVALID",
+    0,
+    "genesis keys"
+   ]
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/accepts-clamped-power-reducing-event",
+   "check": "accepted",
+   "pass": false,
+   "detail": [
+    "EVENT_DATA_INVALID",
+    0,
+    "genesis keys"
+   ]
+  }
+ ]
+}

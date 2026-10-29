@@ -1,0 +1,56 @@
+{
+ "step": "test",
+ "attempt": 1,
+ "cwd": "WORK/tree",
+ "nice": 0,
+ "runner": "run_build2_final_01.py",
+ "tmpdir": "<TMP>/test-1/",
+ "tmpdirMode": "0700",
+ "freeGiBBefore": 119.3,
+ "minFreeGiB": 32,
+ "steps": [
+  {
+   "command": [
+    "pnpm",
+    "-r",
+    "--workspace-concurrency=1",
+    "--no-bail",
+    "test"
+   ],
+   "exitCode": 1,
+   "started": "2026-10-26T15:18:00Z",
+   "finished": "2026-10-26T15:29:36Z",
+   "seconds": 696.1,
+   "outputBytes": 262704,
+   "outputSha256": "0735af70950b0051287fa9be8c85410b427e739642e311c3068a56e47a3b7023",
+   "testCounts": {
+    "tests": 1800,
+    "testsRuns": 14,
+    "suites": 0,
+    "suitesRuns": 14,
+    "pass": 1760,
+    "passRuns": 14,
+    "fail": 26,
+    "failRuns": 14,
+    "cancelled": 0,
+    "cancelledRuns": 14,
+    "skipped": 14,
+    "skippedRuns": 14,
+    "todo": 0,
+    "todoRuns": 14
+   },
+   "epermLines": 23
+  }
+ ],
+ "tree": {
+  "clean": true,
+  "strays": [],
+  "strayDir": null,
+  "restored": [],
+  "cleanAfterRestore": true
+ },
+ "status": "FAILED",
+ "log": "logs/test-1.log",
+ "logSha256": "f33a20893fa042e908b4a10029e426c1609834b4b3aa033c004c719ac70c5619",
+ "seconds": 696.1
+}

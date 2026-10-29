@@ -1,0 +1,824 @@
+[
+ {
+  "id": "event:handover:3",
+  "type": "DEPLOYMENT_INITIALIZED",
+  "timestamp": 100,
+  "data": {
+   "adapterPolicyHash": "0x00c3498e2744943663475d0187ca979cdd09763b88427781883693c4b8c163a7",
+   "canonicalLineageId": "lineage:handover:1",
+   "domain": {
+    "deploymentId": "irontrellis-conformance-v1",
+    "protocol": "irontrellis",
+    "version": "1"
+   },
+   "finality": "LOCAL_ONLY",
+   "globalPolicySourceId": "policy:handover:2",
+   "nextKeyDigests": [
+    "0xec02d39d050ad408f7a0fa6a75604753cc9e4fafc6f78262a2026f3181832762"
+   ],
+   "ownerKeys": [
+    {
+     "credential": "0x967e264fa6b2e89fcfab4df3d4291cd1482a3a5a9f3836c9ce8f80d112d2ac4d",
+     "keyId": "owner:1",
+     "scheme": "ed25519"
+    }
+   ],
+   "policyVersion": "irontrellis-local-owner/1",
+   "rootRecognitionPolicy": "declared-principal-root/0.2",
+   "timeSource": "EVENT_TIMESTAMP",
+   "versions": {
+    "administrativeAuthorizationVersion": "continuity-administrative-authorization/0.2",
+    "authorizationProofVersion": "continuity-authorization-proof/0.2",
+    "controlAuthorizationVersion": "irontrellis-control-authorization/1",
+    "eventSchemaVersion": "irontrellis-event/1",
+    "historyHashAlgorithm": "sha256",
+    "queryEnvelopeVersion": "continuity-query-envelope/0.2",
+    "receiptSchemaVersion": "irontrellis-receipt/1",
+    "runtimeAuthorizationVersion": "continuity-runtime-authorization/0.2",
+    "signatureScheme": "ed25519"
+   }
+  }
+ },
+ {
+  "id": "event:handover:4",
+  "type": "PRINCIPAL_CREATED",
+  "timestamp": 100,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xa525aed3476abfa096e67123456b66b0d418284e85ab0baa4f201df9f121808da80bb1428a2fc157c6aed8823b0f77939bee827603054083d7190536f6d1e10f"
+   },
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:handover:5",
+  "type": "AGENT_CREATED",
+  "timestamp": 100,
+  "data": {
+   "agentId": "bea",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xc0e08157bd21f0e212367ffe34675b572613f8a52e7eccb77245675aea701f867e77f9b2893bee30d1a0a28109c26c57864fbc799199606aa9ff3e646fc2fd09"
+   },
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:handover:6",
+  "type": "AGENT_CREATED",
+  "timestamp": 101,
+  "data": {
+   "agentId": "alex",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x1d8545bf40454a3a79d4edda915b661a9ddf24f5c6b4d049c21f16b53d6a6464e7213808f869e26e63620746f0e98fdf59c542428f7657eed94d1b4b8b49050b"
+   },
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:handover:7",
+  "type": "ROLE_CREATED",
+  "timestamp": 102,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x5e8fd22888861f5a2894df4a16c7b1b850d68d850422a2cbdafe46ee55594f2054be05e7c2c7b4d92532ca422e5fc8c9d52a5826f32b920b34de9fa6b3a46806"
+   },
+   "exclusive": true,
+   "principalId": "operations",
+   "roleId": "reviewer"
+  }
+ },
+ {
+  "id": "event:handover:8",
+  "type": "SUCCESSION_RULE_DECLARED",
+  "timestamp": 103,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xa4b3c2242a96e1e125cfaa51f8c1383326ad99a33b7686ee209bee064b42fdcc53ffbae38e2e0c6a36d77394bc3de60015a39aa179ba4d4926055d60403ca903"
+   },
+   "permittedEventTypes": [
+    "AGENT_TERMINATED",
+    "ROLE_TRANSFERRED",
+    "OBLIGATION_PERFORMANCE_ASSIGNED"
+   ],
+   "predecessorAgentId": "bea",
+   "principalId": "operations",
+   "roleId": "reviewer",
+   "ruleId": "handover",
+   "successorAgentId": "alex",
+   "trigger": "AGENT_TERMINATED"
+  }
+ },
+ {
+  "id": "event:handover:9",
+  "type": "AGENT_APPOINTED",
+  "timestamp": 104,
+  "data": {
+   "agentId": "bea",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xcfec5d3c689c55b954947c41c28804bd7625b3cc714c655e454df4a3939be3ae0e6fae52aac8d76ba057cd96243b6374583716678bd96cba7e3dfb7d2a1b0602"
+   },
+   "principalId": "operations",
+   "roleId": "reviewer",
+   "roleTenureId": "shift:1",
+   "successionRuleId": "handover",
+   "tenureNumber": 1
+  }
+ },
+ {
+  "id": "event:handover:10",
+  "type": "RUNTIME_SESSION_ADMITTED",
+  "timestamp": 105,
+  "data": {
+   "agentId": "bea",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xcf06bfd7fb0631b9757f3770e3793a43ef389411c745fc580f8e31e6181a6e9f14c8b4b47f40e1091ab98bfcf6e8665fa6361ac3c24d599e6865955175a37d09"
+   },
+   "controlEpoch": 1,
+   "controllerId": "operator",
+   "credentialKeyId": "key:bea",
+   "credentialPublicKey": "0xa1a9e7d5fb08c715ac788ad7e207c290438b7e41065fa3151bf07bdad5384f2d",
+   "credentialScheme": "ed25519",
+   "expiresAt": 900,
+   "sessionId": "session:bea"
+  }
+ },
+ {
+  "id": "event:handover:11",
+  "type": "RUNTIME_SESSION_ADMITTED",
+  "timestamp": 106,
+  "data": {
+   "agentId": "alex",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x7f28c85b97f288b391a02730018dbeee68f0f628237b46f2fa01a41b5b819e7f883c29307c0a7ce53a2f9914e48897477c158813f5c8ee24313b2d2d67e7b701"
+   },
+   "controlEpoch": 1,
+   "controllerId": "operator",
+   "credentialKeyId": "key:alex",
+   "credentialPublicKey": "0xf899b47395acd0a3917a5692cd23adf18932bf979c5bf611c3c28233a8f3b6df",
+   "credentialScheme": "ed25519",
+   "expiresAt": 900,
+   "sessionId": "session:alex"
+  }
+ },
+ {
+  "id": "event:handover:12",
+  "type": "AUTHORITY_GRANTED",
+  "timestamp": 107,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xf3132164b3867ba91fc5ed7fe8b18cd4657ea22f198c291641f855b194b65ca829a50e0d66799715e59284081bcc18fdf5f5b6583afed380eeb7765e19863a07"
+   },
+   "grant": {
+    "authorityId": "collect",
+    "constraints": {
+     "actions": [
+      "read",
+      "OBLIGATE"
+     ],
+     "expiresAt": 800,
+     "maxDelegationDepth": 0,
+     "quantitative": false,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "incident:42"
+     ]
+    },
+    "granteeId": "bea",
+    "grantorId": "operations",
+    "independent": true,
+    "kind": "PERMISSION",
+    "rootAuthorityId": "collect"
+   }
+  }
+ },
+ {
+  "id": "event:handover:13",
+  "type": "AUTHORITY_GRANTED",
+  "timestamp": 108,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x694a546929a4f5486f368ae5e3360290c2a15568d820d53c5e3f2e03432354826db5caca868f3332f9895f6cc0bf151fd829e26b8c1f619ae051a9d69c79b50c"
+   },
+   "grant": {
+    "authorityId": "review",
+    "constraints": {
+     "actions": [
+      "record-collection-disposition"
+     ],
+     "expiresAt": 800,
+     "maxDelegationDepth": 0,
+     "quantitative": false,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "duty:42"
+     ]
+    },
+    "granteeId": "alex",
+    "grantorId": "operations",
+    "independent": true,
+    "kind": "PERMISSION",
+    "rootAuthorityId": "review"
+   }
+  }
+ },
+ {
+  "id": "event:handover:14",
+  "type": "AUTHORITY_GRANTED",
+  "timestamp": 109,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x098ca98cd1b4e08672facb50f7919e14ecda88c559836e49b4f9278b8886dc2bdcd5a6f874837e9205a126829b16e4650a0cd325fa215ce2ed690c5de1d9d209"
+   },
+   "grant": {
+    "authorityId": "progress",
+    "constraints": {
+     "actions": [
+      "read"
+     ],
+     "expiresAt": 800,
+     "maxDelegationDepth": 0,
+     "quantitative": false,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "progress:42"
+     ]
+    },
+    "granteeId": "alex",
+    "grantorId": "operations",
+    "independent": true,
+    "kind": "PERMISSION",
+    "rootAuthorityId": "progress"
+   }
+  }
+ },
+ {
+  "id": "operation:0xd842f2d2c1ef2d2d5a270912b3076fb0084ca9cb79380bc57b4fcad6b6800531",
+  "type": "TRANSACTION_INTENT_DECLARED",
+  "timestamp": 110,
+  "data": {
+   "action": "read",
+   "actorId": "bea",
+   "adapterProfile": {
+    "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+    "profileId": "adapter:simulated",
+    "profileVersion": "1"
+   },
+   "intentId": "operation:42",
+   "nonce": "operation:operation:42",
+   "resource": "incident:42",
+   "roleId": "reviewer",
+   "roleTenureId": "shift:1",
+   "termsCommitment": "0x014b4a3118814907249fddd230dadaa2c8d57c481d8d4bb10ffc74d28dc9487f"
+  }
+ },
+ {
+  "id": "admission:0x2d6d388687e493013cabef158bca2f03f6c93909454e09a83db000cc92bf093f",
+  "type": "TRANSACTION_INTENT_ADMITTED",
+  "timestamp": 110,
+  "data": {
+   "authorizationProof": {
+    "authorityEvidence": [
+     {
+      "authorityId": "collect",
+      "grantEventId": "event:handover:12",
+      "grantEventPosition": 9
+     }
+    ],
+    "checkedProhibitionIds": [],
+    "consequential": true,
+    "controlEpoch": 1,
+    "controllingAuthorityIds": [
+     "collect"
+    ],
+    "credentialKeyId": "key:bea",
+    "domain": {
+     "deploymentId": "irontrellis-conformance-v1",
+     "protocol": "irontrellis",
+     "version": "1"
+    },
+    "effectiveConstraints": {
+     "actions": [
+      "OBLIGATE",
+      "read"
+     ],
+     "expiresAt": 800,
+     "maxDelegationDepth": 0,
+     "quantitative": false,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "incident:42"
+     ]
+    },
+    "evaluationTime": 110,
+    "historyHead": {
+     "canonicalTime": 110,
+     "hash": "0x8dfb7921946813f33695ac6b456211422d915bde96bf8e0c9588b02755f9e271",
+     "position": 12
+    },
+    "intentId": "operation:42",
+    "intersections": [],
+    "nonce": "operation:operation:42",
+    "permissionPath": [
+     {
+      "authorityId": "collect",
+      "constraints": {
+       "actions": [
+        "OBLIGATE",
+        "read"
+       ],
+       "expiresAt": 800,
+       "maxDelegationDepth": 0,
+       "quantitative": false,
+       "requiredIntersectionIds": [],
+       "resources": [
+        "incident:42"
+       ]
+      },
+      "granteeId": "bea",
+      "grantorId": "operations",
+      "independent": true,
+      "kind": "PERMISSION",
+      "rootAuthorityId": "collect"
+     }
+    ],
+    "policyVersion": "irontrellis-local-owner/1",
+    "proofVersion": "continuity-authorization-proof/0.2",
+    "recognizedRoot": {
+     "principalId": "operations",
+     "principalRecognitionEventId": "event:handover:4",
+     "rootAuthorityId": "collect",
+     "rootGrantEventId": "event:handover:12"
+    },
+    "request": {
+     "action": "read",
+     "actorId": "bea",
+     "claimedAt": 110,
+     "resource": "incident:42",
+     "termsCommitment": "0x014b4a3118814907249fddd230dadaa2c8d57c481d8d4bb10ffc74d28dc9487f"
+    },
+    "roleId": "reviewer",
+    "roleTenureId": "shift:1",
+    "rootRecognitionPolicy": "declared-principal-root/0.2",
+    "runtimeSessionId": "session:bea",
+    "usageSnapshot": []
+   },
+   "evaluationTime": 110,
+   "expectedHistoryHead": {
+    "canonicalTime": 110,
+    "hash": "0x8dfb7921946813f33695ac6b456211422d915bde96bf8e0c9588b02755f9e271",
+    "position": 12
+   },
+   "intentId": "operation:42",
+   "runtimeAuthorizationHash": "0x174560ad1d539b47253bbd869840b01d52e8e1c5ae236fd36c6db44da02989e6",
+   "runtimeSignature": "0x017d9df717d1cb6eaad5bdfb5b1da9c7c51cdb6f1cba342549281254831e0efba8b9903a4cdda0e3ba95cbd90c1958c8c063381b8436ec65dbdf5f41d4ed1c00"
+  }
+ },
+ {
+  "id": "event:local:consumption:224a896d8c8002e0cec26acd8da8380aa827aad6f8904dce6fc0790faf31258b",
+  "type": "TRANSACTION_INTENT_CONSUMED",
+  "timestamp": 110,
+  "data": {
+   "acknowledgment": {
+    "adapterProfile": {
+     "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+     "profileId": "adapter:simulated",
+     "profileVersion": "1"
+    },
+    "admissionHead": {
+     "canonicalTime": 110,
+     "hash": "0xb58b61d3fcaf22a687c0b3411b321ecca3af5b68f22fb525f1aa9002f39e9a20",
+     "position": 13
+    },
+    "domain": {
+     "deploymentId": "irontrellis-conformance-v1",
+     "protocol": "irontrellis",
+     "version": "1"
+    },
+    "idempotencyKey": "0x0dcd1ae2ba08ef5e47b8c61bc3db9267c5b67f15c31238a120149526e21645c3",
+    "intentId": "operation:42",
+    "kind": "ACKNOWLEDGMENT",
+    "result": {
+     "kind": "SIMULATED_SUBMISSION",
+     "submissionReference": "0xdda7799f80b5340b1f53aa23ad5f8d78ae19069fc1a6ddd0d88b1ef16c18ad04"
+    },
+    "schemaVersion": "continuity-adapter-acknowledgment/0.2",
+    "submissionFingerprint": "0xdda7799f80b5340b1f53aa23ad5f8d78ae19069fc1a6ddd0d88b1ef16c18ad04"
+   },
+   "adapterId": "adapter:simulated",
+   "evidenceReference": {
+    "attesterId": "adapter:simulated",
+    "evidenceType": "continuity-adapter-acknowledgment/0.2",
+    "kind": "EXTERNAL",
+    "reference": "0xd94857fe5ba4212f76ac5c256e74a4088dd7791490cbdfee1c7ab07e05deac86"
+   },
+   "idempotencyKey": "0x0dcd1ae2ba08ef5e47b8c61bc3db9267c5b67f15c31238a120149526e21645c3",
+   "intentId": "operation:42",
+   "status": "SUBMITTED",
+   "submissionFingerprint": "0xdda7799f80b5340b1f53aa23ad5f8d78ae19069fc1a6ddd0d88b1ef16c18ad04",
+   "transactionReference": "0xdda7799f80b5340b1f53aa23ad5f8d78ae19069fc1a6ddd0d88b1ef16c18ad04"
+  }
+ },
+ {
+  "id": "receipt:0x717b4f662cf5a2c09810ad33ed1f4fab2f3f41390446ff55ed943c93995e45fe",
+  "type": "RECEIPT_RECORDED",
+  "timestamp": 111,
+  "data": {
+   "authorizationProofHash": "0xf7f47aa87388c81a7bb266ebeb48e6be00ec1677e77322c88da768f7da5d69f9",
+   "controlEpoch": 1,
+   "intentId": "operation:42",
+   "issuerAgentId": "bea",
+   "receiptArtifactCommitment": "0xc932173a00cb2dbee7e5a80e94c44c5ce4d4f684e77ed13333afb3706f04f755",
+   "receiptContentHash": "0x717b4f662cf5a2c09810ad33ed1f4fab2f3f41390446ff55ed943c93995e45fe",
+   "roleId": "reviewer",
+   "roleTenureId": "shift:1",
+   "runtimeSessionId": "session:bea"
+  }
+ },
+ {
+  "id": "obligation:duty:42:create",
+  "type": "OBLIGATION_CREATED",
+  "timestamp": 112,
+  "data": {
+   "actorId": "bea",
+   "administrativeAuthorization": {
+    "authorityProof": {
+     "authorityEvidence": [
+      {
+       "authorityId": "collect",
+       "grantEventId": "event:handover:12",
+       "grantEventPosition": 9
+      }
+     ],
+     "checkedProhibitionIds": [],
+     "consequential": false,
+     "controllingAuthorityIds": [
+      "collect"
+     ],
+     "domain": {
+      "deploymentId": "irontrellis-conformance-v1",
+      "protocol": "irontrellis",
+      "version": "1"
+     },
+     "effectiveConstraints": {
+      "actions": [
+       "OBLIGATE",
+       "read"
+      ],
+      "expiresAt": 800,
+      "maxDelegationDepth": 0,
+      "quantitative": false,
+      "requiredIntersectionIds": [],
+      "resources": [
+       "incident:42"
+      ]
+     },
+     "evaluationTime": 112,
+     "historyHead": {
+      "canonicalTime": 111,
+      "hash": "0x53556a1b4cc5c1c5bd17d3a58855b64be0d9d3c6ea0d0eb8199ee8a6edc9dcba",
+      "position": 15
+     },
+     "intersections": [],
+     "permissionPath": [
+      {
+       "authorityId": "collect",
+       "constraints": {
+        "actions": [
+         "OBLIGATE",
+         "read"
+        ],
+        "expiresAt": 800,
+        "maxDelegationDepth": 0,
+        "quantitative": false,
+        "requiredIntersectionIds": [],
+        "resources": [
+         "incident:42"
+        ]
+       },
+       "granteeId": "bea",
+       "grantorId": "operations",
+       "independent": true,
+       "kind": "PERMISSION",
+       "rootAuthorityId": "collect"
+      }
+     ],
+     "policyVersion": "irontrellis-local-owner/1",
+     "proofVersion": "continuity-authorization-proof/0.2",
+     "recognizedRoot": {
+      "principalId": "operations",
+      "principalRecognitionEventId": "event:handover:4",
+      "rootAuthorityId": "collect",
+      "rootGrantEventId": "event:handover:12"
+     },
+     "request": {
+      "action": "OBLIGATE",
+      "actorId": "bea",
+      "claimedAt": 112,
+      "resource": "incident:42",
+      "termsCommitment": "0x014b4a3118814907249fddd230dadaa2c8d57c481d8d4bb10ffc74d28dc9487f"
+     },
+     "rootRecognitionPolicy": "declared-principal-root/0.2",
+     "usageSnapshot": []
+    },
+    "challenge": {
+     "authoritative": true,
+     "authorityProofHash": "0xd658b7db9ecf370f5d0b95b1e9cbf09f197a5c61bce09c15bcffdce28a84ff4d",
+     "consequential": true,
+     "controlEpoch": 1,
+     "credentialKeyId": "key:bea",
+     "domain": {
+      "deploymentId": "irontrellis-conformance-v1",
+      "protocol": "irontrellis",
+      "version": "1"
+     },
+     "evaluationTime": 112,
+     "eventHistoryHash": "0x53556a1b4cc5c1c5bd17d3a58855b64be0d9d3c6ea0d0eb8199ee8a6edc9dcba",
+     "eventHistoryPosition": 15,
+     "policyVersion": "irontrellis-local-owner/1",
+     "request": {
+      "action": "OBLIGATE",
+      "actorId": "bea",
+      "claimedAt": 112,
+      "resource": "incident:42",
+      "termsCommitment": "0x014b4a3118814907249fddd230dadaa2c8d57c481d8d4bb10ffc74d28dc9487f"
+     },
+     "roleId": "reviewer",
+     "roleTenureId": "shift:1",
+     "rootRecognitionPolicy": "declared-principal-root/0.2",
+     "runtimeSessionId": "session:bea",
+     "transitionEffectHash": "0x7949b72c4da1dddef672555e570e640468c0956a92ea19cca629d4cdf11335bf",
+     "transitionEventId": "obligation:duty:42:create",
+     "transitionEventType": "OBLIGATION_CREATED",
+     "version": "continuity-administrative-authorization/0.2"
+    },
+    "runtimeSignature": "0xb2e5872194b604464ef4bee5fe337b57a5f5bad2d5420e3675e83cb795c0d26edb8c4c51603786514e99be10027ac3df64a126225bd69aab1f3006c3c4d5c907"
+   },
+   "record": {
+    "beneficiaryId": "operations",
+    "causalReceiptContentHash": "0x717b4f662cf5a2c09810ad33ed1f4fab2f3f41390446ff55ed943c93995e45fe",
+    "creationRoleTenureId": "shift:1",
+    "deadline": 700,
+    "description": "Review the collected material.",
+    "durableRoleId": "reviewer",
+    "obligationId": "duty:42",
+    "performanceAssigneeId": "bea",
+    "sourceIntentId": "operation:42",
+    "status": "OPEN",
+    "successionRuleId": "handover",
+    "termsCommitment": "0x014b4a3118814907249fddd230dadaa2c8d57c481d8d4bb10ffc74d28dc9487f",
+    "transitionPolicies": [
+     {
+      "acceptedAttesterIds": [
+       "adapter:simulated"
+      ],
+      "action": "record-collection-disposition",
+      "fromStatus": "OPEN",
+      "requiredAuthorityIds": [
+       "review"
+      ],
+      "toStatus": "OUTCOME_UNKNOWN"
+     }
+    ],
+    "trigger": "event:local:consumption:224a896d8c8002e0cec26acd8da8380aa827aad6f8904dce6fc0790faf31258b"
+   }
+  }
+ },
+ {
+  "id": "handover:handover:42:retire",
+  "type": "AGENT_TERMINATED",
+  "timestamp": 113,
+  "data": {
+   "agentId": "bea",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x7b6ae77344bbd53444e061a1df84e8b3923495453254b527a3df3eda01c59583f8f1a8ce1c788c6ea86891685673c3c0572282d92b70f4a41ae85fa60f388c06"
+   },
+   "principalId": "operations",
+   "roleId": "reviewer",
+   "roleTenureId": "shift:1",
+   "successionRuleId": "handover"
+  }
+ },
+ {
+  "id": "handover:handover:42:transfer",
+  "type": "ROLE_TRANSFERRED",
+  "timestamp": 113,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x3a5f41fe0f4a6ffcb0b11db65a34e393bfac54ddc63b4cc9d3515a6c4c7a200c80bceedfac3847bc5e081837be775b796e16a5220fdfe29cadd3c67fe9f64600"
+   },
+   "fromAgentId": "bea",
+   "fromRoleTenureId": "shift:1",
+   "principalId": "operations",
+   "roleId": "reviewer",
+   "successionRuleId": "handover",
+   "toAgentId": "alex",
+   "toRoleTenureId": "shift:2",
+   "toTenureNumber": 2,
+   "transferKind": "SUCCESSION"
+  }
+ },
+ {
+  "id": "event:handover:16",
+  "type": "AUTHORITY_GRANTED",
+  "timestamp": 114,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x94f870c8e32d859729bc63dcc766a31e9e0f64b6de1632c68b3a107b17e1d22df1b627d28433d61f7c04c3d1d5e263eaf079b6faa400c1b277a899d809c1420b"
+   },
+   "grant": {
+    "authorityId": "assign",
+    "constraints": {
+     "actions": [
+      "ASSIGN_PERFORMANCE"
+     ],
+     "expiresAt": 800,
+     "maxDelegationDepth": 0,
+     "quantitative": false,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "duty:42"
+     ]
+    },
+    "granteeId": "alex",
+    "grantorId": "operations",
+    "independent": true,
+    "kind": "PERMISSION",
+    "rootAuthorityId": "assign"
+   }
+  }
+ },
+ {
+  "id": "assignment:assign:42",
+  "type": "OBLIGATION_PERFORMANCE_ASSIGNED",
+  "timestamp": 115,
+  "data": {
+   "actorId": "alex",
+   "administrativeAuthorization": {
+    "authorityProof": {
+     "authorityEvidence": [
+      {
+       "authorityId": "assign",
+       "grantEventId": "event:handover:16",
+       "grantEventPosition": 19
+      }
+     ],
+     "checkedProhibitionIds": [],
+     "consequential": false,
+     "controllingAuthorityIds": [
+      "assign"
+     ],
+     "domain": {
+      "deploymentId": "irontrellis-conformance-v1",
+      "protocol": "irontrellis",
+      "version": "1"
+     },
+     "effectiveConstraints": {
+      "actions": [
+       "ASSIGN_PERFORMANCE"
+      ],
+      "expiresAt": 800,
+      "maxDelegationDepth": 0,
+      "quantitative": false,
+      "requiredIntersectionIds": [],
+      "resources": [
+       "duty:42"
+      ]
+     },
+     "evaluationTime": 115,
+     "historyHead": {
+      "canonicalTime": 114,
+      "hash": "0xcf4991caa707632b93539d7a55f39cdfdd558599ad3564459c3bdccbcf6c6d33",
+      "position": 19
+     },
+     "intersections": [],
+     "permissionPath": [
+      {
+       "authorityId": "assign",
+       "constraints": {
+        "actions": [
+         "ASSIGN_PERFORMANCE"
+        ],
+        "expiresAt": 800,
+        "maxDelegationDepth": 0,
+        "quantitative": false,
+        "requiredIntersectionIds": [],
+        "resources": [
+         "duty:42"
+        ]
+       },
+       "granteeId": "alex",
+       "grantorId": "operations",
+       "independent": true,
+       "kind": "PERMISSION",
+       "rootAuthorityId": "assign"
+      }
+     ],
+     "policyVersion": "irontrellis-local-owner/1",
+     "proofVersion": "continuity-authorization-proof/0.2",
+     "recognizedRoot": {
+      "principalId": "operations",
+      "principalRecognitionEventId": "event:handover:4",
+      "rootAuthorityId": "assign",
+      "rootGrantEventId": "event:handover:16"
+     },
+     "request": {
+      "action": "ASSIGN_PERFORMANCE",
+      "actorId": "alex",
+      "claimedAt": 115,
+      "resource": "duty:42"
+     },
+     "rootRecognitionPolicy": "declared-principal-root/0.2",
+     "usageSnapshot": []
+    },
+    "challenge": {
+     "authoritative": true,
+     "authorityProofHash": "0x5c8046848595e5f357166171fa96cd0a580f4c4939289bdc987c5f9d11172a47",
+     "consequential": true,
+     "controlEpoch": 1,
+     "credentialKeyId": "key:alex",
+     "domain": {
+      "deploymentId": "irontrellis-conformance-v1",
+      "protocol": "irontrellis",
+      "version": "1"
+     },
+     "evaluationTime": 115,
+     "eventHistoryHash": "0xcf4991caa707632b93539d7a55f39cdfdd558599ad3564459c3bdccbcf6c6d33",
+     "eventHistoryPosition": 19,
+     "policyVersion": "irontrellis-local-owner/1",
+     "request": {
+      "action": "ASSIGN_PERFORMANCE",
+      "actorId": "alex",
+      "claimedAt": 115,
+      "resource": "duty:42"
+     },
+     "roleId": "reviewer",
+     "roleTenureId": "shift:2",
+     "rootRecognitionPolicy": "declared-principal-root/0.2",
+     "runtimeSessionId": "session:alex",
+     "transitionEffectHash": "0x195d379a2da31e91430b63e2939e7b510141a84b4faffdef9f25aedea2f90248",
+     "transitionEventId": "assignment:assign:42",
+     "transitionEventType": "OBLIGATION_PERFORMANCE_ASSIGNED",
+     "version": "continuity-administrative-authorization/0.2"
+    },
+    "runtimeSignature": "0x99a2d5adb4523e66ea24a5bfea91a21d0168e5d9a6bdbfb086dfad8027704e5885778e2c832505d5bc598e4b750563ccd54b46f1f80a0e36b2d279d23b56e700"
+   },
+   "fromAgentId": "bea",
+   "obligationId": "duty:42",
+   "successionRuleId": "handover",
+   "toAgentId": "alex"
+  }
+ },
+ {
+  "id": "event:handover:17",
+  "type": "AUTHORITY_REVOKED",
+  "timestamp": 116,
+  "data": {
+   "authorityId": "collect",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xff977226800e372f8e654e5b5217a18ae34c9e17864e20dba5728406f37540fe192d92707bb3e1048945d27e73121dfade902847f1d6352b47556a8f8f366307"
+   },
+   "revokerId": "operations"
+  }
+ },
+ {
+  "id": "handover:anchor",
+  "type": "ANCHOR_RECORDED",
+  "timestamp": 117,
+  "data": {
+   "anchor": "custom",
+   "anchoredAt": 117,
+   "anchoredHead": {
+    "canonicalTime": 116,
+    "hash": "0x2dd1d92a077af677ae890ef00d6833e4caad9e392b444569545a35cd462cf53f",
+    "position": 21
+   },
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x23fd3b2347e78f8681f31a10473b7662296f941b9a12d22855adddbf21d13074a97461578888480457f6c02b6a46a64847cbf18a4200b79a4fae399c7a7c0808"
+   },
+   "receipt": {
+    "attestedHash": "0x2dd1d92a077af677ae890ef00d6833e4caad9e392b444569545a35cd462cf53f",
+    "witness": "conformance-fixture"
+   }
+  }
+ }
+]

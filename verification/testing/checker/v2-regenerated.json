@@ -1,0 +1,3504 @@
+{
+ "tool": "g25/12 (post-A-157 complete; A-127.2, A-128, A-129 defaults; 2026-10-14)",
+ "command": "vectors",
+ "target": "vectors.json",
+ "options": {},
+ "result": {
+  "vectors": 253,
+  "byKind": {
+   "replay": 174,
+   "authorization": 35,
+   "authority-evaluation": 7,
+   "survives": 5,
+   "attestation": 7,
+   "duty-view": 5,
+   "headroom": 4,
+   "export": 2,
+   "export-verify": 9,
+   "writer-open": 5
+  },
+  "notCovered": [
+   "authorization/v2r/successor-does-not-inherit-collection: authority-layer outcome ACTION_NOT_ALLOWED (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/predecessor-refused-after-handover: authority-layer outcome AGENT_INACTIVE (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/history-relation-unverified: authority-layer outcome HISTORY_RELATION_UNVERIFIED (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/causal-time-invalid: authority-layer outcome CAUSAL_TIME_INVALID (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/domain-mismatch: authority-layer outcome DOMAIN_MISMATCH (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/missing-intersection: authority-layer outcome MISSING_INTERSECTION (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/prohibited-root: authority-layer outcome PROHIBITED (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/prohibited-global: authority-layer outcome PROHIBITED (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/revoked: authority-layer outcome REVOKED (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/expired: authority-layer outcome EXPIRED (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/not-yet-valid: authority-layer outcome NOT_YET_VALID (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/amount-required: authority-layer outcome AMOUNT_REQUIRED (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/amount-exceeded: authority-layer outcome AMOUNT_EXCEEDED (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/cumulative-amount-exceeded: authority-layer outcome CUMULATIVE_AMOUNT_EXCEEDED (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/transaction-count-exceeded: authority-layer outcome TRANSACTION_COUNT_EXCEEDED (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/agent-inactive: authority-layer outcome AGENT_INACTIVE (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/no-authority: authority-layer outcome NO_AUTHORITY (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/successor-not-yet-appointed: authority-layer outcome NO_AUTHORITY (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/migrated-successor-does-not-inherit-collection: authority-layer outcome ACTION_NOT_ALLOWED (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/indeterminate-output-limit-257-revoked-root-prohibitions: authority-layer outcome OUTPUT_LIMIT_EXCEEDED (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/deny-amount-overflow-single-root: authority-layer outcome AMOUNT_OVERFLOW (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/indeterminate-request-amount-over-max: authority-layer outcome INVALID_INPUT (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2r/causal-time-beats-named-list-limit: kind authority-evaluation with input only (writer-side; not a replay check)",
+   "authorization/v2r/amount-grammar-beats-causal-time: kind authority-evaluation with input only (writer-side; not a replay check)",
+   "authorization/v2r/deny-count-overflow-single-root: kind authority-evaluation with input only (writer-side; not a replay check)",
+   "authorization/v2r/allow-second-root-when-first-count-would-overflow: kind authority-evaluation with input only (writer-side; not a replay check)",
+   "authorization/v2r/deny-amount-overflow-raw-count-capped-grant: kind authority-evaluation with input only (writer-side; not a replay check)",
+   "authorization/v2r/deny-amount-overflow-single-root-supplied-scope: kind authority-evaluation with input only (writer-side; not a replay check)",
+   "authorization/v2r/allow-second-root-when-first-would-overflow-supplied-scope: kind authority-evaluation with input only (writer-side; not a replay check)",
+   "survives/v2r/predecessor-after-handover: kind survives not handled",
+   "survives/v2r/successor-after-handover: kind survives not handled",
+   "survives/v2r/predecessor-before-handover: kind survives not handled",
+   "survives/v2r/unknown-agent: kind survives not handled",
+   "survives/v2r/migrated-predecessor-after-handover: kind survives not handled",
+   "writer-open/v2r/legacy-history-is-read-only: kind writer-open with input only (writer-side; not a replay check)",
+   "writer-open/v2r/format1-history-is-read-only: kind writer-open with input only (writer-side; not a replay check)",
+   "writer-open/v2r/fenced-legacy-source-is-read-only: kind writer-open with input only (writer-side; not a replay check)",
+   "writer-open/v2r/fenced-format1-source-is-read-only: kind writer-open with input only (writer-side; not a replay check)",
+   "writer-open/v2r/format2-target-is-writable: kind writer-open with input only (writer-side; not a replay check)"
+  ],
+  "pinnedRoots": [
+   {
+    "source": "replay/v2r/accepts-signed-handover",
+    "position": 22,
+    "vector": "0x19b3c65d0cfa12b33676c4265e3dbca0d4741f05615168772694459ae6c0918a",
+    "g25": "0x19b3c65d0cfa12b33676c4265e3dbca0d4741f05615168772694459ae6c0918a",
+    "recordCount": 43,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/accepts-signed-handover checkpoint @19 data",
+    "position": 18,
+    "vector": "0x505fb386b3d254dab1651b40fe9ef26f2de25794b263e051c3b9c433813fe530",
+    "g25": "0x505fb386b3d254dab1651b40fe9ef26f2de25794b263e051c3b9c433813fe530",
+    "recordCount": 38,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/accepts-prefix-before-handover",
+    "position": 16,
+    "vector": "0x4f162e455d2b625a12803f2a0ed8f59274186e5efdc3eceb604b1cbbad6240d1",
+    "g25": "0x4f162e455d2b625a12803f2a0ed8f59274186e5efdc3eceb604b1cbbad6240d1",
+    "recordCount": 35,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/accepts-genesis-commitment",
+    "position": 3,
+    "vector": "0x3bf9ed4764aefb2b87fb1b3e9bdfee899d089c6e8b8529f08944a2eabb0a391c",
+    "g25": "0x3bf9ed4764aefb2b87fb1b3e9bdfee899d089c6e8b8529f08944a2eabb0a391c",
+    "recordCount": 9,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/accepts-owner-key-rotation",
+    "position": 6,
+    "vector": "0x5a18aa61863e58b083173b865feea6aebcaaa5b379a4e7525ee725d1d4d688f3",
+    "g25": "0x5a18aa61863e58b083173b865feea6aebcaaa5b379a4e7525ee725d1d4d688f3",
+    "recordCount": 14,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/accepts-commitment-only-rotation",
+    "position": 4,
+    "vector": "0x195e6835163060b7b6bb10b4d618e44450551b8f2bbd4769db7fd9a9457c6cd5",
+    "g25": "0x195e6835163060b7b6bb10b4d618e44450551b8f2bbd4769db7fd9a9457c6cd5",
+    "recordCount": 11,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/accepts-pre-rotated-rotation",
+    "position": 5,
+    "vector": "0x53416b00ed365ed831fd67f684598923f4acde853cd14e84d7c85bdffde54393",
+    "g25": "0x53416b00ed365ed831fd67f684598923f4acde853cd14e84d7c85bdffde54393",
+    "recordCount": 13,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/accepts-anchor",
+    "position": 23,
+    "vector": "0xcc58409b1f829a12712b55b07cffa17aa46b4edeb4c8d8ef7c4372522a2aafe0",
+    "g25": "0xcc58409b1f829a12712b55b07cffa17aa46b4edeb4c8d8ef7c4372522a2aafe0",
+    "recordCount": 45,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/accepts-anchor checkpoint @19 data",
+    "position": 18,
+    "vector": "0x505fb386b3d254dab1651b40fe9ef26f2de25794b263e051c3b9c433813fe530",
+    "g25": "0x505fb386b3d254dab1651b40fe9ef26f2de25794b263e051c3b9c433813fe530",
+    "recordCount": 38,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/accepts-witness-bindings",
+    "position": 24,
+    "vector": "0x3e5a9f4fdeb62ca0efbc7b6e3bdcc8cfee7db3e68c4f7e1be88e43337717d6f1",
+    "g25": "0x3e5a9f4fdeb62ca0efbc7b6e3bdcc8cfee7db3e68c4f7e1be88e43337717d6f1",
+    "recordCount": 47,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/accepts-witness-bindings checkpoint @19 data",
+    "position": 18,
+    "vector": "0x505fb386b3d254dab1651b40fe9ef26f2de25794b263e051c3b9c433813fe530",
+    "g25": "0x505fb386b3d254dab1651b40fe9ef26f2de25794b263e051c3b9c433813fe530",
+    "recordCount": 38,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/accepts-rebinding-a-bound-witness",
+    "position": 25,
+    "vector": "0xfbecfb38bf4d5747b144b758382e93c768e115d7d40d48de759d2c091a57fe38",
+    "g25": "0xfbecfb38bf4d5747b144b758382e93c768e115d7d40d48de759d2c091a57fe38",
+    "recordCount": 48,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/accepts-rebinding-a-bound-witness checkpoint @19 data",
+    "position": 18,
+    "vector": "0x505fb386b3d254dab1651b40fe9ef26f2de25794b263e051c3b9c433813fe530",
+    "g25": "0x505fb386b3d254dab1651b40fe9ef26f2de25794b263e051c3b9c433813fe530",
+    "recordCount": 38,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/accepts-unbinding-with-accepted-loss",
+    "position": 24,
+    "vector": "0x2fdaf1390302b4e55d96031e1c7acd16d9a6a294ed753a2a68f5ffba7f18e58d",
+    "g25": "0x2fdaf1390302b4e55d96031e1c7acd16d9a6a294ed753a2a68f5ffba7f18e58d",
+    "recordCount": 47,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/accepts-unbinding-with-accepted-loss checkpoint @19 data",
+    "position": 18,
+    "vector": "0x505fb386b3d254dab1651b40fe9ef26f2de25794b263e051c3b9c433813fe530",
+    "g25": "0x505fb386b3d254dab1651b40fe9ef26f2de25794b263e051c3b9c433813fe530",
+    "recordCount": 38,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/anchor-shaped-like-a-binding-binds-nothing",
+    "position": 25,
+    "vector": "0x24b038559405d4f3a01ff6dd9369beeccd76ac350260dadc757009a88316f7f8",
+    "g25": "0x24b038559405d4f3a01ff6dd9369beeccd76ac350260dadc757009a88316f7f8",
+    "recordCount": 49,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/anchor-shaped-like-a-binding-binds-nothing checkpoint @19 data",
+    "position": 18,
+    "vector": "0x505fb386b3d254dab1651b40fe9ef26f2de25794b263e051c3b9c433813fe530",
+    "g25": "0x505fb386b3d254dab1651b40fe9ef26f2de25794b263e051c3b9c433813fe530",
+    "recordCount": 38,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/accepts-migrated-legacy-v2",
+    "position": 25,
+    "vector": "0x389fa6ec00c5690bdf4e243843fea8f77df36bb313f2ee55fa8321f70ada308f",
+    "g25": "0x389fa6ec00c5690bdf4e243843fea8f77df36bb313f2ee55fa8321f70ada308f",
+    "recordCount": 50,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/accepts-migrated-format1-v2",
+    "position": 21,
+    "vector": "0xf3b573bd6ba9b45af056cb4e544b22f944834b39c1f757f9175bb69aacdcbb62",
+    "g25": "0xf3b573bd6ba9b45af056cb4e544b22f944834b39c1f757f9175bb69aacdcbb62",
+    "recordCount": 43,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/a62-omitted-expiry-round-trip",
+    "position": 27,
+    "vector": "0x013e45ac18cf9b7dcd1168c42996c2cbff73b14049340c018a3b33dea6531b58",
+    "g25": "0x013e45ac18cf9b7dcd1168c42996c2cbff73b14049340c018a3b33dea6531b58",
+    "recordCount": 54,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/a62-fresh-session-after-prefix",
+    "position": 28,
+    "vector": "0x9cc32cbca71e35c36298ed90120c141cd4773fdb12e293118979f9600c25ae2a",
+    "g25": "0x9cc32cbca71e35c36298ed90120c141cd4773fdb12e293118979f9600c25ae2a",
+    "recordCount": 56,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-sessions",
+    "position": 10,
+    "vector": "0xf1e2919046a61b0a2f4b8b6f5eabec3f59858b625f7c3a0e2fcb5fd4e0a9975b",
+    "g25": "0xf1e2919046a61b0a2f4b8b6f5eabec3f59858b625f7c3a0e2fcb5fd4e0a9975b",
+    "recordCount": 23,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-budgets-and-counterparty",
+    "position": 19,
+    "vector": "0x6f08ffd0b642e6d2bfd9b4a6accf48fde5899df4e0950230b67cfae1dcaa75f8",
+    "g25": "0x6f08ffd0b642e6d2bfd9b4a6accf48fde5899df4e0950230b67cfae1dcaa75f8",
+    "recordCount": 41,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-intent-consumed",
+    "position": 22,
+    "vector": "0x1697139b423942837ef8e5769beef3f614add3de3924a5eccdc67604c85c3bfa",
+    "g25": "0x1697139b423942837ef8e5769beef3f614add3de3924a5eccdc67604c85c3bfa",
+    "recordCount": 48,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-receipt",
+    "position": 23,
+    "vector": "0x09cd77e977362c15b9ec67ae8c9f242225118038b04491b61aff37b27e5975d5",
+    "g25": "0x09cd77e977362c15b9ec67ae8c9f242225118038b04491b61aff37b27e5975d5",
+    "recordCount": 50,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-budget-usage",
+    "position": 26,
+    "vector": "0x6be6c30890f35daad908d838852c01c10a0633fdc5759f3ba3de62c36635d889",
+    "g25": "0x6be6c30890f35daad908d838852c01c10a0633fdc5759f3ba3de62c36635d889",
+    "recordCount": 57,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-outcome",
+    "position": 29,
+    "vector": "0x566c9ba9f5b2289395cf68e82a100646147edcfe45d696a4804c9db542094bbf",
+    "g25": "0x566c9ba9f5b2289395cf68e82a100646147edcfe45d696a4804c9db542094bbf",
+    "recordCount": 62,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-obligation",
+    "position": 30,
+    "vector": "0xc1ebacbed487cf69eb10b1201ee21bab67a0f46d14021c9e7622b87e2e7ac6cf",
+    "g25": "0xc1ebacbed487cf69eb10b1201ee21bab67a0f46d14021c9e7622b87e2e7ac6cf",
+    "recordCount": 64,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-effects-and-refusal",
+    "position": 34,
+    "vector": "0x946e6f005f321608844bae116d3f0707c41c7a356c9a3a2a5c25b58286bed7f1",
+    "g25": "0x946e6f005f321608844bae116d3f0707c41c7a356c9a3a2a5c25b58286bed7f1",
+    "recordCount": 71,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-attempt-duty",
+    "position": 42,
+    "vector": "0x2a11e608cbdcfc32b735cb7379917f6c957dc21ab6e3607e3b20609c09d80d72",
+    "g25": "0x2a11e608cbdcfc32b735cb7379917f6c957dc21ab6e3607e3b20609c09d80d72",
+    "recordCount": 87,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-observation",
+    "position": 43,
+    "vector": "0x6fc8e91ef3227be5fb78cd61ca5dcc19f334aec7a867eb374bf72847d097aa05",
+    "g25": "0x6fc8e91ef3227be5fb78cd61ca5dcc19f334aec7a867eb374bf72847d097aa05",
+    "recordCount": 88,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-checkpoint",
+    "position": 45,
+    "vector": "0xaac24ca63ccf2e7306af6ceeccc7bae1f54e121a8a33728164c1c50b18d631c6",
+    "g25": "0xaac24ca63ccf2e7306af6ceeccc7bae1f54e121a8a33728164c1c50b18d631c6",
+    "recordCount": 90,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-checkpoint checkpoint @45 data",
+    "position": 44,
+    "vector": "0x72f91db054dad73776bbcc556469de50b432211abb37d5f3628bc1e8f35362b9",
+    "g25": "0x72f91db054dad73776bbcc556469de50b432211abb37d5f3628bc1e8f35362b9",
+    "recordCount": 89,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-succession",
+    "position": 49,
+    "vector": "0x5039316932b1dbc0d4e2d8196aab82056588eafcac9fd0bbea9b816f4e8817cd",
+    "g25": "0x5039316932b1dbc0d4e2d8196aab82056588eafcac9fd0bbea9b816f4e8817cd",
+    "recordCount": 95,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-succession checkpoint @45 data",
+    "position": 44,
+    "vector": "0x72f91db054dad73776bbcc556469de50b432211abb37d5f3628bc1e8f35362b9",
+    "g25": "0x72f91db054dad73776bbcc556469de50b432211abb37d5f3628bc1e8f35362b9",
+    "recordCount": 89,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-succession checkpoint @49 data",
+    "position": 48,
+    "vector": "0xb472212ff05776895a8dc4b9e5a86969ac422911ea038c3d1ced3ea7520dea3a",
+    "g25": "0xb472212ff05776895a8dc4b9e5a86969ac422911ea038c3d1ced3ea7520dea3a",
+    "recordCount": 94,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-assignments",
+    "position": 53,
+    "vector": "0xe0f5a9e8324a67b48cf154e5b21230a579a9d829954c98ebf82dd5598b66db3e",
+    "g25": "0xe0f5a9e8324a67b48cf154e5b21230a579a9d829954c98ebf82dd5598b66db3e",
+    "recordCount": 101,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-assignments checkpoint @45 data",
+    "position": 44,
+    "vector": "0x72f91db054dad73776bbcc556469de50b432211abb37d5f3628bc1e8f35362b9",
+    "g25": "0x72f91db054dad73776bbcc556469de50b432211abb37d5f3628bc1e8f35362b9",
+    "recordCount": 89,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-assignments checkpoint @49 data",
+    "position": 48,
+    "vector": "0xb472212ff05776895a8dc4b9e5a86969ac422911ea038c3d1ced3ea7520dea3a",
+    "g25": "0xb472212ff05776895a8dc4b9e5a86969ac422911ea038c3d1ced3ea7520dea3a",
+    "recordCount": 94,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-owner-key-epoch",
+    "position": 57,
+    "vector": "0xd6cba9c6080870471f20c0f3214483657599f866e34e9e9199fcbad5c6d0f976",
+    "g25": "0xd6cba9c6080870471f20c0f3214483657599f866e34e9e9199fcbad5c6d0f976",
+    "recordCount": 106,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-owner-key-epoch checkpoint @45 data",
+    "position": 44,
+    "vector": "0x72f91db054dad73776bbcc556469de50b432211abb37d5f3628bc1e8f35362b9",
+    "g25": "0x72f91db054dad73776bbcc556469de50b432211abb37d5f3628bc1e8f35362b9",
+    "recordCount": 89,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-owner-key-epoch checkpoint @49 data",
+    "position": 48,
+    "vector": "0xb472212ff05776895a8dc4b9e5a86969ac422911ea038c3d1ced3ea7520dea3a",
+    "g25": "0xb472212ff05776895a8dc4b9e5a86969ac422911ea038c3d1ced3ea7520dea3a",
+    "recordCount": 94,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-anchor",
+    "position": 59,
+    "vector": "0xcbc89bc40692eb602346ff63b8a1ce4d2665b4efd454a352f579198b7549eff4",
+    "g25": "0xcbc89bc40692eb602346ff63b8a1ce4d2665b4efd454a352f579198b7549eff4",
+    "recordCount": 110,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-anchor checkpoint @45 data",
+    "position": 44,
+    "vector": "0x72f91db054dad73776bbcc556469de50b432211abb37d5f3628bc1e8f35362b9",
+    "g25": "0x72f91db054dad73776bbcc556469de50b432211abb37d5f3628bc1e8f35362b9",
+    "recordCount": 89,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-anchor checkpoint @49 data",
+    "position": 48,
+    "vector": "0xb472212ff05776895a8dc4b9e5a86969ac422911ea038c3d1ced3ea7520dea3a",
+    "g25": "0xb472212ff05776895a8dc4b9e5a86969ac422911ea038c3d1ced3ea7520dea3a",
+    "recordCount": 94,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-witness-binding",
+    "position": 60,
+    "vector": "0xb5bececbebdbc31adc86551ce32512b8b1d2a395e5a141f90fb3d4d2d79ab691",
+    "g25": "0xb5bececbebdbc31adc86551ce32512b8b1d2a395e5a141f90fb3d4d2d79ab691",
+    "recordCount": 114,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-witness-binding checkpoint @45 data",
+    "position": 44,
+    "vector": "0x72f91db054dad73776bbcc556469de50b432211abb37d5f3628bc1e8f35362b9",
+    "g25": "0x72f91db054dad73776bbcc556469de50b432211abb37d5f3628bc1e8f35362b9",
+    "recordCount": 89,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-witness-binding checkpoint @49 data",
+    "position": 48,
+    "vector": "0xb472212ff05776895a8dc4b9e5a86969ac422911ea038c3d1ced3ea7520dea3a",
+    "g25": "0xb472212ff05776895a8dc4b9e5a86969ac422911ea038c3d1ced3ea7520dea3a",
+    "recordCount": 94,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-final",
+    "position": 61,
+    "vector": "0x4237fa7dd28926f9d873e5eab90e066758f781967294875be93bc1f07a6423cd",
+    "g25": "0x4237fa7dd28926f9d873e5eab90e066758f781967294875be93bc1f07a6423cd",
+    "recordCount": 114,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-final checkpoint @45 data",
+    "position": 44,
+    "vector": "0x72f91db054dad73776bbcc556469de50b432211abb37d5f3628bc1e8f35362b9",
+    "g25": "0x72f91db054dad73776bbcc556469de50b432211abb37d5f3628bc1e8f35362b9",
+    "recordCount": 89,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/rich-through-final checkpoint @49 data",
+    "position": 48,
+    "vector": "0xb472212ff05776895a8dc4b9e5a86969ac422911ea038c3d1ced3ea7520dea3a",
+    "g25": "0xb472212ff05776895a8dc4b9e5a86969ac422911ea038c3d1ced3ea7520dea3a",
+    "recordCount": 94,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/lifecycle-history",
+    "position": 13,
+    "vector": "0xc42cc5b7ac00915a13362b44a0298aeb2a56d462cf84fc16d294179888288b25",
+    "g25": "0xc42cc5b7ac00915a13362b44a0298aeb2a56d462cf84fc16d294179888288b25",
+    "recordCount": 29,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/a61-receipt-again-accepted",
+    "position": 14,
+    "vector": "0xca9945c00452ab26d099e57bf56e78c3ebaba10304822a8f5920d4797c3dc271",
+    "g25": "0xca9945c00452ab26d099e57bf56e78c3ebaba10304822a8f5920d4797c3dc271",
+    "recordCount": 31,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/lifecycle-fenced-history",
+    "position": 14,
+    "vector": "0x2afa36149a9add659bbffd43f71075e882415b0ade5b3bb9ff6743e2603741b3",
+    "g25": "0x2afa36149a9add659bbffd43f71075e882415b0ade5b3bb9ff6743e2603741b3",
+    "recordCount": 30,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/duty-through-duty-created",
+    "position": 12,
+    "vector": "0xe492bef19f77c4e62657ff872518cd2c5fc1a066847a2d0a34041f2ecd23f862",
+    "g25": "0xe492bef19f77c4e62657ff872518cd2c5fc1a066847a2d0a34041f2ecd23f862",
+    "recordCount": 28,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/duty-through-activated",
+    "position": 14,
+    "vector": "0x2d4734d727cba34c2782a691d28e5a4eaaaf931e38ec64617e3fd24c0cb7121c",
+    "g25": "0x2d4734d727cba34c2782a691d28e5a4eaaaf931e38ec64617e3fd24c0cb7121c",
+    "recordCount": 31,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/duty-through-completed",
+    "position": 17,
+    "vector": "0xd324607cca71915844c262fdb83cc08c9a007f935f3684c700d68911ab76addf",
+    "g25": "0xd324607cca71915844c262fdb83cc08c9a007f935f3684c700d68911ab76addf",
+    "recordCount": 36,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/duty-through-needs-review",
+    "position": 18,
+    "vector": "0x0e693b45142045edcc86a404985e2533ad519710fe4e73abd02c0bbb1e3c7431",
+    "g25": "0x0e693b45142045edcc86a404985e2533ad519710fe4e73abd02c0bbb1e3c7431",
+    "recordCount": 37,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/duty-through-contested",
+    "position": 19,
+    "vector": "0xd6b963793122a825a7ff7b45de51aebdcf5e91c7ff5f97f0775893702afacd0e",
+    "g25": "0xd6b963793122a825a7ff7b45de51aebdcf5e91c7ff5f97f0775893702afacd0e",
+    "recordCount": 38,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/budgets-history",
+    "position": 11,
+    "vector": "0xcca3c54f7a0fcf9f2c5773e03421bff40bd91f11ff5bcf4921afd019b0d9df56",
+    "g25": "0xcca3c54f7a0fcf9f2c5773e03421bff40bd91f11ff5bcf4921afd019b0d9df56",
+    "recordCount": 26,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/budget-256-accepted",
+    "position": 261,
+    "vector": "0x85d2230b1cf1d1e28d2cfeb35eb508916c598f57bc9219a8d74548ebd811db94",
+    "g25": "0x85d2230b1cf1d1e28d2cfeb35eb508916c598f57bc9219a8d74548ebd811db94",
+    "recordCount": 525,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/handover-budget-history",
+    "position": 20,
+    "vector": "0xe789f26834ad99f820c3aa6352ad845faf504aa0cdcbd8cafa8f67e0a0504635",
+    "g25": "0xe789f26834ad99f820c3aa6352ad845faf504aa0cdcbd8cafa8f67e0a0504635",
+    "recordCount": 42,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/handover-budget-history checkpoint @17 data",
+    "position": 16,
+    "vector": "0x203e0f8a41fa78e4ca1a3cb4b4675cb28c1aa6658a5e47041776aba64bd66dca",
+    "g25": "0x203e0f8a41fa78e4ca1a3cb4b4675cb28c1aa6658a5e47041776aba64bd66dca",
+    "recordCount": 35,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/projection-null-amount-cap-clears-bit2",
+    "position": 7,
+    "vector": "0xa1d1d2cb12512917b09cbe7fa44c4c3ed01be13d36a8d0893273b30b4ca910fa",
+    "g25": "0xa1d1d2cb12512917b09cbe7fa44c4c3ed01be13d36a8d0893273b30b4ca910fa",
+    "recordCount": 16,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/effects-sixty-four",
+    "position": 73,
+    "vector": "0xce219291f6695bee1b518063a8f25c4a673562e076bee706c1d010981c500d5d",
+    "g25": "0xce219291f6695bee1b518063a8f25c4a673562e076bee706c1d010981c500d5d",
+    "recordCount": 149,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/counterparty-chain-across-reregistration",
+    "position": 17,
+    "vector": "0x5ffac9eeba6203fc6af10ce69b422e839b3f3227e9e7f765a6d39d7c03cbf083",
+    "g25": "0x5ffac9eeba6203fc6af10ce69b422e839b3f3227e9e7f765a6d39d7c03cbf083",
+    "recordCount": 32,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/reserve-nonconrol-at-threshold",
+    "position": 5,
+    "vector": "0xb3799c17e20ddce8ad6731afdbd7db5ee1f99e597ec3585e02e8a4f9e04608f3",
+    "g25": "0xb3799c17e20ddce8ad6731afdbd7db5ee1f99e597ec3585e02e8a4f9e04608f3",
+    "recordCount": 13,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/reserve-control-admitted-to-cap",
+    "position": 7,
+    "vector": "0x73499a6f0eb0d718f1c293f1b6f3b4320f37a0ecd3b6ae6776d7d7e6ce635587",
+    "g25": "0x73499a6f0eb0d718f1c293f1b6f3b4320f37a0ecd3b6ae6776d7d7e6ce635587",
+    "recordCount": 17,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/reserve-history-default-limits",
+    "position": 8,
+    "vector": "0xacba3f15a444b6024a23dee2c2ef05783c8d100ab6c79555de955a53d63e8d75",
+    "g25": "0xacba3f15a444b6024a23dee2c2ef05783c8d100ab6c79555de955a53d63e8d75",
+    "recordCount": 19,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/max-state-records-history",
+    "position": 6,
+    "vector": "0x8d1ac7007fa3bce03457305e16820998504d334aba4882fc2d9d15b8cfe1647b",
+    "g25": "0x8d1ac7007fa3bce03457305e16820998504d334aba4882fc2d9d15b8cfe1647b",
+    "recordCount": 15,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/duty-quota-history",
+    "position": 17,
+    "vector": "0xd728a2a800e8df51e3920c743fc808107317b4c1ecd2a5cefce92287b345756e",
+    "g25": "0xd728a2a800e8df51e3920c743fc808107317b4c1ecd2a5cefce92287b345756e",
+    "recordCount": 36,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/checkpoint-policy-every-events",
+    "position": 13,
+    "vector": "0xcf50e1d9fc78eb091b9745e92fb40a035b14c20c13e91ab5309cdddeb8aec554",
+    "g25": "0xcf50e1d9fc78eb091b9745e92fb40a035b14c20c13e91ab5309cdddeb8aec554",
+    "recordCount": 26,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/checkpoint-policy-every-events checkpoint @3 data",
+    "position": 2,
+    "vector": "0xa346d12be0fc870e25e0eab4ba9f41d2b3fb488084f658980708a65d8aa094dc",
+    "g25": "0xa346d12be0fc870e25e0eab4ba9f41d2b3fb488084f658980708a65d8aa094dc",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/checkpoint-policy-every-events checkpoint @8 data",
+    "position": 7,
+    "vector": "0x17d054fca10fe56ad81b8e933d2cccbd7043a5f9eef7b7b73c6b4f86eaff8d77",
+    "g25": "0x17d054fca10fe56ad81b8e933d2cccbd7043a5f9eef7b7b73c6b4f86eaff8d77",
+    "recordCount": 16,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/checkpoint-policy-every-events checkpoint @13 data",
+    "position": 12,
+    "vector": "0x799a548331d1137d3292436b6468d74abc84056b783688fee9e75ce35c686975",
+    "g25": "0x799a548331d1137d3292436b6468d74abc84056b783688fee9e75ce35c686975",
+    "recordCount": 25,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/checkpoint-policy-prefix-3",
+    "position": 3,
+    "vector": "0x5117294915685db47e736a1a1f4ce47b62ae8ef1b1d6ccb8d8b5c7b0e9c1bd9c",
+    "g25": "0x5117294915685db47e736a1a1f4ce47b62ae8ef1b1d6ccb8d8b5c7b0e9c1bd9c",
+    "recordCount": 8,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/checkpoint-policy-prefix-3 checkpoint @3 data",
+    "position": 2,
+    "vector": "0xa346d12be0fc870e25e0eab4ba9f41d2b3fb488084f658980708a65d8aa094dc",
+    "g25": "0xa346d12be0fc870e25e0eab4ba9f41d2b3fb488084f658980708a65d8aa094dc",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/checkpoint-policy-prefix-8",
+    "position": 8,
+    "vector": "0x255f878db46ed1cd0d34af9a1edb90ed370101036089cbd49da5ba02771bcd49",
+    "g25": "0x255f878db46ed1cd0d34af9a1edb90ed370101036089cbd49da5ba02771bcd49",
+    "recordCount": 17,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/checkpoint-policy-prefix-8 checkpoint @3 data",
+    "position": 2,
+    "vector": "0xa346d12be0fc870e25e0eab4ba9f41d2b3fb488084f658980708a65d8aa094dc",
+    "g25": "0xa346d12be0fc870e25e0eab4ba9f41d2b3fb488084f658980708a65d8aa094dc",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/checkpoint-policy-prefix-8 checkpoint @8 data",
+    "position": 7,
+    "vector": "0x17d054fca10fe56ad81b8e933d2cccbd7043a5f9eef7b7b73c6b4f86eaff8d77",
+    "g25": "0x17d054fca10fe56ad81b8e933d2cccbd7043a5f9eef7b7b73c6b4f86eaff8d77",
+    "recordCount": 16,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/checkpoint-policy-prefix-13",
+    "position": 13,
+    "vector": "0xcf50e1d9fc78eb091b9745e92fb40a035b14c20c13e91ab5309cdddeb8aec554",
+    "g25": "0xcf50e1d9fc78eb091b9745e92fb40a035b14c20c13e91ab5309cdddeb8aec554",
+    "recordCount": 26,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/checkpoint-policy-prefix-13 checkpoint @3 data",
+    "position": 2,
+    "vector": "0xa346d12be0fc870e25e0eab4ba9f41d2b3fb488084f658980708a65d8aa094dc",
+    "g25": "0xa346d12be0fc870e25e0eab4ba9f41d2b3fb488084f658980708a65d8aa094dc",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/checkpoint-policy-prefix-13 checkpoint @8 data",
+    "position": 7,
+    "vector": "0x17d054fca10fe56ad81b8e933d2cccbd7043a5f9eef7b7b73c6b4f86eaff8d77",
+    "g25": "0x17d054fca10fe56ad81b8e933d2cccbd7043a5f9eef7b7b73c6b4f86eaff8d77",
+    "recordCount": 16,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/checkpoint-policy-prefix-13 checkpoint @13 data",
+    "position": 12,
+    "vector": "0x799a548331d1137d3292436b6468d74abc84056b783688fee9e75ce35c686975",
+    "g25": "0x799a548331d1137d3292436b6468d74abc84056b783688fee9e75ce35c686975",
+    "recordCount": 25,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/eip191-declaration-and-admission",
+    "position": 11,
+    "vector": "0x42c4bdd627388d1af2fa0653695ca7937c2c9f2ba5c931b3c652e3776a1eb0c7",
+    "g25": "0x42c4bdd627388d1af2fa0653695ca7937c2c9f2ba5c931b3c652e3776a1eb0c7",
+    "recordCount": 26,
+    "equal": true
+   },
+   {
+    "source": "export/v2r/a70-glossary-genesis-hashes from",
+    "position": 0,
+    "vector": "0xbf9746785bfee486f95432bbf396844508f9fc37f5e07908cb902b83e8d9f1bc",
+    "g25": "0xbf9746785bfee486f95432bbf396844508f9fc37f5e07908cb902b83e8d9f1bc",
+    "recordCount": 3,
+    "equal": true
+   },
+   {
+    "source": "export/v2r/a70-glossary-genesis-hashes to",
+    "position": 0,
+    "vector": "0xbf9746785bfee486f95432bbf396844508f9fc37f5e07908cb902b83e8d9f1bc",
+    "g25": "0xbf9746785bfee486f95432bbf396844508f9fc37f5e07908cb902b83e8d9f1bc",
+    "recordCount": 3,
+    "equal": true
+   },
+   {
+    "source": "export/v2r/rich-checkpoint-to-head from",
+    "position": 45,
+    "vector": "0xaac24ca63ccf2e7306af6ceeccc7bae1f54e121a8a33728164c1c50b18d631c6",
+    "g25": "0xaac24ca63ccf2e7306af6ceeccc7bae1f54e121a8a33728164c1c50b18d631c6",
+    "recordCount": 90,
+    "equal": true
+   },
+   {
+    "source": "export/v2r/rich-checkpoint-to-head to",
+    "position": 61,
+    "vector": "0x4237fa7dd28926f9d873e5eab90e066758f781967294875be93bc1f07a6423cd",
+    "g25": "0x4237fa7dd28926f9d873e5eab90e066758f781967294875be93bc1f07a6423cd",
+    "recordCount": 114,
+    "equal": true
+   },
+   {
+    "source": "export-verify/v2r/a65-round-trip-with-from-records from",
+    "position": 32,
+    "vector": "0x55888cc02056f81e42a8e878deff15f34e85dcf4850b2912d5ae54c9bb25d5a2",
+    "g25": "0x55888cc02056f81e42a8e878deff15f34e85dcf4850b2912d5ae54c9bb25d5a2",
+    "recordCount": 67,
+    "equal": true
+   },
+   {
+    "source": "export-verify/v2r/a65-round-trip-with-from-records to",
+    "position": 35,
+    "vector": "0x29973ada44dbdaf8120f1c075ea1253ab051dd3bbf4b223486673505871c66c5",
+    "g25": "0x29973ada44dbdaf8120f1c075ea1253ab051dd3bbf4b223486673505871c66c5",
+    "recordCount": 72,
+    "equal": true
+   },
+   {
+    "source": "export-verify/v2r/a65-from-zero-without-records from",
+    "position": 0,
+    "vector": "0xbf9746785bfee486f95432bbf396844508f9fc37f5e07908cb902b83e8d9f1bc",
+    "g25": "0xbf9746785bfee486f95432bbf396844508f9fc37f5e07908cb902b83e8d9f1bc",
+    "recordCount": 3,
+    "equal": true
+   },
+   {
+    "source": "export-verify/v2r/a65-from-zero-without-records to",
+    "position": 6,
+    "vector": "0x7db8244e997aa5e062deabec32e77ac3cf23a65206258f45da876057e87b55e6",
+    "g25": "0x7db8244e997aa5e062deabec32e77ac3cf23a65206258f45da876057e87b55e6",
+    "recordCount": 15,
+    "equal": true
+   },
+   {
+    "source": "export-verify/v2r/a65-from-zero-with-records from",
+    "position": 0,
+    "vector": "0xbf9746785bfee486f95432bbf396844508f9fc37f5e07908cb902b83e8d9f1bc",
+    "g25": "0xbf9746785bfee486f95432bbf396844508f9fc37f5e07908cb902b83e8d9f1bc",
+    "recordCount": 3,
+    "equal": true
+   },
+   {
+    "source": "export-verify/v2r/a65-from-zero-with-records to",
+    "position": 6,
+    "vector": "0x7db8244e997aa5e062deabec32e77ac3cf23a65206258f45da876057e87b55e6",
+    "g25": "0x7db8244e997aa5e062deabec32e77ac3cf23a65206258f45da876057e87b55e6",
+    "recordCount": 15,
+    "equal": true
+   },
+   {
+    "source": "export-verify/v2r/a65-inside-migrated-prefix from",
+    "position": 19,
+    "vector": "0x5e0381fa8d848b989d36f6d1885eb1e5febcd9b2b4809c4c7d5791e5822d9e77",
+    "g25": "0x5e0381fa8d848b989d36f6d1885eb1e5febcd9b2b4809c4c7d5791e5822d9e77",
+    "recordCount": 41,
+    "equal": true
+   },
+   {
+    "source": "export-verify/v2r/a65-inside-migrated-prefix to",
+    "position": 21,
+    "vector": "0xf3b573bd6ba9b45af056cb4e544b22f944834b39c1f757f9175bb69aacdcbb62",
+    "g25": "0xf3b573bd6ba9b45af056cb4e544b22f944834b39c1f757f9175bb69aacdcbb62",
+    "recordCount": 43,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/a71-accepts-matched-admission",
+    "position": 15,
+    "vector": "0xfa80ede8f8766862f922e7dab7c4019f3291e735ffaa2f5e15815d2c79764458",
+    "g25": "0xfa80ede8f8766862f922e7dab7c4019f3291e735ffaa2f5e15815d2c79764458",
+    "recordCount": 34,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/a71-accepts-matched-refusal",
+    "position": 16,
+    "vector": "0x37e2c12a40c00d4ea87d04b4f3b0ba9c67336f3e5bd8f2f178a3341e6b0770c4",
+    "g25": "0x37e2c12a40c00d4ea87d04b4f3b0ba9c67336f3e5bd8f2f178a3341e6b0770c4",
+    "recordCount": 36,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/a71-accepts-unmatched",
+    "position": 17,
+    "vector": "0xc198c7ea48fc2e59c614ea8a2b190bd77d5f083a0edfe2069e1e4c2645cc5373",
+    "g25": "0xc198c7ea48fc2e59c614ea8a2b190bd77d5f083a0edfe2069e1e4c2645cc5373",
+    "recordCount": 38,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/a71-accepts-equivocation",
+    "position": 18,
+    "vector": "0xb000129db3babea169b0494654bba91e8e3f71bf28256fe30b5ba530bca14379",
+    "g25": "0xb000129db3babea169b0494654bba91e8e3f71bf28256fe30b5ba530bca14379",
+    "recordCount": 40,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/a71-accepts-second-equivocation",
+    "position": 19,
+    "vector": "0x4701bef5b1f15823e702b2dfd55906fd37809aa799432864c7d14f6e99e35d2b",
+    "g25": "0x4701bef5b1f15823e702b2dfd55906fd37809aa799432864c7d14f6e99e35d2b",
+    "recordCount": 43,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/a71-accepts-observation-history",
+    "position": 20,
+    "vector": "0x849989f3e73642254a0fb908bb2eb9b1a4c27f3bd199be9b8b0360399b3e8b92",
+    "g25": "0x849989f3e73642254a0fb908bb2eb9b1a4c27f3bd199be9b8b0360399b3e8b92",
+    "recordCount": 46,
+    "equal": true
+   },
+   {
+    "source": "replay/v2r/a71-accepts-resource-128-code-points",
+    "position": 21,
+    "vector": "0x29ea13db02879897685ab59ba67275dfe452acce40aeb9ead32c7264dbec93af",
+    "g25": "0x29ea13db02879897685ab59ba67275dfe452acce40aeb9ead32c7264dbec93af",
+    "recordCount": 48,
+    "equal": true
+   },
+   {
+    "source": "export-verify/v2r/a71-observation-range from",
+    "position": 17,
+    "vector": "0xc198c7ea48fc2e59c614ea8a2b190bd77d5f083a0edfe2069e1e4c2645cc5373",
+    "g25": "0xc198c7ea48fc2e59c614ea8a2b190bd77d5f083a0edfe2069e1e4c2645cc5373",
+    "recordCount": 38,
+    "equal": true
+   },
+   {
+    "source": "export-verify/v2r/a71-observation-range to",
+    "position": 20,
+    "vector": "0x849989f3e73642254a0fb908bb2eb9b1a4c27f3bd199be9b8b0360399b3e8b92",
+    "g25": "0x849989f3e73642254a0fb908bb2eb9b1a4c27f3bd199be9b8b0360399b3e8b92",
+    "recordCount": 46,
+    "equal": true
+   }
+  ],
+  "distinctPinnedRoots": 74,
+  "pinnedRootsEqual": true
+ },
+ "summary": {
+  "checks": 460,
+  "failures": 14,
+  "firstFailures": [
+   {
+    "subject": "replay/v2r/session-time-horizon/accepts-at-the-bound",
+    "check": "accepted",
+    "pass": false,
+    "detail": [
+     "EVENT_DATA_INVALID",
+     0,
+     "genesis keys"
+    ]
+   },
+   {
+    "subject": "replay/v2r/session-time-horizon/accepts-refusal-at-the-bound",
+    "check": "accepted",
+    "pass": false,
+    "detail": [
+     "EVENT_DATA_INVALID",
+     0,
+     "genesis keys"
+    ]
+   },
+   {
+    "subject": "replay/v2r/session-time-horizon/rejects-refusal-past-the-bound",
+    "check": "rejected with TRANSITION_INVALID",
+    "pass": false,
+    "detail": {
+     "vector": "TRANSITION_INVALID",
+     "g25": [
+      "EVENT_DATA_INVALID",
+      0,
+      "genesis keys"
+     ]
+    }
+   },
+   {
+    "subject": "replay/v2r/session-time-horizon/accepts-past-the-old-bound-after-a-checkpoint",
+    "check": "accepted",
+    "pass": false,
+    "detail": [
+     "EVENT_DATA_INVALID",
+     0,
+     "genesis keys"
+    ]
+   },
+   {
+    "subject": "replay/v2r/session-time-horizon/accepts-clamped-power-reducing-event",
+    "check": "accepted",
+    "pass": false,
+    "detail": [
+     "EVENT_DATA_INVALID",
+     0,
+     "genesis keys"
+    ]
+   },
+   {
+    "subject": "replay/v2r/session-time-horizon/rejects-past-the-bound-after-a-clamped-fence",
+    "check": "rejected with TRANSITION_INVALID",
+    "pass": false,
+    "detail": {
+     "vector": "TRANSITION_INVALID",
+     "g25": [
+      "EVENT_DATA_INVALID",
+      0,
+      "genesis keys"
+     ]
+    }
+   },
+   {
+    "subject": "replay/v2r/session-time-horizon/rejects-fenced-session-past-the-bound",
+    "check": "rejected with TRANSITION_INVALID",
+    "pass": false,
+    "detail": {
+     "vector": "TRANSITION_INVALID",
+     "g25": [
+      "EVENT_DATA_INVALID",
+      0,
+      "genesis keys"
+     ]
+    }
+   },
+   {
+    "subject": "replay/v2r/session-time-horizon/rejects-fenced-session-within-the-bound",
+    "check": "rejected with SESSION_FENCED",
+    "pass": false,
+    "detail": {
+     "vector": "SESSION_FENCED",
+     "g25": [
+      "EVENT_DATA_INVALID",
+      0,
+      "genesis keys"
+     ]
+    }
+   },
+   {
+    "subject": "replay/v2r/session-time-horizon/rejects-admission-past-the-bound",
+    "check": "rejected with TRANSITION_INVALID",
+    "pass": false,
+    "detail": {
+     "vector": "TRANSITION_INVALID",
+     "g25": [
+      "EVENT_DATA_INVALID",
+      0,
+      "genesis keys"
+     ]
+    }
+   },
+   {
+    "subject": "replay/v2r/session-time-horizon/accepts-near-max-at-the-bound",
+    "check": "accepted",
+    "pass": false,
+    "detail": [
+     "EVENT_DATA_INVALID",
+     0,
+     "genesis keys"
+    ]
+   },
+   {
+    "subject": "replay/v2r/session-time-horizon/rejects-near-max-past-the-bound",
+    "check": "rejected with TRANSITION_INVALID",
+    "pass": false,
+    "detail": {
+     "vector": "TRANSITION_INVALID",
+     "g25": [
+      "EVENT_DATA_INVALID",
+      0,
+      "genesis keys"
+     ]
+    }
+   },
+   {
+    "subject": "replay/v2r/session-time-horizon/accepts-near-max-when-ownertime-plus-h-exceeds-max",
+    "check": "accepted",
+    "pass": false,
+    "detail": [
+     "EVENT_DATA_INVALID",
+     0,
+     "genesis keys"
+    ]
+   },
+   {
+    "subject": "replay/v2r/session-time-horizon/accepts-migrated-prefix-exempt",
+    "check": "accepted",
+    "pass": false,
+    "detail": [
+     "EVENT_DATA_INVALID",
+     0,
+     "genesis keys"
+    ]
+   },
+   {
+    "subject": "replay/v2r/session-time-horizon/rejects-first-post-prefix-event-past-the-bound",
+    "check": "rejected with TRANSITION_INVALID",
+    "pass": false,
+    "detail": {
+     "vector": "TRANSITION_INVALID",
+     "g25": [
+      "EVENT_DATA_INVALID",
+      0,
+      "genesis keys"
+     ]
+    }
+   }
+  ]
+ },
+ "limits": [
+  "authority algebra (spec 02: delegation paths, intersections, prohibitions) is not re-derived; admission and administrative proofs are checked for consistency with state (controlling grants exist, are permissions, unrevoked, in time; request/binding/intent/usage/budget), not for byte-equality with an engine-derived proof",
+  "CORE refusals: signature, actor binding, time, head checked; the DENY/INDETERMINATE code is not re-derived (authority algebra)",
+  "adapter acknowledgment / no-effect deep validation (spec 01 \u00a7F.5) is not implemented; evidence references and (A-17.5) the idempotencyKey are checked",
+  "receipt artifacts are outside the history (\u00a78.5) and not verified",
+  "migrated prefixes: runtime/administrative signatures are verified against the shadow heads with the source algorithm; the prefix control-tuple currency (session expiry, epoch, tenure) of administrative events and migratedFrom.recordHash are not checked",
+  "witness registration receipts (signed notes, WITNESS \u00a79.5) are not verified; the field set is",
+  "duty findings: the attester administrative proof hash (authorityProofHash) is taken from the challenge (authority algebra)",
+  "A-17.2: ownerKeys and the option-given genesis fields (nextKeyDigests, capacity, checkpointPolicy, projection) of a migrated genesis cannot be checked without the migration options; migratedFrom.recordHash (A-17.4) is not checkable from the target",
+  "A-40.2 (g25/4): a format-1 sourceAttestation is verified (shape, head = migratedFrom.historyHash/position, signature under migratedFrom.genesis.ownerKeys); its head.canonicalTime is compared with the source event at migratedFrom.position when the prefix ends; whether the /1 body carries `domain` is G3-X-3 (both shapes accepted)",
+  "A-37.2 / A-69 derived ids are an API rule: g25 provides the derivation (api.derive_id) and tests it; replay never derives ids",
+  "writer, API and client rules (A-5, A-6, A-8 to A-14, A-22.3-5, A-23, A-24, A-25, A-30, A-31 Python; G2: A-38, A-41, A-42, A-43.1, A-44.1/3/4, A-45.2, A-46.1-2 and A-66 (reported as an advisory schedule only), A-48, A-52.3, A-55, A-56; G3: A-63 plan-time refusal, A-66, A-68) leave no trace a history file can show",
+  "A-44.2: the snapshot is size-checked before parsing but not parsed in streaming fashion (entries counted after the parse)",
+  "A-39: resume step (1) rollback detection is checked against heads supplied as inputs (pin, anchor log, witness heads); the remote witness protocol itself (WITNESS \u00a71, E-10) is not implemented",
+  "A-71 (g25/5): type 42 is replayed in full (schema, challenge, the eight A-71.3 steps, both record kinds, row 42); source.eventDigest is never recomputed (no provider content in the history); the A-71.6 writer contract (lock, checkpoint ordering, crash re-emission) is a writer rule - api.observation_precheck reproduces only its codes; A-71.7 listings are report-level (advisory.verify_report)",
+  "A-72 (g25/5): the 11-type lifecycle set is g25's own list (job 06); it equals the eleven types A-72.2 names; the builder's DEVIATIONS copy of capacity.ts is not an input"
+ ],
+ "notes": [
+  "authorization/v2r/allow-fallback-root-after-oversized-winner-revoked: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked",
+  "authorization/v2r/allow-fallback-root-when-winner-usage-at-max: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked",
+  "authorization/v2r/allow-second-root-when-first-would-overflow: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked",
+  "authorization/v2r/allow-via-delegation-with-intersection: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked",
+  "authorization/v2r/allow-via-delegation: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked",
+  "authorization/v2r/amount-within-cap: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked",
+  "authorization/v2r/budget-set-other-resource: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked",
+  "authorization/v2r/budget-set-sixteen-matching: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked",
+  "authorization/v2r/cumulative-amount-honoured: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked",
+  "authorization/v2r/migrated-successor-may-exercise-its-own-grant: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked",
+  "authorization/v2r/successor-may-exercise-its-own-grant: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked"
+ ],
+ "checks": [
+  {
+   "subject": "replay/v2r/accepts-signed-handover",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-signed-handover",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-signed-handover",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-signed-handover",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-prefix-before-handover",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-prefix-before-handover",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-prefix-before-handover",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-prefix-before-handover",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-unsigned-control-event",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-tampered-control-signature",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-moved-control-event",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-altered-control-effect",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-undeclared-owner-key",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-genesis-commitment",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-genesis-commitment",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-genesis-commitment",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-genesis-commitment",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-genesis-commitment-naming-an-owner-key",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-genesis-commitment-empty",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-owner-key-rotation",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-owner-key-rotation",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-owner-key-rotation",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-owner-key-rotation",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-control-event-signed-by-retired-key",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-rotation-signed-by-unknown-key",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-retired-key-id-reuse",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-rotation-rebinding-a-key-id",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-commitment-only-rotation",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-commitment-only-rotation",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-commitment-only-rotation",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-commitment-only-rotation",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-carry-over-rotation-without-commitment",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-pre-rotated-rotation",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-pre-rotated-rotation",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-pre-rotated-rotation",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-pre-rotated-rotation",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-rotation-to-uncommitted-key",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-revealed-key-without-proof",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-pre-rotated-rotation-without-next-commitment",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-session-public-key-uppercase-hex",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-owner-key-uppercase-hex",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-anchor",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-anchor",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-anchor",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-anchor",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-bad-anchor",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-witness-bindings",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-witness-bindings",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-witness-bindings",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-witness-bindings",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-altered-witness-binding",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-witness-binding-with-malformed-policy",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-witness-binding-without-policy",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-witness-binding-quorum-above-bound",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-witness-binding-with-invalid-url",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-witness-binding-with-duplicate-verifier-key",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-witness-binding-above-sixteen-bound",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-rebinding-a-bound-witness",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-rebinding-a-bound-witness",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-rebinding-a-bound-witness",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-rebinding-a-bound-witness",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-unbinding-of-unbound-witness",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-accepted-loss-of-a-contained-head",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-unbinding-with-accepted-loss",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-unbinding-with-accepted-loss",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-unbinding-with-accepted-loss",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-unbinding-with-accepted-loss",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/anchor-shaped-like-a-binding-binds-nothing",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/anchor-shaped-like-a-binding-binds-nothing",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/anchor-shaped-like-a-binding-binds-nothing",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/anchor-shaped-like-a-binding-binds-nothing",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rejects-unknown-anchor-kind",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-migrated-legacy-v2",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-migrated-legacy-v2",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-migrated-legacy-v2",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-migrated-legacy-v2",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/migrated-legacy-v2-prefix-incomplete",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/migrated-legacy-v2-truncated-prefix",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-migrated-format1-v2",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-migrated-format1-v2",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-migrated-format1-v2",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/accepts-migrated-format1-v2",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/migrated-format1-v2-prefix-incomplete",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/migrated-format1-v2-truncated-prefix",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a62-omitted-expiry-round-trip",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a62-omitted-expiry-round-trip",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a62-omitted-expiry-round-trip",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a62-omitted-expiry-round-trip",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a62-explicit-null-expiry-in-prefix",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a62-null-expiry-session-after-prefix",
+   "check": "rejected with REFUSAL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a62-fresh-session-after-prefix",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a62-fresh-session-after-prefix",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a62-fresh-session-after-prefix",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a62-fresh-session-after-prefix",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/migrated-null-expiry-attester-after-prefix",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/migrated-null-expiry-outer-session-after-prefix",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/successor-may-exercise-its-own-grant",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/successor-may-exercise-its-own-grant",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/successor-does-not-inherit-collection",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/predecessor-refused-after-handover",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/history-relation-unverified",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/causal-time-invalid",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/domain-mismatch",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/allow-via-delegation-with-intersection",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/allow-via-delegation-with-intersection",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/allow-via-delegation",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/allow-via-delegation",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/missing-intersection",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/prohibited-root",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/prohibited-global",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/revoked",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/expired",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/not-yet-valid",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/amount-required",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/amount-exceeded",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/amount-within-cap",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/amount-within-cap",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/cumulative-amount-exceeded",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/cumulative-amount-honoured",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/cumulative-amount-honoured",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/transaction-count-exceeded",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/agent-inactive",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/no-authority",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/successor-not-yet-appointed",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/migrated-successor-may-exercise-its-own-grant",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/migrated-successor-may-exercise-its-own-grant",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/migrated-successor-does-not-inherit-collection",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/allow-fallback-root-after-oversized-winner-revoked",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/allow-second-root-when-first-would-overflow",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/allow-fallback-root-when-winner-usage-at-max",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "survives/v2r/predecessor-after-handover",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "survives/v2r/successor-after-handover",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "survives/v2r/predecessor-before-handover",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "survives/v2r/unknown-agent",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "survives/v2r/migrated-predecessor-after-handover",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2r/pre-rotation-head-by-retired-key-verifies",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2r/pre-rotation-head-by-retired-key-verifies",
+   "check": "attestation facts (\u00a77.4)",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2r/rotation-head-by-retired-key-verifies",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2r/rotation-head-by-retired-key-verifies",
+   "check": "attestation facts (\u00a77.4)",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2r/rotation-head-by-new-key-fails",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2r/rotation-head-by-new-key-fails",
+   "check": "attestation facts (\u00a77.4)",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2r/post-rotation-head-by-retired-key-fails",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2r/post-rotation-head-by-retired-key-fails",
+   "check": "attestation facts (\u00a77.4)",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2r/post-rotation-head-by-new-key-verifies",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2r/post-rotation-head-by-new-key-verifies",
+   "check": "attestation facts (\u00a77.4)",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2r/foreign-head-by-new-key-fails",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2r/foreign-head-by-new-key-fails",
+   "check": "attestation facts (\u00a77.4)",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2r/wrong-state-root",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2r/wrong-state-root",
+   "check": "attestation facts (\u00a77.4)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-sessions",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-sessions",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-sessions",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-sessions",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-budgets-and-counterparty",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-budgets-and-counterparty",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-budgets-and-counterparty",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-budgets-and-counterparty",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-intent-consumed",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-intent-consumed",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-intent-consumed",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-intent-consumed",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-receipt",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-receipt",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-receipt",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-receipt",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-budget-usage",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-budget-usage",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-budget-usage",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-budget-usage",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-outcome",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-outcome",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-outcome",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-outcome",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-obligation",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-obligation",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-obligation",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-obligation",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-effects-and-refusal",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-effects-and-refusal",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-effects-and-refusal",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-effects-and-refusal",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-attempt-duty",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-attempt-duty",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-attempt-duty",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-attempt-duty",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-observation",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-observation",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-observation",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-observation",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-checkpoint",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-checkpoint",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-checkpoint",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-checkpoint",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-succession",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-succession",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-succession",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-succession",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-assignments",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-assignments",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-assignments",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-assignments",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-owner-key-epoch",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-owner-key-epoch",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-owner-key-epoch",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-owner-key-epoch",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-anchor",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-anchor",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-anchor",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-anchor",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-witness-binding",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-witness-binding",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-witness-binding",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-witness-binding",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-final",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-final",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-final",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/rich-through-final",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/lifecycle-history",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/lifecycle-history",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/lifecycle-history",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/lifecycle-history",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a51-consumption-wrong-signer",
+   "check": "rejected with RECORD_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a51-consumption-right-signer-precondition",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a60-consumption-unknown-intent",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a60-consumption-unknown-intent-bad-signature",
+   "check": "rejected with RECORD_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a60-consumption-unknown-intent-wrong-signer",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a60-outcome-unknown-intent",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a60-outcome-unknown-intent-bad-signature",
+   "check": "rejected with RECORD_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a60-outcome-unknown-intent-wrong-signer",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a60-receipt-unknown-intent",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a60-receipt-unknown-intent-bad-signature",
+   "check": "rejected with RECORD_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a61-receipt-inherited-session-mismatch",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a61-receipt-inherited-epoch-mismatch",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a61-receipt-again-accepted",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a61-receipt-again-accepted",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a61-receipt-again-accepted",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a61-receipt-again-accepted",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/lifecycle-fenced-history",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/lifecycle-fenced-history",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/lifecycle-fenced-history",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/lifecycle-fenced-history",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a61-fence-and-bad-signature",
+   "check": "rejected with SESSION_FENCED",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a61-credential-mismatch-and-fence",
+   "check": "rejected with RECORD_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a61-missing-session",
+   "check": "rejected with RECORD_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a58-refusal-fence-and-wrong-hash",
+   "check": "rejected with SESSION_FENCED",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a61-wrapper-fence-valid-envelope",
+   "check": "rejected with SESSION_FENCED",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a61-wrapper-fence-and-bad-counterparty-signature",
+   "check": "rejected with COUNTERPARTY_SIGNATURE_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-duty-created",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-duty-created",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-duty-created",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-duty-created",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "duty-view/v2r/duty-created",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "duty-view/v2r/duty-created",
+   "check": "duty view (\u00a713.3)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-activated",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-activated",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-activated",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-activated",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "duty-view/v2r/activated",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "duty-view/v2r/activated",
+   "check": "duty view (\u00a713.3)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-completed",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-completed",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-completed",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-completed",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "duty-view/v2r/completed",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "duty-view/v2r/completed",
+   "check": "duty view (\u00a713.3)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-needs-review",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-needs-review",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-needs-review",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-needs-review",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "duty-view/v2r/needs-review",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "duty-view/v2r/needs-review",
+   "check": "duty view (\u00a713.3)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-contested",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-contested",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-contested",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-through-contested",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "duty-view/v2r/contested",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "duty-view/v2r/contested",
+   "check": "duty view (\u00a713.3)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-disposition-unknown-key",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-disposition-rules-hash",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-disposition-unknown-disposition",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-disposition-reason-too-long",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-finding-altered",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-second-activation",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-disposition-replayed",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/budgets-history",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/budgets-history",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/budgets-history",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/budgets-history",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2r/a50-saturated-rollover",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2r/a50-saturated-rollover",
+   "check": "headroom = \u00a79.7",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2r/a50-period-1",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2r/a50-period-1",
+   "check": "headroom = \u00a79.7",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/budget-set-sixteen-matching",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/budget-set-sixteen-matching",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/budget-set-too-large",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/budget-set-too-large",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/budget-set-other-resource",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/budget-set-other-resource",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/budget-256-accepted",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/budget-256-accepted",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/budget-256-accepted",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/budget-256-accepted",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/budget-257th-refused",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/handover-budget-history",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/handover-budget-history",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/handover-budget-history",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/handover-budget-history",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2r/role-budget-before-handover",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2r/role-budget-before-handover",
+   "check": "headroom = \u00a79.7",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2r/role-budget-usage-retained",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2r/role-budget-usage-retained",
+   "check": "headroom = \u00a79.7",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/role-budget-follows-successor",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2r/role-budget-follows-successor",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/amount-as-json-number",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/amount-79-digits",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/amount-max-plus-one",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/projection-null-amount-cap-clears-bit2",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/projection-null-amount-cap-clears-bit2",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/projection-null-amount-cap-clears-bit2",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/projection-null-amount-cap-clears-bit2",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/effects-sixty-four",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/effects-sixty-four",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/effects-sixty-four",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/effects-sixty-four",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/effects-sixty-fifth",
+   "check": "rejected with EFFECT_LIMIT",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/counterparty-chain-across-reregistration",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/counterparty-chain-across-reregistration",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/counterparty-chain-across-reregistration",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/counterparty-chain-across-reregistration",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/counterparty-chain-restarted",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/counterparty-retired-key-id",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/counterparty-signed-by-retired-key",
+   "check": "rejected with COUNTERPARTY_SIGNATURE_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/counterparty-receipt-while-retired",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/reserve-nonconrol-at-threshold",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/reserve-nonconrol-at-threshold",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/reserve-nonconrol-at-threshold",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/reserve-nonconrol-at-threshold",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/reserve-nonconrol-above-threshold",
+   "check": "rejected with CAPACITY_RESERVED",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/reserve-control-admitted-to-cap",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/reserve-control-admitted-to-cap",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/reserve-control-admitted-to-cap",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/reserve-control-admitted-to-cap",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/reserve-control-at-cap",
+   "check": "rejected with CAPACITY_EXCEEDED",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/reserve-history-default-limits",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/reserve-history-default-limits",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/reserve-history-default-limits",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/reserve-history-default-limits",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/max-state-records-history",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/max-state-records-history",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/max-state-records-history",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/max-state-records-history",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/max-state-records-exceeded",
+   "check": "rejected with CAPACITY_EXCEEDED",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-quota-history",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-quota-history",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-quota-history",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-quota-history",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/duty-quota-growth-refused",
+   "check": "rejected with CAPACITY_CONTROL_ONLY",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/checkpoint-policy-every-events",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/checkpoint-policy-every-events",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/checkpoint-policy-every-events",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/checkpoint-policy-every-events",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/checkpoint-policy-prefix-3",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/checkpoint-policy-prefix-3",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/checkpoint-policy-prefix-3",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/checkpoint-policy-prefix-3",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/checkpoint-policy-prefix-8",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/checkpoint-policy-prefix-8",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/checkpoint-policy-prefix-8",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/checkpoint-policy-prefix-8",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/checkpoint-policy-prefix-13",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/checkpoint-policy-prefix-13",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/checkpoint-policy-prefix-13",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/checkpoint-policy-prefix-13",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/checkpoint-policy-wrong-root",
+   "check": "rejected with STATE_ROOT_MISMATCH",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/eip191-declaration-and-admission",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/eip191-declaration-and-admission",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/eip191-declaration-and-admission",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/eip191-declaration-and-admission",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/eip191-declaration-bad-signature",
+   "check": "rejected with DECLARATION_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/eip191-declaration-moved-id",
+   "check": "rejected with DECLARATION_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "export/v2r/a70-glossary-genesis-hashes",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "export/v2r/a70-glossary-genesis-hashes",
+   "check": "export view (\u00a715)",
+   "pass": true
+  },
+  {
+   "subject": "export/v2r/rich-checkpoint-to-head",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "export/v2r/rich-checkpoint-to-head",
+   "check": "export view (\u00a715)",
+   "pass": true
+  },
+  {
+   "subject": "export-verify/v2r/a65-round-trip-with-from-records",
+   "check": "export-verify: transition valid (A-53.1, A-71.4)",
+   "pass": true
+  },
+  {
+   "subject": "export-verify/v2r/a65-missing-envelope-body",
+   "check": "export-verify: transition valid (A-53.1, A-71.4)",
+   "pass": true
+  },
+  {
+   "subject": "export-verify/v2r/a65-missing-envelope-body",
+   "check": "export-verify: code (A-65.1 / A-53.2)",
+   "pass": true
+  },
+  {
+   "subject": "export-verify/v2r/a65-missing-envelope-body",
+   "check": "export-verify: missing positions (A-53.2)",
+   "pass": true
+  },
+  {
+   "subject": "export-verify/v2r/a65-unsorted-evidence",
+   "check": "export-verify: transition valid (A-53.1, A-71.4)",
+   "pass": true
+  },
+  {
+   "subject": "export-verify/v2r/a65-unsorted-evidence",
+   "check": "export-verify: code (A-65.1 / A-53.2)",
+   "pass": true
+  },
+  {
+   "subject": "export-verify/v2r/a65-null-evidence-field",
+   "check": "export-verify: transition valid (A-53.1, A-71.4)",
+   "pass": true
+  },
+  {
+   "subject": "export-verify/v2r/a65-null-evidence-field",
+   "check": "export-verify: code (A-65.1 / A-53.2)",
+   "pass": true
+  },
+  {
+   "subject": "export-verify/v2r/a65-unknown-key",
+   "check": "export-verify: transition valid (A-53.1, A-71.4)",
+   "pass": true
+  },
+  {
+   "subject": "export-verify/v2r/a65-unknown-key",
+   "check": "export-verify: code (A-65.1 / A-53.2)",
+   "pass": true
+  },
+  {
+   "subject": "export-verify/v2r/a65-from-zero-without-records",
+   "check": "export-verify: transition valid (A-53.1, A-71.4)",
+   "pass": true
+  },
+  {
+   "subject": "export-verify/v2r/a65-from-zero-with-records",
+   "check": "export-verify: transition valid (A-53.1, A-71.4)",
+   "pass": true
+  },
+  {
+   "subject": "export-verify/v2r/a65-inside-migrated-prefix",
+   "check": "export-verify: transition valid (A-53.1, A-71.4)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-matched-admission",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-matched-admission",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-matched-admission",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-matched-admission",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-matched-refusal",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-matched-refusal",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-matched-refusal",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-matched-refusal",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-unmatched",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-unmatched",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-unmatched",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-unmatched",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-equivocation",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-equivocation",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-equivocation",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-equivocation",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-second-equivocation",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-second-equivocation",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-second-equivocation",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-second-equivocation",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-observation-history",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-observation-history",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-observation-history",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-observation-history",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-duplicate",
+   "check": "rejected with OBSERVATION_DUPLICATE",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-duplicate-after-equivocation",
+   "check": "rejected with OBSERVATION_DUPLICATE",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-duplicate-by-another-reconciler",
+   "check": "rejected with OBSERVATION_DUPLICATE",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-matched-wrong-actor",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-matched-later-position",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-matched-non-decision-type",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-stale-head",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-reconciler-not-signer",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-tampered-digest",
+   "check": "rejected with OBSERVATION_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-forged-signature",
+   "check": "rejected with OBSERVATION_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-unsigned",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-owner-signed",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-fenced-session",
+   "check": "rejected with SESSION_FENCED",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-unsupplied-not-matching",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-unsupplied-unordered",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-matched-without-position",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-resource-129-code-points",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-resource-128-code-points",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-resource-128-code-points",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-resource-128-code-points",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-accepts-resource-128-code-points",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-at-max-events",
+   "check": "rejected with CAPACITY_CONTROL_ONLY",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-inside-migrated-prefix",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/a71-rejects-in-format1-history",
+   "check": "non-format-2 history (irontrellis-event/1) carrying a type \u2265 29 -> UNSUPPORTED_EVENT_TYPE (\u00a75 as amended by A-56.10, A-71.0)",
+   "pass": true
+  },
+  {
+   "subject": "export-verify/v2r/a71-observation-range",
+   "check": "export-verify: transition valid (A-53.1, A-71.4)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/accepts-at-the-bound",
+   "check": "accepted",
+   "pass": false,
+   "detail": [
+    "EVENT_DATA_INVALID",
+    0,
+    "genesis keys"
+   ]
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/accepts-refusal-at-the-bound",
+   "check": "accepted",
+   "pass": false,
+   "detail": [
+    "EVENT_DATA_INVALID",
+    0,
+    "genesis keys"
+   ]
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/rejects-refusal-past-the-bound",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": false,
+   "detail": {
+    "vector": "TRANSITION_INVALID",
+    "g25": [
+     "EVENT_DATA_INVALID",
+     0,
+     "genesis keys"
+    ]
+   }
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/accepts-past-the-old-bound-after-a-checkpoint",
+   "check": "accepted",
+   "pass": false,
+   "detail": [
+    "EVENT_DATA_INVALID",
+    0,
+    "genesis keys"
+   ]
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/accepts-clamped-power-reducing-event",
+   "check": "accepted",
+   "pass": false,
+   "detail": [
+    "EVENT_DATA_INVALID",
+    0,
+    "genesis keys"
+   ]
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/rejects-past-the-bound-after-a-clamped-fence",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": false,
+   "detail": {
+    "vector": "TRANSITION_INVALID",
+    "g25": [
+     "EVENT_DATA_INVALID",
+     0,
+     "genesis keys"
+    ]
+   }
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/rejects-fenced-session-past-the-bound",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": false,
+   "detail": {
+    "vector": "TRANSITION_INVALID",
+    "g25": [
+     "EVENT_DATA_INVALID",
+     0,
+     "genesis keys"
+    ]
+   }
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/rejects-fenced-session-within-the-bound",
+   "check": "rejected with SESSION_FENCED",
+   "pass": false,
+   "detail": {
+    "vector": "SESSION_FENCED",
+    "g25": [
+     "EVENT_DATA_INVALID",
+     0,
+     "genesis keys"
+    ]
+   }
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/rejects-admission-past-the-bound",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": false,
+   "detail": {
+    "vector": "TRANSITION_INVALID",
+    "g25": [
+     "EVENT_DATA_INVALID",
+     0,
+     "genesis keys"
+    ]
+   }
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/accepts-near-max-at-the-bound",
+   "check": "accepted",
+   "pass": false,
+   "detail": [
+    "EVENT_DATA_INVALID",
+    0,
+    "genesis keys"
+   ]
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/rejects-near-max-past-the-bound",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": false,
+   "detail": {
+    "vector": "TRANSITION_INVALID",
+    "g25": [
+     "EVENT_DATA_INVALID",
+     0,
+     "genesis keys"
+    ]
+   }
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/accepts-near-max-when-ownertime-plus-h-exceeds-max",
+   "check": "accepted",
+   "pass": false,
+   "detail": [
+    "EVENT_DATA_INVALID",
+    0,
+    "genesis keys"
+   ]
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/accepts-migrated-prefix-exempt",
+   "check": "accepted",
+   "pass": false,
+   "detail": [
+    "EVENT_DATA_INVALID",
+    0,
+    "genesis keys"
+   ]
+  },
+  {
+   "subject": "replay/v2r/session-time-horizon/rejects-first-post-prefix-event-past-the-bound",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": false,
+   "detail": {
+    "vector": "TRANSITION_INVALID",
+    "g25": [
+     "EVENT_DATA_INVALID",
+     0,
+     "genesis keys"
+    ]
+   }
+  }
+ ]
+}

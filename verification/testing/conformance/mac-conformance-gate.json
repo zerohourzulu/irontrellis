@@ -1,0 +1,143 @@
+{
+ "step": "conformance",
+ "attempt": 1,
+ "cwd": "WORK/tree",
+ "nice": 0,
+ "runner": "run_build2_final_01.py",
+ "tmpdir": "<TMP>/conformance-1/",
+ "tmpdirMode": "0700",
+ "freeGiBBefore": 121.1,
+ "minFreeGiB": 32,
+ "steps": [
+  {
+   "command": [
+    "node",
+    "conformance/run.mjs",
+    "--suite",
+    "legacy",
+    "--adapter",
+    "conformance/adapters/node.mjs",
+    "--json"
+   ],
+   "exitCode": 0,
+   "started": "2026-10-26T15:29:37Z",
+   "finished": "2026-10-26T15:29:37Z",
+   "seconds": 0.3,
+   "outputBytes": 4054,
+   "outputSha256": "7970c958c2967c0ba76a30cb404c0054666676b0c6c4a26d823979f6ec612b51"
+  },
+  {
+   "command": [
+    "node",
+    "conformance/run.mjs",
+    "--suite",
+    "v1",
+    "--adapter",
+    "conformance/adapters/node.mjs",
+    "--json"
+   ],
+   "exitCode": 0,
+   "started": "2026-10-26T15:29:37Z",
+   "finished": "2026-10-26T15:29:37Z",
+   "seconds": 0.5,
+   "outputBytes": 10214,
+   "outputSha256": "bac6cda018bb4a1ee2c91f28453d6993f7949ed47f8c1707a71fd62e69379265"
+  },
+  {
+   "command": [
+    "node",
+    "conformance/run.mjs",
+    "--suite",
+    "v2",
+    "--adapter",
+    "conformance/adapters/node.mjs",
+    "--json"
+   ],
+   "exitCode": 0,
+   "started": "2026-10-26T15:29:37Z",
+   "finished": "2026-10-26T15:29:38Z",
+   "seconds": 0.6,
+   "outputBytes": 9531,
+   "outputSha256": "30122decf2b0d036c5e7bf53601e31e73c91625a820bd92a62b15acefac6fc49"
+  },
+  {
+   "command": [
+    "node",
+    "conformance/run.mjs",
+    "--suite",
+    "v2-g3",
+    "--adapter",
+    "conformance/adapters/node.mjs",
+    "--json"
+   ],
+   "exitCode": 0,
+   "started": "2026-10-26T15:29:38Z",
+   "finished": "2026-10-26T15:29:39Z",
+   "seconds": 0.6,
+   "outputBytes": 9525,
+   "outputSha256": "b2f418155d93f43ed1199b04019690842ff1f9c6d4edabe747e9a20b22c2f3d6"
+  },
+  {
+   "command": [
+    "node",
+    "conformance/run.mjs",
+    "--suite",
+    "v2-regenerated",
+    "--adapter",
+    "conformance/adapters/node.mjs",
+    "--json"
+   ],
+   "exitCode": 0,
+   "started": "2026-10-26T15:29:39Z",
+   "finished": "2026-10-26T15:29:40Z",
+   "seconds": 1.6,
+   "outputBytes": 26974,
+   "outputSha256": "0f0bd5a36e15c4f962921c708d80afeea001f476172ae527a7db8f1bac5ee705"
+  },
+  {
+   "command": [
+    "node",
+    "conformance/run.mjs",
+    "--suite",
+    "v2-owner-policy",
+    "--adapter",
+    "conformance/adapters/node.mjs",
+    "--json"
+   ],
+   "exitCode": 0,
+   "started": "2026-10-26T15:29:40Z",
+   "finished": "2026-10-26T15:29:40Z",
+   "seconds": 0.2,
+   "outputBytes": 10786,
+   "outputSha256": "9866aa6056a43dd5a28903ee38e1202b22fd958811d8bc530053e0dd9c1ae16d"
+  },
+  {
+   "command": [
+    "node",
+    "conformance/run.mjs",
+    "--suite",
+    "v2-human-attestation",
+    "--adapter",
+    "conformance/adapters/node.mjs",
+    "--json"
+   ],
+   "exitCode": 0,
+   "started": "2026-10-26T15:29:40Z",
+   "finished": "2026-10-26T15:29:41Z",
+   "seconds": 0.2,
+   "outputBytes": 8402,
+   "outputSha256": "05ba97f7836828ff6ad5eccbb34fef1874163a7618ce12dc9a7706cd147d0f74"
+  }
+ ],
+ "tree": {
+  "clean": true,
+  "strays": [],
+  "strayDir": null,
+  "restored": [],
+  "cleanAfterRestore": true
+ },
+ "status": "PASS",
+ "log": "logs/conformance-1.log",
+ "logSha256": "56ea9e439e38dbd66771145e5435e7c3eb8b651d87f6a03a6fec4e021f4075f4",
+ "seconds": 4.0
+}

@@ -1,0 +1,31 @@
+# Caddy in front of the IronTrellis witness: TLS (automatic certificates), then
+# plain HTTP to the witness on loopback. Set "trustProxy": true in the witness
+# config so rate limits see the client address Caddy reports in X-Forwarded-For
+# (Caddy replaces any client-supplied X-Forwarded-For unless you configure
+# trusted_proxies, so the last hop is the real client).
+
+witness.example.com {
+	# The witness enforces its own limits (64 KiB, 1 MiB for registration); this only stops abuse early.
+	request_body {
+		max_size 2MiB
+	}
+
+	# /metrics is for your monitoring system, not the internet.
+	@metrics path /metrics
+	respond @metrics 404
+
+	reverse_proxy 127.0.0.1:8411 {
+		transport http {
+			response_header_timeout 30s
+		}
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		-Server
+	}
+
+	log {
+		output file /var/log/caddy/irontrellis-witness.access.log
+	}
+}

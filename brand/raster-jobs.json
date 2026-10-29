@@ -1,0 +1,152 @@
+[
+ {
+  "svg": "brand/logo/svg/irontrellis-badge.svg",
+  "png": "brand/logo/png/irontrellis-badge-1024.png",
+  "width": 1024,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-badge.svg",
+  "png": "brand/logo/png/irontrellis-badge-512.png",
+  "width": 512,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-badge.svg",
+  "png": "brand/logo/png/irontrellis-badge-256.png",
+  "width": 256,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-badge.svg",
+  "png": "brand/logo/png/irontrellis-badge-128.png",
+  "width": 128,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-badge.svg",
+  "png": "brand/logo/png/irontrellis-badge-64.png",
+  "width": 64,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-badge.svg",
+  "png": "brand/logo/png/irontrellis-badge-48.png",
+  "width": 48,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-badge.svg",
+  "png": "brand/logo/png/irontrellis-badge-32.png",
+  "width": 32,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-micro.svg",
+  "png": "brand/logo/png/irontrellis-micro-32.png",
+  "width": 32,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-micro.svg",
+  "png": "brand/logo/png/irontrellis-micro-16.png",
+  "width": 16,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-mark.svg",
+  "png": "brand/logo/png/irontrellis-mark-512.png",
+  "width": 512,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-mark-reversed.svg",
+  "png": "brand/logo/png/irontrellis-mark-reversed-512.png",
+  "width": 512,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-mark.svg",
+  "png": "brand/logo/png/irontrellis-mark-256.png",
+  "width": 256,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-mark-reversed.svg",
+  "png": "brand/logo/png/irontrellis-mark-reversed-256.png",
+  "width": 256,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-lockup-horizontal.svg",
+  "png": "brand/logo/png/irontrellis-lockup-horizontal-1200w.png",
+  "width": 1200,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-lockup-horizontal-reversed.svg",
+  "png": "brand/logo/png/irontrellis-lockup-horizontal-reversed-1200w.png",
+  "width": 1200,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-lockup-stacked.svg",
+  "png": "brand/logo/png/irontrellis-lockup-stacked-1200w.png",
+  "width": 1200,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-lockup-stacked-reversed.svg",
+  "png": "brand/logo/png/irontrellis-lockup-stacked-reversed-1200w.png",
+  "width": 1200,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-lockup-stacked-tagline.svg",
+  "png": "brand/logo/png/irontrellis-lockup-stacked-tagline-1200w.png",
+  "width": 1200,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-lockup-stacked-tagline-reversed.svg",
+  "png": "brand/logo/png/irontrellis-lockup-stacked-tagline-reversed-1200w.png",
+  "width": 1200,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-wordmark.svg",
+  "png": "brand/logo/png/irontrellis-wordmark-1200w.png",
+  "width": 1200,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-wordmark-reversed.svg",
+  "png": "brand/logo/png/irontrellis-wordmark-reversed-1200w.png",
+  "width": 1200,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-lockup-horizontal-black.svg",
+  "png": "brand/logo/png/irontrellis-lockup-horizontal-black-1200w.png",
+  "width": 1200,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-lockup-horizontal-white.svg",
+  "png": "brand/logo/png/irontrellis-lockup-horizontal-white-1200w.png",
+  "width": 1200,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-mark-black.svg",
+  "png": "brand/logo/png/irontrellis-mark-black-512.png",
+  "width": 512,
+  "bg": null
+ },
+ {
+  "svg": "brand/logo/svg/irontrellis-mark-white.svg",
+  "png": "brand/logo/png/irontrellis-mark-white-512.png",
+  "width": 512,
+  "bg": null
+ }
+]

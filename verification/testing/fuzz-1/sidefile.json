@@ -1,0 +1,16 @@
+{
+ "regressions": [],
+ "campaigns": [
+  {
+   "target": "sidefile",
+   "seed": 105,
+   "start": 0,
+   "iterations": 6679118,
+   "seconds": 82800,
+   "execPerSecond": 80.7,
+   "features": 12,
+   "python": true,
+   "failures": []
+  }
+ ]
+}

@@ -1,0 +1,171 @@
+[
+ {
+  "id": "event:capacity:3",
+  "type": "DEPLOYMENT_INITIALIZED",
+  "timestamp": 100,
+  "data": {
+   "adapterPolicyHash": "0x00c3498e2744943663475d0187ca979cdd09763b88427781883693c4b8c163a7",
+   "canonicalLineageId": "lineage:capacity:1",
+   "capacity": {
+    "maxEvents": null,
+    "maxStateRecords": 13
+   },
+   "domain": {
+    "deploymentId": "irontrellis-conformance-v2",
+    "protocol": "irontrellis",
+    "version": "2"
+   },
+   "finality": "LOCAL_ONLY",
+   "globalPolicySourceId": "policy:capacity:2",
+   "nextKeyDigests": [
+    "0xec02d39d050ad408f7a0fa6a75604753cc9e4fafc6f78262a2026f3181832762"
+   ],
+   "ownerKeys": [
+    {
+     "credential": "0x967e264fa6b2e89fcfab4df3d4291cd1482a3a5a9f3836c9ce8f80d112d2ac4d",
+     "keyId": "owner:1",
+     "scheme": "ed25519"
+    }
+   ],
+   "policyVersion": "irontrellis-local-owner/2",
+   "rootRecognitionPolicy": "declared-principal-root/0.2",
+   "timeSource": "EVENT_TIMESTAMP",
+   "versions": {
+    "administrativeAuthorizationVersion": "irontrellis-administrative-authorization/2",
+    "authorizationProofVersion": "irontrellis-authorization-proof/2",
+    "controlAuthorizationVersion": "irontrellis-control-authorization/2",
+    "eventSchemaVersion": "irontrellis-event/2",
+    "historyHashAlgorithm": "sha256",
+    "projectionVersion": "irontrellis-projection/2",
+    "queryEnvelopeVersion": "continuity-query-envelope/0.2",
+    "receiptSchemaVersion": "irontrellis-receipt/2",
+    "recordChainVersion": "irontrellis-record/2",
+    "runtimeAuthorizationVersion": "irontrellis-runtime-authorization/2",
+    "signatureScheme": "ed25519",
+    "stateDerivationVersion": "irontrellis-state/2"
+   }
+  }
+ },
+ {
+  "id": "event:capacity:4",
+  "type": "PRINCIPAL_CREATED",
+  "timestamp": 100,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x9b03177ce11a25a88fccd45468e06673a3b427d8a5bd1a01584bd0c21c14e223a06b1f16d1f16d9d9e97c9399886a63551c0a0fe7719c2bb78b319115e25cd09"
+   },
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:capacity:5",
+  "type": "AGENT_CREATED",
+  "timestamp": 100,
+  "data": {
+   "agentId": "bea",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xc7f44b5474a5ea74c61448917aeb727bd2d0ac59f965ddb24b703ba5b9184690dec8798b748fe5852ae67cea8ad23cad2a3549cd8b6d46e5f23ca8743c512507"
+   },
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:capacity:6",
+  "type": "RUNTIME_SESSION_ADMITTED",
+  "timestamp": 100,
+  "data": {
+   "agentId": "bea",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xc7e99840c8c5b784f92cec3730391bb4221f46388ee38435ab9023ad2996bb809e68f80b699be9dc09ebeaba76a3bb07824946522880e2e5704cebfd1e4c6904"
+   },
+   "controlEpoch": 1,
+   "controllerId": "operator",
+   "credentialKeyId": "key:bea",
+   "credentialPublicKey": "0xf1891039752e1e3e5a1cfbc8fb2bf1d72cf103106f8eb97a47b076c37ab31fcb",
+   "credentialScheme": "ed25519",
+   "expiresAt": 10000000,
+   "sessionId": "session:bea"
+  }
+ },
+ {
+  "id": "event:capacity:7",
+  "type": "AUTHORITY_GRANTED",
+  "timestamp": 100,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x3487984b5db1187c8ca180a4a2296d56c2050f3a8d1c58f84f6008a77e6ef5dbaacdc7fb08973a288fd3844409b5ec309bdd4f10fdc4686838523dfe2392ea0b"
+   },
+   "grant": {
+    "authorityId": "read",
+    "constraints": {
+     "actions": [
+      "read"
+     ],
+     "expiresAt": 10000000,
+     "maxDelegationDepth": 0,
+     "quantitative": false,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "incident:42"
+     ]
+    },
+    "granteeId": "bea",
+    "grantorId": "operations",
+    "independent": true,
+    "kind": "PERMISSION",
+    "rootAuthorityId": "read"
+   }
+  }
+ },
+ {
+  "id": "event:capacity:8",
+  "type": "REQUEST_REFUSED",
+  "timestamp": 100,
+  "data": {
+   "code": "ACTION_NOT_ALLOWED",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "decision": "DENY",
+   "evaluationTime": 100,
+   "expectedHistoryHead": {
+    "canonicalTime": 100,
+    "hash": "0x55be7bcb4c9a5d33340d3ff4dec1604fc1f6229ee2a41ffeb00608036ed511f9",
+    "position": 4
+   },
+   "refusalAuthorization": {
+    "hash": "0xab59df13cd89a1e51f15030885067dfc2d1151dc9d6af0886927093bb7661259",
+    "signature": "0xfed190d8cef6f8312ee2349809b4e8fa8f7a8ea0738339c0b18dbcdbe14610442fe21d78e713ce2a291179317293c2d124bfb0f1f24411fdfdd1f34974836b09"
+   },
+   "refusalId": "refusal:1",
+   "refusalSource": "CORE",
+   "request": {
+    "action": "write",
+    "actorId": "bea",
+    "claimedAt": 100,
+    "resource": "incident:42"
+   },
+   "runtimeSessionId": "session:bea"
+  }
+ },
+ {
+  "id": "event:capacity:10",
+  "type": "AGENT_CREATED",
+  "timestamp": 100,
+  "data": {
+   "agentId": "late",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xf8e6c0c1f7662156894bd228277b3699ae1d30371f9dcbc738f1bc4a2d293bae8420b19b998e591ddb9361f6d1ec23cf08e5d2de9c25bf177ea6d51a6ec6f804"
+   },
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations"
+  }
+ }
+]

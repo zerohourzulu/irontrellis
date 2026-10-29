@@ -1,0 +1,52 @@
+{
+  "name": "continuity-core-evaluation",
+  "version": "0.3.0-preview.10.2",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^22.18.0 || ^24.0.0"
+  },
+  "packageManager": "pnpm@11.19.0",
+  "scripts": {
+    "demo": "node tutorial/cli.mjs run",
+    "inspect": "node tutorial/cli.mjs inspect",
+    "verify": "node tools/verify-package.mjs",
+    "test": "node tools/test.mjs",
+    "test:core": "node tools/test.mjs --node-only",
+    "test:conformance": "python3 -B -m unittest discover -s conformance -p test_runner.py -v",
+    "setup": "node tools/setup.mjs",
+    "doctor": "node tools/doctor.mjs",
+    "recorded": "node examples/recorded.mjs",
+    "start": "node tutorial/start.mjs",
+    "sdk:build": "node tools/build-sdk.mjs --pack",
+    "sdk:verify": "node tools/verify-sdk.mjs",
+    "case": "node tools/case.mjs",
+    "test:api": "node --test tests/core-0.3/*.test.mjs",
+    "api:build": "node tools/build-core-0.3.mjs --pack",
+    "api:verify": "node tools/verify-core-0.3.mjs",
+    "mcp:build": "node tools/build-mcp.mjs",
+    "mcp:verify": "node tools/verify-mcp-package.mjs",
+    "remote:build": "node tools/release/build.mjs",
+    "remote:test": "node --experimental-strip-types --test --test-concurrency=1 lab/*.test.mjs",
+    "remote:verify": "node tools/remote-build/verify.mjs .",
+    "shared:verify": "node tools/verify-shared-core.mjs",
+    "gateway:test": "npm test --prefix packages/mcp-gateway",
+    "gateway:demo": "npm run demo --prefix packages/mcp-gateway",
+    "release:build": "node tools/release/build.mjs",
+    "release:check": "node tools/release/build.mjs --check",
+    "duty:build": "node tools/release/build.mjs",
+    "duty:verify": "node tools/release/verify.mjs",
+    "test:duty": "node --test tests/core-0.3/duty-*.test.mjs",
+    "disposition:build": "node tools/build-duty-disposition.mjs",
+    "disposition:verify": "node tools/build-duty-disposition.mjs --check",
+    "release:verify": "node tools/release/verify.mjs"
+  },
+  "dependencies": {
+    "viem": "2.55.19"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@langchain/core": "1.2.12",
+    "zod": "4.6.5"
+  }
+}

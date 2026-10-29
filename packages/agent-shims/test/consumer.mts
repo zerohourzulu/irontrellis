@@ -1,0 +1,14 @@
+import { tool, type RunContext, type ToolInputGuardrailData } from '@openai/agents';
+import { Annotation, StateGraph, MemorySaver, START, END } from '@langchain/langgraph';
+import { z } from 'zod';
+import { governed, createManagedReconciler, resolveAlwaysAsk, type GovernedOptions, type GovernedResult, type Route, type GovernedCall, type ReconcileResult, type NativeRun, type NativeReceipt } from '@ramex-labs/irontrellis-managed-agents';
+import { openAIToolShim, langGraphInterrupt, releaseResult, type ExecutionBackend } from '@ramex-labs/irontrellis-agent-shims';
+declare const options:GovernedOptions;
+const backend=governed(options);
+const compatible:ExecutionBackend<GovernedResult>=backend;
+const route:Route={tenantId:'tenant',host:'openai-agents-sdk',workflowId:'full:workflow',sessionId:'host-session',actorId:'actor'};
+const shim=openAIToolShim<GovernedResult,{text:string},{tenant:string}>({backend:compatible,route,assertCurrent:()=>{},executionCall:(args,context,details)=>({...route,callId:details?.toolCall?.callId??'missing',tool:'write',arguments:args}),guardrailCall:(data:ToolInputGuardrailData<{tenant:string}>)=>({...route,callId:data.toolCall.callId,tool:'write',arguments:{text:'synthetic'}})});
+const actualTool=tool({name:'write',description:'Local synthetic handler',parameters:z.object({text:z.string()}),...shim});
+const State=Annotation.Root({result:Annotation<GovernedResult>()});
+const graph=new StateGraph(State).addNode('effect',async()=>({result:await langGraphInterrupt({...route,host:'langgraph',callId:'id',tool:'write',arguments:{}},{backend,route:{...route,host:'langgraph'},assertCurrent:()=>{},observe:async()=>{}})})).addEdge(START,'effect').addEdge('effect',END).compile({checkpointer:new MemorySaver()});
+void actualTool;void graph;void createManagedReconciler;void resolveAlwaysAsk;void releaseResult;

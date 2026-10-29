@@ -1,0 +1,254 @@
+name: Release
+
+# Publishes every publishable workspace package to npm with provenance when a `v*` tag is
+# pushed. The verify job packs every package once, installs and checks exactly those tarballs
+# (scripts/verify-install.mjs --tarballs) and uploads them; the publish job downloads them and
+# publishes those files (npm publish <file>.tgz --provenance): it never builds or repacks. The tag must equal the shared package version (v1.0.0-rc.2 ↔ "1.0.0-rc.2"); a
+# pre-release version is published under the `next` dist-tag, a stable one under `latest`.
+#
+# Required repository secret: NPM_TOKEN (an npm granular access token with publish rights on
+# the @ramex-labs scope and the unscoped `irontrellis` package, 2FA mode "automation").
+# Provenance needs `id-token: write` and a public repository.
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+env:
+  PNPM_VERSION: 11.19.0   # = packageManager in package.json
+  FORCE_COLOR: 0
+  NO_COLOR: 1
+
+jobs:
+  verify:
+    name: verify packages
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      dist_tag: ${{ steps.version.outputs.dist_tag }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 24
+      # verify-install builds and installs the Python sdist and wheel
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+      - run: pnpm install --frozen-lockfile
+
+      - name: Every publishable package shares one version and one engines field
+        run: node scripts/check-versions.mjs
+
+      - name: Tag matches the package version
+        id: version
+        run: |
+          set -euo pipefail
+          version="$(node scripts/check-versions.mjs --json | node -p 'JSON.parse(require("fs").readFileSync(0,"utf8")).version')"
+          tag="${GITHUB_REF_NAME#v}"
+          if [ "$tag" != "$version" ]; then
+            echo "tag v$tag does not match package version $version" >&2
+            exit 1
+          fi
+          case "$version" in
+            *-*) dist_tag=next ;;
+            *)   dist_tag=latest ;;
+          esac
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "dist_tag=$dist_tag" >> "$GITHUB_OUTPUT"
+          echo "publishing $version under dist-tag $dist_tag"
+
+      - name: CHANGELOG has an entry for this version
+        run: grep -q "^## \[${{ steps.version.outputs.version }}\]" CHANGELOG.md
+
+      - run: pnpm -r build
+      - run: pnpm -r lint
+
+      - name: npm pack --dry-run lists only the expected files
+        run: node scripts/check-pack.mjs
+
+      # Pack ONCE. These files are what verify-install installs and checks below, and exactly these files are what the
+      # publish job uploads to npm (it downloads them; it never builds or packs), so every tarball that reaches npm is one
+      # that was installed and checked.
+      - name: Pack every publishable package (once)
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/release-tarballs"
+          mkdir -p "$out"
+          for dir in packages/*/; do
+            if [ "$(node -p "require('./${dir}package.json').private === true")" = true ]; then continue; fi
+            (cd "$dir" && pnpm pack --pack-destination "$out")
+          done
+          cd "$out"
+          sha512sum -- *.tgz | tee SHA512SUMS
+
+      # Install those tarballs in fresh projects outside the workspace (npm, pnpm, global npm), run the READMEs'
+      # quickstarts, and build and install the Python sdist and wheel (scripts/verify-install.mjs; third-party
+      # tooling pinned: the MCP SDK, TypeScript and @types/node from pnpm-lock.yaml, build/twine/setuptools from
+      # scripts/requirements-release.txt with hashes).
+      - name: Install the packed tarballs and run the quickstarts
+        run: node scripts/verify-install.mjs --tarballs "$RUNNER_TEMP/release-tarballs" --json "$RUNNER_TEMP/verify-install.json"
+
+      - name: The verified tarballs are unchanged
+        run: cd "$RUNNER_TEMP/release-tarballs" && sha512sum -c SHA512SUMS
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: release-tarballs
+          path: |
+            ${{ runner.temp }}/release-tarballs/*.tgz
+            ${{ runner.temp }}/release-tarballs/SHA512SUMS
+          if-no-files-found: error
+          retention-days: 14
+
+  test:
+    name: test (node ${{ matrix.node }})
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: true
+      matrix:
+        node: [24, 22]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: ${{ matrix.node }}
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm -r build
+      - run: pnpm -r test
+      - name: Conformance (IronTrellis node adapter)
+        if: hashFiles('conformance/run.mjs', 'conformance/adapters/node.mjs') != ''
+        run: pnpm test:conformance
+      - name: Conformance (legacy vectors)
+        run: pnpm test:conformance:legacy
+
+  publish:
+    name: publish to npm (the verified tarballs)
+    needs: [verify, test]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write   # OIDC token for npm provenance attestations
+    steps:
+      # No checkout, no install, no build, no pack: this job publishes the files the verify job packed and verified.
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 24   # npm 11 (provenance needs npm >= 9.5)
+          registry-url: https://registry.npmjs.org
+
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: release-tarballs
+          path: release-tarballs
+
+      - name: The tarballs are exactly the verified ones
+        working-directory: release-tarballs
+        run: |
+          set -euo pipefail
+          sha512sum -c SHA512SUMS
+          listed="$(awk '{print $2}' SHA512SUMS | sort)"
+          present="$(find . -maxdepth 1 -name '*.tgz' -printf '%f\n' | sort)"
+          if [ "$listed" != "$present" ]; then
+            echo "the artifact holds other files than the verified list" >&2
+            exit 1
+          fi
+          for file in *.tgz; do
+            version="$(tar -xOzf "$file" package/package.json | node -p 'JSON.parse(require("fs").readFileSync(0, "utf8")).version')"
+            if [ "$version" != "${{ needs.verify.outputs.version }}" ]; then
+              echo "$file is version $version, not ${{ needs.verify.outputs.version }}" >&2
+              exit 1
+            fi
+          done
+
+      # `npm publish <file>.tgz --provenance`: the provenance statement's subject is this tarball's sha512, signed with
+      # this workflow run's OIDC identity (docs.npmjs.com/generating-provenance-statements). The path is absolute so npm
+      # never reads it as a git shorthand. The core goes first (every other package depends on it). A version already
+      # on npm is skipped only when npm serves exactly this tarball (same integrity), so a re-run after a partial
+      # publish finishes the release and never publishes different bytes.
+      - name: Publish (public, provenance, dist-tag ${{ needs.verify.outputs.dist_tag }})
+        working-directory: release-tarballs
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          DIST_TAG: ${{ needs.verify.outputs.dist_tag }}
+        run: |
+          set -euo pipefail
+          npm --version
+          core="$(find . -maxdepth 1 -name 'ramex-labs-irontrellis-[0-9]*.tgz' -printf '%f\n')"
+          others="$(find . -maxdepth 1 -name '*.tgz' ! -name 'ramex-labs-irontrellis-[0-9]*.tgz' -printf '%f\n' | sort)"
+          for file in $core $others; do
+            manifest="$(tar -xOzf "$file" package/package.json)"
+            name="$(node -p 'JSON.parse(process.argv[1]).name' "$manifest")"
+            version="$(node -p 'JSON.parse(process.argv[1]).version' "$manifest")"
+            integrity="sha512-$(openssl dgst -sha512 -binary "$file" | base64 -w0)"
+            served="$(npm view "$name@$version" dist.integrity 2>/dev/null || true)"
+            if [ -n "$served" ]; then
+              if [ "$served" = "$integrity" ]; then echo "skip $name@$version: npm already serves this tarball"; continue; fi
+              echo "$name@$version is on npm with another tarball ($served, not $integrity)" >&2
+              exit 1
+            fi
+            npm publish "$PWD/$file" --provenance --access public --tag "$DIST_TAG"
+          done
+
+      - name: Verify what npm now serves (the verified bytes)
+        working-directory: release-tarballs
+        run: |
+          set -euo pipefail
+          for file in *.tgz; do
+            manifest="$(tar -xOzf "$file" package/package.json)"
+            name="$(node -p 'JSON.parse(process.argv[1]).name' "$manifest")"
+            version="$(node -p 'JSON.parse(process.argv[1]).version' "$manifest")"
+            integrity="sha512-$(openssl dgst -sha512 -binary "$file" | base64 -w0)"
+            served="$(npm view "$name@$version" dist.integrity 2>/dev/null || true)"
+            if [ "$served" != "$integrity" ]; then
+              echo "$name@$version: npm serves ${served:-nothing}, the verified tarball is $integrity" >&2
+              exit 1
+            fi
+            echo "ok  $name@$version $integrity"
+          done
+
+  github-release:
+    name: GitHub release
+    needs: [verify, publish]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - name: Extract the CHANGELOG section
+        run: |
+          set -euo pipefail
+          awk -v v="${{ needs.verify.outputs.version }}" '
+            $0 ~ "^## \\[" v "\\]" { on=1; next }
+            on && /^## \[/ { exit }
+            on { print }
+          ' CHANGELOG.md > release-notes.md
+          test -s release-notes.md
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: release-tarballs
+          path: release-tarballs
+      - uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
+        with:
+          body_path: release-notes.md
+          prerelease: ${{ needs.verify.outputs.dist_tag == 'next' }}
+          files: |
+            release-tarballs/*.tgz
+            release-tarballs/SHA512SUMS

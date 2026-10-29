@@ -1,0 +1,618 @@
+{
+ "schemaVersion": "irontrellis-conformance/2",
+ "suite": "v2-human-attestation",
+ "protocol": "irontrellis",
+ "format": "irontrellis-event/2",
+ "challengeProfile": "g3",
+ "engineDerived": true,
+ "generatedFrom": {
+  "reference": "@ramex-labs/irontrellis (packages/core)",
+  "replay": "continuity-replay/0.2",
+  "rulings": [
+   "ADDENDA-G6 A-93",
+   "ADDENDA-G6.1 A-97, A-98",
+   "ADDENDA-G6.2 A-106.6, A-107, A-109, A-112",
+   "ADDENDA-G6.3 A-118, A-119"
+  ],
+  "precedence": "G6.3 > G6.2 > G6.1 > G6",
+  "holds": "lifted 2026-10-12 (founder)"
+ },
+ "note": "ENGINE-DERIVED human-attestation vectors (humanFloor ATTESTED). Not acceptance: the architect's generator and the independent checker define the group. `node conformance/v2-human-attestation/generate.mjs --check` reproduces these files byte for byte.",
+ "domain": {
+  "protocol": "irontrellis",
+  "version": "2",
+  "deploymentId": "irontrellis-conformance-v2-attest"
+ },
+ "keys": {
+  "owner:1": {
+   "keyId": "owner:1",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000007001",
+   "credential": "0x41bb2ac3003c0200e07cfe3189c6e0039b2dfa8965ff781cd56f7771ab3cbdaa"
+  },
+  "owner:2": {
+   "keyId": "owner:2",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000007002",
+   "credential": "0xdbc06d1786f7c9a8201141f86cbb4c1e28ddae45499672f4d99be7ba38447cae"
+  },
+  "owner:3": {
+   "keyId": "owner:3",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000007003",
+   "credential": "0x62a46d493e4cac4e22bfafbfffe83ba1db5eee1ae60f935dcf59ae4838780b73"
+  },
+  "agent:1": {
+   "keyId": "agent:1",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000007101",
+   "credential": "0x60f70d082cf66505817dad4e27f56e2cf759bbedaed735214e27d13a6db91d9d"
+  },
+  "next:1": {
+   "keyId": "next:1",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000007201",
+   "credential": "0xb8ba25be09ee3595d8244f28e1695584386a6ca4a50cb451ff2ee82ceda3c274"
+  },
+  "next:2": {
+   "keyId": "next:2",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000007202",
+   "credential": "0x3e3db8378edbc9899b61874b60d480204dcea3624eda5bad679949b3a981a43f"
+  },
+  "attester:1": {
+   "keyId": "attester:1",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000007301",
+   "credential": "0x353d72aba2bb0e0b383444920b0776d9f8c21d8ae024137aa2041820785f3735"
+  },
+  "attester:2": {
+   "keyId": "attester:2",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000007302",
+   "credential": "0xa818ac9372cfca3335dbb606a1563db04ab29374e4ae08cf77eae1199de50b51"
+  },
+  "attester:3": {
+   "keyId": "attester:3",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000007303",
+   "credential": "0x7baeac24c47c6abb36ee07240713b5d42a8202330e963373ff542c599e40940d"
+  },
+  "stranger:1": {
+   "keyId": "stranger:1",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000007999",
+   "credential": "0x09115917a0a9c47a532f1f310a88af789e9ff3da75c2f7ba6d7dd9f5dae59aab"
+  },
+  "session:1": {
+   "keyId": "session:1",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000007401",
+   "credential": "0x40459f824e6df119901d4d75a3ef6c64fbe6eb2c2e3e825381dea502f86d88bc"
+  }
+ },
+ "topics": [
+  "policy-validity",
+  "counting",
+  "lapse-and-reduction",
+  "restoration",
+  "statements",
+  "recovery",
+  "time"
+ ],
+ "histories": {
+  "attestation-history": {
+   "eventCount": 6,
+   "head": {
+    "hash": "0xa302c5cdbc3f0b8008f2a3f121425e677cebb40ecfe40e654e5708f90f4e1716",
+    "position": 5,
+    "canonicalTime": 601
+   },
+   "stateRoot": "0xe4f342fb2e6cad37dc273b17e2fefad0fa46000997856a038b5ff533fe8480f0",
+   "recordCount": 11,
+   "projectionHead": "0xf17b74ff0c8d37cdee7d5e98dc936ff0098c7b0bfa540328c47d1d5c16d7b6d9",
+   "sha256": "a13c97921d481e1b8334241c9f14a04f909a1121b6f3c6fb16b02287bad0324d"
+  }
+ },
+ "pinnedPositions": {
+  "attestation-history": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ]
+ },
+ "counts": {
+  "replay": 68,
+  "total": 68,
+  "byTopic": {
+   "policy-validity": 16,
+   "counting": 9,
+   "lapse-and-reduction": 9,
+   "restoration": 15,
+   "statements": 5,
+   "recovery": 2,
+   "time": 12
+  }
+ },
+ "vectors": [
+  {
+   "id": "replay/v2ha/accepts-attested-floor-genesis",
+   "kind": "replay",
+   "topic": "policy-validity",
+   "purpose": "A-93: a genesis under humanFloor ATTESTED with two attesters and a valid statement for each owner key; owner:1 signs the principal.",
+   "sha256": "4e49dc65d2c312eecf1405b469c87e775042bde340b69f93f4643bc6e0d203e0"
+  },
+  {
+   "id": "replay/v2ha/rejects-unknown-attester",
+   "kind": "replay",
+   "topic": "policy-validity",
+   "purpose": "A-93.2 rule 3: attesterKeyId names no attester of the policy.",
+   "sha256": "64205ac38ba3b38f1bd7f49d9cfba8b1d415db964a7e3167ec697c7d1f827416"
+  },
+  {
+   "id": "replay/v2ha/rejects-forged-attestation-signature",
+   "kind": "replay",
+   "topic": "policy-validity",
+   "purpose": "A-93.2 rule 3: the statement's signature does not verify under its attester.",
+   "sha256": "636b3d7a0b699bf54379e7a4128c3438cb32495f40aeef14fb52a30dcd061638"
+  },
+  {
+   "id": "replay/v2ha/rejects-wrong-audience",
+   "kind": "replay",
+   "topic": "policy-validity",
+   "purpose": "A-93.2 rule 3: a statement signed for another deployment's domain.",
+   "sha256": "35fe0956c89b04d68e4e0cfd35443d75b889cfe72def7a9c2877bad4efae1ef2"
+  },
+  {
+   "id": "replay/v2ha/rejects-subject-not-owner-or-next",
+   "kind": "replay",
+   "topic": "policy-validity",
+   "purpose": "A-93.2 rule 3: the subject is neither an owner key nor a committed next key.",
+   "sha256": "56a0b94a15152c7ba0c3bb50ae54b47d2fba07b8bb0cfd5753e14c7fc9a965d0"
+  },
+  {
+   "id": "replay/v2ha/rejects-attester-equals-owner",
+   "kind": "replay",
+   "topic": "policy-validity",
+   "purpose": "A-93.2 rule 2: owner:2 is named as an attester.",
+   "sha256": "e19cffe96c386b7380260be9ed63220e6c4ff4fe444536beb52d2559ea50616f"
+  },
+  {
+   "id": "replay/v2ha/rejects-agent-classed-subject",
+   "kind": "replay",
+   "topic": "policy-validity",
+   "purpose": "A-93.2 rule 3: a statement about a key the policy classes AGENT.",
+   "sha256": "147e7b44aa351a1e76b19f7eeaf2bb3644b4efac37f5656d3468b3534a3dcd19"
+  },
+  {
+   "id": "replay/v2ha/rejects-expired-at-setting",
+   "kind": "replay",
+   "topic": "policy-validity",
+   "purpose": "A-93.2 rule 3: expiresAt 100 is not after the setting event (t_set 100).",
+   "sha256": "c714dd9d94e133c6eba4a0c133a6352e6154e962736077a5f114072e3117e4ca"
+  },
+  {
+   "id": "replay/v2ha/rejects-attestations-without-attesters",
+   "kind": "replay",
+   "topic": "policy-validity",
+   "purpose": "A-93.2 rule 1: attestations need attesters.",
+   "sha256": "7a8a5052806d8f20fba4e5aaa97589bd852b6aa4f0a9f36b75ec81efeb98fda0"
+  },
+  {
+   "id": "replay/v2ha/rejects-single-attester-under-attested",
+   "kind": "replay",
+   "topic": "policy-validity",
+   "purpose": "A-112 (R2F-10): ATTESTED needs at least two attesters.",
+   "sha256": "3bb1d1bd3f8a946234531c82a3c0aa60b421c7423edacc699e00189b61bed547"
+  },
+  {
+   "id": "replay/v2ha/rejects-lockout-no-valid-attestation-at-set",
+   "kind": "replay",
+   "topic": "policy-validity",
+   "purpose": "A-107.5 (a): no owner statement is valid at t_set (every one starts at 500).",
+   "sha256": "740f8168501f381d104b0d7a2a4e629713c90c1affe52dc6a24de969172234d4"
+  },
+  {
+   "id": "replay/v2ha/rejects-bytype-power-reducing-above-attested",
+   "kind": "replay",
+   "topic": "policy-validity",
+   "purpose": "A-107.5 (b) as A-118.3: byType.AUTHORITY_REVOKED 3 with two statements.",
+   "sha256": "8ecca137170bdcebad92367641f5bb5049efeb33ad1e86ca16f4ee861004f83b"
+  },
+  {
+   "id": "replay/v2ha/rejects-bytype-power-reducing-above-started-statements",
+   "kind": "replay",
+   "topic": "policy-validity",
+   "purpose": "A-118.3 (ce32): byType.AUTHORITY_REVOKED 2 with one started statement (owner:2 starts at 500).",
+   "sha256": "49ce5489f954407f5b1fb9f2b1ef2975ad74652e48730a392e6b262499806857"
+  },
+  {
+   "id": "replay/v2ha/rejects-attester-equals-next-key",
+   "kind": "replay",
+   "topic": "policy-validity",
+   "purpose": "A-97.5: an attester whose digest is committed as a next owner key.",
+   "sha256": "4131c100e5d9fc4892c1c0fe8841ac48d5a9c54342cbc132f789697d23f6b9d6"
+  },
+  {
+   "id": "replay/v2ha/rejects-activation-below-rotation-quorum",
+   "kind": "replay",
+   "topic": "policy-validity",
+   "purpose": "A-93.2 rule 5: activating ATTESTED with one valid statement under M_rot = 2.",
+   "sha256": "40129ac432793cd848d5d14937e43aa3dbdcbf95f5f1736217642fa7d071dd73"
+  },
+  {
+   "id": "replay/v2ha/builder-accepts-activation-of-attested-floor",
+   "kind": "replay",
+   "topic": "policy-validity",
+   "purpose": "A-93.2: the same activation with both statements valid at t_set.",
+   "sha256": "eb17e2734194565e7fd5d9c97d900ef64692f5494db8f0730e5d728fc96fea56"
+  },
+  {
+   "id": "replay/v2ha/accepts-ordinary-event-attested-plus-agent",
+   "kind": "replay",
+   "topic": "counting",
+   "purpose": "A-107.2: on an ordinary ◆ event the counting set is HUMAN and AGENT entries with one HUMAN: owner:1 plus agent:1 at threshold 2.",
+   "sha256": "20b07892642ce181568e60d6c385067b019b8a54489ba378aa093096b4ac9188"
+  },
+  {
+   "id": "replay/v2ha/accepts-declared-floor-ignores-attestations",
+   "kind": "replay",
+   "topic": "counting",
+   "purpose": "A-93.3: under DECLARED a key without a statement is HUMAN by declaration: owner:2 signs alone.",
+   "sha256": "7a3755ae846cc09358abe556cb430dac365c04b6ec8f949f119b6f87b522320b"
+  },
+  {
+   "id": "replay/v2ha/accepts-non-counting-signature-present",
+   "kind": "replay",
+   "topic": "counting",
+   "purpose": "A-93.3: owner:3 has no statement (NONE); its verifying co-signature is permitted and does not count.",
+   "sha256": "e720dd90a98662bc6a1ba15acb361b0b1b545b8a4e96c09e6bfb7eb34136db47"
+  },
+  {
+   "id": "replay/v2ha/rejects-attested-floor-without-attested-signer",
+   "kind": "replay",
+   "topic": "counting",
+   "purpose": "A-107.2: owner:3 is declared HUMAN but has no statement: NONE counts nowhere (M_eff 1).",
+   "sha256": "e1f237731e0a2aa24eefb20b07ecede08043530e3b1800c4f06cec6ef01512d3"
+  },
+  {
+   "id": "replay/v2ha/rejects-expired-at-timestamp",
+   "kind": "replay",
+   "topic": "counting",
+   "purpose": "A-93.3: owner:1's statement expires at 150; at t = 150 (equality fails) it is LAPSED, which never counts on AUTHORITY_GRANTED.",
+   "sha256": "352b04b645b3ad0c9c4b2780e904558478bc4a6e0af6bd1ad6ebf31fd5527d28"
+  },
+  {
+   "id": "replay/v2ha/rejects-not-yet-valid",
+   "kind": "replay",
+   "topic": "counting",
+   "purpose": "A-107.1: owner:2's statement starts at 500; at 101 it is NONE and cannot sign alone.",
+   "sha256": "63a345938795b3cfea7367d32168f8587ba84bb60acd69aac179ab8e1067980b"
+  },
+  {
+   "id": "replay/v2ha/builder-accepts-statement-once-started",
+   "kind": "replay",
+   "topic": "counting",
+   "purpose": "A-107.1: the same key at t = 500 is HUMAN.",
+   "sha256": "6a6cb259bdeeb9ce101557eda93eadf5003aabe1da81d4536b16d591405d3597"
+  },
+  {
+   "id": "replay/v2ha/rejects-new-attestation-supplies-old-quorum",
+   "kind": "replay",
+   "topic": "counting",
+   "purpose": "A-93.3: a rotation that attests owner:3 cannot be signed by owner:3 (NONE under the policy before it).",
+   "sha256": "c687e9e5ce5b2879723f5e8fedd002f8b2381c1691ed0687648a80bdd49faec3"
+  },
+  {
+   "id": "replay/v2ha/rejects-attested-rotation-with-unattested-human",
+   "kind": "replay",
+   "topic": "counting",
+   "purpose": "A-107.2: on OWNER_KEYS_ROTATED only HUMAN counts: owner:1 plus owner:3 (NONE) is one of two.",
+   "sha256": "7022d5317d11f1744613864b77c6ebfef2210d67c6cd3876f360d7b44dcf035b"
+  },
+  {
+   "id": "replay/v2ha/accepts-power-reducing-by-started-statements-without-agent",
+   "kind": "replay",
+   "topic": "lapse-and-reduction",
+   "purpose": "A-118.3: byType.AUTHORITY_REVOKED 1 is within the one started statement; owner:1 revokes alone.",
+   "sha256": "46d470692ef2080144656549d93774da54186d3d038e00c02e23c3c20cb1dca8"
+  },
+  {
+   "id": "replay/v2ha/accepts-power-reducing-by-lapsed-keys",
+   "kind": "replay",
+   "topic": "lapse-and-reduction",
+   "purpose": "A-107.2: AUTHORITY_REVOKED of a PERMISSION at t >= expiresAt by two LAPSED keys (PR_eff: LAPSED counts).",
+   "sha256": "e5d85645c628cec46446eac005d2d0f1ec526ad2f8f390d4679d6f4da5cb9d99"
+  },
+  {
+   "id": "replay/v2ha/rejects-grant-by-lapsed-keys",
+   "kind": "replay",
+   "topic": "lapse-and-reduction",
+   "purpose": "A-107.2: AUTHORITY_GRANTED is not PR_eff: LAPSED keys never count on it.",
+   "sha256": "5e1440c085e6588b743828087aec39c0dd56e53489ab38adce6d2378def8f2d8"
+  },
+  {
+   "id": "replay/v2ha/rejects-prohibition-revocation-by-lapsed-keys",
+   "kind": "replay",
+   "topic": "lapse-and-reduction",
+   "purpose": "A-106.6: revoking a PROHIBITION is never PR_eff: LAPSED keys do not count.",
+   "sha256": "a605667f16cd0004fb5972f05f9cf9345abf98751930f0f484094bdc998342dd"
+  },
+  {
+   "id": "replay/v2ha/accepts-checkpoint-by-lapsed-keys",
+   "kind": "replay",
+   "topic": "lapse-and-reduction",
+   "purpose": "A-107.2 (R2F-11): STATE_CHECKPOINT counts LAPSED keys (it adds no authority).",
+   "sha256": "cac2e1d24d5bdb98db9b585a2973fde0e467f47ca76521b7e4f09a6cf2d5e637"
+  },
+  {
+   "id": "replay/v2ha/rejects-budget-raise-by-lapsed-keys",
+   "kind": "replay",
+   "topic": "lapse-and-reduction",
+   "purpose": "A-106.6: raising a cap is not PR_eff: LAPSED keys do not count.",
+   "sha256": "178f1414e70e8498390c575906af96c7d215bfc665695a78c9718b2a0b3bb036"
+  },
+  {
+   "id": "replay/v2ha/accepts-fence-by-lapsed-and-agent",
+   "kind": "replay",
+   "topic": "lapse-and-reduction",
+   "purpose": "A-107.2: a fence (PR_eff) at M_eff = 2 by one LAPSED key and one AGENT key; at 200 owner:2's statement keeps the horizon at 1000 (T2 does not bind).",
+   "sha256": "c97ff0aa3b205a63ac107e0357bb7027fed91388a5e9db3ca0c232c4f9fefa0a"
+  },
+  {
+   "id": "replay/v2ha/rejects-revoked-key-on-power-reducing",
+   "kind": "replay",
+   "topic": "lapse-and-reduction",
+   "purpose": "A-107.1: a policy rotation removed owner:3's statement; owner:3 is NONE and cannot fence even though the fence is PR_eff.",
+   "sha256": "9ced695bdfd0998f0202c6502d28b6c1b6d858d33db4062016d116b0c286a3d4"
+  },
+  {
+   "id": "replay/v2ha/rejects-not-yet-valid-on-power-reducing",
+   "kind": "replay",
+   "topic": "lapse-and-reduction",
+   "purpose": "A-107.1 (G61-X-7): a statement that has not started is NONE, also on a PR_eff fence.",
+   "sha256": "ed268cae33052d6b37702c0944dc9ff0b5d5cada9c94a6fcf5e9290c4884db3c"
+  },
+  {
+   "id": "replay/v2ha/accepts-restoration-rotation-by-lapsed-keys",
+   "kind": "replay",
+   "topic": "restoration",
+   "purpose": "A-107.3: both statements expired; the lapsed quorum renews them (notBefore in (t_set, e.timestamp], later expiry) and nothing else.",
+   "sha256": "e75d91d7cea58f907a0454061db8ff0624955615058d53f0948e81d6ab400975"
+  },
+  {
+   "id": "replay/v2ha/rejects-restoration-changing-attesters",
+   "kind": "replay",
+   "topic": "restoration",
+   "purpose": "A-107.3 (3): changing attesters is not a restoration; lapsed keys do not count on a rotation.",
+   "sha256": "940fc2b26a588d978384ca5b5d96763fdbac1f23b1dd46f9352f9fb980aa7291"
+  },
+  {
+   "id": "replay/v2ha/rejects-restoration-changing-threshold",
+   "kind": "replay",
+   "topic": "restoration",
+   "purpose": "A-107.3 (3): changing the threshold is not a restoration.",
+   "sha256": "24007ce1fd0219b5d28a9d0fe7afafd5cf6b3469393bdf4ad7fd3c50f225eda3"
+  },
+  {
+   "id": "replay/v2ha/rejects-key-rotation-by-lapsed-keys",
+   "kind": "replay",
+   "topic": "restoration",
+   "purpose": "A-107.2: a key rotation counts HUMAN only.",
+   "sha256": "d5ea17ba476e2145162fa5b1b63aef3b6c57a156def5539a7e19b1fea043e854"
+  },
+  {
+   "id": "replay/v2ha/rejects-restoration-adding-commitment",
+   "kind": "replay",
+   "topic": "restoration",
+   "purpose": "A-107.3 (4): out of an uncommitted epoch a restoration adds no commitment.",
+   "sha256": "0437361eb030ee32c0989ba5882b0a7e2d36674cdd231158808634d76b00f53f"
+  },
+  {
+   "id": "replay/v2ha/rejects-restoration-with-stale-statements",
+   "kind": "replay",
+   "topic": "restoration",
+   "purpose": "A-107.5 (a): a restoration renewing owner:1 and carrying owner:2 expired leaves one valid statement at t_set under M_rot = 2.",
+   "sha256": "855dbff7a833ae93f2d336cf3298e85fb01b34733d8cf97a04ac1ca9e875e994"
+  },
+  {
+   "id": "replay/v2ha/rejects-restoration-renewal-with-future-notbefore",
+   "kind": "replay",
+   "topic": "restoration",
+   "purpose": "A-118.2 (X-4): a renewal must have started at the event (notBefore <= e.timestamp).",
+   "sha256": "43e9299e035fa1b2786014e88013fae98ebf5eced356d63ca0bd9504f6a5de7b"
+  },
+  {
+   "id": "replay/v2ha/rejects-restoration-with-stashed-statement",
+   "kind": "replay",
+   "topic": "restoration",
+   "purpose": "A-107.3 (6): a \"renewal\" with the embedded statement's notBefore is not later: not a restoration.",
+   "sha256": "3c6cd20767f340a129ed0ba32d2b8b49386921466d16409c55bc618db36c2ed8"
+  },
+  {
+   "id": "replay/v2ha/rejects-restoration-with-stashed-statement-below-t-set",
+   "kind": "replay",
+   "topic": "restoration",
+   "purpose": "A-118.2: a renewal's notBefore (50) must be later than the epoch's opening (t_set 100).",
+   "sha256": "191b43d3c409475141aa179e3e7a9421a5307939b3eabe7fe4f44cfd00d3bd96"
+  },
+  {
+   "id": "replay/v2ha/accepts-restoration-carrying-expired-coowner",
+   "kind": "replay",
+   "topic": "restoration",
+   "purpose": "A-107.4 / A-118.1: two renewed, owner:3's expired statement carried; owner:3 is LAPSED afterwards and fences alone (byType 1).",
+   "sha256": "2e63d44c75051f3554ca43429f77fe4cf7f974d465b1358ec5f37192fc0951a8"
+  },
+  {
+   "id": "replay/v2ha/rejects-restoration-dropping-subject",
+   "kind": "replay",
+   "topic": "restoration",
+   "purpose": "A-107.3 (5): a restoration keeps every subject.",
+   "sha256": "1947243661565f493b91dc45aeb23309a6d88faf9c9ad042a5ff81ee28d3b549"
+  },
+  {
+   "id": "replay/v2ha/rejects-restoration-adding-subject",
+   "kind": "replay",
+   "topic": "restoration",
+   "purpose": "A-107.3 (5): owner:3 had no statement; a fresh one is not a restoration.",
+   "sha256": "3eae398d6f76153322172085e76bc79c11b9d321c7c14f502f7f91ec4f7ac508"
+  },
+  {
+   "id": "replay/v2ha/accepts-restoration-with-pr-bytype-above-renewed",
+   "kind": "replay",
+   "topic": "restoration",
+   "purpose": "A-118.3 (C5): byType.AUTHORITY_REVOKED 3 with two renewals and one carried statement (carried expired statements have started).",
+   "sha256": "d2b6c36ed17e15de884a64cf069ed29a7d4343011bb23cf05bb4be556e3197fd"
+  },
+  {
+   "id": "replay/v2ha/rejects-restoration-with-statement-predating-epoch",
+   "kind": "replay",
+   "topic": "restoration",
+   "purpose": "A-118.2 (X-10): the epoch opened at 120; a renewal with notBefore 110 cannot replace the embedded statement.",
+   "sha256": "7848c7fa08f58ce818469dc10330052e3710a594a86955b545aae363d49c89f0"
+  },
+  {
+   "id": "replay/v2ha/accepts-renewal-by-policy-rotation",
+   "kind": "replay",
+   "topic": "restoration",
+   "purpose": "A-93.6 / A-96.5: a renewal by policy rotation out of a committed epoch, signed by the HUMAN quorum, carrying the commitment.",
+   "sha256": "a73a3ddccbd89bd6639f6cb79cfc79d1ff44346f5659e7d3c2fe52b2754f6ee8"
+  },
+  {
+   "id": "replay/v2ha/rejects-attestation-without-history-id-after-genesis",
+   "kind": "replay",
+   "topic": "statements",
+   "purpose": "A-107.4: a statement set after the genesis that is not carried needs historyId.",
+   "sha256": "c749c285becc677d0b642fd443fa77eee9d1c19fbe4c3f2effe5cf65b00967f5"
+  },
+  {
+   "id": "replay/v2ha/rejects-attestation-wrong-history-id",
+   "kind": "replay",
+   "topic": "statements",
+   "purpose": "A-107.4: historyId names another history.",
+   "sha256": "b1b03850aad747f21773c63721b288bedee9483126437aa216a39412ff07c82b"
+  },
+  {
+   "id": "replay/v2ha/accepts-carried-genesis-statement-without-history-id",
+   "kind": "replay",
+   "topic": "statements",
+   "purpose": "A-107.4: carried genesis statements keep their form (no historyId); the renewed one names this history.",
+   "sha256": "45b3cff88a8a91d781fa57a59a17ede527375f7cbc849c02cb9506683aaa7c51"
+  },
+  {
+   "id": "replay/v2ha/accepts-policy-rotation-carrying-expired-coowner",
+   "kind": "replay",
+   "topic": "statements",
+   "purpose": "A-118.1 (X-5): two HUMAN keys add a byType entry and carry owner:3's expired statement; owner:3 is LAPSED afterwards and fences alone.",
+   "sha256": "afa469f0231bbab4d62b3f0c302a8415127e3a06355d79a3db86dbadbe220d4d"
+  },
+  {
+   "id": "replay/v2ha/accepts-attestation-history",
+   "kind": "replay",
+   "topic": "statements",
+   "purpose": "A-93.9 pinned root: the owner key epoch records carry attesters and statements (a pre-attested next key included); HUMAN, AGENT and LAPSED signers each count where A-107.2 says.",
+   "sha256": "f5be6f0c189501365e12ed7d11a3e21b794ef18384a81f430ec078f165b95814"
+  },
+  {
+   "id": "replay/v2ha/accepts-pre-attested-next-key-rotation",
+   "kind": "replay",
+   "topic": "recovery",
+   "purpose": "A-97.3: a committed next key with a valid statement is HUMAN and signs the recovery rotation that reveals it.",
+   "sha256": "50355c3a768657553d1ae1f95734c1a3e7b7bb7144ef841b7b156c7a9c5f4bcd"
+  },
+  {
+   "id": "replay/v2ha/rejects-unattested-next-key-recovery",
+   "kind": "replay",
+   "topic": "recovery",
+   "purpose": "A-97.3: a revealed committed key without a statement is NONE and never counts.",
+   "sha256": "4ac69d81c7033153f31cd188e60154931d6681611ca5682a656aa47dc2dc01ba"
+  },
+  {
+   "id": "replay/v2ha/rejects-lapsed-and-agent-advancing-past-horizon",
+   "kind": "replay",
+   "topic": "time",
+   "purpose": "A-119.1 (T2): the same pair at 1001, past the horizon 1000: one human-class signer cannot advance time there.",
+   "sha256": "0dc09640b38e4338d14baadea433c82343ea95e6715217ee6a435e6630a1b284"
+  },
+  {
+   "id": "replay/v2ha/rejects-session-event-crossing-attestation-expiry",
+   "kind": "replay",
+   "topic": "time",
+   "purpose": "A-109.1 (T1): a session-signed declaration at t = expiresAt (1000) of statements unexpired at the head.",
+   "sha256": "1ba6507883294abc700d73e9d680500d1b595bdd26721195c42eb745411f7c82"
+  },
+  {
+   "id": "replay/v2ha/accepts-session-event-before-expiry",
+   "kind": "replay",
+   "topic": "time",
+   "purpose": "A-109.1: the same declaration at expiresAt - 1.",
+   "sha256": "830ad085471dd4cba0d8b8a56f125f2712227fd1cd3e29f69c3d4aa45caecc87"
+  },
+  {
+   "id": "replay/v2ha/accepts-control-event-crossing-expiry",
+   "kind": "replay",
+   "topic": "time",
+   "purpose": "A-109.1: an owner-signed fence at expiresAt; its signer is LAPSED there (PR_eff, M_eff 1) and T2 admits it (1000 <= H).",
+   "sha256": "50603f10c1e1a6b9f745c5dd08538ccd9632e62e7e926b84ae4d5a6c4f3e1d25"
+  },
+  {
+   "id": "replay/v2ha/accepts-session-event-after-owner-crossed",
+   "kind": "replay",
+   "topic": "time",
+   "purpose": "A-109.1: once an owner event crossed the expiry, a session event after it is not bounded by that statement.",
+   "sha256": "8c2a875e6cd1555cf01342b7c68b117ef09ecc4996ee3935885824cff6453c82"
+  },
+  {
+   "id": "replay/v2ha/rejects-single-signer-advancing-past-horizon",
+   "kind": "replay",
+   "topic": "time",
+   "purpose": "A-119.1 (T2): a PR_eff fence by one LAPSED key at H + 1 (151).",
+   "sha256": "02eac652f60a0a76cce976bd5d4e5a9b28e6d5b519865c56cef7b07dcf007eba"
+  },
+  {
+   "id": "replay/v2ha/accepts-single-signer-advancing-to-horizon",
+   "kind": "replay",
+   "topic": "time",
+   "purpose": "A-119.1: the same fence at H (150); every key is LAPSED afterwards.",
+   "sha256": "6657b1a8303be450eb9f65bc2a3cb847de4240f39f2fbeb720e5dc7de16ed41e"
+  },
+  {
+   "id": "replay/v2ha/accepts-two-human-signers-advancing-past-horizon",
+   "kind": "replay",
+   "topic": "time",
+   "purpose": "A-119.1: two human-class (LAPSED) signers on a PR_eff BUDGET_DECLARED at 300 > H: hc = 2.",
+   "sha256": "0a14a5357ce970236889c0632f09cccc68f088632b3f323f152016b085090b72"
+  },
+  {
+   "id": "replay/v2ha/accepts-single-signer-at-head-time-past-horizon",
+   "kind": "replay",
+   "topic": "time",
+   "purpose": "A-119.1: past the horizon a single signer writes at the head's time (300).",
+   "sha256": "f26e392ab10ac62afde3248f2f32642cb6b7e337bc96fcea1da14274174d3d6a"
+  },
+  {
+   "id": "replay/v2ha/accepts-checkpoint-by-lapsed-key-crossing-expiry",
+   "kind": "replay",
+   "topic": "time",
+   "purpose": "A-119.2: with STATE_CHECKPOINT 1 one LAPSED key carries time to the expiry (150).",
+   "sha256": "ffee864888a1fcd010133e0f53469082715eec9360057a4a8e776720f6997460"
+  },
+  {
+   "id": "replay/v2ha/rejects-single-signer-at-max-time",
+   "kind": "replay",
+   "topic": "time",
+   "purpose": "A-119.1: with H = 2^53 - 1 a single HUMAN signer may still not write 2^53 - 1 (the cap is MAXT - 1).",
+   "sha256": "7396961214ffe3bab989c18655fcb43bb4351326650f2b26320486b3b747f738"
+  },
+  {
+   "id": "replay/v2ha/builder-accepts-single-signer-at-max-time-minus-one",
+   "kind": "replay",
+   "topic": "time",
+   "purpose": "A-119.1 / L12 erratum: 2^53 - 2 is admitted.",
+   "sha256": "65871cab451b37f6f33ce5a3fa4cf5f7cced9a955828edda1b08d3e6d02b31dc"
+  }
+ ]
+}

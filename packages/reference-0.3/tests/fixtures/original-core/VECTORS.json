@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "continuity-prospective-adapter-policy-vectors/1",
+  "E1": {
+    "policyHash": "0x00c3498e2744943663475d0187ca979cdd09763b88427781883693c4b8c163a7",
+    "profiles": [
+      {
+        "profileId": "adapter:local-evidence-packet",
+        "profileVersion": "1",
+        "descriptorHash": "0xd4b988c1f23603cf35d9abd0db5a7eb56ef7a5fba1a8f3e904490c1ce4458d64"
+      },
+      {
+        "profileId": "adapter:simulated",
+        "profileVersion": "1",
+        "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2"
+      }
+    ]
+  },
+  "E2": {
+    "policyHash": "0x22eb40a92e50c998e007f67f0af0bc584e25f4b21c9bd802cbebe5981828810e",
+    "profiles": [
+      {
+        "profileId": "adapter:local-evidence-packet",
+        "profileVersion": "1",
+        "descriptorHash": "0xd4b988c1f23603cf35d9abd0db5a7eb56ef7a5fba1a8f3e904490c1ce4458d64"
+      },
+      {
+        "profileId": "adapter:local-synthetic-endpoint-state",
+        "profileVersion": "1",
+        "descriptorHash": "0x486bad2029389663117b06785e641f3a6ec2a90ca89b60e95267965ddc5977ed"
+      },
+      {
+        "profileId": "adapter:simulated",
+        "profileVersion": "1",
+        "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2"
+      }
+    ]
+  },
+  "expectedAckSchemas": {
+    "adapter:local-evidence-packet": "continuity-adapter-acknowledgment/0.2",
+    "adapter:local-synthetic-endpoint-state": "continuity-local-endpoint-state-ack/1",
+    "adapter:simulated": "continuity-adapter-acknowledgment/0.2"
+  },
+  "canonicalPreimages": {
+    "E1": "{\"profiles\":[{\"acknowledgmentSchemaVersion\":\"continuity-adapter-acknowledgment/0.2\",\"profileId\":\"adapter:local-evidence-packet\",\"profileVersion\":\"1\",\"replayRuleId\":\"continuity-adapter-replay/local-packet/1\"},{\"acknowledgmentSchemaVersion\":\"continuity-adapter-acknowledgment/0.2\",\"profileId\":\"adapter:simulated\",\"profileVersion\":\"1\",\"replayRuleId\":\"continuity-adapter-replay/simulated/1\"}],\"schemaVersion\":\"continuity-adapter-policy/0.2\"}",
+    "E2": "{\"profiles\":[{\"acknowledgmentSchemaVersion\":\"continuity-adapter-acknowledgment/0.2\",\"profileId\":\"adapter:local-evidence-packet\",\"profileVersion\":\"1\",\"replayRuleId\":\"continuity-adapter-replay/local-packet/1\"},{\"acknowledgmentSchemaVersion\":\"continuity-local-endpoint-state-ack/1\",\"profileId\":\"adapter:local-synthetic-endpoint-state\",\"profileVersion\":\"1\",\"replayRuleId\":\"continuity-adapter-replay/local-endpoint-state/1\"},{\"acknowledgmentSchemaVersion\":\"continuity-adapter-acknowledgment/0.2\",\"profileId\":\"adapter:simulated\",\"profileVersion\":\"1\",\"replayRuleId\":\"continuity-adapter-replay/simulated/1\"}],\"schemaVersion\":\"continuity-adapter-policy/0.2\"}",
+    "descriptors": [
+      {
+        "profileId": "adapter:local-evidence-packet",
+        "canonicalUtf8": "{\"acknowledgmentSchemaVersion\":\"continuity-adapter-acknowledgment/0.2\",\"profileId\":\"adapter:local-evidence-packet\",\"profileVersion\":\"1\",\"replayRuleId\":\"continuity-adapter-replay/local-packet/1\"}"
+      },
+      {
+        "profileId": "adapter:local-synthetic-endpoint-state",
+        "canonicalUtf8": "{\"acknowledgmentSchemaVersion\":\"continuity-local-endpoint-state-ack/1\",\"profileId\":\"adapter:local-synthetic-endpoint-state\",\"profileVersion\":\"1\",\"replayRuleId\":\"continuity-adapter-replay/local-endpoint-state/1\"}"
+      },
+      {
+        "profileId": "adapter:simulated",
+        "canonicalUtf8": "{\"acknowledgmentSchemaVersion\":\"continuity-adapter-acknowledgment/0.2\",\"profileId\":\"adapter:simulated\",\"profileVersion\":\"1\",\"replayRuleId\":\"continuity-adapter-replay/simulated/1\"}"
+      }
+    ]
+  },
+  "provenance": {
+    "scope": "PROSPECTIVE_EXPECTATIONS_ONLY_NOT_NEW_CORE_EXECUTION_OR_ACCEPTANCE",
+    "algorithm": "Keccak-256 over unchanged Core canonical UTF-8",
+    "expectedE1Source": "Retained core02-packet-r1 genesis/declaration and fixed prior simulator descriptor identity",
+    "newCandidateImported": false,
+    "independentCryptographicImplementation": false
+  }
+}

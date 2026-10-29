@@ -1,0 +1,1 @@
+{"data":{"agentId":"bea","controlAuthorization":{"keyId":"owner:1","signature":"0xb475893bc926ee799124aab027a67a669e69e3a132fff852d7eeab91f47bce25e76e1eb2b7cad943afb6be4d51ef5efa8dbe3a0beb3fbfeef1c6d5ba3c89340f"},"controllerId":"operator","initialControlEpoch":1,"principalId":"operations"},"id":"event:rotation:5","timestamp":100,"type":"AGENT_CREATED"}

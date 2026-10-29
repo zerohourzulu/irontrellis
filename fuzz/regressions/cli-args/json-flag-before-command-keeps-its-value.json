@@ -1,0 +1,19 @@
+{
+ "id": "json-flag-before-command-keeps-its-value",
+ "target": "cli-args",
+ "found": "campaign seed 108, iteration 104444 (CLI_JSON:--json status)",
+ "description": "irontrellis --json status false is a JSON usage error, never human output",
+ "rootCause": "locate() removed the command words, so a boolean flag before the command and a true/false after it became neighbours, and the parser took the word as the flag's value: --json status false printed the human status with exit 0",
+ "fix": "a bare flag before the command is given its value explicitly (--json=true), so the stray word is an unexpected argument",
+ "input": {
+  "argv": [
+   "--json",
+   "status",
+   "false"
+  ]
+ },
+ "expect": {
+  "code": 1,
+  "error": "USAGE"
+ }
+}

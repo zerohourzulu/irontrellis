@@ -1,0 +1,50 @@
+{
+  "scope": "SYNTHETIC_UNINSTALLED_PROFILE_OVER_RETAINED_BUILDER_STATEMENT_BINDINGS",
+  "source": {
+    "path": "conformance/anchor-statement/vector.json",
+    "sha256": "e6ac2aa67d430cf0ea6ec43fd7bb629fa92fb14b72a08c7b689bd945eed2929b"
+  },
+  "changedStatementFields": [
+    "profile.id",
+    "profile.manifestHash",
+    "chain.destination"
+  ],
+  "retainedStatementFieldsAreNotFreshReplayEvidence": true,
+  "publicCredential": "Standard public Ed25519 basepoint encoding; no key generation or private material.",
+  "liveQualification": false,
+  "T5": false,
+  "contractDeployed": false,
+  "signaturesGenerated": 0,
+  "productionSources": [
+    {
+      "path": "packages/mcp-gateway/src/anchor-profile/types.ts",
+      "sha256": "16847ae2b59a200fc81b63d9a0eb43c4f4340efca122d46208349146c2a1ee36",
+      "bytes": 5128
+    },
+    {
+      "path": "packages/mcp-gateway/src/anchor-profile/common.ts",
+      "sha256": "ff49abfee679e58576f840879b7a77cdec0d270d0e3c76de62acbbeedaa1b708",
+      "bytes": 3184
+    },
+    {
+      "path": "packages/mcp-gateway/src/anchor-profile/tezos-identifiers.ts",
+      "sha256": "514de6dbaf1cb542c61ef63a104632f7e6a2fbd82bb31b112a70744b744efc12",
+      "bytes": 2628
+    },
+    {
+      "path": "packages/mcp-gateway/src/anchor-profile/report.ts",
+      "sha256": "650e27dc729c3cbc9b500519ce9aa147aa7d7fcffa52d0f789fee6e93d74c85d",
+      "bytes": 5793
+    },
+    {
+      "path": "packages/mcp-gateway/src/anchor-profile/profiles.ts",
+      "sha256": "2023bfd6fc12c8b52746950cc6aa1ed4073eeb595d0d11b77a31af34454f5b2d",
+      "bytes": 8270
+    },
+    {
+      "path": "packages/mcp-gateway/src/anchor-profile/index.ts",
+      "sha256": "066590994be4bb2654eeeebccbaebde58efa11650d2ba0ab542fb9620cf8f4c1",
+      "bytes": 781
+    }
+  ]
+}

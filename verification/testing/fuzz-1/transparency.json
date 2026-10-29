@@ -1,0 +1,217 @@
+{
+ "regressions": [],
+ "campaigns": [
+  {
+   "target": "transparency",
+   "seed": 106,
+   "start": 0,
+   "iterations": 164157702,
+   "seconds": 82800,
+   "execPerSecond": 1982.6,
+   "features": 40,
+   "python": true,
+   "failures": [
+    {
+     "target": "transparency",
+     "seed": 106,
+     "iteration": 59131176,
+     "key": "TRANSPARENCY:receipt:ts=false/INCLUSION_INVALID:py=false/ENTRY_MALFORMED",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "receipt: TypeScript {\"ok\":false,\"reason\":\"INCLUSION_INVALID\"}, Python {\"ok\":false,\"reason\":\"ENTRY_MALFORMED\"}",
+     "count": 2,
+     "input": {
+      "receipt": {
+       "version": "irontrellis-witness-receipt/1",
+       "witness": {
+        "origin": "irontrellis-witness/vectors",
+        "verifierKey": "irontrellis-witness/vectors+bee3c9ed+AchTrQ8M0rYZrqks7sT9VqJNZJnVhM55JX5Fz9gTm2Cn"
+       },
+       "entry": {
+        "version": "irontrellis-witness-entry/1",
+        "historyId": "0x49af76147ad14d237097d1171a7792d8bea58defb857a8553d384d38c6dcbe76",
+        "receivedAt": 1767225602000,
+        "kind": "HEAD",
+        "signedStatement": {
+         "statement": {
+          "version": "irontrellis-head-statement/1",
+          "historyId": "0x49af76147ad14d237097d1171a7792d8bea58defb857a8553d384d38c6dcbe76",
+          "domain": {
+           "protocol": "irontrellis",
+           "version": "2",
+           "deploymentId": "deployment:witness-vectors"
+          },
+          "head": {
+           "hash": "0xd69bad5f020e27c9ab238d09e3ec65ed9c2a42e4ac0ae9b37132fb7d6df4e9aa",
+           "position": 3,
+           "canonicalTime": 3
+          },
+          "previous": {
+           "hash": "0x49af76147ad14d237097d1171a7792d8bea58defb857a8553d384d38c6dcbe76",
+           "position": 0
+          }
+         },
+         "keyId": "owner:1",
+         "scheme": "ed25519",
+         "signature": "0x555c3d647329caebfa21ce0fc6b1e909adfb282512c7d1c879fc1a65ee95c18a8e9f5554995f2ad48c173ae4505f001328a0291743d6985bb6a9c389473e8f02"
+        }
+       },
+       "index": 3,
+       "checkpoint": "irontrellis-witness/vectors\n7\nl+GP3kbHoTz6pQeDETfC15hX8NLfkAFUdgdzLD1a/LE=\n\n— irontrellis-witness/vectors vuPJ7e5exQBHND7ugz/dFqahehncHrN9PoFoDTM0e0ml4SN52qKU5FY58TGTvhmvXa2tnsATYp4K4w/YghgS/DeZAA4=\n",
+       "inclusionProof": [
+        "plkOeeP/5YCZ+z/qRsJ1RW7oM+oNQ9RWUA+U5icF1C8=",
+        "N27mdzyOgobAhA1dACHjkcDkgf4DEaDI8XZ+ON2KLbQ=",
+        "B345NfwAUrh/5w4awwvQ18sAXyN5YZHpFyFYqjiqrXY="
+       ]
+      },
+      "keys": [
+       "irontrellis-witness/vectors+bee3c9ed+AchTrQ8M0rYZrqks7sT9VqJNZJnVhM55JX5Fz9gTm2Cn"
+      ],
+      "kind": "receipt"
+     },
+     "minimized": {
+      "receipt": {
+       "version": "irontrellis-witness-receipt/1",
+       "witness": {
+        "origin": "irontrellis-witness/vectors",
+        "verifierKey": "rQ8M0rYZrqks7sT9VqJNZJnVhM55JX5Fz9gTm2Cn"
+       },
+       "entry": {
+        "version": "irontrellis-witness-entry/1",
+        "historyId": "0x49af76147ad14d237097d1171a7792d8bea58defb857a8553d384d38c6dcbe76",
+        "receivedAt": 1767225602000,
+        "kind": "HEAD",
+        "signedStatement": {
+         "statement": {
+          "version": "irontrellis-head-statement/1",
+          "historyId": "0x49af76147ad14d237097d1171a7792d8bea58defb857a8553d384d38c6dcbe76",
+          "domain": {
+           "protocol": "irontrellis",
+           "version": "2",
+           "deploymentId": "deployment:witness-vectors"
+          },
+          "head": {
+           "hash": "0xd69bad5f020e27c9ab238d09e3ec65ed9c2a42e4ac0ae9b37132fb7d6df4e9aa",
+           "position": 3,
+           "canonicalTime": 3
+          },
+          "previous": null
+         },
+         "keyId": "owner:1",
+         "scheme": "ed25519",
+         "signature": "0x555c3d647329caebfa21ce0fc6b1e909adfb282512c7d1c879fc1a65ee95c18a8e9f5554995f2ad48c173ae4505f001328a0291743d6985bb6a9c389473e8f02"
+        }
+       },
+       "index": 3,
+       "checkpoint": "irontrellis-witness/vectors\n7\nl+GP3kbHoTz6pQeDETfC15hX8NLfkAFUdgdzLD1a/LE=\n\n— irontrellis-witness/vectors vuPJ7e5exQBHND7ugz/dFqahehncHrN9PoFoDTM0e0ml4SN52qKU5FY58TGTvhmvXa2tnsATYp4K4w/YghgS/DeZAA4=\n",
+       "inclusionProof": [
+        "B345NfwAUrh/5w4awwvQ18sAXyN5YZHpFyFYqjiqrXY="
+       ]
+      },
+      "keys": [
+       "irontrellis-witness/vectors+bee3c9ed+AchTrQ8M0rYZrqks7sT9VqJNZJnVhM55JX5Fz9gTm2Cn"
+      ],
+      "kind": "receipt"
+     }
+    },
+    {
+     "target": "transparency",
+     "seed": 106,
+     "iteration": 160102302,
+     "key": "TRANSPARENCY:statement:ts=SIGNATURE_INVALID/:py=MALFORMED/",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "statement: TypeScript {\"result\":\"SIGNATURE_INVALID\"}, Python {\"result\":\"MALFORMED\"}",
+     "count": 1,
+     "input": {
+      "signed": {
+       "statement": {
+        "version": "irontrellis-head-statement/1",
+        "historyId": "0xac5fd09fc2543fa656dd33c2c19bfb23f01aac6e586c8b7f140a6cdadccc9ee4",
+        "domain": {
+         "protocol": "irontrellis",
+         "version": "2",
+         "deploymentId": "deployment:witness-vectors"
+        },
+        "head": {
+         "hash": "0x7c6e94960742dfe9cb8877c1ca213dd13f248f39634564659a837da1fac754d2",
+         "position": 4,
+         "canonicalTime": 4
+        },
+        "previous": {
+         "hash": "0xa9b8d37da4c5c057cda5489d117f24ebbbb9aa498fa6b8bb2d39478802d4a6f0",
+         "position": 2
+        }
+       },
+       "keyId": "owner:1",
+       "scheme": "ed25519",
+       "signature": "0x678d782858e59a5c7f02c06475c1beb476273ee38bd5887f49c72476acb3184d842b8999fff47eafe3f58854205187913067ef1eb9ff1d0460f3bcb3b3b2a40a"
+      },
+      "epochs": [
+       {
+        "fromPosition": 0,
+        "keys": [
+         {
+          "keyId": "owner:1",
+          "scheme": "ed25519",
+          "credential": "0xe82a9aa41d740c74b238550f6fe970ba946e98499381af855c1bd0c3f616c26b"
+         }
+        ],
+        "nextKeyDigests": [
+         "0x93df02cd6030b161d63a20bc17c5867c3490c6b4145cdb90b24e02f063f4bb00"
+        ],
+        "domain": " "
+       },
+       {
+        "fromPosition": 5,
+        "keys": [
+         {
+          "keyId": "owner:2",
+          "scheme": "ed25519",
+          "credential": "0xf7f99723257c7c6554667a1076e6da073e7a6e33485052fe7f8b1d68bdb37009"
+         }
+        ],
+        "nextKeyDigests": [
+         "0x0a8d363afeebab686e6e6079608400d04fdebfd9e34d974f391222f8c8ca7894"
+        ]
+       }
+      ],
+      "kind": "statement"
+     },
+     "minimized": {
+      "signed": {
+       "statement": {
+        "version": "irontrellis-head-statement/1",
+        "historyId": "0xac5fd09fc2543fa656dd33c2c19bfb23f01aac6e586c8b7f140a6cdadccc9ee4",
+        "domain": {
+         "protocol": "irontrellis",
+         "version": "2",
+         "deploymentId": "tness-vectors"
+        },
+        "head": {
+         "hash": "0x7c6e94960742dfe9cb8877c1ca213dd13f248f39634564659a837da1fac754d2",
+         "position": 4,
+         "canonicalTime": 4
+        },
+        "previous": null
+       },
+       "keyId": "owner:1",
+       "scheme": "ed25519",
+       "signature": "0x678d782858e59a5c7f02c06475c1beb476273ee38bd5887f49c72476acb3184d842b8999fff47eafe3f58854205187913067ef1eb9ff1d0460f3bcb3b3b2a40a"
+      },
+      "epochs": [
+       {
+        "fromPosition": 0,
+        "keys": [
+         {
+          "keyId": "owner:1",
+          "scheme": "ed25519"
+         }
+        ]
+       }
+      ],
+      "kind": "statement"
+     }
+    }
+   ]
+  }
+ ]
+}

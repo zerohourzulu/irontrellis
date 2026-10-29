@@ -1,0 +1,578 @@
+{
+ "suite": "v2",
+ "format": "irontrellis-event/2",
+ "vectorCount": 86,
+ "byTopic": {
+  "format-2-chain": {
+   "replay": 6
+  },
+  "format-2-encoding": {
+   "replay": 5
+  },
+  "budgets": {
+   "replay": 11,
+   "authorization": 16
+  },
+  "signed-intents": {
+   "replay": 4
+  },
+  "refusals": {
+   "replay": 9
+  },
+  "checkpoints": {
+   "replay": 4
+  },
+  "effects": {
+   "replay": 3
+  },
+  "counterparty-receipts": {
+   "replay": 8
+  },
+  "headroom": {
+   "headroom": 9
+  },
+  "attestation": {
+   "attestation": 7
+  },
+  "export": {
+   "export": 1
+  },
+  "format-1-read": {
+   "replay": 2
+  },
+  "legacy-read": {
+   "replay": 1
+  }
+ },
+ "histories": {
+  "budget-v2": {
+   "eventCount": 40,
+   "head": {
+    "hash": "0x5e553fdb7c5c95063c7575595992942b699fa27a7d04f50da00f140feb11155b",
+    "position": 39,
+    "canonicalTime": 1100
+   },
+   "stateRoot": "0x6a26a6a8a50f598f5f77e78d5403a45ac3d8f1750db3ede266fdcffbcf273d85",
+   "recordCount": 75,
+   "projectionHead": "0xa32ee7df5bb7591ae01dbcdcc9d9d20b20f97dcf58b4f4b7c283c1b1f624925a"
+  }
+ },
+ "vectors": [
+  {
+   "id": "replay/v2/accepts-budget-history",
+   "kind": "replay",
+   "topic": "format-2-chain",
+   "purpose": "The complete format-2 budget history replays; the head is the record-chain tip (SPEC §4.3), the state root is the §7 derivation over the final state and the projection head the §12 chain."
+  },
+  {
+   "id": "replay/v2/accepts-prefix-through-cp-1",
+   "kind": "replay",
+   "topic": "format-2-chain",
+   "purpose": "The prefix ending with cp:1 replays; the result's stateRoot is rootAt(24), the root AFTER the checkpoint's own event record (the checkpoint's data.stateRoot is rootAt(23), the state before it)."
+  },
+  {
+   "id": "replay/v2/accepts-prefix-through-cp-2",
+   "kind": "replay",
+   "topic": "format-2-chain",
+   "purpose": "The prefix ending with cp:2 replays; the result's stateRoot is rootAt(33), the root AFTER the checkpoint's own event record (the checkpoint's data.stateRoot is rootAt(32), the state before it)."
+  },
+  {
+   "id": "replay/v2/accepts-prefix-through-cp-3",
+   "kind": "replay",
+   "topic": "format-2-chain",
+   "purpose": "The prefix ending with cp:3 replays; the result's stateRoot is rootAt(36), the root AFTER the checkpoint's own event record (the checkpoint's data.stateRoot is rootAt(35), the state before it)."
+  },
+  {
+   "id": "replay/v2/accepts-genesis-only",
+   "kind": "replay",
+   "topic": "format-2-chain",
+   "purpose": "A format-2 history of one event: the head is recordHash(0) = sha256(\"irontrellis-record/2\" ‖ 0x00 ‖ 0^32 ‖ eventHash ‖ be64(0)); the state has three records (genesis, ownerKeyEpoch 0, event 0)."
+  },
+  {
+   "id": "replay/v2/rejects-bigint-marker-amount",
+   "kind": "replay",
+   "topic": "format-2-encoding",
+   "purpose": "A format-2 event that spells an Amount as the legacy {\"$continuity.bigint\"} marker is a schema violation (SPEC §3.4)."
+  },
+  {
+   "id": "replay/v2/rejects-negative-amount",
+   "kind": "replay",
+   "topic": "format-2-encoding",
+   "purpose": "Format 2 Amounts are non-negative decimal strings; \"-1\" is a schema violation."
+  },
+  {
+   "id": "replay/v2/rejects-leading-zero-amount",
+   "kind": "replay",
+   "topic": "format-2-encoding",
+   "purpose": "An Amount with a leading zero (\"060\") is not canonical."
+  },
+  {
+   "id": "replay/v2/rejects-format1-literals-in-format2-genesis",
+   "kind": "replay",
+   "topic": "format-2-encoding",
+   "purpose": "A genesis that declares eventSchemaVersion irontrellis-event/2 but the format-1 control-authorization literal is refused."
+  },
+  {
+   "id": "replay/v2/rejects-domain-version-1-in-format2",
+   "kind": "replay",
+   "topic": "format-2-encoding",
+   "purpose": "A format-2 genesis must declare domain.version \"2\"."
+  },
+  {
+   "id": "replay/v2/rejects-moved-control-event",
+   "kind": "replay",
+   "topic": "format-2-chain",
+   "purpose": "A control event signed over the head before it cannot be moved: swapping two control events breaks both signatures."
+  },
+  {
+   "id": "replay/v2/rejects-budget-declared-without-owner-signature",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "BUDGET_DECLARED is a control event; without controlAuthorization it is refused."
+  },
+  {
+   "id": "replay/v2/rejects-budget-with-no-cap",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "A budget must cap at least one dimension (SPEC §9.1)."
+  },
+  {
+   "id": "replay/v2/rejects-budget-window-zero-length",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "A FIXED_WINDOW period needs lengthMs ≥ 1."
+  },
+  {
+   "id": "replay/v2/rejects-duplicate-budget-id",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "Declaring a budgetId twice (a properly owner-signed second BUDGET_DECLARED) is TRANSITION_INVALID."
+  },
+  {
+   "id": "replay/v2/rejects-update-of-unknown-budget",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "A properly signed BUDGET_UPDATED for a budget that was never declared is TRANSITION_INVALID."
+  },
+  {
+   "id": "replay/v2/rejects-tampered-budget-declaration",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "Changing a declared cap after signing breaks the owner signature (the effect hash is signed)."
+  },
+  {
+   "id": "replay/v2/rejects-admission-over-budget",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "spend:2 re-declared and re-admitted at amount 45 (authority allows ≤ 100; b-amount has 60 used of 100): a correctly signed admission the budgets refuse is TRANSITION_INVALID, because replay re-derives the decision and finds DENY."
+  },
+  {
+   "id": "replay/v2/rejects-unsigned-intent-declaration",
+   "kind": "replay",
+   "topic": "signed-intents",
+   "purpose": "A format-2 TRANSACTION_INTENT_DECLARED without declarationAuthorization is a schema violation (SPEC §8.6)."
+  },
+  {
+   "id": "replay/v2/rejects-intent-declaration-with-wrong-signature",
+   "kind": "replay",
+   "topic": "signed-intents",
+   "purpose": "A declaration signed by a key that is not the session credential is DECLARATION_AUTHORIZATION_INVALID."
+  },
+  {
+   "id": "replay/v2/rejects-intent-declaration-with-altered-amount",
+   "kind": "replay",
+   "topic": "signed-intents",
+   "purpose": "The declaration signature binds the amount: changing it after signing fails verification."
+  },
+  {
+   "id": "replay/v2/rejects-duplicate-nonce-declaration",
+   "kind": "replay",
+   "topic": "signed-intents",
+   "purpose": "The nonce record is created at declaration (SPEC §7.2, §8.6): a correctly signed second declaration with the same (actorId, nonce) and a new intentId is TRANSITION_INVALID."
+  },
+  {
+   "id": "replay/v2/rejects-refusal-not-reproduced",
+   "kind": "replay",
+   "topic": "refusals",
+   "purpose": "A correctly signed BUDGET refusal whose recorded code/budgetId differ from the re-derived decision at its head is REFUSAL_NOT_REPRODUCED."
+  },
+  {
+   "id": "replay/v2/rejects-refusal-with-tampered-code",
+   "kind": "replay",
+   "topic": "refusals",
+   "purpose": "Changing the code after signing breaks the session signature: REFUSAL_AUTHORIZATION_INVALID (checked before re-derivation)."
+  },
+  {
+   "id": "replay/v2/rejects-refusal-that-would-be-allowed",
+   "kind": "replay",
+   "topic": "refusals",
+   "purpose": "A refusal recorded for a request the state allows (amount 5 at that head) is REFUSAL_NOT_REPRODUCED; the signature is valid, the claim is false."
+  },
+  {
+   "id": "replay/v2/rejects-refusal-with-stale-head",
+   "kind": "replay",
+   "topic": "refusals",
+   "purpose": "A refusal must cite the head immediately before it; an earlier head is TRANSITION_INVALID."
+  },
+  {
+   "id": "replay/v2/rejects-connector-refusal-without-connector",
+   "kind": "replay",
+   "topic": "refusals",
+   "purpose": "refusalSource CONNECTOR requires the connector record; a BUDGET source may not carry one (closed schema, SPEC §10.1)."
+  },
+  {
+   "id": "replay/v2/rejects-refusal-signed-by-stranger",
+   "kind": "replay",
+   "topic": "refusals",
+   "purpose": "A refusal signed by a key other than the named session credential is REFUSAL_AUTHORIZATION_INVALID."
+  },
+  {
+   "id": "replay/v2/rejects-checkpoint-with-wrong-state-root",
+   "kind": "replay",
+   "topic": "checkpoints",
+   "purpose": "A STATE_CHECKPOINT whose stateRoot is not the §7 root of the state before it is STATE_ROOT_MISMATCH (owner-signed, so the signature is re-made here)."
+  },
+  {
+   "id": "replay/v2/rejects-checkpoint-with-wrong-record-count",
+   "kind": "replay",
+   "topic": "checkpoints",
+   "purpose": "recordCount must equal the number of state records (leaves)."
+  },
+  {
+   "id": "replay/v2/rejects-checkpoint-with-wrong-projection-head",
+   "kind": "replay",
+   "topic": "checkpoints",
+   "purpose": "projectionHead must equal the §12 projection chain at the head before the checkpoint."
+  },
+  {
+   "id": "replay/v2/rejects-checkpoint-citing-other-head",
+   "kind": "replay",
+   "topic": "checkpoints",
+   "purpose": "A checkpoint must cite the head immediately before it."
+  },
+  {
+   "id": "replay/v2/rejects-effect-for-unknown-intent",
+   "kind": "replay",
+   "topic": "effects",
+   "purpose": "EFFECT_RECORDED needs an admitted intent."
+  },
+  {
+   "id": "replay/v2/rejects-effect-with-tampered-amount",
+   "kind": "replay",
+   "topic": "effects",
+   "purpose": "The effect signature binds the measured amount."
+  },
+  {
+   "id": "replay/v2/rejects-receipt-from-unregistered-counterparty",
+   "kind": "replay",
+   "topic": "counterparty-receipts",
+   "purpose": "A correctly wrapped envelope naming a counterparty that is not registered is TRANSITION_INVALID."
+  },
+  {
+   "id": "replay/v2/rejects-receipt-with-bad-counterparty-signature",
+   "kind": "replay",
+   "topic": "counterparty-receipts",
+   "purpose": "An envelope whose signature does not verify under the registered key is COUNTERPARTY_SIGNATURE_INVALID."
+  },
+  {
+   "id": "replay/v2/rejects-receipt-chain-break",
+   "kind": "replay",
+   "topic": "counterparty-receipts",
+   "purpose": "The second envelope must cite the digest of the first accepted envelope from the same counterparty."
+  },
+  {
+   "id": "replay/v2/rejects-receipt-with-altered-envelope",
+   "kind": "replay",
+   "topic": "counterparty-receipts",
+   "purpose": "Altering the envelope after both signatures breaks the counterparty signature, which is checked first: COUNTERPARTY_SIGNATURE_INVALID."
+  },
+  {
+   "id": "replay/v2/rejects-receipt-for-other-history",
+   "kind": "replay",
+   "topic": "counterparty-receipts",
+   "purpose": "The envelope binds the history (historyId = recordHash(0)); an envelope signed for another history is TRANSITION_INVALID even with valid signatures."
+  },
+  {
+   "id": "replay/v2/rejects-receipt-intent-digest-mismatch",
+   "kind": "replay",
+   "topic": "counterparty-receipts",
+   "purpose": "The envelope binds the intent (intentDigest = the declaration challenge hash); a digest of another intent is TRANSITION_INVALID."
+  },
+  {
+   "id": "replay/v2/rejects-reregistering-active-counterparty",
+   "kind": "replay",
+   "topic": "counterparty-receipts",
+   "purpose": "Registering a counterpartyId that is ACTIVE again is TRANSITION_INVALID (owner-signed, so the signature is re-made)."
+  },
+  {
+   "id": "replay/v2/rejects-receipt-wrapper-stale",
+   "kind": "replay",
+   "topic": "counterparty-receipts",
+   "purpose": "A valid counterparty envelope whose session wrapper was signed over a different envelope digest is RECORD_AUTHORIZATION_INVALID."
+  },
+  {
+   "id": "replay/v2/rejects-admission-metric-mismatch",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "An admission whose request.metric (\"bytes\") differs from the declared intent's metric (absent = \"amount\") is TRANSITION_INVALID, so a session cannot choose which budgets are checked and charged."
+  },
+  {
+   "id": "replay/v2/rejects-refusal-actor-mismatch",
+   "kind": "replay",
+   "topic": "refusals",
+   "purpose": "A CORE/BUDGET refusal must be signed by a session of the actor it names (request.actorId); spender's session refusing on behalf of \"other\" is TRANSITION_INVALID."
+  },
+  {
+   "id": "replay/v2/rejects-refusal-evaluation-time-mismatch",
+   "kind": "replay",
+   "topic": "refusals",
+   "purpose": "A refusal's evaluationTime must equal the event timestamp (as for admissions); a later evaluation time is TRANSITION_INVALID."
+  },
+  {
+   "id": "replay/v2/rejects-connector-refusal-by-other-session",
+   "kind": "replay",
+   "topic": "refusals",
+   "purpose": "A CONNECTOR refusal must be signed by the connector's own session: connector.connectorId must equal the signing session's agent. Signed by spender's session it is TRANSITION_INVALID."
+  },
+  {
+   "id": "replay/v2/rejects-effect-measurer-mismatch",
+   "kind": "replay",
+   "topic": "effects",
+   "purpose": "For measurer.kind SESSION, measurer.id must be the signing session's agent; \"other\" is TRANSITION_INVALID."
+  },
+  {
+   "id": "replay/v2/rejects-budget-update-without-cap",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "A BUDGET_UPDATED that leaves every cap null is a schema violation (SPEC §9.1)."
+  },
+  {
+   "id": "replay/v2/rejects-budget-carry-without-carry-cap",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "carryUnused: true requires a non-null carryCap (SPEC §9.1, B-4): the rollover is then bounded."
+  },
+  {
+   "id": "replay/v2/rejects-budget-with-unknown-subject-key",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "subjects is a closed record of actorIds, roleIds, actions, resources; an extra key is a schema violation."
+  },
+  {
+   "id": "authorization/v2/allow-within-carry",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "Period 1 of b-amount after the cap was lowered 100 → 60 at t=1100: the rollover of 5 earned under the old cap is frozen (carryBase), so allowed = 60 + 5, used 55: amount 10 is allowed exactly."
+  },
+  {
+   "id": "authorization/v2/deny-amount-over-carry",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "Amount 11 exceeds 60 + 5 − 55 (the frozen rollover is not re-priced by the lower cap)."
+  },
+  {
+   "id": "authorization/v2/allow-role-budget-within",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "g-role (roleIds [cashier], actorIds null, perOperationCap 30 on petty-cash-4) matches spender through the CURRENT cashier tenure: amount 30 is allowed (f-expired no longer matches)."
+  },
+  {
+   "id": "authorization/v2/deny-role-budget-per-operation",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "Amount 35 on petty-cash-4 fails g-role, which matches by role, not by actor: BUDGET_PER_OPERATION_EXCEEDED with budgetId g-role."
+  },
+  {
+   "id": "authorization/v2/deny-after-subjects-update",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "d-perop's subjects were updated to cover petty-cash-3 (usage retained): amount 41 there fails d-perop before e-future is consulted."
+  },
+  {
+   "id": "authorization/v2/allow-per-operation-at-cap",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "d-perop caps a single operation on petty-cash-2 at 40."
+  },
+  {
+   "id": "authorization/v2/deny-per-operation-over-cap",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "Amount 41 on petty-cash-2 exceeds d-perop perOperationCap 40."
+  },
+  {
+   "id": "authorization/v2/authority-denial-precedes-budgets",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "Amount 101 exceeds the grant maxAmount 100: the authority code wins, no budget is consulted."
+  },
+  {
+   "id": "authorization/v2/deny-period-undefined",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "e-future (origin 2000) has no period at t < 2000: BUDGET_PERIOD_UNDEFINED."
+  },
+  {
+   "id": "authorization/v2/allow-when-budget-expired",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "f-expired expired at 1050; at t it no longer matches."
+  },
+  {
+   "id": "authorization/v2/allow-after-budget-closed",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "c-count (countCap 3, closed) no longer matches; only b-amount applies."
+  },
+  {
+   "id": "authorization/v2/allow-zero-amount",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "A zero amount passes every cap."
+  },
+  {
+   "id": "authorization/v2/allow-other-metric-not-matched",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "A request with metric \"bytes\" matches no budget (all declare \"amount\"); authority still decides."
+  },
+  {
+   "id": "authorization/v2/indeterminate-causal-time",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "An evaluation time before the head is CAUSAL_TIME_INVALID regardless of budgets."
+  },
+  {
+   "id": "authorization/v2/period-0-allow-last-five",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "At cp:2 (period 0) b-amount has used 95 of 100: amount 5 is allowed."
+  },
+  {
+   "id": "authorization/v2/period-0-deny-six",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "Amount 6 exceeds the remaining 5 of period 0."
+  },
+  {
+   "id": "headroom/v2/b-amount-period-1",
+   "kind": "headroom",
+   "topic": "headroom",
+   "purpose": "Headroom of b-amount at t=1100 after the cap lowering (60, carryBase {1, 5}): period 1, used 55, carryIn 5 (frozen), remaining 10."
+  },
+  {
+   "id": "headroom/v2/b-amount-period-0-view",
+   "kind": "headroom",
+   "topic": "headroom",
+   "purpose": "The same state viewed at t=500 (period 0, before the carry base): used 95, carryIn 0, remaining max(0, 60 − 95) = 0 under the current cap (a pure view)."
+  },
+  {
+   "id": "headroom/v2/b-amount-future-period-carries-cap",
+   "kind": "headroom",
+   "topic": "headroom",
+   "purpose": "At t=2500 (period 2): rollover from the base: unused(1) = 60 + 5 − 55 = 10 → carryIn 10, remaining 70."
+  },
+  {
+   "id": "headroom/v2/b-amount-far-future-idle-stretch",
+   "kind": "headroom",
+   "topic": "headroom",
+   "purpose": "At t=1,000,000,500 (period 1,000,000) after 999,998 idle periods: closed form min(carryCap 50, 10 + n·60) = 50 → remaining 110, computed in O(periods with usage), never O(elapsed periods)."
+  },
+  {
+   "id": "headroom/v2/b-amount-before-lowering",
+   "kind": "headroom",
+   "topic": "headroom",
+   "purpose": "At the cp:3 head (before BUDGET_UPDATED lowered the cap): period 1, used 55, carryIn 5, remaining 50."
+  },
+  {
+   "id": "headroom/v2/c-count-closed",
+   "kind": "headroom",
+   "topic": "headroom",
+   "purpose": "A closed budget reports active:false with its last usage."
+  },
+  {
+   "id": "headroom/v2/e-future-before-origin",
+   "kind": "headroom",
+   "topic": "headroom",
+   "purpose": "Before its origin a FIXED_WINDOW budget has periodIndex null and is not active."
+  },
+  {
+   "id": "headroom/v2/unknown-budget",
+   "kind": "headroom",
+   "topic": "headroom",
+   "purpose": "An unknown budgetId yields null."
+  },
+  {
+   "id": "headroom/v2/c-count-before-update",
+   "kind": "headroom",
+   "topic": "headroom",
+   "purpose": "At cp:1 (before BUDGET_UPDATED) c-count shows countCap 2 fully used."
+  },
+  {
+   "id": "attestation/v2/valid-final-head",
+   "kind": "attestation",
+   "topic": "attestation",
+   "purpose": "An owner attestation of the final head with the matching state root and projection head."
+  },
+  {
+   "id": "attestation/v2/wrong-state-root",
+   "kind": "attestation",
+   "topic": "attestation",
+   "purpose": "A valid signature over a wrong state root: signatureValid and prefix hold, stateRootValid does not."
+  },
+  {
+   "id": "attestation/v2/wrong-projection-head",
+   "kind": "attestation",
+   "topic": "attestation",
+   "purpose": "A valid signature over a wrong projection head."
+  },
+  {
+   "id": "attestation/v2/stranger-key",
+   "kind": "attestation",
+   "topic": "attestation",
+   "purpose": "An attestation by a key that is not an owner key in force."
+  },
+  {
+   "id": "attestation/v2/earlier-head",
+   "kind": "attestation",
+   "topic": "attestation",
+   "purpose": "An attestation of an earlier head (cp:1) verifies against the full history: prefix, root and projection at that position."
+  },
+  {
+   "id": "attestation/v2/head-not-a-prefix",
+   "kind": "attestation",
+   "topic": "attestation",
+   "purpose": "A head whose hash is not the record hash at its position."
+  },
+  {
+   "id": "attestation/v2/wrong-domain-label",
+   "kind": "attestation",
+   "topic": "attestation",
+   "purpose": "The body names the domain; an attestation whose domain label is not this history's domain is reported signatureValid false (the signature may verify over the bytes, but the body is not an attestation of this history)."
+  },
+  {
+   "id": "export/v2/cp-1-to-cp-3",
+   "kind": "export",
+   "topic": "export",
+   "purpose": "The export view from the cp:1 position to the cp:3 position: both ends carry the head, the §7 root at that position (the state after the event at that position) and the projection head; the events and the checkpoints in range are listed."
+  },
+  {
+   "id": "replay/v2/still-reads-format-1-history",
+   "kind": "replay",
+   "topic": "format-1-read",
+   "purpose": "A format-1 history (copied verbatim from conformance/v1 accepts-signed-handover) still replays under IronTrellis Core; stateRoot and projectionHead are null for formats other than 2."
+  },
+  {
+   "id": "replay/v2/still-reads-legacy-history",
+   "kind": "replay",
+   "topic": "legacy-read",
+   "purpose": "A continuity-event/0.2 history (copied verbatim from conformance/legacy) still replays; stateRoot and projectionHead are null."
+  },
+  {
+   "id": "replay/v2/rejects-format2-event-kind-in-format1-history",
+   "kind": "replay",
+   "topic": "format-1-read",
+   "purpose": "A format-1 history carrying a format-2 event kind (BUDGET_DECLARED) is UNSUPPORTED_EVENT_TYPE, as before."
+  }
+ ]
+}

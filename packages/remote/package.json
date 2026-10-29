@@ -1,0 +1,74 @@
+{
+  "name": "@ramex-labs/irontrellis-remote",
+  "version": "1.0.0-rc.2",
+  "description": "IronTrellis remote tools SDK with format-2 history authority",
+  "type": "module",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.d.mts",
+      "default": "./index.mjs"
+    },
+    "./langchain": {
+      "types": "./langchain.d.mts",
+      "default": "./langchain.mjs"
+    },
+    "./local": {
+      "types": "./local.d.mts",
+      "default": "./local.mjs"
+    },
+    "./runtime": {
+      "types": "./runtime.d.mts",
+      "default": "./runtime.mjs"
+    },
+    "./attempts": {
+      "types": "./attempts.d.mts",
+      "default": "./attempts.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.mjs",
+    "*.d.mts",
+    "README.md",
+    "LICENSE",
+    "NOTICE",
+    "LICENSING.md",
+    "THIRD-PARTY-NOTICES.md"
+  ],
+  "dependencies": {
+    "@ramex-labs/irontrellis": "workspace:*",
+    "@ramex-labs/irontrellis-remote-tools": "workspace:*"
+  },
+  "peerDependencies": {
+    "@langchain/core": "1.2.12",
+    "zod": "4.6.5"
+  },
+  "peerDependenciesMeta": {
+    "@langchain/core": {
+      "optional": true
+    },
+    "zod": {
+      "optional": true
+    }
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "devDependencies": {
+    "@langchain/core": "1.2.12",
+    "zod": "4.6.5"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zerohourzulu/irontrellis.git",
+    "directory": "packages/remote"
+  }
+}

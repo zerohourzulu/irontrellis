@@ -1,0 +1,48 @@
+{
+  "name": "@ramex-labs/irontrellis-anchor-outbox",
+  "version": "1.0.0-rc.2",
+  "description": "Durable local anchor outbox with replay-bound statements and single-callback fences.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test --experimental-strip-types \"test/**/*.test.mjs\""
+  },
+  "dependencies": {
+    "@ramex-labs/irontrellis": "workspace:*",
+    "@ramex-labs/irontrellis-mcp-gateway": "workspace:*",
+    "viem": "2.55.19"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "typescript": "^5.9.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zerohourzulu/irontrellis.git",
+    "directory": "packages/anchor-outbox"
+  }
+}

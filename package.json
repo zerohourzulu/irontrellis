@@ -1,0 +1,41 @@
+{
+  "name": "irontrellis-workspace",
+  "private": true,
+  "version": "1.0.0",
+  "description": "IronTrellis: authority, duties and succession for AI agents. Workspace root.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "packageManager": "pnpm@11.19.0",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test",
+    "lint": "node scripts/check-frozen-vectors.mjs && pnpm -r run lint",
+    "test:conformance": "node conformance/run.mjs --suite all --adapter conformance/adapters/node.mjs",
+    "test:conformance:format2": "node conformance/run.mjs --suite v2 --adapter conformance/adapters/node.mjs && node conformance/run.mjs --suite v2-g3 --adapter conformance/adapters/node.mjs && node conformance/run.mjs --suite v2-regenerated --adapter conformance/adapters/node.mjs && node conformance/run.mjs --suite v2-owner-policy --adapter conformance/adapters/node.mjs && node conformance/run.mjs --suite v2-human-attestation --adapter conformance/adapters/node.mjs",
+    "test:conformance:python": "node conformance/run.mjs --suite all --adapter conformance/adapters/python.py",
+    "test:conformance:all": "node conformance/run.mjs --suite all --adapter conformance/adapters/node.mjs && node conformance/run.mjs --suite all --adapter conformance/adapters/python.py && node conformance/run.mjs --suite legacy --adapter conformance/adapters/reference-node.mjs",
+    "conformance:generate": "node conformance/v1/generate.mjs",
+    "conformance:check": "node conformance/v1/generate.mjs --check",
+    "conformance:check:v2-regenerated": "node conformance/v2-regenerated/generate.mjs --check",
+    "conformance:transparency": "node conformance/transparency/generate.mjs --check",
+    "conformance:check:anchors": "node conformance/anchor-statement/generate.mjs --check && node conformance/anchor-namespace/generate.mjs --check && node conformance/anchor-descriptor/generate.mjs --check && node conformance/anchor-attempt/generate.mjs --check && node conformance/connector/generate.mjs --check",
+    "test:python": "cd python && pytest",
+    "test:async-signers": "node scripts/test-async-signers.mjs",
+    "test:conformance:legacy": "python3 -B conformance/legacy/run.py -- node conformance/legacy/adapters/node.mjs",
+    "test:conformance:legacy-runner": "python3 -B -m unittest discover -s conformance/legacy -p test_runner.py",
+    "check:versions": "node scripts/check-versions.mjs",
+    "check:pack": "node scripts/check-pack.mjs",
+    "check:coherence": "node scripts/check-coherence.mjs",
+    "check:frozen": "node scripts/check-frozen-vectors.mjs",
+    "verify:install": "node scripts/verify-install.mjs",
+    "bench": "node bench/run.mjs --quick",
+    "bench:quick": "node bench/run.mjs --quick",
+    "bench:scale": "node bench/run.mjs",
+    "bench:generate": "node bench/generate.mjs",
+    "bench:micro": "node bench/micro.mjs",
+    "bench:replay": "node packages/core/bench/replay.mjs"
+  },
+  "license": "Apache-2.0"
+}

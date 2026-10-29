@@ -1,0 +1,823 @@
+[
+ {
+  "data": {
+   "adapterPolicyHash": "0x00c3498e2744943663475d0187ca979cdd09763b88427781883693c4b8c163a7",
+   "canonicalLineageId": "lineage:no-review-power",
+   "domain": {
+    "chainId": "31337",
+    "deploymentId": "core-0.2-reference:no-review-power",
+    "protocol": "continuity",
+    "verifyingContract": "0x0000000000000000000000000000000000003002",
+    "version": "0.2"
+   },
+   "finality": "LOCAL_ONLY",
+   "globalPolicySourceId": "policy-source:no-review-power",
+   "policyVersion": "local-evidence-intake-policy:no-review-power/0.2",
+   "rootRecognitionPolicy": "declared-principal-root/0.2",
+   "timeSource": "EVENT_TIMESTAMP",
+   "versions": {
+    "administrativeAuthorizationVersion": "continuity-administrative-authorization/0.2",
+    "authorizationProofVersion": "continuity-authorization-proof/0.2",
+    "eventSchemaVersion": "continuity-event/0.2",
+    "queryEnvelopeVersion": "continuity-query-envelope/0.2",
+    "receiptSchemaVersion": "continuity-receipt/0.2",
+    "runtimeAuthorizationVersion": "continuity-runtime-authorization/0.2",
+    "signatureScheme": "eip191-personal-sign-keccak256"
+   }
+  },
+  "id": "no-review-power:genesis",
+  "timestamp": 0,
+  "type": "DEPLOYMENT_INITIALIZED"
+ },
+ {
+  "data": {
+   "principalId": "principal:no-review-power"
+  },
+  "id": "no-review-power:principal",
+  "timestamp": 1,
+  "type": "PRINCIPAL_CREATED"
+ },
+ {
+  "data": {
+   "agentId": "a:no-review-power",
+   "controllerId": "controller:no-review-power",
+   "initialControlEpoch": 1,
+   "principalId": "principal:no-review-power"
+  },
+  "id": "no-review-power:a",
+  "timestamp": 2,
+  "type": "AGENT_CREATED"
+ },
+ {
+  "data": {
+   "agentId": "b:no-review-power",
+   "controllerId": "controller:no-review-power",
+   "initialControlEpoch": 1,
+   "principalId": "principal:no-review-power"
+  },
+  "id": "no-review-power:b",
+  "timestamp": 3,
+  "type": "AGENT_CREATED"
+ },
+ {
+  "data": {
+   "exclusive": true,
+   "principalId": "principal:no-review-power",
+   "roleId": "role:no-review-power"
+  },
+  "id": "no-review-power:role",
+  "timestamp": 4,
+  "type": "ROLE_CREATED"
+ },
+ {
+  "data": {
+   "permittedEventTypes": [
+    "AGENT_TERMINATED",
+    "ROLE_TRANSFERRED",
+    "OBLIGATION_PERFORMANCE_ASSIGNED"
+   ],
+   "predecessorAgentId": "a:no-review-power",
+   "principalId": "principal:no-review-power",
+   "roleId": "role:no-review-power",
+   "ruleId": "succession:no-review-power",
+   "successorAgentId": "b:no-review-power",
+   "trigger": "AGENT_TERMINATED"
+  },
+  "id": "no-review-power:succession",
+  "timestamp": 5,
+  "type": "SUCCESSION_RULE_DECLARED"
+ },
+ {
+  "data": {
+   "agentId": "a:no-review-power",
+   "principalId": "principal:no-review-power",
+   "roleId": "role:no-review-power",
+   "roleTenureId": "tenure-a:no-review-power",
+   "successionRuleId": "succession:no-review-power",
+   "tenureNumber": 1
+  },
+  "id": "no-review-power:appointment",
+  "timestamp": 6,
+  "type": "AGENT_APPOINTED"
+ },
+ {
+  "data": {
+   "agentId": "a:no-review-power",
+   "controlEpoch": 1,
+   "controllerId": "controller:no-review-power",
+   "credentialAddress": "0x5935897A39AFABbedA5a599D38236E7Df151C8b8",
+   "credentialKeyId": "key:no-review-power:a",
+   "expiresAt": 10000,
+   "sessionId": "session:no-review-power:a"
+  },
+  "id": "no-review-power:session-a",
+  "timestamp": 7,
+  "type": "RUNTIME_SESSION_ADMITTED"
+ },
+ {
+  "data": {
+   "grant": {
+    "authorityId": "collect-authority:no-review-power",
+    "constraints": {
+     "actions": [
+      "collect-evidence-packet"
+     ],
+     "expiresAt": 1000,
+     "maxDelegationDepth": 0,
+     "quantitative": false,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "resource:no-review-power"
+     ]
+    },
+    "granteeId": "a:no-review-power",
+    "grantorId": "principal:no-review-power",
+    "independent": true,
+    "kind": "PERMISSION",
+    "rootAuthorityId": "collect-authority:no-review-power"
+   }
+  },
+  "id": "no-review-power:collect-authority",
+  "timestamp": 8,
+  "type": "AUTHORITY_GRANTED"
+ },
+ {
+  "data": {
+   "grant": {
+    "authorityId": "obligate-authority:no-review-power",
+    "constraints": {
+     "actions": [
+      "OBLIGATE"
+     ],
+     "expiresAt": 1000,
+     "maxDelegationDepth": 0,
+     "quantitative": false,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "resource:no-review-power"
+     ]
+    },
+    "granteeId": "a:no-review-power",
+    "grantorId": "principal:no-review-power",
+    "independent": true,
+    "kind": "PERMISSION",
+    "rootAuthorityId": "obligate-authority:no-review-power"
+   }
+  },
+  "id": "no-review-power:obligate-authority",
+  "timestamp": 9,
+  "type": "AUTHORITY_GRANTED"
+ },
+ {
+  "data": {
+   "grant": {
+    "authorityId": "review-authority:no-review-power",
+    "constraints": {
+     "actions": [
+      "ASSIGN_PERFORMANCE",
+      "record-collection-disposition"
+     ],
+     "expiresAt": 1000,
+     "maxDelegationDepth": 0,
+     "quantitative": false,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "obligation:no-review-power"
+     ]
+    },
+    "granteeId": "b:no-review-power",
+    "grantorId": "principal:no-review-power",
+    "independent": true,
+    "kind": "PERMISSION",
+    "rootAuthorityId": "review-authority:no-review-power"
+   }
+  },
+  "id": "no-review-power:review-authority",
+  "timestamp": 10,
+  "type": "AUTHORITY_GRANTED"
+ },
+ {
+  "data": {
+   "grant": {
+    "authorityId": "progress-a-authority:no-review-power",
+    "constraints": {
+     "actions": [
+      "record-review-progress"
+     ],
+     "expiresAt": 1000,
+     "maxDelegationDepth": 0,
+     "quantitative": false,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "obligation:no-review-power"
+     ]
+    },
+    "granteeId": "a:no-review-power",
+    "grantorId": "principal:no-review-power",
+    "independent": true,
+    "kind": "PERMISSION",
+    "rootAuthorityId": "progress-a-authority:no-review-power"
+   }
+  },
+  "id": "no-review-power:progress-a-authority",
+  "timestamp": 11,
+  "type": "AUTHORITY_GRANTED"
+ },
+ {
+  "data": {
+   "grant": {
+    "authorityId": "progress-b-authority:no-review-power",
+    "constraints": {
+     "actions": [
+      "record-review-progress"
+     ],
+     "expiresAt": 1000,
+     "maxDelegationDepth": 0,
+     "quantitative": false,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "obligation:no-review-power"
+     ]
+    },
+    "granteeId": "b:no-review-power",
+    "grantorId": "principal:no-review-power",
+    "independent": true,
+    "kind": "PERMISSION",
+    "rootAuthorityId": "progress-b-authority:no-review-power"
+   }
+  },
+  "id": "no-review-power:progress-b-authority",
+  "timestamp": 12,
+  "type": "AUTHORITY_GRANTED"
+ },
+ {
+  "data": {
+   "action": "collect-evidence-packet",
+   "actorId": "a:no-review-power",
+   "adapterProfile": {
+    "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+    "profileId": "adapter:simulated",
+    "profileVersion": "1"
+   },
+   "intentId": "intent:no-review-power",
+   "nonce": "nonce:no-review-power",
+   "resource": "resource:no-review-power",
+   "roleId": "role:no-review-power",
+   "roleTenureId": "tenure-a:no-review-power",
+   "termsCommitment": "0x531feda90af9a8ff0fa66cd5441c74ef83dd91d2a0ac39bc1012ec9a990305b6"
+  },
+  "id": "no-review-power:declared",
+  "timestamp": 13,
+  "type": "TRANSACTION_INTENT_DECLARED"
+ },
+ {
+  "data": {
+   "authorizationProof": {
+    "authorityEvidence": [
+     {
+      "authorityId": "collect-authority:no-review-power",
+      "grantEventId": "no-review-power:collect-authority",
+      "grantEventPosition": 8
+     }
+    ],
+    "checkedProhibitionIds": [],
+    "consequential": true,
+    "controlEpoch": 1,
+    "controllingAuthorityIds": [
+     "collect-authority:no-review-power"
+    ],
+    "credentialKeyId": "key:no-review-power:a",
+    "domain": {
+     "chainId": "31337",
+     "deploymentId": "core-0.2-reference:no-review-power",
+     "protocol": "continuity",
+     "verifyingContract": "0x0000000000000000000000000000000000003002",
+     "version": "0.2"
+    },
+    "effectiveConstraints": {
+     "actions": [
+      "collect-evidence-packet"
+     ],
+     "expiresAt": 1000,
+     "maxDelegationDepth": 0,
+     "quantitative": false,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "resource:no-review-power"
+     ]
+    },
+    "evaluationTime": 14,
+    "historyHead": {
+     "canonicalTime": 13,
+     "hash": "0xb876fe939ccf5d2dab1525acf29547466e34bcdbf4b774a14e720cfd5064d893",
+     "position": 13
+    },
+    "intentId": "intent:no-review-power",
+    "intersections": [],
+    "nonce": "nonce:no-review-power",
+    "permissionPath": [
+     {
+      "authorityId": "collect-authority:no-review-power",
+      "constraints": {
+       "actions": [
+        "collect-evidence-packet"
+       ],
+       "expiresAt": 1000,
+       "maxDelegationDepth": 0,
+       "quantitative": false,
+       "requiredIntersectionIds": [],
+       "resources": [
+        "resource:no-review-power"
+       ]
+      },
+      "granteeId": "a:no-review-power",
+      "grantorId": "principal:no-review-power",
+      "independent": true,
+      "kind": "PERMISSION",
+      "rootAuthorityId": "collect-authority:no-review-power"
+     }
+    ],
+    "policyVersion": "local-evidence-intake-policy:no-review-power/0.2",
+    "proofVersion": "continuity-authorization-proof/0.2",
+    "recognizedRoot": {
+     "principalId": "principal:no-review-power",
+     "principalRecognitionEventId": "no-review-power:principal",
+     "rootAuthorityId": "collect-authority:no-review-power",
+     "rootGrantEventId": "no-review-power:collect-authority"
+    },
+    "request": {
+     "action": "collect-evidence-packet",
+     "actorId": "a:no-review-power",
+     "claimedAt": 13,
+     "resource": "resource:no-review-power",
+     "termsCommitment": "0x531feda90af9a8ff0fa66cd5441c74ef83dd91d2a0ac39bc1012ec9a990305b6"
+    },
+    "roleId": "role:no-review-power",
+    "roleTenureId": "tenure-a:no-review-power",
+    "rootRecognitionPolicy": "declared-principal-root/0.2",
+    "runtimeSessionId": "session:no-review-power:a",
+    "usageSnapshot": []
+   },
+   "evaluationTime": 14,
+   "expectedHistoryHead": {
+    "canonicalTime": 13,
+    "hash": "0xb876fe939ccf5d2dab1525acf29547466e34bcdbf4b774a14e720cfd5064d893",
+    "position": 13
+   },
+   "intentId": "intent:no-review-power",
+   "runtimeAuthorizationHash": "0xbe7a36aa4ca2d8d71a9a8c556d6abdc9ddec40b9424edf87bcca8cee2c1198d5",
+   "runtimeSignature": "0xc20d602d9db9eb2552321680002c8a16a41bd50d33d2bdae5c138869ce56890c112fe06f3c8cda0cff5ec938f4d580de04fa2a875f9448a326991f848f045c881c"
+  },
+  "id": "no-review-power:admission",
+  "timestamp": 14,
+  "type": "TRANSACTION_INTENT_ADMITTED"
+ },
+ {
+  "data": {
+   "acknowledgment": {
+    "adapterProfile": {
+     "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+     "profileId": "adapter:simulated",
+     "profileVersion": "1"
+    },
+    "admissionHead": {
+     "canonicalTime": 14,
+     "hash": "0x7dab1b4432d8b64b36331006d9b6938763e0aca5df85a15ce837cc50f8b157c4",
+     "position": 14
+    },
+    "domain": {
+     "chainId": "31337",
+     "deploymentId": "core-0.2-reference:no-review-power",
+     "protocol": "continuity",
+     "verifyingContract": "0x0000000000000000000000000000000000003002",
+     "version": "0.2"
+    },
+    "idempotencyKey": "0xfd2d8612d2940a5702f8c911a9bddf8a4c25cf568d1fffcda817bcbfe5afdfd1",
+    "intentId": "intent:no-review-power",
+    "kind": "ACKNOWLEDGMENT",
+    "result": {
+     "kind": "SIMULATED_SUBMISSION",
+     "submissionReference": "0x8a539167e4c0a7f540dbb02a175720ed101ffac676ac2822e5c9fb2fe751ae4d"
+    },
+    "schemaVersion": "continuity-adapter-acknowledgment/0.2",
+    "submissionFingerprint": "0x8a539167e4c0a7f540dbb02a175720ed101ffac676ac2822e5c9fb2fe751ae4d"
+   },
+   "adapterId": "adapter:simulated",
+   "evidenceReference": {
+    "attesterId": "adapter:simulated",
+    "evidenceType": "continuity-adapter-acknowledgment/0.2",
+    "kind": "EXTERNAL",
+    "reference": "0x2f85716d3f867797e874ae0499e770c794cefbc14a0ed84f1ce54ef3c18fef53"
+   },
+   "idempotencyKey": "0xfd2d8612d2940a5702f8c911a9bddf8a4c25cf568d1fffcda817bcbfe5afdfd1",
+   "intentId": "intent:no-review-power",
+   "status": "SUBMITTED",
+   "submissionFingerprint": "0x8a539167e4c0a7f540dbb02a175720ed101ffac676ac2822e5c9fb2fe751ae4d",
+   "transactionReference": "0x8a539167e4c0a7f540dbb02a175720ed101ffac676ac2822e5c9fb2fe751ae4d"
+  },
+  "id": "event:local:consumption:d16a928fb1d3506c4ced004e7810b0dea123ac9e92aeb729be066a3e8f2308cb",
+  "timestamp": 15,
+  "type": "TRANSACTION_INTENT_CONSUMED"
+ },
+ {
+  "data": {
+   "authorizationProofHash": "0x7ffb1575606cd31044aed6a988d1c6d9f778bc87cc677a4d4ad0b8c1aa353ceb",
+   "controlEpoch": 1,
+   "intentId": "intent:no-review-power",
+   "issuerAgentId": "a:no-review-power",
+   "receiptArtifactCommitment": "0x6cbe3aceff58ac4a01f95fe53770f2eb5f99d51a93f7cb5dc32db6f5ecebde5d",
+   "receiptContentHash": "0xc947aeba9cb871eaeef959d855cd710c3f8cf163dc991dcdd29fd7996b110ab4",
+   "roleId": "role:no-review-power",
+   "roleTenureId": "tenure-a:no-review-power",
+   "runtimeSessionId": "session:no-review-power:a"
+  },
+  "id": "case:no-review-power:receipt",
+  "timestamp": 16,
+  "type": "RECEIPT_RECORDED"
+ },
+ {
+  "data": {
+   "attesterId": "adapter:simulated",
+   "evidenceReference": {
+    "attesterId": "adapter:simulated",
+    "evidenceType": "continuity-local-review-pending/0.2",
+    "kind": "EXTERNAL",
+    "reference": "case:no-review-power:review-pending"
+   },
+   "intentId": "intent:no-review-power",
+   "status": "OUTCOME_UNKNOWN"
+  },
+  "id": "no-review-power:outcome-unknown",
+  "timestamp": 17,
+  "type": "TRANSACTION_OUTCOME_RECORDED"
+ },
+ {
+  "data": {
+   "actorId": "a:no-review-power",
+   "administrativeAuthorization": {
+    "authorityProof": {
+     "authorityEvidence": [
+      {
+       "authorityId": "obligate-authority:no-review-power",
+       "grantEventId": "no-review-power:obligate-authority",
+       "grantEventPosition": 9
+      }
+     ],
+     "checkedProhibitionIds": [],
+     "consequential": false,
+     "controllingAuthorityIds": [
+      "obligate-authority:no-review-power"
+     ],
+     "domain": {
+      "chainId": "31337",
+      "deploymentId": "core-0.2-reference:no-review-power",
+      "protocol": "continuity",
+      "verifyingContract": "0x0000000000000000000000000000000000003002",
+      "version": "0.2"
+     },
+     "effectiveConstraints": {
+      "actions": [
+       "OBLIGATE"
+      ],
+      "expiresAt": 1000,
+      "maxDelegationDepth": 0,
+      "quantitative": false,
+      "requiredIntersectionIds": [],
+      "resources": [
+       "resource:no-review-power"
+      ]
+     },
+     "evaluationTime": 18,
+     "historyHead": {
+      "canonicalTime": 17,
+      "hash": "0x38c8971d348816db145d58a6d6a378c97fac4df524dc69f8fe8ba903887b2eac",
+      "position": 17
+     },
+     "intersections": [],
+     "permissionPath": [
+      {
+       "authorityId": "obligate-authority:no-review-power",
+       "constraints": {
+        "actions": [
+         "OBLIGATE"
+        ],
+        "expiresAt": 1000,
+        "maxDelegationDepth": 0,
+        "quantitative": false,
+        "requiredIntersectionIds": [],
+        "resources": [
+         "resource:no-review-power"
+        ]
+       },
+       "granteeId": "a:no-review-power",
+       "grantorId": "principal:no-review-power",
+       "independent": true,
+       "kind": "PERMISSION",
+       "rootAuthorityId": "obligate-authority:no-review-power"
+      }
+     ],
+     "policyVersion": "local-evidence-intake-policy:no-review-power/0.2",
+     "proofVersion": "continuity-authorization-proof/0.2",
+     "recognizedRoot": {
+      "principalId": "principal:no-review-power",
+      "principalRecognitionEventId": "no-review-power:principal",
+      "rootAuthorityId": "obligate-authority:no-review-power",
+      "rootGrantEventId": "no-review-power:obligate-authority"
+     },
+     "request": {
+      "action": "OBLIGATE",
+      "actorId": "a:no-review-power",
+      "claimedAt": 18,
+      "resource": "resource:no-review-power",
+      "termsCommitment": "0x531feda90af9a8ff0fa66cd5441c74ef83dd91d2a0ac39bc1012ec9a990305b6"
+     },
+     "rootRecognitionPolicy": "declared-principal-root/0.2",
+     "usageSnapshot": []
+    },
+    "challenge": {
+     "authoritative": true,
+     "authorityProofHash": "0x9faab768864f7cb667af8ac2ba7afc72514aafb53ed53e1c939dbe2f6a97e6e8",
+     "consequential": true,
+     "controlEpoch": 1,
+     "credentialKeyId": "key:no-review-power:a",
+     "domain": {
+      "chainId": "31337",
+      "deploymentId": "core-0.2-reference:no-review-power",
+      "protocol": "continuity",
+      "verifyingContract": "0x0000000000000000000000000000000000003002",
+      "version": "0.2"
+     },
+     "evaluationTime": 18,
+     "eventHistoryHash": "0x38c8971d348816db145d58a6d6a378c97fac4df524dc69f8fe8ba903887b2eac",
+     "eventHistoryPosition": 17,
+     "policyVersion": "local-evidence-intake-policy:no-review-power/0.2",
+     "request": {
+      "action": "OBLIGATE",
+      "actorId": "a:no-review-power",
+      "claimedAt": 18,
+      "resource": "resource:no-review-power",
+      "termsCommitment": "0x531feda90af9a8ff0fa66cd5441c74ef83dd91d2a0ac39bc1012ec9a990305b6"
+     },
+     "roleId": "role:no-review-power",
+     "roleTenureId": "tenure-a:no-review-power",
+     "rootRecognitionPolicy": "declared-principal-root/0.2",
+     "runtimeSessionId": "session:no-review-power:a",
+     "transitionEffectHash": "0x1d23a793a81a91f0912c6a33a6dfe47ac820e03b12d650ee1f13f3e99fe761e5",
+     "transitionEventId": "no-review-power:obligation",
+     "transitionEventType": "OBLIGATION_CREATED",
+     "version": "continuity-administrative-authorization/0.2"
+    },
+    "runtimeSignature": "0x02461450294225c254b7774d9d56a894e581d93d6f8e7f51328213e0943b64c147c516ec86849a9a330946dea65eeb975c2e6348b03ad30bbdbc10d9e8a631d41c"
+   },
+   "record": {
+    "beneficiaryId": "principal:no-review-power",
+    "causalReceiptContentHash": "0xc947aeba9cb871eaeef959d855cd710c3f8cf163dc991dcdd29fd7996b110ab4",
+    "creationRoleTenureId": "tenure-a:no-review-power",
+    "deadline": 1000,
+    "description": "Review the collected synthetic packet; account for the unresolved investigation.",
+    "durableRoleId": "role:no-review-power",
+    "obligationId": "obligation:no-review-power",
+    "performanceAssigneeId": "a:no-review-power",
+    "sourceIntentId": "intent:no-review-power",
+    "status": "OPEN",
+    "successionRuleId": "succession:no-review-power",
+    "termsCommitment": "0x531feda90af9a8ff0fa66cd5441c74ef83dd91d2a0ac39bc1012ec9a990305b6",
+    "transitionPolicies": [
+     {
+      "acceptedAttesterIds": [
+       "adapter:simulated"
+      ],
+      "action": "record-collection-disposition",
+      "fromStatus": "OPEN",
+      "requiredAuthorityIds": [
+       "review-authority:no-review-power"
+      ],
+      "toStatus": "OUTCOME_UNKNOWN"
+     }
+    ],
+    "trigger": "event:local:consumption:d16a928fb1d3506c4ced004e7810b0dea123ac9e92aeb729be066a3e8f2308cb"
+   }
+  },
+  "id": "no-review-power:obligation",
+  "timestamp": 18,
+  "type": "OBLIGATION_CREATED"
+ },
+ {
+  "data": {
+   "agentId": "a:no-review-power",
+   "controllerId": "controller:no-review-power",
+   "fromEpoch": 1,
+   "toEpoch": 2
+  },
+  "id": "no-review-power:epoch",
+  "timestamp": 19,
+  "type": "CONTROL_EPOCH_ADVANCED"
+ },
+ {
+  "data": {
+   "agentId": "a:no-review-power",
+   "principalId": "principal:no-review-power",
+   "roleId": "role:no-review-power",
+   "roleTenureId": "tenure-a:no-review-power",
+   "successionRuleId": "succession:no-review-power"
+  },
+  "id": "no-review-power:terminated",
+  "timestamp": 20,
+  "type": "AGENT_TERMINATED"
+ },
+ {
+  "data": {
+   "fromAgentId": "a:no-review-power",
+   "fromRoleTenureId": "tenure-a:no-review-power",
+   "principalId": "principal:no-review-power",
+   "roleId": "role:no-review-power",
+   "successionRuleId": "succession:no-review-power",
+   "toAgentId": "b:no-review-power",
+   "toRoleTenureId": "tenure-b:no-review-power",
+   "toTenureNumber": 2,
+   "transferKind": "SUCCESSION"
+  },
+  "id": "no-review-power:transfer",
+  "timestamp": 21,
+  "type": "ROLE_TRANSFERRED"
+ },
+ {
+  "data": {
+   "agentId": "b:no-review-power",
+   "controlEpoch": 1,
+   "controllerId": "controller:no-review-power",
+   "credentialAddress": "0xa78Cac12f68179fd780Ae347F8D4F170FC615D0C",
+   "credentialKeyId": "key:no-review-power:b",
+   "expiresAt": 10000,
+   "sessionId": "session:no-review-power:b"
+  },
+  "id": "no-review-power:session-b",
+  "timestamp": 22,
+  "type": "RUNTIME_SESSION_ADMITTED"
+ },
+ {
+  "data": {
+   "actorId": "b:no-review-power",
+   "administrativeAuthorization": {
+    "authorityProof": {
+     "authorityEvidence": [
+      {
+       "authorityId": "review-authority:no-review-power",
+       "grantEventId": "no-review-power:review-authority",
+       "grantEventPosition": 10
+      }
+     ],
+     "checkedProhibitionIds": [],
+     "consequential": false,
+     "controllingAuthorityIds": [
+      "review-authority:no-review-power"
+     ],
+     "domain": {
+      "chainId": "31337",
+      "deploymentId": "core-0.2-reference:no-review-power",
+      "protocol": "continuity",
+      "verifyingContract": "0x0000000000000000000000000000000000003002",
+      "version": "0.2"
+     },
+     "effectiveConstraints": {
+      "actions": [
+       "ASSIGN_PERFORMANCE",
+       "record-collection-disposition"
+      ],
+      "expiresAt": 1000,
+      "maxDelegationDepth": 0,
+      "quantitative": false,
+      "requiredIntersectionIds": [],
+      "resources": [
+       "obligation:no-review-power"
+      ]
+     },
+     "evaluationTime": 23,
+     "historyHead": {
+      "canonicalTime": 22,
+      "hash": "0x2fc6466ad90f502575c49dd538fc50bb2b1073dda20a86707cdbfe9cfff815d4",
+      "position": 22
+     },
+     "intersections": [],
+     "permissionPath": [
+      {
+       "authorityId": "review-authority:no-review-power",
+       "constraints": {
+        "actions": [
+         "ASSIGN_PERFORMANCE",
+         "record-collection-disposition"
+        ],
+        "expiresAt": 1000,
+        "maxDelegationDepth": 0,
+        "quantitative": false,
+        "requiredIntersectionIds": [],
+        "resources": [
+         "obligation:no-review-power"
+        ]
+       },
+       "granteeId": "b:no-review-power",
+       "grantorId": "principal:no-review-power",
+       "independent": true,
+       "kind": "PERMISSION",
+       "rootAuthorityId": "review-authority:no-review-power"
+      }
+     ],
+     "policyVersion": "local-evidence-intake-policy:no-review-power/0.2",
+     "proofVersion": "continuity-authorization-proof/0.2",
+     "recognizedRoot": {
+      "principalId": "principal:no-review-power",
+      "principalRecognitionEventId": "no-review-power:principal",
+      "rootAuthorityId": "review-authority:no-review-power",
+      "rootGrantEventId": "no-review-power:review-authority"
+     },
+     "request": {
+      "action": "ASSIGN_PERFORMANCE",
+      "actorId": "b:no-review-power",
+      "claimedAt": 23,
+      "resource": "obligation:no-review-power"
+     },
+     "rootRecognitionPolicy": "declared-principal-root/0.2",
+     "usageSnapshot": []
+    },
+    "challenge": {
+     "authoritative": true,
+     "authorityProofHash": "0xf9219a7d8a8fe1d8cf860728643fb58771bd877268d1bea1f2ebfe8d6410ba98",
+     "consequential": true,
+     "controlEpoch": 1,
+     "credentialKeyId": "key:no-review-power:b",
+     "domain": {
+      "chainId": "31337",
+      "deploymentId": "core-0.2-reference:no-review-power",
+      "protocol": "continuity",
+      "verifyingContract": "0x0000000000000000000000000000000000003002",
+      "version": "0.2"
+     },
+     "evaluationTime": 23,
+     "eventHistoryHash": "0x2fc6466ad90f502575c49dd538fc50bb2b1073dda20a86707cdbfe9cfff815d4",
+     "eventHistoryPosition": 22,
+     "policyVersion": "local-evidence-intake-policy:no-review-power/0.2",
+     "request": {
+      "action": "ASSIGN_PERFORMANCE",
+      "actorId": "b:no-review-power",
+      "claimedAt": 23,
+      "resource": "obligation:no-review-power"
+     },
+     "roleId": "role:no-review-power",
+     "roleTenureId": "tenure-b:no-review-power",
+     "rootRecognitionPolicy": "declared-principal-root/0.2",
+     "runtimeSessionId": "session:no-review-power:b",
+     "transitionEffectHash": "0x2ddac53bf2e80d5f3547fb0643f976c86671e75176aeae281c8641265dff5809",
+     "transitionEventId": "no-review-power:assignment",
+     "transitionEventType": "OBLIGATION_PERFORMANCE_ASSIGNED",
+     "version": "continuity-administrative-authorization/0.2"
+    },
+    "runtimeSignature": "0x38dd594168c16bfc985fba656c604cf903f8732e08e6d5c9f81b0a5f8c7465ac0a80cb8b2b0cec5f6203e1a557d71ed4c470118bd3d4016c92cca39ec862efb41c"
+   },
+   "fromAgentId": "a:no-review-power",
+   "obligationId": "obligation:no-review-power",
+   "successionRuleId": "succession:no-review-power",
+   "toAgentId": "b:no-review-power"
+  },
+  "id": "no-review-power:assignment",
+  "timestamp": 23,
+  "type": "OBLIGATION_PERFORMANCE_ASSIGNED"
+ },
+ {
+  "data": {
+   "authorityId": "collect-authority:no-review-power",
+   "revokerId": "principal:no-review-power"
+  },
+  "id": "no-review-power:tutorial-revoke-a",
+  "timestamp": 24,
+  "type": "AUTHORITY_REVOKED"
+ },
+ {
+  "data": {
+   "authorityId": "progress-b-authority:no-review-power",
+   "revokerId": "principal:no-review-power"
+  },
+  "id": "no-review-power:tutorial-revoke-b-review",
+  "timestamp": 25,
+  "type": "AUTHORITY_REVOKED"
+ },
+ {
+  "data": {
+   "action": "collect-evidence-packet",
+   "actorId": "a:no-review-power",
+   "adapterProfile": {
+    "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+    "profileId": "adapter:simulated",
+    "profileVersion": "1"
+   },
+   "intentId": "stale-intent:no-review-power",
+   "nonce": "stale-nonce:no-review-power",
+   "resource": "resource:no-review-power",
+   "roleId": "role:no-review-power",
+   "roleTenureId": "tenure-a:no-review-power",
+   "termsCommitment": "0x531feda90af9a8ff0fa66cd5441c74ef83dd91d2a0ac39bc1012ec9a990305b6"
+  },
+  "id": "no-review-power:stale-declared",
+  "timestamp": 26,
+  "type": "TRANSACTION_INTENT_DECLARED"
+ }
+]

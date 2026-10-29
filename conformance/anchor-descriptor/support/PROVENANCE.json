@@ -1,0 +1,20 @@
+{
+  "scope": "CONFORMANCE_SUPPORT_ONLY_NOT_PRODUCTION_EXPORT",
+  "copied": [
+    {
+      "path": "descriptors.mjs",
+      "sha256": "391d6dc4a991da24cc0cc88f09008d24ea046e97847cec89ce7cf810b3caadec",
+      "bytes": 11653,
+      "source": "reviewed-descriptor-capsule-v2/src/descriptors.mjs",
+      "change": "none"
+    },
+    {
+      "path": "canonical.mjs",
+      "sha256": "648d36e64bedea05dfb174e3b556e3d85f68ab28af771414c62989e825812ce5",
+      "bytes": 7159,
+      "source": "reviewed-descriptor-capsule-v2/src/canonical.mjs",
+      "change": "none"
+    }
+  ],
+  "adapter": "profiles.mjs replaces standalone profile wiring with actual production helper; descriptor and canonical bytes unchanged."
+}

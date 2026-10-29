@@ -1,0 +1,1374 @@
+[
+ {
+  "id": "event:budget:3",
+  "type": "DEPLOYMENT_INITIALIZED",
+  "timestamp": 100,
+  "data": {
+   "adapterPolicyHash": "0x00c3498e2744943663475d0187ca979cdd09763b88427781883693c4b8c163a7",
+   "canonicalLineageId": "lineage:budget:1",
+   "domain": {
+    "protocol": "irontrellis",
+    "version": "2",
+    "deploymentId": "irontrellis-conformance-v2"
+   },
+   "finality": "LOCAL_ONLY",
+   "globalPolicySourceId": "policy:budget:2",
+   "nextKeyDigests": [
+    "0xec02d39d050ad408f7a0fa6a75604753cc9e4fafc6f78262a2026f3181832762"
+   ],
+   "ownerKeys": [
+    {
+     "credential": "0x967e264fa6b2e89fcfab4df3d4291cd1482a3a5a9f3836c9ce8f80d112d2ac4d",
+     "keyId": "owner:1",
+     "scheme": "ed25519"
+    }
+   ],
+   "policyVersion": "irontrellis-local-owner/2",
+   "rootRecognitionPolicy": "declared-principal-root/0.2",
+   "timeSource": "EVENT_TIMESTAMP",
+   "versions": {
+    "eventSchemaVersion": "irontrellis-event/2",
+    "historyHashAlgorithm": "sha256",
+    "recordChainVersion": "irontrellis-record/2",
+    "stateDerivationVersion": "irontrellis-state/2",
+    "projectionVersion": "irontrellis-projection/2",
+    "receiptSchemaVersion": "irontrellis-receipt/2",
+    "controlAuthorizationVersion": "irontrellis-control-authorization/2",
+    "queryEnvelopeVersion": "continuity-query-envelope/0.2",
+    "authorizationProofVersion": "irontrellis-authorization-proof/2",
+    "runtimeAuthorizationVersion": "irontrellis-runtime-authorization/2",
+    "administrativeAuthorizationVersion": "irontrellis-administrative-authorization/2",
+    "signatureScheme": "ed25519"
+   }
+  }
+ },
+ {
+  "id": "event:budget:4",
+  "type": "PRINCIPAL_CREATED",
+  "timestamp": 100,
+  "data": {
+   "principalId": "operations",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xa81e4c0630d049bd5a315926afb22cc3144fd9899e511bdcb770158d673fdecc3a16800bb19a5e697d9f04c5be1a662bb9c1c865d84e67985095eae955c9060c"
+   }
+  }
+ },
+ {
+  "id": "event:budget:5",
+  "type": "AGENT_CREATED",
+  "timestamp": 100,
+  "data": {
+   "agentId": "spender",
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x4dd61cc95b462726a58f13d706a8905c2263087f382f211ce449f96b3b91d26a1eee05bb999b4f40984bcd536cc5e1194da469c3a66064df005f0b6390599002"
+   }
+  }
+ },
+ {
+  "id": "event:budget:6",
+  "type": "ROLE_CREATED",
+  "timestamp": 101,
+  "data": {
+   "exclusive": true,
+   "principalId": "operations",
+   "roleId": "cashier",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x7892da6045577789bbf357b29ea0fbb58f92f47cf58c6e8625591dec3ffb017538a69d9f971255a4284580df6bda7f4061dd361b06a941978a22ef5eb6f6bc02"
+   }
+  }
+ },
+ {
+  "id": "event:budget:7",
+  "type": "AGENT_APPOINTED",
+  "timestamp": 102,
+  "data": {
+   "agentId": "spender",
+   "principalId": "operations",
+   "roleId": "cashier",
+   "roleTenureId": "cashier:1",
+   "tenureNumber": 1,
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x5ce1b8f2166d1effc076574a47a548f1c1cb7b782c9514dd58d64355a919975c4828a253424ad25a98310f7dbbf6327ee46162e6ade0bff5ccbdebd5cac65501"
+   }
+  }
+ },
+ {
+  "id": "event:budget:8",
+  "type": "RUNTIME_SESSION_ADMITTED",
+  "timestamp": 103,
+  "data": {
+   "agentId": "spender",
+   "controlEpoch": 1,
+   "controllerId": "operator",
+   "credentialKeyId": "key:spender",
+   "credentialPublicKey": "0xcb75fed9c52f386f38a12a8aaffd593eab63603ae28b8056b894e8d08d53d71f",
+   "credentialScheme": "ed25519",
+   "expiresAt": 5000,
+   "sessionId": "session:spender",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x036cee1e7e00a598ff1c0b2bca2f60b66bfe1e95a3acede97a51ba256c070a12b7ec7bcce39474135484b8917fe576e4fa7f692775c38b71d67ff3e68fe80102"
+   }
+  }
+ },
+ {
+  "id": "event:budget:9",
+  "type": "AGENT_CREATED",
+  "timestamp": 104,
+  "data": {
+   "agentId": "gateway",
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xd869d869d437da04dde20ea89027386cb9b4fd9d4161de2cbcf534b3ff061bc94469ba61309a2e7f4b049e0eca9c1b4cf9b0ee7f6567d371a0a212c1f2707c0f"
+   }
+  }
+ },
+ {
+  "id": "event:budget:10",
+  "type": "RUNTIME_SESSION_ADMITTED",
+  "timestamp": 105,
+  "data": {
+   "agentId": "gateway",
+   "controlEpoch": 1,
+   "controllerId": "operator",
+   "credentialKeyId": "key:gateway",
+   "credentialPublicKey": "0xf30c274884eeddb70820f55bfd49114f00457292d2468e8f98a6f72efdeec445",
+   "credentialScheme": "ed25519",
+   "expiresAt": 5000,
+   "sessionId": "session:gateway",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xb2d6a7512f74a1497c0ea3f0b4ca4880be0e53abf8458e0cc16c7d8941afb542cff790ec555ada84c349655e0353f14e6181424a4a52cd2f02e717d64b0e3e0c"
+   }
+  }
+ },
+ {
+  "id": "event:budget:11",
+  "type": "AUTHORITY_GRANTED",
+  "timestamp": 106,
+  "data": {
+   "grant": {
+    "authorityId": "metered",
+    "constraints": {
+     "actions": [
+      "spend"
+     ],
+     "expiresAt": 5000,
+     "maxAmount": "100",
+     "maxDelegationDepth": 0,
+     "quantitative": true,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "petty-cash",
+      "petty-cash-2",
+      "petty-cash-3",
+      "petty-cash-4"
+     ]
+    },
+    "granteeId": "spender",
+    "grantorId": "operations",
+    "independent": true,
+    "kind": "PERMISSION",
+    "rootAuthorityId": "metered"
+   },
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x61c64566aa71ce3e17c0304a3602abf3b4ecd10f0b73238fa97b303787ef3cf892e2e6c012416c5d961e28b7f419a58aa427ffd8c6725a2188f69468fa350407"
+   }
+  }
+ },
+ {
+  "id": "budget:1",
+  "type": "BUDGET_DECLARED",
+  "timestamp": 106,
+  "data": {
+   "budgetId": "b-amount",
+   "subjects": {
+    "actorIds": [
+     "spender"
+    ],
+    "roleIds": null,
+    "actions": [
+     "spend"
+    ],
+    "resources": [
+     "petty-cash"
+    ]
+   },
+   "metric": "amount",
+   "period": {
+    "kind": "FIXED_WINDOW",
+    "lengthMs": 1000,
+    "originMs": 0,
+    "carryUnused": true,
+    "carryCap": "50"
+   },
+   "amountCap": "100",
+   "countCap": null,
+   "perOperationCap": null,
+   "notBefore": null,
+   "expiresAt": null,
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x93616af02c6e34f3ea6233a06179d4461155c30616eb049be741eb4667a6531b9f42a57493117b46ec72df82b39bf59c998c0a6b17934edaa44e7d51cd837e03"
+   }
+  }
+ },
+ {
+  "id": "budget:2",
+  "type": "BUDGET_DECLARED",
+  "timestamp": 106,
+  "data": {
+   "budgetId": "c-count",
+   "subjects": {
+    "actorIds": [
+     "spender"
+    ],
+    "roleIds": null,
+    "actions": [
+     "spend"
+    ],
+    "resources": [
+     "petty-cash"
+    ]
+   },
+   "metric": "amount",
+   "period": {
+    "kind": "NONE"
+   },
+   "amountCap": null,
+   "countCap": 2,
+   "perOperationCap": null,
+   "notBefore": null,
+   "expiresAt": null,
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x435e0be596860d0c9b1976870a983ca8d220cf9f22e52a893b55526215793405ef25390e2d09da32b87384d6776aee8b10b09a5f1c464b656bdfe799e42a9a0c"
+   }
+  }
+ },
+ {
+  "id": "operation:0xaac09bcc4ec6d9bc22cb5b6e5696ff9792c4e9dc046f646d9e24e095de9aba9f",
+  "type": "TRANSACTION_INTENT_DECLARED",
+  "timestamp": 107,
+  "data": {
+   "action": "spend",
+   "actorId": "spender",
+   "adapterProfile": {
+    "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+    "profileId": "adapter:simulated",
+    "profileVersion": "1"
+   },
+   "amount": "60",
+   "intentId": "spend:1",
+   "nonce": "operation:spend:1",
+   "resource": "petty-cash",
+   "roleId": "cashier",
+   "roleTenureId": "cashier:1",
+   "termsCommitment": "0xcf5cf7b40bc5a64605195380ba3d4640ecc2894919b30ce37044d341760ca4af",
+   "declarationAuthorization": {
+    "runtimeSessionId": "session:spender",
+    "credentialKeyId": "key:spender",
+    "controlEpoch": 1,
+    "hash": "0xd5bfb7963ac5921f924419829fffbc4577cbae8610129329e00909aa4c9786dd",
+    "signature": "0x00a4dee0fa0b7110c40df22925b1e3f9afebd9680671715cf11de473b338c6579656f845f5c497efb02d14be6743b0689289a22b842eda5680a5e6ab35f9710f"
+   }
+  }
+ },
+ {
+  "id": "admission:0xc74bed25e1418fea260277d3f18a9ff4a823788d770aed3db99f08eb47cc8f1f",
+  "type": "TRANSACTION_INTENT_ADMITTED",
+  "timestamp": 107,
+  "data": {
+   "authorizationProof": {
+    "authorityEvidence": [
+     {
+      "authorityId": "metered",
+      "grantEventId": "event:budget:11",
+      "grantEventPosition": 8
+     }
+    ],
+    "checkedProhibitionIds": [],
+    "consequential": true,
+    "controlEpoch": 1,
+    "controllingAuthorityIds": [
+     "metered"
+    ],
+    "credentialKeyId": "key:spender",
+    "domain": {
+     "protocol": "irontrellis",
+     "version": "2",
+     "deploymentId": "irontrellis-conformance-v2"
+    },
+    "effectiveConstraints": {
+     "actions": [
+      "spend"
+     ],
+     "expiresAt": 5000,
+     "maxAmount": "100",
+     "maxDelegationDepth": 0,
+     "quantitative": true,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "petty-cash",
+      "petty-cash-2",
+      "petty-cash-3",
+      "petty-cash-4"
+     ]
+    },
+    "evaluationTime": 107,
+    "historyHead": {
+     "hash": "0x06a0897f377565205594039d988082c72974f5a9f0412d035582123fff09dc77",
+     "position": 11,
+     "canonicalTime": 107
+    },
+    "intentId": "spend:1",
+    "intersections": [],
+    "nonce": "operation:spend:1",
+    "permissionPath": [
+     {
+      "authorityId": "metered",
+      "constraints": {
+       "actions": [
+        "spend"
+       ],
+       "expiresAt": 5000,
+       "maxAmount": "100",
+       "maxDelegationDepth": 0,
+       "quantitative": true,
+       "requiredIntersectionIds": [],
+       "resources": [
+        "petty-cash",
+        "petty-cash-2",
+        "petty-cash-3",
+        "petty-cash-4"
+       ]
+      },
+      "granteeId": "spender",
+      "grantorId": "operations",
+      "independent": true,
+      "kind": "PERMISSION",
+      "rootAuthorityId": "metered"
+     }
+    ],
+    "policyVersion": "irontrellis-local-owner/2",
+    "proofVersion": "irontrellis-authorization-proof/2",
+    "recognizedRoot": {
+     "principalId": "operations",
+     "principalRecognitionEventId": "event:budget:4",
+     "rootAuthorityId": "metered",
+     "rootGrantEventId": "event:budget:11"
+    },
+    "request": {
+     "action": "spend",
+     "actorId": "spender",
+     "amount": "60",
+     "claimedAt": 107,
+     "resource": "petty-cash",
+     "termsCommitment": "0xcf5cf7b40bc5a64605195380ba3d4640ecc2894919b30ce37044d341760ca4af"
+    },
+    "roleId": "cashier",
+    "roleTenureId": "cashier:1",
+    "rootRecognitionPolicy": "declared-principal-root/0.2",
+    "runtimeSessionId": "session:spender",
+    "usageSnapshot": []
+   },
+   "evaluationTime": 107,
+   "expectedHistoryHead": {
+    "hash": "0x06a0897f377565205594039d988082c72974f5a9f0412d035582123fff09dc77",
+    "position": 11,
+    "canonicalTime": 107
+   },
+   "intentId": "spend:1",
+   "runtimeAuthorizationHash": "0x416f5355948bdae697c723cf2aacb6ca8e09cc80a1f849ddf0ac2fb4977f0f91",
+   "runtimeSignature": "0xf3f07971896ca683baa376ae0ae0c3f386f23299a32d918c80764469415f81ec935f057c0de942468094d6eeaf1e647a14a9f836fb888a775e58da43696be601"
+  }
+ },
+ {
+  "id": "operation:0x21f96b1d145be5dcfaf3048da0b5b94a70e62c1d29722016b484d225baadbb24",
+  "type": "TRANSACTION_INTENT_DECLARED",
+  "timestamp": 108,
+  "data": {
+   "action": "spend",
+   "actorId": "spender",
+   "adapterProfile": {
+    "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+    "profileId": "adapter:simulated",
+    "profileVersion": "1"
+   },
+   "amount": "30",
+   "intentId": "spend:2",
+   "nonce": "operation:spend:2",
+   "resource": "petty-cash",
+   "roleId": "cashier",
+   "roleTenureId": "cashier:1",
+   "termsCommitment": "0xf3e7a08e13378b31c9001ebc33f73bcebf63e082dc072d8a0b9201953e0a7feb",
+   "declarationAuthorization": {
+    "runtimeSessionId": "session:spender",
+    "credentialKeyId": "key:spender",
+    "controlEpoch": 1,
+    "hash": "0x020e3b815fb7985e42d42fffd55568e3b1c581ecf3e1165676a3bdd0bdc7b4da",
+    "signature": "0x2edb017520a01b9ab9f4420a3e980e68998babc00c6118af4e5cb91ee3821d45991739a5e874fc4584e84e6e84cfa8603a19bbc3ce7ad243523e30098c25da0d"
+   }
+  }
+ },
+ {
+  "id": "admission:0x809107ef256b59ed978ab33a937b04e2fa8f1e9b10370c8284f2536f3d5dfc7e",
+  "type": "TRANSACTION_INTENT_ADMITTED",
+  "timestamp": 108,
+  "data": {
+   "authorizationProof": {
+    "authorityEvidence": [
+     {
+      "authorityId": "metered",
+      "grantEventId": "event:budget:11",
+      "grantEventPosition": 8
+     }
+    ],
+    "checkedProhibitionIds": [],
+    "consequential": true,
+    "controlEpoch": 1,
+    "controllingAuthorityIds": [
+     "metered"
+    ],
+    "credentialKeyId": "key:spender",
+    "domain": {
+     "protocol": "irontrellis",
+     "version": "2",
+     "deploymentId": "irontrellis-conformance-v2"
+    },
+    "effectiveConstraints": {
+     "actions": [
+      "spend"
+     ],
+     "expiresAt": 5000,
+     "maxAmount": "100",
+     "maxDelegationDepth": 0,
+     "quantitative": true,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "petty-cash",
+      "petty-cash-2",
+      "petty-cash-3",
+      "petty-cash-4"
+     ]
+    },
+    "evaluationTime": 108,
+    "historyHead": {
+     "hash": "0xc27f4c3efc911a0eaeb4b266def1edba375b15ab0ba19a26ba97a24ab7d12744",
+     "position": 13,
+     "canonicalTime": 108
+    },
+    "intentId": "spend:2",
+    "intersections": [],
+    "nonce": "operation:spend:2",
+    "permissionPath": [
+     {
+      "authorityId": "metered",
+      "constraints": {
+       "actions": [
+        "spend"
+       ],
+       "expiresAt": 5000,
+       "maxAmount": "100",
+       "maxDelegationDepth": 0,
+       "quantitative": true,
+       "requiredIntersectionIds": [],
+       "resources": [
+        "petty-cash",
+        "petty-cash-2",
+        "petty-cash-3",
+        "petty-cash-4"
+       ]
+      },
+      "granteeId": "spender",
+      "grantorId": "operations",
+      "independent": true,
+      "kind": "PERMISSION",
+      "rootAuthorityId": "metered"
+     }
+    ],
+    "policyVersion": "irontrellis-local-owner/2",
+    "proofVersion": "irontrellis-authorization-proof/2",
+    "recognizedRoot": {
+     "principalId": "operations",
+     "principalRecognitionEventId": "event:budget:4",
+     "rootAuthorityId": "metered",
+     "rootGrantEventId": "event:budget:11"
+    },
+    "request": {
+     "action": "spend",
+     "actorId": "spender",
+     "amount": "30",
+     "claimedAt": 108,
+     "resource": "petty-cash",
+     "termsCommitment": "0xf3e7a08e13378b31c9001ebc33f73bcebf63e082dc072d8a0b9201953e0a7feb"
+    },
+    "roleId": "cashier",
+    "roleTenureId": "cashier:1",
+    "rootRecognitionPolicy": "declared-principal-root/0.2",
+    "runtimeSessionId": "session:spender",
+    "usageSnapshot": []
+   },
+   "evaluationTime": 108,
+   "expectedHistoryHead": {
+    "hash": "0xc27f4c3efc911a0eaeb4b266def1edba375b15ab0ba19a26ba97a24ab7d12744",
+    "position": 13,
+    "canonicalTime": 108
+   },
+   "intentId": "spend:2",
+   "runtimeAuthorizationHash": "0x6cf73e1368e1de6e9cdef56797540d45dc0a5d6dbcd456bc8ed132557e6e6dcc",
+   "runtimeSignature": "0x12a38467e4ed9cffeb3ab895e9e909c7c92505c2c5a885d492dc106235ea10b42029c9e70482574a3d1166539b6ca1e1de2bc48a1f486b0f312265ada8667b04"
+  }
+ },
+ {
+  "id": "refusal:3",
+  "type": "REQUEST_REFUSED",
+  "timestamp": 108,
+  "data": {
+   "refusalId": "refusal:amount",
+   "refusalSource": "BUDGET",
+   "request": {
+    "actorId": "spender",
+    "action": "spend",
+    "resource": "petty-cash",
+    "claimedAt": 108,
+    "amount": "20"
+   },
+   "evaluationTime": 108,
+   "expectedHistoryHead": {
+    "hash": "0x5fabadf9f1dbe90f046d73f76a7f7d0dcbe571e6b58906c5551a48a61a183c58",
+    "position": 14,
+    "canonicalTime": 108
+   },
+   "decision": "DENY",
+   "code": "BUDGET_AMOUNT_EXCEEDED",
+   "budgetId": "b-amount",
+   "runtimeSessionId": "session:spender",
+   "credentialKeyId": "key:spender",
+   "controlEpoch": 1,
+   "refusalAuthorization": {
+    "hash": "0x078fc0456398d319bcc3f7e35100987d3cbb6a33ddfa5e67090847bfb78220bc",
+    "signature": "0xfa29f2c53237f97ced69e196397232d596d4c572b7c6f248f3e686e96aa430fa5b44d536cbd7183347dde09c9e9b102fdbffd5e024acec3f5481f98999d82300"
+   }
+  }
+ },
+ {
+  "id": "refusal:4",
+  "type": "REQUEST_REFUSED",
+  "timestamp": 108,
+  "data": {
+   "refusalId": "refusal:count",
+   "refusalSource": "BUDGET",
+   "request": {
+    "actorId": "spender",
+    "action": "spend",
+    "resource": "petty-cash",
+    "claimedAt": 108,
+    "amount": "5"
+   },
+   "evaluationTime": 108,
+   "expectedHistoryHead": {
+    "hash": "0x68eea7d5ec4b9f768f84dde0ef88a1c12d28a5ff60afa81e9e911c770483525e",
+    "position": 15,
+    "canonicalTime": 108
+   },
+   "decision": "DENY",
+   "code": "BUDGET_COUNT_EXCEEDED",
+   "budgetId": "c-count",
+   "runtimeSessionId": "session:spender",
+   "credentialKeyId": "key:spender",
+   "controlEpoch": 1,
+   "refusalAuthorization": {
+    "hash": "0x38da0dd94dffe27a8de289e464e35a80c78db3c2b9c9bc2e39a673759621aa00",
+    "signature": "0x440aedebb0135c7323a1e3696b460822f6c62d11773dfd5cffeca5d16aa6f7cee03a6ecea8614f8a63c042397254563bb60496de3f9c6079d087bce75bc40e0b"
+   }
+  }
+ },
+ {
+  "id": "refusal:5",
+  "type": "REQUEST_REFUSED",
+  "timestamp": 108,
+  "data": {
+   "refusalId": "refusal:core",
+   "refusalSource": "CORE",
+   "request": {
+    "actorId": "spender",
+    "action": "spend",
+    "resource": "petty-cash",
+    "claimedAt": 108,
+    "amount": "101"
+   },
+   "evaluationTime": 108,
+   "expectedHistoryHead": {
+    "hash": "0xe2a099356a9210d0eb3dce31b1b0f5507bd203228d1464f417cd728c89c8a66a",
+    "position": 16,
+    "canonicalTime": 108
+   },
+   "decision": "DENY",
+   "code": "AMOUNT_EXCEEDED",
+   "runtimeSessionId": "session:spender",
+   "credentialKeyId": "key:spender",
+   "controlEpoch": 1,
+   "refusalAuthorization": {
+    "hash": "0x406cb5dedf3a3709abb9be96d98d6300e20a8e7ca31300b81498545e03bc9eac",
+    "signature": "0xc53e205f4616dbbbd43292360698cf7260c2f4b362a6ed10dbfc08b9a1be0db52357cc6f4f1460153b601921c54daa3b301c4f82d10e24559c54232639662a0a"
+   }
+  }
+ },
+ {
+  "id": "budget:6",
+  "type": "BUDGET_DECLARED",
+  "timestamp": 108,
+  "data": {
+   "budgetId": "d-perop",
+   "subjects": {
+    "actorIds": null,
+    "roleIds": null,
+    "actions": [
+     "spend"
+    ],
+    "resources": [
+     "petty-cash-2"
+    ]
+   },
+   "metric": "amount",
+   "period": {
+    "kind": "NONE"
+   },
+   "amountCap": null,
+   "countCap": null,
+   "perOperationCap": "40",
+   "notBefore": null,
+   "expiresAt": null,
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xaad02d76739f84f7c284949e66489d3869dd95a4f6e54c0051b1c4b80d754ca82dd78eb477a28dc2b1fe2d59d84aba1359ff86c83c1704f72cbc849475ca7806"
+   }
+  }
+ },
+ {
+  "id": "budget:7",
+  "type": "BUDGET_DECLARED",
+  "timestamp": 108,
+  "data": {
+   "budgetId": "e-future",
+   "subjects": {
+    "actorIds": null,
+    "roleIds": null,
+    "actions": null,
+    "resources": [
+     "petty-cash-3"
+    ]
+   },
+   "metric": "amount",
+   "period": {
+    "kind": "FIXED_WINDOW",
+    "lengthMs": 1000,
+    "originMs": 2000,
+    "carryUnused": false,
+    "carryCap": null
+   },
+   "amountCap": "10",
+   "countCap": null,
+   "perOperationCap": null,
+   "notBefore": null,
+   "expiresAt": null,
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x6b6edb694737c4ff75ac307a6f2bef52e3997907171c5ad236bf992e2e4d4f417cc7f9ad90532c4a93c208b317ec5683d6ad88fc8d123eecce75ca780b51450c"
+   }
+  }
+ },
+ {
+  "id": "budget:8",
+  "type": "BUDGET_DECLARED",
+  "timestamp": 108,
+  "data": {
+   "budgetId": "f-expired",
+   "subjects": {
+    "actorIds": null,
+    "roleIds": null,
+    "actions": null,
+    "resources": [
+     "petty-cash-4"
+    ]
+   },
+   "metric": "amount",
+   "period": {
+    "kind": "NONE"
+   },
+   "amountCap": "1",
+   "countCap": null,
+   "perOperationCap": null,
+   "notBefore": null,
+   "expiresAt": 1050,
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xf97102fe2c80391a5e568715ff9a5b1369eaef2b2a5c16260365c510415e76a486699dc643f06dce110072a97e728911afcc9054bfbb44f67ed70b53a6702005"
+   }
+  }
+ },
+ {
+  "id": "budget:9",
+  "type": "BUDGET_DECLARED",
+  "timestamp": 108,
+  "data": {
+   "budgetId": "g-role",
+   "subjects": {
+    "actorIds": null,
+    "roleIds": [
+     "cashier"
+    ],
+    "actions": [
+     "spend"
+    ],
+    "resources": [
+     "petty-cash-4"
+    ]
+   },
+   "metric": "amount",
+   "period": {
+    "kind": "NONE"
+   },
+   "amountCap": null,
+   "countCap": null,
+   "perOperationCap": "30",
+   "notBefore": null,
+   "expiresAt": null,
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x2def5c15b713c13a79631565819aaccb0152a360cd90218113a3ef8f2284a76188ba0f5cf474e6bbdd65584e12c695c8a3f9f492b79fe795d8eb6dde1fc45406"
+   }
+  }
+ },
+ {
+  "id": "refusal:10",
+  "type": "REQUEST_REFUSED",
+  "timestamp": 108,
+  "data": {
+   "refusalId": "refusal:perop",
+   "refusalSource": "BUDGET",
+   "request": {
+    "actorId": "spender",
+    "action": "spend",
+    "resource": "petty-cash-2",
+    "claimedAt": 108,
+    "amount": "45"
+   },
+   "evaluationTime": 108,
+   "expectedHistoryHead": {
+    "hash": "0xd8651e72374bda0fe6c783268d68accf6202b83ce57b031784ad74f3fd3287fe",
+    "position": 21,
+    "canonicalTime": 108
+   },
+   "decision": "DENY",
+   "code": "BUDGET_PER_OPERATION_EXCEEDED",
+   "budgetId": "d-perop",
+   "runtimeSessionId": "session:spender",
+   "credentialKeyId": "key:spender",
+   "controlEpoch": 1,
+   "refusalAuthorization": {
+    "hash": "0xb7fa9d93c69b7b5211060d349d6817c1e7035096823fb1ee101d8db279668915",
+    "signature": "0x2a545065d85db583d139d5830d3d2a8ddd9d16c6b1b3969486ff6ee6bf95ef142ec49ab126aed40d09f26877faedc138d4eb350f7236685afa63d4c6416eb707"
+   }
+  }
+ },
+ {
+  "id": "refusal:11",
+  "type": "REQUEST_REFUSED",
+  "timestamp": 108,
+  "data": {
+   "refusalId": "refusal:connector",
+   "refusalSource": "CONNECTOR",
+   "request": {
+    "actorId": "spender",
+    "action": "spend",
+    "resource": "petty-cash",
+    "claimedAt": 108,
+    "amount": "7"
+   },
+   "evaluationTime": 108,
+   "expectedHistoryHead": {
+    "hash": "0x79373e29110adb1580cf0df061cad882c79a51196d85498768fffbbcfde7155c",
+    "position": 22,
+    "canonicalTime": 108
+   },
+   "decision": "DENY",
+   "code": "CONNECTOR_REFUSED",
+   "connector": {
+    "connectorId": "gateway",
+    "refusalCode": "UPSTREAM_UNAVAILABLE",
+    "detailDigest": "0xfcde4c56d206465f4bef7531e351b2297f1ade04fd7d5ca16fa67c0b3f0dc7d9"
+   },
+   "runtimeSessionId": "session:gateway",
+   "credentialKeyId": "key:gateway",
+   "controlEpoch": 1,
+   "refusalAuthorization": {
+    "hash": "0xb1dd246a09d78c906ffca4d5f89017dccd0c8f64a490db8a9baeac9bc0d77daa",
+    "signature": "0x498255964c4d29a084f5e31363fa873839f04b27c9ddba53c7aefc4a523a88e25d2177cb2537a099cba129a120b04817e790508671f5f50c9fd933f13b59030e"
+   }
+  }
+ },
+ {
+  "id": "checkpoint:12",
+  "type": "STATE_CHECKPOINT",
+  "timestamp": 108,
+  "data": {
+   "checkpointId": "cp:1",
+   "head": {
+    "hash": "0xa6038f15d63a8ac50ced8f985fae25ff444489c0b2f13576659ecf5ea2949290",
+    "position": 23
+   },
+   "stateRoot": "0x3fd08f20672ff942f53cb0472288dbb07d2e65f30d7f10b2174ca606a30c1ef1",
+   "recordCount": 52,
+   "derivationVersion": "irontrellis-state/2",
+   "projectionHead": "0x025f8dc4c31983b0e02116fc514ada406bfb3c536cafd817df89b586b170ae52",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x7fffb09fc846d1515b272aabfab7205f9b0c1b9b2c15dc17050b52264855a85fdba0b1a262eb9ff9cfaa4e04f1dc3884b14c3c0398b72452c43b4012b14a5304"
+   }
+  }
+ },
+ {
+  "id": "effect:13",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 108,
+  "data": {
+   "effectId": "effect:1",
+   "intentId": "spend:1",
+   "measurer": {
+    "kind": "SESSION",
+    "id": "spender"
+   },
+   "metric": "amount",
+   "unit": "units",
+   "amount": "60",
+   "observedAt": 108,
+   "detailDigest": null,
+   "runtimeSessionId": "session:spender",
+   "credentialKeyId": "key:spender",
+   "controlEpoch": 1,
+   "effectAuthorization": {
+    "hash": "0x9adc77ba684070ec87631c6504260642d4524f4d7391909c930053ea3b519ea3",
+    "signature": "0x9dedcd053e5475d3a7c1533d526b8ebae66f61c53ca2a1ca5d9fd051b1094fd0d1167e4c3e5988f4d7865bffb37dd5b08f2a60010294e4449d55680f411fbc0c"
+   }
+  }
+ },
+ {
+  "id": "counterparty:14",
+  "type": "COUNTERPARTY_REGISTERED",
+  "timestamp": 108,
+  "data": {
+   "counterpartyId": "acme",
+   "keys": [
+    {
+     "keyId": "acme:1",
+     "scheme": "ed25519",
+     "credential": "0xe82a9aa41d740c74b238550f6fe970ba946e98499381af855c1bd0c3f616c26b"
+    }
+   ],
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x8043b87c8f061091682769afde82970a6d7538001ae633e96045dc7e8453614505354ae184a006bea1910b26452e288800114d42d979f2dc104ea732a6e86309"
+   }
+  }
+ },
+ {
+  "id": "cpr:15",
+  "type": "COUNTERPARTY_RECEIPT_RECORDED",
+  "timestamp": 108,
+  "data": {
+   "intentId": "spend:1",
+   "envelope": {
+    "version": "irontrellis-counterparty-receipt/2",
+    "historyId": "0xf0c2c667199de5f8260aef78c62d9886182b1987c552f29208ecbd449a092c62",
+    "counterpartyId": "acme",
+    "keyId": "acme:1",
+    "logicalId": "spend:1",
+    "intentDigest": "0xd5bfb7963ac5921f924419829fffbc4577cbae8610129329e00909aa4c9786dd",
+    "payloadDigest": "0xbb4101aa4c698dd0ca655e9f0589e7881ce567eef2f9b61e70e4ecc1d1251dc3",
+    "amount": "60",
+    "outcome": "DELIVERED",
+    "observedAt": 108,
+    "previousReceiptDigest": null,
+    "signature": "0x7b9195c3219e9c5876ef69e6f66562e6aad427d8ad153352f75e6d836fd0f48bd95345e0d1ae01e10b1d4a9e9866eb9f1101687e8284e60703c56387c969370e"
+   },
+   "runtimeSessionId": "session:spender",
+   "credentialKeyId": "key:spender",
+   "controlEpoch": 1,
+   "recordAuthorization": {
+    "hash": "0x8685b211d800b9e5282b005247e049dacf6fc8b2d246f6bb948444af5fed9276",
+    "signature": "0x2bb0ec74cadc0da7158f682905ef632b6968291d2673d1f37da411387e139e5c42a71bc5da3226249605f725eda62b3ce73e27da40f3710be018868fcd778207"
+   }
+  }
+ },
+ {
+  "id": "cpr:16",
+  "type": "COUNTERPARTY_RECEIPT_RECORDED",
+  "timestamp": 108,
+  "data": {
+   "intentId": "spend:2",
+   "envelope": {
+    "version": "irontrellis-counterparty-receipt/2",
+    "historyId": "0xf0c2c667199de5f8260aef78c62d9886182b1987c552f29208ecbd449a092c62",
+    "counterpartyId": "acme",
+    "keyId": "acme:1",
+    "logicalId": "spend:2",
+    "intentDigest": "0x020e3b815fb7985e42d42fffd55568e3b1c581ecf3e1165676a3bdd0bdc7b4da",
+    "payloadDigest": "0x2237e80c5dcef18a4cea887a43689f6702ede51e2ddec584ff90f3f3e623c1f9",
+    "amount": "30",
+    "outcome": "DELIVERED",
+    "observedAt": 108,
+    "previousReceiptDigest": "0xe8316c34e19d15ae7c33c268683dfa9f96304f48f5d7ed2681952c27702059af",
+    "signature": "0x0f49ae0feeaa162a4cceb08c38a76c8f164df45e6b4b3ee8e6c62405c5f260cf884cf09dc026e096db5ef99a89613731103763b050a990a5a5b904083a146b08"
+   },
+   "runtimeSessionId": "session:spender",
+   "credentialKeyId": "key:spender",
+   "controlEpoch": 1,
+   "recordAuthorization": {
+    "hash": "0x0bd25096090fbf223e362780deb0a9961f3d64e7b57aa7ef9053b006eb3da9c5",
+    "signature": "0x1f2e1e068fa59dd49a816ed012b586788fffbf2ec29137db7903b14413db64471ad7dd31a8d771ea2cde2524adab3f2944c8f66d95ffc8ec1ff77ebb7ca37b07"
+   }
+  }
+ },
+ {
+  "id": "budget:17",
+  "type": "BUDGET_UPDATED",
+  "timestamp": 108,
+  "data": {
+   "budgetId": "c-count",
+   "subjects": {
+    "actorIds": [
+     "spender"
+    ],
+    "roleIds": null,
+    "actions": [
+     "spend"
+    ],
+    "resources": [
+     "petty-cash"
+    ]
+   },
+   "amountCap": null,
+   "countCap": 3,
+   "perOperationCap": null,
+   "expiresAt": null,
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x25d71b0449cd04c66f75b050f81487feaab6a6305f9730918b6178b16d9acb9d72114d3e20d4b62052ed16ebd94e5f6a31d8d5f9dbe580b20a80f2f7e9132302"
+   }
+  }
+ },
+ {
+  "id": "operation:0xd0ba8c4d44608153a29a3a4b6b7397820269d8bf2db2f86cf9265077a7bbe4b7",
+  "type": "TRANSACTION_INTENT_DECLARED",
+  "timestamp": 109,
+  "data": {
+   "action": "spend",
+   "actorId": "spender",
+   "adapterProfile": {
+    "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+    "profileId": "adapter:simulated",
+    "profileVersion": "1"
+   },
+   "amount": "5",
+   "intentId": "spend:3",
+   "nonce": "operation:spend:3",
+   "resource": "petty-cash",
+   "roleId": "cashier",
+   "roleTenureId": "cashier:1",
+   "termsCommitment": "0x7c517b74c2e4be8395c3c8d7ee5aad8c01e53f3c9c008dde25b948930bbb3cd5",
+   "declarationAuthorization": {
+    "runtimeSessionId": "session:spender",
+    "credentialKeyId": "key:spender",
+    "controlEpoch": 1,
+    "hash": "0xb5c375e52776b804e69dad67df076d828b63e0ba0f6b91846abf9798e468f122",
+    "signature": "0x37ea8f1671bfb8326a0a325bacc640a227db532355de40455b7783a77cfe6a9a7b2cae7da867b42af9e95477ec81e1ef92d401cd6de99559e2ed354168605309"
+   }
+  }
+ },
+ {
+  "id": "admission:0xb65c45a2e6c12a377f5f620177bd2108f13d274b1ab48f17d5535ed073b2dcdb",
+  "type": "TRANSACTION_INTENT_ADMITTED",
+  "timestamp": 109,
+  "data": {
+   "authorizationProof": {
+    "authorityEvidence": [
+     {
+      "authorityId": "metered",
+      "grantEventId": "event:budget:11",
+      "grantEventPosition": 8
+     }
+    ],
+    "checkedProhibitionIds": [],
+    "consequential": true,
+    "controlEpoch": 1,
+    "controllingAuthorityIds": [
+     "metered"
+    ],
+    "credentialKeyId": "key:spender",
+    "domain": {
+     "protocol": "irontrellis",
+     "version": "2",
+     "deploymentId": "irontrellis-conformance-v2"
+    },
+    "effectiveConstraints": {
+     "actions": [
+      "spend"
+     ],
+     "expiresAt": 5000,
+     "maxAmount": "100",
+     "maxDelegationDepth": 0,
+     "quantitative": true,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "petty-cash",
+      "petty-cash-2",
+      "petty-cash-3",
+      "petty-cash-4"
+     ]
+    },
+    "evaluationTime": 109,
+    "historyHead": {
+     "hash": "0x4c0a12ee1a0f8c36892a80f39c4c24881978d92d3ed08b98339006ac5178f08a",
+     "position": 30,
+     "canonicalTime": 109
+    },
+    "intentId": "spend:3",
+    "intersections": [],
+    "nonce": "operation:spend:3",
+    "permissionPath": [
+     {
+      "authorityId": "metered",
+      "constraints": {
+       "actions": [
+        "spend"
+       ],
+       "expiresAt": 5000,
+       "maxAmount": "100",
+       "maxDelegationDepth": 0,
+       "quantitative": true,
+       "requiredIntersectionIds": [],
+       "resources": [
+        "petty-cash",
+        "petty-cash-2",
+        "petty-cash-3",
+        "petty-cash-4"
+       ]
+      },
+      "granteeId": "spender",
+      "grantorId": "operations",
+      "independent": true,
+      "kind": "PERMISSION",
+      "rootAuthorityId": "metered"
+     }
+    ],
+    "policyVersion": "irontrellis-local-owner/2",
+    "proofVersion": "irontrellis-authorization-proof/2",
+    "recognizedRoot": {
+     "principalId": "operations",
+     "principalRecognitionEventId": "event:budget:4",
+     "rootAuthorityId": "metered",
+     "rootGrantEventId": "event:budget:11"
+    },
+    "request": {
+     "action": "spend",
+     "actorId": "spender",
+     "amount": "5",
+     "claimedAt": 109,
+     "resource": "petty-cash",
+     "termsCommitment": "0x7c517b74c2e4be8395c3c8d7ee5aad8c01e53f3c9c008dde25b948930bbb3cd5"
+    },
+    "roleId": "cashier",
+    "roleTenureId": "cashier:1",
+    "rootRecognitionPolicy": "declared-principal-root/0.2",
+    "runtimeSessionId": "session:spender",
+    "usageSnapshot": []
+   },
+   "evaluationTime": 109,
+   "expectedHistoryHead": {
+    "hash": "0x4c0a12ee1a0f8c36892a80f39c4c24881978d92d3ed08b98339006ac5178f08a",
+    "position": 30,
+    "canonicalTime": 109
+   },
+   "intentId": "spend:3",
+   "runtimeAuthorizationHash": "0x72572d6673536f7d9a543ecfbe1cacc03370cc6c6cb2228c597deed0e4dd25f9",
+   "runtimeSignature": "0xafe47a99d3802860f37fe0f75075fc20ccbc7668392f8ec2164a13ede4522a6b85110968157444b7adb08d6cb796ac14f7e598a034c045fa5d206fdb8adeb70c"
+  }
+ },
+ {
+  "id": "budget:18",
+  "type": "BUDGET_CLOSED",
+  "timestamp": 109,
+  "data": {
+   "budgetId": "c-count",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x664789e7d443433a4dd129ed4390d06ce4acee60736c283fdbd4bf7381cc950a4cc3675e9cab641b75615549cb3b3bb8ee37e68c43341fae9e8280192d934e01"
+   }
+  }
+ },
+ {
+  "id": "checkpoint:19",
+  "type": "STATE_CHECKPOINT",
+  "timestamp": 109,
+  "data": {
+   "checkpointId": "cp:2",
+   "head": {
+    "hash": "0x8aa1761ba9d27a7bbbcd745ddff45c5b9a3d9a607b803ae96d3815c4658211dc",
+    "position": 32
+   },
+   "stateRoot": "0xd6030a7ed7f54cc344c9d94c76a91600c6bf28d6a49d1ec7ad0313e5219d35c8",
+   "recordCount": 65,
+   "derivationVersion": "irontrellis-state/2",
+   "projectionHead": "0x0570657e7da556b0d216ecfed90c4828e2f970741c5d38bed6ea263e5b4eb0bb",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x8d1b048b926ad90786fbe5fbdb105b97b7e61dac034316e99273f0a3ba47a759cd59b6dec569d6d7b1b406af7db7bafd54d14db16ca11c87f9a1d3513859250c"
+   }
+  }
+ },
+ {
+  "id": "operation:0xb6dd064482928138a5c864f7254bc2f69dfddb769281da7882edca80006a7e2b",
+  "type": "TRANSACTION_INTENT_DECLARED",
+  "timestamp": 1100,
+  "data": {
+   "action": "spend",
+   "actorId": "spender",
+   "adapterProfile": {
+    "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+    "profileId": "adapter:simulated",
+    "profileVersion": "1"
+   },
+   "amount": "55",
+   "intentId": "spend:4",
+   "nonce": "operation:spend:4",
+   "resource": "petty-cash",
+   "roleId": "cashier",
+   "roleTenureId": "cashier:1",
+   "termsCommitment": "0xa161ae6d6129b96db0e7e0435c05b41960304ff71284d0062df357ed593702f3",
+   "declarationAuthorization": {
+    "runtimeSessionId": "session:spender",
+    "credentialKeyId": "key:spender",
+    "controlEpoch": 1,
+    "hash": "0xf0416e77a1f50fb5564e07dff0485c2fb6bf7456b19e6124b26057e06f442b30",
+    "signature": "0x37ec83c0606571290184c29e9553b5c4b9f25a4dee59eb7ce0550f21e34a9ec72366f7af7e1b6c38daad417bb16f81afb8014f21afe4a5328b835c8165479e04"
+   }
+  }
+ },
+ {
+  "id": "admission:0x9b4b1b5490d6793634e88e306b7efbf65d027af22b16b428ba5c4853a9d52496",
+  "type": "TRANSACTION_INTENT_ADMITTED",
+  "timestamp": 1100,
+  "data": {
+   "authorizationProof": {
+    "authorityEvidence": [
+     {
+      "authorityId": "metered",
+      "grantEventId": "event:budget:11",
+      "grantEventPosition": 8
+     }
+    ],
+    "checkedProhibitionIds": [],
+    "consequential": true,
+    "controlEpoch": 1,
+    "controllingAuthorityIds": [
+     "metered"
+    ],
+    "credentialKeyId": "key:spender",
+    "domain": {
+     "protocol": "irontrellis",
+     "version": "2",
+     "deploymentId": "irontrellis-conformance-v2"
+    },
+    "effectiveConstraints": {
+     "actions": [
+      "spend"
+     ],
+     "expiresAt": 5000,
+     "maxAmount": "100",
+     "maxDelegationDepth": 0,
+     "quantitative": true,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "petty-cash",
+      "petty-cash-2",
+      "petty-cash-3",
+      "petty-cash-4"
+     ]
+    },
+    "evaluationTime": 1100,
+    "historyHead": {
+     "hash": "0x42c5cc4f59551c1205e5f009e2de9b46740bb5bc392b4a965197a85981bacd12",
+     "position": 34,
+     "canonicalTime": 1100
+    },
+    "intentId": "spend:4",
+    "intersections": [],
+    "nonce": "operation:spend:4",
+    "permissionPath": [
+     {
+      "authorityId": "metered",
+      "constraints": {
+       "actions": [
+        "spend"
+       ],
+       "expiresAt": 5000,
+       "maxAmount": "100",
+       "maxDelegationDepth": 0,
+       "quantitative": true,
+       "requiredIntersectionIds": [],
+       "resources": [
+        "petty-cash",
+        "petty-cash-2",
+        "petty-cash-3",
+        "petty-cash-4"
+       ]
+      },
+      "granteeId": "spender",
+      "grantorId": "operations",
+      "independent": true,
+      "kind": "PERMISSION",
+      "rootAuthorityId": "metered"
+     }
+    ],
+    "policyVersion": "irontrellis-local-owner/2",
+    "proofVersion": "irontrellis-authorization-proof/2",
+    "recognizedRoot": {
+     "principalId": "operations",
+     "principalRecognitionEventId": "event:budget:4",
+     "rootAuthorityId": "metered",
+     "rootGrantEventId": "event:budget:11"
+    },
+    "request": {
+     "action": "spend",
+     "actorId": "spender",
+     "amount": "55",
+     "claimedAt": 1100,
+     "resource": "petty-cash",
+     "termsCommitment": "0xa161ae6d6129b96db0e7e0435c05b41960304ff71284d0062df357ed593702f3"
+    },
+    "roleId": "cashier",
+    "roleTenureId": "cashier:1",
+    "rootRecognitionPolicy": "declared-principal-root/0.2",
+    "runtimeSessionId": "session:spender",
+    "usageSnapshot": []
+   },
+   "evaluationTime": 1100,
+   "expectedHistoryHead": {
+    "hash": "0x42c5cc4f59551c1205e5f009e2de9b46740bb5bc392b4a965197a85981bacd12",
+    "position": 34,
+    "canonicalTime": 1100
+   },
+   "intentId": "spend:4",
+   "runtimeAuthorizationHash": "0xd51c1041f59541f262cf345b0ad2b063818c6bc494504993e5f114a4525b365b",
+   "runtimeSignature": "0xd9713a346afd9981668d073aa485789d1ea6737d69e65bfceb7e754b8b96a120662cb14d2506e2348c0d2529312c642ad50470b161bca546855ae19aae4be709"
+  }
+ },
+ {
+  "id": "checkpoint:20",
+  "type": "STATE_CHECKPOINT",
+  "timestamp": 1100,
+  "data": {
+   "checkpointId": "cp:3",
+   "head": {
+    "hash": "0xc92cd1baa1438e2d6c0993a5551a8d42763681c6889cbaccf14185ba256e2970",
+    "position": 35
+   },
+   "stateRoot": "0xac8327a6e62f43a197ed91263f1a284c92a27cbb0b9a55e6d13aab3db9993583",
+   "recordCount": 71,
+   "derivationVersion": "irontrellis-state/2",
+   "projectionHead": "0x7fcc530a0b16de14064c71ef378fbd08772d55d1ff8d71c3ee393250071459ca",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xec1207aaa2ab97b307f42ab3a8a21d68dca8dadf141fbc01b89aafa9ea90a3a53873491de7d3530c080447bfe9400e7b928dd57e4ac0512daae5ea4b8447d20b"
+   }
+  }
+ },
+ {
+  "id": "budget:21",
+  "type": "BUDGET_UPDATED",
+  "timestamp": 1100,
+  "data": {
+   "budgetId": "b-amount",
+   "subjects": {
+    "actorIds": [
+     "spender"
+    ],
+    "roleIds": null,
+    "actions": [
+     "spend"
+    ],
+    "resources": [
+     "petty-cash"
+    ]
+   },
+   "amountCap": "60",
+   "countCap": null,
+   "perOperationCap": null,
+   "expiresAt": null,
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x668d980fdd0a15f5b0a352434b970b7af1bbfa73f34b22e207b5323222e1c267a35ef40faa9e561f736cdfc1d41929ec7a32321c71cb29e4dd49898b1cc2af0e"
+   }
+  }
+ },
+ {
+  "id": "budget:22",
+  "type": "BUDGET_UPDATED",
+  "timestamp": 1100,
+  "data": {
+   "budgetId": "d-perop",
+   "subjects": {
+    "actorIds": null,
+    "roleIds": null,
+    "actions": [
+     "spend"
+    ],
+    "resources": [
+     "petty-cash-2",
+     "petty-cash-3"
+    ]
+   },
+   "amountCap": null,
+   "countCap": null,
+   "perOperationCap": "40",
+   "expiresAt": null,
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x951571520af17928e014e29e94da28041982cc07567159f4cfbe4ac7474bbf956930850721c940d7aa1a03c6c134fb7c886724a597be9f45264ad8c3c4cad205"
+   }
+  }
+ },
+ {
+  "id": "checkpoint:23",
+  "type": "STATE_CHECKPOINT",
+  "timestamp": 1100,
+  "data": {
+   "checkpointId": "cp:4",
+   "head": {
+    "hash": "0xf167b8fe9f4e1a894e4d5951441a478c583da7255525590b8a6d269f5f763b6f",
+    "position": 38
+   },
+   "stateRoot": "0x894a9856532aa13585fa1ec4cffec2715d88770739c11a160827de9f670e0dbd",
+   "recordCount": 74,
+   "derivationVersion": "irontrellis-state/2",
+   "projectionHead": "0x3566f7030f62955f2c65dd2883f15b849ca9236c037737b50c121ed69d36891a",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xd3724e502ad3b9085ee6906508e3ea284688d2fc5d8afdac96901717cac721ba93510cd5073c0beea277b87176247516266b5287af1af2243ae2b80468d23601"
+   }
+  }
+ }
+]

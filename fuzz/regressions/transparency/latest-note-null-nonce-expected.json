@@ -1,0 +1,27 @@
+{
+ "id": "latest-note-null-nonce-expected",
+ "target": "transparency",
+ "requires": "python",
+ "found": "pre-release fuzzing, 2026-09-26 (transparency target, seed 3)",
+ "description": "An expected nonce that is null fails closed in both cores with EXPECTATION_INVALID.",
+ "rootCause": "Python verify_latest_note skipped an expectation whose value was None (`expect.get(\"nonce\") is not None`), where TypeScript checks any expectation that is present (`!== undefined`): a caller whose nonce was unexpectedly None accepted an unbound (replayable) answer.",
+ "fix": "latest.ts and transparency.py type-check every expectation field (nonce: canonical base64url of 16..64 bytes, required).",
+ "input": {
+  "kind": "latestVerify",
+  "note": "irontrellis-witness-latest/1\nirontrellis-witness/vectors\n0x49af76147ad14d237097d1171a7792d8bea58defb857a8553d384d38c6dcbe76\nERERERERERERERERERERERERERERERERERERERERERE\n6\n0x13c3cfe33cdeee40c29cc1395f44f3e06ce82b38edbcc294e2f657493c1a6ba9\n5\n7\n1\n1\n\n— irontrellis-witness/vectors vuPJ7UrVPK8okT6rzSJg2gXzJI2Sg08r6suhdrAJNB/KBAr3EEhQx4IRh2Um2Gv+sGB4yyb7NASaHuukDmCNCPvFTgI=\n",
+  "keys": [
+   "irontrellis-witness/vectors+bee3c9ed+AchTrQ8M0rYZrqks7sT9VqJNZJnVhM55JX5Fz9gTm2Cn"
+  ],
+  "expect": {
+   "origin": "irontrellis-witness/vectors",
+   "historyId": "0x49af76147ad14d237097d1171a7792d8bea58defb857a8553d384d38c6dcbe76",
+   "nonce": null
+  }
+ },
+ "expect": {
+  "ts": {
+   "ok": false,
+   "reason": "EXPECTATION_INVALID"
+  }
+ }
+}

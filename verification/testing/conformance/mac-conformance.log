@@ -1,0 +1,3125 @@
+$ node conformance/run.mjs --suite legacy --adapter conformance/adapters/node.mjs --json
+[
+  {
+    "reportVersion": "irontrellis-vector-report/1",
+    "suite": "legacy",
+    "level": "evaluator",
+    "profile": null,
+    "status": "MATCH",
+    "implementation": {
+      "implementation": "irontrellis-core",
+      "language": "typescript",
+      "coreVersion": "1.0.0",
+      "levels": [
+        "verifier",
+        "evaluator"
+      ],
+      "operations": [
+        "replay",
+        "authorize",
+        "evaluate-authority",
+        "survives",
+        "verify-attestation",
+        "headroom",
+        "export",
+        "duty-view"
+      ],
+      "formats": [
+        "continuity-event/0.2",
+        "irontrellis-event/1",
+        "irontrellis-event/2"
+      ]
+    },
+    "selected": 34,
+    "passed": 34,
+    "mismatched": 0,
+    "errors": 0,
+    "notRun": [],
+    "results": [
+      {
+        "id": "replay/accepts-recorded-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/rejects-removed-event",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/rejects-transposed-events",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/rejects-duplicated-event",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/rejects-rewound-timestamp",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/rejects-missing-genesis",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/rejects-empty",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/accepts-prefix",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/successor-may-exercise-its-own-grant",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/successor-does-not-inherit-collection",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/successor-may-not-obligate",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/predecessor-refused-after-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/revoked-successor-review",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/unknown-action-refused",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/unknown-resource-refused",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/unknown-actor-refused",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/expired-grant-refused",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/domain-mismatch-refused",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/policy-mismatch-refused",
+        "status": "PASS"
+      },
+      {
+        "id": "quantitative/within-the-per-purchase-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "quantitative/exactly-at-the-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "quantitative/one-over-the-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "quantitative/zero-is-a-valid-amount",
+        "status": "PASS"
+      },
+      {
+        "id": "quantitative/amount-required",
+        "status": "PASS"
+      },
+      {
+        "id": "quantitative/delegated-budget-narrows",
+        "status": "PASS"
+      },
+      {
+        "id": "quantitative/delegated-budget-honoured",
+        "status": "PASS"
+      },
+      {
+        "id": "quantitative/non-quantitative-authority-ignores-amounts",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/accepts-quantitative-mandate",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/rejects-widened-delegated-budget",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/rejects-dropping-the-quantitative-flag",
+        "status": "PASS"
+      },
+      {
+        "id": "survives/predecessor-after-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "survives/successor-after-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "survives/predecessor-before-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "survives/unknown-agent",
+        "status": "PASS"
+      }
+    ]
+  }
+]
+
+[exit 0]
+$ node conformance/run.mjs --suite v1 --adapter conformance/adapters/node.mjs --json
+[
+  {
+    "reportVersion": "irontrellis-vector-report/1",
+    "suite": "v1",
+    "level": "evaluator",
+    "profile": null,
+    "status": "MATCH",
+    "implementation": {
+      "implementation": "irontrellis-core",
+      "language": "typescript",
+      "coreVersion": "1.0.0",
+      "levels": [
+        "verifier",
+        "evaluator"
+      ],
+      "operations": [
+        "replay",
+        "authorize",
+        "evaluate-authority",
+        "survives",
+        "verify-attestation",
+        "headroom",
+        "export",
+        "duty-view"
+      ],
+      "formats": [
+        "continuity-event/0.2",
+        "irontrellis-event/1",
+        "irontrellis-event/2"
+      ]
+    },
+    "selected": 90,
+    "passed": 90,
+    "mismatched": 0,
+    "errors": 0,
+    "notRun": [],
+    "results": [
+      {
+        "id": "replay/v1/accepts-signed-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/accepts-prefix-before-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-unsigned-control-event",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-tampered-control-signature",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-moved-control-event",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-altered-control-effect",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-undeclared-owner-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/accepts-genesis-commitment",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-genesis-commitment-naming-an-owner-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-genesis-commitment-duplicate-digest",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-genesis-commitment-empty",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/accepts-owner-key-rotation",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-control-event-signed-by-retired-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-rotation-signed-by-unknown-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-retired-key-id-reuse",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-rotation-rebinding-a-key-id",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-rotation-in-legacy-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/accepts-rotation-without-commitment",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/accepts-commitment-only-rotation",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-carry-over-rotation-without-commitment",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/accepts-pre-rotated-rotation",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-rotation-to-uncommitted-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-revealed-key-without-proof",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-pre-rotated-rotation-without-next-commitment",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-commitment-only-rotation-out-of-committed-epoch",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/accepts-anchor",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-bad-anchor",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/accepts-witness-bindings",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-altered-witness-binding",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-witness-binding-with-malformed-receipt",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-witness-binding-with-another-witness-receipt",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-witness-binding-receipt-with-unknown-field",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-witness-binding-with-another-history-receipt",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-witness-binding-with-malformed-policy",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-witness-binding-without-policy",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-witness-binding-quorum-above-bound",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-witness-binding-with-invalid-url",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-witness-binding-with-duplicate-verifier-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-witness-binding-above-sixteen-bound",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-witness-binding-in-legacy-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/accepts-rebinding-a-bound-witness",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-unbinding-of-unbound-witness",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-accepted-loss-of-a-contained-head",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-accepted-loss-of-a-witness-not-unbound",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/accepts-unbinding-with-accepted-loss",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/anchor-shaped-like-a-binding-binds-nothing",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/anchor-shaped-like-a-binding-binds-nothing-without-bindings",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-unknown-anchor-kind",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/accepts-migrated-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-truncated-migrated-prefix",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-incomplete-migrated-prefix",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-shortened-migrated-prefix",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-ed25519-session-in-migrated-prefix",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v1/rejects-witness-binding-in-migrated-prefix",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/successor-may-exercise-its-own-grant",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/successor-does-not-inherit-collection",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/predecessor-refused-after-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/history-relation-unverified",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/causal-time-invalid",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/domain-mismatch",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/allow-via-delegation-with-intersection",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/allow-via-delegation",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/missing-intersection",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/prohibited-root",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/prohibited-global",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/revoked",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/expired",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/not-yet-valid",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/amount-required",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/amount-exceeded",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/amount-within-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/cumulative-amount-exceeded",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/cumulative-amount-honoured",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/transaction-count-exceeded",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/agent-inactive",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/no-authority",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/successor-not-yet-appointed",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/migrated-successor-may-exercise-its-own-grant",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v1/migrated-successor-does-not-inherit-collection",
+        "status": "PASS"
+      },
+      {
+        "id": "survives/v1/predecessor-after-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "survives/v1/successor-after-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "survives/v1/predecessor-before-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "survives/v1/unknown-agent",
+        "status": "PASS"
+      },
+      {
+        "id": "survives/v1/migrated-predecessor-after-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v1/pre-rotation-head-by-retired-key-verifies",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v1/rotation-head-by-retired-key-verifies",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v1/rotation-head-by-new-key-fails",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v1/post-rotation-head-by-retired-key-fails",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v1/post-rotation-head-by-new-key-verifies",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v1/foreign-head-by-new-key-fails",
+        "status": "PASS"
+      }
+    ]
+  }
+]
+
+[exit 0]
+$ node conformance/run.mjs --suite v2 --adapter conformance/adapters/node.mjs --json
+[
+  {
+    "reportVersion": "irontrellis-vector-report/1",
+    "suite": "v2",
+    "level": "evaluator",
+    "profile": "frozen-r2.3",
+    "status": "MATCH",
+    "implementation": {
+      "implementation": "irontrellis-core",
+      "language": "typescript",
+      "coreVersion": "1.0.0",
+      "levels": [
+        "verifier",
+        "evaluator"
+      ],
+      "operations": [
+        "replay",
+        "authorize",
+        "evaluate-authority",
+        "survives",
+        "verify-attestation",
+        "headroom",
+        "export",
+        "duty-view"
+      ],
+      "formats": [
+        "continuity-event/0.2",
+        "irontrellis-event/1",
+        "irontrellis-event/2"
+      ]
+    },
+    "selected": 86,
+    "passed": 86,
+    "mismatched": 0,
+    "errors": 0,
+    "notRun": [],
+    "results": [
+      {
+        "id": "replay/v2/accepts-budget-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/accepts-prefix-through-cp-1",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/accepts-prefix-through-cp-2",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/accepts-prefix-through-cp-3",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/accepts-genesis-only",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-bigint-marker-amount",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-negative-amount",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-leading-zero-amount",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-format1-literals-in-format2-genesis",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-domain-version-1-in-format2",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-moved-control-event",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-budget-declared-without-owner-signature",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-budget-with-no-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-budget-window-zero-length",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-duplicate-budget-id",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-update-of-unknown-budget",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-tampered-budget-declaration",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-admission-over-budget",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-unsigned-intent-declaration",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-intent-declaration-with-wrong-signature",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-intent-declaration-with-altered-amount",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-duplicate-nonce-declaration",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-refusal-not-reproduced",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-refusal-with-tampered-code",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-refusal-that-would-be-allowed",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-refusal-with-stale-head",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-connector-refusal-without-connector",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-refusal-signed-by-stranger",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-checkpoint-with-wrong-state-root",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-checkpoint-with-wrong-record-count",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-checkpoint-with-wrong-projection-head",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-checkpoint-citing-other-head",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-effect-for-unknown-intent",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-effect-with-tampered-amount",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-receipt-from-unregistered-counterparty",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-receipt-with-bad-counterparty-signature",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-receipt-chain-break",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-receipt-with-altered-envelope",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-receipt-for-other-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-receipt-intent-digest-mismatch",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-reregistering-active-counterparty",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-receipt-wrapper-stale",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-admission-metric-mismatch",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-refusal-actor-mismatch",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-refusal-evaluation-time-mismatch",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-connector-refusal-by-other-session",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-effect-measurer-mismatch",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-budget-update-without-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-budget-carry-without-carry-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-budget-with-unknown-subject-key",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/allow-within-carry",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/deny-amount-over-carry",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/allow-role-budget-within",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/deny-role-budget-per-operation",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/deny-after-subjects-update",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/allow-per-operation-at-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/deny-per-operation-over-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/authority-denial-precedes-budgets",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/deny-period-undefined",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/allow-when-budget-expired",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/allow-after-budget-closed",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/allow-zero-amount",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/allow-other-metric-not-matched",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/indeterminate-causal-time",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/period-0-allow-last-five",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/period-0-deny-six",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/b-amount-period-1",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/b-amount-period-0-view",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/b-amount-future-period-carries-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/b-amount-far-future-idle-stretch",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/b-amount-before-lowering",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/c-count-closed",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/e-future-before-origin",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/unknown-budget",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/c-count-before-update",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2/valid-final-head",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2/wrong-state-root",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2/wrong-projection-head",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2/stranger-key",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2/earlier-head",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2/head-not-a-prefix",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2/wrong-domain-label",
+        "status": "PASS"
+      },
+      {
+        "id": "export/v2/cp-1-to-cp-3",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/still-reads-format-1-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/still-reads-legacy-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-format2-event-kind-in-format1-history",
+        "status": "PASS"
+      }
+    ]
+  }
+]
+
+[exit 0]
+$ node conformance/run.mjs --suite v2-g3 --adapter conformance/adapters/node.mjs --json
+[
+  {
+    "reportVersion": "irontrellis-vector-report/1",
+    "suite": "v2-g3",
+    "level": "evaluator",
+    "profile": "g3",
+    "status": "MATCH",
+    "implementation": {
+      "implementation": "irontrellis-core",
+      "language": "typescript",
+      "coreVersion": "1.0.0",
+      "levels": [
+        "verifier",
+        "evaluator"
+      ],
+      "operations": [
+        "replay",
+        "authorize",
+        "evaluate-authority",
+        "survives",
+        "verify-attestation",
+        "headroom",
+        "export",
+        "duty-view"
+      ],
+      "formats": [
+        "continuity-event/0.2",
+        "irontrellis-event/1",
+        "irontrellis-event/2"
+      ]
+    },
+    "selected": 86,
+    "passed": 86,
+    "mismatched": 0,
+    "errors": 0,
+    "notRun": [],
+    "results": [
+      {
+        "id": "replay/v2/accepts-budget-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/accepts-prefix-through-cp-1",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/accepts-prefix-through-cp-2",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/accepts-prefix-through-cp-3",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/accepts-genesis-only",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-bigint-marker-amount",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-negative-amount",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-leading-zero-amount",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-format1-literals-in-format2-genesis",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-domain-version-1-in-format2",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-moved-control-event",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-budget-declared-without-owner-signature",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-budget-with-no-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-budget-window-zero-length",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-duplicate-budget-id",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-update-of-unknown-budget",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-tampered-budget-declaration",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-admission-over-budget",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-unsigned-intent-declaration",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-intent-declaration-with-wrong-signature",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-intent-declaration-with-altered-amount",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-duplicate-nonce-declaration",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-refusal-not-reproduced",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-refusal-with-tampered-code",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-refusal-that-would-be-allowed",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-refusal-with-stale-head",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-connector-refusal-without-connector",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-refusal-signed-by-stranger",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-checkpoint-with-wrong-state-root",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-checkpoint-with-wrong-record-count",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-checkpoint-with-wrong-projection-head",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-checkpoint-citing-other-head",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-effect-for-unknown-intent",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-effect-with-tampered-amount",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-receipt-from-unregistered-counterparty",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-receipt-with-bad-counterparty-signature",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-receipt-chain-break",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-receipt-with-altered-envelope",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-receipt-for-other-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-receipt-intent-digest-mismatch",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-reregistering-active-counterparty",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-receipt-wrapper-stale",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-admission-metric-mismatch",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-refusal-actor-mismatch",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-refusal-evaluation-time-mismatch",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-connector-refusal-by-other-session",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-effect-measurer-mismatch",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-budget-update-without-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-budget-carry-without-carry-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-budget-with-unknown-subject-key",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/allow-within-carry",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/deny-amount-over-carry",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/allow-role-budget-within",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/deny-role-budget-per-operation",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/deny-after-subjects-update",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/allow-per-operation-at-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/deny-per-operation-over-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/authority-denial-precedes-budgets",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/deny-period-undefined",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/allow-when-budget-expired",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/allow-after-budget-closed",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/allow-zero-amount",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/allow-other-metric-not-matched",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/indeterminate-causal-time",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/period-0-allow-last-five",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2/period-0-deny-six",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/b-amount-period-1",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/b-amount-period-0-view",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/b-amount-future-period-carries-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/b-amount-far-future-idle-stretch",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/b-amount-before-lowering",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/c-count-closed",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/e-future-before-origin",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/unknown-budget",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2/c-count-before-update",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2/valid-final-head",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2/wrong-state-root",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2/wrong-projection-head",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2/stranger-key",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2/earlier-head",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2/head-not-a-prefix",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2/wrong-domain-label",
+        "status": "PASS"
+      },
+      {
+        "id": "export/v2/cp-1-to-cp-3",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/still-reads-format-1-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/still-reads-legacy-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2/rejects-format2-event-kind-in-format1-history",
+        "status": "PASS"
+      }
+    ]
+  }
+]
+
+[exit 0]
+$ node conformance/run.mjs --suite v2-regenerated --adapter conformance/adapters/node.mjs --json
+[
+  {
+    "reportVersion": "irontrellis-vector-report/1",
+    "suite": "v2-regenerated",
+    "level": "evaluator",
+    "profile": "g3",
+    "status": "MATCH",
+    "implementation": {
+      "implementation": "irontrellis-core",
+      "language": "typescript",
+      "coreVersion": "1.0.0",
+      "levels": [
+        "verifier",
+        "evaluator"
+      ],
+      "operations": [
+        "replay",
+        "authorize",
+        "evaluate-authority",
+        "survives",
+        "verify-attestation",
+        "headroom",
+        "export",
+        "duty-view"
+      ],
+      "formats": [
+        "continuity-event/0.2",
+        "irontrellis-event/1",
+        "irontrellis-event/2"
+      ]
+    },
+    "selected": 253,
+    "passed": 253,
+    "mismatched": 0,
+    "errors": 0,
+    "notRun": [],
+    "results": [
+      {
+        "id": "replay/v2r/accepts-signed-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/accepts-prefix-before-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-unsigned-control-event",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-tampered-control-signature",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-moved-control-event",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-altered-control-effect",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-undeclared-owner-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/accepts-genesis-commitment",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-genesis-commitment-naming-an-owner-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-genesis-commitment-empty",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/accepts-owner-key-rotation",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-control-event-signed-by-retired-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-rotation-signed-by-unknown-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-retired-key-id-reuse",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-rotation-rebinding-a-key-id",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/accepts-commitment-only-rotation",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-carry-over-rotation-without-commitment",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/accepts-pre-rotated-rotation",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-rotation-to-uncommitted-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-revealed-key-without-proof",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-pre-rotated-rotation-without-next-commitment",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-session-public-key-uppercase-hex",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-owner-key-uppercase-hex",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/accepts-anchor",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-bad-anchor",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/accepts-witness-bindings",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-altered-witness-binding",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-witness-binding-with-malformed-policy",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-witness-binding-without-policy",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-witness-binding-quorum-above-bound",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-witness-binding-with-invalid-url",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-witness-binding-with-duplicate-verifier-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-witness-binding-above-sixteen-bound",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/accepts-rebinding-a-bound-witness",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-unbinding-of-unbound-witness",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-accepted-loss-of-a-contained-head",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/accepts-unbinding-with-accepted-loss",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/anchor-shaped-like-a-binding-binds-nothing",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rejects-unknown-anchor-kind",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/accepts-migrated-legacy-v2",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/migrated-legacy-v2-prefix-incomplete",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/migrated-legacy-v2-truncated-prefix",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/accepts-migrated-format1-v2",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/migrated-format1-v2-prefix-incomplete",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/migrated-format1-v2-truncated-prefix",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a62-omitted-expiry-round-trip",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a62-explicit-null-expiry-in-prefix",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a62-null-expiry-session-after-prefix",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a62-fresh-session-after-prefix",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/migrated-null-expiry-attester-after-prefix",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/migrated-null-expiry-outer-session-after-prefix",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/successor-may-exercise-its-own-grant",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/successor-does-not-inherit-collection",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/predecessor-refused-after-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/history-relation-unverified",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/causal-time-invalid",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/domain-mismatch",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/allow-via-delegation-with-intersection",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/allow-via-delegation",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/missing-intersection",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/prohibited-root",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/prohibited-global",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/revoked",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/expired",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/not-yet-valid",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/amount-required",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/amount-exceeded",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/amount-within-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/cumulative-amount-exceeded",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/cumulative-amount-honoured",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/transaction-count-exceeded",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/agent-inactive",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/no-authority",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/successor-not-yet-appointed",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/migrated-successor-may-exercise-its-own-grant",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/migrated-successor-does-not-inherit-collection",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/indeterminate-output-limit-257-revoked-root-prohibitions",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/allow-fallback-root-after-oversized-winner-revoked",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/deny-amount-overflow-single-root",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/allow-second-root-when-first-would-overflow",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/allow-fallback-root-when-winner-usage-at-max",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/indeterminate-request-amount-over-max",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/causal-time-beats-named-list-limit",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/amount-grammar-beats-causal-time",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/deny-count-overflow-single-root",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/allow-second-root-when-first-count-would-overflow",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/deny-amount-overflow-raw-count-capped-grant",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/deny-amount-overflow-single-root-supplied-scope",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/allow-second-root-when-first-would-overflow-supplied-scope",
+        "status": "PASS"
+      },
+      {
+        "id": "survives/v2r/predecessor-after-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "survives/v2r/successor-after-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "survives/v2r/predecessor-before-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "survives/v2r/unknown-agent",
+        "status": "PASS"
+      },
+      {
+        "id": "survives/v2r/migrated-predecessor-after-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2r/pre-rotation-head-by-retired-key-verifies",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2r/rotation-head-by-retired-key-verifies",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2r/rotation-head-by-new-key-fails",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2r/post-rotation-head-by-retired-key-fails",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2r/post-rotation-head-by-new-key-verifies",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2r/foreign-head-by-new-key-fails",
+        "status": "PASS"
+      },
+      {
+        "id": "attestation/v2r/wrong-state-root",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rich-through-sessions",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rich-through-budgets-and-counterparty",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rich-through-intent-consumed",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rich-through-receipt",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rich-through-budget-usage",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rich-through-outcome",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rich-through-obligation",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rich-through-effects-and-refusal",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rich-through-attempt-duty",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rich-through-observation",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rich-through-checkpoint",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rich-through-succession",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rich-through-assignments",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rich-through-owner-key-epoch",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rich-through-anchor",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rich-through-witness-binding",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/rich-through-final",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/lifecycle-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a51-consumption-wrong-signer",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a51-consumption-right-signer-precondition",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a60-consumption-unknown-intent",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a60-consumption-unknown-intent-bad-signature",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a60-consumption-unknown-intent-wrong-signer",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a60-outcome-unknown-intent",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a60-outcome-unknown-intent-bad-signature",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a60-outcome-unknown-intent-wrong-signer",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a60-receipt-unknown-intent",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a60-receipt-unknown-intent-bad-signature",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a61-receipt-inherited-session-mismatch",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a61-receipt-inherited-epoch-mismatch",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a61-receipt-again-accepted",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/lifecycle-fenced-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a61-fence-and-bad-signature",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a61-credential-mismatch-and-fence",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a61-missing-session",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a58-refusal-fence-and-wrong-hash",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a61-wrapper-fence-valid-envelope",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a61-wrapper-fence-and-bad-counterparty-signature",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/duty-through-duty-created",
+        "status": "PASS"
+      },
+      {
+        "id": "duty-view/v2r/duty-created",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/duty-through-activated",
+        "status": "PASS"
+      },
+      {
+        "id": "duty-view/v2r/activated",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/duty-through-completed",
+        "status": "PASS"
+      },
+      {
+        "id": "duty-view/v2r/completed",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/duty-through-needs-review",
+        "status": "PASS"
+      },
+      {
+        "id": "duty-view/v2r/needs-review",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/duty-through-contested",
+        "status": "PASS"
+      },
+      {
+        "id": "duty-view/v2r/contested",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/duty-disposition-unknown-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/duty-disposition-rules-hash",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/duty-disposition-unknown-disposition",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/duty-disposition-reason-too-long",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/duty-finding-altered",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/duty-second-activation",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/duty-disposition-replayed",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/budgets-history",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2r/a50-saturated-rollover",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2r/a50-period-1",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/budget-set-sixteen-matching",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/budget-set-too-large",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/budget-set-other-resource",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/budget-256-accepted",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/budget-257th-refused",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/handover-budget-history",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2r/role-budget-before-handover",
+        "status": "PASS"
+      },
+      {
+        "id": "headroom/v2r/role-budget-usage-retained",
+        "status": "PASS"
+      },
+      {
+        "id": "authorization/v2r/role-budget-follows-successor",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/amount-as-json-number",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/amount-79-digits",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/amount-max-plus-one",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/projection-null-amount-cap-clears-bit2",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/effects-sixty-four",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/effects-sixty-fifth",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/counterparty-chain-across-reregistration",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/counterparty-chain-restarted",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/counterparty-retired-key-id",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/counterparty-signed-by-retired-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/counterparty-receipt-while-retired",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/reserve-nonconrol-at-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/reserve-nonconrol-above-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/reserve-control-admitted-to-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/reserve-control-at-cap",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/reserve-history-default-limits",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/max-state-records-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/max-state-records-exceeded",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/duty-quota-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/duty-quota-growth-refused",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/checkpoint-policy-every-events",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/checkpoint-policy-prefix-3",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/checkpoint-policy-prefix-8",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/checkpoint-policy-prefix-13",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/checkpoint-policy-wrong-root",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/eip191-declaration-and-admission",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/eip191-declaration-bad-signature",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/eip191-declaration-moved-id",
+        "status": "PASS"
+      },
+      {
+        "id": "export/v2r/a70-glossary-genesis-hashes",
+        "status": "PASS"
+      },
+      {
+        "id": "export/v2r/rich-checkpoint-to-head",
+        "status": "PASS"
+      },
+      {
+        "id": "export-verify/v2r/a65-round-trip-with-from-records",
+        "status": "PASS"
+      },
+      {
+        "id": "export-verify/v2r/a65-missing-envelope-body",
+        "status": "PASS"
+      },
+      {
+        "id": "export-verify/v2r/a65-unsorted-evidence",
+        "status": "PASS"
+      },
+      {
+        "id": "export-verify/v2r/a65-null-evidence-field",
+        "status": "PASS"
+      },
+      {
+        "id": "export-verify/v2r/a65-unknown-key",
+        "status": "PASS"
+      },
+      {
+        "id": "export-verify/v2r/a65-from-zero-without-records",
+        "status": "PASS"
+      },
+      {
+        "id": "export-verify/v2r/a65-from-zero-with-records",
+        "status": "PASS"
+      },
+      {
+        "id": "export-verify/v2r/a65-inside-migrated-prefix",
+        "status": "PASS"
+      },
+      {
+        "id": "writer-open/v2r/legacy-history-is-read-only",
+        "status": "PASS"
+      },
+      {
+        "id": "writer-open/v2r/format1-history-is-read-only",
+        "status": "PASS"
+      },
+      {
+        "id": "writer-open/v2r/fenced-legacy-source-is-read-only",
+        "status": "PASS"
+      },
+      {
+        "id": "writer-open/v2r/fenced-format1-source-is-read-only",
+        "status": "PASS"
+      },
+      {
+        "id": "writer-open/v2r/format2-target-is-writable",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-accepts-matched-admission",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-accepts-matched-refusal",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-accepts-unmatched",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-accepts-equivocation",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-accepts-second-equivocation",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-accepts-observation-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-duplicate",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-duplicate-after-equivocation",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-duplicate-by-another-reconciler",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-matched-wrong-actor",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-matched-later-position",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-matched-non-decision-type",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-stale-head",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-reconciler-not-signer",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-tampered-digest",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-forged-signature",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-unsigned",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-owner-signed",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-fenced-session",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-unsupplied-not-matching",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-unsupplied-unordered",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-matched-without-position",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-resource-129-code-points",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-accepts-resource-128-code-points",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-at-max-events",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-inside-migrated-prefix",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/a71-rejects-in-format1-history",
+        "status": "PASS"
+      },
+      {
+        "id": "export-verify/v2r/a71-observation-range",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/session-time-horizon/accepts-at-the-bound",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/session-time-horizon/accepts-refusal-at-the-bound",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/session-time-horizon/rejects-refusal-past-the-bound",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/session-time-horizon/accepts-past-the-old-bound-after-a-checkpoint",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/session-time-horizon/accepts-clamped-power-reducing-event",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/session-time-horizon/rejects-past-the-bound-after-a-clamped-fence",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/session-time-horizon/rejects-fenced-session-past-the-bound",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/session-time-horizon/rejects-fenced-session-within-the-bound",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/session-time-horizon/rejects-admission-past-the-bound",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/session-time-horizon/accepts-near-max-at-the-bound",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/session-time-horizon/rejects-near-max-past-the-bound",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/session-time-horizon/accepts-near-max-when-ownertime-plus-h-exceeds-max",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/session-time-horizon/accepts-migrated-prefix-exempt",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2r/session-time-horizon/rejects-first-post-prefix-event-past-the-bound",
+        "status": "PASS"
+      }
+    ]
+  }
+]
+
+[exit 0]
+$ node conformance/run.mjs --suite v2-owner-policy --adapter conformance/adapters/node.mjs --json
+[
+  {
+    "reportVersion": "irontrellis-vector-report/1",
+    "suite": "v2-owner-policy",
+    "level": "evaluator",
+    "profile": "g3",
+    "status": "MATCH",
+    "implementation": {
+      "implementation": "irontrellis-core",
+      "language": "typescript",
+      "coreVersion": "1.0.0",
+      "levels": [
+        "verifier",
+        "evaluator"
+      ],
+      "operations": [
+        "replay",
+        "authorize",
+        "evaluate-authority",
+        "survives",
+        "verify-attestation",
+        "headroom",
+        "export",
+        "duty-view"
+      ],
+      "formats": [
+        "continuity-event/0.2",
+        "irontrellis-event/1",
+        "irontrellis-event/2"
+      ]
+    },
+    "selected": 89,
+    "passed": 89,
+    "mismatched": 0,
+    "errors": 0,
+    "notRun": [],
+    "results": [
+      {
+        "id": "replay/v2op/accepts-genesis-policy-2of3",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-bytype-raised-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-unlisted-type-uses-default",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-labels-and-acknowledged",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-threshold-above-n",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-zero-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-unknown-bytype-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/builder-rejects-bytype-session-type",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-bytype-rotation-below-default",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-keyclass-unknown-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-all-agent-owners",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-human-lockout",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-acknowledged-with-threshold-2",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-acknowledged-with-bytype",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/builder-rejects-empty-labels",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/builder-rejects-null-in-policy",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/builder-rejects-label-65-characters",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-bytype-power-reducing-above-non-agent",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-bytype-below-threshold-for-non-reducing-type",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-bytype-below-threshold-for-checkpoint",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-tampered-policy",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-duplicate-credential-in-owner-keys",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-bytype-below-threshold-for-anchor",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-bytype-below-threshold-for-budget-declared",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-rotation-with-quorum",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-surplus-authorizations",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-duplicate-keyid",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-out-of-epoch-signer",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-unverifiable-surplus-entry",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-missing-array-under-m2",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-moved-multikey-event",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-below-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-extra-authorizations-under-m1",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-agent-cosigner",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-agent-counted-on-rotation",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-agent-alone-m1",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-agent-alone-m2",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-budget-update-lowering-cap-at-pr-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-budget-update-raising-cap-at-pr-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-budget-update-narrowing-subjects-at-pr-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-budget-update-earlier-expiry-at-pr-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-permission-revocation-at-pr-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-prohibition-revocation-at-pr-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-unappoint-without-role-budget-at-pr-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-unappoint-with-role-budget-at-pr-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-budget-update-of-rollover-budget-at-pr-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-budget-declared-at-pr-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-permission-revocation-with-dependent-prohibition-at-pr-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-termination-of-prohibition-grantor-at-pr-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-termination-of-prohibition-ancestor-at-pr-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-unappoint-with-expired-role-budget-at-pr-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-unappoint-with-role-budget-naming-other-actor-at-pr-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-policy-rotation-same-keys",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-second-policy-rotation",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-policy-rotation-dropping-commitment",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-policy-rotation-replacing-commitment",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-same-keys-same-policy",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-policy-rotation-with-next-key-authorizations",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/builder-accepts-rotation-resetting-policy",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-policy-rotation-adding-commitment",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/builder-accepts-policy-rotation-without-commitment",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-recovery-without-option",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-partial-next-key-proofs-under-policy",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-partial-next-key-proofs-without-policy",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-policy-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-recovery-rotation-next-key-only",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-recovery-unrevealed-next-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-recovery-uncommitted-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/builder-rejects-recovery-without-proof",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-recovery-rotation-mixed-quorum",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-duplicate-credential-on-recovery",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-recovery-agent-counted",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-duplicate-credential-on-rotation",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-duplicate-credential-without-policy",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-commitment-to-session-credential",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-commitment-to-counterparty-credential",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-session-admission-of-committed-credential",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-session-admission-of-committed-credential-without-policy",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-session-admission-of-owner-credential-under-policy",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-counterparty-registration-of-committed-credential",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-revealed-key-equal-to-session-credential",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-policy-adoption-with-session-owner-credential",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/accepts-policy-adoption-carrying-foreign-commitment",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-reveal-of-foreign-committed-key-under-policy",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-commitment-to-attester-in-force",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-session-admission-of-attester-credential-under-policy",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-policy-with-attester-equal-to-session-credential",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-policy-in-migrated-genesis",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2op/rejects-additional-authorizations-in-prefix",
+        "status": "PASS"
+      }
+    ]
+  }
+]
+
+[exit 0]
+$ node conformance/run.mjs --suite v2-human-attestation --adapter conformance/adapters/node.mjs --json
+[
+  {
+    "reportVersion": "irontrellis-vector-report/1",
+    "suite": "v2-human-attestation",
+    "level": "evaluator",
+    "profile": "g3",
+    "status": "MATCH",
+    "implementation": {
+      "implementation": "irontrellis-core",
+      "language": "typescript",
+      "coreVersion": "1.0.0",
+      "levels": [
+        "verifier",
+        "evaluator"
+      ],
+      "operations": [
+        "replay",
+        "authorize",
+        "evaluate-authority",
+        "survives",
+        "verify-attestation",
+        "headroom",
+        "export",
+        "duty-view"
+      ],
+      "formats": [
+        "continuity-event/0.2",
+        "irontrellis-event/1",
+        "irontrellis-event/2"
+      ]
+    },
+    "selected": 68,
+    "passed": 68,
+    "mismatched": 0,
+    "errors": 0,
+    "notRun": [],
+    "results": [
+      {
+        "id": "replay/v2ha/accepts-attested-floor-genesis",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-unknown-attester",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-forged-attestation-signature",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-wrong-audience",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-subject-not-owner-or-next",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-attester-equals-owner",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-agent-classed-subject",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-expired-at-setting",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-attestations-without-attesters",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-single-attester-under-attested",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-lockout-no-valid-attestation-at-set",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-bytype-power-reducing-above-attested",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-bytype-power-reducing-above-started-statements",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-attester-equals-next-key",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-activation-below-rotation-quorum",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/builder-accepts-activation-of-attested-floor",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-ordinary-event-attested-plus-agent",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-declared-floor-ignores-attestations",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-non-counting-signature-present",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-attested-floor-without-attested-signer",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-expired-at-timestamp",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-not-yet-valid",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/builder-accepts-statement-once-started",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-new-attestation-supplies-old-quorum",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-attested-rotation-with-unattested-human",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-power-reducing-by-started-statements-without-agent",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-power-reducing-by-lapsed-keys",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-grant-by-lapsed-keys",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-prohibition-revocation-by-lapsed-keys",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-checkpoint-by-lapsed-keys",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-budget-raise-by-lapsed-keys",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-fence-by-lapsed-and-agent",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-revoked-key-on-power-reducing",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-not-yet-valid-on-power-reducing",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-restoration-rotation-by-lapsed-keys",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-restoration-changing-attesters",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-restoration-changing-threshold",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-key-rotation-by-lapsed-keys",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-restoration-adding-commitment",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-restoration-with-stale-statements",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-restoration-renewal-with-future-notbefore",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-restoration-with-stashed-statement",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-restoration-with-stashed-statement-below-t-set",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-restoration-carrying-expired-coowner",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-restoration-dropping-subject",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-restoration-adding-subject",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-restoration-with-pr-bytype-above-renewed",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-restoration-with-statement-predating-epoch",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-renewal-by-policy-rotation",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-attestation-without-history-id-after-genesis",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-attestation-wrong-history-id",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-carried-genesis-statement-without-history-id",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-policy-rotation-carrying-expired-coowner",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-attestation-history",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-pre-attested-next-key-rotation",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-unattested-next-key-recovery",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-lapsed-and-agent-advancing-past-horizon",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-session-event-crossing-attestation-expiry",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-session-event-before-expiry",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-control-event-crossing-expiry",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-session-event-after-owner-crossed",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-single-signer-advancing-past-horizon",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-single-signer-advancing-to-horizon",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-two-human-signers-advancing-past-horizon",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-single-signer-at-head-time-past-horizon",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/accepts-checkpoint-by-lapsed-key-crossing-expiry",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/rejects-single-signer-at-max-time",
+        "status": "PASS"
+      },
+      {
+        "id": "replay/v2ha/builder-accepts-single-signer-at-max-time-minus-one",
+        "status": "PASS"
+      }
+    ]
+  }
+]
+
+[exit 0]

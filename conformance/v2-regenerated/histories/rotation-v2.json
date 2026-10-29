@@ -1,0 +1,147 @@
+[
+ {
+  "id": "event:rotation:3",
+  "type": "DEPLOYMENT_INITIALIZED",
+  "timestamp": 100,
+  "data": {
+   "adapterPolicyHash": "0x00c3498e2744943663475d0187ca979cdd09763b88427781883693c4b8c163a7",
+   "canonicalLineageId": "lineage:rotation:1",
+   "domain": {
+    "deploymentId": "irontrellis-conformance-v2",
+    "protocol": "irontrellis",
+    "version": "2"
+   },
+   "finality": "LOCAL_ONLY",
+   "globalPolicySourceId": "policy:rotation:2",
+   "ownerKeys": [
+    {
+     "credential": "0x967e264fa6b2e89fcfab4df3d4291cd1482a3a5a9f3836c9ce8f80d112d2ac4d",
+     "keyId": "owner:1",
+     "scheme": "ed25519"
+    }
+   ],
+   "policyVersion": "irontrellis-local-owner/2",
+   "rootRecognitionPolicy": "declared-principal-root/0.2",
+   "timeSource": "EVENT_TIMESTAMP",
+   "versions": {
+    "administrativeAuthorizationVersion": "irontrellis-administrative-authorization/2",
+    "authorizationProofVersion": "irontrellis-authorization-proof/2",
+    "controlAuthorizationVersion": "irontrellis-control-authorization/2",
+    "eventSchemaVersion": "irontrellis-event/2",
+    "historyHashAlgorithm": "sha256",
+    "projectionVersion": "irontrellis-projection/2",
+    "queryEnvelopeVersion": "continuity-query-envelope/0.2",
+    "receiptSchemaVersion": "irontrellis-receipt/2",
+    "recordChainVersion": "irontrellis-record/2",
+    "runtimeAuthorizationVersion": "irontrellis-runtime-authorization/2",
+    "signatureScheme": "ed25519",
+    "stateDerivationVersion": "irontrellis-state/2"
+   }
+  }
+ },
+ {
+  "id": "event:rotation:4",
+  "type": "PRINCIPAL_CREATED",
+  "timestamp": 100,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xa50243ea09f7157071e3f84810c6c026b9d70497551abe5c78a35a87725f4af29217597e73b68fc27b776c8e4036f6930b055b7facd51ce1796b9c235538fd0b"
+   },
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:rotation:5",
+  "type": "AGENT_CREATED",
+  "timestamp": 100,
+  "data": {
+   "agentId": "bea",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xb475893bc926ee799124aab027a67a669e69e3a132fff852d7eeab91f47bce25e76e1eb2b7cad943afb6be4d51ef5efa8dbe3a0beb3fbfeef1c6d5ba3c89340f"
+   },
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:rotation:6",
+  "type": "AUTHORITY_GRANTED",
+  "timestamp": 101,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x115e8f66d7eadcb9d3979b5b9bda5b7f3e7358c79f20f47a238df05414a6e800d7bc9e08057857bd091a01044ad5da6d5cd629757f9a523b8304dd5f2f78dc0e"
+   },
+   "grant": {
+    "authorityId": "read",
+    "constraints": {
+     "actions": [
+      "read"
+     ],
+     "expiresAt": 900,
+     "maxDelegationDepth": 0,
+     "quantitative": false,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "ledger"
+     ]
+    },
+    "granteeId": "bea",
+    "grantorId": "operations",
+    "independent": true,
+    "kind": "PERMISSION",
+    "rootAuthorityId": "read"
+   }
+  }
+ },
+ {
+  "id": "event:rotation:7",
+  "type": "OWNER_KEYS_ROTATED",
+  "timestamp": 102,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xb3ae00db2b8a86cfb9c73e1b7a6bea1ced4126af5252facd6b3893cc2be00b98e9f9de02f7c454f0d7a3a2ac01ede1545aeea4ec487acab70a077cb173973a0f"
+   },
+   "ownerKeys": [
+    {
+     "credential": "0x42fea4ab1a963a5631264c2159ca7b2946c4cff33b4fb96a5a038203256d47c1",
+     "keyId": "owner:rotated",
+     "scheme": "ed25519"
+    }
+   ],
+   "reason": "scheduled rotation"
+  }
+ },
+ {
+  "id": "event:rotation:8",
+  "type": "AGENT_CREATED",
+  "timestamp": 103,
+  "data": {
+   "agentId": "alex",
+   "controlAuthorization": {
+    "keyId": "owner:rotated",
+    "signature": "0xf618c05540a208a61d6578551ec51f4a731e54c23485d7fca884b0ee372e6fe831c285cef6cffa5a1b1bf19946cce8ee390d41c910929088737699552e75ce0f"
+   },
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:rotation:9",
+  "type": "AUTHORITY_REVOKED",
+  "timestamp": 104,
+  "data": {
+   "authorityId": "read",
+   "controlAuthorization": {
+    "keyId": "owner:rotated",
+    "signature": "0x5815b04b757efc81bb2a24a9400399efd80bc1fa0478527b626a2b3213151cac96d740790e81fa4d8833e8f19855fd3a47862076376a204f9d14f769ce390103"
+   },
+   "revokerId": "operations"
+  }
+ }
+]

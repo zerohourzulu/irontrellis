@@ -1,0 +1,1116 @@
+{
+ "tool": "g25/12 (post-A-157 complete; A-127.2, A-128, A-129 defaults; 2026-10-14)",
+ "command": "vectors",
+ "target": "vectors.json",
+ "options": {},
+ "result": {
+  "vectors": 89,
+  "byKind": {
+   "replay": 89
+  },
+  "notCovered": [],
+  "pinnedRoots": [
+   {
+    "source": "replay/v2op/accepts-genesis-policy-2of3",
+    "position": 1,
+    "vector": "0xeedffb0505ad6beb5432722350559ce233fd9aadaed9793906e4b23e25d555b1",
+    "g25": "0xeedffb0505ad6beb5432722350559ce233fd9aadaed9793906e4b23e25d555b1",
+    "recordCount": 5,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-bytype-raised-threshold",
+    "position": 2,
+    "vector": "0x72c52a20d82d89b2312eb47221a7f56138f554906b52972d74eb7b4eecd7442c",
+    "g25": "0x72c52a20d82d89b2312eb47221a7f56138f554906b52972d74eb7b4eecd7442c",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-unlisted-type-uses-default",
+    "position": 2,
+    "vector": "0x709c6f514993fefea2f73d776b8a412e977d610966cdfc58660c960247586602",
+    "g25": "0x709c6f514993fefea2f73d776b8a412e977d610966cdfc58660c960247586602",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-labels-and-acknowledged",
+    "position": 1,
+    "vector": "0xa9dbbfa940cd255693e151c6e9d97b0f890ac63299f336fde42b0bd826955a54",
+    "g25": "0xa9dbbfa940cd255693e151c6e9d97b0f890ac63299f336fde42b0bd826955a54",
+    "recordCount": 5,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-bytype-below-threshold-for-checkpoint",
+    "position": 2,
+    "vector": "0x54e1b38d99bbca666711c2435e74548d2df431fc84922ef00f55020ed2652ddb",
+    "g25": "0x54e1b38d99bbca666711c2435e74548d2df431fc84922ef00f55020ed2652ddb",
+    "recordCount": 6,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-bytype-below-threshold-for-checkpoint checkpoint @2 data",
+    "position": 1,
+    "vector": "0xf8660cb5a98af91ed93b122e2adf4cef03621919d616d1a825a672010140a8b3",
+    "g25": "0xf8660cb5a98af91ed93b122e2adf4cef03621919d616d1a825a672010140a8b3",
+    "recordCount": 5,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-bytype-below-threshold-for-budget-declared",
+    "position": 1,
+    "vector": "0xdf9dd558317431fa1d2ed25beca387f86f6b3b3353da188c4fb7744b20e6379a",
+    "g25": "0xdf9dd558317431fa1d2ed25beca387f86f6b3b3353da188c4fb7744b20e6379a",
+    "recordCount": 5,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-rotation-with-quorum",
+    "position": 2,
+    "vector": "0xe2359e3bc3ca5f637037440192f58028f08a1d2bdcdcc6084fed8713a0ebea19",
+    "g25": "0xe2359e3bc3ca5f637037440192f58028f08a1d2bdcdcc6084fed8713a0ebea19",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-surplus-authorizations",
+    "position": 1,
+    "vector": "0x3aa93f516828bbb39f1a8de3c14b7a9d6a640c6fbf44e7c10f24d35586145c58",
+    "g25": "0x3aa93f516828bbb39f1a8de3c14b7a9d6a640c6fbf44e7c10f24d35586145c58",
+    "recordCount": 5,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-agent-cosigner",
+    "position": 2,
+    "vector": "0x3e5214d604773618b2d615a2f0a27f18c518c54e68bf6208718ce71264f220d9",
+    "g25": "0x3e5214d604773618b2d615a2f0a27f18c518c54e68bf6208718ce71264f220d9",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-budget-update-lowering-cap-at-pr-threshold",
+    "position": 3,
+    "vector": "0xc69722200ac421250a6e7a2fcf9e63bcf1eb0be8e982deb4593b5ab66fb199c9",
+    "g25": "0xc69722200ac421250a6e7a2fcf9e63bcf1eb0be8e982deb4593b5ab66fb199c9",
+    "recordCount": 8,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-permission-revocation-at-pr-threshold",
+    "position": 5,
+    "vector": "0xaf3fd423ee1cfdce9221bd592f3288dfac2925a09f77cfb07ada167ab312865d",
+    "g25": "0xaf3fd423ee1cfdce9221bd592f3288dfac2925a09f77cfb07ada167ab312865d",
+    "recordCount": 12,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-unappoint-without-role-budget-at-pr-threshold",
+    "position": 5,
+    "vector": "0x3d175541b3659b5b4fd666686485945885c043f0bda856070a7e23d7ad8a421e",
+    "g25": "0x3d175541b3659b5b4fd666686485945885c043f0bda856070a7e23d7ad8a421e",
+    "recordCount": 12,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-budget-declared-at-pr-threshold",
+    "position": 5,
+    "vector": "0xb5b71bf1e9a376e7dcf4c4124771b8fbef1aacbe1dd8756cbb442c50513962cc",
+    "g25": "0xb5b71bf1e9a376e7dcf4c4124771b8fbef1aacbe1dd8756cbb442c50513962cc",
+    "recordCount": 13,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-unappoint-with-expired-role-budget-at-pr-threshold",
+    "position": 6,
+    "vector": "0x1fe360679f1c616df7a8e2931d98d8708db5dcecba8e43fc8ed6dd2485bb4f86",
+    "g25": "0x1fe360679f1c616df7a8e2931d98d8708db5dcecba8e43fc8ed6dd2485bb4f86",
+    "recordCount": 14,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-unappoint-with-role-budget-naming-other-actor-at-pr-threshold",
+    "position": 6,
+    "vector": "0x036d0868544d37b6be8b350c9f6a7fd4740a61818a265a03dbe8d557c3f63c55",
+    "g25": "0x036d0868544d37b6be8b350c9f6a7fd4740a61818a265a03dbe8d557c3f63c55",
+    "recordCount": 14,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-policy-rotation-same-keys",
+    "position": 2,
+    "vector": "0xa7e062278a4e4ca0f93089bf01cb39c9feeacd0bb7407f28001c503085aac17d",
+    "g25": "0xa7e062278a4e4ca0f93089bf01cb39c9feeacd0bb7407f28001c503085aac17d",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-second-policy-rotation",
+    "position": 3,
+    "vector": "0x3c7a38a8657719b66c36cbe92c987134f500eb8357cba1523ea044b92f2e4f92",
+    "g25": "0x3c7a38a8657719b66c36cbe92c987134f500eb8357cba1523ea044b92f2e4f92",
+    "recordCount": 9,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/builder-accepts-rotation-resetting-policy",
+    "position": 2,
+    "vector": "0xab2c236f3d83bd8ea841cbf0e23dd8044a553453580b0ea109580bcb0e025331",
+    "g25": "0xab2c236f3d83bd8ea841cbf0e23dd8044a553453580b0ea109580bcb0e025331",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-policy-rotation-adding-commitment",
+    "position": 2,
+    "vector": "0xdb6d2667adf6fa3cb49cede2bdc7219ebfaae3187e94ddfc53acf4ef7daaa48e",
+    "g25": "0xdb6d2667adf6fa3cb49cede2bdc7219ebfaae3187e94ddfc53acf4ef7daaa48e",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/builder-accepts-policy-rotation-without-commitment",
+    "position": 2,
+    "vector": "0xa7f9e47eecb24b8a7adf36ffa06fd0e2452f3b01ee09d81489bf9558c2668577",
+    "g25": "0xa7f9e47eecb24b8a7adf36ffa06fd0e2452f3b01ee09d81489bf9558c2668577",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-partial-next-key-proofs-without-policy",
+    "position": 2,
+    "vector": "0xd9746527fc088ffee2386931fe7cc78002a036506bdf4fd3de538f722f5116a7",
+    "g25": "0xd9746527fc088ffee2386931fe7cc78002a036506bdf4fd3de538f722f5116a7",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-policy-history",
+    "position": 6,
+    "vector": "0x326521ff91b47f2a26ffbaa1e687288aefbe8750475121636314129cfbbfa1a9",
+    "g25": "0x326521ff91b47f2a26ffbaa1e687288aefbe8750475121636314129cfbbfa1a9",
+    "recordCount": 15,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-recovery-rotation-next-key-only",
+    "position": 2,
+    "vector": "0xf01b5461e4229e7cc6af288bb1ada9890a35ae578d9bfa9e890294c0d7e3b31d",
+    "g25": "0xf01b5461e4229e7cc6af288bb1ada9890a35ae578d9bfa9e890294c0d7e3b31d",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-recovery-rotation-mixed-quorum",
+    "position": 2,
+    "vector": "0x74a87671db92e901aae155fdf68cca09ba2680ba889a2e376a22599c062709cb",
+    "g25": "0x74a87671db92e901aae155fdf68cca09ba2680ba889a2e376a22599c062709cb",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-duplicate-credential-without-policy",
+    "position": 1,
+    "vector": "0xd8ce37893460cecc8c604949bb5ffbef523f716d3e876e8d08944eebe6e9f800",
+    "g25": "0xd8ce37893460cecc8c604949bb5ffbef523f716d3e876e8d08944eebe6e9f800",
+    "recordCount": 5,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-session-admission-of-committed-credential-without-policy",
+    "position": 3,
+    "vector": "0x96a7202d898171867f8dd093376adff9d812d3506a7ff77870b3e316bda0a068",
+    "g25": "0x96a7202d898171867f8dd093376adff9d812d3506a7ff77870b3e316bda0a068",
+    "recordCount": 9,
+    "equal": true
+   },
+   {
+    "source": "replay/v2op/accepts-policy-adoption-carrying-foreign-commitment",
+    "position": 4,
+    "vector": "0xe1130bf521bf6555890cc7209b50d056533456f3b770bf80871cbdcb3d1f1203",
+    "g25": "0xe1130bf521bf6555890cc7209b50d056533456f3b770bf80871cbdcb3d1f1203",
+    "recordCount": 11,
+    "equal": true
+   }
+  ],
+  "distinctPinnedRoots": 28,
+  "pinnedRootsEqual": true
+ },
+ "summary": {
+  "checks": 170,
+  "failures": 0,
+  "firstFailures": []
+ },
+ "limits": [
+  "authority algebra (spec 02: delegation paths, intersections, prohibitions) is not re-derived; admission and administrative proofs are checked for consistency with state (controlling grants exist, are permissions, unrevoked, in time; request/binding/intent/usage/budget), not for byte-equality with an engine-derived proof",
+  "CORE refusals: signature, actor binding, time, head checked; the DENY/INDETERMINATE code is not re-derived (authority algebra)",
+  "adapter acknowledgment / no-effect deep validation (spec 01 \u00a7F.5) is not implemented; evidence references and (A-17.5) the idempotencyKey are checked",
+  "receipt artifacts are outside the history (\u00a78.5) and not verified",
+  "migrated prefixes: runtime/administrative signatures are verified against the shadow heads with the source algorithm; the prefix control-tuple currency (session expiry, epoch, tenure) of administrative events and migratedFrom.recordHash are not checked",
+  "witness registration receipts (signed notes, WITNESS \u00a79.5) are not verified; the field set is",
+  "duty findings: the attester administrative proof hash (authorityProofHash) is taken from the challenge (authority algebra)",
+  "A-17.2: ownerKeys and the option-given genesis fields (nextKeyDigests, capacity, checkpointPolicy, projection) of a migrated genesis cannot be checked without the migration options; migratedFrom.recordHash (A-17.4) is not checkable from the target",
+  "A-40.2 (g25/4): a format-1 sourceAttestation is verified (shape, head = migratedFrom.historyHash/position, signature under migratedFrom.genesis.ownerKeys); its head.canonicalTime is compared with the source event at migratedFrom.position when the prefix ends; whether the /1 body carries `domain` is G3-X-3 (both shapes accepted)",
+  "A-37.2 / A-69 derived ids are an API rule: g25 provides the derivation (api.derive_id) and tests it; replay never derives ids",
+  "writer, API and client rules (A-5, A-6, A-8 to A-14, A-22.3-5, A-23, A-24, A-25, A-30, A-31 Python; G2: A-38, A-41, A-42, A-43.1, A-44.1/3/4, A-45.2, A-46.1-2 and A-66 (reported as an advisory schedule only), A-48, A-52.3, A-55, A-56; G3: A-63 plan-time refusal, A-66, A-68) leave no trace a history file can show",
+  "A-44.2: the snapshot is size-checked before parsing but not parsed in streaming fashion (entries counted after the parse)",
+  "A-39: resume step (1) rollback detection is checked against heads supplied as inputs (pin, anchor log, witness heads); the remote witness protocol itself (WITNESS \u00a71, E-10) is not implemented",
+  "A-71 (g25/5): type 42 is replayed in full (schema, challenge, the eight A-71.3 steps, both record kinds, row 42); source.eventDigest is never recomputed (no provider content in the history); the A-71.6 writer contract (lock, checkpoint ordering, crash re-emission) is a writer rule - api.observation_precheck reproduces only its codes; A-71.7 listings are report-level (advisory.verify_report)",
+  "A-72 (g25/5): the 11-type lifecycle set is g25's own list (job 06); it equals the eleven types A-72.2 names; the builder's DEVIATIONS copy of capacity.ts is not an input"
+ ],
+ "notes": [],
+ "checks": [
+  {
+   "subject": "replay/v2op/accepts-genesis-policy-2of3",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-genesis-policy-2of3",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-genesis-policy-2of3",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-genesis-policy-2of3",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-bytype-raised-threshold",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-bytype-raised-threshold",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-bytype-raised-threshold",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-bytype-raised-threshold",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-unlisted-type-uses-default",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-unlisted-type-uses-default",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-unlisted-type-uses-default",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-unlisted-type-uses-default",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-labels-and-acknowledged",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-labels-and-acknowledged",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-labels-and-acknowledged",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-labels-and-acknowledged",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-threshold-above-n",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-zero-threshold",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-unknown-bytype-key",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/builder-rejects-bytype-session-type",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-bytype-rotation-below-default",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-keyclass-unknown-key",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-all-agent-owners",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-human-lockout",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-acknowledged-with-threshold-2",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-acknowledged-with-bytype",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/builder-rejects-empty-labels",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/builder-rejects-null-in-policy",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/builder-rejects-label-65-characters",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-bytype-power-reducing-above-non-agent",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-bytype-below-threshold-for-non-reducing-type",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-bytype-below-threshold-for-checkpoint",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-bytype-below-threshold-for-checkpoint",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-bytype-below-threshold-for-checkpoint",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-bytype-below-threshold-for-checkpoint",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-tampered-policy",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-duplicate-credential-in-owner-keys",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-bytype-below-threshold-for-anchor",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-bytype-below-threshold-for-budget-declared",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-bytype-below-threshold-for-budget-declared",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-bytype-below-threshold-for-budget-declared",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-bytype-below-threshold-for-budget-declared",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-rotation-with-quorum",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-rotation-with-quorum",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-rotation-with-quorum",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-rotation-with-quorum",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-surplus-authorizations",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-surplus-authorizations",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-surplus-authorizations",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-surplus-authorizations",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-duplicate-keyid",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-out-of-epoch-signer",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-unverifiable-surplus-entry",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-missing-array-under-m2",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-moved-multikey-event",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-below-threshold",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-extra-authorizations-under-m1",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-agent-cosigner",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-agent-cosigner",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-agent-cosigner",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-agent-cosigner",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-agent-counted-on-rotation",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-agent-alone-m1",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-agent-alone-m2",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-budget-update-lowering-cap-at-pr-threshold",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-budget-update-lowering-cap-at-pr-threshold",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-budget-update-lowering-cap-at-pr-threshold",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-budget-update-lowering-cap-at-pr-threshold",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-budget-update-raising-cap-at-pr-threshold",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-budget-update-narrowing-subjects-at-pr-threshold",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-budget-update-earlier-expiry-at-pr-threshold",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-permission-revocation-at-pr-threshold",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-permission-revocation-at-pr-threshold",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-permission-revocation-at-pr-threshold",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-permission-revocation-at-pr-threshold",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-prohibition-revocation-at-pr-threshold",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-unappoint-without-role-budget-at-pr-threshold",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-unappoint-without-role-budget-at-pr-threshold",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-unappoint-without-role-budget-at-pr-threshold",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-unappoint-without-role-budget-at-pr-threshold",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-unappoint-with-role-budget-at-pr-threshold",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-budget-update-of-rollover-budget-at-pr-threshold",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-budget-declared-at-pr-threshold",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-budget-declared-at-pr-threshold",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-budget-declared-at-pr-threshold",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-budget-declared-at-pr-threshold",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-permission-revocation-with-dependent-prohibition-at-pr-threshold",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-termination-of-prohibition-grantor-at-pr-threshold",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-termination-of-prohibition-ancestor-at-pr-threshold",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-unappoint-with-expired-role-budget-at-pr-threshold",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-unappoint-with-expired-role-budget-at-pr-threshold",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-unappoint-with-expired-role-budget-at-pr-threshold",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-unappoint-with-expired-role-budget-at-pr-threshold",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-unappoint-with-role-budget-naming-other-actor-at-pr-threshold",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-unappoint-with-role-budget-naming-other-actor-at-pr-threshold",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-unappoint-with-role-budget-naming-other-actor-at-pr-threshold",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-unappoint-with-role-budget-naming-other-actor-at-pr-threshold",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-policy-rotation-same-keys",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-policy-rotation-same-keys",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-policy-rotation-same-keys",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-policy-rotation-same-keys",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-second-policy-rotation",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-second-policy-rotation",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-second-policy-rotation",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-second-policy-rotation",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-policy-rotation-dropping-commitment",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-policy-rotation-replacing-commitment",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-same-keys-same-policy",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-policy-rotation-with-next-key-authorizations",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/builder-accepts-rotation-resetting-policy",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/builder-accepts-rotation-resetting-policy",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/builder-accepts-rotation-resetting-policy",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/builder-accepts-rotation-resetting-policy",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-policy-rotation-adding-commitment",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-policy-rotation-adding-commitment",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-policy-rotation-adding-commitment",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-policy-rotation-adding-commitment",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/builder-accepts-policy-rotation-without-commitment",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/builder-accepts-policy-rotation-without-commitment",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/builder-accepts-policy-rotation-without-commitment",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/builder-accepts-policy-rotation-without-commitment",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-recovery-without-option",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-partial-next-key-proofs-under-policy",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-partial-next-key-proofs-without-policy",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-partial-next-key-proofs-without-policy",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-partial-next-key-proofs-without-policy",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-partial-next-key-proofs-without-policy",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-policy-history",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-policy-history",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-policy-history",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-policy-history",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-recovery-rotation-next-key-only",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-recovery-rotation-next-key-only",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-recovery-rotation-next-key-only",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-recovery-rotation-next-key-only",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-recovery-unrevealed-next-key",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-recovery-uncommitted-key",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/builder-rejects-recovery-without-proof",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-recovery-rotation-mixed-quorum",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-recovery-rotation-mixed-quorum",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-recovery-rotation-mixed-quorum",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-recovery-rotation-mixed-quorum",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-duplicate-credential-on-recovery",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-recovery-agent-counted",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-duplicate-credential-on-rotation",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-duplicate-credential-without-policy",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-duplicate-credential-without-policy",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-duplicate-credential-without-policy",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-duplicate-credential-without-policy",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-commitment-to-session-credential",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-commitment-to-counterparty-credential",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-session-admission-of-committed-credential",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-session-admission-of-committed-credential-without-policy",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-session-admission-of-committed-credential-without-policy",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-session-admission-of-committed-credential-without-policy",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-session-admission-of-committed-credential-without-policy",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-session-admission-of-owner-credential-under-policy",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-counterparty-registration-of-committed-credential",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-revealed-key-equal-to-session-credential",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-policy-adoption-with-session-owner-credential",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-policy-adoption-carrying-foreign-commitment",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-policy-adoption-carrying-foreign-commitment",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-policy-adoption-carrying-foreign-commitment",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/accepts-policy-adoption-carrying-foreign-commitment",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-reveal-of-foreign-committed-key-under-policy",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-commitment-to-attester-in-force",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-session-admission-of-attester-credential-under-policy",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-policy-with-attester-equal-to-session-credential",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-policy-in-migrated-genesis",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2op/rejects-additional-authorizations-in-prefix",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+{
+ "id": "latest-note-array-expectation",
+ "target": "transparency",
+ "requires": "python",
+ "found": "pre-release review of the latest-note expectation, 2026-09",
+ "description": "An expectation that is not a plain object (here an array; likewise a Map, a MappingProxyType or a UserDict carrying a wrong nonce) fails closed with EXPECTATION_INVALID in both cores.",
+ "rootCause": "Both verifiers treated a non-record expectation as \"expect nothing\", so a replayed answer to another nonce was accepted when the caller passed its nonce in any container other than a plain object/dict.",
+ "fix": "latest.ts and transparency.py: EXPECTATION_INVALID for any expectation that is not a plain object/dict with exactly historyId, nonce and optionally origin.",
+ "input": {
+  "kind": "latestVerify",
+  "note": "irontrellis-witness-latest/1\nirontrellis-witness/vectors\n0x49af76147ad14d237097d1171a7792d8bea58defb857a8553d384d38c6dcbe76\nERERERERERERERERERERERERERERERERERERERERERE\n6\n0x13c3cfe33cdeee40c29cc1395f44f3e06ce82b38edbcc294e2f657493c1a6ba9\n5\n7\n1\n1\n\n— irontrellis-witness/vectors vuPJ7UrVPK8okT6rzSJg2gXzJI2Sg08r6suhdrAJNB/KBAr3EEhQx4IRh2Um2Gv+sGB4yyb7NASaHuukDmCNCPvFTgI=\n",
+  "keys": [
+   "irontrellis-witness/vectors+bee3c9ed+AchTrQ8M0rYZrqks7sT9VqJNZJnVhM55JX5Fz9gTm2Cn"
+  ],
+  "expect": [
+   "irontrellis-witness/vectors",
+   "0x49af76147ad14d237097d1171a7792d8bea58defb857a8553d384d38c6dcbe76",
+   "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+  ]
+ },
+ "expect": {
+  "ts": {
+   "ok": false,
+   "reason": "EXPECTATION_INVALID"
+  }
+ }
+}

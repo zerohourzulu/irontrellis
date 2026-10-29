@@ -1,0 +1,846 @@
+{
+ "tool": "g25/12 (post-A-157 complete; A-127.2, A-128, A-129 defaults; 2026-10-14)",
+ "command": "vectors",
+ "target": "vectors.json",
+ "options": {},
+ "result": {
+  "vectors": 86,
+  "byKind": {
+   "replay": 53,
+   "authorization": 16,
+   "headroom": 9,
+   "attestation": 7,
+   "export": 1
+  },
+  "notCovered": [
+   "authorization/v2/authority-denial-precedes-budgets: authority-layer outcome AMOUNT_EXCEEDED (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "authorization/v2/indeterminate-causal-time: authority-layer outcome CAUSAL_TIME_INVALID (spec 02 algebra) not re-derived; budgets correctly not consulted",
+   "replay/v2/still-reads-format-1-history: irontrellis-event/1 history (read-compatibility; replayed by the frozen v1/legacy suites, not by this format-2 checker)",
+   "replay/v2/still-reads-legacy-history: continuity-event/0.2 history (read-compatibility; replayed by the frozen v1/legacy suites, not by this format-2 checker)"
+  ],
+  "pinnedRoots": [
+   {
+    "source": "replay/v2/accepts-budget-history",
+    "position": 39,
+    "vector": "0xb08326ad01ff3fa8862655e421a1fd6fa45303e42141c15beed6ffab361db3d6",
+    "g25": "0xb08326ad01ff3fa8862655e421a1fd6fa45303e42141c15beed6ffab361db3d6",
+    "recordCount": 75,
+    "equal": true
+   },
+   {
+    "source": "replay/v2/accepts-budget-history checkpoint @24 data",
+    "position": 23,
+    "vector": "0x3fd08f20672ff942f53cb0472288dbb07d2e65f30d7f10b2174ca606a30c1ef1",
+    "g25": "0x3fd08f20672ff942f53cb0472288dbb07d2e65f30d7f10b2174ca606a30c1ef1",
+    "recordCount": 52,
+    "equal": true
+   },
+   {
+    "source": "replay/v2/accepts-budget-history checkpoint @33 data",
+    "position": 32,
+    "vector": "0xd6030a7ed7f54cc344c9d94c76a91600c6bf28d6a49d1ec7ad0313e5219d35c8",
+    "g25": "0xd6030a7ed7f54cc344c9d94c76a91600c6bf28d6a49d1ec7ad0313e5219d35c8",
+    "recordCount": 65,
+    "equal": true
+   },
+   {
+    "source": "replay/v2/accepts-budget-history checkpoint @36 data",
+    "position": 35,
+    "vector": "0xac8327a6e62f43a197ed91263f1a284c92a27cbb0b9a55e6d13aab3db9993583",
+    "g25": "0xac8327a6e62f43a197ed91263f1a284c92a27cbb0b9a55e6d13aab3db9993583",
+    "recordCount": 71,
+    "equal": true
+   },
+   {
+    "source": "replay/v2/accepts-budget-history checkpoint @39 data",
+    "position": 38,
+    "vector": "0x894a9856532aa13585fa1ec4cffec2715d88770739c11a160827de9f670e0dbd",
+    "g25": "0x894a9856532aa13585fa1ec4cffec2715d88770739c11a160827de9f670e0dbd",
+    "recordCount": 74,
+    "equal": true
+   },
+   {
+    "source": "replay/v2/accepts-prefix-through-cp-1",
+    "position": 24,
+    "vector": "0x0b9593f92e327961b667a24c2c7d61c704bc68693482f3be75bafdf5ba2f3fae",
+    "g25": "0x0b9593f92e327961b667a24c2c7d61c704bc68693482f3be75bafdf5ba2f3fae",
+    "recordCount": 53,
+    "equal": true
+   },
+   {
+    "source": "replay/v2/accepts-prefix-through-cp-1 checkpoint @24 data",
+    "position": 23,
+    "vector": "0x3fd08f20672ff942f53cb0472288dbb07d2e65f30d7f10b2174ca606a30c1ef1",
+    "g25": "0x3fd08f20672ff942f53cb0472288dbb07d2e65f30d7f10b2174ca606a30c1ef1",
+    "recordCount": 52,
+    "equal": true
+   },
+   {
+    "source": "replay/v2/accepts-prefix-through-cp-2",
+    "position": 33,
+    "vector": "0xe6ca555be04634ae14997731d5e7791108d71bc8e2dcfe5df410d6bbd4a336b1",
+    "g25": "0xe6ca555be04634ae14997731d5e7791108d71bc8e2dcfe5df410d6bbd4a336b1",
+    "recordCount": 66,
+    "equal": true
+   },
+   {
+    "source": "replay/v2/accepts-prefix-through-cp-2 checkpoint @24 data",
+    "position": 23,
+    "vector": "0x3fd08f20672ff942f53cb0472288dbb07d2e65f30d7f10b2174ca606a30c1ef1",
+    "g25": "0x3fd08f20672ff942f53cb0472288dbb07d2e65f30d7f10b2174ca606a30c1ef1",
+    "recordCount": 52,
+    "equal": true
+   },
+   {
+    "source": "replay/v2/accepts-prefix-through-cp-2 checkpoint @33 data",
+    "position": 32,
+    "vector": "0xd6030a7ed7f54cc344c9d94c76a91600c6bf28d6a49d1ec7ad0313e5219d35c8",
+    "g25": "0xd6030a7ed7f54cc344c9d94c76a91600c6bf28d6a49d1ec7ad0313e5219d35c8",
+    "recordCount": 65,
+    "equal": true
+   },
+   {
+    "source": "replay/v2/accepts-prefix-through-cp-3",
+    "position": 36,
+    "vector": "0xa8d48373060b13113bdeebeeb809f995f409842b887e4d0caaa139473277dbc6",
+    "g25": "0xa8d48373060b13113bdeebeeb809f995f409842b887e4d0caaa139473277dbc6",
+    "recordCount": 72,
+    "equal": true
+   },
+   {
+    "source": "replay/v2/accepts-prefix-through-cp-3 checkpoint @24 data",
+    "position": 23,
+    "vector": "0x3fd08f20672ff942f53cb0472288dbb07d2e65f30d7f10b2174ca606a30c1ef1",
+    "g25": "0x3fd08f20672ff942f53cb0472288dbb07d2e65f30d7f10b2174ca606a30c1ef1",
+    "recordCount": 52,
+    "equal": true
+   },
+   {
+    "source": "replay/v2/accepts-prefix-through-cp-3 checkpoint @33 data",
+    "position": 32,
+    "vector": "0xd6030a7ed7f54cc344c9d94c76a91600c6bf28d6a49d1ec7ad0313e5219d35c8",
+    "g25": "0xd6030a7ed7f54cc344c9d94c76a91600c6bf28d6a49d1ec7ad0313e5219d35c8",
+    "recordCount": 65,
+    "equal": true
+   },
+   {
+    "source": "replay/v2/accepts-prefix-through-cp-3 checkpoint @36 data",
+    "position": 35,
+    "vector": "0xac8327a6e62f43a197ed91263f1a284c92a27cbb0b9a55e6d13aab3db9993583",
+    "g25": "0xac8327a6e62f43a197ed91263f1a284c92a27cbb0b9a55e6d13aab3db9993583",
+    "recordCount": 71,
+    "equal": true
+   },
+   {
+    "source": "replay/v2/accepts-genesis-only",
+    "position": 0,
+    "vector": "0xa74d0c60c889dfba5299780fe8abe72770e1e034c6b031723d5d07a66356351d",
+    "g25": "0xa74d0c60c889dfba5299780fe8abe72770e1e034c6b031723d5d07a66356351d",
+    "recordCount": 3,
+    "equal": true
+   },
+   {
+    "source": "export/v2/cp-1-to-cp-3 from",
+    "position": 24,
+    "vector": "0x0b9593f92e327961b667a24c2c7d61c704bc68693482f3be75bafdf5ba2f3fae",
+    "g25": "0x0b9593f92e327961b667a24c2c7d61c704bc68693482f3be75bafdf5ba2f3fae",
+    "recordCount": 53,
+    "equal": true
+   },
+   {
+    "source": "export/v2/cp-1-to-cp-3 to",
+    "position": 36,
+    "vector": "0xa8d48373060b13113bdeebeeb809f995f409842b887e4d0caaa139473277dbc6",
+    "g25": "0xa8d48373060b13113bdeebeeb809f995f409842b887e4d0caaa139473277dbc6",
+    "recordCount": 72,
+    "equal": true
+   }
+  ],
+  "distinctPinnedRoots": 9,
+  "pinnedRootsEqual": true
+ },
+ "summary": {
+  "checks": 130,
+  "failures": 0,
+  "firstFailures": []
+ },
+ "limits": [
+  "authority algebra (spec 02: delegation paths, intersections, prohibitions) is not re-derived; admission and administrative proofs are checked for consistency with state (controlling grants exist, are permissions, unrevoked, in time; request/binding/intent/usage/budget), not for byte-equality with an engine-derived proof",
+  "CORE refusals: signature, actor binding, time, head checked; the DENY/INDETERMINATE code is not re-derived (authority algebra)",
+  "adapter acknowledgment / no-effect deep validation (spec 01 \u00a7F.5) is not implemented; evidence references and (A-17.5) the idempotencyKey are checked",
+  "receipt artifacts are outside the history (\u00a78.5) and not verified",
+  "migrated prefixes: runtime/administrative signatures are verified against the shadow heads with the source algorithm; the prefix control-tuple currency (session expiry, epoch, tenure) of administrative events and migratedFrom.recordHash are not checked",
+  "witness registration receipts (signed notes, WITNESS \u00a79.5) are not verified; the field set is",
+  "duty findings: the attester administrative proof hash (authorityProofHash) is taken from the challenge (authority algebra)",
+  "A-17.2: ownerKeys and the option-given genesis fields (nextKeyDigests, capacity, checkpointPolicy, projection) of a migrated genesis cannot be checked without the migration options; migratedFrom.recordHash (A-17.4) is not checkable from the target",
+  "A-40.2 (g25/4): a format-1 sourceAttestation is verified (shape, head = migratedFrom.historyHash/position, signature under migratedFrom.genesis.ownerKeys); its head.canonicalTime is compared with the source event at migratedFrom.position when the prefix ends; whether the /1 body carries `domain` is G3-X-3 (both shapes accepted)",
+  "A-37.2 / A-69 derived ids are an API rule: g25 provides the derivation (api.derive_id) and tests it; replay never derives ids",
+  "writer, API and client rules (A-5, A-6, A-8 to A-14, A-22.3-5, A-23, A-24, A-25, A-30, A-31 Python; G2: A-38, A-41, A-42, A-43.1, A-44.1/3/4, A-45.2, A-46.1-2 and A-66 (reported as an advisory schedule only), A-48, A-52.3, A-55, A-56; G3: A-63 plan-time refusal, A-66, A-68) leave no trace a history file can show",
+  "A-44.2: the snapshot is size-checked before parsing but not parsed in streaming fashion (entries counted after the parse)",
+  "A-39: resume step (1) rollback detection is checked against heads supplied as inputs (pin, anchor log, witness heads); the remote witness protocol itself (WITNESS \u00a71, E-10) is not implemented",
+  "A-71 (g25/5): type 42 is replayed in full (schema, challenge, the eight A-71.3 steps, both record kinds, row 42); source.eventDigest is never recomputed (no provider content in the history); the A-71.6 writer contract (lock, checkpoint ordering, crash re-emission) is a writer rule - api.observation_precheck reproduces only its codes; A-71.7 listings are report-level (advisory.verify_report)",
+  "A-72 (g25/5): the 11-type lifecycle set is g25's own list (job 06); it equals the eleven types A-72.2 names; the builder's DEVIATIONS copy of capacity.ts is not an input"
+ ],
+ "notes": [
+  "authorization/v2/allow-after-budget-closed: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked",
+  "authorization/v2/allow-other-metric-not-matched: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked",
+  "authorization/v2/allow-per-operation-at-cap: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked",
+  "authorization/v2/allow-role-budget-within: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked",
+  "authorization/v2/allow-when-budget-expired: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked",
+  "authorization/v2/allow-within-carry: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked",
+  "authorization/v2/allow-zero-amount: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked",
+  "authorization/v2/period-0-allow-last-five: ALLOW \u2014 the authority layer (spec 02) is not re-derived; only \"no budget refuses\" is checked"
+ ],
+ "checks": [
+  {
+   "subject": "replay/v2/accepts-budget-history",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-budget-history",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-budget-history",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-budget-history",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-prefix-through-cp-1",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-prefix-through-cp-1",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-prefix-through-cp-1",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-prefix-through-cp-1",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-prefix-through-cp-2",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-prefix-through-cp-2",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-prefix-through-cp-2",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-prefix-through-cp-2",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-prefix-through-cp-3",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-prefix-through-cp-3",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-prefix-through-cp-3",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-prefix-through-cp-3",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-genesis-only",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-genesis-only",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-genesis-only",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/accepts-genesis-only",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-bigint-marker-amount",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-negative-amount",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-leading-zero-amount",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-format1-literals-in-format2-genesis",
+   "check": "rejected with UNSUPPORTED_VERSION",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-domain-version-1-in-format2",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-moved-control-event",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-budget-declared-without-owner-signature",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-budget-with-no-cap",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-budget-window-zero-length",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-duplicate-budget-id",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-update-of-unknown-budget",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-tampered-budget-declaration",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-admission-over-budget",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-unsigned-intent-declaration",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-intent-declaration-with-wrong-signature",
+   "check": "rejected with DECLARATION_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-intent-declaration-with-altered-amount",
+   "check": "rejected with DECLARATION_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-duplicate-nonce-declaration",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-refusal-not-reproduced",
+   "check": "rejected with REFUSAL_NOT_REPRODUCED",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-refusal-with-tampered-code",
+   "check": "rejected with REFUSAL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-refusal-that-would-be-allowed",
+   "check": "rejected with REFUSAL_NOT_REPRODUCED",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-refusal-with-stale-head",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-connector-refusal-without-connector",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-refusal-signed-by-stranger",
+   "check": "rejected with REFUSAL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-checkpoint-with-wrong-state-root",
+   "check": "rejected with STATE_ROOT_MISMATCH",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-checkpoint-with-wrong-record-count",
+   "check": "rejected with STATE_ROOT_MISMATCH",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-checkpoint-with-wrong-projection-head",
+   "check": "rejected with PROJECTION_HEAD_MISMATCH",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-checkpoint-citing-other-head",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-effect-for-unknown-intent",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-effect-with-tampered-amount",
+   "check": "rejected with EFFECT_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-receipt-from-unregistered-counterparty",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-receipt-with-bad-counterparty-signature",
+   "check": "rejected with COUNTERPARTY_SIGNATURE_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-receipt-chain-break",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-receipt-with-altered-envelope",
+   "check": "rejected with COUNTERPARTY_SIGNATURE_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-receipt-for-other-history",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-receipt-intent-digest-mismatch",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-reregistering-active-counterparty",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-receipt-wrapper-stale",
+   "check": "rejected with RECORD_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-admission-metric-mismatch",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-refusal-actor-mismatch",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-refusal-evaluation-time-mismatch",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-connector-refusal-by-other-session",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-effect-measurer-mismatch",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-budget-update-without-cap",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-budget-carry-without-carry-cap",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-budget-with-unknown-subject-key",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/allow-within-carry",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/allow-within-carry",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/deny-amount-over-carry",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/deny-amount-over-carry",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/allow-role-budget-within",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/allow-role-budget-within",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/deny-role-budget-per-operation",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/deny-role-budget-per-operation",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/deny-after-subjects-update",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/deny-after-subjects-update",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/allow-per-operation-at-cap",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/allow-per-operation-at-cap",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/deny-per-operation-over-cap",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/deny-per-operation-over-cap",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/authority-denial-precedes-budgets",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/deny-period-undefined",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/deny-period-undefined",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/allow-when-budget-expired",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/allow-when-budget-expired",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/allow-after-budget-closed",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/allow-after-budget-closed",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/allow-zero-amount",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/allow-zero-amount",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/allow-other-metric-not-matched",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/allow-other-metric-not-matched",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/indeterminate-causal-time",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/period-0-allow-last-five",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/period-0-allow-last-five",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/period-0-deny-six",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "authorization/v2/period-0-deny-six",
+   "check": "budget layer of \u00a78.1 (\u00a79.4)",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/b-amount-period-1",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/b-amount-period-1",
+   "check": "headroom = \u00a79.7",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/b-amount-period-0-view",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/b-amount-period-0-view",
+   "check": "headroom = \u00a79.7",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/b-amount-future-period-carries-cap",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/b-amount-future-period-carries-cap",
+   "check": "headroom = \u00a79.7",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/b-amount-far-future-idle-stretch",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/b-amount-far-future-idle-stretch",
+   "check": "headroom = \u00a79.7",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/b-amount-before-lowering",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/b-amount-before-lowering",
+   "check": "headroom = \u00a79.7",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/c-count-closed",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/c-count-closed",
+   "check": "headroom = \u00a79.7",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/e-future-before-origin",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/e-future-before-origin",
+   "check": "headroom = \u00a79.7",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/unknown-budget",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/unknown-budget",
+   "check": "headroom = \u00a79.7",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/c-count-before-update",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "headroom/v2/c-count-before-update",
+   "check": "headroom = \u00a79.7",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2/valid-final-head",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2/valid-final-head",
+   "check": "attestation facts (\u00a77.4)",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2/wrong-state-root",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2/wrong-state-root",
+   "check": "attestation facts (\u00a77.4)",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2/wrong-projection-head",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2/wrong-projection-head",
+   "check": "attestation facts (\u00a77.4)",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2/stranger-key",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2/stranger-key",
+   "check": "attestation facts (\u00a77.4)",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2/earlier-head",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2/earlier-head",
+   "check": "attestation facts (\u00a77.4)",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2/head-not-a-prefix",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2/head-not-a-prefix",
+   "check": "attestation facts (\u00a77.4)",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2/wrong-domain-label",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "attestation/v2/wrong-domain-label",
+   "check": "attestation facts (\u00a77.4)",
+   "pass": true
+  },
+  {
+   "subject": "export/v2/cp-1-to-cp-3",
+   "check": "vector history head = g25 chain",
+   "pass": true
+  },
+  {
+   "subject": "export/v2/cp-1-to-cp-3",
+   "check": "export view (\u00a715)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2/rejects-format2-event-kind-in-format1-history",
+   "check": "non-format-2 history (irontrellis-event/1) carrying a type \u2265 29 -> UNSUPPORTED_EVENT_TYPE (\u00a75 as amended by A-56.10, A-71.0)",
+   "pass": true
+  }
+ ]
+}

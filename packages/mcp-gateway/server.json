@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.zerohourzulu/irontrellis-gateway",
+  "description": "Local MCP gateway: approved tools behind a signed authority check, per call or as exactly-once jobs",
+  "repository": { "url": "https://github.com/zerohourzulu/irontrellis", "source": "github", "subfolder": "packages/mcp-gateway" },
+  "version": "1.0.0-rc.2",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@ramex-labs/irontrellis-mcp-gateway",
+      "version": "1.0.0-rc.2",
+      "transport": { "type": "stdio" },
+      "packageArguments": [
+        { "type": "named", "name": "--config", "description": "Absolute path to the operator-created private gateway configuration.", "isRequired": true, "valueHint": "gateway_config", "format": "filepath" }
+      ]
+    }
+  ]
+}

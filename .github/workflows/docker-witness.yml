@@ -1,0 +1,264 @@
+name: Docker (witness)
+
+# Builds the witness image (packages/witness/deploy/Dockerfile) for linux/amd64 and linux/arm64,
+# smoke-tests the amd64 image with packages/witness/deploy/smoke.sh (the container driven by the
+# repository's own `irontrellis` CLI), and on a `v*` tag pushes it to
+# ghcr.io/zerohourzulu/irontrellis-witness with SLSA provenance and an SBOM (BuildKit attestations), signs
+# it with cosign (keyless: GitHub OIDC -> Sigstore, no key or secret) and smoke-tests what was pushed.
+#
+# No secrets: GITHUB_TOKEN only. The tag must equal the witness package version, which every
+# publishable package shares (scripts/check-versions.mjs): v<version> <-> "<version>", for example
+# v1.0.0-rc.2 <-> "1.0.0-rc.2". A pre-release is tagged <version> and `next`, a stable release
+# <version>, <major>.<minor> and `latest`, mirroring the npm dist-tags in release.yml. The publish
+# job runs in the `ghcr` environment (CHECKLIST.md, section C).
+
+on:
+  push:
+    branches: [main, master]
+    tags: ["v*"]
+  pull_request:
+    paths:
+      - "packages/core/**"
+      - "packages/witness/**"
+      - "packages/cli/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".npmrc"
+      - "tsconfig.base.json"
+      - ".github/workflows/docker-witness.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docker-witness-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
+
+env:
+  PNPM_VERSION: 11.19.0   # = packageManager in package.json
+  FORCE_COLOR: 0
+  NO_COLOR: 1
+  # Base image of both Dockerfile stages. Pin it by the multi-arch index digest
+  # (node:22-alpine@sha256:<digest>, from `docker buildx imagetools inspect node:22-alpine`) and
+  # update it deliberately; the Dockerfile header has the procedure. This digest is the one the
+  # image was first built and smoke-tested with (2026-09-26).
+  NODE_IMAGE: node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+  DOCKERFILE: packages/witness/deploy/Dockerfile
+
+jobs:
+  build:
+    name: build (amd64, arm64) and smoke test
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+
+      - name: Lint the Dockerfile and the scripts
+        run: |
+          python3 -m pip install hadolint-bin==2.15.1 shellcheck-py==0.11.0.1
+          hadolint packages/witness/deploy/Dockerfile
+          shellcheck packages/witness/deploy/smoke.sh
+          shellcheck -s sh packages/witness/deploy/docker-entrypoint.sh
+
+      - name: Witness package version
+        id: version
+        run: echo "version=$(node -p 'require("./packages/witness/package.json").version')" >> "$GITHUB_OUTPUT"
+
+      - uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130 # v3.7.0
+        with:
+          platforms: arm64
+
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
+
+      - name: Build linux/amd64 and linux/arm64
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6.19.2
+        with:
+          context: .
+          file: ${{ env.DOCKERFILE }}
+          platforms: linux/amd64,linux/arm64
+          build-args: |
+            NODE_IMAGE=${{ env.NODE_IMAGE }}
+            VERSION=${{ steps.version.outputs.version }}
+            REVISION=${{ github.sha }}
+          push: false
+          provenance: false
+          sbom: false
+          cache-from: type=gha,scope=irontrellis-witness
+          cache-to: type=gha,scope=irontrellis-witness,mode=max
+
+      - name: Load linux/amd64 into the local daemon
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6.19.2
+        with:
+          context: .
+          file: ${{ env.DOCKERFILE }}
+          platforms: linux/amd64
+          build-args: |
+            NODE_IMAGE=${{ env.NODE_IMAGE }}
+            VERSION=${{ steps.version.outputs.version }}
+            REVISION=${{ github.sha }}
+          load: true
+          tags: irontrellis-witness:ci
+          provenance: false
+          sbom: false
+          cache-from: type=gha,scope=irontrellis-witness
+
+      - name: Image size and config
+        run: |
+          docker image ls irontrellis-witness:ci
+          docker image inspect --format '{{json .Config}}' irontrellis-witness:ci
+
+      # The smoke test drives the container with the repository's own CLI, as an owner would.
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Build the host CLI
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm --filter "irontrellis..." run build
+
+      - name: Smoke test
+        run: bash packages/witness/deploy/smoke.sh irontrellis-witness:ci
+
+  publish:
+    name: push to GHCR (provenance, SBOM, cosign)
+    needs: build
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment: ghcr
+    permissions:
+      contents: read
+      packages: write   # push to ghcr.io/zerohourzulu/irontrellis-witness
+      id-token: write   # OIDC token for the keyless cosign signature (Sigstore Fulcio certificate)
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Tag matches the witness package version
+        id: version
+        run: |
+          set -euo pipefail
+          version="$(node -p 'require("./packages/witness/package.json").version')"
+          tag="${GITHUB_REF_NAME#v}"
+          if [ "$tag" != "$version" ]; then
+            echo "tag v$tag does not match the witness package version $version" >&2
+            exit 1
+          fi
+          case "$version" in *-*) prerelease=true ;; *) prerelease=false ;; esac
+          owner="$(echo "$GITHUB_REPOSITORY_OWNER" | tr '[:upper:]' '[:lower:]')"
+          {
+            echo "version=$version"
+            echo "prerelease=$prerelease"
+            echo "image=ghcr.io/$owner/irontrellis-witness"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Tags and labels
+        id: meta
+        uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051 # v5.10.0
+        with:
+          images: ${{ steps.version.outputs.image }}
+          flavor: |
+            latest=auto
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=raw,value=next,enable=${{ steps.version.outputs.prerelease == 'true' }}
+          labels: |
+            org.opencontainers.image.title=irontrellis-witness
+            org.opencontainers.image.description=IronTrellis witness server: records owner-signed head statements in an append-only RFC 6962 Merkle log and returns signed receipts, so a history cannot be rolled back unnoticed.
+            org.opencontainers.image.documentation=https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}/docs/WITNESS.md
+            org.opencontainers.image.licenses=Apache-2.0
+            org.opencontainers.image.base.name=${{ env.NODE_IMAGE }}
+
+      - uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130 # v3.7.0
+        with:
+          platforms: arm64
+
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
+
+      - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3.7.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push (provenance and SBOM attestations)
+        id: push
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6.19.2
+        with:
+          context: .
+          file: ${{ env.DOCKERFILE }}
+          platforms: linux/amd64,linux/arm64
+          build-args: |
+            NODE_IMAGE=${{ env.NODE_IMAGE }}
+            VERSION=${{ steps.version.outputs.version }}
+            REVISION=${{ github.sha }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          provenance: mode=max
+          sbom: true
+          cache-from: type=gha,scope=irontrellis-witness
+
+      - uses: sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac # v3.9.1
+
+      - name: Sign the image (keyless) and verify the signature
+        env:
+          IMAGE: ${{ steps.version.outputs.image }}@${{ steps.push.outputs.digest }}
+        run: |
+          set -euo pipefail
+          cosign sign --yes "$IMAGE"
+          cosign verify "$IMAGE" \
+            --certificate-identity "https://github.com/${GITHUB_REPOSITORY}/.github/workflows/docker-witness.yml@${GITHUB_REF}" \
+            --certificate-oidc-issuer https://token.actions.githubusercontent.com > /dev/null
+          echo "signed and verified $IMAGE"
+
+      # Smoke-test exactly what was pushed (the amd64 image, by digest).
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Build the host CLI
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm --filter "irontrellis..." run build
+
+      - name: Smoke test the pushed image
+        env:
+          IMAGE: ${{ steps.version.outputs.image }}@${{ steps.push.outputs.digest }}
+        run: |
+          docker pull --platform linux/amd64 "$IMAGE"
+          bash packages/witness/deploy/smoke.sh "$IMAGE"
+
+      - name: Summary
+        env:
+          IMAGE: ${{ steps.version.outputs.image }}
+          DIGEST: ${{ steps.push.outputs.digest }}
+          TAGS: ${{ steps.meta.outputs.tags }}
+        run: |
+          {
+            echo "### irontrellis-witness image"
+            echo
+            echo "Digest: \`$DIGEST\`"
+            echo
+            echo "Tags:"
+            while IFS= read -r tag; do if [ -n "$tag" ]; then echo "- \`$tag\`"; fi; done <<< "$TAGS"
+            echo
+            echo "Verify: \`cosign verify $IMAGE@$DIGEST --certificate-identity https://github.com/$GITHUB_REPOSITORY/.github/workflows/docker-witness.yml@$GITHUB_REF --certificate-oidc-issuer https://token.actions.githubusercontent.com\`"
+          } >> "$GITHUB_STEP_SUMMARY"

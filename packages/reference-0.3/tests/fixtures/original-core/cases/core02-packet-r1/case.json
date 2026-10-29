@@ -1,0 +1,48 @@
+{
+  "adapterProfile": {
+    "descriptorHash": "0xd4b988c1f23603cf35d9abd0db5a7eb56ef7a5fba1a8f3e904490c1ce4458d64",
+    "profileId": "adapter:local-evidence-packet",
+    "profileVersion": "1"
+  },
+  "caseId": "core02-packet-r1",
+  "domain": {
+    "chainId": "31337",
+    "deploymentId": "core-0.2-reference:core02-packet-r1",
+    "protocol": "continuity",
+    "verifyingContract": "0x0000000000000000000000000000000000003002",
+    "version": "0.2"
+  },
+  "inputDirectory": "fixtures/synthetic-security-input",
+  "schemaVersion": "continuity-local-intake-case/0.2",
+  "selection": [
+    {
+      "bytes": 221,
+      "name": "agent.log",
+      "sha256": "6b6679fb6f97b8703bd57d86c1e2d743eed8551faf2abd802879f07269ac3ff2"
+    },
+    {
+      "bytes": 225,
+      "name": "auth.log",
+      "sha256": "c6ff6563925cc997195080ad6cf736a9d02e7fd791dc3f9d17daf45e2bcf8b4b"
+    }
+  ],
+  "terms": {
+    "caseId": "core02-packet-r1",
+    "reviewDeadline": 1000,
+    "selection": [
+      {
+        "bytes": 221,
+        "name": "agent.log",
+        "sha256": "6b6679fb6f97b8703bd57d86c1e2d743eed8551faf2abd802879f07269ac3ff2"
+      },
+      {
+        "bytes": 225,
+        "name": "auth.log",
+        "sha256": "c6ff6563925cc997195080ad6cf736a9d02e7fd791dc3f9d17daf45e2bcf8b4b"
+      }
+    ],
+    "subject": "Collect the selected synthetic log packet; investigate and account for unresolved review.",
+    "syntheticOnly": true
+  },
+  "termsCommitment": "0xf22acbfa552f4d2d2e5ff479a46d6484d9692c0dff96f8f8b4878bcb9521a480"
+}

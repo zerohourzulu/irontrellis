@@ -1,0 +1,3 @@
+# One identity per line, e.g. "RAmEx Labs <release@ramexlabs.example>". Empty (comments only) = check skipped.
+# Only the email address inside <...> is compared (case-insensitive), for both author and committer.
+# Merges made in the GitHub web UI are committed by "GitHub <noreply@github.com>"; list it if you merge that way.

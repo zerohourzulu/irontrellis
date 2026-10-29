@@ -1,0 +1,31 @@
+{
+  "scope": "ACTUAL_RETAINED_BODY_BYTES_AND_PUBLIC_HEAD_ATTESTATION_STRUCTURAL_DESCRIPTOR_TEST",
+  "inputs": [
+    {
+      "path": "conformance/anchor-statement/vector.json",
+      "sha256": "0xe6ac2aa67d430cf0ea6ec43fd7bb629fa92fb14b72a08c7b689bd945eed2929b"
+    },
+    {
+      "path": "conformance/v2-regenerated/histories/rotation-v2.json",
+      "sha256": "0x86ff8ee0ad80be589caefc74772fd9230ba5a82503c5375754a730a7f014794a"
+    },
+    {
+      "path": "conformance/anchor-namespace/fixtures/namespace.json",
+      "sha256": "0x4443391617501a8071b39ac397cde4e6b9c1bb7bf55997dd72ce6eb9c9d3bc1c"
+    },
+    {
+      "path": "conformance/anchor-namespace/fixtures/manifest.json",
+      "sha256": "0x530a3ac1d7346d15c3f850a56a6e78c1b1683cfbfc797de5dffb6d193713a6c7"
+    }
+  ],
+  "hashDerivations": [
+    "reviewed descriptor implementation",
+    "actual Core eventHash/recordHash",
+    "explicit independent 93-byte record preimage"
+  ],
+  "noNewReplayOrSignatureVerification": true,
+  "noNetwork": true,
+  "noSigning": true,
+  "noContract": true,
+  "canonicalBodiesAreNotOriginalInputWhitespace": true
+}

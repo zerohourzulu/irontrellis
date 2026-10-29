@@ -1,0 +1,263 @@
+[
+ {
+  "id": "event:policy-history:genesis",
+  "type": "DEPLOYMENT_INITIALIZED",
+  "timestamp": 100,
+  "data": {
+   "adapterPolicyHash": "0x00c3498e2744943663475d0187ca979cdd09763b88427781883693c4b8c163a7",
+   "canonicalLineageId": "lineage:policy-history",
+   "domain": {
+    "protocol": "irontrellis",
+    "version": "2",
+    "deploymentId": "irontrellis-conformance-v2"
+   },
+   "finality": "LOCAL_ONLY",
+   "globalPolicySourceId": "policy:policy-history",
+   "ownerKeys": [
+    {
+     "keyId": "owner:1",
+     "scheme": "ed25519",
+     "credential": "0x967e264fa6b2e89fcfab4df3d4291cd1482a3a5a9f3836c9ce8f80d112d2ac4d"
+    },
+    {
+     "keyId": "owner:2",
+     "scheme": "ed25519",
+     "credential": "0x26bf8276bdbec5f0699e1c49d65fefe27574d97edbb11df08676aae73778c83c"
+    },
+    {
+     "keyId": "owner:3",
+     "scheme": "ed25519",
+     "credential": "0x31f3a7405ba36c56fd5eee04f94e131fa632e7ab8ea106e13b18e4cf6d6b8577"
+    },
+    {
+     "keyId": "agent:1",
+     "scheme": "ed25519",
+     "credential": "0x323c6121c37fc56bd2d4edbaa70dfda58c6cbe531283027a1a52b10e72ca3745"
+    }
+   ],
+   "policyVersion": "irontrellis-local-owner/2",
+   "rootRecognitionPolicy": "declared-principal-root/0.2",
+   "timeSource": "EVENT_TIMESTAMP",
+   "versions": {
+    "eventSchemaVersion": "irontrellis-event/2",
+    "historyHashAlgorithm": "sha256",
+    "recordChainVersion": "irontrellis-record/2",
+    "stateDerivationVersion": "irontrellis-state/2",
+    "projectionVersion": "irontrellis-projection/2",
+    "receiptSchemaVersion": "irontrellis-receipt/2",
+    "controlAuthorizationVersion": "irontrellis-control-authorization/2",
+    "queryEnvelopeVersion": "continuity-query-envelope/0.2",
+    "authorizationProofVersion": "irontrellis-authorization-proof/2",
+    "runtimeAuthorizationVersion": "irontrellis-runtime-authorization/2",
+    "administrativeAuthorizationVersion": "irontrellis-administrative-authorization/2",
+    "signatureScheme": "ed25519"
+   },
+   "nextKeyDigests": [
+    "0x378829b1f92d7c75ec21f41d834b009220086f4f01ee16c789937abdc88089c9"
+   ],
+   "ownerPolicy": {
+    "threshold": 2,
+    "keyClasses": {
+     "agent:1": "AGENT"
+    },
+    "labels": {
+     "owner:1": "operations laptop"
+    }
+   }
+  }
+ },
+ {
+  "id": "event:principal:22",
+  "type": "PRINCIPAL_CREATED",
+  "timestamp": 101,
+  "data": {
+   "principalId": "operations",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x7799203c70af64e06e5525d24173b93b5fc7327d6f406c705ecee1ba90560e992adbc365dc16236c88145f76b967e4819686beca0c25ff358a043c675998c80a"
+   },
+   "additionalControlAuthorizations": [
+    {
+     "keyId": "owner:2",
+     "signature": "0x17c6e570a1dda753f2745a932b05491309530a01f66f8d1b81e14980bfb23cfd937d03bc4f69193fc5d473e008a52affc75a5aa0f230c69e58495333e3801f02"
+    }
+   ]
+  }
+ },
+ {
+  "id": "event:agent:bea",
+  "type": "AGENT_CREATED",
+  "timestamp": 102,
+  "data": {
+   "agentId": "bea",
+   "principalId": "operations",
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "controlAuthorization": {
+    "keyId": "owner:2",
+    "signature": "0xc805b78fc174a74d65742272a61de574bb5e96421f41d108263851df91746fbfac2ad072f3089c7caf96ca841ab3cdaf38785e9abea5d22eaa4166f4e0ecb208"
+   },
+   "additionalControlAuthorizations": [
+    {
+     "keyId": "agent:1",
+     "signature": "0xc1b0a18e46d1b635806f601e939f0a477a9c9b0245211b0a253ef4459d7cff8055580d61a93229d6f0d2d78abce119834f9d831a7e01d40abbf10a5bcd2c5306"
+    }
+   ]
+  }
+ },
+ {
+  "id": "event:rotation:policy",
+  "type": "OWNER_KEYS_ROTATED",
+  "timestamp": 103,
+  "data": {
+   "ownerKeys": [
+    {
+     "keyId": "owner:1",
+     "scheme": "ed25519",
+     "credential": "0x967e264fa6b2e89fcfab4df3d4291cd1482a3a5a9f3836c9ce8f80d112d2ac4d"
+    },
+    {
+     "keyId": "owner:2",
+     "scheme": "ed25519",
+     "credential": "0x26bf8276bdbec5f0699e1c49d65fefe27574d97edbb11df08676aae73778c83c"
+    },
+    {
+     "keyId": "owner:3",
+     "scheme": "ed25519",
+     "credential": "0x31f3a7405ba36c56fd5eee04f94e131fa632e7ab8ea106e13b18e4cf6d6b8577"
+    },
+    {
+     "keyId": "agent:1",
+     "scheme": "ed25519",
+     "credential": "0x323c6121c37fc56bd2d4edbaa70dfda58c6cbe531283027a1a52b10e72ca3745"
+    }
+   ],
+   "nextKeyDigests": [
+    "0x378829b1f92d7c75ec21f41d834b009220086f4f01ee16c789937abdc88089c9"
+   ],
+   "ownerPolicy": {
+    "threshold": 2,
+    "byType": {
+     "ROLE_CREATED": 3
+    },
+    "keyClasses": {
+     "agent:1": "AGENT"
+    }
+   },
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xd877b4b44244386055e2d170e1bf0341960141aca4649c4d1203228eddc072908db64b2d78d17f1d3ff4b6afb992d769c30f335f9f3384fbd0e11f4a3aa66a04"
+   },
+   "additionalControlAuthorizations": [
+    {
+     "keyId": "owner:3",
+     "signature": "0xf00f1d238e39558b9c4ef2109e42c6c36ffe8e8833019609f172f72121289cb707e23510df2064abc4f7667ee74d51cb64e8026e916cb03f0f8db8d12955a801"
+    },
+    {
+     "keyId": "agent:1",
+     "signature": "0xf7c961bc8e3ea5f4eaebfe04b12d8b591e628bd266531a37e2c16033c77d753b9edfcf2251e738dd468d49bf2516e2e37ad8e06962f63d8a090555defde0bb0f"
+    }
+   ]
+  }
+ },
+ {
+  "id": "event:role:reviewer",
+  "type": "ROLE_CREATED",
+  "timestamp": 104,
+  "data": {
+   "roleId": "reviewer",
+   "principalId": "operations",
+   "exclusive": true,
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xb36d174dd8d5e52d1ae315377fc2fae391cc16b780b09a7e5439404d6bc4a8b5ff5e0db949897ada8d3e9ff63e26d55d4b4f1d042a99a8775a3f72a4e20c1209"
+   },
+   "additionalControlAuthorizations": [
+    {
+     "keyId": "owner:2",
+     "signature": "0x8eb1be91d22e8ab4b2a6fb0d1869f85e9e8df507fe8ab3260b639de965a4dd435e0b0bf14a6269cf9e11726effaac5c85d3dd6292b59a3fd1546d721657bb00a"
+    },
+    {
+     "keyId": "owner:3",
+     "signature": "0x0cf72b6d7aa343f9f7bbd8a83462ba14f2ae2b4da49d4c74e5e7bb12e92b64485df0f1bfeb0e9c691a6be0b462be1af33dc8c099ff71f3b00666c58bc33d0b0b"
+    }
+   ]
+  }
+ },
+ {
+  "id": "event:rotation:keys",
+  "type": "OWNER_KEYS_ROTATED",
+  "timestamp": 105,
+  "data": {
+   "ownerKeys": [
+    {
+     "keyId": "owner:1",
+     "scheme": "ed25519",
+     "credential": "0x967e264fa6b2e89fcfab4df3d4291cd1482a3a5a9f3836c9ce8f80d112d2ac4d"
+    },
+    {
+     "keyId": "owner:2",
+     "scheme": "ed25519",
+     "credential": "0x26bf8276bdbec5f0699e1c49d65fefe27574d97edbb11df08676aae73778c83c"
+    },
+    {
+     "keyId": "next:1",
+     "scheme": "ed25519",
+     "credential": "0xb55d1042307a0ef76e6a23db5f071a40ee7524ab9d35d9450b72b8e42af29c74"
+    },
+    {
+     "keyId": "agent:1",
+     "scheme": "ed25519",
+     "credential": "0x323c6121c37fc56bd2d4edbaa70dfda58c6cbe531283027a1a52b10e72ca3745"
+    }
+   ],
+   "nextKeyDigests": [
+    "0xd710607b67247708ed730b9ae1e3884d3d203287d1dbba54a1f5f8bddc2de898"
+   ],
+   "ownerPolicy": {
+    "threshold": 2,
+    "keyClasses": {
+     "agent:1": "AGENT"
+    }
+   },
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xedf7bc0058556889c47c6710b3208abba1e8a417f0f8058d7ddbf92225e638af5d2712412b85f7d2b6e3f18d2d0511a9b58d88bb646e3beb0f3d49f057d73001"
+   },
+   "additionalControlAuthorizations": [
+    {
+     "keyId": "owner:2",
+     "signature": "0xcce19b761ef2db35c08319985450b7c743fa43d2b1d6b0d1d454d269f27bf0c3b069589139f26d1d8ccd923680e3d2f27815b7623188a78a30837f456abce10d"
+    }
+   ],
+   "nextKeyAuthorizations": [
+    {
+     "keyId": "next:1",
+     "scheme": "ed25519",
+     "signature": "0x61ce8e94ad96948317d2eadd15a000d907ac0d797a43dce60604fa49f699cd9409d4eb7b960b71e621ca88f5e0b61a18dc447f4ea668d4912478d741f5084e08"
+    }
+   ]
+  }
+ },
+ {
+  "id": "event:agent:cal",
+  "type": "AGENT_CREATED",
+  "timestamp": 106,
+  "data": {
+   "agentId": "cal",
+   "principalId": "operations",
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "controlAuthorization": {
+    "keyId": "next:1",
+    "signature": "0xbe592c46d6d7a169e793180aff4b3e512d169ef2a5891d011a6d8f594e0bbb1c707f221fad99835c82b358b2796fb5e355264f23b7df45dba09102748a598102"
+   },
+   "additionalControlAuthorizations": [
+    {
+     "keyId": "agent:1",
+     "signature": "0x40add1b7bbbba1bc2926795b87e4f8c15500edf5aa7211d90ed2f20f20cfe0101981ffa948edc967a2db4d7c2638a7d4e858d0be382a185aa1dfb8ca68f1af09"
+    }
+   ]
+  }
+ }
+]

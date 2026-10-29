@@ -1,0 +1,3 @@
+SYNTHETIC DATA — local development example only.
+2026-09-11T12:01:01Z worker=fixture-a task=review-denied-export status=pending
+2026-09-11T12:02:00Z worker=fixture-a observation=missing-context investigation=unresolved

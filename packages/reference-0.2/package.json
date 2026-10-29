@@ -1,0 +1,17 @@
+{
+  "name": "@irontrellis/reference-0.2",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Frozen Continuity Core 0.2.2 / Core 0.3 preview.8.2 (commit 18a8448) kept as the reference oracle for IronTrellis differential tests. Never published.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": { "node": ">=22.18.0" },
+  "scripts": {
+    "build": "echo \"reference-0.2: frozen sources, nothing to build\"",
+    "test": "echo \"reference-0.2: exercised by the packages/core differential tests\"",
+    "lint": "echo \"reference-0.2: frozen sources are not linted\""
+  },
+  "devDependencies": {
+    "viem": "2.55.19"
+  }
+}

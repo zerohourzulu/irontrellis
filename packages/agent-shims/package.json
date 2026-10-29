@@ -1,0 +1,47 @@
+{
+  "name": "@ramex-labs/irontrellis-agent-shims",
+  "version": "1.0.0-rc.2",
+  "type": "module",
+  "license": "Apache-2.0",
+  "files": [
+    "dist",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@ramex-labs/irontrellis": "workspace:*",
+    "@ramex-labs/irontrellis-managed-agents": "workspace:*",
+    "@openai/agents": "0.20.0",
+    "@langchain/langgraph": "1.4.21"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test test/*.test.mjs"
+  },
+  "devDependencies": {
+    "@langchain/core": "1.2.12",
+    "zod": "4.6.5",
+    "@types/node": "^24.6.0",
+    "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zerohourzulu/irontrellis.git",
+    "directory": "packages/agent-shims"
+  }
+}

@@ -1,0 +1,67 @@
+# systemd unit for the IronTrellis witness server.
+#
+# Install:   npm install -g @ramex-labs/irontrellis-witness   (provides /usr/bin/irontrellis-witness or /usr/local/bin/…;
+#            adjust ExecStart), then copy this file to /etc/systemd/system/.
+# Initialize the state directory once, as the service's dynamic user:
+#   sudo systemd-run --pty --wait -p DynamicUser=yes -p StateDirectory=irontrellis-witness -p UMask=0077 \
+#     /usr/bin/irontrellis-witness init --data /var/lib/irontrellis-witness --name witness.example.com
+#   sudo systemd-run --pty --wait -p DynamicUser=yes -p StateDirectory=irontrellis-witness -p UMask=0077 \
+#     /usr/bin/irontrellis-witness token create --data /var/lib/irontrellis-witness
+# Then: sudo systemctl enable --now irontrellis-witness
+# Reload admin tokens after `token create`: sudo systemctl reload irontrellis-witness
+# Logs (one JSON object per line): journalctl -u irontrellis-witness
+
+[Unit]
+Description=IronTrellis witness server
+Documentation=https://github.com/zerohourzulu/irontrellis/tree/main/packages/witness
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/irontrellis-witness serve --data /var/lib/irontrellis-witness --listen 127.0.0.1:8411
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGTERM
+TimeoutStopSec=30
+Restart=on-failure
+RestartSec=2s
+
+# Identity and state
+DynamicUser=yes
+StateDirectory=irontrellis-witness
+StateDirectoryMode=0700
+UMask=0077
+
+# Filesystem
+ProtectSystem=strict
+ReadWritePaths=/var/lib/irontrellis-witness
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectProc=invisible
+
+# Kernel and process
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+AmbientCapabilities=
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RemoveIPC=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+SystemCallErrorNumber=EPERM
+# V8's JIT needs writable executable memory, so MemoryDenyWriteExecute stays off.
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

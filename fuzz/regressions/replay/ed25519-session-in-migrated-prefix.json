@@ -1,0 +1,207 @@
+{
+ "id": "ed25519-session-in-migrated-prefix",
+ "target": "replay",
+ "found": "pre-release fuzzing, 2026-09-26 (replay target, initial campaign seed 11, iteration 12939)",
+ "description": "An owner-signed ed25519 runtime session admission inside a migrated legacy prefix is rejected (EVENT_DATA_INVALID at its position) by both engines (also conformance vector replay/v1/rejects-ed25519-session-in-migrated-prefix).",
+ "rootCause": "Inside a migrated prefix (docs/HISTORY-FORMAT.md §11) events are validated with the format-1 schema (ed25519 credentials allowed) but applied to the legacy shadow view, whose sessionCredential reads credentialAddress: TypeError in the TypeScript replay, KeyError in the Python one, i.e. a crash of replay() and of every reader on such a history.",
+ "fix": "events.ts sessionData / events.py _session_data: in the shadow (a migrated legacy prefix) a session admission must have credentialScheme eip191-personal-sign-keccak256 (legacy admissions always carry an Ethereum address).",
+ "input": {
+  "events": [
+   {
+    "id": "first-look:genesis",
+    "type": "DEPLOYMENT_INITIALIZED",
+    "timestamp": 0,
+    "data": {
+     "adapterPolicyHash": "0x00c3498e2744943663475d0187ca979cdd09763b88427781883693c4b8c163a7",
+     "canonicalLineageId": "lineage:first-look",
+     "domain": {
+      "deploymentId": "core-0.2-reference:first-look",
+      "protocol": "irontrellis",
+      "version": "1"
+     },
+     "finality": "LOCAL_ONLY",
+     "globalPolicySourceId": "policy-source:first-look",
+     "migratedFrom": {
+      "format": "continuity-event/0.2",
+      "genesis": {
+       "adapterPolicyHash": "0x00c3498e2744943663475d0187ca979cdd09763b88427781883693c4b8c163a7",
+       "canonicalLineageId": "lineage:first-look",
+       "domain": {
+        "chainId": "31337",
+        "deploymentId": "core-0.2-reference:first-look",
+        "protocol": "continuity",
+        "verifyingContract": "0x0000000000000000000000000000000000003002",
+        "version": "0.2"
+       },
+       "finality": "LOCAL_ONLY",
+       "globalPolicySourceId": "policy-source:first-look",
+       "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+       "rootRecognitionPolicy": "declared-principal-root/0.2",
+       "timeSource": "EVENT_TIMESTAMP",
+       "versions": {
+        "administrativeAuthorizationVersion": "continuity-administrative-authorization/0.2",
+        "authorizationProofVersion": "continuity-authorization-proof/0.2",
+        "eventSchemaVersion": "continuity-event/0.2",
+        "queryEnvelopeVersion": "continuity-query-envelope/0.2",
+        "receiptSchemaVersion": "continuity-receipt/0.2",
+        "runtimeAuthorizationVersion": "continuity-runtime-authorization/0.2",
+        "signatureScheme": "eip191-personal-sign-keccak256"
+       }
+      },
+      "genesisEventId": "first-look:genesis",
+      "genesisTimestamp": 0,
+      "historyHash": "0x4958d40342fc047d3fff0d3ab0f36e572ea28d9a1bb6dcbfbc1961c52231b779",
+      "position": 25,
+      "recordHash": "0xccdeb9ac6731e7565b350b2e398c0fcb974db8b19669991a4bead0048ad64287"
+     },
+     "nextKeyDigests": [
+      "0x0c6fdf148b616d86474fc44703f0f289314d9db1b3126c9f879047837806adfb"
+     ],
+     "ownerKeys": [
+      {
+       "credential": "0x967e264fa6b2e89fcfab4df3d4291cd1482a3a5a9f3836c9ce8f80d112d2ac4d",
+       "keyId": "owner:1",
+       "scheme": "ed25519"
+      }
+     ],
+     "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+     "rootRecognitionPolicy": "declared-principal-root/0.2",
+     "timeSource": "EVENT_TIMESTAMP",
+     "versions": {
+      "administrativeAuthorizationVersion": "continuity-administrative-authorization/0.2",
+      "authorizationProofVersion": "continuity-authorization-proof/0.2",
+      "controlAuthorizationVersion": "irontrellis-control-authorization/1",
+      "eventSchemaVersion": "irontrellis-event/1",
+      "historyHashAlgorithm": "sha256",
+      "queryEnvelopeVersion": "continuity-query-envelope/0.2",
+      "receiptSchemaVersion": "irontrellis-receipt/1",
+      "runtimeAuthorizationVersion": "continuity-runtime-authorization/0.2",
+      "signatureScheme": "eip191-personal-sign-keccak256"
+     }
+    }
+   },
+   {
+    "id": "first-look:principal",
+    "type": "PRINCIPAL_CREATED",
+    "timestamp": 1,
+    "data": {
+     "controlAuthorization": {
+      "keyId": "owner:1",
+      "signature": "0xa582f3acdf059e7d7e2c083dbeb170ecec6c3b27b02fdcdc52eb80baa3257720a2d8fa47d7a2efa1e001dd5d8335d9d77c7a7881120875cbaa05d6f32ed1c90d"
+     },
+     "principalId": "principal:first-look"
+    }
+   },
+   {
+    "id": "first-look:a",
+    "type": "AGENT_CREATED",
+    "timestamp": 2,
+    "data": {
+     "agentId": "a:first-look",
+     "controlAuthorization": {
+      "keyId": "owner:1",
+      "signature": "0x023b8540d8bada0b8f616eb33005c79f28a64c3c0d8bdbc56fc6ee7e1fd210ca58133721ecad82604928e5226c5f76d515256db53cc17819046e6e518c317c0b"
+     },
+     "controllerId": "controller:first-look",
+     "initialControlEpoch": 1,
+     "principalId": "principal:first-look"
+    }
+   },
+   {
+    "id": "first-look:b",
+    "type": "AGENT_CREATED",
+    "timestamp": 3,
+    "data": {
+     "agentId": "b:first-look",
+     "controlAuthorization": {
+      "keyId": "owner:1",
+      "signature": "0x0971b8581248ddff9db66d3e6ec37697d64cffade4a6a271635abcb4f628efb26dcb91d5e5ca0220fb564c522c68206c1487c49c4a13de65d63d8ab2e3bc7e03"
+     },
+     "controllerId": "controller:first-look",
+     "initialControlEpoch": 1,
+     "principalId": "principal:first-look"
+    }
+   },
+   {
+    "id": "first-look:role",
+    "type": "ROLE_CREATED",
+    "timestamp": 4,
+    "data": {
+     "controlAuthorization": {
+      "keyId": "owner:1",
+      "signature": "0xbc255503839513fa6811d26e04d06aa22df8498a0843ad39e8a9a53be28a53e357c766c5e14d4083081c2c9b22c01a18251b913ee401b18857878f83eea8c70b"
+     },
+     "exclusive": true,
+     "principalId": "principal:first-look",
+     "roleId": "role:first-look"
+    }
+   },
+   {
+    "id": "first-look:succession",
+    "type": "SUCCESSION_RULE_DECLARED",
+    "timestamp": 5,
+    "data": {
+     "controlAuthorization": {
+      "keyId": "owner:1",
+      "signature": "0xf63cc327bed25ad12a7294af390b425da7d9aab26674bb2847d6c29e715df6d7d29bfc9d340da09d4705f1525bd5c4449425a233507f33be4374c608ecc2670b"
+     },
+     "permittedEventTypes": [
+      "AGENT_TERMINATED",
+      "ROLE_TRANSFERRED",
+      "OBLIGATION_PERFORMANCE_ASSIGNED"
+     ],
+     "predecessorAgentId": "a:first-look",
+     "principalId": "principal:first-look",
+     "roleId": "role:first-look",
+     "ruleId": "succession:first-look",
+     "successorAgentId": "b:first-look",
+     "trigger": "AGENT_TERMINATED"
+    }
+   },
+   {
+    "id": "first-look:appointment",
+    "type": "AGENT_APPOINTED",
+    "timestamp": 6,
+    "data": {
+     "agentId": "a:first-look",
+     "controlAuthorization": {
+      "keyId": "owner:1",
+      "signature": "0x03e8745aac1b8c253d6510283d43aa21cd256602af4dbd6214fb1cff64f01467db3c650e5c042efe950ca136368d3281ca2d29485a246756e6a21076c7e0ea07"
+     },
+     "principalId": "principal:first-look",
+     "roleId": "role:first-look",
+     "roleTenureId": "tenure-a:first-look",
+     "successionRuleId": "succession:first-look",
+     "tenureNumber": 1
+    }
+   },
+   {
+    "id": "migrated:ed25519-session",
+    "type": "RUNTIME_SESSION_ADMITTED",
+    "timestamp": 7,
+    "data": {
+     "agentId": "a:first-look",
+     "controlEpoch": 1,
+     "controllerId": "controller:first-look",
+     "credentialKeyId": "key:first-look:a",
+     "credentialScheme": "ed25519",
+     "expiresAt": 10000,
+     "sessionId": "session:ed25519",
+     "credentialPublicKey": "0xd3918000d17b26e05515ca7bee0e94f9261d1ef2823b65ba4f8eea5de09d5d8b",
+     "controlAuthorization": {
+      "keyId": "owner:1",
+      "signature": "0x6c48da0ecf28f5be23aa72f99d996d118ad60a3c217c4f3086ee4b012f2c6770e4ca319ce71a7641beef8bf34844dd04c3c0650a68c1d43bd17f03cf67f9fc0c"
+     }
+    }
+   }
+  ],
+  "evaluate": 1
+ },
+ "expect": {
+  "ts": {
+   "status": "REJECTED",
+   "code": "EVENT_DATA_INVALID",
+   "position": 7
+  }
+ }
+}

@@ -1,0 +1,41 @@
+import type {ContentHash} from '@ramex-labs/irontrellis';
+export type CodecBytes = string | Uint8Array;
+export type ProfileDomain = Readonly<{protocol:'irontrellis';version:'2';deploymentId:string}>;
+export type ProfileShortHead = Readonly<{hash:ContentHash;position:number}>;
+export type ProfilePinnedNode = Readonly<{chainId:string;operator:string}>;
+export type ProfileOperatorKey = Readonly<{keyId:string;scheme:'ed25519';credential:string}>;
+export type ProfileSupersedes = Readonly<{namespaceId:ContentHash;destination:string;lastStatementDigest:ContentHash;lastHead:ProfileShortHead}>;
+export type ProfileManifest = Readonly<{
+ version:'irontrellis-profile-manifest/1';id:string;domain:ProfileDomain;historyId:ContentHash;genesisEventHash:ContentHash;
+ chain:Readonly<{id:string}>;publisher:string;operatorKeys:readonly ProfileOperatorKey[];
+ nodes:Readonly<{evm:ProfilePinnedNode;l1:ProfilePinnedNode;ownRollup:ProfilePinnedNode|null}>;
+ bodyStore:string|null;maxL1HeadLag:number|null;supersedes:ProfileSupersedes|null;
+}>;
+export type AnchorNamespace = Readonly<{version:'irontrellis-anchor-namespace/1';domain:ProfileDomain;historyId:ContentHash;genesisEventHash:ContentHash;profile:Readonly<{id:string;manifestHash:ContentHash}>;chain:Readonly<{id:string}>;publisher:string}>;
+export type ProfileTrustRoot = Readonly<{version:'irontrellis-profile-trust-root/1';manifest:ProfileManifest;manifestHash:ContentHash;namespaceId:ContentHash;destination:string}>;
+export type AnchorStatement = Readonly<{
+ version:'irontrellis-anchor-statement/1';domain:ProfileDomain;historyId:ContentHash;genesisEventHash:ContentHash;profile:Readonly<{id:string;manifestHash:ContentHash}>;
+ head:Readonly<{hash:ContentHash;position:number;canonicalTime:number}>;stateRoot:ContentHash;projectionHead:ContentHash|null;attestationDigest:ContentHash;
+ sequence:number;predecessor:ContentHash|null;previousHead:ProfileShortHead|null;chain:Readonly<{id:string;destination:string}>;
+ evidence:Readonly<{manifestDigest:ContentHash|null;certificateDigest:ContentHash|null;checkpointEventId:string|null}>;
+ availability:'ANCHOR_ONLY'|'BODIES'|'BODIES_AND_ARTIFACTS';
+}>;
+export type ProfileUnqualified = Readonly<{profileLoadComplete:false;installerAuthenticationVerified:false;instanceImmutablesVerified:false;operatorSeparationVerified:false;migrationHistoryVerified:false;mode:'UNVERIFIED';dispatchAllowed:false}>;
+export type EncodedProfileValue<T> = Readonly<{value:T;canonicalText:string;byteLength:number;digest:ContentHash}>;
+export type ProfilePayloadResult = EncodedProfileValue<ProfileManifest>&ProfileUnqualified&Readonly<{manifestHash:ContentHash;scope:'PAYLOAD_SHAPE_AND_PUBLIC_CREDENTIAL_CHECKS'}>;
+export type NamespaceResult = EncodedProfileValue<AnchorNamespace>&ProfileUnqualified&Readonly<{manifestHash:ContentHash;namespaceId:ContentHash;scope:'A167_DERIVATION_FROM_PAYLOAD'}>;
+export type TrustRootResult = EncodedProfileValue<ProfileTrustRoot>&ProfileUnqualified&Readonly<{manifestHash:ContentHash;namespaceId:ContentHash;checks:Readonly<{T1:true;T2:true;T3:true;T4:true;T5:false}>;scope:'PURE_T1_TO_T4_ONLY'}>;
+export type StatementBindingResult = ProfileUnqualified&Readonly<{equalities:Readonly<{manifestHash:boolean;profileId:boolean;domain:boolean;historyId:boolean;genesisEventHash:boolean;chainId:boolean;destination:boolean;publisher:boolean}>;bindingsMatch:boolean;statementDigest:ContentHash;scope:'SUPPLIED_STATEMENT_AND_SENDER_EQUALITIES';transactionSenderAuthenticated:false;reportProduced:false}>;
+export type AnchorFinalityLabel='SUBMITTED'|'L2_INCLUDED'|'L1_POSTED'|'L1_FINAL'|'CEMENTED';
+export type AnchorVerificationMode='CONSENSUS_VERIFIED'|'TRUSTED_NODE'|'UNVERIFIED';
+export type AnchorReportNodeId=Readonly<{chainId:string;protocol:string;softwareCommit:string;operator:string;headLevel:number}>;
+export type AnchorVerifyReport=Readonly<{
+ version:'irontrellis-anchor-verify-report/1';profileId:string;chainId:string;
+ statement:Readonly<{digest:ContentHash;historyId:ContentHash;head:ProfileShortHead}>;
+ tx:Readonly<{hash:ContentHash;l2Block:number;l2BlockHash:string}>;
+ nodes:Readonly<{evm:AnchorReportNodeId;l1:AnchorReportNodeId;ownRollup:AnchorReportNodeId|null}>;
+ finality:Readonly<{label:AnchorFinalityLabel;mode:AnchorVerificationMode;l1Level:number;l1BlockHash:string;l1BlockTime:number|null;operationHash:string;refutationResidual:'OPEN'|'CLOSED';cementedAt:number|null}>;
+ sentence:string;observedAt:number;continuity:Readonly<{previousReportDigest:ContentHash|null;contradiction:boolean}>;
+}>;
+export type AnchorReportConsistency=Readonly<{status:'LISTED_CLAIM_CONTRADICTION'|'NO_LISTED_CLAIM_CONTRADICTION';codes:readonly string[];sentenceSemanticsVerified:false;identityAuthenticityVerified:false;continuityRecomputed:false;evidenceVerified:false}>;
+export type AnchorReportCodecResult=Readonly<{format:'irontrellis-report-codec-result/1';validation:'STRUCTURAL_ONLY';claimedReport:AnchorVerifyReport;canonicalText:string;canonicalByteLength:number;reportDigest:ContentHash;claimConsistency:AnchorReportConsistency;mode:'UNVERIFIED';qualifiedFinalityLabel:null;dispatchAllowed:false}>;

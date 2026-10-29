@@ -1,0 +1,17 @@
+{
+  "name": "irontrellis",
+  "owner": {
+    "name": "RAmEx Labs"
+  },
+  "metadata": {
+    "description": "IronTrellis™: authority checks for AI agent tool calls"
+  },
+  "plugins": [
+    {
+      "name": "irontrellis",
+      "source": "./plugins/irontrellis",
+      "description": "The IronTrellis guard for Claude Code (the same guard as the irontrellis-hook settings route; choose one per project).",
+      "version": "1.0.0-rc.2"
+    }
+  ]
+}

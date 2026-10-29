@@ -1,0 +1,2291 @@
+{
+  "schemaVersion": "irontrellis-crypto-vectors/1",
+  "conventions": {
+    "bytes": "All hashes, addresses, signatures and byte strings are 0x-prefixed hex. Hashes and signatures are lowercase as the engine emits them.",
+    "bigint": "BigInt values inside event data / requests are encoded as {\"$continuity.bigint\":\"<decimal>\"} (the same marker the repository uses in its JSON fixtures). Decode them to arbitrary-precision integers before canonical encoding.",
+    "strings": "utf8 inputs are given as JavaScript strings; hash them as their UTF-8 bytes.",
+    "canonical": "canonicalText is the exact continuity-canonical/0.2 text whose UTF-8 bytes are hashed with Keccak-256 (see the canonical-encoding spec). It is included so a re-implementation can test keccak independently of its canonical encoder.",
+    "signer": "Test private keys are the public development scalars 1, 1001 and 1003 (32-byte big-endian). Signatures are RFC 6979 deterministic (viem/@noble), so re-signing must reproduce them byte-for-byte."
+  },
+  "keys": {
+    "k1": {
+      "privateKey": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "addressChecksummed": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "addressLowercase": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf"
+    },
+    "k1001": {
+      "privateKey": "0x00000000000000000000000000000000000000000000000000000000000003e9",
+      "addressChecksummed": "0x5935897A39AFABbedA5a599D38236E7Df151C8b8",
+      "addressLowercase": "0x5935897a39afabbeda5a599d38236e7df151c8b8"
+    },
+    "k1003": {
+      "privateKey": "0x00000000000000000000000000000000000000000000000000000000000003eb",
+      "addressChecksummed": "0xa78Cac12f68179fd780Ae347F8D4F170FC615D0C",
+      "addressLowercase": "0xa78cac12f68179fd780ae347f8d4f170fc615d0c"
+    }
+  },
+  "keccak256": [
+    {
+      "input": "",
+      "inputHex": "0x",
+      "inputBytes": 0,
+      "keccak256": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
+    },
+    {
+      "input": "abc",
+      "inputHex": "0x616263",
+      "inputBytes": 3,
+      "keccak256": "0x4e03657aea45a94fc7d47ba826c8d667c0d1e6e33a64a036ec44f58fa12d6c45"
+    },
+    {
+      "input": "The quick brown fox jumps over the lazy dog",
+      "inputHex": "0x54686520717569636b2062726f776e20666f78206a756d7073206f76657220746865206c617a7920646f67",
+      "inputBytes": 43,
+      "keccak256": "0x4d741b6f1eb29cb2a9b9911c82f56fa8d73b04959d3d9d222895df6c0b28aa15"
+    },
+    {
+      "input": "continuity",
+      "inputHex": "0x636f6e74696e75697479",
+      "inputBytes": 10,
+      "keccak256": "0x637e4e0b1e348d35190142072af74aff953cdc1c37608b3de1d28f7607a368ca"
+    },
+    {
+      "input": "[\"continuity-event-history/0.2\",[]]",
+      "inputHex": "0x5b22636f6e74696e756974792d6576656e742d686973746f72792f302e32222c5b5d5d",
+      "inputBytes": 35,
+      "keccak256": "0x65dc4448f700facf3bfb5d5a80a22e827e673b409b8293994847b56b5629b3b0"
+    },
+    {
+      "input": "{\"a\":1}",
+      "inputHex": "0x7b2261223a317d",
+      "inputBytes": 7,
+      "keccak256": "0x25e7c2a96531eb50246780c1f25742e489bf55210e26981dc02992bb585feb97"
+    },
+    {
+      "input": null,
+      "inputDescription": "bytes 0..134 mod 256",
+      "inputHex": "0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f80818283848586",
+      "inputBytes": 135,
+      "keccak256": "0xcbdfd9dee5faad3818d6b06f95a219fd290b0e1706f6a82e5a595b9ce9faca62"
+    },
+    {
+      "input": null,
+      "inputDescription": "bytes 0..135 mod 256",
+      "inputHex": "0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f8081828384858687",
+      "inputBytes": 136,
+      "keccak256": "0x7ce759f1ab7f9ce437719970c26b0a66ff11fe3e38e17df89cf5d29c7d7f807e"
+    },
+    {
+      "input": null,
+      "inputDescription": "bytes 0..136 mod 256",
+      "inputHex": "0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788",
+      "inputBytes": 137,
+      "keccak256": "0xac73d4fae68b8453f764007c1a20ce95994187861f0c3227a3a8e99a73a3b1db"
+    },
+    {
+      "input": null,
+      "inputDescription": "bytes 0..199 mod 256",
+      "inputHex": "0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7",
+      "inputBytes": 200,
+      "keccak256": "0xbfb0aa97863e797943cf7c33bb7e880bb4543f3d2703c0923c6901c2af57b890"
+    },
+    {
+      "input": null,
+      "inputDescription": "bytes 0..1023 mod 256",
+      "inputHex": "0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "inputBytes": 1024,
+      "keccak256": "0x5902e53903be0d0f9656bdbd5b9f0d8c2d815f865645d629eef77f5185f6cd7f"
+    }
+  ],
+  "keccakIncremental": {
+    "steps": [
+      {
+        "op": "create",
+        "state": "S"
+      },
+      {
+        "op": "update",
+        "state": "S",
+        "inputUtf8": "The quick brown "
+      },
+      {
+        "op": "clone",
+        "from": "S",
+        "to": "C"
+      },
+      {
+        "op": "finalize",
+        "state": "S",
+        "digest": "0x6bb45d609e938d99882098d298caf2ae2f2e49ee24a9e566c96a800632cc09ab",
+        "note": "equals keccak256(\"The quick brown \"); S remains usable"
+      },
+      {
+        "op": "update",
+        "state": "S",
+        "inputUtf8": "fox jumps over the lazy dog"
+      },
+      {
+        "op": "finalize",
+        "state": "S",
+        "digest": "0x4d741b6f1eb29cb2a9b9911c82f56fa8d73b04959d3d9d222895df6c0b28aa15",
+        "note": "equals keccak256 of the 43-byte concatenation"
+      },
+      {
+        "op": "finalize",
+        "state": "C",
+        "digest": "0x6bb45d609e938d99882098d298caf2ae2f2e49ee24a9e566c96a800632cc09ab",
+        "note": "clone was unaffected by later updates to S"
+      },
+      {
+        "op": "update",
+        "state": "S",
+        "inputUtf8": "!"
+      },
+      {
+        "op": "finalize",
+        "state": "S",
+        "digest": "0x4ea6eb289d9fde8ccb0163f3b94891fec84196b1e10a18a9ad9114388237a821",
+        "note": "updates after a finalize continue the absorbed stream"
+      }
+    ]
+  },
+  "eventHistoryPrefixHashes": {
+    "events": [
+      {
+        "data": {
+          "adapterPolicyHash": "0x00c3498e2744943663475d0187ca979cdd09763b88427781883693c4b8c163a7",
+          "canonicalLineageId": "lineage:first-look",
+          "domain": {
+            "chainId": "31337",
+            "deploymentId": "core-0.2-reference:first-look",
+            "protocol": "continuity",
+            "verifyingContract": "0x0000000000000000000000000000000000003002",
+            "version": "0.2"
+          },
+          "finality": "LOCAL_ONLY",
+          "globalPolicySourceId": "policy-source:first-look",
+          "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+          "rootRecognitionPolicy": "declared-principal-root/0.2",
+          "timeSource": "EVENT_TIMESTAMP",
+          "versions": {
+            "administrativeAuthorizationVersion": "continuity-administrative-authorization/0.2",
+            "authorizationProofVersion": "continuity-authorization-proof/0.2",
+            "eventSchemaVersion": "continuity-event/0.2",
+            "queryEnvelopeVersion": "continuity-query-envelope/0.2",
+            "receiptSchemaVersion": "continuity-receipt/0.2",
+            "runtimeAuthorizationVersion": "continuity-runtime-authorization/0.2",
+            "signatureScheme": "eip191-personal-sign-keccak256"
+          }
+        },
+        "id": "first-look:genesis",
+        "timestamp": 0,
+        "type": "DEPLOYMENT_INITIALIZED"
+      },
+      {
+        "data": {
+          "principalId": "principal:first-look"
+        },
+        "id": "first-look:principal",
+        "timestamp": 1,
+        "type": "PRINCIPAL_CREATED"
+      },
+      {
+        "data": {
+          "agentId": "a:first-look",
+          "controllerId": "controller:first-look",
+          "initialControlEpoch": 1,
+          "principalId": "principal:first-look"
+        },
+        "id": "first-look:a",
+        "timestamp": 2,
+        "type": "AGENT_CREATED"
+      }
+    ],
+    "eventCanonicalText": [
+      "{\"data\":{\"adapterPolicyHash\":\"0x00c3498e2744943663475d0187ca979cdd09763b88427781883693c4b8c163a7\",\"canonicalLineageId\":\"lineage:first-look\",\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"finality\":\"LOCAL_ONLY\",\"globalPolicySourceId\":\"policy-source:first-look\",\"policyVersion\":\"local-evidence-intake-policy:first-look/0.2\",\"rootRecognitionPolicy\":\"declared-principal-root/0.2\",\"timeSource\":\"EVENT_TIMESTAMP\",\"versions\":{\"administrativeAuthorizationVersion\":\"continuity-administrative-authorization/0.2\",\"authorizationProofVersion\":\"continuity-authorization-proof/0.2\",\"eventSchemaVersion\":\"continuity-event/0.2\",\"queryEnvelopeVersion\":\"continuity-query-envelope/0.2\",\"receiptSchemaVersion\":\"continuity-receipt/0.2\",\"runtimeAuthorizationVersion\":\"continuity-runtime-authorization/0.2\",\"signatureScheme\":\"eip191-personal-sign-keccak256\"}},\"id\":\"first-look:genesis\",\"timestamp\":0,\"type\":\"DEPLOYMENT_INITIALIZED\"}",
+      "{\"data\":{\"principalId\":\"principal:first-look\"},\"id\":\"first-look:principal\",\"timestamp\":1,\"type\":\"PRINCIPAL_CREATED\"}",
+      "{\"data\":{\"agentId\":\"a:first-look\",\"controllerId\":\"controller:first-look\",\"initialControlEpoch\":1,\"principalId\":\"principal:first-look\"},\"id\":\"first-look:a\",\"timestamp\":2,\"type\":\"AGENT_CREATED\"}"
+    ],
+    "absorbedBytesForPrefixK": "UTF-8 of: '[\"continuity-event-history/0.2\",[' + canonical(event0) + (\",\" + canonical(eventi) for 1<=i<=k) + \"]]\"",
+    "prefixHashes": [
+      "0xe035299cb5520cc603d60273ae4c51ea1eaddad3cc9a47102edab60447d38397",
+      "0xa6f8cae49ad736cfcb45734fcf37da48d9fd364d5a93c7cc875560f4112f70b9",
+      "0xa7d5bac9a0ef3bdac096a05628ba0ef03cca1858048a131c18486dea61c2b57c"
+    ],
+    "headOfFixtureAfter26Events": {
+      "hash": "0x4958d40342fc047d3fff0d3ab0f36e572ea28d9a1bb6dcbfbc1961c52231b779",
+      "position": 25,
+      "canonicalTime": 25
+    }
+  },
+  "eip191": [
+    {
+      "key": "k1",
+      "privateKey": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "contentHash": "0x1c8aff950685c2ed4bc3174f3472287b56d9517b9c948127319a09a7a36deac8",
+      "eip191PreimageHex": "0x19457468657265756d205369676e6564204d6573736167653a0a33321c8aff950685c2ed4bc3174f3472287b56d9517b9c948127319a09a7a36deac8",
+      "eip191PreimageBytes": 60,
+      "eip191Digest": "0x456e9aea5e197a1f1af7a3e85a3212fa4049a3ba34c2289b4c860fc0b0c64ef3",
+      "signature": "0x37ac0657cf003eeb682b39c1b6b4a7b9fbd6bb5e4fc05d3ff0f2db3958d8c3e21257f365e84a3a5218eecce74f2c933ee1bd4d68e99f8b959a4c622c01d4e7a41c",
+      "r": "0x37ac0657cf003eeb682b39c1b6b4a7b9fbd6bb5e4fc05d3ff0f2db3958d8c3e2",
+      "s": "0x1257f365e84a3a5218eecce74f2c933ee1bd4d68e99f8b959a4c622c01d4e7a4",
+      "v": "0x1c",
+      "vDecimal": 28,
+      "recoveredAddress": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+      "expectedAddressChecksummed": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf"
+    },
+    {
+      "key": "k1001",
+      "privateKey": "0x00000000000000000000000000000000000000000000000000000000000003e9",
+      "contentHash": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "eip191PreimageHex": "0x19457468657265756d205369676e6564204d6573736167653a0a33320000000000000000000000000000000000000000000000000000000000000001",
+      "eip191PreimageBytes": 60,
+      "eip191Digest": "0xc9798da569c6ded6bd4b17373ef332b7c84d68cdec3f420f583dcd7b441ae31d",
+      "signature": "0xf11a17d50ebc8a9fd85a2d25579308d8be605799552393d741a04a620f1ac2fd69660c636e18cff68bac6fa42d2b3e05042bd27c57494da9337570d38ebb7a4e1c",
+      "r": "0xf11a17d50ebc8a9fd85a2d25579308d8be605799552393d741a04a620f1ac2fd",
+      "s": "0x69660c636e18cff68bac6fa42d2b3e05042bd27c57494da9337570d38ebb7a4e",
+      "v": "0x1c",
+      "vDecimal": 28,
+      "recoveredAddress": "0x5935897a39afabbeda5a599d38236e7df151c8b8",
+      "expectedAddressChecksummed": "0x5935897A39AFABbedA5a599D38236E7Df151C8b8"
+    },
+    {
+      "key": "k1003",
+      "privateKey": "0x00000000000000000000000000000000000000000000000000000000000003eb",
+      "contentHash": "0xae4e8e6ee4b07e75c3532a80187a240e59a429f339a5a340787270efd75c1189",
+      "eip191PreimageHex": "0x19457468657265756d205369676e6564204d6573736167653a0a3332ae4e8e6ee4b07e75c3532a80187a240e59a429f339a5a340787270efd75c1189",
+      "eip191PreimageBytes": 60,
+      "eip191Digest": "0x44d856487696b0542eb0eed760f63bcfd0323220f6e77353dca10980c71acac3",
+      "signature": "0xd7698ba8a1c3547f90090efeb75cbad28afb91e541ec72b145c9423c839feffa707ee4f2560992e2d5da3c0ec0d4e33560c08eb9351ee405707a7690f24501b91c",
+      "r": "0xd7698ba8a1c3547f90090efeb75cbad28afb91e541ec72b145c9423c839feffa",
+      "s": "0x707ee4f2560992e2d5da3c0ec0d4e33560c08eb9351ee405707a7690f24501b9",
+      "v": "0x1c",
+      "vDecimal": 28,
+      "recoveredAddress": "0xa78cac12f68179fd780ae347f8d4f170fc615d0c",
+      "expectedAddressChecksummed": "0xa78Cac12f68179fd780Ae347F8D4F170FC615D0C"
+    },
+    {
+      "key": "k1",
+      "contentHash": "0x1c8aff950685c2ed4bc3174f3472287b56d9517b9c948127319a09a7a36deac8",
+      "eip191Digest": "0x456e9aea5e197a1f1af7a3e85a3212fa4049a3ba34c2289b4c860fc0b0c64ef3",
+      "signature": "0x37ac0657cf003eeb682b39c1b6b4a7b9fbd6bb5e4fc05d3ff0f2db3958d8c3e21257f365e84a3a5218eecce74f2c933ee1bd4d68e99f8b959a4c622c01d4e7a41c",
+      "r": "0x37ac0657cf003eeb682b39c1b6b4a7b9fbd6bb5e4fc05d3ff0f2db3958d8c3e2",
+      "s": "0x1257f365e84a3a5218eecce74f2c933ee1bd4d68e99f8b959a4c622c01d4e7a4",
+      "v": "0x1c",
+      "vDecimal": 28,
+      "recoveredAddress": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf"
+    },
+    {
+      "key": "k1001",
+      "contentHash": "0x1c8aff950685c2ed4bc3174f3472287b56d9517b9c948127319a09a7a36deac8",
+      "eip191Digest": "0x456e9aea5e197a1f1af7a3e85a3212fa4049a3ba34c2289b4c860fc0b0c64ef3",
+      "signature": "0x501b871f9a58016ea5a9fd014222a88eed5d071846e9c29322f10748d7d5e43222a3c8ba648337a4296d918e000e77f7668b429074d6b20a18e908897044457f1b",
+      "r": "0x501b871f9a58016ea5a9fd014222a88eed5d071846e9c29322f10748d7d5e432",
+      "s": "0x22a3c8ba648337a4296d918e000e77f7668b429074d6b20a18e908897044457f",
+      "v": "0x1b",
+      "vDecimal": 27,
+      "recoveredAddress": "0x5935897a39afabbeda5a599d38236e7df151c8b8"
+    },
+    {
+      "key": "k1003",
+      "contentHash": "0x1c8aff950685c2ed4bc3174f3472287b56d9517b9c948127319a09a7a36deac8",
+      "eip191Digest": "0x456e9aea5e197a1f1af7a3e85a3212fa4049a3ba34c2289b4c860fc0b0c64ef3",
+      "signature": "0x045473c843ecdf73d172dac189d1eedf05166074f2b74b91c030c7580cff28703d01ad5f6becf8928bf876ea9d82cf6b397cadd010d63e87efc5684565d3952c1c",
+      "r": "0x045473c843ecdf73d172dac189d1eedf05166074f2b74b91c030c7580cff2870",
+      "s": "0x3d01ad5f6becf8928bf876ea9d82cf6b397cadd010d63e87efc5684565d3952c",
+      "v": "0x1c",
+      "vDecimal": 28,
+      "recoveredAddress": "0xa78cac12f68179fd780ae347f8d4f170fc615d0c"
+    }
+  ],
+  "eip191Rejections": [
+    {
+      "why": "v as 00/01 instead of 1b/1c",
+      "contentHash": "0x1c8aff950685c2ed4bc3174f3472287b56d9517b9c948127319a09a7a36deac8",
+      "signature": "0x37ac0657cf003eeb682b39c1b6b4a7b9fbd6bb5e4fc05d3ff0f2db3958d8c3e21257f365e84a3a5218eecce74f2c933ee1bd4d68e99f8b959a4c622c01d4e7a401",
+      "recovered": null
+    },
+    {
+      "why": "uppercase hex digits",
+      "contentHash": "0x1c8aff950685c2ed4bc3174f3472287b56d9517b9c948127319a09a7a36deac8",
+      "signature": "0x37AC0657CF003EEB682B39C1B6B4A7B9FBD6BB5E4FC05D3FF0F2DB3958D8C3E21257F365E84A3A5218EECCE74F2C933EE1BD4D68E99F8B959A4C622C01D4E7A41C",
+      "recovered": null
+    },
+    {
+      "why": "high-s (s > n/2) with flipped v; same key",
+      "contentHash": "0x1c8aff950685c2ed4bc3174f3472287b56d9517b9c948127319a09a7a36deac8",
+      "signature": "0x37ac0657cf003eeb682b39c1b6b4a7b9fbd6bb5e4fc05d3ff0f2db3958d8c3e2eda80c9a17b5c5ade7113318b0d36cbfd8f18f7dc5a914a62585fc60ce61599d1b",
+      "recovered": null
+    },
+    {
+      "why": "s = 0",
+      "contentHash": "0x1c8aff950685c2ed4bc3174f3472287b56d9517b9c948127319a09a7a36deac8",
+      "signature": "0x37ac0657cf003eeb682b39c1b6b4a7b9fbd6bb5e4fc05d3ff0f2db3958d8c3e200000000000000000000000000000000000000000000000000000000000000001c",
+      "recovered": null
+    },
+    {
+      "why": "r = 0",
+      "contentHash": "0x1c8aff950685c2ed4bc3174f3472287b56d9517b9c948127319a09a7a36deac8",
+      "signature": "0x00000000000000000000000000000000000000000000000000000000000000001257f365e84a3a5218eecce74f2c933ee1bd4d68e99f8b959a4c622c01d4e7a41c",
+      "recovered": null
+    },
+    {
+      "why": "r >= n",
+      "contentHash": "0x1c8aff950685c2ed4bc3174f3472287b56d9517b9c948127319a09a7a36deac8",
+      "signature": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1257f365e84a3a5218eecce74f2c933ee1bd4d68e99f8b959a4c622c01d4e7a41c",
+      "recovered": null
+    },
+    {
+      "why": "64-byte signature (no v)",
+      "contentHash": "0x1c8aff950685c2ed4bc3174f3472287b56d9517b9c948127319a09a7a36deac8",
+      "signature": "0x37ac0657cf003eeb682b39c1b6b4a7b9fbd6bb5e4fc05d3ff0f2db3958d8c3e21257f365e84a3a5218eecce74f2c933ee1bd4d68e99f8b959a4c622c01d4e7a4",
+      "recovered": null
+    },
+    {
+      "why": "wrong v (other parity); recovers a different address, not undefined",
+      "contentHash": "0x1c8aff950685c2ed4bc3174f3472287b56d9517b9c948127319a09a7a36deac8",
+      "signature": "0x37ac0657cf003eeb682b39c1b6b4a7b9fbd6bb5e4fc05d3ff0f2db3958d8c3e21257f365e84a3a5218eecce74f2c933ee1bd4d68e99f8b959a4c622c01d4e7a41b",
+      "recovered": "0x51335ab33df1123a2a5b012dc2677d974abae9d4"
+    },
+    {
+      "why": "uppercase content hash",
+      "contentHash": "0x1C8AFF950685C2ED4BC3174F3472287B56D9517B9C948127319A09A7A36DEAC8",
+      "signature": "0x37ac0657cf003eeb682b39c1b6b4a7b9fbd6bb5e4fc05d3ff0f2db3958d8c3e21257f365e84a3a5218eecce74f2c933ee1bd4d68e99f8b959a4c622c01d4e7a41c",
+      "recovered": null
+    }
+  ],
+  "runtimeAuthorizationChallenge": [
+    {
+      "label": "fixture tests/fixtures/handover-history.json event[14] TRANSACTION_INTENT_ADMITTED (key 1001)",
+      "storedRuntimeAuthorizationHash": "0x0228e1f0314bf3d39ea8560262593403f938729a01e8f7946c0e92719916d72f",
+      "storedRuntimeSignature": "0x9eab191a8c8c5d292786f66f08174e72784f8536b11bffa5702d3e1d8e6b81d8708044d99672e7fd1754ab4fcdba3237282237c2ebb2b57a3e9459d7a2a459301c",
+      "note": "challengeHash must equal storedRuntimeAuthorizationHash and signature must equal storedRuntimeSignature",
+      "input": {
+        "domain": {
+          "chainId": "31337",
+          "deploymentId": "core-0.2-reference:first-look",
+          "protocol": "continuity",
+          "verifyingContract": "0x0000000000000000000000000000000000003002",
+          "version": "0.2"
+        },
+        "request": {
+          "action": "collect-evidence-packet",
+          "actorId": "a:first-look",
+          "claimedAt": 13,
+          "resource": "resource:first-look",
+          "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+        },
+        "evaluationTime": 14,
+        "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+        "historyHead": {
+          "hash": "0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b",
+          "position": 13,
+          "canonicalTime": 13
+        },
+        "binding": {
+          "runtimeSessionId": "session:first-look:a",
+          "credentialKeyId": "key:first-look:a",
+          "controlEpoch": 1,
+          "roleId": "role:first-look",
+          "roleTenureId": "tenure-a:first-look",
+          "intentId": "intent:first-look",
+          "nonce": "nonce:first-look"
+        }
+      },
+      "challenge": {
+        "version": "continuity-runtime-authorization/0.2",
+        "domain": {
+          "protocol": "continuity",
+          "version": "0.2",
+          "deploymentId": "core-0.2-reference:first-look",
+          "chainId": "31337",
+          "verifyingContract": "0x0000000000000000000000000000000000003002"
+        },
+        "request": {
+          "actorId": "a:first-look",
+          "action": "collect-evidence-packet",
+          "resource": "resource:first-look",
+          "claimedAt": 13,
+          "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+        },
+        "authoritative": true,
+        "consequential": true,
+        "evaluationTime": 14,
+        "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+        "rootRecognitionPolicy": "declared-principal-root/0.2",
+        "eventHistoryHash": "0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b",
+        "eventHistoryPosition": 13,
+        "runtimeSessionId": "session:first-look:a",
+        "credentialKeyId": "key:first-look:a",
+        "controlEpoch": 1,
+        "roleId": "role:first-look",
+        "roleTenureId": "tenure-a:first-look",
+        "intentId": "intent:first-look",
+        "nonce": "nonce:first-look"
+      },
+      "canonicalText": "{\"authoritative\":true,\"consequential\":true,\"controlEpoch\":1,\"credentialKeyId\":\"key:first-look:a\",\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"evaluationTime\":14,\"eventHistoryHash\":\"0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b\",\"eventHistoryPosition\":13,\"intentId\":\"intent:first-look\",\"nonce\":\"nonce:first-look\",\"policyVersion\":\"local-evidence-intake-policy:first-look/0.2\",\"request\":{\"action\":\"collect-evidence-packet\",\"actorId\":\"a:first-look\",\"claimedAt\":13,\"resource\":\"resource:first-look\",\"termsCommitment\":\"0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b\"},\"roleId\":\"role:first-look\",\"roleTenureId\":\"tenure-a:first-look\",\"rootRecognitionPolicy\":\"declared-principal-root/0.2\",\"runtimeSessionId\":\"session:first-look:a\",\"version\":\"continuity-runtime-authorization/0.2\"}",
+      "canonicalBytes": 948,
+      "challengeHash": "0x0228e1f0314bf3d39ea8560262593403f938729a01e8f7946c0e92719916d72f",
+      "eip191Digest": "0xa4156437c301a7e9834b1b2ee0e51ae8898ae70dc44a83e92693edc8099b8a97",
+      "signerKey": "0x00000000000000000000000000000000000000000000000000000000000003e9",
+      "signature": "0x9eab191a8c8c5d292786f66f08174e72784f8536b11bffa5702d3e1d8e6b81d8708044d99672e7fd1754ab4fcdba3237282237c2ebb2b57a3e9459d7a2a459301c",
+      "r": "0x9eab191a8c8c5d292786f66f08174e72784f8536b11bffa5702d3e1d8e6b81d8",
+      "s": "0x708044d99672e7fd1754ab4fcdba3237282237c2ebb2b57a3e9459d7a2a45930",
+      "v": "0x1c",
+      "vDecimal": 28,
+      "recoveredAddress": "0x5935897a39afabbeda5a599d38236e7df151c8b8",
+      "verifiedAgainstChecksummedAddress": true
+    },
+    {
+      "label": "constructed: amount + counterpartyId, checksummed verifyingContract preserved verbatim (key 1)",
+      "input": {
+        "domain": {
+          "protocol": "continuity",
+          "version": "0.2",
+          "deploymentId": "deployment:vector",
+          "chainId": "1",
+          "verifyingContract": "0xAbCdEf0123456789aBcDeF0123456789AbCdEf01"
+        },
+        "request": {
+          "actorId": "agent:alice",
+          "action": "pay",
+          "resource": "invoice:7",
+          "claimedAt": 1700000000000,
+          "amount": {
+            "$continuity.bigint": "2500"
+          },
+          "counterpartyId": "vendor:bob"
+        },
+        "evaluationTime": 1700000000001,
+        "policyVersion": "policy:vector/1",
+        "historyHead": {
+          "hash": "0x1111111111111111111111111111111111111111111111111111111111111111",
+          "position": 5,
+          "canonicalTime": 1699999999999
+        },
+        "binding": {
+          "runtimeSessionId": "session:alice:1",
+          "credentialKeyId": "key:alice:1",
+          "controlEpoch": 3,
+          "roleId": "role:payer",
+          "roleTenureId": "tenure:payer:1",
+          "intentId": "intent:1",
+          "nonce": "nonce:1"
+        }
+      },
+      "challenge": {
+        "version": "continuity-runtime-authorization/0.2",
+        "domain": {
+          "protocol": "continuity",
+          "version": "0.2",
+          "deploymentId": "deployment:vector",
+          "chainId": "1",
+          "verifyingContract": "0xAbCdEf0123456789aBcDeF0123456789AbCdEf01"
+        },
+        "request": {
+          "actorId": "agent:alice",
+          "action": "pay",
+          "resource": "invoice:7",
+          "claimedAt": 1700000000000,
+          "amount": {
+            "$continuity.bigint": "2500"
+          },
+          "counterpartyId": "vendor:bob"
+        },
+        "authoritative": true,
+        "consequential": true,
+        "evaluationTime": 1700000000001,
+        "policyVersion": "policy:vector/1",
+        "rootRecognitionPolicy": "declared-principal-root/0.2",
+        "eventHistoryHash": "0x1111111111111111111111111111111111111111111111111111111111111111",
+        "eventHistoryPosition": 5,
+        "runtimeSessionId": "session:alice:1",
+        "credentialKeyId": "key:alice:1",
+        "controlEpoch": 3,
+        "roleId": "role:payer",
+        "roleTenureId": "tenure:payer:1",
+        "intentId": "intent:1",
+        "nonce": "nonce:1"
+      },
+      "canonicalText": "{\"authoritative\":true,\"consequential\":true,\"controlEpoch\":3,\"credentialKeyId\":\"key:alice:1\",\"domain\":{\"chainId\":\"1\",\"deploymentId\":\"deployment:vector\",\"protocol\":\"continuity\",\"verifyingContract\":\"0xAbCdEf0123456789aBcDeF0123456789AbCdEf01\",\"version\":\"0.2\"},\"evaluationTime\":1700000000001,\"eventHistoryHash\":\"0x1111111111111111111111111111111111111111111111111111111111111111\",\"eventHistoryPosition\":5,\"intentId\":\"intent:1\",\"nonce\":\"nonce:1\",\"policyVersion\":\"policy:vector/1\",\"request\":{\"action\":\"pay\",\"actorId\":\"agent:alice\",\"amount\":{\"$continuity.bigint\":\"2500\"},\"claimedAt\":1700000000000,\"counterpartyId\":\"vendor:bob\",\"resource\":\"invoice:7\"},\"roleId\":\"role:payer\",\"roleTenureId\":\"tenure:payer:1\",\"rootRecognitionPolicy\":\"declared-principal-root/0.2\",\"runtimeSessionId\":\"session:alice:1\",\"version\":\"continuity-runtime-authorization/0.2\"}",
+      "canonicalBytes": 838,
+      "challengeHash": "0xb30e054586ba6cf5f1a23d10742377abb8c67ebb7c3bb0c0f474cdd506b132ac",
+      "eip191Digest": "0x517e6983599172428e6cb5d9ff5fc5616515c95bb258a8d9f8280a07c8653a8a",
+      "signerKey": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "signature": "0xa4580a504b28cf51d007515b831fb900de36116cc9d096244d376e9d4812b43e3ebacdb83908ce629345609bfbf5a96ebc43c0799057fd6e86ba964d39302d531b",
+      "r": "0xa4580a504b28cf51d007515b831fb900de36116cc9d096244d376e9d4812b43e",
+      "s": "0x3ebacdb83908ce629345609bfbf5a96ebc43c0799057fd6e86ba964d39302d53",
+      "v": "0x1b",
+      "vDecimal": 27,
+      "recoveredAddress": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+      "verifiedAgainstChecksummedAddress": true
+    },
+    {
+      "label": "constructed: minimal request, unicode identifiers, historyHead position 0 (key 1003)",
+      "input": {
+        "domain": {
+          "protocol": "continuity",
+          "version": "0.2",
+          "deploymentId": "dép:ü",
+          "chainId": "31337",
+          "verifyingContract": "0x0000000000000000000000000000000000000000"
+        },
+        "request": {
+          "actorId": "a",
+          "action": "x",
+          "resource": "r",
+          "claimedAt": 0
+        },
+        "evaluationTime": 0,
+        "policyVersion": "p",
+        "historyHead": {
+          "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "position": 0,
+          "canonicalTime": 0
+        },
+        "binding": {
+          "runtimeSessionId": "s",
+          "credentialKeyId": "k",
+          "controlEpoch": 1,
+          "roleId": "ro",
+          "roleTenureId": "t",
+          "intentId": "i",
+          "nonce": "n"
+        }
+      },
+      "challenge": {
+        "version": "continuity-runtime-authorization/0.2",
+        "domain": {
+          "protocol": "continuity",
+          "version": "0.2",
+          "deploymentId": "dép:ü",
+          "chainId": "31337",
+          "verifyingContract": "0x0000000000000000000000000000000000000000"
+        },
+        "request": {
+          "actorId": "a",
+          "action": "x",
+          "resource": "r",
+          "claimedAt": 0
+        },
+        "authoritative": true,
+        "consequential": true,
+        "evaluationTime": 0,
+        "policyVersion": "p",
+        "rootRecognitionPolicy": "declared-principal-root/0.2",
+        "eventHistoryHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "eventHistoryPosition": 0,
+        "runtimeSessionId": "s",
+        "credentialKeyId": "k",
+        "controlEpoch": 1,
+        "roleId": "ro",
+        "roleTenureId": "t",
+        "intentId": "i",
+        "nonce": "n"
+      },
+      "canonicalText": "{\"authoritative\":true,\"consequential\":true,\"controlEpoch\":1,\"credentialKeyId\":\"k\",\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"dép:ü\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000000000\",\"version\":\"0.2\"},\"evaluationTime\":0,\"eventHistoryHash\":\"0x0000000000000000000000000000000000000000000000000000000000000000\",\"eventHistoryPosition\":0,\"intentId\":\"i\",\"nonce\":\"n\",\"policyVersion\":\"p\",\"request\":{\"action\":\"x\",\"actorId\":\"a\",\"claimedAt\":0,\"resource\":\"r\"},\"roleId\":\"ro\",\"roleTenureId\":\"t\",\"rootRecognitionPolicy\":\"declared-principal-root/0.2\",\"runtimeSessionId\":\"s\",\"version\":\"continuity-runtime-authorization/0.2\"}",
+      "canonicalBytes": 647,
+      "challengeHash": "0xea782994ac3c3f34ce103acf78a9e869e27950514a7a6418e4948bd40a2b3ce7",
+      "eip191Digest": "0x0db8489a9b3dd90b3c459eb19d350e5375976bef08f25da14fe2a6d86200bece",
+      "signerKey": "0x00000000000000000000000000000000000000000000000000000000000003eb",
+      "signature": "0x3bab2fd6ae6d8ae2c30b6821886a77767ff51cf67f8fe6e026eb5bace980eb7c320ec6dfc05afda78d0bf71c661ed43913af94db99358cffc6d7954beadeac451b",
+      "r": "0x3bab2fd6ae6d8ae2c30b6821886a77767ff51cf67f8fe6e026eb5bace980eb7c",
+      "s": "0x320ec6dfc05afda78d0bf71c661ed43913af94db99358cffc6d7954beadeac45",
+      "v": "0x1b",
+      "vDecimal": 27,
+      "recoveredAddress": "0xa78cac12f68179fd780ae347f8d4f170fc615d0c",
+      "verifiedAgainstChecksummedAddress": true
+    },
+    {
+      "label": "constructed: request with termsCommitment only (key 1001)",
+      "input": {
+        "domain": {
+          "protocol": "continuity",
+          "version": "0.2",
+          "deploymentId": "core-0.2-reference:first-look",
+          "chainId": "31337",
+          "verifyingContract": "0x0000000000000000000000000000000000003002"
+        },
+        "request": {
+          "actorId": "a:first-look",
+          "action": "collect-evidence-packet",
+          "resource": "resource:first-look",
+          "claimedAt": 13,
+          "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+        },
+        "evaluationTime": 99,
+        "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+        "historyHead": {
+          "hash": "0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b",
+          "position": 13,
+          "canonicalTime": 13
+        },
+        "binding": {
+          "runtimeSessionId": "session:first-look:a",
+          "credentialKeyId": "key:first-look:a",
+          "controlEpoch": 1,
+          "roleId": "role:first-look",
+          "roleTenureId": "tenure-a:first-look",
+          "intentId": "intent:first-look",
+          "nonce": "nonce:2"
+        }
+      },
+      "challenge": {
+        "version": "continuity-runtime-authorization/0.2",
+        "domain": {
+          "protocol": "continuity",
+          "version": "0.2",
+          "deploymentId": "core-0.2-reference:first-look",
+          "chainId": "31337",
+          "verifyingContract": "0x0000000000000000000000000000000000003002"
+        },
+        "request": {
+          "actorId": "a:first-look",
+          "action": "collect-evidence-packet",
+          "resource": "resource:first-look",
+          "claimedAt": 13,
+          "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+        },
+        "authoritative": true,
+        "consequential": true,
+        "evaluationTime": 99,
+        "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+        "rootRecognitionPolicy": "declared-principal-root/0.2",
+        "eventHistoryHash": "0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b",
+        "eventHistoryPosition": 13,
+        "runtimeSessionId": "session:first-look:a",
+        "credentialKeyId": "key:first-look:a",
+        "controlEpoch": 1,
+        "roleId": "role:first-look",
+        "roleTenureId": "tenure-a:first-look",
+        "intentId": "intent:first-look",
+        "nonce": "nonce:2"
+      },
+      "canonicalText": "{\"authoritative\":true,\"consequential\":true,\"controlEpoch\":1,\"credentialKeyId\":\"key:first-look:a\",\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"evaluationTime\":99,\"eventHistoryHash\":\"0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b\",\"eventHistoryPosition\":13,\"intentId\":\"intent:first-look\",\"nonce\":\"nonce:2\",\"policyVersion\":\"local-evidence-intake-policy:first-look/0.2\",\"request\":{\"action\":\"collect-evidence-packet\",\"actorId\":\"a:first-look\",\"claimedAt\":13,\"resource\":\"resource:first-look\",\"termsCommitment\":\"0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b\"},\"roleId\":\"role:first-look\",\"roleTenureId\":\"tenure-a:first-look\",\"rootRecognitionPolicy\":\"declared-principal-root/0.2\",\"runtimeSessionId\":\"session:first-look:a\",\"version\":\"continuity-runtime-authorization/0.2\"}",
+      "canonicalBytes": 939,
+      "challengeHash": "0x67ea082723ce2b035db72a22aee46b92d755af616b1668113da94bb1570600b4",
+      "eip191Digest": "0x0aa893cf62d6c8c972d9075da071087d6c03aaab3780d99ea58996242b45ff57",
+      "signerKey": "0x00000000000000000000000000000000000000000000000000000000000003e9",
+      "signature": "0x8dbc6c38bccdaabd40806a93691c3298df2da45c314a7ea4d2459d2932dd995a4e57e7819690d1daff3a7161965617ec3d699c584bcc8351a8d25c8111f35f3e1b",
+      "r": "0x8dbc6c38bccdaabd40806a93691c3298df2da45c314a7ea4d2459d2932dd995a",
+      "s": "0x4e57e7819690d1daff3a7161965617ec3d699c584bcc8351a8d25c8111f35f3e",
+      "v": "0x1b",
+      "vDecimal": 27,
+      "recoveredAddress": "0x5935897a39afabbeda5a599d38236e7df151c8b8",
+      "verifiedAgainstChecksummedAddress": true
+    }
+  ],
+  "receipt": [
+    {
+      "label": "createPortableReceipt over handover fixture events[0..15], intent:first-look, issuedAt 16, SIMULATED, key 1001 (reproduces fixture event[16] RECEIPT_RECORDED)",
+      "payload": {
+        "assurance": {
+          "externalOutcome": "SIMULATED",
+          "finality": "LOCAL_ONLY",
+          "freshness": "CURRENT_AT_ISSUANCE"
+        },
+        "authorization": {
+          "authorizationTime": 14,
+          "historyHead": {
+            "canonicalTime": 13,
+            "hash": "0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b",
+            "position": 13
+          },
+          "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+          "proof": {
+            "authorityEvidence": [
+              {
+                "authorityId": "collect-authority:first-look",
+                "grantEventId": "first-look:collect-authority",
+                "grantEventPosition": 8
+              }
+            ],
+            "checkedProhibitionIds": [],
+            "consequential": true,
+            "controlEpoch": 1,
+            "controllingAuthorityIds": [
+              "collect-authority:first-look"
+            ],
+            "credentialKeyId": "key:first-look:a",
+            "domain": {
+              "chainId": "31337",
+              "deploymentId": "core-0.2-reference:first-look",
+              "protocol": "continuity",
+              "verifyingContract": "0x0000000000000000000000000000000000003002",
+              "version": "0.2"
+            },
+            "effectiveConstraints": {
+              "actions": [
+                "collect-evidence-packet"
+              ],
+              "expiresAt": 1000,
+              "maxDelegationDepth": 0,
+              "quantitative": false,
+              "requiredIntersectionIds": [],
+              "resources": [
+                "resource:first-look"
+              ]
+            },
+            "evaluationTime": 14,
+            "historyHead": {
+              "canonicalTime": 13,
+              "hash": "0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b",
+              "position": 13
+            },
+            "intentId": "intent:first-look",
+            "intersections": [],
+            "nonce": "nonce:first-look",
+            "permissionPath": [
+              {
+                "authorityId": "collect-authority:first-look",
+                "constraints": {
+                  "actions": [
+                    "collect-evidence-packet"
+                  ],
+                  "expiresAt": 1000,
+                  "maxDelegationDepth": 0,
+                  "quantitative": false,
+                  "requiredIntersectionIds": [],
+                  "resources": [
+                    "resource:first-look"
+                  ]
+                },
+                "granteeId": "a:first-look",
+                "grantorId": "principal:first-look",
+                "independent": true,
+                "kind": "PERMISSION",
+                "rootAuthorityId": "collect-authority:first-look"
+              }
+            ],
+            "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+            "proofVersion": "continuity-authorization-proof/0.2",
+            "recognizedRoot": {
+              "principalId": "principal:first-look",
+              "principalRecognitionEventId": "first-look:principal",
+              "rootAuthorityId": "collect-authority:first-look",
+              "rootGrantEventId": "first-look:collect-authority"
+            },
+            "request": {
+              "action": "collect-evidence-packet",
+              "actorId": "a:first-look",
+              "claimedAt": 13,
+              "resource": "resource:first-look",
+              "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+            },
+            "roleId": "role:first-look",
+            "roleTenureId": "tenure-a:first-look",
+            "rootRecognitionPolicy": "declared-principal-root/0.2",
+            "runtimeSessionId": "session:first-look:a",
+            "usageSnapshot": []
+          },
+          "rootRecognitionPolicy": "declared-principal-root/0.2"
+        },
+        "domain": {
+          "chainId": "31337",
+          "deploymentId": "core-0.2-reference:first-look",
+          "protocol": "continuity",
+          "verifyingContract": "0x0000000000000000000000000000000000003002",
+          "version": "0.2"
+        },
+        "intent": {
+          "action": "collect-evidence-packet",
+          "actorId": "a:first-look",
+          "adapterProfile": {
+            "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+            "profileId": "adapter:simulated",
+            "profileVersion": "1"
+          },
+          "intentId": "intent:first-look",
+          "nonce": "nonce:first-look",
+          "resource": "resource:first-look",
+          "roleId": "role:first-look",
+          "roleTenureId": "tenure-a:first-look",
+          "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+        },
+        "issuance": {
+          "historyHead": {
+            "canonicalTime": 15,
+            "hash": "0x28078b6d0e9375a7f1c365fa20808725ba5527e354c64e119f00d409ed500706",
+            "position": 15
+          },
+          "issuedAt": 16
+        },
+        "issuer": {
+          "agentId": "a:first-look",
+          "controlEpoch": 1,
+          "keyId": "key:first-look:a",
+          "roleId": "role:first-look",
+          "roleTenureId": "tenure-a:first-look",
+          "runtimeSessionId": "session:first-look:a"
+        },
+        "result": {
+          "acknowledgment": {
+            "adapterProfile": {
+              "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+              "profileId": "adapter:simulated",
+              "profileVersion": "1"
+            },
+            "admissionHead": {
+              "canonicalTime": 14,
+              "hash": "0xf156c2c9c6ad4115dbe3eb1bba06ba56ce75082dc1636ccd24a5b54c3f690e89",
+              "position": 14
+            },
+            "domain": {
+              "chainId": "31337",
+              "deploymentId": "core-0.2-reference:first-look",
+              "protocol": "continuity",
+              "verifyingContract": "0x0000000000000000000000000000000000003002",
+              "version": "0.2"
+            },
+            "idempotencyKey": "0x3568758f0cbbff73ceacefe0db265d255483df11d3d5e87a8a29358f74a9ad93",
+            "intentId": "intent:first-look",
+            "kind": "ACKNOWLEDGMENT",
+            "result": {
+              "kind": "SIMULATED_SUBMISSION",
+              "submissionReference": "0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5"
+            },
+            "schemaVersion": "continuity-adapter-acknowledgment/0.2",
+            "submissionFingerprint": "0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5"
+          },
+          "adapterId": "adapter:simulated",
+          "consumptionEventId": "event:local:consumption:255274cebd9fb214e56f695233b855b9d459f0c2c1ca6113a4d16f98b0891e55",
+          "idempotencyKey": "0x3568758f0cbbff73ceacefe0db265d255483df11d3d5e87a8a29358f74a9ad93",
+          "status": "SUBMITTED",
+          "submissionFingerprint": "0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5",
+          "transactionReference": "0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5"
+        },
+        "schemaVersion": "continuity-receipt/0.2",
+        "signatureScheme": "eip191-personal-sign-keccak256"
+      },
+      "payloadCanonicalText": "{\"assurance\":{\"externalOutcome\":\"SIMULATED\",\"finality\":\"LOCAL_ONLY\",\"freshness\":\"CURRENT_AT_ISSUANCE\"},\"authorization\":{\"authorizationTime\":14,\"historyHead\":{\"canonicalTime\":13,\"hash\":\"0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b\",\"position\":13},\"policyVersion\":\"local-evidence-intake-policy:first-look/0.2\",\"proof\":{\"authorityEvidence\":[{\"authorityId\":\"collect-authority:first-look\",\"grantEventId\":\"first-look:collect-authority\",\"grantEventPosition\":8}],\"checkedProhibitionIds\":[],\"consequential\":true,\"controlEpoch\":1,\"controllingAuthorityIds\":[\"collect-authority:first-look\"],\"credentialKeyId\":\"key:first-look:a\",\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"effectiveConstraints\":{\"actions\":[\"collect-evidence-packet\"],\"expiresAt\":1000,\"maxDelegationDepth\":0,\"quantitative\":false,\"requiredIntersectionIds\":[],\"resources\":[\"resource:first-look\"]},\"evaluationTime\":14,\"historyHead\":{\"canonicalTime\":13,\"hash\":\"0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b\",\"position\":13},\"intentId\":\"intent:first-look\",\"intersections\":[],\"nonce\":\"nonce:first-look\",\"permissionPath\":[{\"authorityId\":\"collect-authority:first-look\",\"constraints\":{\"actions\":[\"collect-evidence-packet\"],\"expiresAt\":1000,\"maxDelegationDepth\":0,\"quantitative\":false,\"requiredIntersectionIds\":[],\"resources\":[\"resource:first-look\"]},\"granteeId\":\"a:first-look\",\"grantorId\":\"principal:first-look\",\"independent\":true,\"kind\":\"PERMISSION\",\"rootAuthorityId\":\"collect-authority:first-look\"}],\"policyVersion\":\"local-evidence-intake-policy:first-look/0.2\",\"proofVersion\":\"continuity-authorization-proof/0.2\",\"recognizedRoot\":{\"principalId\":\"principal:first-look\",\"principalRecognitionEventId\":\"first-look:principal\",\"rootAuthorityId\":\"collect-authority:first-look\",\"rootGrantEventId\":\"first-look:collect-authority\"},\"request\":{\"action\":\"collect-evidence-packet\",\"actorId\":\"a:first-look\",\"claimedAt\":13,\"resource\":\"resource:first-look\",\"termsCommitment\":\"0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b\"},\"roleId\":\"role:first-look\",\"roleTenureId\":\"tenure-a:first-look\",\"rootRecognitionPolicy\":\"declared-principal-root/0.2\",\"runtimeSessionId\":\"session:first-look:a\",\"usageSnapshot\":[]},\"rootRecognitionPolicy\":\"declared-principal-root/0.2\"},\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"intent\":{\"action\":\"collect-evidence-packet\",\"actorId\":\"a:first-look\",\"adapterProfile\":{\"descriptorHash\":\"0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2\",\"profileId\":\"adapter:simulated\",\"profileVersion\":\"1\"},\"intentId\":\"intent:first-look\",\"nonce\":\"nonce:first-look\",\"resource\":\"resource:first-look\",\"roleId\":\"role:first-look\",\"roleTenureId\":\"tenure-a:first-look\",\"termsCommitment\":\"0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b\"},\"issuance\":{\"historyHead\":{\"canonicalTime\":15,\"hash\":\"0x28078b6d0e9375a7f1c365fa20808725ba5527e354c64e119f00d409ed500706\",\"position\":15},\"issuedAt\":16},\"issuer\":{\"agentId\":\"a:first-look\",\"controlEpoch\":1,\"keyId\":\"key:first-look:a\",\"roleId\":\"role:first-look\",\"roleTenureId\":\"tenure-a:first-look\",\"runtimeSessionId\":\"session:first-look:a\"},\"result\":{\"acknowledgment\":{\"adapterProfile\":{\"descriptorHash\":\"0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2\",\"profileId\":\"adapter:simulated\",\"profileVersion\":\"1\"},\"admissionHead\":{\"canonicalTime\":14,\"hash\":\"0xf156c2c9c6ad4115dbe3eb1bba06ba56ce75082dc1636ccd24a5b54c3f690e89\",\"position\":14},\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"idempotencyKey\":\"0x3568758f0cbbff73ceacefe0db265d255483df11d3d5e87a8a29358f74a9ad93\",\"intentId\":\"intent:first-look\",\"kind\":\"ACKNOWLEDGMENT\",\"result\":{\"kind\":\"SIMULATED_SUBMISSION\",\"submissionReference\":\"0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5\"},\"schemaVersion\":\"continuity-adapter-acknowledgment/0.2\",\"submissionFingerprint\":\"0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5\"},\"adapterId\":\"adapter:simulated\",\"consumptionEventId\":\"event:local:consumption:255274cebd9fb214e56f695233b855b9d459f0c2c1ca6113a4d16f98b0891e55\",\"idempotencyKey\":\"0x3568758f0cbbff73ceacefe0db265d255483df11d3d5e87a8a29358f74a9ad93\",\"status\":\"SUBMITTED\",\"submissionFingerprint\":\"0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5\",\"transactionReference\":\"0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5\"},\"schemaVersion\":\"continuity-receipt/0.2\",\"signatureScheme\":\"eip191-personal-sign-keccak256\"}",
+      "payloadCanonicalBytes": 4826,
+      "contentHash": "0xae4e8e6ee4b07e75c3532a80187a240e59a429f339a5a340787270efd75c1189",
+      "eip191Digest": "0x44d856487696b0542eb0eed760f63bcfd0323220f6e77353dca10980c71acac3",
+      "signature": "0xf790d51c066588813a7e2dd96bdb088eaeddeb089e291a703b76b47ba47380b9725dda8cbf494222eb9382fd22fde9a573cde03d52ec77e0c6e461292fd584361c",
+      "r": "0xf790d51c066588813a7e2dd96bdb088eaeddeb089e291a703b76b47ba47380b9",
+      "s": "0x725dda8cbf494222eb9382fd22fde9a573cde03d52ec77e0c6e461292fd58436",
+      "v": "0x1c",
+      "vDecimal": 28,
+      "recoveredAddress": "0x5935897a39afabbeda5a599d38236e7df151c8b8",
+      "receiptArtifactCommitment": "0x44ef06f218a36a22117a6eba2daaf9852311b8133e34eaf11788fb8d8b584d70",
+      "receiptArtifactCommitmentPreimageCanonicalText": "[\"continuity-receipt-artifact-commitment/0.2\",\"0xae4e8e6ee4b07e75c3532a80187a240e59a429f339a5a340787270efd75c1189\",\"0xf790d51c066588813a7e2dd96bdb088eaeddeb089e291a703b76b47ba47380b9725dda8cbf494222eb9382fd22fde9a573cde03d52ec77e0c6e461292fd584361c\"]",
+      "recordData": {
+        "authorizationProofHash": "0x22448cf9c416c52bfcfdc07896b365d4b7d69894be441ed051cc9e082d58e7db",
+        "controlEpoch": 1,
+        "intentId": "intent:first-look",
+        "issuerAgentId": "a:first-look",
+        "receiptArtifactCommitment": "0x44ef06f218a36a22117a6eba2daaf9852311b8133e34eaf11788fb8d8b584d70",
+        "receiptContentHash": "0xae4e8e6ee4b07e75c3532a80187a240e59a429f339a5a340787270efd75c1189",
+        "roleId": "role:first-look",
+        "roleTenureId": "tenure-a:first-look",
+        "runtimeSessionId": "session:first-look:a"
+      }
+    },
+    {
+      "label": "createPortableReceipt over handover fixture events[0..15], intent:first-look, issuedAt 17, SIMULATED, key 1001",
+      "payload": {
+        "assurance": {
+          "externalOutcome": "SIMULATED",
+          "finality": "LOCAL_ONLY",
+          "freshness": "CURRENT_AT_ISSUANCE"
+        },
+        "authorization": {
+          "authorizationTime": 14,
+          "historyHead": {
+            "canonicalTime": 13,
+            "hash": "0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b",
+            "position": 13
+          },
+          "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+          "proof": {
+            "authorityEvidence": [
+              {
+                "authorityId": "collect-authority:first-look",
+                "grantEventId": "first-look:collect-authority",
+                "grantEventPosition": 8
+              }
+            ],
+            "checkedProhibitionIds": [],
+            "consequential": true,
+            "controlEpoch": 1,
+            "controllingAuthorityIds": [
+              "collect-authority:first-look"
+            ],
+            "credentialKeyId": "key:first-look:a",
+            "domain": {
+              "chainId": "31337",
+              "deploymentId": "core-0.2-reference:first-look",
+              "protocol": "continuity",
+              "verifyingContract": "0x0000000000000000000000000000000000003002",
+              "version": "0.2"
+            },
+            "effectiveConstraints": {
+              "actions": [
+                "collect-evidence-packet"
+              ],
+              "expiresAt": 1000,
+              "maxDelegationDepth": 0,
+              "quantitative": false,
+              "requiredIntersectionIds": [],
+              "resources": [
+                "resource:first-look"
+              ]
+            },
+            "evaluationTime": 14,
+            "historyHead": {
+              "canonicalTime": 13,
+              "hash": "0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b",
+              "position": 13
+            },
+            "intentId": "intent:first-look",
+            "intersections": [],
+            "nonce": "nonce:first-look",
+            "permissionPath": [
+              {
+                "authorityId": "collect-authority:first-look",
+                "constraints": {
+                  "actions": [
+                    "collect-evidence-packet"
+                  ],
+                  "expiresAt": 1000,
+                  "maxDelegationDepth": 0,
+                  "quantitative": false,
+                  "requiredIntersectionIds": [],
+                  "resources": [
+                    "resource:first-look"
+                  ]
+                },
+                "granteeId": "a:first-look",
+                "grantorId": "principal:first-look",
+                "independent": true,
+                "kind": "PERMISSION",
+                "rootAuthorityId": "collect-authority:first-look"
+              }
+            ],
+            "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+            "proofVersion": "continuity-authorization-proof/0.2",
+            "recognizedRoot": {
+              "principalId": "principal:first-look",
+              "principalRecognitionEventId": "first-look:principal",
+              "rootAuthorityId": "collect-authority:first-look",
+              "rootGrantEventId": "first-look:collect-authority"
+            },
+            "request": {
+              "action": "collect-evidence-packet",
+              "actorId": "a:first-look",
+              "claimedAt": 13,
+              "resource": "resource:first-look",
+              "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+            },
+            "roleId": "role:first-look",
+            "roleTenureId": "tenure-a:first-look",
+            "rootRecognitionPolicy": "declared-principal-root/0.2",
+            "runtimeSessionId": "session:first-look:a",
+            "usageSnapshot": []
+          },
+          "rootRecognitionPolicy": "declared-principal-root/0.2"
+        },
+        "domain": {
+          "chainId": "31337",
+          "deploymentId": "core-0.2-reference:first-look",
+          "protocol": "continuity",
+          "verifyingContract": "0x0000000000000000000000000000000000003002",
+          "version": "0.2"
+        },
+        "intent": {
+          "action": "collect-evidence-packet",
+          "actorId": "a:first-look",
+          "adapterProfile": {
+            "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+            "profileId": "adapter:simulated",
+            "profileVersion": "1"
+          },
+          "intentId": "intent:first-look",
+          "nonce": "nonce:first-look",
+          "resource": "resource:first-look",
+          "roleId": "role:first-look",
+          "roleTenureId": "tenure-a:first-look",
+          "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+        },
+        "issuance": {
+          "historyHead": {
+            "canonicalTime": 15,
+            "hash": "0x28078b6d0e9375a7f1c365fa20808725ba5527e354c64e119f00d409ed500706",
+            "position": 15
+          },
+          "issuedAt": 17
+        },
+        "issuer": {
+          "agentId": "a:first-look",
+          "controlEpoch": 1,
+          "keyId": "key:first-look:a",
+          "roleId": "role:first-look",
+          "roleTenureId": "tenure-a:first-look",
+          "runtimeSessionId": "session:first-look:a"
+        },
+        "result": {
+          "acknowledgment": {
+            "adapterProfile": {
+              "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+              "profileId": "adapter:simulated",
+              "profileVersion": "1"
+            },
+            "admissionHead": {
+              "canonicalTime": 14,
+              "hash": "0xf156c2c9c6ad4115dbe3eb1bba06ba56ce75082dc1636ccd24a5b54c3f690e89",
+              "position": 14
+            },
+            "domain": {
+              "chainId": "31337",
+              "deploymentId": "core-0.2-reference:first-look",
+              "protocol": "continuity",
+              "verifyingContract": "0x0000000000000000000000000000000000003002",
+              "version": "0.2"
+            },
+            "idempotencyKey": "0x3568758f0cbbff73ceacefe0db265d255483df11d3d5e87a8a29358f74a9ad93",
+            "intentId": "intent:first-look",
+            "kind": "ACKNOWLEDGMENT",
+            "result": {
+              "kind": "SIMULATED_SUBMISSION",
+              "submissionReference": "0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5"
+            },
+            "schemaVersion": "continuity-adapter-acknowledgment/0.2",
+            "submissionFingerprint": "0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5"
+          },
+          "adapterId": "adapter:simulated",
+          "consumptionEventId": "event:local:consumption:255274cebd9fb214e56f695233b855b9d459f0c2c1ca6113a4d16f98b0891e55",
+          "idempotencyKey": "0x3568758f0cbbff73ceacefe0db265d255483df11d3d5e87a8a29358f74a9ad93",
+          "status": "SUBMITTED",
+          "submissionFingerprint": "0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5",
+          "transactionReference": "0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5"
+        },
+        "schemaVersion": "continuity-receipt/0.2",
+        "signatureScheme": "eip191-personal-sign-keccak256"
+      },
+      "payloadCanonicalText": "{\"assurance\":{\"externalOutcome\":\"SIMULATED\",\"finality\":\"LOCAL_ONLY\",\"freshness\":\"CURRENT_AT_ISSUANCE\"},\"authorization\":{\"authorizationTime\":14,\"historyHead\":{\"canonicalTime\":13,\"hash\":\"0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b\",\"position\":13},\"policyVersion\":\"local-evidence-intake-policy:first-look/0.2\",\"proof\":{\"authorityEvidence\":[{\"authorityId\":\"collect-authority:first-look\",\"grantEventId\":\"first-look:collect-authority\",\"grantEventPosition\":8}],\"checkedProhibitionIds\":[],\"consequential\":true,\"controlEpoch\":1,\"controllingAuthorityIds\":[\"collect-authority:first-look\"],\"credentialKeyId\":\"key:first-look:a\",\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"effectiveConstraints\":{\"actions\":[\"collect-evidence-packet\"],\"expiresAt\":1000,\"maxDelegationDepth\":0,\"quantitative\":false,\"requiredIntersectionIds\":[],\"resources\":[\"resource:first-look\"]},\"evaluationTime\":14,\"historyHead\":{\"canonicalTime\":13,\"hash\":\"0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b\",\"position\":13},\"intentId\":\"intent:first-look\",\"intersections\":[],\"nonce\":\"nonce:first-look\",\"permissionPath\":[{\"authorityId\":\"collect-authority:first-look\",\"constraints\":{\"actions\":[\"collect-evidence-packet\"],\"expiresAt\":1000,\"maxDelegationDepth\":0,\"quantitative\":false,\"requiredIntersectionIds\":[],\"resources\":[\"resource:first-look\"]},\"granteeId\":\"a:first-look\",\"grantorId\":\"principal:first-look\",\"independent\":true,\"kind\":\"PERMISSION\",\"rootAuthorityId\":\"collect-authority:first-look\"}],\"policyVersion\":\"local-evidence-intake-policy:first-look/0.2\",\"proofVersion\":\"continuity-authorization-proof/0.2\",\"recognizedRoot\":{\"principalId\":\"principal:first-look\",\"principalRecognitionEventId\":\"first-look:principal\",\"rootAuthorityId\":\"collect-authority:first-look\",\"rootGrantEventId\":\"first-look:collect-authority\"},\"request\":{\"action\":\"collect-evidence-packet\",\"actorId\":\"a:first-look\",\"claimedAt\":13,\"resource\":\"resource:first-look\",\"termsCommitment\":\"0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b\"},\"roleId\":\"role:first-look\",\"roleTenureId\":\"tenure-a:first-look\",\"rootRecognitionPolicy\":\"declared-principal-root/0.2\",\"runtimeSessionId\":\"session:first-look:a\",\"usageSnapshot\":[]},\"rootRecognitionPolicy\":\"declared-principal-root/0.2\"},\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"intent\":{\"action\":\"collect-evidence-packet\",\"actorId\":\"a:first-look\",\"adapterProfile\":{\"descriptorHash\":\"0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2\",\"profileId\":\"adapter:simulated\",\"profileVersion\":\"1\"},\"intentId\":\"intent:first-look\",\"nonce\":\"nonce:first-look\",\"resource\":\"resource:first-look\",\"roleId\":\"role:first-look\",\"roleTenureId\":\"tenure-a:first-look\",\"termsCommitment\":\"0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b\"},\"issuance\":{\"historyHead\":{\"canonicalTime\":15,\"hash\":\"0x28078b6d0e9375a7f1c365fa20808725ba5527e354c64e119f00d409ed500706\",\"position\":15},\"issuedAt\":17},\"issuer\":{\"agentId\":\"a:first-look\",\"controlEpoch\":1,\"keyId\":\"key:first-look:a\",\"roleId\":\"role:first-look\",\"roleTenureId\":\"tenure-a:first-look\",\"runtimeSessionId\":\"session:first-look:a\"},\"result\":{\"acknowledgment\":{\"adapterProfile\":{\"descriptorHash\":\"0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2\",\"profileId\":\"adapter:simulated\",\"profileVersion\":\"1\"},\"admissionHead\":{\"canonicalTime\":14,\"hash\":\"0xf156c2c9c6ad4115dbe3eb1bba06ba56ce75082dc1636ccd24a5b54c3f690e89\",\"position\":14},\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"idempotencyKey\":\"0x3568758f0cbbff73ceacefe0db265d255483df11d3d5e87a8a29358f74a9ad93\",\"intentId\":\"intent:first-look\",\"kind\":\"ACKNOWLEDGMENT\",\"result\":{\"kind\":\"SIMULATED_SUBMISSION\",\"submissionReference\":\"0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5\"},\"schemaVersion\":\"continuity-adapter-acknowledgment/0.2\",\"submissionFingerprint\":\"0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5\"},\"adapterId\":\"adapter:simulated\",\"consumptionEventId\":\"event:local:consumption:255274cebd9fb214e56f695233b855b9d459f0c2c1ca6113a4d16f98b0891e55\",\"idempotencyKey\":\"0x3568758f0cbbff73ceacefe0db265d255483df11d3d5e87a8a29358f74a9ad93\",\"status\":\"SUBMITTED\",\"submissionFingerprint\":\"0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5\",\"transactionReference\":\"0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5\"},\"schemaVersion\":\"continuity-receipt/0.2\",\"signatureScheme\":\"eip191-personal-sign-keccak256\"}",
+      "payloadCanonicalBytes": 4826,
+      "contentHash": "0xd557813d90091cf937f5111ca7f1bf752be3ae493732edb7287b41266c19e4ed",
+      "eip191Digest": "0x6a734ed3754321f57e552c3238c23f092107e7a6de1f1ea03d9726e7b4eb049c",
+      "signature": "0x7eb13d4bd6ecd3b5700f67452f54b54e763ad5e4ac312dea2f1c9189b819d5a974f8adff5eda0d6665265ad5ccec2b0e2b3d72eb458f474d1c9231052b47f9091b",
+      "r": "0x7eb13d4bd6ecd3b5700f67452f54b54e763ad5e4ac312dea2f1c9189b819d5a9",
+      "s": "0x74f8adff5eda0d6665265ad5ccec2b0e2b3d72eb458f474d1c9231052b47f909",
+      "v": "0x1b",
+      "vDecimal": 27,
+      "recoveredAddress": "0x5935897a39afabbeda5a599d38236e7df151c8b8",
+      "receiptArtifactCommitment": "0x2c73fa6cbbf340ab39afacb3c44524c29b86646e020a75feaf3515195e15fbc8",
+      "receiptArtifactCommitmentPreimageCanonicalText": "[\"continuity-receipt-artifact-commitment/0.2\",\"0xd557813d90091cf937f5111ca7f1bf752be3ae493732edb7287b41266c19e4ed\",\"0x7eb13d4bd6ecd3b5700f67452f54b54e763ad5e4ac312dea2f1c9189b819d5a974f8adff5eda0d6665265ad5ccec2b0e2b3d72eb458f474d1c9231052b47f9091b\"]"
+    },
+    {
+      "label": "createPortableReceipt over handover fixture events[0..15], intent:first-look, issuedAt 100, SIMULATED, key 1001",
+      "payload": {
+        "assurance": {
+          "externalOutcome": "SIMULATED",
+          "finality": "LOCAL_ONLY",
+          "freshness": "CURRENT_AT_ISSUANCE"
+        },
+        "authorization": {
+          "authorizationTime": 14,
+          "historyHead": {
+            "canonicalTime": 13,
+            "hash": "0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b",
+            "position": 13
+          },
+          "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+          "proof": {
+            "authorityEvidence": [
+              {
+                "authorityId": "collect-authority:first-look",
+                "grantEventId": "first-look:collect-authority",
+                "grantEventPosition": 8
+              }
+            ],
+            "checkedProhibitionIds": [],
+            "consequential": true,
+            "controlEpoch": 1,
+            "controllingAuthorityIds": [
+              "collect-authority:first-look"
+            ],
+            "credentialKeyId": "key:first-look:a",
+            "domain": {
+              "chainId": "31337",
+              "deploymentId": "core-0.2-reference:first-look",
+              "protocol": "continuity",
+              "verifyingContract": "0x0000000000000000000000000000000000003002",
+              "version": "0.2"
+            },
+            "effectiveConstraints": {
+              "actions": [
+                "collect-evidence-packet"
+              ],
+              "expiresAt": 1000,
+              "maxDelegationDepth": 0,
+              "quantitative": false,
+              "requiredIntersectionIds": [],
+              "resources": [
+                "resource:first-look"
+              ]
+            },
+            "evaluationTime": 14,
+            "historyHead": {
+              "canonicalTime": 13,
+              "hash": "0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b",
+              "position": 13
+            },
+            "intentId": "intent:first-look",
+            "intersections": [],
+            "nonce": "nonce:first-look",
+            "permissionPath": [
+              {
+                "authorityId": "collect-authority:first-look",
+                "constraints": {
+                  "actions": [
+                    "collect-evidence-packet"
+                  ],
+                  "expiresAt": 1000,
+                  "maxDelegationDepth": 0,
+                  "quantitative": false,
+                  "requiredIntersectionIds": [],
+                  "resources": [
+                    "resource:first-look"
+                  ]
+                },
+                "granteeId": "a:first-look",
+                "grantorId": "principal:first-look",
+                "independent": true,
+                "kind": "PERMISSION",
+                "rootAuthorityId": "collect-authority:first-look"
+              }
+            ],
+            "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+            "proofVersion": "continuity-authorization-proof/0.2",
+            "recognizedRoot": {
+              "principalId": "principal:first-look",
+              "principalRecognitionEventId": "first-look:principal",
+              "rootAuthorityId": "collect-authority:first-look",
+              "rootGrantEventId": "first-look:collect-authority"
+            },
+            "request": {
+              "action": "collect-evidence-packet",
+              "actorId": "a:first-look",
+              "claimedAt": 13,
+              "resource": "resource:first-look",
+              "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+            },
+            "roleId": "role:first-look",
+            "roleTenureId": "tenure-a:first-look",
+            "rootRecognitionPolicy": "declared-principal-root/0.2",
+            "runtimeSessionId": "session:first-look:a",
+            "usageSnapshot": []
+          },
+          "rootRecognitionPolicy": "declared-principal-root/0.2"
+        },
+        "domain": {
+          "chainId": "31337",
+          "deploymentId": "core-0.2-reference:first-look",
+          "protocol": "continuity",
+          "verifyingContract": "0x0000000000000000000000000000000000003002",
+          "version": "0.2"
+        },
+        "intent": {
+          "action": "collect-evidence-packet",
+          "actorId": "a:first-look",
+          "adapterProfile": {
+            "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+            "profileId": "adapter:simulated",
+            "profileVersion": "1"
+          },
+          "intentId": "intent:first-look",
+          "nonce": "nonce:first-look",
+          "resource": "resource:first-look",
+          "roleId": "role:first-look",
+          "roleTenureId": "tenure-a:first-look",
+          "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+        },
+        "issuance": {
+          "historyHead": {
+            "canonicalTime": 15,
+            "hash": "0x28078b6d0e9375a7f1c365fa20808725ba5527e354c64e119f00d409ed500706",
+            "position": 15
+          },
+          "issuedAt": 100
+        },
+        "issuer": {
+          "agentId": "a:first-look",
+          "controlEpoch": 1,
+          "keyId": "key:first-look:a",
+          "roleId": "role:first-look",
+          "roleTenureId": "tenure-a:first-look",
+          "runtimeSessionId": "session:first-look:a"
+        },
+        "result": {
+          "acknowledgment": {
+            "adapterProfile": {
+              "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+              "profileId": "adapter:simulated",
+              "profileVersion": "1"
+            },
+            "admissionHead": {
+              "canonicalTime": 14,
+              "hash": "0xf156c2c9c6ad4115dbe3eb1bba06ba56ce75082dc1636ccd24a5b54c3f690e89",
+              "position": 14
+            },
+            "domain": {
+              "chainId": "31337",
+              "deploymentId": "core-0.2-reference:first-look",
+              "protocol": "continuity",
+              "verifyingContract": "0x0000000000000000000000000000000000003002",
+              "version": "0.2"
+            },
+            "idempotencyKey": "0x3568758f0cbbff73ceacefe0db265d255483df11d3d5e87a8a29358f74a9ad93",
+            "intentId": "intent:first-look",
+            "kind": "ACKNOWLEDGMENT",
+            "result": {
+              "kind": "SIMULATED_SUBMISSION",
+              "submissionReference": "0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5"
+            },
+            "schemaVersion": "continuity-adapter-acknowledgment/0.2",
+            "submissionFingerprint": "0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5"
+          },
+          "adapterId": "adapter:simulated",
+          "consumptionEventId": "event:local:consumption:255274cebd9fb214e56f695233b855b9d459f0c2c1ca6113a4d16f98b0891e55",
+          "idempotencyKey": "0x3568758f0cbbff73ceacefe0db265d255483df11d3d5e87a8a29358f74a9ad93",
+          "status": "SUBMITTED",
+          "submissionFingerprint": "0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5",
+          "transactionReference": "0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5"
+        },
+        "schemaVersion": "continuity-receipt/0.2",
+        "signatureScheme": "eip191-personal-sign-keccak256"
+      },
+      "payloadCanonicalText": "{\"assurance\":{\"externalOutcome\":\"SIMULATED\",\"finality\":\"LOCAL_ONLY\",\"freshness\":\"CURRENT_AT_ISSUANCE\"},\"authorization\":{\"authorizationTime\":14,\"historyHead\":{\"canonicalTime\":13,\"hash\":\"0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b\",\"position\":13},\"policyVersion\":\"local-evidence-intake-policy:first-look/0.2\",\"proof\":{\"authorityEvidence\":[{\"authorityId\":\"collect-authority:first-look\",\"grantEventId\":\"first-look:collect-authority\",\"grantEventPosition\":8}],\"checkedProhibitionIds\":[],\"consequential\":true,\"controlEpoch\":1,\"controllingAuthorityIds\":[\"collect-authority:first-look\"],\"credentialKeyId\":\"key:first-look:a\",\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"effectiveConstraints\":{\"actions\":[\"collect-evidence-packet\"],\"expiresAt\":1000,\"maxDelegationDepth\":0,\"quantitative\":false,\"requiredIntersectionIds\":[],\"resources\":[\"resource:first-look\"]},\"evaluationTime\":14,\"historyHead\":{\"canonicalTime\":13,\"hash\":\"0x52cc3b938649d1cc8a3d6d56d1b6213125b61c1bfaf43c251cc575a16233371b\",\"position\":13},\"intentId\":\"intent:first-look\",\"intersections\":[],\"nonce\":\"nonce:first-look\",\"permissionPath\":[{\"authorityId\":\"collect-authority:first-look\",\"constraints\":{\"actions\":[\"collect-evidence-packet\"],\"expiresAt\":1000,\"maxDelegationDepth\":0,\"quantitative\":false,\"requiredIntersectionIds\":[],\"resources\":[\"resource:first-look\"]},\"granteeId\":\"a:first-look\",\"grantorId\":\"principal:first-look\",\"independent\":true,\"kind\":\"PERMISSION\",\"rootAuthorityId\":\"collect-authority:first-look\"}],\"policyVersion\":\"local-evidence-intake-policy:first-look/0.2\",\"proofVersion\":\"continuity-authorization-proof/0.2\",\"recognizedRoot\":{\"principalId\":\"principal:first-look\",\"principalRecognitionEventId\":\"first-look:principal\",\"rootAuthorityId\":\"collect-authority:first-look\",\"rootGrantEventId\":\"first-look:collect-authority\"},\"request\":{\"action\":\"collect-evidence-packet\",\"actorId\":\"a:first-look\",\"claimedAt\":13,\"resource\":\"resource:first-look\",\"termsCommitment\":\"0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b\"},\"roleId\":\"role:first-look\",\"roleTenureId\":\"tenure-a:first-look\",\"rootRecognitionPolicy\":\"declared-principal-root/0.2\",\"runtimeSessionId\":\"session:first-look:a\",\"usageSnapshot\":[]},\"rootRecognitionPolicy\":\"declared-principal-root/0.2\"},\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"intent\":{\"action\":\"collect-evidence-packet\",\"actorId\":\"a:first-look\",\"adapterProfile\":{\"descriptorHash\":\"0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2\",\"profileId\":\"adapter:simulated\",\"profileVersion\":\"1\"},\"intentId\":\"intent:first-look\",\"nonce\":\"nonce:first-look\",\"resource\":\"resource:first-look\",\"roleId\":\"role:first-look\",\"roleTenureId\":\"tenure-a:first-look\",\"termsCommitment\":\"0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b\"},\"issuance\":{\"historyHead\":{\"canonicalTime\":15,\"hash\":\"0x28078b6d0e9375a7f1c365fa20808725ba5527e354c64e119f00d409ed500706\",\"position\":15},\"issuedAt\":100},\"issuer\":{\"agentId\":\"a:first-look\",\"controlEpoch\":1,\"keyId\":\"key:first-look:a\",\"roleId\":\"role:first-look\",\"roleTenureId\":\"tenure-a:first-look\",\"runtimeSessionId\":\"session:first-look:a\"},\"result\":{\"acknowledgment\":{\"adapterProfile\":{\"descriptorHash\":\"0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2\",\"profileId\":\"adapter:simulated\",\"profileVersion\":\"1\"},\"admissionHead\":{\"canonicalTime\":14,\"hash\":\"0xf156c2c9c6ad4115dbe3eb1bba06ba56ce75082dc1636ccd24a5b54c3f690e89\",\"position\":14},\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"idempotencyKey\":\"0x3568758f0cbbff73ceacefe0db265d255483df11d3d5e87a8a29358f74a9ad93\",\"intentId\":\"intent:first-look\",\"kind\":\"ACKNOWLEDGMENT\",\"result\":{\"kind\":\"SIMULATED_SUBMISSION\",\"submissionReference\":\"0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5\"},\"schemaVersion\":\"continuity-adapter-acknowledgment/0.2\",\"submissionFingerprint\":\"0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5\"},\"adapterId\":\"adapter:simulated\",\"consumptionEventId\":\"event:local:consumption:255274cebd9fb214e56f695233b855b9d459f0c2c1ca6113a4d16f98b0891e55\",\"idempotencyKey\":\"0x3568758f0cbbff73ceacefe0db265d255483df11d3d5e87a8a29358f74a9ad93\",\"status\":\"SUBMITTED\",\"submissionFingerprint\":\"0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5\",\"transactionReference\":\"0xb85e3acc626cb7e5ef9721ece739c2137304a7870a5f3929b92eb1dab61103e5\"},\"schemaVersion\":\"continuity-receipt/0.2\",\"signatureScheme\":\"eip191-personal-sign-keccak256\"}",
+      "payloadCanonicalBytes": 4827,
+      "contentHash": "0xe5f1f2c7131228d76089d08bc691e6a6641cde043dc31c983a38eb67fe1af65c",
+      "eip191Digest": "0x9190afb37cda9e0caad80d427a1ec4cb228b08731e8cbae4cb6a9cbfa3a6364e",
+      "signature": "0xf2f57f07081b34dbb0f25b13676fdafb0d86c35cbcf18285075c35ff7ba906691c02a6f7fc30726f24a16f23699a708b566f75847121d13087c0868f82f2290c1c",
+      "r": "0xf2f57f07081b34dbb0f25b13676fdafb0d86c35cbcf18285075c35ff7ba90669",
+      "s": "0x1c02a6f7fc30726f24a16f23699a708b566f75847121d13087c0868f82f2290c",
+      "v": "0x1c",
+      "vDecimal": 28,
+      "recoveredAddress": "0x5935897a39afabbeda5a599d38236e7df151c8b8",
+      "receiptArtifactCommitment": "0x61d3900a00307abcad0d4a86a152b64c539ec619e8092f6bbb64e6dd698e7aba",
+      "receiptArtifactCommitmentPreimageCanonicalText": "[\"continuity-receipt-artifact-commitment/0.2\",\"0xe5f1f2c7131228d76089d08bc691e6a6641cde043dc31c983a38eb67fe1af65c\",\"0xf2f57f07081b34dbb0f25b13676fdafb0d86c35cbcf18285075c35ff7ba906691c02a6f7fc30726f24a16f23699a708b566f75847121d13087c0868f82f2290c1c\"]"
+    }
+  ],
+  "administrativeAuthorization": [
+    {
+      "label": "fixture handover-history event[18] OBLIGATION_CREATED (key 1001, session a)",
+      "prefixHead": {
+        "hash": "0xadc662a1f5f23cf8281acff2c7356297af8e4a156ffde1fc9fe9af222d77123e",
+        "position": 17,
+        "canonicalTime": 17
+      },
+      "unsignedTransition": {
+        "id": "first-look:obligation",
+        "type": "OBLIGATION_CREATED",
+        "timestamp": 18,
+        "data": {
+          "actorId": "a:first-look",
+          "record": {
+            "beneficiaryId": "principal:first-look",
+            "causalReceiptContentHash": "0xae4e8e6ee4b07e75c3532a80187a240e59a429f339a5a340787270efd75c1189",
+            "creationRoleTenureId": "tenure-a:first-look",
+            "deadline": 1000,
+            "description": "Review the collected synthetic packet; account for the unresolved investigation.",
+            "durableRoleId": "role:first-look",
+            "obligationId": "obligation:first-look",
+            "performanceAssigneeId": "a:first-look",
+            "sourceIntentId": "intent:first-look",
+            "status": "OPEN",
+            "successionRuleId": "succession:first-look",
+            "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b",
+            "transitionPolicies": [
+              {
+                "acceptedAttesterIds": [
+                  "adapter:simulated"
+                ],
+                "action": "record-collection-disposition",
+                "fromStatus": "OPEN",
+                "requiredAuthorityIds": [
+                  "review-authority:first-look"
+                ],
+                "toStatus": "OUTCOME_UNKNOWN"
+              }
+            ],
+            "trigger": "event:local:consumption:255274cebd9fb214e56f695233b855b9d459f0c2c1ca6113a4d16f98b0891e55"
+          }
+        }
+      },
+      "runtimeSessionId": "session:first-look:a",
+      "transitionEffect": {
+        "transitionEventType": "OBLIGATION_CREATED",
+        "record": {
+          "beneficiaryId": "principal:first-look",
+          "causalReceiptContentHash": "0xae4e8e6ee4b07e75c3532a80187a240e59a429f339a5a340787270efd75c1189",
+          "creationRoleTenureId": "tenure-a:first-look",
+          "deadline": 1000,
+          "description": "Review the collected synthetic packet; account for the unresolved investigation.",
+          "durableRoleId": "role:first-look",
+          "obligationId": "obligation:first-look",
+          "performanceAssigneeId": "a:first-look",
+          "sourceIntentId": "intent:first-look",
+          "status": "OPEN",
+          "successionRuleId": "succession:first-look",
+          "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b",
+          "transitionPolicies": [
+            {
+              "acceptedAttesterIds": [
+                "adapter:simulated"
+              ],
+              "action": "record-collection-disposition",
+              "fromStatus": "OPEN",
+              "requiredAuthorityIds": [
+                "review-authority:first-look"
+              ],
+              "toStatus": "OUTCOME_UNKNOWN"
+            }
+          ],
+          "trigger": "event:local:consumption:255274cebd9fb214e56f695233b855b9d459f0c2c1ca6113a4d16f98b0891e55"
+        },
+        "actorId": "a:first-look"
+      },
+      "transitionEffectCanonicalText": "{\"actorId\":\"a:first-look\",\"record\":{\"beneficiaryId\":\"principal:first-look\",\"causalReceiptContentHash\":\"0xae4e8e6ee4b07e75c3532a80187a240e59a429f339a5a340787270efd75c1189\",\"creationRoleTenureId\":\"tenure-a:first-look\",\"deadline\":1000,\"description\":\"Review the collected synthetic packet; account for the unresolved investigation.\",\"durableRoleId\":\"role:first-look\",\"obligationId\":\"obligation:first-look\",\"performanceAssigneeId\":\"a:first-look\",\"sourceIntentId\":\"intent:first-look\",\"status\":\"OPEN\",\"successionRuleId\":\"succession:first-look\",\"termsCommitment\":\"0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b\",\"transitionPolicies\":[{\"acceptedAttesterIds\":[\"adapter:simulated\"],\"action\":\"record-collection-disposition\",\"fromStatus\":\"OPEN\",\"requiredAuthorityIds\":[\"review-authority:first-look\"],\"toStatus\":\"OUTCOME_UNKNOWN\"}],\"trigger\":\"event:local:consumption:255274cebd9fb214e56f695233b855b9d459f0c2c1ca6113a4d16f98b0891e55\"},\"transitionEventType\":\"OBLIGATION_CREATED\"}",
+      "transitionEffectHash": "0x08fc7e035f726d0e6ec6e2c2e2cd3a8576e264f99e57b834fd415e212be970b8",
+      "authorityProof": {
+        "authorityEvidence": [
+          {
+            "authorityId": "obligate-authority:first-look",
+            "grantEventId": "first-look:obligate-authority",
+            "grantEventPosition": 9
+          }
+        ],
+        "checkedProhibitionIds": [],
+        "consequential": false,
+        "controllingAuthorityIds": [
+          "obligate-authority:first-look"
+        ],
+        "domain": {
+          "chainId": "31337",
+          "deploymentId": "core-0.2-reference:first-look",
+          "protocol": "continuity",
+          "verifyingContract": "0x0000000000000000000000000000000000003002",
+          "version": "0.2"
+        },
+        "effectiveConstraints": {
+          "actions": [
+            "OBLIGATE"
+          ],
+          "expiresAt": 1000,
+          "maxDelegationDepth": 0,
+          "quantitative": false,
+          "requiredIntersectionIds": [],
+          "resources": [
+            "resource:first-look"
+          ]
+        },
+        "evaluationTime": 18,
+        "historyHead": {
+          "canonicalTime": 17,
+          "hash": "0xadc662a1f5f23cf8281acff2c7356297af8e4a156ffde1fc9fe9af222d77123e",
+          "position": 17
+        },
+        "intersections": [],
+        "permissionPath": [
+          {
+            "authorityId": "obligate-authority:first-look",
+            "constraints": {
+              "actions": [
+                "OBLIGATE"
+              ],
+              "expiresAt": 1000,
+              "maxDelegationDepth": 0,
+              "quantitative": false,
+              "requiredIntersectionIds": [],
+              "resources": [
+                "resource:first-look"
+              ]
+            },
+            "granteeId": "a:first-look",
+            "grantorId": "principal:first-look",
+            "independent": true,
+            "kind": "PERMISSION",
+            "rootAuthorityId": "obligate-authority:first-look"
+          }
+        ],
+        "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+        "proofVersion": "continuity-authorization-proof/0.2",
+        "recognizedRoot": {
+          "principalId": "principal:first-look",
+          "principalRecognitionEventId": "first-look:principal",
+          "rootAuthorityId": "obligate-authority:first-look",
+          "rootGrantEventId": "first-look:obligate-authority"
+        },
+        "request": {
+          "action": "OBLIGATE",
+          "actorId": "a:first-look",
+          "claimedAt": 18,
+          "resource": "resource:first-look",
+          "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+        },
+        "rootRecognitionPolicy": "declared-principal-root/0.2",
+        "usageSnapshot": []
+      },
+      "authorityProofCanonicalText": "{\"authorityEvidence\":[{\"authorityId\":\"obligate-authority:first-look\",\"grantEventId\":\"first-look:obligate-authority\",\"grantEventPosition\":9}],\"checkedProhibitionIds\":[],\"consequential\":false,\"controllingAuthorityIds\":[\"obligate-authority:first-look\"],\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"effectiveConstraints\":{\"actions\":[\"OBLIGATE\"],\"expiresAt\":1000,\"maxDelegationDepth\":0,\"quantitative\":false,\"requiredIntersectionIds\":[],\"resources\":[\"resource:first-look\"]},\"evaluationTime\":18,\"historyHead\":{\"canonicalTime\":17,\"hash\":\"0xadc662a1f5f23cf8281acff2c7356297af8e4a156ffde1fc9fe9af222d77123e\",\"position\":17},\"intersections\":[],\"permissionPath\":[{\"authorityId\":\"obligate-authority:first-look\",\"constraints\":{\"actions\":[\"OBLIGATE\"],\"expiresAt\":1000,\"maxDelegationDepth\":0,\"quantitative\":false,\"requiredIntersectionIds\":[],\"resources\":[\"resource:first-look\"]},\"granteeId\":\"a:first-look\",\"grantorId\":\"principal:first-look\",\"independent\":true,\"kind\":\"PERMISSION\",\"rootAuthorityId\":\"obligate-authority:first-look\"}],\"policyVersion\":\"local-evidence-intake-policy:first-look/0.2\",\"proofVersion\":\"continuity-authorization-proof/0.2\",\"recognizedRoot\":{\"principalId\":\"principal:first-look\",\"principalRecognitionEventId\":\"first-look:principal\",\"rootAuthorityId\":\"obligate-authority:first-look\",\"rootGrantEventId\":\"first-look:obligate-authority\"},\"request\":{\"action\":\"OBLIGATE\",\"actorId\":\"a:first-look\",\"claimedAt\":18,\"resource\":\"resource:first-look\",\"termsCommitment\":\"0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b\"},\"rootRecognitionPolicy\":\"declared-principal-root/0.2\",\"usageSnapshot\":[]}",
+      "authorityProofHash": "0x90932d00231b62facbe5813793b871781fe8f20fed13c5497cd4f7b448f4660d",
+      "challenge": {
+        "authoritative": true,
+        "authorityProofHash": "0x90932d00231b62facbe5813793b871781fe8f20fed13c5497cd4f7b448f4660d",
+        "consequential": true,
+        "controlEpoch": 1,
+        "credentialKeyId": "key:first-look:a",
+        "domain": {
+          "chainId": "31337",
+          "deploymentId": "core-0.2-reference:first-look",
+          "protocol": "continuity",
+          "verifyingContract": "0x0000000000000000000000000000000000003002",
+          "version": "0.2"
+        },
+        "evaluationTime": 18,
+        "eventHistoryHash": "0xadc662a1f5f23cf8281acff2c7356297af8e4a156ffde1fc9fe9af222d77123e",
+        "eventHistoryPosition": 17,
+        "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+        "request": {
+          "action": "OBLIGATE",
+          "actorId": "a:first-look",
+          "claimedAt": 18,
+          "resource": "resource:first-look",
+          "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+        },
+        "roleId": "role:first-look",
+        "roleTenureId": "tenure-a:first-look",
+        "rootRecognitionPolicy": "declared-principal-root/0.2",
+        "runtimeSessionId": "session:first-look:a",
+        "transitionEffectHash": "0x08fc7e035f726d0e6ec6e2c2e2cd3a8576e264f99e57b834fd415e212be970b8",
+        "transitionEventId": "first-look:obligation",
+        "transitionEventType": "OBLIGATION_CREATED",
+        "version": "continuity-administrative-authorization/0.2"
+      },
+      "challengeCanonicalText": "{\"authoritative\":true,\"authorityProofHash\":\"0x90932d00231b62facbe5813793b871781fe8f20fed13c5497cd4f7b448f4660d\",\"consequential\":true,\"controlEpoch\":1,\"credentialKeyId\":\"key:first-look:a\",\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"evaluationTime\":18,\"eventHistoryHash\":\"0xadc662a1f5f23cf8281acff2c7356297af8e4a156ffde1fc9fe9af222d77123e\",\"eventHistoryPosition\":17,\"policyVersion\":\"local-evidence-intake-policy:first-look/0.2\",\"request\":{\"action\":\"OBLIGATE\",\"actorId\":\"a:first-look\",\"claimedAt\":18,\"resource\":\"resource:first-look\",\"termsCommitment\":\"0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b\"},\"roleId\":\"role:first-look\",\"roleTenureId\":\"tenure-a:first-look\",\"rootRecognitionPolicy\":\"declared-principal-root/0.2\",\"runtimeSessionId\":\"session:first-look:a\",\"transitionEffectHash\":\"0x08fc7e035f726d0e6ec6e2c2e2cd3a8576e264f99e57b834fd415e212be970b8\",\"transitionEventId\":\"first-look:obligation\",\"transitionEventType\":\"OBLIGATION_CREATED\",\"version\":\"continuity-administrative-authorization/0.2\"}",
+      "challengeCanonicalBytes": 1151,
+      "signingHash": "0x1c949dd1395b4578117ae540fef7644768767d1fbe67e6a5fe0998695f7d073d",
+      "eip191Digest": "0x3382f312c4af9fc977bb955937d175dcfb48bb0b7d4cf1df1194ebfa0fb40ba7",
+      "signerKey": "0x00000000000000000000000000000000000000000000000000000000000003e9",
+      "signature": "0x794838943cbb9f9505c28cb0b48658376d004b0f65822bfa7dba35757d5220ae3e0699bd108042e6d67e2d49b0c61d19800a8f302df7766ae64f86ad3a52fa221c",
+      "r": "0x794838943cbb9f9505c28cb0b48658376d004b0f65822bfa7dba35757d5220ae",
+      "s": "0x3e0699bd108042e6d67e2d49b0c61d19800a8f302df7766ae64f86ad3a52fa22",
+      "v": "0x1c",
+      "vDecimal": 28,
+      "recoveredAddress": "0x5935897a39afabbeda5a599d38236e7df151c8b8",
+      "signedEvent": {
+        "data": {
+          "actorId": "a:first-look",
+          "administrativeAuthorization": {
+            "authorityProof": {
+              "authorityEvidence": [
+                {
+                  "authorityId": "obligate-authority:first-look",
+                  "grantEventId": "first-look:obligate-authority",
+                  "grantEventPosition": 9
+                }
+              ],
+              "checkedProhibitionIds": [],
+              "consequential": false,
+              "controllingAuthorityIds": [
+                "obligate-authority:first-look"
+              ],
+              "domain": {
+                "chainId": "31337",
+                "deploymentId": "core-0.2-reference:first-look",
+                "protocol": "continuity",
+                "verifyingContract": "0x0000000000000000000000000000000000003002",
+                "version": "0.2"
+              },
+              "effectiveConstraints": {
+                "actions": [
+                  "OBLIGATE"
+                ],
+                "expiresAt": 1000,
+                "maxDelegationDepth": 0,
+                "quantitative": false,
+                "requiredIntersectionIds": [],
+                "resources": [
+                  "resource:first-look"
+                ]
+              },
+              "evaluationTime": 18,
+              "historyHead": {
+                "canonicalTime": 17,
+                "hash": "0xadc662a1f5f23cf8281acff2c7356297af8e4a156ffde1fc9fe9af222d77123e",
+                "position": 17
+              },
+              "intersections": [],
+              "permissionPath": [
+                {
+                  "authorityId": "obligate-authority:first-look",
+                  "constraints": {
+                    "actions": [
+                      "OBLIGATE"
+                    ],
+                    "expiresAt": 1000,
+                    "maxDelegationDepth": 0,
+                    "quantitative": false,
+                    "requiredIntersectionIds": [],
+                    "resources": [
+                      "resource:first-look"
+                    ]
+                  },
+                  "granteeId": "a:first-look",
+                  "grantorId": "principal:first-look",
+                  "independent": true,
+                  "kind": "PERMISSION",
+                  "rootAuthorityId": "obligate-authority:first-look"
+                }
+              ],
+              "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+              "proofVersion": "continuity-authorization-proof/0.2",
+              "recognizedRoot": {
+                "principalId": "principal:first-look",
+                "principalRecognitionEventId": "first-look:principal",
+                "rootAuthorityId": "obligate-authority:first-look",
+                "rootGrantEventId": "first-look:obligate-authority"
+              },
+              "request": {
+                "action": "OBLIGATE",
+                "actorId": "a:first-look",
+                "claimedAt": 18,
+                "resource": "resource:first-look",
+                "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+              },
+              "rootRecognitionPolicy": "declared-principal-root/0.2",
+              "usageSnapshot": []
+            },
+            "challenge": {
+              "authoritative": true,
+              "authorityProofHash": "0x90932d00231b62facbe5813793b871781fe8f20fed13c5497cd4f7b448f4660d",
+              "consequential": true,
+              "controlEpoch": 1,
+              "credentialKeyId": "key:first-look:a",
+              "domain": {
+                "chainId": "31337",
+                "deploymentId": "core-0.2-reference:first-look",
+                "protocol": "continuity",
+                "verifyingContract": "0x0000000000000000000000000000000000003002",
+                "version": "0.2"
+              },
+              "evaluationTime": 18,
+              "eventHistoryHash": "0xadc662a1f5f23cf8281acff2c7356297af8e4a156ffde1fc9fe9af222d77123e",
+              "eventHistoryPosition": 17,
+              "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+              "request": {
+                "action": "OBLIGATE",
+                "actorId": "a:first-look",
+                "claimedAt": 18,
+                "resource": "resource:first-look",
+                "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+              },
+              "roleId": "role:first-look",
+              "roleTenureId": "tenure-a:first-look",
+              "rootRecognitionPolicy": "declared-principal-root/0.2",
+              "runtimeSessionId": "session:first-look:a",
+              "transitionEffectHash": "0x08fc7e035f726d0e6ec6e2c2e2cd3a8576e264f99e57b834fd415e212be970b8",
+              "transitionEventId": "first-look:obligation",
+              "transitionEventType": "OBLIGATION_CREATED",
+              "version": "continuity-administrative-authorization/0.2"
+            },
+            "runtimeSignature": "0x794838943cbb9f9505c28cb0b48658376d004b0f65822bfa7dba35757d5220ae3e0699bd108042e6d67e2d49b0c61d19800a8f302df7766ae64f86ad3a52fa221c"
+          },
+          "record": {
+            "beneficiaryId": "principal:first-look",
+            "causalReceiptContentHash": "0xae4e8e6ee4b07e75c3532a80187a240e59a429f339a5a340787270efd75c1189",
+            "creationRoleTenureId": "tenure-a:first-look",
+            "deadline": 1000,
+            "description": "Review the collected synthetic packet; account for the unresolved investigation.",
+            "durableRoleId": "role:first-look",
+            "obligationId": "obligation:first-look",
+            "performanceAssigneeId": "a:first-look",
+            "sourceIntentId": "intent:first-look",
+            "status": "OPEN",
+            "successionRuleId": "succession:first-look",
+            "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b",
+            "transitionPolicies": [
+              {
+                "acceptedAttesterIds": [
+                  "adapter:simulated"
+                ],
+                "action": "record-collection-disposition",
+                "fromStatus": "OPEN",
+                "requiredAuthorityIds": [
+                  "review-authority:first-look"
+                ],
+                "toStatus": "OUTCOME_UNKNOWN"
+              }
+            ],
+            "trigger": "event:local:consumption:255274cebd9fb214e56f695233b855b9d459f0c2c1ca6113a4d16f98b0891e55"
+          }
+        },
+        "id": "first-look:obligation",
+        "timestamp": 18,
+        "type": "OBLIGATION_CREATED"
+      },
+      "replayHeadAfter": {
+        "canonicalTime": 18,
+        "hash": "0xebcc5e1a34a21a3ca4ca97e92a22b97cd30a88a1f12e8f8f48239d0080f496ef",
+        "position": 18
+      },
+      "reproducesFixture": true
+    },
+    {
+      "label": "fixture handover-history event[23] OBLIGATION_PERFORMANCE_ASSIGNED (key 1003, session b)",
+      "prefixHead": {
+        "hash": "0xdb2bbe5b4bf9d4f5d05b305c4a115fdd64cebef96fce3285d913c1fcc02f45dd",
+        "position": 22,
+        "canonicalTime": 22
+      },
+      "unsignedTransition": {
+        "id": "first-look:assignment",
+        "type": "OBLIGATION_PERFORMANCE_ASSIGNED",
+        "timestamp": 23,
+        "data": {
+          "actorId": "b:first-look",
+          "fromAgentId": "a:first-look",
+          "obligationId": "obligation:first-look",
+          "successionRuleId": "succession:first-look",
+          "toAgentId": "b:first-look"
+        }
+      },
+      "runtimeSessionId": "session:first-look:b",
+      "transitionEffect": {
+        "transitionEventType": "OBLIGATION_PERFORMANCE_ASSIGNED",
+        "obligationId": "obligation:first-look",
+        "fromAgentId": "a:first-look",
+        "toAgentId": "b:first-look",
+        "successionRuleId": "succession:first-look",
+        "actorId": "b:first-look"
+      },
+      "transitionEffectCanonicalText": "{\"actorId\":\"b:first-look\",\"fromAgentId\":\"a:first-look\",\"obligationId\":\"obligation:first-look\",\"successionRuleId\":\"succession:first-look\",\"toAgentId\":\"b:first-look\",\"transitionEventType\":\"OBLIGATION_PERFORMANCE_ASSIGNED\"}",
+      "transitionEffectHash": "0x34e95f0be8107d86af294d3260154e9a1bf479aabaa0131265654537d081c002",
+      "authorityProof": {
+        "authorityEvidence": [
+          {
+            "authorityId": "review-authority:first-look",
+            "grantEventId": "first-look:review-authority",
+            "grantEventPosition": 10
+          }
+        ],
+        "checkedProhibitionIds": [],
+        "consequential": false,
+        "controllingAuthorityIds": [
+          "review-authority:first-look"
+        ],
+        "domain": {
+          "chainId": "31337",
+          "deploymentId": "core-0.2-reference:first-look",
+          "protocol": "continuity",
+          "verifyingContract": "0x0000000000000000000000000000000000003002",
+          "version": "0.2"
+        },
+        "effectiveConstraints": {
+          "actions": [
+            "ASSIGN_PERFORMANCE",
+            "record-collection-disposition"
+          ],
+          "expiresAt": 1000,
+          "maxDelegationDepth": 0,
+          "quantitative": false,
+          "requiredIntersectionIds": [],
+          "resources": [
+            "obligation:first-look"
+          ]
+        },
+        "evaluationTime": 23,
+        "historyHead": {
+          "canonicalTime": 22,
+          "hash": "0xdb2bbe5b4bf9d4f5d05b305c4a115fdd64cebef96fce3285d913c1fcc02f45dd",
+          "position": 22
+        },
+        "intersections": [],
+        "permissionPath": [
+          {
+            "authorityId": "review-authority:first-look",
+            "constraints": {
+              "actions": [
+                "ASSIGN_PERFORMANCE",
+                "record-collection-disposition"
+              ],
+              "expiresAt": 1000,
+              "maxDelegationDepth": 0,
+              "quantitative": false,
+              "requiredIntersectionIds": [],
+              "resources": [
+                "obligation:first-look"
+              ]
+            },
+            "granteeId": "b:first-look",
+            "grantorId": "principal:first-look",
+            "independent": true,
+            "kind": "PERMISSION",
+            "rootAuthorityId": "review-authority:first-look"
+          }
+        ],
+        "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+        "proofVersion": "continuity-authorization-proof/0.2",
+        "recognizedRoot": {
+          "principalId": "principal:first-look",
+          "principalRecognitionEventId": "first-look:principal",
+          "rootAuthorityId": "review-authority:first-look",
+          "rootGrantEventId": "first-look:review-authority"
+        },
+        "request": {
+          "action": "ASSIGN_PERFORMANCE",
+          "actorId": "b:first-look",
+          "claimedAt": 23,
+          "resource": "obligation:first-look"
+        },
+        "rootRecognitionPolicy": "declared-principal-root/0.2",
+        "usageSnapshot": []
+      },
+      "authorityProofCanonicalText": "{\"authorityEvidence\":[{\"authorityId\":\"review-authority:first-look\",\"grantEventId\":\"first-look:review-authority\",\"grantEventPosition\":10}],\"checkedProhibitionIds\":[],\"consequential\":false,\"controllingAuthorityIds\":[\"review-authority:first-look\"],\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"effectiveConstraints\":{\"actions\":[\"ASSIGN_PERFORMANCE\",\"record-collection-disposition\"],\"expiresAt\":1000,\"maxDelegationDepth\":0,\"quantitative\":false,\"requiredIntersectionIds\":[],\"resources\":[\"obligation:first-look\"]},\"evaluationTime\":23,\"historyHead\":{\"canonicalTime\":22,\"hash\":\"0xdb2bbe5b4bf9d4f5d05b305c4a115fdd64cebef96fce3285d913c1fcc02f45dd\",\"position\":22},\"intersections\":[],\"permissionPath\":[{\"authorityId\":\"review-authority:first-look\",\"constraints\":{\"actions\":[\"ASSIGN_PERFORMANCE\",\"record-collection-disposition\"],\"expiresAt\":1000,\"maxDelegationDepth\":0,\"quantitative\":false,\"requiredIntersectionIds\":[],\"resources\":[\"obligation:first-look\"]},\"granteeId\":\"b:first-look\",\"grantorId\":\"principal:first-look\",\"independent\":true,\"kind\":\"PERMISSION\",\"rootAuthorityId\":\"review-authority:first-look\"}],\"policyVersion\":\"local-evidence-intake-policy:first-look/0.2\",\"proofVersion\":\"continuity-authorization-proof/0.2\",\"recognizedRoot\":{\"principalId\":\"principal:first-look\",\"principalRecognitionEventId\":\"first-look:principal\",\"rootAuthorityId\":\"review-authority:first-look\",\"rootGrantEventId\":\"first-look:review-authority\"},\"request\":{\"action\":\"ASSIGN_PERFORMANCE\",\"actorId\":\"b:first-look\",\"claimedAt\":23,\"resource\":\"obligation:first-look\"},\"rootRecognitionPolicy\":\"declared-principal-root/0.2\",\"usageSnapshot\":[]}",
+      "authorityProofHash": "0xc1812dbfc57b5675c879a19f02e352294fcc6214c8ce5257a9fa9c1edd90e47f",
+      "challenge": {
+        "authoritative": true,
+        "authorityProofHash": "0xc1812dbfc57b5675c879a19f02e352294fcc6214c8ce5257a9fa9c1edd90e47f",
+        "consequential": true,
+        "controlEpoch": 1,
+        "credentialKeyId": "key:first-look:b",
+        "domain": {
+          "chainId": "31337",
+          "deploymentId": "core-0.2-reference:first-look",
+          "protocol": "continuity",
+          "verifyingContract": "0x0000000000000000000000000000000000003002",
+          "version": "0.2"
+        },
+        "evaluationTime": 23,
+        "eventHistoryHash": "0xdb2bbe5b4bf9d4f5d05b305c4a115fdd64cebef96fce3285d913c1fcc02f45dd",
+        "eventHistoryPosition": 22,
+        "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+        "request": {
+          "action": "ASSIGN_PERFORMANCE",
+          "actorId": "b:first-look",
+          "claimedAt": 23,
+          "resource": "obligation:first-look"
+        },
+        "roleId": "role:first-look",
+        "roleTenureId": "tenure-b:first-look",
+        "rootRecognitionPolicy": "declared-principal-root/0.2",
+        "runtimeSessionId": "session:first-look:b",
+        "transitionEffectHash": "0x34e95f0be8107d86af294d3260154e9a1bf479aabaa0131265654537d081c002",
+        "transitionEventId": "first-look:assignment",
+        "transitionEventType": "OBLIGATION_PERFORMANCE_ASSIGNED",
+        "version": "continuity-administrative-authorization/0.2"
+      },
+      "challengeCanonicalText": "{\"authoritative\":true,\"authorityProofHash\":\"0xc1812dbfc57b5675c879a19f02e352294fcc6214c8ce5257a9fa9c1edd90e47f\",\"consequential\":true,\"controlEpoch\":1,\"credentialKeyId\":\"key:first-look:b\",\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"evaluationTime\":23,\"eventHistoryHash\":\"0xdb2bbe5b4bf9d4f5d05b305c4a115fdd64cebef96fce3285d913c1fcc02f45dd\",\"eventHistoryPosition\":22,\"policyVersion\":\"local-evidence-intake-policy:first-look/0.2\",\"request\":{\"action\":\"ASSIGN_PERFORMANCE\",\"actorId\":\"b:first-look\",\"claimedAt\":23,\"resource\":\"obligation:first-look\"},\"roleId\":\"role:first-look\",\"roleTenureId\":\"tenure-b:first-look\",\"rootRecognitionPolicy\":\"declared-principal-root/0.2\",\"runtimeSessionId\":\"session:first-look:b\",\"transitionEffectHash\":\"0x34e95f0be8107d86af294d3260154e9a1bf479aabaa0131265654537d081c002\",\"transitionEventId\":\"first-look:assignment\",\"transitionEventType\":\"OBLIGATION_PERFORMANCE_ASSIGNED\",\"version\":\"continuity-administrative-authorization/0.2\"}",
+      "challengeCanonicalBytes": 1089,
+      "signingHash": "0x8ed10fbf3096732872c544b9bf6fa2bfad667ebf13982f1d7a30ba5a1c09cbc1",
+      "eip191Digest": "0x757e3fb2ecfa69070504082026ec9996ed30acbc81f67c45643954a01d271a12",
+      "signerKey": "0x00000000000000000000000000000000000000000000000000000000000003eb",
+      "signature": "0xbac8d65f7f1debd3a035d4c61f913e25335b6937698c53bf46ecebc2e248ffcd5b817ed5ca06a26db778e790331b83441bdb83eeb2ecf52cab170f2bd5705b5c1c",
+      "r": "0xbac8d65f7f1debd3a035d4c61f913e25335b6937698c53bf46ecebc2e248ffcd",
+      "s": "0x5b817ed5ca06a26db778e790331b83441bdb83eeb2ecf52cab170f2bd5705b5c",
+      "v": "0x1c",
+      "vDecimal": 28,
+      "recoveredAddress": "0xa78cac12f68179fd780ae347f8d4f170fc615d0c",
+      "signedEvent": {
+        "data": {
+          "actorId": "b:first-look",
+          "administrativeAuthorization": {
+            "authorityProof": {
+              "authorityEvidence": [
+                {
+                  "authorityId": "review-authority:first-look",
+                  "grantEventId": "first-look:review-authority",
+                  "grantEventPosition": 10
+                }
+              ],
+              "checkedProhibitionIds": [],
+              "consequential": false,
+              "controllingAuthorityIds": [
+                "review-authority:first-look"
+              ],
+              "domain": {
+                "chainId": "31337",
+                "deploymentId": "core-0.2-reference:first-look",
+                "protocol": "continuity",
+                "verifyingContract": "0x0000000000000000000000000000000000003002",
+                "version": "0.2"
+              },
+              "effectiveConstraints": {
+                "actions": [
+                  "ASSIGN_PERFORMANCE",
+                  "record-collection-disposition"
+                ],
+                "expiresAt": 1000,
+                "maxDelegationDepth": 0,
+                "quantitative": false,
+                "requiredIntersectionIds": [],
+                "resources": [
+                  "obligation:first-look"
+                ]
+              },
+              "evaluationTime": 23,
+              "historyHead": {
+                "canonicalTime": 22,
+                "hash": "0xdb2bbe5b4bf9d4f5d05b305c4a115fdd64cebef96fce3285d913c1fcc02f45dd",
+                "position": 22
+              },
+              "intersections": [],
+              "permissionPath": [
+                {
+                  "authorityId": "review-authority:first-look",
+                  "constraints": {
+                    "actions": [
+                      "ASSIGN_PERFORMANCE",
+                      "record-collection-disposition"
+                    ],
+                    "expiresAt": 1000,
+                    "maxDelegationDepth": 0,
+                    "quantitative": false,
+                    "requiredIntersectionIds": [],
+                    "resources": [
+                      "obligation:first-look"
+                    ]
+                  },
+                  "granteeId": "b:first-look",
+                  "grantorId": "principal:first-look",
+                  "independent": true,
+                  "kind": "PERMISSION",
+                  "rootAuthorityId": "review-authority:first-look"
+                }
+              ],
+              "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+              "proofVersion": "continuity-authorization-proof/0.2",
+              "recognizedRoot": {
+                "principalId": "principal:first-look",
+                "principalRecognitionEventId": "first-look:principal",
+                "rootAuthorityId": "review-authority:first-look",
+                "rootGrantEventId": "first-look:review-authority"
+              },
+              "request": {
+                "action": "ASSIGN_PERFORMANCE",
+                "actorId": "b:first-look",
+                "claimedAt": 23,
+                "resource": "obligation:first-look"
+              },
+              "rootRecognitionPolicy": "declared-principal-root/0.2",
+              "usageSnapshot": []
+            },
+            "challenge": {
+              "authoritative": true,
+              "authorityProofHash": "0xc1812dbfc57b5675c879a19f02e352294fcc6214c8ce5257a9fa9c1edd90e47f",
+              "consequential": true,
+              "controlEpoch": 1,
+              "credentialKeyId": "key:first-look:b",
+              "domain": {
+                "chainId": "31337",
+                "deploymentId": "core-0.2-reference:first-look",
+                "protocol": "continuity",
+                "verifyingContract": "0x0000000000000000000000000000000000003002",
+                "version": "0.2"
+              },
+              "evaluationTime": 23,
+              "eventHistoryHash": "0xdb2bbe5b4bf9d4f5d05b305c4a115fdd64cebef96fce3285d913c1fcc02f45dd",
+              "eventHistoryPosition": 22,
+              "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+              "request": {
+                "action": "ASSIGN_PERFORMANCE",
+                "actorId": "b:first-look",
+                "claimedAt": 23,
+                "resource": "obligation:first-look"
+              },
+              "roleId": "role:first-look",
+              "roleTenureId": "tenure-b:first-look",
+              "rootRecognitionPolicy": "declared-principal-root/0.2",
+              "runtimeSessionId": "session:first-look:b",
+              "transitionEffectHash": "0x34e95f0be8107d86af294d3260154e9a1bf479aabaa0131265654537d081c002",
+              "transitionEventId": "first-look:assignment",
+              "transitionEventType": "OBLIGATION_PERFORMANCE_ASSIGNED",
+              "version": "continuity-administrative-authorization/0.2"
+            },
+            "runtimeSignature": "0xbac8d65f7f1debd3a035d4c61f913e25335b6937698c53bf46ecebc2e248ffcd5b817ed5ca06a26db778e790331b83441bdb83eeb2ecf52cab170f2bd5705b5c1c"
+          },
+          "fromAgentId": "a:first-look",
+          "obligationId": "obligation:first-look",
+          "successionRuleId": "succession:first-look",
+          "toAgentId": "b:first-look"
+        },
+        "id": "first-look:assignment",
+        "timestamp": 23,
+        "type": "OBLIGATION_PERFORMANCE_ASSIGNED"
+      },
+      "replayHeadAfter": {
+        "canonicalTime": 23,
+        "hash": "0x4548f1f76d6aa1554667866b588cdedce783e8f14c179b21c71f361216e7bb4c",
+        "position": 23
+      },
+      "reproducesFixture": true
+    },
+    {
+      "label": "constructed OBLIGATION_CREATED on the same prefix events[0..17] with a different record (key 1001)",
+      "prefixHead": {
+        "hash": "0xadc662a1f5f23cf8281acff2c7356297af8e4a156ffde1fc9fe9af222d77123e",
+        "position": 17,
+        "canonicalTime": 17
+      },
+      "unsignedTransition": {
+        "id": "vector:obligation-2",
+        "type": "OBLIGATION_CREATED",
+        "timestamp": 20,
+        "data": {
+          "record": {
+            "beneficiaryId": "principal:first-look",
+            "causalReceiptContentHash": "0xae4e8e6ee4b07e75c3532a80187a240e59a429f339a5a340787270efd75c1189",
+            "creationRoleTenureId": "tenure-a:first-look",
+            "deadline": 2000,
+            "description": "Second obligation for the vector set: ünïcödé \"quotes\" \\ backslash",
+            "durableRoleId": "role:first-look",
+            "obligationId": "obligation:vector-2",
+            "performanceAssigneeId": "a:first-look",
+            "sourceIntentId": "intent:first-look",
+            "status": "OPEN",
+            "successionRuleId": "succession:first-look",
+            "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b",
+            "transitionPolicies": [
+              {
+                "acceptedAttesterIds": [
+                  "adapter:simulated"
+                ],
+                "action": "record-collection-disposition",
+                "fromStatus": "OPEN",
+                "requiredAuthorityIds": [
+                  "review-authority:first-look"
+                ],
+                "toStatus": "OUTCOME_UNKNOWN"
+              }
+            ],
+            "trigger": "event:local:consumption:255274cebd9fb214e56f695233b855b9d459f0c2c1ca6113a4d16f98b0891e55"
+          },
+          "actorId": "a:first-look"
+        }
+      },
+      "runtimeSessionId": "session:first-look:a",
+      "transitionEffect": {
+        "transitionEventType": "OBLIGATION_CREATED",
+        "record": {
+          "beneficiaryId": "principal:first-look",
+          "causalReceiptContentHash": "0xae4e8e6ee4b07e75c3532a80187a240e59a429f339a5a340787270efd75c1189",
+          "creationRoleTenureId": "tenure-a:first-look",
+          "deadline": 2000,
+          "description": "Second obligation for the vector set: ünïcödé \"quotes\" \\ backslash",
+          "durableRoleId": "role:first-look",
+          "obligationId": "obligation:vector-2",
+          "performanceAssigneeId": "a:first-look",
+          "sourceIntentId": "intent:first-look",
+          "status": "OPEN",
+          "successionRuleId": "succession:first-look",
+          "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b",
+          "transitionPolicies": [
+            {
+              "acceptedAttesterIds": [
+                "adapter:simulated"
+              ],
+              "action": "record-collection-disposition",
+              "fromStatus": "OPEN",
+              "requiredAuthorityIds": [
+                "review-authority:first-look"
+              ],
+              "toStatus": "OUTCOME_UNKNOWN"
+            }
+          ],
+          "trigger": "event:local:consumption:255274cebd9fb214e56f695233b855b9d459f0c2c1ca6113a4d16f98b0891e55"
+        },
+        "actorId": "a:first-look"
+      },
+      "transitionEffectCanonicalText": "{\"actorId\":\"a:first-look\",\"record\":{\"beneficiaryId\":\"principal:first-look\",\"causalReceiptContentHash\":\"0xae4e8e6ee4b07e75c3532a80187a240e59a429f339a5a340787270efd75c1189\",\"creationRoleTenureId\":\"tenure-a:first-look\",\"deadline\":2000,\"description\":\"Second obligation for the vector set: ünïcödé \\\"quotes\\\" \\\\ backslash\",\"durableRoleId\":\"role:first-look\",\"obligationId\":\"obligation:vector-2\",\"performanceAssigneeId\":\"a:first-look\",\"sourceIntentId\":\"intent:first-look\",\"status\":\"OPEN\",\"successionRuleId\":\"succession:first-look\",\"termsCommitment\":\"0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b\",\"transitionPolicies\":[{\"acceptedAttesterIds\":[\"adapter:simulated\"],\"action\":\"record-collection-disposition\",\"fromStatus\":\"OPEN\",\"requiredAuthorityIds\":[\"review-authority:first-look\"],\"toStatus\":\"OUTCOME_UNKNOWN\"}],\"trigger\":\"event:local:consumption:255274cebd9fb214e56f695233b855b9d459f0c2c1ca6113a4d16f98b0891e55\"},\"transitionEventType\":\"OBLIGATION_CREATED\"}",
+      "transitionEffectHash": "0xf4fda26c04d5c98923e413735b97e94f67e7fba4ee0a861955d7782734f060e1",
+      "authorityProof": {
+        "authorityEvidence": [
+          {
+            "authorityId": "obligate-authority:first-look",
+            "grantEventId": "first-look:obligate-authority",
+            "grantEventPosition": 9
+          }
+        ],
+        "checkedProhibitionIds": [],
+        "consequential": false,
+        "controllingAuthorityIds": [
+          "obligate-authority:first-look"
+        ],
+        "domain": {
+          "chainId": "31337",
+          "deploymentId": "core-0.2-reference:first-look",
+          "protocol": "continuity",
+          "verifyingContract": "0x0000000000000000000000000000000000003002",
+          "version": "0.2"
+        },
+        "effectiveConstraints": {
+          "actions": [
+            "OBLIGATE"
+          ],
+          "expiresAt": 1000,
+          "maxDelegationDepth": 0,
+          "quantitative": false,
+          "requiredIntersectionIds": [],
+          "resources": [
+            "resource:first-look"
+          ]
+        },
+        "evaluationTime": 20,
+        "historyHead": {
+          "canonicalTime": 17,
+          "hash": "0xadc662a1f5f23cf8281acff2c7356297af8e4a156ffde1fc9fe9af222d77123e",
+          "position": 17
+        },
+        "intersections": [],
+        "permissionPath": [
+          {
+            "authorityId": "obligate-authority:first-look",
+            "constraints": {
+              "actions": [
+                "OBLIGATE"
+              ],
+              "expiresAt": 1000,
+              "maxDelegationDepth": 0,
+              "quantitative": false,
+              "requiredIntersectionIds": [],
+              "resources": [
+                "resource:first-look"
+              ]
+            },
+            "granteeId": "a:first-look",
+            "grantorId": "principal:first-look",
+            "independent": true,
+            "kind": "PERMISSION",
+            "rootAuthorityId": "obligate-authority:first-look"
+          }
+        ],
+        "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+        "proofVersion": "continuity-authorization-proof/0.2",
+        "recognizedRoot": {
+          "principalId": "principal:first-look",
+          "principalRecognitionEventId": "first-look:principal",
+          "rootAuthorityId": "obligate-authority:first-look",
+          "rootGrantEventId": "first-look:obligate-authority"
+        },
+        "request": {
+          "action": "OBLIGATE",
+          "actorId": "a:first-look",
+          "claimedAt": 20,
+          "resource": "resource:first-look",
+          "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+        },
+        "rootRecognitionPolicy": "declared-principal-root/0.2",
+        "usageSnapshot": []
+      },
+      "authorityProofCanonicalText": "{\"authorityEvidence\":[{\"authorityId\":\"obligate-authority:first-look\",\"grantEventId\":\"first-look:obligate-authority\",\"grantEventPosition\":9}],\"checkedProhibitionIds\":[],\"consequential\":false,\"controllingAuthorityIds\":[\"obligate-authority:first-look\"],\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"effectiveConstraints\":{\"actions\":[\"OBLIGATE\"],\"expiresAt\":1000,\"maxDelegationDepth\":0,\"quantitative\":false,\"requiredIntersectionIds\":[],\"resources\":[\"resource:first-look\"]},\"evaluationTime\":20,\"historyHead\":{\"canonicalTime\":17,\"hash\":\"0xadc662a1f5f23cf8281acff2c7356297af8e4a156ffde1fc9fe9af222d77123e\",\"position\":17},\"intersections\":[],\"permissionPath\":[{\"authorityId\":\"obligate-authority:first-look\",\"constraints\":{\"actions\":[\"OBLIGATE\"],\"expiresAt\":1000,\"maxDelegationDepth\":0,\"quantitative\":false,\"requiredIntersectionIds\":[],\"resources\":[\"resource:first-look\"]},\"granteeId\":\"a:first-look\",\"grantorId\":\"principal:first-look\",\"independent\":true,\"kind\":\"PERMISSION\",\"rootAuthorityId\":\"obligate-authority:first-look\"}],\"policyVersion\":\"local-evidence-intake-policy:first-look/0.2\",\"proofVersion\":\"continuity-authorization-proof/0.2\",\"recognizedRoot\":{\"principalId\":\"principal:first-look\",\"principalRecognitionEventId\":\"first-look:principal\",\"rootAuthorityId\":\"obligate-authority:first-look\",\"rootGrantEventId\":\"first-look:obligate-authority\"},\"request\":{\"action\":\"OBLIGATE\",\"actorId\":\"a:first-look\",\"claimedAt\":20,\"resource\":\"resource:first-look\",\"termsCommitment\":\"0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b\"},\"rootRecognitionPolicy\":\"declared-principal-root/0.2\",\"usageSnapshot\":[]}",
+      "authorityProofHash": "0x5f398f7868880ee840379a17c435a9406c6366652363a5c52a0b407a37928b41",
+      "challenge": {
+        "authoritative": true,
+        "authorityProofHash": "0x5f398f7868880ee840379a17c435a9406c6366652363a5c52a0b407a37928b41",
+        "consequential": true,
+        "controlEpoch": 1,
+        "credentialKeyId": "key:first-look:a",
+        "domain": {
+          "chainId": "31337",
+          "deploymentId": "core-0.2-reference:first-look",
+          "protocol": "continuity",
+          "verifyingContract": "0x0000000000000000000000000000000000003002",
+          "version": "0.2"
+        },
+        "evaluationTime": 20,
+        "eventHistoryHash": "0xadc662a1f5f23cf8281acff2c7356297af8e4a156ffde1fc9fe9af222d77123e",
+        "eventHistoryPosition": 17,
+        "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+        "request": {
+          "action": "OBLIGATE",
+          "actorId": "a:first-look",
+          "claimedAt": 20,
+          "resource": "resource:first-look",
+          "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+        },
+        "roleId": "role:first-look",
+        "roleTenureId": "tenure-a:first-look",
+        "rootRecognitionPolicy": "declared-principal-root/0.2",
+        "runtimeSessionId": "session:first-look:a",
+        "transitionEffectHash": "0xf4fda26c04d5c98923e413735b97e94f67e7fba4ee0a861955d7782734f060e1",
+        "transitionEventId": "vector:obligation-2",
+        "transitionEventType": "OBLIGATION_CREATED",
+        "version": "continuity-administrative-authorization/0.2"
+      },
+      "challengeCanonicalText": "{\"authoritative\":true,\"authorityProofHash\":\"0x5f398f7868880ee840379a17c435a9406c6366652363a5c52a0b407a37928b41\",\"consequential\":true,\"controlEpoch\":1,\"credentialKeyId\":\"key:first-look:a\",\"domain\":{\"chainId\":\"31337\",\"deploymentId\":\"core-0.2-reference:first-look\",\"protocol\":\"continuity\",\"verifyingContract\":\"0x0000000000000000000000000000000000003002\",\"version\":\"0.2\"},\"evaluationTime\":20,\"eventHistoryHash\":\"0xadc662a1f5f23cf8281acff2c7356297af8e4a156ffde1fc9fe9af222d77123e\",\"eventHistoryPosition\":17,\"policyVersion\":\"local-evidence-intake-policy:first-look/0.2\",\"request\":{\"action\":\"OBLIGATE\",\"actorId\":\"a:first-look\",\"claimedAt\":20,\"resource\":\"resource:first-look\",\"termsCommitment\":\"0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b\"},\"roleId\":\"role:first-look\",\"roleTenureId\":\"tenure-a:first-look\",\"rootRecognitionPolicy\":\"declared-principal-root/0.2\",\"runtimeSessionId\":\"session:first-look:a\",\"transitionEffectHash\":\"0xf4fda26c04d5c98923e413735b97e94f67e7fba4ee0a861955d7782734f060e1\",\"transitionEventId\":\"vector:obligation-2\",\"transitionEventType\":\"OBLIGATION_CREATED\",\"version\":\"continuity-administrative-authorization/0.2\"}",
+      "challengeCanonicalBytes": 1149,
+      "signingHash": "0x27fb652c8ef1f37fa10423b083043c9141ca70a3d577acbd4361e084d3ab532e",
+      "eip191Digest": "0x7e641eb4d925dad6ca5e3fe7de8c439f1bde14ae37ad683cf943ba231b3e9627",
+      "signerKey": "0x00000000000000000000000000000000000000000000000000000000000003e9",
+      "signature": "0x0582357f9e9b9ee54c93995ab034ff079214e4a85ae94ce8beb9a06030bd1847428d87aa6e379d0ee0fc361dd4ab3048473135d80500bf92664dd38bd8aff30c1b",
+      "r": "0x0582357f9e9b9ee54c93995ab034ff079214e4a85ae94ce8beb9a06030bd1847",
+      "s": "0x428d87aa6e379d0ee0fc361dd4ab3048473135d80500bf92664dd38bd8aff30c",
+      "v": "0x1b",
+      "vDecimal": 27,
+      "recoveredAddress": "0x5935897a39afabbeda5a599d38236e7df151c8b8",
+      "signedEvent": {
+        "data": {
+          "actorId": "a:first-look",
+          "administrativeAuthorization": {
+            "authorityProof": {
+              "authorityEvidence": [
+                {
+                  "authorityId": "obligate-authority:first-look",
+                  "grantEventId": "first-look:obligate-authority",
+                  "grantEventPosition": 9
+                }
+              ],
+              "checkedProhibitionIds": [],
+              "consequential": false,
+              "controllingAuthorityIds": [
+                "obligate-authority:first-look"
+              ],
+              "domain": {
+                "chainId": "31337",
+                "deploymentId": "core-0.2-reference:first-look",
+                "protocol": "continuity",
+                "verifyingContract": "0x0000000000000000000000000000000000003002",
+                "version": "0.2"
+              },
+              "effectiveConstraints": {
+                "actions": [
+                  "OBLIGATE"
+                ],
+                "expiresAt": 1000,
+                "maxDelegationDepth": 0,
+                "quantitative": false,
+                "requiredIntersectionIds": [],
+                "resources": [
+                  "resource:first-look"
+                ]
+              },
+              "evaluationTime": 20,
+              "historyHead": {
+                "canonicalTime": 17,
+                "hash": "0xadc662a1f5f23cf8281acff2c7356297af8e4a156ffde1fc9fe9af222d77123e",
+                "position": 17
+              },
+              "intersections": [],
+              "permissionPath": [
+                {
+                  "authorityId": "obligate-authority:first-look",
+                  "constraints": {
+                    "actions": [
+                      "OBLIGATE"
+                    ],
+                    "expiresAt": 1000,
+                    "maxDelegationDepth": 0,
+                    "quantitative": false,
+                    "requiredIntersectionIds": [],
+                    "resources": [
+                      "resource:first-look"
+                    ]
+                  },
+                  "granteeId": "a:first-look",
+                  "grantorId": "principal:first-look",
+                  "independent": true,
+                  "kind": "PERMISSION",
+                  "rootAuthorityId": "obligate-authority:first-look"
+                }
+              ],
+              "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+              "proofVersion": "continuity-authorization-proof/0.2",
+              "recognizedRoot": {
+                "principalId": "principal:first-look",
+                "principalRecognitionEventId": "first-look:principal",
+                "rootAuthorityId": "obligate-authority:first-look",
+                "rootGrantEventId": "first-look:obligate-authority"
+              },
+              "request": {
+                "action": "OBLIGATE",
+                "actorId": "a:first-look",
+                "claimedAt": 20,
+                "resource": "resource:first-look",
+                "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+              },
+              "rootRecognitionPolicy": "declared-principal-root/0.2",
+              "usageSnapshot": []
+            },
+            "challenge": {
+              "authoritative": true,
+              "authorityProofHash": "0x5f398f7868880ee840379a17c435a9406c6366652363a5c52a0b407a37928b41",
+              "consequential": true,
+              "controlEpoch": 1,
+              "credentialKeyId": "key:first-look:a",
+              "domain": {
+                "chainId": "31337",
+                "deploymentId": "core-0.2-reference:first-look",
+                "protocol": "continuity",
+                "verifyingContract": "0x0000000000000000000000000000000000003002",
+                "version": "0.2"
+              },
+              "evaluationTime": 20,
+              "eventHistoryHash": "0xadc662a1f5f23cf8281acff2c7356297af8e4a156ffde1fc9fe9af222d77123e",
+              "eventHistoryPosition": 17,
+              "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+              "request": {
+                "action": "OBLIGATE",
+                "actorId": "a:first-look",
+                "claimedAt": 20,
+                "resource": "resource:first-look",
+                "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+              },
+              "roleId": "role:first-look",
+              "roleTenureId": "tenure-a:first-look",
+              "rootRecognitionPolicy": "declared-principal-root/0.2",
+              "runtimeSessionId": "session:first-look:a",
+              "transitionEffectHash": "0xf4fda26c04d5c98923e413735b97e94f67e7fba4ee0a861955d7782734f060e1",
+              "transitionEventId": "vector:obligation-2",
+              "transitionEventType": "OBLIGATION_CREATED",
+              "version": "continuity-administrative-authorization/0.2"
+            },
+            "runtimeSignature": "0x0582357f9e9b9ee54c93995ab034ff079214e4a85ae94ce8beb9a06030bd1847428d87aa6e379d0ee0fc361dd4ab3048473135d80500bf92664dd38bd8aff30c1b"
+          },
+          "record": {
+            "beneficiaryId": "principal:first-look",
+            "causalReceiptContentHash": "0xae4e8e6ee4b07e75c3532a80187a240e59a429f339a5a340787270efd75c1189",
+            "creationRoleTenureId": "tenure-a:first-look",
+            "deadline": 2000,
+            "description": "Second obligation for the vector set: ünïcödé \"quotes\" \\ backslash",
+            "durableRoleId": "role:first-look",
+            "obligationId": "obligation:vector-2",
+            "performanceAssigneeId": "a:first-look",
+            "sourceIntentId": "intent:first-look",
+            "status": "OPEN",
+            "successionRuleId": "succession:first-look",
+            "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b",
+            "transitionPolicies": [
+              {
+                "acceptedAttesterIds": [
+                  "adapter:simulated"
+                ],
+                "action": "record-collection-disposition",
+                "fromStatus": "OPEN",
+                "requiredAuthorityIds": [
+                  "review-authority:first-look"
+                ],
+                "toStatus": "OUTCOME_UNKNOWN"
+              }
+            ],
+            "trigger": "event:local:consumption:255274cebd9fb214e56f695233b855b9d459f0c2c1ca6113a4d16f98b0891e55"
+          }
+        },
+        "id": "vector:obligation-2",
+        "timestamp": 20,
+        "type": "OBLIGATION_CREATED"
+      },
+      "replayHeadAfter": {
+        "canonicalTime": 20,
+        "hash": "0xe0b829a8eed5ddf979d14ffd07021525b9550f1fbdbac5a76f4539c89be58487",
+        "position": 18
+      }
+    }
+  ],
+  "performance": {
+    "node": "v22.22.2",
+    "keccak256_1KiB_microseconds": 162.7,
+    "secp256k1_recover_milliseconds": 3.28,
+    "note": "repository pure-JS/BigInt implementations, single core, measured while generating this file"
+  }
+}

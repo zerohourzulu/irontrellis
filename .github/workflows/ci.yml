@@ -1,0 +1,416 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PNPM_VERSION: 11.19.0   # = packageManager in package.json
+  FORCE_COLOR: 0
+  NO_COLOR: 1
+
+jobs:
+  test:
+    name: node ${{ matrix.node }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node: [24, 22]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Versions and engines agree
+        run: node scripts/check-versions.mjs
+
+      - name: Build
+        run: pnpm -r build
+
+      - name: Lint (tsc --noEmit)
+        run: pnpm -r lint
+
+      - name: Frozen vectors are unchanged (conformance/FROZEN.sha256, conformance/v2/FROZEN.sha256, the architect's v2 MANIFEST)
+        run: node scripts/check-frozen-vectors.mjs
+
+      - name: Lint (docs, help text and comments describe this release)
+        run: node scripts/check-coherence.mjs
+
+      - name: Test
+        run: pnpm -r test
+
+      - name: Test with asynchronous-only signers (IRONTRELLIS_TEST_ASYNC_SIGNERS=1)
+        # The asynchronous-signer test mode: owner, rotation and witness suites with every signer stripped of signHashSync.
+        if: matrix.os == 'ubuntu-latest'
+        run: pnpm test:async-signers
+
+      - name: Two OS users (doctor --as-agent and planted references, as root with the agent as uid 65534)
+        # packages/cli/test/doctor-users.test.mjs needs root to run a child as another user; the runner has passwordless
+        # sudo. The agent is nobody/nogroup (65534), present on the runner image.
+        if: matrix.os == 'ubuntu-latest'
+        run: sudo --preserve-env=PATH "$(command -v node)" --test packages/cli/test/doctor-users.test.mjs
+
+      - name: Conformance (IronTrellis node adapter, legacy and format-1 vectors)
+        if: hashFiles('conformance/run.mjs', 'conformance/adapters/node.mjs') != ''
+        run: pnpm test:conformance
+
+      - name: Conformance (legacy vectors, frozen reference adapter)
+        run: pnpm test:conformance:legacy
+
+      - name: Conformance (legacy vectors, IronTrellis node adapter)
+        if: hashFiles('conformance/adapters/node.mjs') != ''
+        run: python3 -B conformance/legacy/run.py -- node conformance/adapters/node.mjs
+
+      - name: Conformance (IronTrellis node adapter, the format-2 suites)
+        # `--suite all` above runs legacy and v1 only (conformance/run.mjs); the format-2 suites run when named.
+        if: hashFiles('conformance/run.mjs', 'conformance/adapters/node.mjs') != ''
+        run: |
+          for suite in v2 v2-g3 v2-regenerated v2-owner-policy v2-human-attestation; do
+            node conformance/run.mjs --suite "$suite" --adapter conformance/adapters/node.mjs
+          done
+
+      - name: Anchoring vectors match their generators (statement, namespace, descriptor, attempt, connector)
+        # External vectors (A-144, A-158/A-167, A-159, A-164, A-161/A-183/A-195); each generator re-derives its file from the build.
+        run: pnpm conformance:check:anchors
+
+      - name: Regenerated format-2 vectors match their generator (v2-regenerated)
+        run: node conformance/v2-regenerated/generate.mjs --check
+
+      - name: Owner-policy and human-attestation vectors match their generators
+        run: node conformance/v2-owner-policy/generate.mjs --check && node conformance/v2-human-attestation/generate.mjs --check
+
+      - name: Transparency vectors match their generator (Linux and macOS)
+        run: node conformance/transparency/generate.mjs --check
+
+      - name: Fuzz (smoke)
+        run: node fuzz/run.mjs --smoke
+
+      - name: Python package tests
+        if: hashFiles('python/pyproject.toml') != '' && hashFiles('python/tests/**') != ''
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -e "python[test]" || python3 -m pip install -e python pytest
+          python3 -m pytest python/tests -q
+
+      - name: Conformance (python adapter, legacy and format-1 vectors)
+        if: hashFiles('conformance/adapters/python.py') != ''
+        run: node conformance/run.mjs --adapter conformance/adapters/python.py --suite all
+
+      - name: Pack dry-run lists only the expected files
+        run: node scripts/check-pack.mjs
+
+  windows:
+    # Windows readiness (docs/PLATFORMS.md): build, lint, every package's suite, pytest and the conformance runs on
+    # windows-latest. The checkout is LF (.gitattributes), the steps run in Git Bash like the other jobs', and package
+    # scripts run through cmd.exe (pnpm's default there). Tests that cannot mean anything on Windows skip themselves
+    # with the reason (POSIX modes, POSIX signals, chattr, ...); nothing is skipped here. The legacy Python runner
+    # (conformance/legacy/run.py) is POSIX-only (selectors on pipes, process groups), so the same legacy vectors run
+    # through the Node runner with the frozen reference adapter instead.
+    name: windows (node ${{ matrix.node }})
+    runs-on: windows-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [24, 22]
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: The checkout has LF line endings (conformance material is compared byte for byte)
+        run: |
+          if git ls-files --eol | grep -E '^i/lf +w/crlf'; then
+            echo "::error::files checked out with CRLF line endings despite .gitattributes"
+            exit 1
+          fi
+
+      - name: Build
+        run: pnpm -r build
+
+      - name: Lint (tsc --noEmit)
+        run: pnpm -r lint
+
+      - name: Test core
+        run: pnpm --dir packages/core test
+
+      - name: Test cli
+        run: pnpm --dir packages/cli test
+
+      - name: Test hooks
+        run: pnpm --dir packages/hooks test
+
+      - name: Test mcp-gateway
+        run: pnpm --dir packages/mcp-gateway test
+
+      - name: Test mcp-evidence
+        run: pnpm --dir packages/mcp-evidence test
+
+      - name: Test witness (including the end-to-end suites)
+        run: pnpm --dir packages/witness test
+
+      - name: Python package tests
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e "python[test]" || python -m pip install -e python pytest
+          python -m pytest python/tests -q
+
+      - name: Conformance (IronTrellis node adapter, legacy and format-1 vectors)
+        run: node conformance/run.mjs --suite all --adapter conformance/adapters/node.mjs
+
+      - name: Conformance (python adapter, legacy and format-1 vectors)
+        run: node conformance/run.mjs --suite all --adapter conformance/adapters/python.py
+
+      - name: Conformance (legacy vectors, frozen reference adapter)
+        run: node conformance/run.mjs --suite legacy --adapter conformance/adapters/reference-node.mjs
+
+      - name: Transparency vectors match their generator
+        run: node conformance/transparency/generate.mjs --check
+
+      - name: Format-1 vectors match their generator
+        # An expected failure until ruled (KNOWN-ISSUES 19): the frozen generator was written when migration targeted format 1,
+        # and `--check` fails at replay/v1/rejects-shortened-migrated-prefix on every platform (identically on the untouched
+        # import). The frozen vectors themselves are checked by check-frozen-vectors in the main job. The step still runs and reports.
+        continue-on-error: true
+        run: node conformance/v1/generate.mjs --check
+
+  verify-install:
+    # Pack every publishable package and install the tarballs in fresh projects outside the
+    # workspace (npm from the tarball files, pnpm and global npm through a throwaway local registry
+    # serving only those tarballs), then run what the READMEs say; build and install the Python
+    # sdist/wheel in fresh venvs (scripts/verify-install.mjs). Node 22.18.0 is the engines floor.
+    name: verify install (node ${{ matrix.node }} on ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node: [24, "22.18.0"]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build, pack, install from the tarballs and run the quickstarts
+        run: node scripts/verify-install.mjs
+
+  vault:
+    # Owner keys held by HashiCorp Vault Transit (docs/CUSTODY.md §7) against a REAL Vault dev server, run as a
+    # service container (Linux runners only, hence a job of its own rather than a step of the ubuntu/macos matrix).
+    # The Vault suites use IRONTRELLIS_VAULT_ADDR + IRONTRELLIS_VAULT_TOKEN when set (each test file takes its own
+    # Transit mount); elsewhere they start `docker run hashicorp/vault:1.20` themselves when the image is present,
+    # and skip with the reason otherwise, so the matrix above stays green without Vault. The image is pinned by digest.
+    name: vault transit (node 24 on ubuntu)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      vault:
+        image: hashicorp/vault:1.20@sha256:268bb80aa9c6d13d65fcfa05c0c268caca068952240a8087291a6ce0b66e3a10
+        env:
+          VAULT_DEV_ROOT_TOKEN_ID: irontrellis-ci-root   # a throwaway dev server: no secret
+          SKIP_SETCAP: "true"
+        ports:
+          - 127.0.0.1:8200:8200
+        options: >-
+          --health-cmd "vault status -address=http://127.0.0.1:8200"
+          --health-interval 2s
+          --health-timeout 5s
+          --health-retries 30
+    env:
+      IRONTRELLIS_VAULT_ADDR: http://127.0.0.1:8200
+      IRONTRELLIS_VAULT_TOKEN: irontrellis-ci-root
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm -r build
+
+      - name: Vault Transit suites (core, cli, witness end to end) against the service container
+        run: |
+          (cd packages/core && node --test --experimental-strip-types test/custody-vault.test.mjs)
+          (cd packages/cli && node --test test/custody-vault.test.mjs test/doctor.test.mjs)
+          (cd packages/witness && node --test --experimental-strip-types test/e2e-custody-vault.test.mjs)
+
+  bench-quick:
+    # Scale regression check (docs/history/PERFORMANCE-2026-09-26.md §10): a 1,500-event history generated through the owner API, then
+    # open/replay, verify, queries, appends (plain, fsync, sync and async witness on loopback), CLI cold start, the Python
+    # verifier (pure-Python Ed25519 here) and a small witness server, each against a budget set 5-20x above a 2-vCPU
+    # runner's numbers, so only an order-of-magnitude regression fails. About 15 s. The full benchmark (10k/100k/1M
+    # events and the 1 GiB limit) is run by hand.
+    name: bench (quick)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm -r build
+
+      - name: Quick benchmark against its budgets
+        run: node bench/run.mjs --quick
+
+  commit-identity:
+    # Every commit in the pushed range / pull request must be authored and committed under an
+    # identity listed in .github/allowed-identities.txt (CHECKLIST.md section A). Raw %ae/%ce are
+    # compared, so a .mailmap cannot launder an identity. An empty list skips the check.
+    name: commit identity
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+
+      - name: Every author and committer email is allowed
+        env:
+          EVENT: ${{ github.event_name }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+          PUSH_AFTER: ${{ github.event.after }}
+        run: |
+          set -euo pipefail
+          allow=.github/allowed-identities.txt
+          if [ ! -f "$allow" ]; then echo "::error file=$allow::$allow is missing"; exit 1; fi
+          allowed="$(grep -v -E '^[[:space:]]*(#|$)' "$allow" | sed -E 's/.*<([^>]*)>.*/\1/; s/^[[:space:]]+//; s/[[:space:]]+$//' | tr '[:upper:]' '[:lower:]' || true)"
+          if [ -z "$allowed" ]; then
+            echo "::notice file=$allow::no identities listed in $allow; commit identity check skipped"
+            exit 0
+          fi
+
+          if [ "$EVENT" = pull_request ]; then
+            range="$PR_BASE..$PR_HEAD"
+          elif [ -z "${PUSH_BEFORE//0/}" ] || ! git cat-file -e "$PUSH_BEFORE^{commit}" 2>/dev/null; then
+            range="$PUSH_AFTER"   # new branch or force push: check everything reachable
+          else
+            range="$PUSH_BEFORE..$PUSH_AFTER"
+          fi
+          echo "checking commits in $range against: $(echo "$allowed" | paste -sd ' ')"
+
+          bad=0; count=0
+          while IFS=$'\t' read -r sha ae ce an cn; do
+            count=$((count + 1))
+            for pair in "author:$ae:$an" "committer:$ce:$cn"; do
+              role="${pair%%:*}"; rest="${pair#*:}"; email="${rest%%:*}"; name="${rest#*:}"
+              if ! grep -Fxq -- "$(echo "$email" | tr '[:upper:]' '[:lower:]')" <<<"$allowed"; then
+                echo "::error::$sha $role $name <$email> is not in $allow"
+                bad=1
+              fi
+            done
+          done < <(git log --format='%H%x09%ae%x09%ce%x09%an%x09%cn' "$range")
+          echo "$count commit(s) checked"
+          exit "$bad"
+
+  python-only:
+    # A pure-Python verifier must not need Node at all; run it once on its own.
+    name: python ${{ matrix.python }} (no node)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Python package tests
+        if: hashFiles('python/pyproject.toml') != '' && hashFiles('python/tests/**') != ''
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -e "python[test]" || python3 -m pip install -e python pytest
+          python3 -m pytest python/tests -q
+      # No Node here, so the node runner (conformance/run.mjs) cannot drive the adapter. The
+      # pytest step above already replays every legacy and format-1 vector in-process
+      # (python/tests/test_store_and_replay.py); the adapter itself runs in the `test` job.
+      - name: Nothing to run yet
+        if: hashFiles('python/pyproject.toml') == ''
+        run: echo "python/ is not present; skipping"

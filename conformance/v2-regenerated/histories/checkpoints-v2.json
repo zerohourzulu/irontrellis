@@ -1,0 +1,255 @@
+[
+ {
+  "id": "event:checkpoints:3",
+  "type": "DEPLOYMENT_INITIALIZED",
+  "timestamp": 100,
+  "data": {
+   "adapterPolicyHash": "0x00c3498e2744943663475d0187ca979cdd09763b88427781883693c4b8c163a7",
+   "canonicalLineageId": "lineage:checkpoints:1",
+   "checkpointPolicy": {
+    "everyEvents": 4
+   },
+   "domain": {
+    "deploymentId": "irontrellis-conformance-v2",
+    "protocol": "irontrellis",
+    "version": "2"
+   },
+   "finality": "LOCAL_ONLY",
+   "globalPolicySourceId": "policy:checkpoints:2",
+   "nextKeyDigests": [
+    "0xec02d39d050ad408f7a0fa6a75604753cc9e4fafc6f78262a2026f3181832762"
+   ],
+   "ownerKeys": [
+    {
+     "credential": "0x967e264fa6b2e89fcfab4df3d4291cd1482a3a5a9f3836c9ce8f80d112d2ac4d",
+     "keyId": "owner:1",
+     "scheme": "ed25519"
+    }
+   ],
+   "policyVersion": "irontrellis-local-owner/2",
+   "rootRecognitionPolicy": "declared-principal-root/0.2",
+   "timeSource": "EVENT_TIMESTAMP",
+   "versions": {
+    "administrativeAuthorizationVersion": "irontrellis-administrative-authorization/2",
+    "authorizationProofVersion": "irontrellis-authorization-proof/2",
+    "controlAuthorizationVersion": "irontrellis-control-authorization/2",
+    "eventSchemaVersion": "irontrellis-event/2",
+    "historyHashAlgorithm": "sha256",
+    "projectionVersion": "irontrellis-projection/2",
+    "queryEnvelopeVersion": "continuity-query-envelope/0.2",
+    "receiptSchemaVersion": "irontrellis-receipt/2",
+    "recordChainVersion": "irontrellis-record/2",
+    "runtimeAuthorizationVersion": "irontrellis-runtime-authorization/2",
+    "signatureScheme": "ed25519",
+    "stateDerivationVersion": "irontrellis-state/2"
+   }
+  }
+ },
+ {
+  "id": "event:checkpoints:4",
+  "type": "PRINCIPAL_CREATED",
+  "timestamp": 100,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x106f2d8266431c89d190e0a17e91462511a1f591131df8b9be0dee902355be1973ec0b5f293f4885907b37a74e14748e56480e11039be04bad36a8793a22bf0f"
+   },
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:checkpoints:5",
+  "type": "AGENT_CREATED",
+  "timestamp": 101,
+  "data": {
+   "agentId": "a1",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x5043f5cdc263a04ad5eac37eef140edc8c9c4b93271fce9635853ab0ab5b1017c47b77ef6b85e1d2d9bc2c4c0bf62ff85d726d36e11e11f0d8c21881992f1401"
+   },
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:checkpoints:6",
+  "type": "STATE_CHECKPOINT",
+  "timestamp": 101,
+  "data": {
+   "checkpointId": "checkpoint:3",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x5479226e36a889a8b366d8412cc275c605c98aad58892557de8788f217589cd1f6dbd4b3c147ed041de0071684f425a054e060c0239ea8e23e45831dc8782608"
+   },
+   "derivationVersion": "irontrellis-state/2",
+   "head": {
+    "hash": "0x19cd04d8971e4b9c13e82fed08362a9876aa5f6b3536cf958e737972a11341f1",
+    "position": 2
+   },
+   "projectionHead": "0x2aab3592214a82bd2885a4a190096c50576bb76ea5232c2aa28c569134d53380",
+   "recordCount": 7,
+   "stateRoot": "0xa346d12be0fc870e25e0eab4ba9f41d2b3fb488084f658980708a65d8aa094dc"
+  }
+ },
+ {
+  "id": "event:checkpoints:7",
+  "type": "AGENT_CREATED",
+  "timestamp": 102,
+  "data": {
+   "agentId": "a2",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x15311f44915dab612b00338ba03db9888c353d35701536b72b4bad49681104ccd4602133cc8b311395abc9f427fdf5e8ca1bdc122c62c49342b63855849b5004"
+   },
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:checkpoints:8",
+  "type": "AGENT_CREATED",
+  "timestamp": 103,
+  "data": {
+   "agentId": "a3",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xc63e084c94278bc0df98f799666ef1b8f304c743a8aa33bf78c041abd499ca4db95bbb98daa616f7e0049dd672d99eed08e36fb4a38d50e264dccf91c7aeae0c"
+   },
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:checkpoints:9",
+  "type": "AGENT_CREATED",
+  "timestamp": 104,
+  "data": {
+   "agentId": "a4",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x1d9cb59731167ec73da7fd198ada567049bfc1bb63ac84864980e0d8b29ead2b343f2c0bc08cc1af6c4a6423af912fa1d49b60c58343d768ae845d3f30661802"
+   },
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:checkpoints:10",
+  "type": "AGENT_CREATED",
+  "timestamp": 105,
+  "data": {
+   "agentId": "a5",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x93175cc7a4abb016e635281decb045e41b5b579e93693f61ee0ba539e07b7e72d1951c3bf4603c5e639d3ccee0c1ff1dc9515b04eb8e7a986c3396b81f79870f"
+   },
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:checkpoints:11",
+  "type": "STATE_CHECKPOINT",
+  "timestamp": 105,
+  "data": {
+   "checkpointId": "checkpoint:8",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xbaa1afebc4ba5b613aa1deeb0d22c7b0b0a3603b3e712e5d10d2d83849e80ee47f23f628eadc822ff333f4fe0dff5b98e477b0552790cf465b9043cc48aea70e"
+   },
+   "derivationVersion": "irontrellis-state/2",
+   "head": {
+    "hash": "0x52eff512ec5665004b34d39c7b7d61d715f74afe9110b0807929c80f6fa27735",
+    "position": 7
+   },
+   "projectionHead": "0x32b2b59c8153c236f11321065df5822e2771b98a03818a2ba0deb8c958962bc4",
+   "recordCount": 16,
+   "stateRoot": "0x17d054fca10fe56ad81b8e933d2cccbd7043a5f9eef7b7b73c6b4f86eaff8d77"
+  }
+ },
+ {
+  "id": "event:checkpoints:12",
+  "type": "AGENT_CREATED",
+  "timestamp": 106,
+  "data": {
+   "agentId": "a6",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x36bb8aeddcfb5af3509fc3d8eb965a82775fff114e93eb77fb74ac4de6a500da1cdc17171587b3bdfee305c7b4fcb51d7b53c0f2ac01ec7f2c825a595014d20b"
+   },
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:checkpoints:13",
+  "type": "AGENT_CREATED",
+  "timestamp": 107,
+  "data": {
+   "agentId": "a7",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x7636e252ed312a1ef7228bb2e38bf25e5722f89fbdaccd1179782b24537bc2c34cd0664fd5b0c6dfa93adfb5c929f87cda183fa71586cf9ae105d607d7da5f0e"
+   },
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:checkpoints:14",
+  "type": "AGENT_CREATED",
+  "timestamp": 108,
+  "data": {
+   "agentId": "a8",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x4f07125ce4bd367e5c20c3396568a3c0a13236270f0f5661a38eb8d115704b00af97b5345c569ac00403be4071230b871731de356d76cc1d2f1c5db112862f0a"
+   },
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:checkpoints:15",
+  "type": "AGENT_CREATED",
+  "timestamp": 109,
+  "data": {
+   "agentId": "a9",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x3151b401961d81ecd1ac9ea8a61011c6dff074d053827bd80101ce7f68b02ed2cf394fd3589d646ee9d1a21506d8d8529fecde9b6f021cc95a6409ce2e41a806"
+   },
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:checkpoints:16",
+  "type": "STATE_CHECKPOINT",
+  "timestamp": 109,
+  "data": {
+   "checkpointId": "checkpoint:13",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x1e16f848ee2bfc31b7d6f8e3bd17f7655e9aab306c2ed4b916eeac5d6e38398a54ab422a3a761855bf007ff471977a49b9320ef8e1845f603712b008b7fae20a"
+   },
+   "derivationVersion": "irontrellis-state/2",
+   "head": {
+    "hash": "0x430396d322a77bdc7f23a8715f86c20fffadedf11d3beb0377608d520026a30b",
+    "position": 12
+   },
+   "projectionHead": "0x94b3dcfe01ebe5c4d48c717e292fe734596849f0bf8daf73d54f238fdc9b9631",
+   "recordCount": 25,
+   "stateRoot": "0x799a548331d1137d3292436b6468d74abc84056b783688fee9e75ce35c686975"
+  }
+ }
+]

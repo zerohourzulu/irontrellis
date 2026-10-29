@@ -1,0 +1,39 @@
+{
+  "name": "@ramex-labs/irontrellis-mcp",
+  "version": "1.0.0-rc.2",
+  "description": "IronTrellis evidence MCP server: one bounded local tool that copies operator-selected files into an evidence packet when the configured agent still holds the authority, exactly once per operation id. Agents change. The structure holds.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": { "node": ">=22.18.0" },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "irontrellis-mcp": "./dist/server.js",
+    "irontrellis-evidence": "./dist/server.js",
+    "irontrellis-evidence-setup": "./dist/setup.js",
+    "irontrellis-evidence-demo": "./dist/client.js"
+  },
+  "mcpName": "io.github.zerohourzulu/irontrellis-evidence",
+  "files": ["dist", "server.json", "README.md", "LICENSE", "NOTICE"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test --experimental-strip-types \"test/**/*.test.mjs\"",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@ramex-labs/irontrellis": "workspace:*",
+    "@modelcontextprotocol/client": "2.2.0",
+    "@modelcontextprotocol/server": "2.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "typescript": "^5.9.2"
+  },
+  "publishConfig": { "access": "public", "provenance": true },
+  "repository": { "type": "git", "url": "https://github.com/zerohourzulu/irontrellis.git", "directory": "packages/mcp-evidence" },
+  "keywords": ["mcp", "mcp-server", "ai-agents", "authorization", "evidence", "audit"]
+}

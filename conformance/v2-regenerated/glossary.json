@@ -1,0 +1,8 @@
+{
+ "note": "A-70.1: genesisEventHash = eventHash(e₀) is an event hash; historyId and genesisHash are two names for the record-chain hash recordHash(0). Never substitute genesisEventHash for either. History: rich-v2.",
+ "history": "rich-v2",
+ "genesisEventHash": "0xba446df7b90ff4e48a75c22b791be8250941ae897c23165b9643ea3bf98c49b3",
+ "historyId": "0xe813376307fb00340c0c5732a3200606f1e5db3a4447e33ce2ebcae4efed67c2",
+ "genesisHash": "0xe813376307fb00340c0c5732a3200606f1e5db3a4447e33ce2ebcae4efed67c2",
+ "equal": false
+}

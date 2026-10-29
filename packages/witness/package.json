@@ -1,0 +1,31 @@
+{
+  "name": "@ramex-labs/irontrellis-witness",
+  "version": "1.0.0-rc.2",
+  "description": "IronTrellis witness server: a small self-hostable HTTP service that records owner-signed head statements in an append-only RFC 6962 Merkle log and returns signed receipts, so a history cannot be rolled back unnoticed. Agents change. The structure holds.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": { "node": ">=22.18.0" },
+  "bin": { "irontrellis-witness": "./bin/irontrellis-witness.mjs" },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "bin", "README.md", "LICENSE", "NOTICE"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test --experimental-strip-types \"test/**/*.test.mjs\"",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@ramex-labs/irontrellis": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "typescript": "^5.9.2"
+  },
+  "publishConfig": { "access": "public", "provenance": true },
+  "repository": { "type": "git", "url": "https://github.com/zerohourzulu/irontrellis.git", "directory": "packages/witness" },
+  "keywords": ["ai-agents", "transparency-log", "witness", "merkle-tree", "rfc6962", "audit"]
+}

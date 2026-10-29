@@ -1,0 +1,1936 @@
+[
+ {
+  "id": "event:effects:3",
+  "type": "DEPLOYMENT_INITIALIZED",
+  "timestamp": 100,
+  "data": {
+   "adapterPolicyHash": "0x00c3498e2744943663475d0187ca979cdd09763b88427781883693c4b8c163a7",
+   "canonicalLineageId": "lineage:effects:1",
+   "domain": {
+    "deploymentId": "irontrellis-conformance-v2",
+    "protocol": "irontrellis",
+    "version": "2"
+   },
+   "finality": "LOCAL_ONLY",
+   "globalPolicySourceId": "policy:effects:2",
+   "nextKeyDigests": [
+    "0xec02d39d050ad408f7a0fa6a75604753cc9e4fafc6f78262a2026f3181832762"
+   ],
+   "ownerKeys": [
+    {
+     "credential": "0x967e264fa6b2e89fcfab4df3d4291cd1482a3a5a9f3836c9ce8f80d112d2ac4d",
+     "keyId": "owner:1",
+     "scheme": "ed25519"
+    }
+   ],
+   "policyVersion": "irontrellis-local-owner/2",
+   "rootRecognitionPolicy": "declared-principal-root/0.2",
+   "timeSource": "EVENT_TIMESTAMP",
+   "versions": {
+    "administrativeAuthorizationVersion": "irontrellis-administrative-authorization/2",
+    "authorizationProofVersion": "irontrellis-authorization-proof/2",
+    "controlAuthorizationVersion": "irontrellis-control-authorization/2",
+    "eventSchemaVersion": "irontrellis-event/2",
+    "historyHashAlgorithm": "sha256",
+    "projectionVersion": "irontrellis-projection/2",
+    "queryEnvelopeVersion": "continuity-query-envelope/0.2",
+    "receiptSchemaVersion": "irontrellis-receipt/2",
+    "recordChainVersion": "irontrellis-record/2",
+    "runtimeAuthorizationVersion": "irontrellis-runtime-authorization/2",
+    "signatureScheme": "ed25519",
+    "stateDerivationVersion": "irontrellis-state/2"
+   }
+  }
+ },
+ {
+  "id": "event:effects:4",
+  "type": "PRINCIPAL_CREATED",
+  "timestamp": 100,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xa61af74553a423b29e8dd0be8c1dd2f7046f9baeb39fa602a966fd9d6ec90e275862523b00b2423b41624a63f0627bffe21f56fd1e63d58ed5b481df3a2cc602"
+   },
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:effects:5",
+  "type": "AGENT_CREATED",
+  "timestamp": 100,
+  "data": {
+   "agentId": "bea",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x6f793d0228df623da380d7da61ea63e3f21a14bfc5431f428c18753f104ecd87a76392bf5fba95c738d4bacf1d71e3a2451653d916224af0d539619adb078408"
+   },
+   "controllerId": "operator",
+   "initialControlEpoch": 1,
+   "principalId": "operations"
+  }
+ },
+ {
+  "id": "event:effects:6",
+  "type": "ROLE_CREATED",
+  "timestamp": 100,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xab9899a697ea6603160d3cb93db20c9e87861a7fc0b87766a7f2d8b4b8474a1b5ab483a3d7c8a7a2b547061bdc4737e2df7911f658c5ce43348e116541b7a80f"
+   },
+   "exclusive": true,
+   "principalId": "operations",
+   "roleId": "reviewer"
+  }
+ },
+ {
+  "id": "event:effects:7",
+  "type": "AGENT_APPOINTED",
+  "timestamp": 100,
+  "data": {
+   "agentId": "bea",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xc303426949a4a33daeb11530c3b492ee000b736e94efd62822bd98ebfe15fe2e98353e0808833534360d9ff76855c4a8ac85d3db118e91d9d14200e596567501"
+   },
+   "principalId": "operations",
+   "roleId": "reviewer",
+   "roleTenureId": "shift:1",
+   "tenureNumber": 1
+  }
+ },
+ {
+  "id": "event:effects:8",
+  "type": "RUNTIME_SESSION_ADMITTED",
+  "timestamp": 100,
+  "data": {
+   "agentId": "bea",
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0x90845cc9f14c37edc4577d50f01c54696c127501d9cb5b463c5beaa1a21a940858c3cfe97964f19f6ccaac062bd514476709cb7d83922144d75cddc46f01d600"
+   },
+   "controlEpoch": 1,
+   "controllerId": "operator",
+   "credentialKeyId": "key:bea",
+   "credentialPublicKey": "0xf1891039752e1e3e5a1cfbc8fb2bf1d72cf103106f8eb97a47b076c37ab31fcb",
+   "credentialScheme": "ed25519",
+   "expiresAt": 10000000,
+   "sessionId": "session:bea"
+  }
+ },
+ {
+  "id": "event:effects:9",
+  "type": "AUTHORITY_GRANTED",
+  "timestamp": 100,
+  "data": {
+   "controlAuthorization": {
+    "keyId": "owner:1",
+    "signature": "0xdf974c9245dcdf93e8970b88d05f708657344b9937b271cbd3fac035f3d92d9a2c346163a2f67279bcb2f53ec630ecb9bdcdb1f22e8022cfa5291deced213806"
+   },
+   "grant": {
+    "authorityId": "pay",
+    "constraints": {
+     "actions": [
+      "pay"
+     ],
+     "expiresAt": 10000000,
+     "maxAmount": "1000",
+     "maxDelegationDepth": 0,
+     "quantitative": true,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "vendor"
+     ]
+    },
+    "granteeId": "bea",
+    "grantorId": "operations",
+    "independent": true,
+    "kind": "PERMISSION",
+    "rootAuthorityId": "pay"
+   }
+  }
+ },
+ {
+  "id": "operation:0xebe19fa86ff7ec270071da3838fa247ef3507b818f4cd182302a32750fec76b8",
+  "type": "TRANSACTION_INTENT_DECLARED",
+  "timestamp": 100,
+  "data": {
+   "action": "pay",
+   "actorId": "bea",
+   "adapterProfile": {
+    "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+    "profileId": "adapter:simulated",
+    "profileVersion": "1"
+   },
+   "amount": "640",
+   "declarationAuthorization": {
+    "controlEpoch": 1,
+    "credentialKeyId": "key:bea",
+    "hash": "0xa845f299753788f480077000f8c0896e2e66b7e0f09301d3f05da50244bf2fb3",
+    "runtimeSessionId": "session:bea",
+    "signature": "0x51564ec809bc8fed6f062b9fc243f16106bcf0bb1e6d816445be860ac65aae712aa790897892650e2ac7b551636635d5d87ef0ea967e1c03f457589629f5a90a"
+   },
+   "intentId": "pay:1",
+   "nonce": "operation:pay:1",
+   "resource": "vendor",
+   "roleId": "reviewer",
+   "roleTenureId": "shift:1",
+   "termsCommitment": "0x7e814c2ba5d3caa1a5b1de1de3f95d460405f4c8bb3b92a713b0958eec691902"
+  }
+ },
+ {
+  "id": "admission:0x78ed209e39f82767060bde290e955fdf27e559c4a0ea52ffb63313e6736cc648",
+  "type": "TRANSACTION_INTENT_ADMITTED",
+  "timestamp": 100,
+  "data": {
+   "authorizationProof": {
+    "authorityEvidence": [
+     {
+      "authorityId": "pay",
+      "grantEventId": "event:effects:9",
+      "grantEventPosition": 6
+     }
+    ],
+    "checkedProhibitionIds": [],
+    "consequential": true,
+    "controlEpoch": 1,
+    "controllingAuthorityIds": [
+     "pay"
+    ],
+    "credentialKeyId": "key:bea",
+    "domain": {
+     "deploymentId": "irontrellis-conformance-v2",
+     "protocol": "irontrellis",
+     "version": "2"
+    },
+    "effectiveConstraints": {
+     "actions": [
+      "pay"
+     ],
+     "expiresAt": 10000000,
+     "maxAmount": "1000",
+     "maxDelegationDepth": 0,
+     "quantitative": true,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "vendor"
+     ]
+    },
+    "evaluationTime": 100,
+    "historyHead": {
+     "canonicalTime": 100,
+     "hash": "0x321b1d6613528e93cdd7051b2ce0ba1aaf2b08a67b1b9e724dec2bb3bc7491f6",
+     "position": 7
+    },
+    "intentId": "pay:1",
+    "intersections": [],
+    "nonce": "operation:pay:1",
+    "permissionPath": [
+     {
+      "authorityId": "pay",
+      "constraints": {
+       "actions": [
+        "pay"
+       ],
+       "expiresAt": 10000000,
+       "maxAmount": "1000",
+       "maxDelegationDepth": 0,
+       "quantitative": true,
+       "requiredIntersectionIds": [],
+       "resources": [
+        "vendor"
+       ]
+      },
+      "granteeId": "bea",
+      "grantorId": "operations",
+      "independent": true,
+      "kind": "PERMISSION",
+      "rootAuthorityId": "pay"
+     }
+    ],
+    "policyVersion": "irontrellis-local-owner/2",
+    "proofVersion": "irontrellis-authorization-proof/2",
+    "recognizedRoot": {
+     "principalId": "operations",
+     "principalRecognitionEventId": "event:effects:4",
+     "rootAuthorityId": "pay",
+     "rootGrantEventId": "event:effects:9"
+    },
+    "request": {
+     "action": "pay",
+     "actorId": "bea",
+     "amount": "640",
+     "claimedAt": 100,
+     "resource": "vendor",
+     "termsCommitment": "0x7e814c2ba5d3caa1a5b1de1de3f95d460405f4c8bb3b92a713b0958eec691902"
+    },
+    "roleId": "reviewer",
+    "roleTenureId": "shift:1",
+    "rootRecognitionPolicy": "declared-principal-root/0.2",
+    "runtimeSessionId": "session:bea",
+    "usageSnapshot": []
+   },
+   "evaluationTime": 100,
+   "expectedHistoryHead": {
+    "canonicalTime": 100,
+    "hash": "0x321b1d6613528e93cdd7051b2ce0ba1aaf2b08a67b1b9e724dec2bb3bc7491f6",
+    "position": 7
+   },
+   "intentId": "pay:1",
+   "runtimeAuthorizationHash": "0x1324ac49feb26a1909176b4eb2499d7d7793d0ee0564fa5e0fb3d3446bccef5d",
+   "runtimeSignature": "0xde42fb788afbaf3299a994b645b8d4f25e42c5864eec92d431bce1aeefa879528ffa822017a6730eeeadfd839f49e856d6941d92020af25141a37e2873487d0e"
+  }
+ },
+ {
+  "id": "event:local:consumption:5bd3c7350c4a853a962cf608d702dd7684a58407c52b2132661d66d2e9291473",
+  "type": "TRANSACTION_INTENT_CONSUMED",
+  "timestamp": 100,
+  "data": {
+   "acknowledgment": {
+    "adapterProfile": {
+     "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+     "profileId": "adapter:simulated",
+     "profileVersion": "1"
+    },
+    "admissionHead": {
+     "canonicalTime": 100,
+     "hash": "0x5a63331c8dd8cce1db58ee1bf71b737e7c570bf45251506155c281ab0b4326ac",
+     "position": 8
+    },
+    "domain": {
+     "deploymentId": "irontrellis-conformance-v2",
+     "protocol": "irontrellis",
+     "version": "2"
+    },
+    "idempotencyKey": "0x5cd67f8b3139fc4fe4bc8067fe060043fc0d941e9df96856d6d435ddf35c7a6d",
+    "intentId": "pay:1",
+    "kind": "ACKNOWLEDGMENT",
+    "result": {
+     "kind": "SIMULATED_SUBMISSION",
+     "submissionReference": "0x1e60d039cff17ba153ea2c8d4702698ddd8eef3dae2c8bf5423898de2ea9c909"
+    },
+    "schemaVersion": "continuity-adapter-acknowledgment/0.2",
+    "submissionFingerprint": "0x1e60d039cff17ba153ea2c8d4702698ddd8eef3dae2c8bf5423898de2ea9c909"
+   },
+   "adapterId": "adapter:simulated",
+   "evidenceReference": {
+    "attesterId": "adapter:simulated",
+    "evidenceType": "continuity-adapter-acknowledgment/0.2",
+    "kind": "EXTERNAL",
+    "reference": "0x908795be40ff9c6702b1238d60575d8f39b5a1df2e3e07e6e8d3929ebd6c1c82"
+   },
+   "idempotencyKey": "0x5cd67f8b3139fc4fe4bc8067fe060043fc0d941e9df96856d6d435ddf35c7a6d",
+   "intentId": "pay:1",
+   "recordAuthorization": {
+    "controlEpoch": 1,
+    "credentialKeyId": "key:bea",
+    "hash": "0x297764d6ac5ea7cf10de1a214a9964a2524ad4a52793451debd81549759eaf35",
+    "runtimeSessionId": "session:bea",
+    "signature": "0x235b344349c3f1d2fbff42022c01b966e6521b7df0f9dcfa3552bf26d671adb7fbc29e04803be742b04b955fc365bc9534e1df11f840cdca4b936340b4eec803"
+   },
+   "status": "SUBMITTED",
+   "submissionFingerprint": "0x1e60d039cff17ba153ea2c8d4702698ddd8eef3dae2c8bf5423898de2ea9c909",
+   "transactionReference": "0x1e60d039cff17ba153ea2c8d4702698ddd8eef3dae2c8bf5423898de2ea9c909"
+  }
+ },
+ {
+  "id": "event:effects:11",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x5a87cc0d46d01868d128ad175d12fcd20d41f470394e562b7a778dbdd8fc1948",
+    "signature": "0xa99a7e54a434e6980cf3f4ad73e7f800cf1e8b866b125770902312bbae3c7f954b13bb4a54ff7c855bec666ce207afa4a4a29c446b8f7510e2a81b5728a87807"
+   },
+   "effectId": "effect:1",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:12",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x14d1c1665c063be2578b2e7eb529f48bc23f2ad5abae665b676c039321a97790",
+    "signature": "0x9de8e18a764edd3ddf34cb5871e8679b55fd1e700b88c099641d4da721c17a786e903e86c16ab34ae23ac07b6bf0118b5ebcc62d527e777e56d39ede5384700b"
+   },
+   "effectId": "effect:2",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:13",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x030915bf2399be26ac83c4ab9e426ae3e355eec53855bca2da34d25da35154e3",
+    "signature": "0x202b09ab591ada25b7edc4104ba0aa9d503c74f2f11d28e448db4c09f72cb764f1b4d7c60ad733c384970ee22a269be79563ff3de0b9cbd76cfb8998da374503"
+   },
+   "effectId": "effect:3",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:14",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x8fbc7216e94ef91edbb0eaa31c1af8e246f7bd6f5d78b58020fea7d8d0379d05",
+    "signature": "0x50173b3aaabf1a826d8eb357cf7796ef71c08658d30a9d2b7cd4fbaa92fda2751ae970932e8e388b909c8c741aea040538700bca5666b812904bc3749528e408"
+   },
+   "effectId": "effect:4",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:15",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x25d58f3d35c262c15155795c2f260c255efca1a3253f204ff9aa7fd0fc7c5f6a",
+    "signature": "0xd2a9204b9b1ddbc5f2b9fc61a6cb6f90190396ed6b10e5040de74eae70f9ae93a0bfccee5bf414da37c96485e6cf6b58ad94e185b10f64559612e8c67a9f2f01"
+   },
+   "effectId": "effect:5",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:16",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x9c9f7b2d9d8d745ac51f0c0fa85357315b201a811fadc565630b9df38df263ab",
+    "signature": "0xafcbf72e4ab61431505a8eea9231d23114b794c77e70897ed00b23d19b562a787994d23c0fe2a7835447a3d8a866527c6be0735dfdabfc8bfc35de8b2a251e06"
+   },
+   "effectId": "effect:6",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:17",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xec37e882a4b4593ec1b41ae56a37cfaee13c5c608e57711c637b5886e98504e8",
+    "signature": "0x39845bd66701f0863247112ec688587b8751841de1718b1c221ea3f6ae2d8e844fda8504c612fb301f28b968d020e68d81492da1adb997d7edd6f730174b0706"
+   },
+   "effectId": "effect:7",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:18",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x1b377376b281e6442decd7fe851e4404223c031e681e4d751a5cac3f740b9d51",
+    "signature": "0xf1bf55692073292f32db0cd1999980604489fb9ee5c8385144272cd03d038394c7319c97353a3323d941404c97cf9beebd84f6ea7878b5ce25dae945f375cb03"
+   },
+   "effectId": "effect:8",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:19",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x8b6c9dafe36b328191bc3d72363ef6c2d33f323bbc8e8c3dda45090dcb4d744c",
+    "signature": "0x624b012c0a9f390036ca56f29d07e709a34071ef825d30506f2899e98ea13f533990a446fbcf2ebce1cc624947f40ac245e11ba40465092b0d8dbf4d3ecb2803"
+   },
+   "effectId": "effect:9",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:20",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xbe386e41b73d94ec719c2bce3224a7f3985337cb2e01f4d1fb7116f1b21d4d25",
+    "signature": "0x6e16beba01fab017c974a292600e52a7c648a557c96c9fb134b11c9da81efac2e430e153f9cebea2bc3e49b0765ed3f9b32eb5da8e7c89f0ad4978c3a0d6db0f"
+   },
+   "effectId": "effect:10",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:21",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xcfcf0122f29ea22de751f598b1c3bfa6767855cf50d3cf438038446b0989db02",
+    "signature": "0xc19d084ce9f2fbc3f456ded9ddc9168168f477e6f72d1c978aad9c5d6a3db1310ed0e716d4965a94120bfacea958e5df4657a7b0fe9c68ce17079798b71ff80b"
+   },
+   "effectId": "effect:11",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:22",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x08394aa563f13d73e9478c2299ef633bef95451d827f6dd348e260fc4ed6ae84",
+    "signature": "0x613c8b8f1b2f1e1218c68e8c9edb62feb9b743cd8190d3645352d457aa3109ebeb591a903aea28fafa7e8241c8f6135cb79c065ab61ab8c78221f02fb865ab09"
+   },
+   "effectId": "effect:12",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:23",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xad08c17c94eb944f8eb00c89d2bf927747c65d1c9e1fb2a36aec4d7148ad3d70",
+    "signature": "0x2a2e5ff193d9b65628a78f8547a44a5d09e52e5ef9d46ab92657fb886cb0428f07ef201d8087f35d72b52e7360229337574c3dd6fe9de0f2a173415939d96306"
+   },
+   "effectId": "effect:13",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:24",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xe6a363bbee4eafb1789c7b7a214debc68fafaa14190575ee861926b58fa79e31",
+    "signature": "0xb5e5395731caa05a1b742aad191c0e3a625eb4751fe91fb5612ccc08f41038da9fa77362a59465a4b21b4cf25c93a567b837b8de7140a4614d0559154fe4db08"
+   },
+   "effectId": "effect:14",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:25",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x28e80358097b9758bdfe9f577e76bd84f9ab5c04d9ec1d2a191c03cd85a9c206",
+    "signature": "0xa744f03b1c9ec0b7e78f16f98cc6f36b69d36dbd6e800ebf8f02ef4cde324ae10fe4d5ca06c1942e5132546b192bea5f9a40abc8df0ddc9a2f2de51f2bc18d02"
+   },
+   "effectId": "effect:15",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:26",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x51a804bf2a1b5df9b2daaf5bb022cc9cfed77ffdfb03abbbceee1da92abc1fd0",
+    "signature": "0x9aada748c553e368f44026a6d8734261d51c85f152789b1b04006d653b76cd1908d0d2670778fb39258e06a0783848474d6034f3bb4cabc17276da5faac7bf0e"
+   },
+   "effectId": "effect:16",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:27",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x198a6788becbad5dce152f6c3b3b3f68981f515accdd6d176c63da3635f67eaa",
+    "signature": "0xedddc86398996bd7161ead79d84ef9e7c64a6d355103bf5c1a5cc3707dbd16ad9f48cdcb27ca1d8841f5137036b13be91bdf55aecdd340aee544980c5f8bfc09"
+   },
+   "effectId": "effect:17",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:28",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xef45fb4eed1af2214229dabf23191b5ce7bf8c1b1a2c38d167b4a9daec0c6c34",
+    "signature": "0x8b81f722b979eb19ed14e0b7f9f751e60e26d2b1670e3dd6973d4fa34c8571076f1ef7095428df7519c74c1e79457250ea2e26bab5d25ca672e82fea4b87c60c"
+   },
+   "effectId": "effect:18",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:29",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x198ba99fb7cf6258cf5fbbc17fe18bf32f03427f5b715eae3cb1dd2cd4ad681a",
+    "signature": "0x61341fe70e477445646f2071b663cbb9b8cbad5c28d6d1f88f81f33d46bd3bc079e660eb388405bdb7cf85a4a64c0d04a6a977409d6ea025c9a6960eaa49b209"
+   },
+   "effectId": "effect:19",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:30",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x0950f78308cc008df21fb262c9c4af442c107382e2b533f003ac7bfa91205c00",
+    "signature": "0xf6d671dbb39c64a2774f746696eb9a7c18f019d7e7e44bc87858469b8bcd8afac76597d6f589c123114cc874f4f5c1366afe3e97e1d4141ead3e71c081ba4708"
+   },
+   "effectId": "effect:20",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:31",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x483eb59b22a67fcb6d1a27eea2f4328db6bf82850d06ea1daf45754c7003d524",
+    "signature": "0x3a9a3ec4a474a1e7bf18be665f10ad70d1c65a5620006434a4149881a16d3aa7316c180a8563149b33ac2d9beef17a429e70b4432c69aafb7b761613854fcc04"
+   },
+   "effectId": "effect:21",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:32",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x6dce01601c530392726841a3e35937b1281ba2a3bb0084f58c01e7cb2683b9b4",
+    "signature": "0x63b85117ce6f85e962efc8ac8cca0f8553ffc4a88433ce93c675dc49e1c6fa5f95d3aa888cdfafdcf328b4891ea44edfa5add716a9181bbb30d141ca73d67b0a"
+   },
+   "effectId": "effect:22",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:33",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x86973c2ab4b1aa9532eb5fe9b5ead95e1fd6a9a75978509e179027066e89113a",
+    "signature": "0x1b4ce6dce12cf8885a94b344ff309be4efdaad24b674c0311d0dd793a81c1dab77e4d36be4564715a136722fd6c98a0f11cccf7753b5564a273c2a87bfc9de08"
+   },
+   "effectId": "effect:23",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:34",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x5f3e42caab4e551de690a32c9ee180a2c4795480b7a75059d737280d659f42f7",
+    "signature": "0x11bb9511b4186ad3f9a963ad2b7d310995e2b55b60d2b61d9d117d46e4f489c7bc914760753fdeeb33e720acfbd35d737a0e23c8a6c3a5a52de79b166b567500"
+   },
+   "effectId": "effect:24",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:35",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x26925a2da5fb62b77ea6eb70b78b5408e9ee651789abd9b9301bf011fb6b430f",
+    "signature": "0xd8db918a6e783e512e2bae2aa23b8bbe8f5f80195b7e88ab5ca550a70182b501a3ed21468cf29db3cc4b73a4d536fec7dc5f75852d4f94fa52f5e71d86136409"
+   },
+   "effectId": "effect:25",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:36",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x01c7a59f4c83e8f4f06b37ff6f6b8e4e7bb91878b296e1445bb5c3fca844d0b4",
+    "signature": "0xb6a64a29c70e748b209c5824ee5062586338fce6cdba8d91b8635c33493b2690e77cb25265ca7abe409c32c2b32b818ea8f92d3d1155cfbfc2674325f68bf20c"
+   },
+   "effectId": "effect:26",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:37",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xd68834387940e82a0dec5efd66aef22595d91e1eb103f2cf43552f16af3dcf21",
+    "signature": "0x1b2fa9123ea48b9f1ef6e84525119f94fedd852b179316bea4e9a963f784bd36017b33f2312232fd4d781826677873b30f4d1368d8276decf6380d811801ff0b"
+   },
+   "effectId": "effect:27",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:38",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x63419d3104e1ecb39709e435852f2973ddac6e76b19b5b7efffc091ee798d7af",
+    "signature": "0xf14e259f1f9db12e42924ac45ae63dd2a0f2db5862ff42e464d7ac38c09c175557ed7c5674d5fb136bba26c6410f9dd0c224d614debba1f4bdfe3871098db30d"
+   },
+   "effectId": "effect:28",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:39",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xf654c2bc808d036c8b41bbd89a9578bf2d0ff8f716644ee21480f35cfd9cac60",
+    "signature": "0x24175afb299b2647e0461ae4f24ed8d2a68cfae67f9b1238b1111f3edb2b78d8732261230caccbaa20626b29300edcb93b12312de65b9a52fdc9c3d12717d208"
+   },
+   "effectId": "effect:29",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:40",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xcd21f1ea6ee7cfd12f3d7044ffaf82268586a95b8696fb4755c6f78ac2c7f272",
+    "signature": "0xa879d4c5bd7398be4a4712c9a651d1c9fa0d738618f0ef76a86148c818e8cefd657d68715a83e2fbb745c0100460cc2e6ca2424029a5777300187fafeb664d0a"
+   },
+   "effectId": "effect:30",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:41",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x9d1821607f2485edd608bde441081af997d1e99647c7736f79137582b7490c31",
+    "signature": "0x57fdddbac7b5b99ff792694a6b68b380f0e7f0d90203a4b833dc5f4408e1efcce9ece1ee2f7514f132aa097a0cc7deac851c3fdd75bb470b4e4d9190582da104"
+   },
+   "effectId": "effect:31",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:42",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x9e0e97967eebb33119a2cf8d4d45b14aef794198177d909c970ad5c481d898ea",
+    "signature": "0x6990eb7a6b989bf0839435687eaa1669143589c6837feb87d11859614853c5f3ced9f9e53914d320d9610d7151aa928fdd7751905e079aa14ce363bdf7d2f00a"
+   },
+   "effectId": "effect:32",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:43",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xe7c8bc0f734d4a60e0692626c0489c8e76a213634cc68c28be46ad0c1c229c09",
+    "signature": "0x43b0f513eaf3358e3bce2175c8b818d5e7f059d640eece2eb9dc02542778504a3b06ae0e2b53d8e6a0540af04fdbcccd2066e768711c87ac68f6ee7ca5672b07"
+   },
+   "effectId": "effect:33",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:44",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xae5dad5beda85f94e4ed6a537914986ff935e3903b370821cb214a6b2c663032",
+    "signature": "0x5316e6dc9eb0b0e0532059af8267ca439c579c222a757bb2187fd51b0465a09c0724460577c98c707a83c141ee41b24de667dcfe2a7556949b9c65cad534bb09"
+   },
+   "effectId": "effect:34",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:45",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x9281aefb9ee09edb20793b72aeefb864c85bf631317642bd31e6ebea729470aa",
+    "signature": "0xf82c97e0c3ccd2b5ee40a175a95788ac46a033f892eb898ab9e2392c734855751fa9d738f9685d281cf5633b1fb79090aac29a049a1946deafa3e58684ba3e08"
+   },
+   "effectId": "effect:35",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:46",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x38d0270fec83cd2786c02e4fca3a36bbdf393d74577518a2f8a5504ffcc98866",
+    "signature": "0xb89176b044c1e0abec341408569f663bb4b0759b99c33ec1113c77a71206ba19574ff495fcb3b7fbb2d95601a038534c35069170aec12bf77d20ecbbfcb13c00"
+   },
+   "effectId": "effect:36",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:47",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xb38ad3975b6bcd168159e56cbf7cbdce072098fe85d0cf451517d4f376b8e228",
+    "signature": "0xadbc37b060a68b769ce52273a0ae323d2d56e7608c40c6406553e6ccf215231ab3bdc3485907d3398fea4378a1f23892b8289b647c0025d6b3c4cbb57378820a"
+   },
+   "effectId": "effect:37",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:48",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x241a6f68714349fd8c927d57c5dbfa864137d5916aaafb40361e485a3462267f",
+    "signature": "0x2bbe2b4f3bf1d7bc29212e4b1449a1be58daed2b31c1b6bdb7e92ac0e0c56816574e407c859ce491168724407e529fe5839017432f6bc410bbcb60f653996d05"
+   },
+   "effectId": "effect:38",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:49",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x423ad59106084c1a3acf65ecd954c1ad6091b661ef0d293e2983b1255dad6898",
+    "signature": "0xcd1e65522c197f8bc86d232ba9b435e5046b93c7d5027f5d5a4208189a0168ec214567191a80d58e6f23106ff508c8ce7075e2504f7a65dfe5b566587c78a00c"
+   },
+   "effectId": "effect:39",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:50",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xaeb950225791117014fdaff8d431762b79aa7c6c5aa2cb60b5a9d0e50a48d670",
+    "signature": "0x0f9d1bc411f34f1348a0a1e68cbf4a444895f934bca5531b2f0bbb8fc59a8b120fa5e3f0847db3903d1953266b6a8e70a9fdf7a3b5b7abf778eb53922c06d403"
+   },
+   "effectId": "effect:40",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:51",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x056057a5b9f09c6641388d9e7a6a500873cd028b52cfdc9bfe21b87e9bb5f762",
+    "signature": "0x20906235cf3c2285c8432bb510acf373fd6cba039d5c310ba8513e764942b8e02f9c0497512c130b0047285c41a4d6b749ef5ab0327605f9ba709c7d9c57f60a"
+   },
+   "effectId": "effect:41",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:52",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x6220242888d6fd31f4f8e711e4b33d5390e70199794f6d386dba8726991d7207",
+    "signature": "0x2f854f7658f72d1bc274733c0dcd06002a396ca6de54137043871a9928be6252d9c35c3fdb9d00074c972e356ec9e64aa1983c31a5867ef59425f4d078f00c01"
+   },
+   "effectId": "effect:42",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:53",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xae545be616e3636c1e19ec9eafabd9835d209268e052b08226342c4e052ec039",
+    "signature": "0x88465e4cd64b2e0528eae8e15574e44ed92f67013b506ced6856f322c0254feb42d04ab5bc028f54a1d99790c9abbd7b6bfb56b66d23c6f82d3d9dd3f3a4d108"
+   },
+   "effectId": "effect:43",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:54",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xfc7263fc44de1070d4a4b9fd3f587a2766cebb6a04c05c88b8fabe3f565e6886",
+    "signature": "0x2dc0dc8e066244c12c6e706ed8cd21bccd80eeb233ef80de3274884515c34b1455540890f96138d775ad1bc9df123bee966d8d5061808aa89f8fe650653b7702"
+   },
+   "effectId": "effect:44",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:55",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x121200cf4f9f6e90c246813cc1cef6843cc4a50738b7c24923e0afaebc17ce67",
+    "signature": "0xb6ed65d170c347b6cb12ef384831417b483f64be2d7037711153e78cd80688cfdb54ee0e32b6f5172889314e5b3de57c0ca80b9e8a46d197397478aefc92a402"
+   },
+   "effectId": "effect:45",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:56",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x17fbc295e5aa05f983a57e062ca3915f5b116a740941de86418a1725b32138ae",
+    "signature": "0x914a2bf153babd3552db82fc09c9c225e5fa965058ef2bea74e93d3c0f3f70b63572350fed7e8323504805633519c357b8a3756942cbcace7824b6486b226b0e"
+   },
+   "effectId": "effect:46",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:57",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xd7456114582262506e751cbdd2390a057497a23f42fa697f2df821d0cd26754a",
+    "signature": "0x8dc19f0c17308e5abc431ce9e4aa0c1f31b5350e2bc42c4b3983955c534e2b5e0ce16ef9c1ad4e51a6a71242f98ef1d1e2bb936278e89e4ca3c63567884e0800"
+   },
+   "effectId": "effect:47",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:58",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x56f928183ec1d33c46af8a91522528c092017d0b2b156a9a9347485f8740dd2b",
+    "signature": "0x2851595251fa09c922b45123a9f51c1f78520964c20f9bae524df99374184f9b42d65f931a0ee2f85dd576a2210b8c76909783edd7c05e2def6ddae2ae9de80d"
+   },
+   "effectId": "effect:48",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:59",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x693f914ba8e04aed41ceb6a41134bceb615385bc3112fa9a72f22b1f3674761f",
+    "signature": "0xbd0c8f19fc093d65f749332c46250eaa5d8af7ccf252871334296ee112ef8966c4d67a45f60b0b2a33bd5f3ab8e00b4aa169990c1eee4d3a45cb216263844808"
+   },
+   "effectId": "effect:49",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:60",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xb711fb304039527869b31ac80ba469dfbe0cc6587935250fd3a22332ff520284",
+    "signature": "0x32ed43f2ad4fadd297327f28bda2cbe8957ea8673b96f49507d4a396c393e0499eef4fc851e41806260762c2e08cb88e2ced42e25afce859f029b5eda7b35a0f"
+   },
+   "effectId": "effect:50",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:61",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x3f7f961fe54c425a82a681cd3f942bae2947a641483ed062fd55445190dfc928",
+    "signature": "0x1686a6ba3d688f9de8da671fe41eb16941f831ee0f5e3ecdcd77d28772e2c7eeae9a76ca6302a4563aa04e5be4773ffb4b86d5d6e950f6243d8316ea352bd00b"
+   },
+   "effectId": "effect:51",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:62",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x2adc9770fea743edaea6a1ec3cf6d70a929b5e9a67935d9a8b187d0b41696da8",
+    "signature": "0xc073ea5f453e26521bdb0df11b3e52448b294b7fad7522390e07f91b936720e09f1f848fb714b72892778ff03d274809c3138bef153b79793a83a5fa42751202"
+   },
+   "effectId": "effect:52",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:63",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x0ebfbcdd53dc01462e1f67ed3e48ec69527a8a33163e120d193af96bf1e39e42",
+    "signature": "0xdb335d2d9359dd0298919d7a279c57fcfd7225da041b6b8f865206c25ce9a1c81d9ebfb952518b2571c90b2e8d19fe88fe4c7d3ab861c858c14de645e5aa870e"
+   },
+   "effectId": "effect:53",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:64",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xc14424e608963ae4c1631cb12d16073093a3ab5b36ef3358e357be6700a85a60",
+    "signature": "0x17d4cff7424c0c552272601cb4ba9995a7cc21d88dd4646e64c2936530390ae4d7afc0f633b7e0963f456245691106d7c129ad2e83764457af1aba5e0cbcf90b"
+   },
+   "effectId": "effect:54",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:65",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x6e10555137043e39704a14a5b8120b3057833f3a26de4f80573cd707979859f2",
+    "signature": "0x1f8da967fa27e5cd319cb1f1cd1f4f32a00bf5b4caedcc80957ca296cb0e55a6b68fe5791f981364e1ba88fd89554ba121f3fb4adb65bea2b1a96505d397bf07"
+   },
+   "effectId": "effect:55",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:66",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xbe168796295d83b4bd09f420472fe831310daea2809ce14659b18ab88f8168a2",
+    "signature": "0x58e5d8192dcc478aadae5ab20c33412c66e3186de4d8354ace5c7522d13b0281fe07dbb2f154630dda71ba56a9642e16a44be56f5e97ed4464b7a198ba272a02"
+   },
+   "effectId": "effect:56",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:67",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xbc25fce72bfd4234a89292b6b9fff38e4567be4ea0e2c72faa5f9dc6494f1039",
+    "signature": "0x2de05bd6e82520d51e8705b91c3edd9f52efabde018ad0eecd6276e8b972936ff87bf6e0b42258a10af1a2e0ecf56fa0e929e415d1a4c1502269619ebec20c06"
+   },
+   "effectId": "effect:57",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:68",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xeaedab3108ad4248b3bd5fbe023a9dd881286b0ae3220927fa71d9184a98fe2e",
+    "signature": "0xfa092450bd4e64a8b16cd5a3fb874695ee190ba116143a7a55e1f7d387e50b0ccb211b6091d4ecc9157860bd0ea917f88031a7c8ea183cf2e814ff4060d55e05"
+   },
+   "effectId": "effect:58",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:69",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xc080cf7ab05332d145831894568005b6c9187aca0bfc9cd7ee8ec6d59b12204c",
+    "signature": "0xc3f841f57b75e3aeadd17f1b2a8f5da8314fa31a40836b85745da9a1e6a6a0b066ffae20a188885bfaca9e5365ca55a8917782715f612c88f5a4e5c2b7363900"
+   },
+   "effectId": "effect:59",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:70",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xd2b6da8cb549e80dfdb836827e53d3d918a702f52267a957b2c86f06ba3c48b9",
+    "signature": "0x579987d9a8ec7e3130d556f2cf7ebed1c6d175df1f0bc87b201ea6eea0934ee7909fa035f6042d797d58a90f9bf471e97d692445950d7ff93371c9329762f903"
+   },
+   "effectId": "effect:60",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:71",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0xd1d2d2474d53064603e40547da8fe57ca527cb075f5f3d5a0ad4736be0df8aa9",
+    "signature": "0x473631afb738bee0773073ac10a4fe2e02c04669d6aab8d221b81e9873d15b33468e67f65e3ce487c9ebc570cdf01d9008476ac541b7ef6c8441365795e06800"
+   },
+   "effectId": "effect:61",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:72",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x1ef59f2ef9dab46a88da08ff57ad8500b7c2eef33284b95fbd5e7c1c08a372f4",
+    "signature": "0xf591cf5e6fa9b3f30f005e209b1bce877a8dea5ce5cabef7cafc53928f6a6181366be47be94bbe82d1fe8ee5c12e507957911fd11950ea59f56e6ff678286509"
+   },
+   "effectId": "effect:62",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:73",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x41fb085de917ed55dbc7f4a903af4f6cea9b1fc66e403e5ab3b264bfd34479ea",
+    "signature": "0x93790782ce039c0c3b99570609c598817a07395ecd019a164bad58a641e60b057164c8fecb0f8aea08df4adf5f902717b1d98202fe56c488033582a420ce050b"
+   },
+   "effectId": "effect:63",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ },
+ {
+  "id": "event:effects:74",
+  "type": "EFFECT_RECORDED",
+  "timestamp": 100,
+  "data": {
+   "amount": "10",
+   "controlEpoch": 1,
+   "credentialKeyId": "key:bea",
+   "detailDigest": null,
+   "effectAuthorization": {
+    "hash": "0x995766ac3e3bc15228dd505a361892936556a93ceb42068d82ff0e29a4f76d39",
+    "signature": "0xa63e4920c71a806f7229e5da1f657e0cb195d825bcc79e7f09f8517a09280b97a2b0eb738f9e1e17909c55e3970a59df0015adcaf0d3b215f07f98abfc290800"
+   },
+   "effectId": "effect:64",
+   "intentId": "pay:1",
+   "measurer": {
+    "id": "bea",
+    "kind": "SESSION"
+   },
+   "metric": "amount",
+   "observedAt": 100,
+   "runtimeSessionId": "session:bea",
+   "unit": "cent"
+  }
+ }
+]

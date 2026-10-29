@@ -1,0 +1,32 @@
+# Weekly update PRs for the pinned dependencies.
+# Every GitHub Action in .github/workflows is pinned by full commit SHA with the tag as a trailing comment;
+# Dependabot updates the SHA and the comment together.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns: ["*"]
+
+  # The pnpm workspace (pnpm-lock.yaml): the MCP SDK, zod, TypeScript, @types/node and the reference fixtures' deps.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+
+  # The Python release tooling scripts/verify-install.mjs installs with --require-hashes
+  # (scripts/requirements-release.in, compiled with hashes into scripts/requirements-release.txt).
+  - package-ecosystem: pip
+    directory: /scripts
+    schedule:
+      interval: weekly
+
+  # The Python package itself (python/pyproject.toml: build-system and optional dependencies).
+  - package-ecosystem: pip
+    directory: /python
+    schedule:
+      interval: weekly

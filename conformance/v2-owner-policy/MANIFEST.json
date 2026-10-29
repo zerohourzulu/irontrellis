@@ -1,0 +1,794 @@
+{
+ "schemaVersion": "irontrellis-conformance/2",
+ "suite": "v2-owner-policy",
+ "protocol": "irontrellis",
+ "format": "irontrellis-event/2",
+ "challengeProfile": "g3",
+ "engineDerived": true,
+ "generatedFrom": {
+  "reference": "@ramex-labs/irontrellis (packages/core)",
+  "replay": "continuity-replay/0.2",
+  "rulings": [
+   "ADDENDA-G6 A-91, A-92",
+   "ADDENDA-G6.1 A-96, A-99, A-102 (round 1)",
+   "ADDENDA-G6.2 A-106, A-108, A-110.2–3, A-112 (round 2)",
+   "ADDENDA-G6.3 A-116, A-117 (round 3)",
+   "ADDENDA-G6.1 A-97 with ADDENDA-G6.2 A-110 (recovery, holds lifted 2026-10-12)",
+   "ADDENDA-G6.4 A-127.2 (AGENT_TERMINATED anchor path)"
+  ],
+  "retired": [
+   "rejects-duplicate-credential (A-108.5)",
+   "builder-rejects-recovery-held and builder-rejects-human-floor-held (holds lifted 2026-10-12)"
+  ]
+ },
+ "note": "ENGINE-DERIVED owner-policy vectors (G6 rounds 1 to 3). Not acceptance: the architect's generator and the independent checker define the owner-policy group. Every G6.x hold was lifted on 2026-10-12 (founder); the human-attestation group is conformance/v2-human-attestation. `node conformance/v2-owner-policy/generate.mjs --check` reproduces these files byte for byte.",
+ "domain": {
+  "protocol": "irontrellis",
+  "version": "2",
+  "deploymentId": "irontrellis-conformance-v2"
+ },
+ "keys": {
+  "owner:1": {
+   "keyId": "owner:1",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000001001",
+   "credential": "0x967e264fa6b2e89fcfab4df3d4291cd1482a3a5a9f3836c9ce8f80d112d2ac4d"
+  },
+  "owner:2": {
+   "keyId": "owner:2",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000005002",
+   "credential": "0x26bf8276bdbec5f0699e1c49d65fefe27574d97edbb11df08676aae73778c83c"
+  },
+  "owner:3": {
+   "keyId": "owner:3",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000005003",
+   "credential": "0x31f3a7405ba36c56fd5eee04f94e131fa632e7ab8ea106e13b18e4cf6d6b8577"
+  },
+  "agent:1": {
+   "keyId": "agent:1",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000005101",
+   "credential": "0x323c6121c37fc56bd2d4edbaa70dfda58c6cbe531283027a1a52b10e72ca3745"
+  },
+  "agent:2": {
+   "keyId": "agent:2",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000005102",
+   "credential": "0x3656ccd90a0df59b69e933f61d1b51d758984316bd3c17e435581647c1e4e4b0"
+  },
+  "next:1": {
+   "keyId": "next:1",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000005201",
+   "credential": "0xb55d1042307a0ef76e6a23db5f071a40ee7524ab9d35d9450b72b8e42af29c74"
+  },
+  "next:2": {
+   "keyId": "next:2",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000005202",
+   "credential": "0x79b8250b3aaf285c34c6940d8f4e90f41f094790acd2ec4e2d16836c71f5ccb7"
+  },
+  "next:3": {
+   "keyId": "next:3",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000005203",
+   "credential": "0xb8ba822e2648cdd53b82b8fc82b74e504c1376e17a061ab9f8010a21cd990162"
+  },
+  "stranger:1": {
+   "keyId": "stranger:1",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000003999",
+   "credential": "0xa434f23c76408525b4fcd3ba47824df8ec912f6046fc4d95e1e43f448e156bf6"
+  },
+  "session:1": {
+   "keyId": "session:1",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000005301",
+   "credential": "0x4851fb5d3123ad54139227f7babe27790d85c1f1173d934a686abd7bffc9c7a5"
+  },
+  "counterparty:1": {
+   "keyId": "counterparty:1",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000005401",
+   "credential": "0x01d25d6fec0f29a2f49bf6120cbe1411a532f9c6cbddb161796a33640d135385"
+  },
+  "session:2": {
+   "keyId": "session:2",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000005302",
+   "credential": "0xc25c22619413c2b4feab129bfe87c69b097947fe1f62c4804b08a74515ba208a"
+  },
+  "attester:1": {
+   "keyId": "attester:1",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000005501",
+   "credential": "0xc49d8d9af26fd850eecbe059591a280a44a0bae82c648ef9ea1ae96f2aa5c931"
+  },
+  "attester:2": {
+   "keyId": "attester:2",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000005502",
+   "credential": "0xc66fe9fc50d8740566d2dd3061f567921e94e3eb3bc284ea49f5fa251526e565"
+  },
+  "session:3": {
+   "keyId": "session:3",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000005303",
+   "credential": "0xf3e0e0360610de0de39f8116896d402f722adddd6af748c62dfdb09f198ca6e9"
+  }
+ },
+ "topics": [
+  "policy-schema-and-validity",
+  "quorum",
+  "power-reduction",
+  "policy-rotations",
+  "recovery",
+  "credentials",
+  "migration"
+ ],
+ "histories": {
+  "policy-history": {
+   "eventCount": 7,
+   "head": {
+    "hash": "0x2425272ed64bae60d517ca3b27449f2d97a3604f960c14a690813553aedadf78",
+    "position": 6,
+    "canonicalTime": 106
+   },
+   "stateRoot": "0x326521ff91b47f2a26ffbaa1e687288aefbe8750475121636314129cfbbfa1a9",
+   "recordCount": 15,
+   "projectionHead": "0xfe636f6999f43d569d42048786f198f5670c8cd159028e9548de4eb14ff4e0c3",
+   "sha256": "351c4efeecdb678636dadb340c2004e9320dc6bfd1bcc9c05b6b73db7ddf733f"
+  }
+ },
+ "pinnedPositions": {
+  "policy-history": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ]
+ },
+ "counts": {
+  "replay": 89,
+  "total": 89,
+  "byTopic": {
+   "policy-schema-and-validity": 24,
+   "quorum": 13,
+   "power-reduction": 15,
+   "policy-rotations": 13,
+   "recovery": 7,
+   "credentials": 15,
+   "migration": 2
+  }
+ },
+ "vectors": [
+  {
+   "id": "replay/v2op/accepts-genesis-policy-2of3",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91: a genesis with three owner keys and {threshold: 2}; the principal is signed by owner:1 with owner:2 co-signing.",
+   "sha256": "961446e3fbb2cf6ac358062cade0c0b97461e5306c0666f9d462c8070d137af4"
+  },
+  {
+   "id": "replay/v2op/accepts-bytype-raised-threshold",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91: byType raises AGENT_CREATED to 2 while the principal needs 1.",
+   "sha256": "5d40e488b2b234a1fbc951ce61779fa0e3b97d4af3d112d673dca84bcdaecce4"
+  },
+  {
+   "id": "replay/v2op/accepts-unlisted-type-uses-default",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-92.1: a type byType does not name (ROLE_CREATED) uses threshold 1.",
+   "sha256": "a3dbd7bf1df7793106bb2840ae34bf03f22279c7d63d9183561a6f8bb2e0a9aa"
+  },
+  {
+   "id": "replay/v2op/accepts-labels-and-acknowledged",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91.1: labels and acknowledged are replay-ignored annotations; the root changes only through the data.",
+   "sha256": "38cae7004a3cbfa804cfe94b2de6b6bbaf4cf9273e02265986da41af932ef950"
+  },
+  {
+   "id": "replay/v2op/rejects-threshold-above-n",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91.2 rule 1: threshold 4 with three distinct owner credentials.",
+   "sha256": "3fce8dc6acc38be956c164cca2e3af21b363c191d78da4413bdcfdba47624055"
+  },
+  {
+   "id": "replay/v2op/rejects-zero-threshold",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91.1 / A-102 X-9: threshold 0 is outside 1..64 (C4).",
+   "sha256": "49603150a91948728d32751a658304c5256af25a0436076da7b836d7c12376a4"
+  },
+  {
+   "id": "replay/v2op/rejects-unknown-bytype-key",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91.2 rule 3: a byType key that names no type.",
+   "sha256": "8508a4e071f9dfdc8186ac72fd2b886ed5cb5230671e1f1f4aafde58de6c8e28"
+  },
+  {
+   "id": "replay/v2op/builder-rejects-bytype-session-type",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91.2 rule 3: a byType key that names a session (◇) type.",
+   "sha256": "5c243b01f81cd71e9f54747e2fe21da94a72786a8d67c403de2c4f6828116005"
+  },
+  {
+   "id": "replay/v2op/rejects-bytype-rotation-below-default",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91.2 rule 4: byType.OWNER_KEYS_ROTATED below threshold.",
+   "sha256": "322bd3f5748712bf05164876a32b4312552aa642a98af90a11d16a2d947c73e6"
+  },
+  {
+   "id": "replay/v2op/rejects-keyclass-unknown-key",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91.2 rule 5: keyClasses names a key id outside ownerKeys.",
+   "sha256": "5d84b8b904c17048ff1c28880dbc919170761a281697c4c70d191d4094515d7b"
+  },
+  {
+   "id": "replay/v2op/rejects-all-agent-owners",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91.2 rule 6: every owner key is AGENT.",
+   "sha256": "3f9f66711e1ab550ff01eb080ed413fc57a7582c31b70a7786e1751eb6053b6f"
+  },
+  {
+   "id": "replay/v2op/rejects-human-lockout",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91.2 rule 6: one human and one agent at threshold 2: humans alone could never change the policy.",
+   "sha256": "a3625f6e7fa8dc5d3df0c4184815c3bf0a551c830d8f360ce7838e9276e0c5e0"
+  },
+  {
+   "id": "replay/v2op/rejects-acknowledged-with-threshold-2",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91.2 rule 7: acknowledged SINGLE_SIGNER with threshold 2.",
+   "sha256": "ec9af15d30aaeb6f3ceab16ecfb5a06cf3091cdbac5570bd04855bef5dd40148"
+  },
+  {
+   "id": "replay/v2op/rejects-acknowledged-with-bytype",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-102 (X-19) rule 7: acknowledged SINGLE_SIGNER with a byType raise.",
+   "sha256": "6dc0877c169c8208a2ccabd57dc43bc9a5557624dfe881d4fb9675117cc3e8fc"
+  },
+  {
+   "id": "replay/v2op/builder-rejects-empty-labels",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91.1: an empty map is refused (C4).",
+   "sha256": "f6c1652306dd94fef4878eb797006f2cb203b4d86078625b36e0ffc385d606b2"
+  },
+  {
+   "id": "replay/v2op/builder-rejects-null-in-policy",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91.1: a null anywhere in ownerPolicy is refused (C4).",
+   "sha256": "fd1e77c40056135af7fdefd92c3b40fccb89f5e41867c9d9b84d6d2f6a18ee23"
+  },
+  {
+   "id": "replay/v2op/builder-rejects-label-65-characters",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91.1: a label of 65 characters (A-89.2 measure).",
+   "sha256": "55701e44394fd50edf92fe1ee6c9fa90882a0b153789483c9381263f75f7d2e9"
+  },
+  {
+   "id": "replay/v2op/rejects-bytype-power-reducing-above-non-agent",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91.2 rule 10 (A-106.3): byType.AGENT_TERMINATED 3 with two non-AGENT credentials: reducing power would need an agent key.",
+   "sha256": "2e9eb4308ff4fc02e3d31477725761e6aca93f061186b29f3b1c45a59bffba4a"
+  },
+  {
+   "id": "replay/v2op/rejects-bytype-below-threshold-for-non-reducing-type",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91.2 rule 11 (A-106.2): byType.BUDGET_CLOSED 1 under threshold 2; closing a budget removes a stop rule, so it is never lowered.",
+   "sha256": "9a5b01be4fdba9cba4fb0114b3acc044bdfe3e76a8ecc6f16aab8ebe4c7ab08c"
+  },
+  {
+   "id": "replay/v2op/accepts-bytype-below-threshold-for-checkpoint",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-91.2 rule 11 (A-106.2): STATE_CHECKPOINT may be lowered to 1 under threshold 2; a checkpoint signed by owner:1 alone.",
+   "sha256": "d49913465033e936ac84bf0dade31a29bbe75628765e9a6be0e9ac9c8b065647"
+  },
+  {
+   "id": "replay/v2op/rejects-tampered-policy",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-92.0: ownerPolicy is bound by effectHash: changed after signing, the control signature fails before any policy check.",
+   "sha256": "40e093db43db4cc2a5fb17a5f0cb0ab64524d14d15e0ca76c6e5c90265ff7b5e"
+  },
+  {
+   "id": "replay/v2op/rejects-duplicate-credential-in-owner-keys",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-99: under a policy owner credentials are pairwise distinct (owner:1b carries owner:1's credential).",
+   "sha256": "dff6805f5aea128e5057d15018e3b5ea2b17cde6400e4a6b87ffc6514705d78e"
+  },
+  {
+   "id": "replay/v2op/rejects-bytype-below-threshold-for-anchor",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-116.2 rule 11: ANCHOR_RECORDED left LOW_types; byType.ANCHOR_RECORDED 1 under threshold 2.",
+   "sha256": "0aabb67744f26f0766cb277c420a2e418f326e17504027ad0ed92012cff81080"
+  },
+  {
+   "id": "replay/v2op/accepts-bytype-below-threshold-for-budget-declared",
+   "kind": "replay",
+   "topic": "policy-schema-and-validity",
+   "purpose": "A-116.2 rule 11: BUDGET_DECLARED is one of the seven PR_types and may be lowered to 1 under threshold 2.",
+   "sha256": "114a37c4fd898eea0a17fd9a22325da70dcae9a0dcfad7b7ec021c631bc226f0"
+  },
+  {
+   "id": "replay/v2op/accepts-rotation-with-quorum",
+   "kind": "replay",
+   "topic": "quorum",
+   "purpose": "A-92.2: a pre-rotated key rotation (owner:3 replaced by the committed next:1) signed 2-of-3 under the epoch-0 policy, setting the new epoch's policy.",
+   "sha256": "a60d874185c29dcf684234f0266ec0347924e0921de1200eaa7664e95a5790a1"
+  },
+  {
+   "id": "replay/v2op/accepts-surplus-authorizations",
+   "kind": "replay",
+   "topic": "quorum",
+   "purpose": "A-92.2 step 3: three signatures where two are needed; the surplus verifies and is permitted.",
+   "sha256": "5c6161e8cd701a02329ab3e5e099ab3994b65df8851c3f9fc978b97dec2eaa31"
+  },
+  {
+   "id": "replay/v2op/rejects-duplicate-keyid",
+   "kind": "replay",
+   "topic": "quorum",
+   "purpose": "A-92.2 step 4: owner:1 signs twice.",
+   "sha256": "1c40eb9624177afc651a52e0d1508fe211131e63e85dd73d8150fbac4938ff08"
+  },
+  {
+   "id": "replay/v2op/rejects-out-of-epoch-signer",
+   "kind": "replay",
+   "topic": "quorum",
+   "purpose": "A-92.2 step 3: a co-signature by a key that is not an owner key in force.",
+   "sha256": "151d3e06134ba22c68b412484dc4f501af6ed5ea66b0786b52cfac527e21e76e"
+  },
+  {
+   "id": "replay/v2op/rejects-unverifiable-surplus-entry",
+   "kind": "replay",
+   "topic": "quorum",
+   "purpose": "A-92.2 step 3: a surplus co-signature that does not verify is refused even though two valid signatures remain.",
+   "sha256": "f6b07454ce5abee062b59bb3520fdca999fda7ba266715190e61013e9529c5fb"
+  },
+  {
+   "id": "replay/v2op/rejects-missing-array-under-m2",
+   "kind": "replay",
+   "topic": "quorum",
+   "purpose": "A-92.2 step 2: M_eff = 2 and no additionalControlAuthorizations.",
+   "sha256": "f7218cf43e043cc1042dea2a94f1915d9db1f3131a4a4b67bb94958e933037ac"
+  },
+  {
+   "id": "replay/v2op/rejects-moved-multikey-event",
+   "kind": "replay",
+   "topic": "quorum",
+   "purpose": "A-92.0: a 2-of-3 event signed for position 2 placed at position 3: the /2 challenge binds the head before it.",
+   "sha256": "709ace9a7356743a6d7e106f12f6506f8ea99bd7cc918bcd3741be51147fe79b"
+  },
+  {
+   "id": "replay/v2op/rejects-below-threshold",
+   "kind": "replay",
+   "topic": "quorum",
+   "purpose": "A-92.2 step 5: two signatures where three are needed.",
+   "sha256": "661aced9bda484ec565e09a935835101ded3b1848134d3646f1d09e2b26c45a2"
+  },
+  {
+   "id": "replay/v2op/rejects-extra-authorizations-under-m1",
+   "kind": "replay",
+   "topic": "quorum",
+   "purpose": "A-92.2 step 2: a co-signature under the default policy (M_eff = 1) is refused, not ignored.",
+   "sha256": "d3503b8524dada2db359c0830b3b639deafd6892fcbc98697af5ebe3bb5bb0de"
+  },
+  {
+   "id": "replay/v2op/accepts-agent-cosigner",
+   "kind": "replay",
+   "topic": "quorum",
+   "purpose": "A-92.1: an AGENT key counts as a co-signer on an ordinary control event (2-of-3 with owner:1).",
+   "sha256": "cdac4282d2ed6ba96344796e0ea17e9f1dfe907702e577353f86328d3042c3e2"
+  },
+  {
+   "id": "replay/v2op/rejects-agent-counted-on-rotation",
+   "kind": "replay",
+   "topic": "quorum",
+   "purpose": "A-92.1: on OWNER_KEYS_ROTATED the counting set excludes agents: owner:1 plus agent:1 is one counting signature of two.",
+   "sha256": "2073cc973ee306129d0704427b6bc1e4f80e5155e7da0317bcbc808117a26132"
+  },
+  {
+   "id": "replay/v2op/rejects-agent-alone-m1",
+   "kind": "replay",
+   "topic": "quorum",
+   "purpose": "A-92.2 step 6: at M_eff = 1 an AGENT key alone is refused.",
+   "sha256": "3baa4db65ffab2d2b55759061c02057ef0293b101195d99b68950d889c7f4ea2"
+  },
+  {
+   "id": "replay/v2op/rejects-agent-alone-m2",
+   "kind": "replay",
+   "topic": "quorum",
+   "purpose": "A-92.2 step 6: at M_eff = 2 two AGENT keys reach the count but no human signs.",
+   "sha256": "abd35acbb3101f3f3b99f9369dc321856c7c72307378efe412265bcfeb7de415"
+  },
+  {
+   "id": "replay/v2op/accepts-budget-update-lowering-cap-at-pr-threshold",
+   "kind": "replay",
+   "topic": "power-reduction",
+   "purpose": "A-106.2: a BUDGET_UPDATED that lowers amountCap and widens subjects to null reduces power: M_eff = byType 1, owner:1 alone.",
+   "sha256": "446aaa53dc0ae0d34b9f78118d245f34e89161627c5d47eb4005f78ec9b619f0"
+  },
+  {
+   "id": "replay/v2op/rejects-budget-update-raising-cap-at-pr-threshold",
+   "kind": "replay",
+   "topic": "power-reduction",
+   "purpose": "A-106.2: raising amountCap alone is not PR_eff: M_eff = threshold 2 and additionalControlAuthorizations is absent (A-92.2 step 2).",
+   "sha256": "f5f5e432a174afeeef5360f9d4942203bb692e4ca55405a5b79ddbe66d691409"
+  },
+  {
+   "id": "replay/v2op/rejects-budget-update-narrowing-subjects-at-pr-threshold",
+   "kind": "replay",
+   "topic": "power-reduction",
+   "purpose": "A-106.2: narrowing subjects (actorIds null to [bea]) frees every other actor from the stop rule: M_eff = 2.",
+   "sha256": "81eeb686573441c3fd3077a50ff6f8df2a412d0916e84612435897aa302d9f20"
+  },
+  {
+   "id": "replay/v2op/rejects-budget-update-earlier-expiry-at-pr-threshold",
+   "kind": "replay",
+   "topic": "power-reduction",
+   "purpose": "A-106.2: moving expiresAt earlier (5000 to 4000) ends the stop rule sooner: M_eff = 2.",
+   "sha256": "6378962e7c517beb7ab0fd77fee93da0a70775b4af4a789c526118a8b27c7ec4"
+  },
+  {
+   "id": "replay/v2op/accepts-permission-revocation-at-pr-threshold",
+   "kind": "replay",
+   "topic": "power-reduction",
+   "purpose": "A-106.2: revoking an unrevoked PERMISSION reduces power: M_eff = byType 1, owner:1 alone.",
+   "sha256": "65a76322983ee2534988a2d9884f029a060a3670cb00864facef504147782dcb"
+  },
+  {
+   "id": "replay/v2op/rejects-prohibition-revocation-at-pr-threshold",
+   "kind": "replay",
+   "topic": "power-reduction",
+   "purpose": "A-106.2: revoking a GLOBAL PROHIBITION widens power and is never PR_eff: M_eff = 2.",
+   "sha256": "67394c64b5958ab41736be2d05113611c1659ee5f4fae665b4e6479756265112"
+  },
+  {
+   "id": "replay/v2op/accepts-unappoint-without-role-budget-at-pr-threshold",
+   "kind": "replay",
+   "topic": "power-reduction",
+   "purpose": "A-106.2: ending a tenure no active budget selects by role reduces power: M_eff = byType 1, owner:1 alone.",
+   "sha256": "06836e3a748a1ac17f087b5e0ed4ee6f8b0e89892663d0a69af0113a52858e51"
+  },
+  {
+   "id": "replay/v2op/rejects-unappoint-with-role-budget-at-pr-threshold",
+   "kind": "replay",
+   "topic": "power-reduction",
+   "purpose": "A-106.2: an active budget selects the role, so the unappointment releases the agent from it: M_eff = 2.",
+   "sha256": "3f72abafccc329661e033b3527b2b85787abb4b5fab5f54be5059750ae08f032"
+  },
+  {
+   "id": "replay/v2op/rejects-budget-update-of-rollover-budget-at-pr-threshold",
+   "kind": "replay",
+   "topic": "power-reduction",
+   "purpose": "A-116.1: a FIXED_WINDOW carryUnused budget restated unchanged before its first period is not PR_eff: M_eff = threshold 2, the array is absent (A-92.2 step 2).",
+   "sha256": "7801486e42d2fc1855870f198c1b2e0aec234ce6f74b1122d931e2cd5c71323d"
+  },
+  {
+   "id": "replay/v2op/accepts-budget-declared-at-pr-threshold",
+   "kind": "replay",
+   "topic": "power-reduction",
+   "purpose": "A-116.1: declaring a budget (a zero amountCap over the treasury role) is always PR_eff: M_eff = byType 1, owner:1 alone.",
+   "sha256": "d0b83dd1849f484795f4a6abb2fee55cd2bfb829219d66d227107eae7ef80796"
+  },
+  {
+   "id": "replay/v2op/rejects-permission-revocation-with-dependent-prohibition-at-pr-threshold",
+   "kind": "replay",
+   "topic": "power-reduction",
+   "purpose": "A-116.1 (X-2): the PROHIBITION g-stop is delegated under g-cal, so revoking g-cal is not PR_eff: M_eff = 2, the array is absent.",
+   "sha256": "de4cf6043683d08bbf1a7cb110a3db551cf7bad851ad5bce5b4bcbc63605e992"
+  },
+  {
+   "id": "replay/v2op/rejects-termination-of-prohibition-grantor-at-pr-threshold",
+   "kind": "replay",
+   "topic": "power-reduction",
+   "purpose": "A-116.1 (ASM-2): cal granted the live PROHIBITION g-stop, so terminating cal is not PR_eff: M_eff = 2, the array is absent.",
+   "sha256": "7e9b64e1fbc6d4590be3e1596d45465721949b861acc3a7e1b0fed94a0b2d5f3"
+  },
+  {
+   "id": "replay/v2op/rejects-termination-of-prohibition-ancestor-at-pr-threshold",
+   "kind": "replay",
+   "topic": "power-reduction",
+   "purpose": "A-127.2: bea is on the anchor path of the live PROHIBITION g-stop (grantee of root, grantor of g-cal), so terminating bea is not PR_eff: M_eff = 2, the array is absent.",
+   "sha256": "6bb9e1a7c8c62f00a660c75164e8f03f104ffedaab60ebdbe1a7e955498c9fea"
+  },
+  {
+   "id": "replay/v2op/accepts-unappoint-with-expired-role-budget-at-pr-threshold",
+   "kind": "replay",
+   "topic": "power-reduction",
+   "purpose": "A-116.1: the role budget expired (expiresAt <= t), so it can never match again: PR_eff, owner:1 alone.",
+   "sha256": "863b053374dc0fae38b590ac535600a69b8ea773d0a732641364b367ff39c027"
+  },
+  {
+   "id": "replay/v2op/accepts-unappoint-with-role-budget-naming-other-actor-at-pr-threshold",
+   "kind": "replay",
+   "topic": "power-reduction",
+   "purpose": "A-116.1: the role budget names actor cal only, so it never matches bea: PR_eff, owner:1 alone.",
+   "sha256": "b0d76068ef9a3813f3ce66f30e7cbe28302f505702c0b80a1b0406fe5947abbd"
+  },
+  {
+   "id": "replay/v2op/accepts-policy-rotation-same-keys",
+   "kind": "replay",
+   "topic": "policy-rotations",
+   "purpose": "A-96.2 (i), re-specified: out of a committed epoch, same keys, a new policy, the commitment carried unchanged and no nextKeyAuthorizations.",
+   "sha256": "e796a6fc8ac5b78a3bfae832e23c82ed1b042557cae77ecc59f9a1c30a155476"
+  },
+  {
+   "id": "replay/v2op/accepts-second-policy-rotation",
+   "kind": "replay",
+   "topic": "policy-rotations",
+   "purpose": "A-96: a second policy rotation in the same committed lineage, authorized by the first one's policy (M_rot = 1).",
+   "sha256": "65dab6320e04ed87e8ba94c92a9794214b557d0836db3a0bbef8f11079857048"
+  },
+  {
+   "id": "replay/v2op/rejects-policy-rotation-dropping-commitment",
+   "kind": "replay",
+   "topic": "policy-rotations",
+   "purpose": "A-96.2 (i) rule 5: a policy rotation out of a committed epoch without nextKeyDigests.",
+   "sha256": "26993fb6fe1d55363f5ac9455de6cddf70ffd776c3d247d9baf8e2ceb61f4c8d"
+  },
+  {
+   "id": "replay/v2op/rejects-policy-rotation-replacing-commitment",
+   "kind": "replay",
+   "topic": "policy-rotations",
+   "purpose": "A-96.2 (i) rule 5: a policy rotation that commits to another next key.",
+   "sha256": "69652571228ff8738477dbd947778d489000dbb7f9b298fbf43a38430c0045ea"
+  },
+  {
+   "id": "replay/v2op/rejects-same-keys-same-policy",
+   "kind": "replay",
+   "topic": "policy-rotations",
+   "purpose": "A-96.1: same keys, the same policy as written and the same commitment: the rotation changes nothing.",
+   "sha256": "f14762510a51bf0df957d038914cb58887176949fb3ed8bed20e438dcb993811"
+  },
+  {
+   "id": "replay/v2op/rejects-policy-rotation-with-next-key-authorizations",
+   "kind": "replay",
+   "topic": "policy-rotations",
+   "purpose": "A-96.2 (i): a policy rotation reveals no key, so a nextKeyAuthorizations array is refused.",
+   "sha256": "27476e4b1ef35897720e5863ea58f079c0b750f3bee1568a662f8a97f93c6e9a"
+  },
+  {
+   "id": "replay/v2op/builder-accepts-rotation-resetting-policy",
+   "kind": "replay",
+   "topic": "policy-rotations",
+   "purpose": "A-91.0 / A-96.4: replay is literal: a rotation without ownerPolicy sets the default policy (the writer refuses it as POLICY_RESET unless asked).",
+   "sha256": "7f575874322cc928581b7f089d24a982a03434f50101db305df134dd3479c609"
+  },
+  {
+   "id": "replay/v2op/accepts-policy-rotation-adding-commitment",
+   "kind": "replay",
+   "topic": "policy-rotations",
+   "purpose": "A-96.2 (ii): out of an uncommitted epoch a policy rotation may start a commitment.",
+   "sha256": "e14affcddee59809334c35569ca3f4ed8596f04e1f1009134a73e42690217351"
+  },
+  {
+   "id": "replay/v2op/builder-accepts-policy-rotation-without-commitment",
+   "kind": "replay",
+   "topic": "policy-rotations",
+   "purpose": "A-96.2 (ii): out of an uncommitted epoch a policy rotation needs no commitment.",
+   "sha256": "d9db9f3663b57c399fbbd2283dedf4671c6625446e40b82db1461c21c892c201"
+  },
+  {
+   "id": "replay/v2op/rejects-recovery-without-option",
+   "kind": "replay",
+   "topic": "policy-rotations",
+   "purpose": "A-97.7 / HF1 §7.1 item 1: without `recovery` a committed next key is not an admissible signer of the rotation that reveals it.",
+   "sha256": "4d876d3e589a56ba3ad2e4609f1de99b5a626e2ac0f76651bdfbcaa5fca3d61c"
+  },
+  {
+   "id": "replay/v2op/rejects-partial-next-key-proofs-under-policy",
+   "kind": "replay",
+   "topic": "policy-rotations",
+   "purpose": "A-108.2: two committed keys revealed, one proof, under a policy: every revealed key must prove possession.",
+   "sha256": "680864452742b6c06022697327bcada61f9fdd53b7478d805a68dfb01b315f12"
+  },
+  {
+   "id": "replay/v2op/accepts-partial-next-key-proofs-without-policy",
+   "kind": "replay",
+   "topic": "policy-rotations",
+   "purpose": "A-108.1: the same rotation with no ownerPolicy anywhere: HF1 rule 4 as written (one proof suffices).",
+   "sha256": "b65d944b4b43e7fac9cbfcf36e74aa3865252ecb9eb57b0cc8fb63fcf04eeea6"
+  },
+  {
+   "id": "replay/v2op/accepts-policy-history",
+   "kind": "replay",
+   "topic": "policy-rotations",
+   "purpose": "A-91.7 pinned root: the owner key epoch records carry `policy` at epoch 0 (genesis), 1 (a policy rotation out of the committed epoch) and 2 (a pre-rotated key rotation); agent co-signers count on ordinary events and never on rotations.",
+   "sha256": "cd75bde63273640a6836defaf4d83c39b13dfcf037b0d70b4e602d0f009335b2"
+  },
+  {
+   "id": "replay/v2op/accepts-recovery-rotation-next-key-only",
+   "kind": "replay",
+   "topic": "recovery",
+   "purpose": "A-97.2: under recovery a committed next key signs the rotation that reveals it (M_rot = 1), with its proof of possession; owner:1 is lost.",
+   "sha256": "abbe6047ebcc19f54d7eeff2a7eec8d7d4b665f672a2ae1841235800be0e81e6"
+  },
+  {
+   "id": "replay/v2op/rejects-recovery-unrevealed-next-key",
+   "kind": "replay",
+   "topic": "recovery",
+   "purpose": "A-110.1: next:2 is committed but the rotation does not reveal it, so it is not admissible: A-92.2 step 1.",
+   "sha256": "815854b188169c511b05bc85fc5163dd8df000fbca9a843ff4e613665cc6d220"
+  },
+  {
+   "id": "replay/v2op/rejects-recovery-uncommitted-key",
+   "kind": "replay",
+   "topic": "recovery",
+   "purpose": "A-97.2: a revealed key whose digest is not committed is not admissible; refused at step 1, before HF1 rule 2.",
+   "sha256": "e062f531146e930f9b7bdd9b2287a7fef486bb690f4bbc19b1ee3c7991de8b8a"
+  },
+  {
+   "id": "replay/v2op/builder-rejects-recovery-without-proof",
+   "kind": "replay",
+   "topic": "recovery",
+   "purpose": "A-108.2: the recovery signer is a revealed key and must still prove possession (the epoch carries a policy).",
+   "sha256": "7933d118e1800bbb1a049f9027f5dede24d322d55b03f00d6c83a94895095646"
+  },
+  {
+   "id": "replay/v2op/accepts-recovery-rotation-mixed-quorum",
+   "kind": "replay",
+   "topic": "recovery",
+   "purpose": "A-97.4: M_rot = 2 reached by one current key (owner:1) and one revealed committed key (next:1); owner:2 is replaced.",
+   "sha256": "5c2193843fa8b857435323a4e2c84faf001b981b78ee03202d6dbb955254fc60"
+  },
+  {
+   "id": "replay/v2op/rejects-duplicate-credential-on-recovery",
+   "kind": "replay",
+   "topic": "recovery",
+   "purpose": "A-108.5: one committed credential revealed under two key ids, both signing: A-92.2 step 4.",
+   "sha256": "ef61482de1859c2b82e7062d1369ba88705a1e0844bba33345651b267d1b3411"
+  },
+  {
+   "id": "replay/v2op/rejects-recovery-agent-counted",
+   "kind": "replay",
+   "topic": "recovery",
+   "purpose": "A-97.4: M_rot = 2 with one revealed key and one AGENT key: agents never count on a rotation.",
+   "sha256": "db073f205067b6d91558ce780bae80c599aa3e262719f9d83aea3a594329114a"
+  },
+  {
+   "id": "replay/v2op/rejects-duplicate-credential-on-rotation",
+   "kind": "replay",
+   "topic": "credentials",
+   "purpose": "A-99: a rotation carrying ownerPolicy with one credential under two key ids: EVENT_DATA_INVALID after control authorization and the key test.",
+   "sha256": "2688050c4869aeffa7566b424e4f0f3b8ff3a748cbe0b6ebd86b5fb4ba98ded9"
+  },
+  {
+   "id": "replay/v2op/accepts-duplicate-credential-without-policy",
+   "kind": "replay",
+   "topic": "credentials",
+   "purpose": "A-99.1: without ownerPolicy anywhere, two key ids on one credential stay valid (today's behaviour).",
+   "sha256": "a35791e62273294a7b2f4a7886720e02249cec3325226a331cd97706bace5559"
+  },
+  {
+   "id": "replay/v2op/rejects-commitment-to-session-credential",
+   "kind": "replay",
+   "topic": "credentials",
+   "purpose": "A-110.2: a commitment-only rotation naming the digest of an admitted session credential.",
+   "sha256": "966006e828a95f83b8cfea0cb2f9746d27b06c213c58c56962734cc5f7a65f1d"
+  },
+  {
+   "id": "replay/v2op/rejects-commitment-to-counterparty-credential",
+   "kind": "replay",
+   "topic": "credentials",
+   "purpose": "A-110.2: a commitment-only rotation naming the digest of a registered counterparty key.",
+   "sha256": "f955279cd91dde0e35f603c8fe96d1d1ae95627a123990e6026a07cee67faa3d"
+  },
+  {
+   "id": "replay/v2op/rejects-session-admission-of-committed-credential",
+   "kind": "replay",
+   "topic": "credentials",
+   "purpose": "A-110.2: while the epoch carries a policy, a session whose credential is a committed next key.",
+   "sha256": "cbc09abdcf742d51ac62c8eef28ed3d645aa8a2fef72609c7642eb95c5298e58"
+  },
+  {
+   "id": "replay/v2op/accepts-session-admission-of-committed-credential-without-policy",
+   "kind": "replay",
+   "topic": "credentials",
+   "purpose": "A-110.2 guard: the same admission with no ownerPolicy anywhere is accepted (A-32.3 lists it outside replay).",
+   "sha256": "193c1c1e7b1b960f9d7ee1472f14b9a69d8edd980aa687b95a26d235d0f765ae"
+  },
+  {
+   "id": "replay/v2op/rejects-session-admission-of-owner-credential-under-policy",
+   "kind": "replay",
+   "topic": "credentials",
+   "purpose": "A-110.2: under a policy, a session whose credential is owner:2's.",
+   "sha256": "b96fbfefc6dcb9ca778826a3db6b6555f5cfda03567a8d4c4dcbd8fefadaeda6"
+  },
+  {
+   "id": "replay/v2op/rejects-counterparty-registration-of-committed-credential",
+   "kind": "replay",
+   "topic": "credentials",
+   "purpose": "A-110.2: while the epoch carries a policy, a counterparty key that is a committed next key.",
+   "sha256": "5645c6b11c3c79fc1b4d99e2f0753d5f2810388a2e6607eab0836e8d8043a92a"
+  },
+  {
+   "id": "replay/v2op/rejects-revealed-key-equal-to-session-credential",
+   "kind": "replay",
+   "topic": "credentials",
+   "purpose": "A-110.3: a rotation revealing a key whose credential is an admitted session credential: EVENT_DATA_INVALID at the key test.",
+   "sha256": "c3b98cbb17d614d25a02fc4609e74402bddd6a05f5dcd3ee009ca2c33cd875e3"
+  },
+  {
+   "id": "replay/v2op/rejects-policy-adoption-with-session-owner-credential",
+   "kind": "replay",
+   "topic": "credentials",
+   "purpose": "A-117.2 (R3F-1): owner:2's credential is a session credential; the rotation adopting a policy keeps owner:2: EVENT_DATA_INVALID at the key test.",
+   "sha256": "7ef475123a909bdf89ff47464d37bbc4f95c1e75642cd50f4cfb26abb2611ac9"
+  },
+  {
+   "id": "replay/v2op/accepts-policy-adoption-carrying-foreign-commitment",
+   "kind": "replay",
+   "topic": "credentials",
+   "purpose": "A-117.3 (X-3): the adopting policy rotation restates the carried commitment to session:2's credential; a carried digest is not re-tested.",
+   "sha256": "b136ba0a84812f2ec03bab78f81bd3512704f833cdc192797a8a0fad7742862d"
+  },
+  {
+   "id": "replay/v2op/rejects-reveal-of-foreign-committed-key-under-policy",
+   "kind": "replay",
+   "topic": "credentials",
+   "purpose": "A-117.2: revealing the carried commitment (session:2's credential as owner key rt:1) under the policy: EVENT_DATA_INVALID at the key test.",
+   "sha256": "2ec7918299b439ea8e648f039f9489a4415af5cd9c289b547d343004c4f3e7cd"
+  },
+  {
+   "id": "replay/v2op/rejects-commitment-to-attester-in-force",
+   "kind": "replay",
+   "topic": "credentials",
+   "purpose": "A-117.3 (ce34): one rotation drops the attesters and commits to attester:1: an introduced digest names an attester in force.",
+   "sha256": "b5a9c9e4b83065357d9fde48773882a3db025eb2abdf8dfafae9c184f6505025"
+  },
+  {
+   "id": "replay/v2op/rejects-session-admission-of-attester-credential-under-policy",
+   "kind": "replay",
+   "topic": "credentials",
+   "purpose": "A-117.4 (X-11): under a policy a session may not use an attester credential of that policy (row 8).",
+   "sha256": "6960a38d21ca7d0648a19cea20107a66b7abbdd738e8f9b4c31e06a18bc0204d"
+  },
+  {
+   "id": "replay/v2op/rejects-policy-with-attester-equal-to-session-credential",
+   "kind": "replay",
+   "topic": "credentials",
+   "purpose": "A-117.4: a policy naming an admitted session credential as an attester: EVENT_DATA_INVALID at the rotation.",
+   "sha256": "fe381f24785ec0c9f002ac256b7d56e118fdd18f103ae3c07ea14727563abce3"
+  },
+  {
+   "id": "replay/v2op/rejects-policy-in-migrated-genesis",
+   "kind": "replay",
+   "topic": "migration",
+   "purpose": "A-91.2 rule 9: a migrated genesis carries no ownerPolicy.",
+   "sha256": "9a34f1d75589bf1f2e7226a6ada17f61e1c7f05949047e62b024760747c9596a"
+  },
+  {
+   "id": "replay/v2op/rejects-additional-authorizations-in-prefix",
+   "kind": "replay",
+   "topic": "migration",
+   "purpose": "A-91.5: additionalControlAuthorizations inside a migrated prefix: EVENT_DATA_INVALID at C4, coded against migratedFrom.",
+   "sha256": "78bad9790cce481021a8267743ad0a6b01e7436391f096bb3d0fa29509dcf62c"
+  }
+ ]
+}

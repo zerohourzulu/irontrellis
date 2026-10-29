@@ -1,0 +1,22 @@
+{
+ "id": "adapter-line-separator-in-string-2",
+ "target": "replay",
+ "found": "campaign seed 103, iteration 4950 (ADAPTER_REPLAY:ts=Unterminated string in JSON at position :py=REJECTED)",
+ "description": "a second minimized replay input with U+2028 gets one answer",
+ "rootCause": "as adapter-line-separator-in-string (U+2028 in an event string cut by readline)",
+ "fix": "the adapter splits stdin on \\n only and drops one trailing \\r",
+ "input": {
+  "events": [
+   {
+    "verifierKey": " "
+   }
+  ]
+ },
+ "expect": {
+  "ts": {
+   "status": "REJECTED",
+   "code": "INVALID_INPUT",
+   "position": 0
+  }
+ }
+}

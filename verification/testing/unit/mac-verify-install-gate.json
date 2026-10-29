@@ -1,0 +1,40 @@
+{
+ "step": "verify-install",
+ "attempt": 1,
+ "cwd": "WORK/tree",
+ "nice": 0,
+ "runner": "run_build2_final_01.py",
+ "tmpdir": "<TMP>/verify-install-1/",
+ "tmpdirMode": "0700",
+ "freeGiBBefore": 120.9,
+ "minFreeGiB": 32,
+ "steps": [
+  {
+   "command": [
+    "node",
+    "scripts/verify-install.mjs",
+    "--json",
+    "WORK/out/verify-install-1.json"
+   ],
+   "exitCode": 1,
+   "started": "2026-10-26T15:30:17Z",
+   "finished": "2026-10-26T15:32:22Z",
+   "seconds": 124.2,
+   "outputBytes": 23263,
+   "outputSha256": "0e0943b4e11b4ad7346052e2eac73e97a527b0483a4db96bba811709908f7086",
+   "epermLines": 4
+  }
+ ],
+ "tree": {
+  "clean": true,
+  "strays": [],
+  "strayDir": null,
+  "restored": [],
+  "cleanAfterRestore": true
+ },
+ "status": "FAILED",
+ "log": "logs/verify-install-1.log",
+ "logSha256": "125725767d8e6f45f68aace9438dc784f7a08d3f585b715093b3bf99fe623706",
+ "seconds": 124.2,
+ "outputs": "WORK/out/verify-install-1"
+}

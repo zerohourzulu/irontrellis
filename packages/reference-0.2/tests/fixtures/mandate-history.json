@@ -1,0 +1,158 @@
+[
+ {
+  "data": {
+   "adapterPolicyHash": "0x00c3498e2744943663475d0187ca979cdd09763b88427781883693c4b8c163a7",
+   "canonicalLineageId": "lineage:mandate",
+   "domain": {
+    "chainId": "31337",
+    "deploymentId": "core-0.2-reference:mandate",
+    "protocol": "continuity",
+    "verifyingContract": "0x0000000000000000000000000000000000003002",
+    "version": "0.2"
+   },
+   "finality": "LOCAL_ONLY",
+   "globalPolicySourceId": "policy-source:mandate",
+   "policyVersion": "local-mandate-policy:mandate/0.2",
+   "rootRecognitionPolicy": "declared-principal-root/0.2",
+   "timeSource": "EVENT_TIMESTAMP",
+   "versions": {
+    "administrativeAuthorizationVersion": "continuity-administrative-authorization/0.2",
+    "authorizationProofVersion": "continuity-authorization-proof/0.2",
+    "eventSchemaVersion": "continuity-event/0.2",
+    "queryEnvelopeVersion": "continuity-query-envelope/0.2",
+    "receiptSchemaVersion": "continuity-receipt/0.2",
+    "runtimeAuthorizationVersion": "continuity-runtime-authorization/0.2",
+    "signatureScheme": "eip191-personal-sign-keccak256"
+   }
+  },
+  "id": "genesis:mandate",
+  "timestamp": 0,
+  "type": "DEPLOYMENT_INITIALIZED"
+ },
+ {
+  "data": {
+   "principalId": "principal:mandate"
+  },
+  "id": "principal:mandate",
+  "timestamp": 1,
+  "type": "PRINCIPAL_CREATED"
+ },
+ {
+  "data": {
+   "agentId": "buyer:mandate",
+   "controllerId": "controller:mandate",
+   "initialControlEpoch": 1,
+   "principalId": "principal:mandate"
+  },
+  "id": "buyer:mandate",
+  "timestamp": 2,
+  "type": "AGENT_CREATED"
+ },
+ {
+  "data": {
+   "agentId": "researcher:mandate",
+   "controllerId": "controller:mandate",
+   "initialControlEpoch": 1,
+   "principalId": "principal:mandate"
+  },
+  "id": "researcher:mandate",
+  "timestamp": 3,
+  "type": "AGENT_CREATED"
+ },
+ {
+  "data": {
+   "grant": {
+    "authorityId": "mandate-authority:mandate",
+    "constraints": {
+     "actions": [
+      "purchase"
+     ],
+     "expiresAt": 10000,
+     "maxAmount": {
+      "$continuity.bigint": "2500"
+     },
+     "maxCumulativeAmount": {
+      "$continuity.bigint": "5000"
+     },
+     "maxTransactions": 3,
+     "maxDelegationDepth": 2,
+     "quantitative": true,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "plush:mandate"
+     ]
+    },
+    "granteeId": "buyer:mandate",
+    "grantorId": "principal:mandate",
+    "independent": true,
+    "kind": "PERMISSION",
+    "rootAuthorityId": "mandate-authority:mandate"
+   }
+  },
+  "id": "mandate-authority:mandate",
+  "timestamp": 4,
+  "type": "AUTHORITY_GRANTED"
+ },
+ {
+  "data": {
+   "grant": {
+    "authorityId": "research-authority:mandate",
+    "constraints": {
+     "actions": [
+      "purchase"
+     ],
+     "expiresAt": 10000,
+     "maxAmount": {
+      "$continuity.bigint": "500"
+     },
+     "maxCumulativeAmount": {
+      "$continuity.bigint": "1000"
+     },
+     "maxTransactions": 2,
+     "maxDelegationDepth": 1,
+     "quantitative": true,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "plush:mandate"
+     ]
+    },
+    "granteeId": "researcher:mandate",
+    "grantorId": "buyer:mandate",
+    "independent": true,
+    "kind": "PERMISSION",
+    "parentAuthorityId": "mandate-authority:mandate",
+    "rootAuthorityId": "mandate-authority:mandate"
+   }
+  },
+  "id": "research-authority:mandate",
+  "timestamp": 5,
+  "type": "AUTHORITY_GRANTED"
+ },
+ {
+  "data": {
+   "grant": {
+    "authorityId": "report-authority:mandate",
+    "constraints": {
+     "actions": [
+      "report"
+     ],
+     "expiresAt": 10000,
+     "maxDelegationDepth": 0,
+     "quantitative": false,
+     "requiredIntersectionIds": [],
+     "resources": [
+      "plush:mandate"
+     ]
+    },
+    "granteeId": "buyer:mandate",
+    "grantorId": "principal:mandate",
+    "independent": true,
+    "kind": "PERMISSION",
+    "rootAuthorityId": "report-authority:mandate"
+   }
+  },
+  "id": "report-authority:mandate",
+  "timestamp": 6,
+  "type": "AUTHORITY_GRANTED"
+ }
+]

@@ -1,0 +1,60 @@
+{
+ "id": "receipt-negative-zero-position",
+ "target": "transparency",
+ "found": "pre-release fuzzing, 2026-09-26 (transparency target, initial campaign seed 11; first seen as a harness transport artifact)",
+ "description": "A receipt whose entry states head position -0 is ENTRY_MALFORMED in both cores when read from JSON text (JSON.parse keeps -0, and a U53 is never negative zero).",
+ "rootCause": "python -m irontrellis verify-receipt read the file with json.load, which turns -0 into the integer 0, so it reported VALID where the TypeScript verifier, reading the same text, reports ENTRY_MALFORMED. (The fuzz harness itself had the same blind spot: JSON.stringify writes -0 as 0, so its Python side saw another number than its TypeScript side.)",
+ "fix": "python __main__ verify-receipt reads the file with canonical.json_loads; the harness sends and stores -0 faithfully (fuzz/lib/python.mjs stringifyFaithful).",
+ "input": {
+  "kind": "receipt",
+  "receipt": {
+   "version": "irontrellis-witness-receipt/1",
+   "witness": {
+    "origin": "irontrellis-witness/vectors",
+    "verifierKey": "irontrellis-witness/vectors+bee3c9ed+AchTrQ8M0rYZrqks7sT9VqJNZJnVhM55JX5Fz9gTm2Cn"
+   },
+   "entry": {
+    "version": "irontrellis-witness-entry/1",
+    "historyId": "0x49af76147ad14d237097d1171a7792d8bea58defb857a8553d384d38c6dcbe76",
+    "receivedAt": 1767225601000,
+    "kind": "HEAD",
+    "signedStatement": {
+     "statement": {
+      "version": "irontrellis-head-statement/1",
+      "historyId": "0x49af76147ad14d237097d1171a7792d8bea58defb857a8553d384d38c6dcbe76",
+      "domain": {
+       "protocol": "irontrellis",
+       "version": "1",
+       "deploymentId": "deployment:witness-vectors"
+      },
+      "head": {
+       "hash": "0x49af76147ad14d237097d1171a7792d8bea58defb857a8553d384d38c6dcbe76",
+       "position": -0,
+       "canonicalTime": 0
+      },
+      "previous": null
+     },
+     "keyId": "owner:1",
+     "scheme": "ed25519",
+     "signature": "0x83acc6c090893c353e57d468a3ddb0896f87e1406065931a53bb458dea9f76ed80f802a8d1eee8bd7f5dc921e84821ea169c38a6343dc49875abf2caee54f409"
+    }
+   },
+   "index": 1,
+   "checkpoint": "irontrellis-witness/vectors\n7\nl+GP3kbHoTz6pQeDETfC15hX8NLfkAFUdgdzLD1a/LE=\n\n— irontrellis-witness/vectors vuPJ7e5exQBHND7ugz/dFqahehncHrN9PoFoDTM0e0ml4SN52qKU5FY58TGTvhmvXa2tnsATYp4K4w/YghgS/DeZAA4=\n",
+   "inclusionProof": [
+    "C7qulZ9gj9RmCbtTBH9kXeWvdz8Ee6B5AcI9rwCsO7A=",
+    "/N9nd4+GojwdP2MCQWLJmwJxnOOjhQE4tQHTj2a+ZD8=",
+    "B345NfwAUrh/5w4awwvQ18sAXyN5YZHpFyFYqjiqrXY="
+   ]
+  },
+  "keys": [
+   "irontrellis-witness/vectors+bee3c9ed+AchTrQ8M0rYZrqks7sT9VqJNZJnVhM55JX5Fz9gTm2Cn"
+  ]
+ },
+ "expect": {
+  "ts": {
+   "ok": false,
+   "reason": "ENTRY_MALFORMED"
+  }
+ }
+}

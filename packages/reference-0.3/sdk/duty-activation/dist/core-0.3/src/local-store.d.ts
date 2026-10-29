@@ -1,0 +1,11 @@
+import * as core from "../../core-0.2/src/core/index.ts";
+import { PortableFileEventStore } from "../../core-0.2/src/indexer/portable-file-event-store.ts";
+import { type PortableReplayState } from "../../core-0.2/src/core/portable-replay.ts";
+import type { LocalOwnerOptions, WriteResult } from "./local-owner.ts";
+export declare const POLICY = "continuity-local-owner/0.3-preview.1";
+export declare function configuration(input: LocalOwnerOptions): Readonly<LocalOwnerOptions>;
+export type Config = ReturnType<typeof configuration>;
+export declare function event(type: core.PortableCanonicalEvent["type"], timestamp: number, data: object): core.PortableCanonicalEvent;
+export declare function read(store: PortableFileEventStore, config: Config): readonly core.PortableCanonicalEvent[];
+export declare function stateOf(events: readonly core.PortableCanonicalEvent[]): PortableReplayState;
+export declare function append(store: PortableFileEventStore, config: Config, next: core.PortableCanonicalEvent, events?: readonly core.PortableCanonicalEvent[]): WriteResult;

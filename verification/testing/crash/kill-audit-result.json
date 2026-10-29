@@ -1,0 +1,73 @@
+{
+ "batches": {
+  "a-crash-000": "PASS",
+  "a-crash-012": "PASS",
+  "a-crash-024": "PASS",
+  "a-crash-036": "PASS",
+  "a-crash-048": "PASS",
+  "a-crash-060": "PASS",
+  "a-crash-072": "PASS",
+  "a-crash-084": "PASS",
+  "a-crash-096": "PASS",
+  "a-crash-108": "PASS",
+  "a-crash-120": "PASS",
+  "a-crash-132": "PASS",
+  "a-crash-144": "PASS",
+  "a-crash-156": "PASS",
+  "a-crash-168": "PASS",
+  "a-crash-180": "PASS",
+  "a-crash-192": "PASS",
+  "a-crash-204": "PASS",
+  "a-crash-216r1": "PASS",
+  "a-crash-228": "PASS",
+  "a-crash-240": "PASS",
+  "a-crash-252": "PASS",
+  "a-crash-264": "PASS",
+  "a-crash-276": "PASS",
+  "a-crash-288": "PASS",
+  "a-crash-300": "PASS",
+  "a-crash-312": "PASS",
+  "a-crash-324": "PASS",
+  "a-crash-336": "PASS",
+  "a-kill-012": "FAIL",
+  "a-killfix-000": "PASS",
+  "a-killfix-020": "PASS"
+ },
+ "byOutcome": {
+  "COMPLETED": 3247,
+  "COMPLETED_AFTER_CLEARANCE": 24,
+  "SAFE_STOP": 16,
+  "VIOLATION": 1
+ },
+ "casesDone": 3288,
+ "ended": "2026-10-26T14:21:07.477161+00:00",
+ "guardStops": [],
+ "mode": "a",
+ "monitorDegraded": [],
+ "ownedAliveAfterStop": [],
+ "preparedManifest": "edba2ea4daaf72d5d1a2e9180325172fb25242e0f1700fdd2ac0c08b3995005f",
+ "problems": [],
+ "signalled": [],
+ "started": "2026-10-26T13:49:36.716274+00:00",
+ "status": "PASS",
+ "superseded": [
+  "a-kill-012 shard 20 by a-killfix-020"
+ ],
+ "supersededAgreement": {
+  "a-kill-012 shard 20": {
+   "differs": {
+    "66": [
+     "COMPLETED_AFTER_CLEARANCE",
+     "COMPLETED"
+    ],
+    "89": [
+     "COMPLETED_AFTER_CLEARANCE",
+     "SAFE_STOP"
+    ]
+   },
+   "sameOutcome": 4,
+   "supersededRows": 6
+  }
+ },
+ "violations": 1
+}

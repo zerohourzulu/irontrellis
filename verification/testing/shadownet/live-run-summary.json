@@ -1,0 +1,158 @@
+{
+ "version": "irontrellis-shadownet-live-run/0",
+ "status": "EXPERIMENTAL; TEST profile; test network, no production finality claim",
+ "goReference": "20261024T140920Z-coordinator-all-founder-decisions-4da-4de.md",
+ "destination": "0x4bdf8bdc544f4126ebc52c3cb31edece1446e38c",
+ "trustRootDigest": "0x677dbbdf2c63ed97f8e9c774ea5ed1e385dd8269b9ea5641e86294dd769ed213",
+ "statements": [
+  {
+   "sequence": 0,
+   "position": 16,
+   "statementDigest": "0x002acafeb5046e4fe51d8dcf872e89483454c823fb8bb8890eaaef963d65fe57",
+   "attemptId": "0xe092ead7ec48c806d511bdd98e214e3f46ceaa36fd89db15791a7876299fc15e",
+   "attestationKey": "owner:1",
+   "transactionHash": "0xbc16caa0d8992934dcc872db23be25af65079a0d7aedc6a01eb650f483b7e901",
+   "blockNumber": 7067159,
+   "blockHash": "0x4c56aa8ce45301725997301b6ada517113ad5bee5a4b3aa4336d10aba4cd7fae",
+   "gasUsed": 6492276,
+   "gasLimit": 8243585,
+   "statementBytes": 1131,
+   "outboxRounds": [
+    "INCLUDED_SUCCESS"
+   ]
+  },
+  {
+   "sequence": 1,
+   "position": 25,
+   "statementDigest": "0xcd3d0c3d1b8acb0021423f9e2b9f6c3696ad1252fde4be8c3936e1941d12063d",
+   "attemptId": "0xb1bab894057b0fefac2d609a2ed9af12c28197ba73aeeefe687f2979c50f7fb3",
+   "attestationKey": "owner:1",
+   "transactionHash": "0x653d191b529392def11be7bb8c55eb509af26241ca8bcb78740e47fd88899e99",
+   "blockNumber": 7067306,
+   "blockHash": "0xb5c0e0d0d63fa5d835186157f2874122e3094cd7d7d53b4dd8f85e87ff469c05",
+   "gasUsed": 7229495,
+   "gasLimit": 9167538,
+   "statementBytes": 1282,
+   "outboxRounds": [
+    "INCLUDED_SUCCESS"
+   ]
+  },
+  {
+   "sequence": 2,
+   "position": 29,
+   "statementDigest": "0xe9e760c11a56f0df018795bf0093079bd962663ebe80a18704c50d6efcd42aec",
+   "attemptId": "0x3172b95e3378242cd7ac4fcb49760323a87b0475218e1c94c65cbb4fc2a60f89",
+   "attestationKey": "owner:1",
+   "transactionHash": "0x889961e5476f89886149c37abbe2b446a71e505c2131accaf383db52edfb54bf",
+   "blockNumber": 7067315,
+   "blockHash": "0x32a84899dcf2ad481c65d10d58e6be8c9ba4173bc3ba11f07fc875af1990192a",
+   "gasUsed": 7230265,
+   "gasLimit": 9168521,
+   "statementBytes": 1282,
+   "outboxRounds": [
+    "INCLUDED_SUCCESS"
+   ]
+  },
+  {
+   "sequence": 3,
+   "position": 30,
+   "statementDigest": "0x0dbf49c4357cca15ec4037c08f26fc8dfca99c59f979f0356db764d845d20384",
+   "attemptId": "0xc928877cad2438b05c41084992cab48d0c25536b6bf414267553a9cef68e0c33",
+   "attestationKey": "owner:1",
+   "transactionHash": "0xd2932e4f689c532bff38d517e61bdc622611a433fb4bbcb1f4716954a2d8ced0",
+   "blockNumber": 7067338,
+   "blockHash": "0xa054e7408572a6f06b8a2602701464ef35ba74cce5c3f579ec48791c466fed1b",
+   "gasUsed": 7230034,
+   "gasLimit": 9168226,
+   "statementBytes": 1282,
+   "outboxRounds": [
+    "INCLUDED_SUCCESS"
+   ]
+  },
+  {
+   "sequence": 4,
+   "position": 38,
+   "statementDigest": "0x64d046dacda89ba4f1a4c74647648a5df12db2c5a5c6987c11d85364bedb6d8d",
+   "attemptId": "0x71de74fbd6ed4a9ca2eceeaf284d9310ce893bf9dffab1973d2190bf2d9c9b99",
+   "attestationKey": "owner:1",
+   "transactionHash": "0xf0bde283fefd9ba31acc011ac75d90a486aa8638c74bbf48954dafb9aed1dfb7",
+   "blockNumber": 7067356,
+   "blockHash": "0x5580f3cf88595d3fdde75201890c42bf02724620f867cbd97748b75138b28e1a",
+   "gasUsed": 7229495,
+   "gasLimit": 9167538,
+   "statementBytes": 1282,
+   "outboxRounds": [
+    "INCLUDED_SUCCESS"
+   ]
+  },
+  {
+   "sequence": 5,
+   "position": 45,
+   "statementDigest": "0xd04621d7642d8388a0d2d3b83cc3fae0b6ef9f84c7fdf8221e4212a53084a01c",
+   "attemptId": "0xad7be2bb61ae1c4790f3164f36c708b02ee7c1620d14d24c677d6c8b70c4d7cc",
+   "attestationKey": "owner:1",
+   "transactionHash": "0x2e67209c2da964979247fbdab88887c3c635980b8530b1504d5052e3afd3425b",
+   "blockNumber": 7067373,
+   "blockHash": "0xbcaef3a9bae023784de470a7a7592a3984fad71830340a6de30487486f43a0d9",
+   "gasUsed": 7230650,
+   "gasLimit": 9169011,
+   "statementBytes": 1282,
+   "outboxRounds": [
+    "INCLUDED_SUCCESS"
+   ]
+  }
+ ],
+ "crashes": [],
+ "reports": [
+  {
+   "sequence": 0,
+   "label": "L1_FINAL",
+   "mode": "TRUSTED_NODE",
+   "reason": null
+  },
+  {
+   "sequence": 1,
+   "label": "L1_FINAL",
+   "mode": "TRUSTED_NODE",
+   "reason": null
+  },
+  {
+   "sequence": 2,
+   "label": "L1_FINAL",
+   "mode": "TRUSTED_NODE",
+   "reason": null
+  },
+  {
+   "sequence": 3,
+   "label": "L1_FINAL",
+   "mode": "TRUSTED_NODE",
+   "reason": null
+  },
+  {
+   "sequence": 4,
+   "label": "L1_FINAL",
+   "mode": "TRUSTED_NODE",
+   "reason": null
+  },
+  {
+   "sequence": 5,
+   "label": "L1_FINAL",
+   "mode": "TRUSTED_NODE",
+   "reason": null
+  }
+ ],
+ "reader": {
+  "block": {
+   "number": 7067377,
+   "hash": "0x661c83919c86c576f61ee0a44a0e20d2de485ca70fa1dc53940fbb3bab89b865",
+   "pinnedBy": "hash"
+  },
+  "availabilityVerified": true,
+  "anchorsVerified": true,
+  "closureVerified": true,
+  "failures": []
+ },
+ "spentWei": "479853634000000000",
+ "spentNote": "sum of gasUsed x gasPrice over every receipt (legacy transactions pay their gasPrice; Etherlink counts its inclusion fee in gasUsed)",
+ "rpcCalls": 345
+}

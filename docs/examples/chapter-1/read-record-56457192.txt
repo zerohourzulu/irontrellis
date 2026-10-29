@@ -1,0 +1,10 @@
+record at 0x1387ce610c322547921244a5c3cb97bb5d94c526 (trust root 0x6582523b34940e9b0e0998a42adfafbf3cfdc895fe34b46fb662509c6840b6d6)
+pinned block 56457192 0x75877c0ebb672803b2ee68437fad3fa272afe9da3814d4347dfb3ae93caada94 (by hash)
+statements 6, bodies 177, artifacts 35
+availability verified: true
+anchors verified: true
+closure verified: true
+failures: none
+finality: L2_INCLUDED (read over RPC; no L1 evidence in this snapshot)
+439 read-only calls
+VERIFIED

@@ -1,0 +1,31 @@
+{
+  "name": "@ramex-labs/irontrellis-hooks",
+  "version": "1.0.0-rc.2",
+  "description": "The irontrellis-hook command: run Claude Code, OpenAI Codex CLI and Cursor sessions under IronTrellis — each session admitted as a runtime, side-effecting tool calls checked against the recorded grants, a handover record written when the session ends. Agents change. The structure holds.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": { "node": ">=22.18.0" },
+  "bin": { "irontrellis-hook": "./bin/irontrellis-hook.mjs" },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "bin", "README.md", "LICENSE", "NOTICE"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test --experimental-strip-types \"test/**/*.test.mjs\"",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@ramex-labs/irontrellis": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "typescript": "^5.9.2"
+  },
+  "publishConfig": { "access": "public", "provenance": true },
+  "repository": { "type": "git", "url": "https://github.com/zerohourzulu/irontrellis.git", "directory": "packages/hooks" },
+  "keywords": ["ai-agents", "authorization", "claude-code", "codex", "cursor", "hooks", "audit"]
+}

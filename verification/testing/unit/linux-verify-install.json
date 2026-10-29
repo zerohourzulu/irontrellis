@@ -1,0 +1,555 @@
+{
+  "verdict": "PASS",
+  "version": "1.0.0-rc.2",
+  "node": "v24.19.0",
+  "platform": "linux",
+  "tarballs": [
+    {
+      "file": "ramex-labs-irontrellis-agent-shims-1.0.0-rc.2.tgz",
+      "bytes": 8956,
+      "integrity": "sha512-zcKdbvK8cOyweZU2Dh9SUlsgGxBIocjLbKNFoLxrqdt5CTfcNQwYokkjw5XyDjuKOuo1B5l5cGdlSvR3Tm2qqA=="
+    },
+    {
+      "file": "ramex-labs-irontrellis-anchor-outbox-1.0.0-rc.2.tgz",
+      "bytes": 75914,
+      "integrity": "sha512-b7nSB8iULK+8UvXUONzMGCI4vB0H9Iaa/euvhIhFz48eDNtisdS4FU1UvTgW+pdx8vurpCpPe40xyD4sG6nShw=="
+    },
+    {
+      "file": "irontrellis-1.0.0-rc.2.tgz",
+      "bytes": 286082,
+      "integrity": "sha512-kIWz9wTqkwCTogWtCL7pEqv+uqsTxeLlUNIibtVmSXqDy+OsMII48Dzh9cTtWxeSxWADUhhImb20fzpdHewsVQ=="
+    },
+    {
+      "file": "ramex-labs-irontrellis-1.0.0-rc.2.tgz",
+      "bytes": 1696452,
+      "integrity": "sha512-jXWhjJRxZ1OXXmIC2RZ/VFzTN3Y6B9GTE42A/tb2Z8X1MV1anjO9O2YpidXrdoLpwRRbc7WyV2z4xJTm6d3u3Q=="
+    },
+    {
+      "file": "ramex-labs-irontrellis-hooks-1.0.0-rc.2.tgz",
+      "bytes": 238104,
+      "integrity": "sha512-Sw8YwumdAluNV4vuItZcrYQ0qHKNGoPcV6BRaOC4M2PzEjXUHgXNvFDMJcRTk1/YT0OKFprAxClQW8ZvB50ccA=="
+    },
+    {
+      "file": "ramex-labs-irontrellis-managed-agents-1.0.0-rc.2.tgz",
+      "bytes": 21957,
+      "integrity": "sha512-XbncbrHBWY80JHLtjsY2pnSkRphLYEuKPMFw90YJOC+yrP1ae4IxgpQlW2Lc12J1uCQ4bFzyWU/Ak+C2UCKkPw=="
+    },
+    {
+      "file": "ramex-labs-irontrellis-mcp-1.0.0-rc.2.tgz",
+      "bytes": 38876,
+      "integrity": "sha512-2Vg2KQL3mFBTYx8lm1FgDRyq5eyl9lritUNPV1vnEUXvCsYwI0ZQxwiv4X681C4XaSEp3PFw5hTrTeyEoPIfYA=="
+    },
+    {
+      "file": "ramex-labs-irontrellis-mcp-gateway-1.0.0-rc.2.tgz",
+      "bytes": 219159,
+      "integrity": "sha512-vIahPxzrHfqjUMX5moB00h9sqhIz68gZyYpEp8vl2ZpcciDaAQjktWlkPog2AovLNwJ0ljI2+yI+jsbdsGSP1w=="
+    },
+    {
+      "file": "ramex-labs-irontrellis-remote-1.0.0-rc.2.tgz",
+      "bytes": 7814,
+      "integrity": "sha512-2DOV6dQz4ggtBa+PNdGUSlI2Q8m72MTBU7sqmx4qN4sj4W6UdHoIEvJuQxq1jUFuGlv03F/mgbjo9a3k/SVG5g=="
+    },
+    {
+      "file": "ramex-labs-irontrellis-remote-tools-1.0.0-rc.2.tgz",
+      "bytes": 32367,
+      "integrity": "sha512-q6FUIJcZUKXpUC23cNJqBRiQIcnghMX5bW/CSIRY8YZJro90RV3iJgwDXByQcWS+ya7SuwkAMeUHh5r/18cHmg=="
+    },
+    {
+      "file": "ramex-labs-irontrellis-witness-1.0.0-rc.2.tgz",
+      "bytes": 136326,
+      "integrity": "sha512-E5ON1nHkn7xLGYtchf621nWUjPi5cTiTVpreruuKxrx6IVy/ya6RHpTsZ53cCK2my0dZfCMTqdUvMWFX8XXLmg=="
+    }
+  ],
+  "results": [
+    {
+      "section": "build",
+      "name": "pnpm -r build",
+      "status": "PASS",
+      "ms": 15046,
+      "detail": "all packages built"
+    },
+    {
+      "section": "build",
+      "name": "pnpm 11.19.0 (the packageManager pin) packs",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "pnpm 11.19.0"
+    },
+    {
+      "section": "pack",
+      "name": "pnpm pack (pnpm 11.19.0) of 11 packages",
+      "status": "PASS",
+      "ms": 3473,
+      "detail": "ramex-labs-irontrellis-agent-shims-1.0.0-rc.2.tgz 9 KiB sha512-zcKdbvK8cOyweZU2Dh9SUlsgGxBIocjLbKNFoLxrqdt5CTfcNQwYokkjw5XyDjuKOuo1B5l5cGdlSvR3Tm2qqA==, ramex-labs-irontrellis-anchor-outbox-1.0.0-rc.2.tgz 74 KiB sha512-b7nSB8iULK+8UvXUONzMGCI4vB0H9Iaa/euvhIhFz48eDNtisdS4FU1UvTgW+pdx8vurpCpPe40xyD4sG6nShw==, irontrellis-1.0.0-rc.2.tgz 279 KiB sha512-kIWz9wTqkwCTogWtCL7pEqv+uqsTxeLlUNIibtVmSXqDy+OsMII48Dzh9cTtWxeSxWADUhhImb20fzpdHewsVQ==, ramex-labs-irontrellis-1.0.0-rc.2.tgz 1657 KiB sha512-jXWhjJRxZ1OXXmIC2RZ/VFzTN3Y6B9GTE42A/tb2Z8X1MV1anjO9O2YpidXrdoLpwRRbc7WyV2z4xJTm6d3u3Q==, ramex-labs-irontrellis-hooks-1.0.0-rc.2.tgz 233 KiB sha512-Sw8YwumdAluNV4vuItZcrYQ0qHKNGoPcV6BRaOC4M2PzEjXUHgXNvFDMJcRTk1/YT0OKFprAxClQW8ZvB50ccA==, ramex-labs-irontrellis-managed-agents-1.0.0-rc.2.tgz 21 KiB sha512-XbncbrHBWY80JHLtjsY2pnSkRphLYEuKPMFw90YJOC+yrP1ae4IxgpQlW2Lc12J1uCQ4bFzyWU/Ak+C2UCKkPw==, ramex-labs-irontrellis-mcp-1.0.0-rc.2.tgz 38 KiB sha512-2Vg2KQL3mFBTYx8lm1FgDRyq5eyl9lritUNPV1vnEUXvCsYwI0ZQxwiv4X681C4XaSEp3PFw5hTrTeyEoPIfYA==, ramex-labs-irontrellis-mcp-gateway-1.0.0-rc.2.tgz 214 KiB sha512-vIahPxzrHfqjUMX5moB00h9sqhIz68gZyYpEp8vl2ZpcciDaAQjktWlkPog2AovLNwJ0ljI2+yI+jsbdsGSP1w==, ramex-labs-irontrellis-remote-1.0.0-rc.2.tgz 8 KiB sha512-2DOV6dQz4ggtBa+PNdGUSlI2Q8m72MTBU7sqmx4qN4sj4W6UdHoIEvJuQxq1jUFuGlv03F/mgbjo9a3k/SVG5g==, ramex-labs-irontrellis-remote-tools-1.0.0-rc.2.tgz 32 KiB sha512-q6FUIJcZUKXpUC23cNJqBRiQIcnghMX5bW/CSIRY8YZJro90RV3iJgwDXByQcWS+ya7SuwkAMeUHh5r/18cHmg==, ramex-labs-irontrellis-witness-1.0.0-rc.2.tgz 133 KiB sha512-E5ON1nHkn7xLGYtchf621nWUjPi5cTiTVpreruuKxrx6IVy/ya6RHpTsZ53cCK2my0dZfCMTqdUvMWFX8XXLmg=="
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-agent-shims: files",
+      "status": "PASS",
+      "ms": 1,
+      "detail": "6 files, 25 KiB unpacked (budget 1465 KiB)"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-agent-shims: manifest, exports, bin",
+      "status": "PASS",
+      "ms": 1,
+      "detail": "2 exports, 0 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2, @ramex-labs/irontrellis-managed-agents: workspace:* → 1.0.0-rc.2"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-agent-shims: imports resolve and are declared",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "2 modules scanned; imports @langchain/langgraph, @openai/agents, @ramex-labs/irontrellis, @ramex-labs/irontrellis-managed-agents"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-anchor-outbox: files",
+      "status": "PASS",
+      "ms": 2,
+      "detail": "37 files, 309 KiB unpacked (budget 1465 KiB)"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-anchor-outbox: manifest, exports, bin",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "2 exports, 0 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2, @ramex-labs/irontrellis-mcp-gateway: workspace:* → 1.0.0-rc.2"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-anchor-outbox: imports resolve and are declared",
+      "status": "PASS",
+      "ms": 1,
+      "detail": "22 modules scanned; imports @ramex-labs/irontrellis, @ramex-labs/irontrellis-mcp-gateway, viem"
+    },
+    {
+      "section": "tarball",
+      "name": "irontrellis: files",
+      "status": "PASS",
+      "ms": 5,
+      "detail": "44 files, 1112 KiB unpacked (budget 1465 KiB)"
+    },
+    {
+      "section": "tarball",
+      "name": "irontrellis: manifest, exports, bin",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "2 exports, 1 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2"
+    },
+    {
+      "section": "tarball",
+      "name": "irontrellis: imports resolve and are declared",
+      "status": "PASS",
+      "ms": 1,
+      "detail": "27 modules scanned; imports @ramex-labs/irontrellis"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis: files",
+      "status": "PASS",
+      "ms": 26,
+      "detail": "268 files, 6856 KiB unpacked (budget 7813 KiB)"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis: manifest, exports, bin",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "15 exports, 0 bins"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis: imports resolve and are declared",
+      "status": "PASS",
+      "ms": 7,
+      "detail": "176 modules scanned; imports only node: builtins"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-hooks: files",
+      "status": "PASS",
+      "ms": 3,
+      "detail": "50 files, 845 KiB unpacked (budget 1465 KiB)"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-hooks: manifest, exports, bin",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "2 exports, 1 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-hooks: imports resolve and are declared",
+      "status": "PASS",
+      "ms": 1,
+      "detail": "31 modules scanned; imports @ramex-labs/irontrellis"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-managed-agents: files",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "10 files, 77 KiB unpacked (budget 1465 KiB)"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-managed-agents: manifest, exports, bin",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "2 exports, 0 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-managed-agents: imports resolve and are declared",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "6 modules scanned; imports @ramex-labs/irontrellis"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-mcp: files",
+      "status": "PASS",
+      "ms": 1,
+      "detail": "29 files, 130 KiB unpacked (budget 1465 KiB)"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-mcp: manifest, exports, bin",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "2 exports, 4 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-mcp: imports resolve and are declared",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "16 modules scanned; imports @modelcontextprotocol/client, @modelcontextprotocol/server, @ramex-labs/irontrellis"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-mcp-gateway: files",
+      "status": "PASS",
+      "ms": 3,
+      "detail": "95 files, 784 KiB unpacked (budget 1465 KiB)"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-mcp-gateway: manifest, exports, bin",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "10 exports, 2 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2, @ramex-labs/irontrellis-remote: workspace:* → 1.0.0-rc.2"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-mcp-gateway: imports resolve and are declared",
+      "status": "PASS",
+      "ms": 1,
+      "detail": "62 modules scanned; imports @modelcontextprotocol/client, @modelcontextprotocol/server, @ramex-labs/irontrellis, @ramex-labs/irontrellis-remote, jose"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-remote: files",
+      "status": "PASS",
+      "ms": 1,
+      "detail": "16 files, 21 KiB unpacked (budget 1465 KiB)"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-remote: manifest, exports, bin",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "6 exports, 0 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2, @ramex-labs/irontrellis-remote-tools: workspace:* → 1.0.0-rc.2"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-remote: imports resolve and are declared",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "10 modules scanned; imports @ramex-labs/irontrellis, @ramex-labs/irontrellis-remote-tools; declared but not imported: @langchain/core, zod"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-remote-tools: files",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "19 files, 110 KiB unpacked (budget 1465 KiB)"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-remote-tools: manifest, exports, bin",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "11 exports, 0 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-remote-tools: imports resolve and are declared",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "13 modules scanned; imports @langchain/core, @ramex-labs/irontrellis, zod"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-witness: files",
+      "status": "PASS",
+      "ms": 2,
+      "detail": "29 files, 527 KiB unpacked (budget 1465 KiB)"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-witness: manifest, exports, bin",
+      "status": "PASS",
+      "ms": 0,
+      "detail": "2 exports, 1 bins; workspace deps rewritten: @ramex-labs/irontrellis: workspace:* → 1.0.0-rc.2"
+    },
+    {
+      "section": "tarball",
+      "name": "@ramex-labs/irontrellis-witness: imports resolve and are declared",
+      "status": "PASS",
+      "ms": 1,
+      "detail": "17 modules scanned; imports @ramex-labs/irontrellis"
+    },
+    {
+      "section": "npm",
+      "name": "npm install <tarball files> (no registry for @ramex-labs)",
+      "status": "PASS",
+      "ms": 10135,
+      "detail": "11 packages from their tarballs; the core resolved once, from its tarball, for every dependent; npm ls --all clean"
+    },
+    {
+      "section": "npm",
+      "name": "every bin: --help and --version",
+      "status": "PASS",
+      "ms": 2087,
+      "detail": "9 bins: --help and --version exit 0 and print 1.0.0-rc.2"
+    },
+    {
+      "section": "npm",
+      "name": "ESM import and require() of every public subpath",
+      "status": "PASS",
+      "ms": 1090,
+      "detail": "45 subpaths import (ESM) and require() cleanly; 11 package.json exports"
+    },
+    {
+      "section": "npm",
+      "name": "consumer type-check (tsc --noEmit)",
+      "status": "PASS",
+      "ms": 16495,
+      "detail": "tsc --noEmit (skipLibCheck off) over 37 subpaths with moduleResolution nodenext and bundler; 8 subpaths publish no declarations"
+    },
+    {
+      "section": "anchor-outbox",
+      "name": "installed public exports, raw-call preparation and closed inputs",
+      "status": "PASS",
+      "ms": 229,
+      "detail": "anchor-outbox installed public exports/raw preparation/closed-input smoke PASS"
+    },
+    {
+      "section": "docs",
+      "name": "core README quickstart (the JS block, verbatim)",
+      "status": "PASS",
+      "ms": 248,
+      "detail": "printed ALLOW / [ 'collect' ] / DENY REVOKED / true MATCHES VERIFIED as documented; the read-only block verifies the history"
+    },
+    {
+      "section": "docs",
+      "name": "README dependency claims match the packed manifests",
+      "status": "PASS",
+      "ms": 1,
+      "detail": "core: none; CLI: the core only; MCP packages: the core and the MCP SDK, pinned exactly (@modelcontextprotocol/client@2.2.0, @modelcontextprotocol/server@2.2.0)"
+    },
+    {
+      "section": "cli",
+      "name": "README 'your own history' + owner rotate-key (pre-rotation)",
+      "status": "PASS",
+      "ms": 1599,
+      "detail": "init, grant, authorize ALLOW, why, verify, status (4 events), owner status (next key offline), rotate-key --next-key: VERIFIED with owner:2"
+    },
+    {
+      "section": "cli",
+      "name": "custody: init --owner-key-ref (command signer), signer test/ref/list/to-ssh, doctor, commit by public key, rotate-key --next-key-ref (ssh-agent)",
+      "status": "PASS",
+      "ms": 2183,
+      "detail": "command signer: init --owner-key-ref, write, signer test, custody OK, verify, doctor OK; ssh-agent: to-ssh, ssh-add, signer list, rotate-key --next-key-ref onto the agent key: VERIFIED"
+    },
+    {
+      "section": "witness",
+      "name": "README quickstart: init, token create, serve, GET /v1/witness",
+      "status": "PASS",
+      "ms": 292,
+      "detail": "serving irontrellis-witness 1.0.0-rc.2 on a free port; verifier key witness.example.com+1b44a4aa+…"
+    },
+    {
+      "section": "cli",
+      "name": "init --witness (bound from the first write), writes, witness status/sync, verify",
+      "status": "PASS",
+      "ms": 1062,
+      "detail": "bound, registered, witnessed up to position 4; verify OK against the running witness"
+    },
+    {
+      "section": "cli",
+      "name": "witness add on an existing history, status, sync; rotate-key again (two-phase with a bound witness)",
+      "status": "PASS",
+      "ms": 1086,
+      "detail": "witness add + sync, 2 rotations recorded by the witness, verify OK (7 events)"
+    },
+    {
+      "section": "cli",
+      "name": "demo, and the follow-up commands it prints",
+      "status": "PASS",
+      "ms": 1407,
+      "detail": "demo and its 8 printed commands ran (history under TMPDIR)"
+    },
+    {
+      "section": "hooks",
+      "name": "README quickstart: init, install --write, check",
+      "status": "PASS",
+      "ms": 498,
+      "detail": "init + install --write (SessionStart, PreToolUse, Stop, SessionEnd); check Write DEFER, check Bash DENY ACTION_NOT_ALLOWED (exit 2)"
+    },
+    {
+      "section": "hooks",
+      "name": "Claude Code payloads via the settings command, npx --no-install and npx",
+      "status": "PASS",
+      "ms": 7874,
+      "detail": "SessionStart (context), PreToolUse Write (no decision), Bash (deny ACTION_NOT_ALLOWED), owner key (deny PROTECTED_PATH), Read (no decision), unmapped (ask), malformed (exit 2), PostToolUse (ignored), Stop and SessionEnd (handover record) — via the settings command, npx --no-install and npx"
+    },
+    {
+      "section": "mcp",
+      "name": "gateway and evidence servers: README quickstarts and a real MCP client over stdio",
+      "status": "PASS",
+      "ms": 5823,
+      "detail": "gateway (exactly-once: RESPONSE_RETAINED, RECONCILIATION_ONLY, revoke; per-call: FORWARDED, also at 2026-07-28) and evidence server (irontrellis-evidence and irontrellis-mcp, 2025 era and 2026-07-28: RECORDED, RECONCILIATION_ONLY) over stdio with @modelcontextprotocol/client 2.2.0"
+    },
+    {
+      "section": "python",
+      "name": "sdist + wheel (1.0.0rc1)",
+      "status": "PASS",
+      "ms": 6164,
+      "detail": "irontrellis-1.0.0rc1.tar.gz, irontrellis-1.0.0rc1-py3-none-any.whl via python -m build --no-isolation (wheel built from the sdist; pinned build 1.6.1 setuptools 84.0.0 twine 7.0.0); twine check --strict passes"
+    },
+    {
+      "section": "python",
+      "name": "sdist and wheel contents",
+      "status": "PASS",
+      "ms": 28,
+      "detail": "wheel: 27 files (package, crypto/, py.typed, LICENSE, NOTICE, irontrellis-py); sdist: 45 files; no caches or tests in the wheel"
+    },
+    {
+      "section": "python",
+      "name": "fresh venv: README 'pip install --pre irontrellis' from the wheel only",
+      "status": "PASS",
+      "ms": 1997,
+      "detail": "irontrellis 1.0.0rc1 installed with --no-index from the built wheel"
+    },
+    {
+      "section": "python",
+      "name": "python -m irontrellis refuses the format-2 histories the packed CLI wrote (UNSUPPORTED_VERSION; frozen at format 1)",
+      "status": "PASS",
+      "ms": 175,
+      "detail": "UNSUPPORTED_VERSION for the CLI's, the witnessed and the demo history"
+    },
+    {
+      "section": "python",
+      "name": "python -m irontrellis verify-receipt on a receipt the packed witness signed",
+      "status": "PASS",
+      "ms": 90,
+      "detail": "INVALID (ENTRY_MALFORMED): the format-1 Python verifier does not read a format-2 statement"
+    },
+    {
+      "section": "python",
+      "name": "a second venv installs from the sdist (isolated build)",
+      "status": "PASS",
+      "ms": 3212,
+      "detail": "built from the sdist; verifies a format-1 history (conformance/v1 authority-v1) and refuses the CLI's format-2 history (UNSUPPORTED_VERSION)"
+    },
+    {
+      "section": "witness",
+      "name": "SIGTERM stops the server with exit 0",
+      "status": "PASS",
+      "ms": 7,
+      "detail": "exit 0"
+    },
+    {
+      "section": "registry",
+      "name": "local registry serving only the packed tarballs",
+      "status": "PASS",
+      "ms": 7,
+      "detail": "11 packages under dist-tag next (as release.yml publishes); everything else redirected to https://registry.npmjs.org"
+    },
+    {
+      "section": "pnpm",
+      "name": "pnpm add <every package>@next (strict node_modules)",
+      "status": "PASS",
+      "ms": 1627,
+      "detail": "11 packages with the packed tarballs' integrity; workspace:* resolved to the one packed core (@ramex-labs+irontrellis@1.0.0-rc.2)"
+    },
+    {
+      "section": "pnpm",
+      "name": "every bin: --help and --version",
+      "status": "PASS",
+      "ms": 2496,
+      "detail": "9 bins: --help and --version exit 0 and print 1.0.0-rc.2"
+    },
+    {
+      "section": "pnpm",
+      "name": "ESM import and require() of every public subpath",
+      "status": "PASS",
+      "ms": 1269,
+      "detail": "45 subpaths import (ESM) and require() cleanly; 11 package.json exports"
+    },
+    {
+      "section": "pnpm",
+      "name": "consumer type-check (tsc --noEmit)",
+      "status": "PASS",
+      "ms": 17808,
+      "detail": "tsc --noEmit (skipLibCheck off) over 37 subpaths with moduleResolution nodenext and bundler; 8 subpaths publish no declarations"
+    },
+    {
+      "section": "pnpm",
+      "name": "CLI demo, hooks through pnpm exec, MCP servers",
+      "status": "PASS",
+      "ms": 6971,
+      "detail": "demo; hooks via pnpm exec; gateway (exactly-once: RESPONSE_RETAINED, RECONCILIATION_ONLY, revoke; per-call: FORWARDED, also at 2026-07-28) and evidence server (irontrellis-evidence and irontrellis-mcp, 2025 era and 2026-07-28: RECORDED, RECONCILIATION_ONLY) over stdio with @modelcontextprotocol/client 2.2.0"
+    },
+    {
+      "section": "global",
+      "name": "the docs' 6 'npm install -g …@next' commands, verbatim, into a temporary prefix",
+      "status": "PASS",
+      "ms": 2432,
+      "detail": "9 commands on the prefix's PATH"
+    },
+    {
+      "section": "global",
+      "name": "every global bin: --help and --version",
+      "status": "PASS",
+      "ms": 2077,
+      "detail": "9 bins: --help and --version exit 0 and print 1.0.0-rc.2"
+    },
+    {
+      "section": "global",
+      "name": "irontrellis demo; irontrellis-hook from PATH (the command install writes); witness serve; gateway and evidence setup",
+      "status": "PASS",
+      "ms": 3362,
+      "detail": "demo; hook session via PATH; witness serve/healthz/SIGTERM; gateway setup + MCP call; evidence setup + demo"
+    },
+    {
+      "section": "global",
+      "name": "npm i -g <cli tarball> into a temporary prefix",
+      "status": "PASS",
+      "ms": 667,
+      "detail": "irontrellis 1.0.0-rc.2; its core dependency resolved from the registry to the packed tarball; demo runs"
+    },
+    {
+      "section": "docs",
+      "name": "'npx irontrellis@next demo', npx -p <hooks>, 'npm install @ramex-labs/irontrellis@next'",
+      "status": "PASS",
+      "ms": 1386,
+      "detail": "npx demo prints the three answers; npx -p @ramex-labs/irontrellis-hooks@next irontrellis-hook runs; the core installs with zero runtime dependencies and its quickstart runs"
+    }
+  ]
+}

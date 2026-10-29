@@ -1,0 +1,21 @@
+# Every text file is checked out with LF line endings on every platform, whatever core.autocrlf says
+# (Git for Windows and the windows-latest runners default it to true). The conformance vectors, the
+# fixture histories and the transparency vectors are compared byte for byte and hashed (MANIFEST.json),
+# and a history or witness log with CRLF line endings is a different file (docs/PLATFORMS.md §5).
+* text=auto eol=lf
+
+# Binary assets: never converted, never diffed as text.
+*.png binary
+*.jpg binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.tgz binary
+*.gz binary
+*.zip binary
+
+# A third-party license text kept exactly as its upstream ships it (CRLF).
+brand/fonts/OFL-IBMPlex.txt -text

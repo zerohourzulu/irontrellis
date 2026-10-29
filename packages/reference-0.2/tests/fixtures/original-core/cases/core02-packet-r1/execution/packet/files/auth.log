@@ -1,0 +1,3 @@
+SYNTHETIC DATA — no real users, credentials or hosts.
+2026-09-11T12:00:00Z case-lab user=fixture-alice action=login outcome=allowed
+2026-09-11T12:01:00Z case-lab user=fixture-agent action=export outcome=denied reason=scope

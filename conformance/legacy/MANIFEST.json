@@ -1,0 +1,217 @@
+{
+  "schemaVersion": "continuity-conformance/1",
+  "protocol": "continuity",
+  "coreVersion": "0.2.2",
+  "generatedFrom": {
+    "authorization": "continuity-authorization/0.2",
+    "replay": "continuity-replay/0.2",
+    "query": "continuity-query-envelope/0.2"
+  },
+  "note": "Required behaviour, stated independently of any implementation language. A conforming implementation reproduces every `expect` from the corresponding `input`. These vectors constrain decisions and survival facts; they do not fix output formatting.",
+  "vectors": [
+    {
+      "id": "replay/accepts-recorded-handover",
+      "kind": "replay",
+      "purpose": "A well-formed handover history replays and yields a stable head.",
+      "sha256": "3621057c52343b57b3096da05bb21a798b56143ea22af00400e204c9a65fc1aa"
+    },
+    {
+      "id": "replay/rejects-removed-event",
+      "kind": "replay",
+      "purpose": "Removing an event from the middle breaks the chain.",
+      "sha256": "9555aaa2f0438d3b1fe91faae480fe157254fbbb51f04f9af7d81d6a09be2d37"
+    },
+    {
+      "id": "replay/rejects-transposed-events",
+      "kind": "replay",
+      "purpose": "Reordering two events is detected.",
+      "sha256": "9555aaa2f0438d3b1fe91faae480fe157254fbbb51f04f9af7d81d6a09be2d37"
+    },
+    {
+      "id": "replay/rejects-duplicated-event",
+      "kind": "replay",
+      "purpose": "Replaying an event twice is detected.",
+      "sha256": "9555aaa2f0438d3b1fe91faae480fe157254fbbb51f04f9af7d81d6a09be2d37"
+    },
+    {
+      "id": "replay/rejects-rewound-timestamp",
+      "kind": "replay",
+      "purpose": "A non-monotonic timestamp is refused.",
+      "sha256": "9555aaa2f0438d3b1fe91faae480fe157254fbbb51f04f9af7d81d6a09be2d37"
+    },
+    {
+      "id": "replay/rejects-missing-genesis",
+      "kind": "replay",
+      "purpose": "A history must begin with its deployment genesis.",
+      "sha256": "9555aaa2f0438d3b1fe91faae480fe157254fbbb51f04f9af7d81d6a09be2d37"
+    },
+    {
+      "id": "replay/rejects-empty",
+      "kind": "replay",
+      "purpose": "An empty history is not a history.",
+      "sha256": "9555aaa2f0438d3b1fe91faae480fe157254fbbb51f04f9af7d81d6a09be2d37"
+    },
+    {
+      "id": "replay/accepts-prefix",
+      "kind": "replay",
+      "purpose": "Every prefix of a valid history is a valid history — this is how a historical question is asked.",
+      "sha256": "be8d8ed05850666cd6ef0e7918485383a40b38597ac9afced51b5f61f90d4442"
+    },
+    {
+      "id": "authorization/successor-may-exercise-its-own-grant",
+      "kind": "authorization",
+      "purpose": "The successor may do what it was separately granted.",
+      "sha256": "c44db66ced08ff342fcbd2ad4b81a2f26946cdf246f11421237c899f8bb15ef2"
+    },
+    {
+      "id": "authorization/successor-does-not-inherit-collection",
+      "kind": "authorization",
+      "purpose": "THE THESIS. The successor holds the duty and must NOT inherit the power that created it.",
+      "sha256": "a5e59a6b1beb1600efbcf1cd134e8cfdaf65bd6ede69120e8082e1a2191ab018"
+    },
+    {
+      "id": "authorization/successor-may-not-obligate",
+      "kind": "authorization",
+      "purpose": "Nor any other power the predecessor held.",
+      "sha256": "a5e59a6b1beb1600efbcf1cd134e8cfdaf65bd6ede69120e8082e1a2191ab018"
+    },
+    {
+      "id": "authorization/predecessor-refused-after-handover",
+      "kind": "authorization",
+      "purpose": "A previously valid request from the replaced actor is refused.",
+      "sha256": "71d0074346e07cbf1769e3144475b4845541ca7c4c13edda9c5144812cdb23a1"
+    },
+    {
+      "id": "authorization/revoked-successor-review",
+      "kind": "authorization",
+      "purpose": "Revoking the successor permission denies the action without deleting the duty.",
+      "sha256": "f9ab6da43e5f15d8b44521df86220b8fc4b4bf87d57f125d550d7fa8af1f7219"
+    },
+    {
+      "id": "authorization/unknown-action-refused",
+      "kind": "authorization",
+      "purpose": "An action outside every grant is refused.",
+      "sha256": "a5e59a6b1beb1600efbcf1cd134e8cfdaf65bd6ede69120e8082e1a2191ab018"
+    },
+    {
+      "id": "authorization/unknown-resource-refused",
+      "kind": "authorization",
+      "purpose": "A resource outside every grant is refused.",
+      "sha256": "9594f8496f44fba3c783f5f12a71122710d0b7b873305e1b2a4b31397a21bf61"
+    },
+    {
+      "id": "authorization/unknown-actor-refused",
+      "kind": "authorization",
+      "purpose": "An actor with no recorded identity is refused.",
+      "sha256": "71d0074346e07cbf1769e3144475b4845541ca7c4c13edda9c5144812cdb23a1"
+    },
+    {
+      "id": "authorization/expired-grant-refused",
+      "kind": "authorization",
+      "purpose": "A grant past its expiry is refused, with the specific code.",
+      "sha256": "897db3b9335183fd1ccb1ab65e1aefe59f2ecf8f9557629cea306b56514cc67f"
+    },
+    {
+      "id": "authorization/domain-mismatch-refused",
+      "kind": "authorization",
+      "purpose": "A request for another deployment is refused, never evaluated.",
+      "sha256": "08f7eb785a8e8aed0b49770d90921b863e3e76b037587c887cceb899764a9073"
+    },
+    {
+      "id": "authorization/policy-mismatch-refused",
+      "kind": "authorization",
+      "purpose": "A request under another policy version is refused.",
+      "sha256": "c8218cbe0597614c5ab3c436919c41bf2afe1315bcafa21aefdcbf123ea92041"
+    },
+    {
+      "id": "quantitative/within-the-per-purchase-cap",
+      "kind": "authorization",
+      "purpose": "An amount inside the mandate is permitted.",
+      "sha256": "f4b35b92eac884a95c505f1402f66b38f701696c923f2a2d064de974009c2522"
+    },
+    {
+      "id": "quantitative/exactly-at-the-cap",
+      "kind": "authorization",
+      "purpose": "The ceiling is inclusive.",
+      "sha256": "f4b35b92eac884a95c505f1402f66b38f701696c923f2a2d064de974009c2522"
+    },
+    {
+      "id": "quantitative/one-over-the-cap",
+      "kind": "authorization",
+      "purpose": "One unit over the ceiling is refused, with the specific code.",
+      "sha256": "763c7d6b26f3f801a95bf5b6a4d3c52554165b336343d93afb2cec7774174d66"
+    },
+    {
+      "id": "quantitative/zero-is-a-valid-amount",
+      "kind": "authorization",
+      "purpose": "Zero is an amount, not a missing one.",
+      "sha256": "f4b35b92eac884a95c505f1402f66b38f701696c923f2a2d064de974009c2522"
+    },
+    {
+      "id": "quantitative/amount-required",
+      "kind": "authorization",
+      "purpose": "A budgeted authority refuses a request carrying no amount.",
+      "sha256": "5cfdc739501031df85a9374d373046e232d73da32dc840be55ba4a20a093b70f"
+    },
+    {
+      "id": "quantitative/delegated-budget-narrows",
+      "kind": "authorization",
+      "purpose": "THE BUDGET THESIS. An amount inside the grantor’s mandate but outside the delegate’s own budget is refused.",
+      "sha256": "763c7d6b26f3f801a95bf5b6a4d3c52554165b336343d93afb2cec7774174d66"
+    },
+    {
+      "id": "quantitative/delegated-budget-honoured",
+      "kind": "authorization",
+      "purpose": "The delegate may spend within its own smaller budget.",
+      "sha256": "92b611e779db2bb57c941b400a782fb83f22a1e46a02beaec344935e59cfee90"
+    },
+    {
+      "id": "quantitative/non-quantitative-authority-ignores-amounts",
+      "kind": "authorization",
+      "purpose": "An unbudgeted authority is unaffected by amounts.",
+      "sha256": "7d6367031f8c6b10310a2caa62b85c63fd73f1280d71e40caa442eddaad70a70"
+    },
+    {
+      "id": "replay/accepts-quantitative-mandate",
+      "kind": "replay",
+      "purpose": "A history carrying budgets, ceilings and counts replays.",
+      "sha256": "d7edab8c2380ddb5cdafc098e16299f27dceb8bb08d815c688f69021733e80fe"
+    },
+    {
+      "id": "replay/rejects-widened-delegated-budget",
+      "kind": "replay",
+      "purpose": "A delegation may not grant a larger budget than its parent holds — refused at admission.",
+      "sha256": "9555aaa2f0438d3b1fe91faae480fe157254fbbb51f04f9af7d81d6a09be2d37"
+    },
+    {
+      "id": "replay/rejects-dropping-the-quantitative-flag",
+      "kind": "replay",
+      "purpose": "A budgeted parent cannot delegate an unbudgeted child — otherwise a budget is escaped by dropping a flag.",
+      "sha256": "9555aaa2f0438d3b1fe91faae480fe157254fbbb51f04f9af7d81d6a09be2d37"
+    },
+    {
+      "id": "survives/predecessor-after-handover",
+      "kind": "survives",
+      "purpose": "The replaced actor is TERMINATED, its duty survives, its role is gone and its authorities are invalidated.",
+      "sha256": "a0178bfe5e05de6801861b8e0a03403bc9085944647310f68374595c165717bf"
+    },
+    {
+      "id": "survives/successor-after-handover",
+      "kind": "survives",
+      "purpose": "The successor is ACTIVE and holds the inherited duty.",
+      "sha256": "a3d0c7048afe0c52596c6444e8ef3333225998b7aa664ef7791049feaaf0906a"
+    },
+    {
+      "id": "survives/predecessor-before-handover",
+      "kind": "survives",
+      "purpose": "Asked of the earlier history, the predecessor is still ACTIVE and holds its role.",
+      "sha256": "fdf840b24a6bfb82f646eccc36e7f2ad534ec419fda7fb8345e46af7a7d8c201"
+    },
+    {
+      "id": "survives/unknown-agent",
+      "kind": "survives",
+      "purpose": "An agent that was never recorded is answered honestly, not invented.",
+      "sha256": "1c8a854c53ea6537451ffb9182629ba09f6c01444e827d340d87bd1f841c6ec0"
+    }
+  ]
+}

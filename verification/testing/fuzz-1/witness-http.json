@@ -1,0 +1,16 @@
+{
+ "regressions": [],
+ "campaigns": [
+  {
+   "target": "witness-http",
+   "seed": 107,
+   "start": 0,
+   "iterations": 14972251,
+   "seconds": 82802.2,
+   "execPerSecond": 180.8,
+   "features": 112464,
+   "python": true,
+   "failures": []
+  }
+ ]
+}

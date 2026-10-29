@@ -1,0 +1,26 @@
+{
+ "id": "control-event-marker-shaped-data",
+ "target": "events",
+ "found": "pre-release fuzzing, 2026-09-26 (events target, seed 2)",
+ "description": "A format-1 control event whose data is a bigint-marker-shaped record (it captures to a bigint, not a record) is EVENT_DATA_INVALID in both engines.",
+ "rootCause": "Python events.control_effect / signed_control_effect tested `\"controlAuthorization\" in data` on the captured data, a BigInt here: TypeError from validate_event and so from replay() on un-revived wire events (the TypeScript controlEffect returns a non-record as it is and the closed schema rejects it).",
+ "fix": "python events.py: control_effect and signed_control_effect return a non-dict as it is.",
+ "input": {
+  "event": {
+   "id": "agent:x",
+   "type": "AGENT_CREATED",
+   "timestamp": 5,
+   "data": {
+    "$continuity.bigint": "1"
+   }
+  },
+  "format": "irontrellis-event/1",
+  "position": 3
+ },
+ "expect": {
+  "ts": {
+   "ok": false,
+   "code": "EVENT_DATA_INVALID"
+  }
+ }
+}

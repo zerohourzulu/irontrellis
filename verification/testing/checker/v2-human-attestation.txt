@@ -1,0 +1,7 @@
+{
+ "tool": "g25/12 (post-A-157 complete; A-127.2, A-128, A-129 defaults; 2026-10-14)",
+ "command": "vectors",
+ "checks": 146,
+ "failures": 0,
+ "firstFailures": []
+}

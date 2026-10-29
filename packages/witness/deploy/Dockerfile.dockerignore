@@ -1,0 +1,32 @@
+# Build context rules for packages/witness/deploy/Dockerfile (the context is the repository root).
+# BuildKit reads <Dockerfile>.dockerignore beside the Dockerfile in place of a root .dockerignore.
+#
+# An allowlist: the image needs the workspace manifests, the lockfile and two packages. Everything
+# else stays out of the context, including local histories, owner keys and witness data directories
+# a developer may have lying around (*.owner-key.json, witness-key.json), .git and host node_modules.
+*
+
+!package.json
+!pnpm-lock.yaml
+!pnpm-workspace.yaml
+!.npmrc
+!tsconfig.base.json
+
+# The packages the image is built from. The build installs with --filter, so pnpm checks only these
+# two importers against the lockfile; the other workspace packages need not be in the context.
+# (Exceptions are plain directory prefixes on purpose: wildcards in "!" rules are not honoured for
+# files inside excluded directories by every builder.)
+!packages/core
+!packages/witness
+
+# ...without build output, installed modules, tests or local state.
+**/node_modules
+**/dist
+**/*.tsbuildinfo
+**/*.tgz
+packages/*/test
+packages/*/bench
+packages/*/coverage
+**/*.owner-key*.json
+**/witness-key.json
+**/.DS_Store

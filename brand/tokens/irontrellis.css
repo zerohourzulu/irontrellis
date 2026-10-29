@@ -1,0 +1,72 @@
+/* IronTrellis design tokens · BRAND-001 rev 0.1 · September 23, 2026
+   The rules are in the IronTrellis Brand Standard (IronTrellis-Brand-Standard.pdf).
+   Web fonts: ../fonts/fonts.css. Forge is never text on light grounds; use Ember. */
+
+:root {
+  /* palette */
+  --irontrellis-iron: #15181C;
+  --irontrellis-gunmetal: #2A3038;
+  --irontrellis-steel: #5C6773;
+  --irontrellis-pewter: #9AA4AE;
+  --irontrellis-alloy: #C9CFD5;
+  --irontrellis-plate: #F3F2EE;
+  --irontrellis-forge: #E8692A;
+  --irontrellis-ember: #B24C14;
+  /* product states, text-safe on light grounds (Plate) and on dark grounds (Iron) */
+  --irontrellis-allow-on-light: #1E6E43;
+  --irontrellis-allow-on-dark: #45B57A;
+  --irontrellis-deny-on-light: #B12F29;
+  --irontrellis-deny-on-dark: #F0675D;
+  --irontrellis-indeterminate-on-light: #8A6207;
+  --irontrellis-indeterminate-on-dark: #D9A21B;
+  --irontrellis-open-on-light: #2A62A0;
+  --irontrellis-open-on-dark: #6FA6DE;
+  /* type */
+  --irontrellis-font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --irontrellis-font-text: "IBM Plex Sans", system-ui, sans-serif;
+  --irontrellis-font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --irontrellis-display-size: 48px; --irontrellis-display-line: 52px; --irontrellis-display-weight: 700; --irontrellis-display-tracking: 0.06em;
+  --irontrellis-heading-1-size: 32px; --irontrellis-heading-1-line: 36px; --irontrellis-heading-1-weight: 700; --irontrellis-heading-1-tracking: 0.05em;
+  --irontrellis-heading-2-size: 22px; --irontrellis-heading-2-line: 26px; --irontrellis-heading-2-weight: 600; --irontrellis-heading-2-tracking: 0.06em;
+  --irontrellis-body-size: 16px; --irontrellis-body-line: 24px; --irontrellis-body-weight: 400; --irontrellis-body-tracking: 0em;
+  --irontrellis-small-size: 13px; --irontrellis-small-line: 20px; --irontrellis-small-weight: 400; --irontrellis-small-tracking: 0em;
+  --irontrellis-label-size: 11px; --irontrellis-label-line: 16px; --irontrellis-label-weight: 500; --irontrellis-label-tracking: 0.12em;
+  --irontrellis-code-size: 14px; --irontrellis-code-line: 22px; --irontrellis-code-weight: 400; --irontrellis-code-tracking: 0em;
+  /* semantic roles: light (default) */
+  --irontrellis-bg: var(--irontrellis-plate);
+  --irontrellis-fg: var(--irontrellis-iron);
+  --irontrellis-fg-muted: var(--irontrellis-steel);
+  --irontrellis-rule: var(--irontrellis-alloy);
+  --irontrellis-accent: var(--irontrellis-forge);
+  --irontrellis-link: var(--irontrellis-ember);
+  --irontrellis-allow: var(--irontrellis-allow-on-light);
+  --irontrellis-deny: var(--irontrellis-deny-on-light);
+  --irontrellis-indeterminate: var(--irontrellis-indeterminate-on-light);
+  --irontrellis-open: var(--irontrellis-open-on-light);
+}
+
+/* semantic roles: dark, following the system setting unless data-theme="light" is set */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --irontrellis-bg: var(--irontrellis-iron);
+    --irontrellis-fg: var(--irontrellis-plate);
+    --irontrellis-fg-muted: var(--irontrellis-pewter);
+    --irontrellis-rule: var(--irontrellis-gunmetal);
+    --irontrellis-link: var(--irontrellis-forge);
+    --irontrellis-allow: var(--irontrellis-allow-on-dark);
+    --irontrellis-deny: var(--irontrellis-deny-on-dark);
+    --irontrellis-indeterminate: var(--irontrellis-indeterminate-on-dark);
+    --irontrellis-open: var(--irontrellis-open-on-dark);
+  }
+}
+:root[data-theme="dark"] {
+  --irontrellis-bg: var(--irontrellis-iron);
+  --irontrellis-fg: var(--irontrellis-plate);
+  --irontrellis-fg-muted: var(--irontrellis-pewter);
+  --irontrellis-rule: var(--irontrellis-gunmetal);
+  --irontrellis-link: var(--irontrellis-forge);
+  --irontrellis-allow: var(--irontrellis-allow-on-dark);
+  --irontrellis-deny: var(--irontrellis-deny-on-dark);
+  --irontrellis-indeterminate: var(--irontrellis-indeterminate-on-dark);
+  --irontrellis-open: var(--irontrellis-open-on-dark);
+}

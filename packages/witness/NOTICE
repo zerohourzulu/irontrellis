@@ -1,0 +1,17 @@
+IronTrellis
+Copyright (c) 2026 RAmEx Labs.
+
+IronTrellis-authored code, specifications, documentation and presentation
+assets are licensed under the Apache License, Version 2.0 (see LICENSE).
+
+IronTrellis is the consolidated successor of Continuity (Core 0.2.2 and the
+Core 0.3 preview API). Portions of this repository are derived from Continuity:
+
+    Continuity
+    Copyright (c) 2026 Continuity contributors.
+    Licensed under the Apache License, Version 2.0.
+
+The unmodified Continuity reference kept for differential testing lives in
+packages/reference-0.2 (with its own LICENSE and NOTICE) and the legacy
+conformance corpus in conformance/legacy. Third-party material retains its own
+license and attribution notices.

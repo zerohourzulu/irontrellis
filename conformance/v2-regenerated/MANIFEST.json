@@ -1,0 +1,2746 @@
+{
+ "schemaVersion": "irontrellis-conformance/2",
+ "suite": "v2-regenerated",
+ "protocol": "irontrellis",
+ "format": "irontrellis-event/2",
+ "challengeProfile": "g3",
+ "engineDerived": true,
+ "revision": {
+  "number": 4,
+  "label": "session time horizon near 2^53 − 1, independent review JOB76-01 and JOB76-04",
+  "previousManifestSha256": "740d6e04792ce2ad33501c1c5468cf40c79760e0ac23e476476b413562fc9f1e",
+  "changedVectors": [
+   "replay/v2r/session-time-horizon/rejects-admission-past-the-bound",
+   "replay/v2r/session-time-horizon/accepts-near-max-at-the-bound",
+   "replay/v2r/session-time-horizon/rejects-near-max-past-the-bound"
+  ],
+  "addedVectors": [
+   "replay/v2r/session-time-horizon/accepts-near-max-when-ownertime-plus-h-exceeds-max"
+  ],
+  "changedHistories": [
+   "horizon-max-v2"
+  ],
+  "addedHistories": [
+   "horizon-overflow-v2"
+  ],
+  "previous": [
+   {
+    "number": 3,
+    "label": "session time horizon, A-179.6",
+    "previousManifestSha256": "9c4ff45981012d9da901e1aa90f5549cfaa5ca75dd5b6a864a082901b129d52a",
+    "addedVectors": [
+     "replay/v2r/session-time-horizon/accepts-at-the-bound",
+     "replay/v2r/session-time-horizon/accepts-refusal-at-the-bound",
+     "replay/v2r/session-time-horizon/rejects-refusal-past-the-bound",
+     "replay/v2r/session-time-horizon/accepts-past-the-old-bound-after-a-checkpoint",
+     "replay/v2r/session-time-horizon/accepts-clamped-power-reducing-event",
+     "replay/v2r/session-time-horizon/rejects-past-the-bound-after-a-clamped-fence",
+     "replay/v2r/session-time-horizon/rejects-fenced-session-past-the-bound",
+     "replay/v2r/session-time-horizon/rejects-fenced-session-within-the-bound",
+     "replay/v2r/session-time-horizon/rejects-admission-past-the-bound",
+     "replay/v2r/session-time-horizon/accepts-near-max-at-the-bound",
+     "replay/v2r/session-time-horizon/rejects-near-max-past-the-bound",
+     "replay/v2r/session-time-horizon/accepts-migrated-prefix-exempt",
+     "replay/v2r/session-time-horizon/rejects-first-post-prefix-event-past-the-bound"
+    ]
+   },
+   {
+    "number": 2,
+    "label": "marker path form, A-184",
+    "previousManifestSha256": "f62421660228d44090a1bba8f05b39ce9ab1853b4935acd235d32ca6a9d2f132",
+    "changedVectors": [
+     "writer-open/v2r/fenced-legacy-source-is-read-only",
+     "writer-open/v2r/fenced-format1-source-is-read-only"
+    ]
+   }
+  ]
+ },
+ "generatedFrom": {
+  "reference": "@ramex-labs/irontrellis (packages/core)",
+  "authorization": "continuity-authorization/0.2",
+  "replay": "continuity-replay/0.2",
+  "query": "continuity-query-envelope/0.2"
+ },
+ "note": "ENGINE-DERIVED format-2 vectors (BUILD §5): the expectations are this engine's answers, projected as conformance/adapters/node.mjs answers; not a SPEC oracle. G2.5 cross-checks the pinned roots independently. Signed under the session-challenge profile g3 (A-54 founder-approved 2026-10-11, A-59). `node conformance/v2-regenerated/generate.mjs --check` reproduces these files byte for byte.",
+ "domain": {
+  "protocol": "irontrellis",
+  "version": "2",
+  "deploymentId": "irontrellis-conformance-v2"
+ },
+ "keys": {
+  "owner:1": {
+   "keyId": "owner:1",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000001001",
+   "credential": "0x967e264fa6b2e89fcfab4df3d4291cd1482a3a5a9f3836c9ce8f80d112d2ac4d"
+  },
+  "owner:2": {
+   "keyId": "owner:2",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000001102",
+   "credential": "0x051215c6dcfdc4beaabee477011015f1e1a004b7b98f30f5a0518e59f0f42da6"
+  },
+  "owner:3": {
+   "keyId": "owner:3",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000001103",
+   "credential": "0xf8ed69cf6fb22a143a4c1ee01412fbe62ccb2419f2cbb431823f91ce4897adf2"
+  },
+  "owner:rotated": {
+   "keyId": "owner:rotated",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000001002",
+   "credential": "0x42fea4ab1a963a5631264c2159ca7b2946c4cff33b4fb96a5a038203256d47c1"
+  },
+  "key:spender": {
+   "keyId": "key:spender",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000002004",
+   "credential": "0xcb75fed9c52f386f38a12a8aaffd593eab63603ae28b8056b894e8d08d53d71f"
+  },
+  "key:gateway": {
+   "keyId": "key:gateway",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000002005",
+   "credential": "0xf30c274884eeddb70820f55bfd49114f00457292d2468e8f98a6f72efdeec445"
+  },
+  "acme:1": {
+   "keyId": "acme:1",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000003001",
+   "credential": "0xe82a9aa41d740c74b238550f6fe970ba946e98499381af855c1bd0c3f616c26b"
+  },
+  "stranger:1": {
+   "keyId": "stranger:1",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000003999",
+   "credential": "0xa434f23c76408525b4fcd3ba47824df8ec912f6046fc4d95e1e43f448e156bf6"
+  },
+  "key:bea": {
+   "keyId": "key:bea",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000002101",
+   "credential": "0xf1891039752e1e3e5a1cfbc8fb2bf1d72cf103106f8eb97a47b076c37ab31fcb"
+  },
+  "key:alex": {
+   "keyId": "key:alex",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000002102",
+   "credential": "0xa9378fd5cc58413bfd80a7fd47acdbdf1ae40e83c98077002c824108e3dda7ae"
+  },
+  "key:cal": {
+   "keyId": "key:cal",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000002103",
+   "credential": "0x82e5d9137d90af33c7405b886960cadf20776422bd26d4256a99a6e7b3eff272"
+  },
+  "acme:2": {
+   "keyId": "acme:2",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000003002",
+   "credential": "0xf7f99723257c7c6554667a1076e6da073e7a6e33485052fe7f8b1d68bdb37009"
+  },
+  "key:eip191": {
+   "keyId": "key:eip191",
+   "scheme": "eip191-personal-sign-keccak256",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000002201",
+   "credential": "0xce446d3e0bb03acc5cc10215dbac5807fe6ab578"
+  },
+  "key:bea (conformance/v1 seed)": {
+   "keyId": "key:bea",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000002001",
+   "credential": "0xa1a9e7d5fb08c715ac788ad7e207c290438b7e41065fa3151bf07bdad5384f2d"
+  },
+  "key:alex (conformance/v1 seed)": {
+   "keyId": "key:alex",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000002002",
+   "credential": "0xf899b47395acd0a3917a5692cd23adf18932bf979c5bf611c3c28233a8f3b6df"
+  },
+  "key:lead (conformance/v1 seed)": {
+   "keyId": "key:lead",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000002003",
+   "credential": "0x0911dcc2fd5a551f61edebeed50c7a6a9317abb77f6d69e349b3dc921839a715"
+  },
+  "key:spender (conformance/v1 seed)": {
+   "keyId": "key:spender",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000002004",
+   "credential": "0xcb75fed9c52f386f38a12a8aaffd593eab63603ae28b8056b894e8d08d53d71f"
+  },
+  "key:stamper (conformance/v1 seed)": {
+   "keyId": "key:stamper",
+   "scheme": "ed25519",
+   "seed": "0x0000000000000000000000000000000000000000000000000000000000002005",
+   "credential": "0xf30c274884eeddb70820f55bfd49114f00457292d2468e8f98a6f72efdeec445"
+  },
+  "owner:1 (migration twins)": {
+   "scheme": "ed25519",
+   "seed": "0x7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e",
+   "note": "the owner key of every migration target (packages/core/test/format2-migrate.test.mjs)"
+  },
+  "key (reference fixture)": {
+   "scheme": "eip191-personal-sign-keccak256",
+   "seed": "0x1111111111111111111111111111111111111111111111111111111111111111",
+   "credential": "0x19e7e376e7c213b7e7e7e46cc70a5dd086daff2a"
+  }
+ },
+ "migrationId": "0x4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d",
+ "topics": [
+  "genesis-and-control-signatures",
+  "owner-keys",
+  "anchors-and-witness-bindings",
+  "migration",
+  "authorization",
+  "survives",
+  "attestation",
+  "state-records",
+  "lifecycle-authorization",
+  "duty-policy",
+  "budgets",
+  "effects",
+  "counterparties",
+  "capacity",
+  "checkpoints",
+  "eip191-sessions",
+  "export",
+  "read-only",
+  "observation",
+  "session-time-horizon"
+ ],
+ "histories": {
+  "lifecycle-v2": {
+   "eventCount": 14,
+   "head": {
+    "hash": "0x31afca37666e3ad26efb05a6fddb9f336200882d7c9a1b56b6bf01ea8a101442",
+    "position": 13,
+    "canonicalTime": 102
+   },
+   "stateRoot": "0xc42cc5b7ac00915a13362b44a0298aeb2a56d462cf84fc16d294179888288b25",
+   "recordCount": 29,
+   "projectionHead": "0x63838fcc5769eb4b1ed96cac0dde596772f130666af38b4cffa36fdc8303cac3",
+   "sha256": "a2e200b664f783d61405703da0de1f6e09dba5ad7cdf91e41a204dff6ebecfe0"
+  },
+  "lifecycle-fenced-v2": {
+   "eventCount": 15,
+   "head": {
+    "hash": "0x09980dda0ab5e124832b8160eb44e7ebf269d15200c2e29a80b03da255fa8478",
+    "position": 14,
+    "canonicalTime": 103
+   },
+   "stateRoot": "0x2afa36149a9add659bbffd43f71075e882415b0ade5b3bb9ff6743e2603741b3",
+   "recordCount": 30,
+   "projectionHead": "0x247e5b26adc00f12f23c73289896fbcb8f672ed1a2180b2392d5485dab02eae8",
+   "sha256": "a1844995ba417baac2c54be7b784a45f8db5e8483b8241efe8a05de84267f530"
+  },
+  "migrated-legacy-v2": {
+   "eventCount": 26,
+   "head": {
+    "hash": "0xc3616653aee88016b2a02132a95b0b87ae03ba86be5477aaa8676400fb190156",
+    "position": 25,
+    "canonicalTime": 25
+   },
+   "stateRoot": "0x389fa6ec00c5690bdf4e243843fea8f77df36bb313f2ee55fa8321f70ada308f",
+   "recordCount": 50,
+   "projectionHead": "0x4d1aecffa3b1ce740ebad05938fcba897946a4303ecd1a8dc18f896d52ce0563",
+   "sha256": "2f6a311ea1c59a5d33f9d05e7f6879a6a28c69a3de16347fb9e3d73b580b4191"
+  },
+  "migrated-format1-v2": {
+   "eventCount": 22,
+   "head": {
+    "hash": "0xc4d3eac042b0b420635a8beb657d91fd7ee5d8d42841113cd0841d9d0cbdf09d",
+    "position": 21,
+    "canonicalTime": 116
+   },
+   "stateRoot": "0xf3b573bd6ba9b45af056cb4e544b22f944834b39c1f757f9175bb69aacdcbb62",
+   "recordCount": 43,
+   "projectionHead": "0x512a0177f13acbf6f4831f13973c9fb5322d8013dbfdda484f8947c937c8be99",
+   "sha256": "5187ad17f14fa5f52884145fe843a7622c36233cf53a5feff19105df359eabe2"
+  },
+  "migrated-no-expiry-v2": {
+   "eventCount": 28,
+   "head": {
+    "hash": "0xe1c9aa92b940313b93825f7c141b1791725125a708e18cb8848f6ba1da15e17c",
+    "position": 27,
+    "canonicalTime": 25
+   },
+   "stateRoot": "0x013e45ac18cf9b7dcd1168c42996c2cbff73b14049340c018a3b33dea6531b58",
+   "recordCount": 54,
+   "projectionHead": "0xb1455ecb7a57d90188460807b9f6e5588fdf4005c137839fa5c586aabcfee57a",
+   "sha256": "2de67d293f84acda24a1916d54269e73afe6f2c267e61112e4b09e6174875d2a"
+  },
+  "rich-v2": {
+   "eventCount": 62,
+   "head": {
+    "hash": "0xfe43db621512d772fa8200454df7489465ef0e4e58a57829676566142e8c35ce",
+    "position": 61,
+    "canonicalTime": 128
+   },
+   "stateRoot": "0x4237fa7dd28926f9d873e5eab90e066758f781967294875be93bc1f07a6423cd",
+   "recordCount": 114,
+   "projectionHead": "0xae101abf4260bdc59bdadeb60a193f712dd22566e0276c57c66147b09e7a9ea7",
+   "sha256": "c3757e9a881ac57013bbc80a74ebcd504278c4e2113fe7fcde015e49e175bb70"
+  },
+  "budgets-v2": {
+   "eventCount": 12,
+   "head": {
+    "hash": "0xc159be20741865d53ba8d096caa31185497f9cced8aba611cff42e7418c31d30",
+    "position": 11,
+    "canonicalTime": 1100
+   },
+   "stateRoot": "0xcca3c54f7a0fcf9f2c5773e03421bff40bd91f11ff5bcf4921afd019b0d9df56",
+   "recordCount": 26,
+   "projectionHead": "0xb3b9e6e78d306a8d37cd6496ffede21058fa99203006642b472f6ab88fcfd5cb",
+   "sha256": "38deed221d8b734c65601b9dad820f685152e8dc87d4cde6a3b4731ce48bd595"
+  },
+  "reserve-v2": {
+   "eventCount": 9,
+   "head": {
+    "hash": "0x4acd37e648257f611fba8bdb1b947eecd47bf55627bf65b32f3d13e6d4be728c",
+    "position": 8,
+    "canonicalTime": 100
+   },
+   "stateRoot": "0xacba3f15a444b6024a23dee2c2ef05783c8d100ab6c79555de955a53d63e8d75",
+   "recordCount": 19,
+   "projectionHead": "0x59d5d2637b3f25e3fda5a249f5823cbae3bc86ef2e7d91182347bb85b58c32b3",
+   "sha256": "7fa3b16dfcfb9167accb8641c926847c6b15300290f66d175e3cd9b07767e706"
+  },
+  "budget-set-v2": {
+   "eventCount": 262,
+   "head": {
+    "hash": "0xde86bc3ffdf857d6c34f34eb0168c1d9adb5f8a8ed586d521b33693dd4427be4",
+    "position": 261,
+    "canonicalTime": 100
+   },
+   "stateRoot": "0x85d2230b1cf1d1e28d2cfeb35eb508916c598f57bc9219a8d74548ebd811db94",
+   "recordCount": 525,
+   "projectionHead": "0xa79d2a0d32602966dfa7293b6cc81370eab537292685562684c8a37f944b5828",
+   "sha256": "3927f6c39debeeb4516d8b14861c348a9780a8eb9e4c4d80a512a999d743b0de"
+  },
+  "effects-v2": {
+   "eventCount": 74,
+   "head": {
+    "hash": "0x53b9f873bccda32773c8dedba02aca973f9377c62f11ecf6e5df2863187a251b",
+    "position": 73,
+    "canonicalTime": 100
+   },
+   "stateRoot": "0xce219291f6695bee1b518063a8f25c4a673562e076bee706c1d010981c500d5d",
+   "recordCount": 149,
+   "projectionHead": "0xdb292d6631583842e5ff2e0f1ba9afdf52efe0b069c25aca3f43096523e99181",
+   "sha256": "7af0259685f8da56b742908de4d2ef4839a2832b1a8a3823ec0656462f15e93e"
+  },
+  "counterparty-v2": {
+   "eventCount": 18,
+   "head": {
+    "hash": "0x312b8f4b45fa248da61f859440e329e5cf8604ac0d7edf1f85548714ecf0fe0a",
+    "position": 17,
+    "canonicalTime": 100
+   },
+   "stateRoot": "0x5ffac9eeba6203fc6af10ce69b422e839b3f3227e9e7f765a6d39d7c03cbf083",
+   "recordCount": 32,
+   "projectionHead": "0x4a972e7d7e38c47170540bd39f154161961d008b13343fc16a8a5df49d98828d",
+   "sha256": "1b1ef6356749dc938a838f687bc7f52a9d34ff3bd0699dbdeffdfdefb7690d67"
+  },
+  "handover-budget-v2": {
+   "eventCount": 21,
+   "head": {
+    "hash": "0xa0d58036e92c2b60c97e812a8131bd47c7d7cdff94cf668f209036bab8aff3b0",
+    "position": 20,
+    "canonicalTime": 200
+   },
+   "stateRoot": "0xe789f26834ad99f820c3aa6352ad845faf504aa0cdcbd8cafa8f67e0a0504635",
+   "recordCount": 42,
+   "projectionHead": "0x77800119e2cf2f8952d044d0adce75efdc93230452a19963297e37284d4dc4d4",
+   "sha256": "0b9b28a2a741cae26d6583906ac8a44269fa27b7be765a4e3206969865007e96"
+  },
+  "checkpoints-v2": {
+   "eventCount": 14,
+   "head": {
+    "hash": "0xfc6b43755eac2a17de86e6d1b4b98fee620030f19d4bec110dd09b90703430fd",
+    "position": 13,
+    "canonicalTime": 109
+   },
+   "stateRoot": "0xcf50e1d9fc78eb091b9745e92fb40a035b14c20c13e91ab5309cdddeb8aec554",
+   "recordCount": 26,
+   "projectionHead": "0x57befdc86f71e2811147e3341b5484b2e55bb272023dd78ada9dc1672722f6aa",
+   "sha256": "2c621044181329175fbaca49279f97dfa4e7d693cdeac2b4030df7248b4427ad"
+  },
+  "capacity-v2": {
+   "eventCount": 7,
+   "head": {
+    "hash": "0xcb036f5c7145be666060e38c0471d332680d65a181ae34f90d8967fe45161cc6",
+    "position": 6,
+    "canonicalTime": 100
+   },
+   "stateRoot": "0x8d1ac7007fa3bce03457305e16820998504d334aba4882fc2d9d15b8cfe1647b",
+   "recordCount": 15,
+   "projectionHead": "0x3f9995325c764b9647f35c704d91e1b661e5832d17c58602594092121fa40d85",
+   "sha256": "f5503e428b4bc11aab621f5890f61a0534434b84aede38951a835b165dbbbb4a"
+  },
+  "duty-policy-v2": {
+   "eventCount": 20,
+   "head": {
+    "hash": "0x9e8af38320bc382088dd2cc995b6fbab3c22873cbd8d72d099f474aafc4a73dd",
+    "position": 19,
+    "canonicalTime": 100
+   },
+   "stateRoot": "0xd6b963793122a825a7ff7b45de51aebdcf5e91c7ff5f97f0775893702afacd0e",
+   "recordCount": 38,
+   "projectionHead": "0x28e431ff2d50b7cfb83eba11f5177b3b5c19a20c8da6369f8e03704392492671",
+   "sha256": "01ceeb43cd263657c00db2c09a68ad44fbc6472bbfa2440f345db1d47d61c99e"
+  },
+  "duty-capacity-v2": {
+   "eventCount": 18,
+   "head": {
+    "hash": "0x00867be201000732cb2837888f0b93c3206d84b9378b8e9e1e9046e0a248d519",
+    "position": 17,
+    "canonicalTime": 100
+   },
+   "stateRoot": "0xd728a2a800e8df51e3920c743fc808107317b4c1ecd2a5cefce92287b345756e",
+   "recordCount": 36,
+   "projectionHead": "0x9e7410a2c77d5e89718f61cada3a33fc9fa404388db332feb57bf46e19022ce9",
+   "sha256": "9baa6a936553ec9bcefb717ae00d83f498a1a6d23fa70b50affd42343b2fcecd"
+  },
+  "handover-v2": {
+   "eventCount": 23,
+   "head": {
+    "hash": "0x1b099e6f35af26a45f58d87d67aa504b77958943df4d282b6723ad67dc6c8d77",
+    "position": 22,
+    "canonicalTime": 116
+   },
+   "stateRoot": "0x19b3c65d0cfa12b33676c4265e3dbca0d4741f05615168772694459ae6c0918a",
+   "recordCount": 43,
+   "projectionHead": "0xd36b608eb582f17d79c183046c2e47edb438409b994000bd7311a9b9fd42244e",
+   "sha256": "049a2a0fa6604a45af8c840f1ec2fd167b290a3540d88ff7f484a691c9019e15"
+  },
+  "handover-anchored-v2": {
+   "eventCount": 24,
+   "head": {
+    "hash": "0x0077d55e7b4626a06a62d36e71582be72978bacf45e13167b182e13496c1b537",
+    "position": 23,
+    "canonicalTime": 117
+   },
+   "stateRoot": "0xcc58409b1f829a12712b55b07cffa17aa46b4edeb4c8d8ef7c4372522a2aafe0",
+   "recordCount": 45,
+   "projectionHead": "0xf819963c5c8cbe93b628d71fa842d696224079ef9ffcd9cfc45d978522dfe8aa",
+   "sha256": "7e00a589a161e6dfbae740c936c3ecf924fbf96675ab4676d77534e820e30afe"
+  },
+  "authority-v2": {
+   "eventCount": 54,
+   "head": {
+    "hash": "0x3b63e95445e5996750e458c077f8021a4409291ff7cfb61d37c88d240dc3903a",
+    "position": 53,
+    "canonicalTime": 145
+   },
+   "stateRoot": "0x97d086bfce49d8811fca40ae4ade2888640f8a4d03f305b65d583f8933644e6f",
+   "recordCount": 106,
+   "projectionHead": "0x3f30335861bed01e8b2104c1465f589eb817dbc69493e8de16b62d33a272cb43",
+   "sha256": "99ed227d4a66ffe09dbb107a843e967ffd761cb8efe8985fbf02538febbe8a2c"
+  },
+  "rotation-v2": {
+   "eventCount": 7,
+   "head": {
+    "hash": "0x9c3be15096a54c6ef7232cc107a62c4f51f82dc25bbe99aea8b14a296a039d8b",
+    "position": 6,
+    "canonicalTime": 104
+   },
+   "stateRoot": "0x5a18aa61863e58b083173b865feea6aebcaaa5b379a4e7525ee725d1d4d688f3",
+   "recordCount": 14,
+   "projectionHead": "0xdbef695ba82648e3ea8f89c2a8da7fc399b7e47ae1f53862684d8f41a5106a31",
+   "sha256": "86ff8ee0ad80be589caefc74772fd9230ba5a82503c5375754a730a7f014794a"
+  },
+  "pre-rotation-v2": {
+   "eventCount": 6,
+   "head": {
+    "hash": "0xf83fd13dfdc1b6448e83ce0c97813ccf17c127f144564b578cfcd00476121562",
+    "position": 5,
+    "canonicalTime": 103
+   },
+   "stateRoot": "0x53416b00ed365ed831fd67f684598923f4acde853cd14e84d7c85bdffde54393",
+   "recordCount": 13,
+   "projectionHead": "0xf3d0c2a1bada8fac8b65f595f1031cb1df5e5cfe6a04e8703dde004902cd86a6",
+   "sha256": "363d3ed7adb608e2cad662a9d27d6b3333bfa0bbb718992e02793b115cbdc9af"
+  },
+  "witness-bound-v2": {
+   "eventCount": 25,
+   "head": {
+    "hash": "0xbb41c92067342173e5d52e9f376e42f6f351ffabb48c22ed2ebbb101519846e5",
+    "position": 24,
+    "canonicalTime": 116
+   },
+   "stateRoot": "0x3e5a9f4fdeb62ca0efbc7b6e3bdcc8cfee7db3e68c4f7e1be88e43337717d6f1",
+   "recordCount": 47,
+   "projectionHead": "0x2fe96164d5e2acea0f6e23c865fd916e9a951b5c66e795116cb7bb890f990af6",
+   "sha256": "10587c857e2eb3d03887e0b487abbc616ed079a33112cac21747479131589960"
+  },
+  "observation-v2": {
+   "eventCount": 21,
+   "head": {
+    "hash": "0xcd381750ed405ca064a8c4ddccf507fca4936f8fcc9aca03e3a11ef1c58fb74c",
+    "position": 20,
+    "canonicalTime": 102
+   },
+   "stateRoot": "0x849989f3e73642254a0fb908bb2eb9b1a4c27f3bd199be9b8b0360399b3e8b92",
+   "recordCount": 46,
+   "projectionHead": "0x3c7bfa4a722882cf25933c54901f33009b174c2d10c201f7308622ab0967a1ca",
+   "sha256": "0937e89aa5e805bbf67f62a3a49479d500f35e875eb62429c0fb7fd865291903"
+  },
+  "observation-cap-v2": {
+   "eventCount": 15,
+   "head": {
+    "hash": "0xcca7e7cfcc055f0b150ed186c2f28864267051c773233e8e9f12d61efc37cad4",
+    "position": 14,
+    "canonicalTime": 101
+   },
+   "stateRoot": "0xab4e730a1807115a39b0899e1e12c175b77c24c1101483a48c5d74c0d619f863",
+   "recordCount": 31,
+   "projectionHead": "0x3abfa38a74a1f3737da6fb92b54c06049977aba45caf8193bced552baf1d3f24",
+   "sha256": "c5ae93865d48a7ef89cc3af09d144fd4aa7811ef592cca6c2793a0a629808395"
+  },
+  "horizon-v2": {
+   "eventCount": 17,
+   "head": {
+    "hash": "0x091321867f20b91707ffceea9f1b6bbb7cf75869c26eaa403915d9a3da73a778",
+    "position": 16,
+    "canonicalTime": 2500
+   },
+   "stateRoot": "0x58aefabf9b7de094b69c3cbf67232523bc7643e6599c4047a6770e702e98c877",
+   "recordCount": 32,
+   "projectionHead": "0x4a7b926fab9d02f0c8144afb842efde45c729af5ba6b1b5485730a1fe2ae861f",
+   "sha256": "7cd42359cc59221c31130c2339b047a56735330c31fb7f889d4b0b4ff1b24dd7"
+  },
+  "horizon-max-v2": {
+   "eventCount": 4,
+   "head": {
+    "hash": "0x5633680843e2d8f6c73c41f44360a36d6ba91f7ba01d19a68e3bd0d4d5bb2374",
+    "position": 3,
+    "canonicalTime": 9007199254740985
+   },
+   "stateRoot": "0x52a86c35bf317de2be42b63e4c8f846d229beff103b711ad50e4262a19193f64",
+   "recordCount": 9,
+   "projectionHead": "0xf1647bdc12f38cdce41befe01bca2df009ff5859457e60f5767a0af7abddd05f",
+   "sha256": "76569853ea63b0224f5fe0644eac20c73656fc623d4655b60a7f142e4b8d7383"
+  },
+  "horizon-overflow-v2": {
+   "eventCount": 4,
+   "head": {
+    "hash": "0x2890aca964fffccf2bd512668de55d9d5676f345ad25c2f03077cd779466e6b6",
+    "position": 3,
+    "canonicalTime": 9007199254740985
+   },
+   "stateRoot": "0xce5defe9c13ab67bb39572dbef2ade01335205c16de381c9986440b4dc119d7e",
+   "recordCount": 9,
+   "projectionHead": "0x701ce411bb70b17668c532079249a6f9fa13ecd50263cd6f7df16855a559a7bb",
+   "sha256": "48990caa1309bfa8540f7879de76dc01633eed26143dd11a85b882d27773f8de"
+  },
+  "migrated-horizon-format1-v2": {
+   "eventCount": 22,
+   "head": {
+    "hash": "0x519d955c354b9f7b4d07f8f41782ec75f022847d700bd8f020087e0232f9159d",
+    "position": 21,
+    "canonicalTime": 116
+   },
+   "stateRoot": "0x570176df6d09eb7eb4342f0e435949198017711e4d2f6d465487091c42d718ac",
+   "recordCount": 43,
+   "projectionHead": "0x91b173415595a3c42d599cee6c54628173b543784e1a1317e11920613fa19354",
+   "sha256": "0976f77c86fca157f35713563cea443a577d28ffc9443e5242d401bf491e8755"
+  },
+  "migrated-horizon-legacy-v2": {
+   "eventCount": 26,
+   "head": {
+    "hash": "0xc7b2b7b67d605c3f52a27133a491dca4d861888022505ff952727a90e83b03a0",
+    "position": 25,
+    "canonicalTime": 25
+   },
+   "stateRoot": "0x710d1961ab88319f678bb4e2ecf38b4b54500469cfd68aabe3926ed0ee3e85eb",
+   "recordCount": 50,
+   "projectionHead": "0xa169fa585301acf8bf2ba3d64aec00f2ad7305402853e97ecd012cb86d16d271",
+   "sha256": "b67034962d44dd3bdf7f59517051471e1fbbfc04ae0482b28329b68eedf29e08"
+  }
+ },
+ "pinnedPositions": {
+  "lifecycle-v2": [
+   13
+  ],
+  "lifecycle-fenced-v2": [
+   14
+  ],
+  "migrated-legacy-v2": [
+   25
+  ],
+  "migrated-format1-v2": [
+   21
+  ],
+  "migrated-no-expiry-v2": [
+   27
+  ],
+  "rich-v2": [
+   10,
+   19,
+   22,
+   23,
+   26,
+   29,
+   30,
+   34,
+   42,
+   43,
+   44,
+   45,
+   48,
+   49,
+   53,
+   57,
+   59,
+   60,
+   61
+  ],
+  "budgets-v2": [
+   11
+  ],
+  "reserve-v2": [
+   8
+  ],
+  "budget-set-v2": [
+   261
+  ],
+  "effects-v2": [
+   73
+  ],
+  "counterparty-v2": [
+   17
+  ],
+  "handover-budget-v2": [
+   16,
+   17,
+   20
+  ],
+  "checkpoints-v2": [
+   2,
+   3,
+   7,
+   8,
+   12,
+   13
+  ],
+  "capacity-v2": [
+   6
+  ],
+  "duty-policy-v2": [
+   11,
+   12,
+   14,
+   17,
+   18,
+   19
+  ],
+  "duty-capacity-v2": [
+   17
+  ],
+  "handover-v2": [
+   16,
+   18,
+   19,
+   22
+  ],
+  "handover-anchored-v2": [
+   18,
+   19,
+   23
+  ],
+  "authority-v2": [
+   53
+  ],
+  "rotation-v2": [
+   6
+  ],
+  "pre-rotation-v2": [
+   3,
+   5
+  ],
+  "witness-bound-v2": [
+   18,
+   19,
+   24
+  ],
+  "observation-v2": [
+   15,
+   16,
+   17,
+   18,
+   19,
+   20
+  ],
+  "observation-cap-v2": [
+   14
+  ],
+  "horizon-v2": [
+   11,
+   12,
+   15,
+   16
+  ],
+  "horizon-max-v2": [
+   3
+  ],
+  "horizon-overflow-v2": [
+   3
+  ],
+  "migrated-horizon-format1-v2": [
+   21
+  ],
+  "migrated-horizon-legacy-v2": [
+   25
+  ]
+ },
+ "counts": {
+  "replay": 174,
+  "authorization": 35,
+  "survives": 5,
+  "attestation": 7,
+  "headroom": 4,
+  "export": 2,
+  "duty-view": 5,
+  "export-verify": 9,
+  "writer-open": 5,
+  "authority-evaluation": 7,
+  "total": 253,
+  "byTopic": {
+   "genesis-and-control-signatures": {
+    "replay": 7,
+    "authorization": 0,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 0,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 7
+   },
+   "owner-keys": {
+    "replay": 16,
+    "authorization": 0,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 0,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 16
+   },
+   "anchors-and-witness-bindings": {
+    "replay": 16,
+    "authorization": 0,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 0,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 16
+   },
+   "migration": {
+    "replay": 12,
+    "authorization": 0,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 0,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 12
+   },
+   "authorization": {
+    "replay": 0,
+    "authorization": 31,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 0,
+    "writer-open": 0,
+    "authority-evaluation": 7,
+    "total": 38
+   },
+   "survives": {
+    "replay": 0,
+    "authorization": 0,
+    "survives": 5,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 0,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 5
+   },
+   "attestation": {
+    "replay": 0,
+    "authorization": 0,
+    "survives": 0,
+    "attestation": 7,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 0,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 7
+   },
+   "state-records": {
+    "replay": 17,
+    "authorization": 0,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 0,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 17
+   },
+   "lifecycle-authorization": {
+    "replay": 21,
+    "authorization": 0,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 0,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 21
+   },
+   "duty-policy": {
+    "replay": 12,
+    "authorization": 0,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 5,
+    "export-verify": 0,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 17
+   },
+   "budgets": {
+    "replay": 8,
+    "authorization": 4,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 4,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 0,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 16
+   },
+   "effects": {
+    "replay": 2,
+    "authorization": 0,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 0,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 2
+   },
+   "counterparties": {
+    "replay": 5,
+    "authorization": 0,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 0,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 5
+   },
+   "capacity": {
+    "replay": 9,
+    "authorization": 0,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 0,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 9
+   },
+   "checkpoints": {
+    "replay": 5,
+    "authorization": 0,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 0,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 5
+   },
+   "eip191-sessions": {
+    "replay": 3,
+    "authorization": 0,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 0,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 3
+   },
+   "export": {
+    "replay": 0,
+    "authorization": 0,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 2,
+    "duty-view": 0,
+    "export-verify": 8,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 10
+   },
+   "read-only": {
+    "replay": 0,
+    "authorization": 0,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 0,
+    "writer-open": 5,
+    "authority-evaluation": 0,
+    "total": 5
+   },
+   "observation": {
+    "replay": 27,
+    "authorization": 0,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 1,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 28
+   },
+   "session-time-horizon": {
+    "replay": 14,
+    "authorization": 0,
+    "survives": 0,
+    "attestation": 0,
+    "headroom": 0,
+    "export": 0,
+    "duty-view": 0,
+    "export-verify": 0,
+    "writer-open": 0,
+    "authority-evaluation": 0,
+    "total": 14
+   }
+  }
+ },
+ "vectors": [
+  {
+   "id": "replay/v2r/accepts-signed-handover",
+   "kind": "replay",
+   "topic": "genesis-and-control-signatures",
+   "purpose": "A format-2 handover history with owner-signed control events (§6.1 /2 challenge over the record-chain head), a simulated admission, a receipt, an obligation and a succession replays.",
+   "sha256": "a5e7f8ae92a4fb5c75f374e91cbc269d480e3ec65052490bc0e71286ba3bdb61"
+  },
+  {
+   "id": "replay/v2r/accepts-prefix-before-handover",
+   "kind": "replay",
+   "topic": "genesis-and-control-signatures",
+   "purpose": "Every prefix of a valid history is valid: the history as it stood before the succession.",
+   "sha256": "4ee61175f404947607faada2f998b8db2e10a35f42a05ee34d2b7628a51b5fb9"
+  },
+  {
+   "id": "replay/v2r/rejects-unsigned-control-event",
+   "kind": "replay",
+   "topic": "genesis-and-control-signatures",
+   "purpose": "A control event without its owner signature is refused (CONTROL_AUTHORIZATION_INVALID).",
+   "sha256": "4111e32f2031a8d23b0ae3c913333502efdfb72082fe820e206d35ebb11e1193"
+  },
+  {
+   "id": "replay/v2r/rejects-tampered-control-signature",
+   "kind": "replay",
+   "topic": "genesis-and-control-signatures",
+   "purpose": "A control event whose signature bytes were altered is refused (CONTROL_AUTHORIZATION_INVALID).",
+   "sha256": "6c3053242f84fa9f92a701119381fd5891f70fa30577934a73c654c4bbdb2bb2"
+  },
+  {
+   "id": "replay/v2r/rejects-moved-control-event",
+   "kind": "replay",
+   "topic": "genesis-and-control-signatures",
+   "purpose": "Two independently valid, signed grants swapped in position are refused: each signature binds the head before its event (CONTROL_AUTHORIZATION_INVALID).",
+   "sha256": "036bd04b22a8411b584a0cbdd9724a24a3f08777fff2ae3ccda8f88bf3f20982"
+  },
+  {
+   "id": "replay/v2r/rejects-altered-control-effect",
+   "kind": "replay",
+   "topic": "genesis-and-control-signatures",
+   "purpose": "Editing a signed grant's expiry invalidates the owner signature over its effect hash (CONTROL_AUTHORIZATION_INVALID).",
+   "sha256": "235c043a48688364134cd8d12e38aa24da12d25746f320d10b7245a6494f9cbb"
+  },
+  {
+   "id": "replay/v2r/rejects-undeclared-owner-key",
+   "kind": "replay",
+   "topic": "genesis-and-control-signatures",
+   "purpose": "A control event claiming a key id the genesis does not declare is refused (CONTROL_AUTHORIZATION_INVALID).",
+   "sha256": "25f12a9993d8a4278a173c6f963c61ff99140ea4fdf1b0e3e7c06d1be73a77a5"
+  },
+  {
+   "id": "replay/v2r/accepts-genesis-commitment",
+   "kind": "replay",
+   "topic": "owner-keys",
+   "purpose": "The format-2 genesis commits the owner keys to the digest of their next key (nextKeyDigests).",
+   "sha256": "dbd7c72cb72585e01350dd9e657d5bcf045a749e37b4ef338dd670611bfc32c1"
+  },
+  {
+   "id": "replay/v2r/rejects-genesis-commitment-naming-an-owner-key",
+   "kind": "replay",
+   "topic": "owner-keys",
+   "purpose": "A genesis whose next-key commitment names one of its own owner keys is refused (EVENT_DATA_INVALID).",
+   "sha256": "e33f3f1d0f73140ac8bfdde09931720b2e7ecb0b95e64683dac2d86bd425fef3"
+  },
+  {
+   "id": "replay/v2r/rejects-genesis-commitment-empty",
+   "kind": "replay",
+   "topic": "owner-keys",
+   "purpose": "A genesis whose next-key commitment is empty is refused (EVENT_DATA_INVALID).",
+   "sha256": "2159b507ace6af30572854fff0a5644a9cae2bae2858a67713797d643d7f6e8f"
+  },
+  {
+   "id": "replay/v2r/accepts-owner-key-rotation",
+   "kind": "replay",
+   "topic": "owner-keys",
+   "purpose": "On a history created without a next-key commitment, OWNER_KEYS_ROTATED signed by the current owner key replaces the owner key set; later control events are signed by the new key.",
+   "sha256": "5c070ab31ffd2e030e1fd2f4a0f74710d9cb2c6706bb878c9337602b08218123"
+  },
+  {
+   "id": "replay/v2r/rejects-control-event-signed-by-retired-key",
+   "kind": "replay",
+   "topic": "owner-keys",
+   "purpose": "After a rotation the retired owner key can no longer sign a control event (CONTROL_AUTHORIZATION_INVALID).",
+   "sha256": "4301a5e2508d840456aa7e5b9ccc1b566321aef048f5975325656ea60cc7c08a"
+  },
+  {
+   "id": "replay/v2r/rejects-rotation-signed-by-unknown-key",
+   "kind": "replay",
+   "topic": "owner-keys",
+   "purpose": "A rotation signed by a key the history never declared is refused (CONTROL_AUTHORIZATION_INVALID).",
+   "sha256": "81a0364990b38109fd5aec58455c90851f2d98154abc30e45b22586c56596280"
+  },
+  {
+   "id": "replay/v2r/rejects-retired-key-id-reuse",
+   "kind": "replay",
+   "topic": "owner-keys",
+   "purpose": "A rotation that brings a retired key id back is refused (TRANSITION_INVALID).",
+   "sha256": "fb08e60ed0dfc86547e40dc4298645eb6f6e60ddbb3df56d2c5feb7013d91410"
+  },
+  {
+   "id": "replay/v2r/rejects-rotation-rebinding-a-key-id",
+   "kind": "replay",
+   "topic": "owner-keys",
+   "purpose": "A rotation that keeps a key id but binds it to a different public key is refused (TRANSITION_INVALID).",
+   "sha256": "53cfb8bab485fba259ac1804a32e52fe6e3832e0db6d8e323b3a75e77e9f77d1"
+  },
+  {
+   "id": "replay/v2r/accepts-commitment-only-rotation",
+   "kind": "replay",
+   "topic": "owner-keys",
+   "purpose": "An uncommitted epoch gets a commitment by a rotation that keeps every owner key and carries nextKeyDigests.",
+   "sha256": "eba5aae33c61b353709d5f0c51fd3129599784135b0594998951344c8b152fb9"
+  },
+  {
+   "id": "replay/v2r/rejects-carry-over-rotation-without-commitment",
+   "kind": "replay",
+   "topic": "owner-keys",
+   "purpose": "A rotation that keeps every owner key and carries no nextKeyDigests changes nothing (TRANSITION_INVALID).",
+   "sha256": "0acbc301b8e4c1db1a7d29f909c323e9542bfe2c66971fda2365dcb2bf186c19"
+  },
+  {
+   "id": "replay/v2r/accepts-pre-rotated-rotation",
+   "kind": "replay",
+   "topic": "owner-keys",
+   "purpose": "A rotation out of a committed epoch that reveals the committed key with its proof (nextKeyAuthorizations) and commits the new set to its own next key is accepted.",
+   "sha256": "19b7dcd8f2085b093c1fae06eeda313e01d47d5c986dd3127b3ea9b448694dae"
+  },
+  {
+   "id": "replay/v2r/rejects-rotation-to-uncommitted-key",
+   "kind": "replay",
+   "topic": "owner-keys",
+   "purpose": "A rotation out of a committed epoch to a key the commitment does not name is refused (TRANSITION_INVALID).",
+   "sha256": "4334e9e6912e3e732ba57d0efdc827e03ae5e9558fb5e370702ecc70f8c61e55"
+  },
+  {
+   "id": "replay/v2r/rejects-revealed-key-without-proof",
+   "kind": "replay",
+   "topic": "owner-keys",
+   "purpose": "Revealing the committed key without its signature (no nextKeyAuthorizations) is refused (TRANSITION_INVALID).",
+   "sha256": "f1c1672e2ee4a43527a91da995546d949a8541dc1a52e13e0e01a0e1dfaa2fc6"
+  },
+  {
+   "id": "replay/v2r/rejects-pre-rotated-rotation-without-next-commitment",
+   "kind": "replay",
+   "topic": "owner-keys",
+   "purpose": "A pre-rotated rotation without nextKeyDigests is refused (TRANSITION_INVALID): the commitment chain must continue.",
+   "sha256": "34d63fa125a4bf45c68291be6710fbd9d675dc499818688d6ee83d7f40a2bab5"
+  },
+  {
+   "id": "replay/v2r/rejects-session-public-key-uppercase-hex",
+   "kind": "replay",
+   "topic": "owner-keys",
+   "purpose": "G6.8 A-157: a RUNTIME_SESSION_ADMITTED (type 8) whose credentialPublicKey is written with A–F, correctly owner-signed (its lowercase twin replays): PublicKey32 is 0x + 64 lowercase hex (r4 §3.3, Appendix C row 8), a C4 grammar, so EVENT_DATA_INVALID at its position; no lowercasing applies (A-157.1).",
+   "sha256": "a78353acba15f025d48e57965b6ba3a1d43f69fd99b425c1d4cb7accc4c039b2"
+  },
+  {
+   "id": "replay/v2r/rejects-owner-key-uppercase-hex",
+   "kind": "replay",
+   "topic": "owner-keys",
+   "purpose": "G6.8 A-157: an OWNER_KEYS_ROTATED (type 26) out of a committed epoch revealing the committed key with A–F (the ownerKeyDigest of the lowercased key matches, the proof is valid, the lowercase twin replays): a non-lowercase PublicKey32 is EVENT_DATA_INVALID at C4, before the §3.3 point test and the digest check.",
+   "sha256": "c7755d9fa26ca08ea4a3e58090d4e74d5fc7b8258a864eb2ceaf6e780d089afc"
+  },
+  {
+   "id": "replay/v2r/accepts-anchor",
+   "kind": "replay",
+   "topic": "anchors-and-witness-bindings",
+   "purpose": "An ANCHOR_RECORDED event whose anchored head is a prefix of this history is accepted; the anchor state record is pinned.",
+   "sha256": "9fe129548faa61a16bf716b91e526bc8471663c934f0122b342b547c85e2ee56"
+  },
+  {
+   "id": "replay/v2r/rejects-bad-anchor",
+   "kind": "replay",
+   "topic": "anchors-and-witness-bindings",
+   "purpose": "A correctly signed anchor whose anchored head hash is not a prefix hash of this history is refused (TRANSITION_INVALID).",
+   "sha256": "1ba19a6340fa812cbd593294f774debd7b4b6eb9207bf3db39f094e1caf96170"
+  },
+  {
+   "id": "replay/v2r/accepts-witness-bindings",
+   "kind": "replay",
+   "topic": "anchors-and-witness-bindings",
+   "purpose": "Owner-signed WITNESSES_BOUND (two witnesses, quorum 2) then WITNESSES_UNBOUND (the second, quorum 1) replay; the witnessBinding and witnessPolicy records are pinned.",
+   "sha256": "7f57281097404dc0d48960d51da7518f02dbcf752742b682dfe975992b820962"
+  },
+  {
+   "id": "replay/v2r/rejects-altered-witness-binding",
+   "kind": "replay",
+   "topic": "anchors-and-witness-bindings",
+   "purpose": "A binding whose witness list was edited after signing is refused (CONTROL_AUTHORIZATION_INVALID).",
+   "sha256": "094c7f543f242dae7552276d1989baafb1bf2711e2f34286721283ad0737523d"
+  },
+  {
+   "id": "replay/v2r/rejects-witness-binding-with-malformed-policy",
+   "kind": "replay",
+   "topic": "anchors-and-witness-bindings",
+   "purpose": "A binding whose policy minimum has quorum 0 is refused (EVENT_DATA_INVALID).",
+   "sha256": "54b3cfc6e0b41856a8133fb21152505ce3beb33629472efe3032bd25e91eb76f"
+  },
+  {
+   "id": "replay/v2r/rejects-witness-binding-without-policy",
+   "kind": "replay",
+   "topic": "anchors-and-witness-bindings",
+   "purpose": "A binding without its policy minimum is refused (EVENT_DATA_INVALID).",
+   "sha256": "a036312bdd4b3c69e96c4edcdb579afacd649c7607014f75d6455cd05af43ee3"
+  },
+  {
+   "id": "replay/v2r/rejects-witness-binding-quorum-above-bound",
+   "kind": "replay",
+   "topic": "anchors-and-witness-bindings",
+   "purpose": "A binding whose quorum (2) exceeds the witnesses bound after it (1) is refused (TRANSITION_INVALID).",
+   "sha256": "dd0ef11db12ad9d43b1720cb797f22c02897b7fdc6880b94c3a1d7e8483558a2"
+  },
+  {
+   "id": "replay/v2r/rejects-witness-binding-with-invalid-url",
+   "kind": "replay",
+   "topic": "anchors-and-witness-bindings",
+   "purpose": "A witness URL with a query string is refused (EVENT_DATA_INVALID).",
+   "sha256": "a117b6723453ab8966eda93083aed75e57fd833c916ae0fde537c62d906f53ca"
+  },
+  {
+   "id": "replay/v2r/rejects-witness-binding-with-duplicate-verifier-key",
+   "kind": "replay",
+   "topic": "anchors-and-witness-bindings",
+   "purpose": "A binding naming one verifier key twice is refused (EVENT_DATA_INVALID).",
+   "sha256": "a5025c94104b958e22ff63e9239ae8fe769c289968148331677bb9f4cd5aaa5b"
+  },
+  {
+   "id": "replay/v2r/rejects-witness-binding-above-sixteen-bound",
+   "kind": "replay",
+   "topic": "anchors-and-witness-bindings",
+   "purpose": "Sixteen more witnesses on a history that binds one (seventeen after it) are refused (TRANSITION_INVALID).",
+   "sha256": "460c31f3829483789b15cab949e0c5fe2370ba729490fb3d3d66bc0cf4ef5958"
+  },
+  {
+   "id": "replay/v2r/accepts-rebinding-a-bound-witness",
+   "kind": "replay",
+   "topic": "anchors-and-witness-bindings",
+   "purpose": "Binding a witness already bound re-binds it in place.",
+   "sha256": "30675ac1f3c0b653b11d754af7ebad07cf7b8c1e10530993a769ee64fafcc170"
+  },
+  {
+   "id": "replay/v2r/rejects-unbinding-of-unbound-witness",
+   "kind": "replay",
+   "topic": "anchors-and-witness-bindings",
+   "purpose": "An unbinding that names a witness the history does not bind is refused (TRANSITION_INVALID).",
+   "sha256": "fa474709f9d36fc146b75f844f21e43702c52250dae4b3230f5bfe78f28ccea5"
+  },
+  {
+   "id": "replay/v2r/rejects-accepted-loss-of-a-contained-head",
+   "kind": "replay",
+   "topic": "anchors-and-witness-bindings",
+   "purpose": "An accepted loss of a head this history contains is refused (TRANSITION_INVALID).",
+   "sha256": "e3ac1a674c263c8ca603855b6705b9145859410269ae55d9add49b8a83918fc7"
+  },
+  {
+   "id": "replay/v2r/accepts-unbinding-with-accepted-loss",
+   "kind": "replay",
+   "topic": "anchors-and-witness-bindings",
+   "purpose": "An unbinding that records an accepted loss of a head this copy lacks is accepted.",
+   "sha256": "ef71f9e6618d2ecaf26e7b8fb02f482348683984386efd72b84831723225ecce"
+  },
+  {
+   "id": "replay/v2r/anchor-shaped-like-a-binding-binds-nothing",
+   "kind": "replay",
+   "topic": "anchors-and-witness-bindings",
+   "purpose": "An ANCHOR_RECORDED whose receipt is shaped like an unbinding changes no binding (the stateRoot pins the unchanged witness records).",
+   "sha256": "46a6f926634ec3be4060883983dc98a23f5b1f024835df6315468b491a10a6ec"
+  },
+  {
+   "id": "replay/v2r/rejects-unknown-anchor-kind",
+   "kind": "replay",
+   "topic": "anchors-and-witness-bindings",
+   "purpose": "An anchor naming a kind other than local-head-file, rekor-v2 or custom is refused (EVENT_DATA_INVALID).",
+   "sha256": "7ce8ac4347b22dda0bd1b9624ff0b6b83d507df08dfe54a3cc5f4e592acd9498"
+  },
+  {
+   "id": "replay/v2r/accepts-migrated-legacy-v2",
+   "kind": "replay",
+   "topic": "migration",
+   "purpose": "A format-2 history migrated from the legacy (continuity-event/0.2) handover fixture (prefix positions 0…25 transcribed, fenced source) replays; the final head and root are pinned (G2.5).",
+   "sha256": "ea41e53b3171e3612690397948cdc43b4663dd4a7c5fc89e096a05301dc6d558"
+  },
+  {
+   "id": "replay/v2r/migrated-legacy-v2-prefix-incomplete",
+   "kind": "replay",
+   "topic": "migration",
+   "purpose": "The same history cut inside its migrated prefix (position 24) is refused once the replay completes (TRANSITION_INVALID): every event present is valid on its own.",
+   "sha256": "efa718aca0fa90d2dbf183aeac2e53b1f93abd5da0a47b182103045ce1812427"
+  },
+  {
+   "id": "replay/v2r/migrated-legacy-v2-truncated-prefix",
+   "kind": "replay",
+   "topic": "migration",
+   "purpose": "Dropping a transcribed event inside the migrated prefix breaks the source shadow heads the next signed event binds (TRANSITION_INVALID inside the prefix).",
+   "sha256": "f5c02f6b051a134b2e0c3e2f7e3635e4bcf567988c6eb9521e758d56f664ea21"
+  },
+  {
+   "id": "replay/v2r/accepts-migrated-format1-v2",
+   "kind": "replay",
+   "topic": "migration",
+   "purpose": "A format-2 history migrated from the format-1 conformance/v1 handover-v1 history (prefix positions 0…21 transcribed, fenced source) replays; the final head and root are pinned (G2.5).",
+   "sha256": "c32f65a3c5e2768df8fbb05c80294a358c9e84bb7035d2901d8f0dcc00be9f2a"
+  },
+  {
+   "id": "replay/v2r/migrated-format1-v2-prefix-incomplete",
+   "kind": "replay",
+   "topic": "migration",
+   "purpose": "The same history cut inside its migrated prefix (position 20) is refused once the replay completes (TRANSITION_INVALID): every event present is valid on its own.",
+   "sha256": "60fa7405e11de5e5530215301f361cb7f0ab00b2ee1d40e88a46f048c8d52128"
+  },
+  {
+   "id": "replay/v2r/migrated-format1-v2-truncated-prefix",
+   "kind": "replay",
+   "topic": "migration",
+   "purpose": "Dropping a transcribed event inside the migrated prefix breaks the source shadow heads the next signed event binds (TRANSITION_INVALID inside the prefix).",
+   "sha256": "b3678b45fab7f09dc3be126495a22129805e0acb5f9c0aa728bf512897e20544"
+  },
+  {
+   "id": "replay/v2r/a62-omitted-expiry-round-trip",
+   "kind": "replay",
+   "topic": "migration",
+   "purpose": "A-62.1–2: a migrated prefix session WITHOUT expiresAt (the legacy grammar) is transcribed with the field absent and replays; its §7.2 session record normalizes the expiry to null.",
+   "sha256": "0bf9849596b7c7460d661e16ea69b2640c9a89719ab8709cd0650a8a2e212805"
+  },
+  {
+   "id": "replay/v2r/a62-explicit-null-expiry-in-prefix",
+   "kind": "replay",
+   "topic": "migration",
+   "purpose": "A-62.1: an explicit JSON null expiresAt inside a migrated prefix is not source grammar (EVENT_DATA_INVALID at that position).",
+   "sha256": "8be18facfdbda00aeb28a56cb7009b0a212a6145cd71726ea51f3a1de12d5c75"
+  },
+  {
+   "id": "replay/v2r/a62-null-expiry-session-after-prefix",
+   "kind": "replay",
+   "topic": "migration",
+   "purpose": "A-52.2 / A-62.3: after the prefix the null-expiry session is expired for every purpose: its CONNECTOR refusal is REFUSAL_AUTHORIZATION_INVALID.",
+   "sha256": "765a12fbccf4b1b8b5ecbe5c25f5265e1ae805e9c7032cf8a067f95f0f365f03"
+  },
+  {
+   "id": "replay/v2r/a62-fresh-session-after-prefix",
+   "kind": "replay",
+   "topic": "migration",
+   "purpose": "A-62.3: the null-expiry session never blocks a fresh finite-expiry admission for the same agent and epoch after the prefix.",
+   "sha256": "72522fddea87ffd7985fb67ae0a7bf6ce94aa847bcadfd95a4c145abdb066c53"
+  },
+  {
+   "id": "replay/v2r/migrated-null-expiry-attester-after-prefix",
+   "kind": "replay",
+   "topic": "migration",
+   "purpose": "G6.7 A-149: a migrated prefix session without expiry (session:old, null in its §7.2 record) attests a duty finding after the prefix, the outer transition signed by a fresh session: the attester session is expired for every purpose (§6.2 step 4, §16.2 step 3, A-52.2), so the §13.2 attester-eligibility step refuses: TRANSITION_INVALID at the finding.",
+   "sha256": "fe1517bbb7c04aa3c7e1499b18c0bdfa501cfca23e9eef6cb98e276f2ca57077"
+  },
+  {
+   "id": "replay/v2r/migrated-null-expiry-outer-session-after-prefix",
+   "kind": "replay",
+   "topic": "migration",
+   "purpose": "G6.7 A-149: the same finding attested by the fresh session, the outer transition signed by the prefix session without expiry: it fails §6.2 step 4 with the type's code (TRANSITION_INVALID).",
+   "sha256": "991a85a6c51d866bcfe940f51472295cb6b77dfb611de4d91f98add470856cf7"
+  },
+  {
+   "id": "authorization/v2r/successor-may-exercise-its-own-grant",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "The successor may do what it was separately granted.",
+   "sha256": "01bd7be340be9287b9401cf7a2a4f2dbd0ad3e2e42bff0065adf2f9058caf5fc"
+  },
+  {
+   "id": "authorization/v2r/successor-does-not-inherit-collection",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "The successor holds the duty and must not inherit the power that created it.",
+   "sha256": "3e84ce143fa69c56f1ae3ee784791f08b8ee88c19120c6de063f6e0f7e7a8373"
+  },
+  {
+   "id": "authorization/v2r/predecessor-refused-after-handover",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "A terminated agent is refused before any authority is considered (AGENT_INACTIVE).",
+   "sha256": "af9c8f79a2f90af52376b95927e381f30d60a0f781eaf9a097dc67d2ffa0716a"
+  },
+  {
+   "id": "authorization/v2r/history-relation-unverified",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "An expected head that is not the replayed head yields INDETERMINATE HISTORY_RELATION_UNVERIFIED.",
+   "sha256": "eeaaf9fc554ce5fcd697771dcf93bec2ec3392c902cc34a246136fc61cd1145b"
+  },
+  {
+   "id": "authorization/v2r/causal-time-invalid",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "An evaluation time before the head is not causal (CAUSAL_TIME_INVALID).",
+   "sha256": "fe5e802b30a248b1e77f5ec2edaeb08d700ed1d68ffd8cadd704567be6cd1f69"
+  },
+  {
+   "id": "authorization/v2r/domain-mismatch",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "A request under a different deployment is refused (DOMAIN_MISMATCH).",
+   "sha256": "55899ef4b220dce4d1ded85047b32cbddc5965c626e4aa23d73d44a6df394fe4"
+  },
+  {
+   "id": "authorization/v2r/allow-via-delegation-with-intersection",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "A delegated grant requiring an intersection partner the actor holds is allowed.",
+   "sha256": "80acf0ececb58149f13e1b7df9d0709d852a2bc3e3924f9ec49a5cf5e5039dd2"
+  },
+  {
+   "id": "authorization/v2r/allow-via-delegation",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "A plain delegation is allowed.",
+   "sha256": "1de6b9db4a288b3ddf962e2e90a3d0a344f9d81f1a54f5cc07bc5dc146c8bbd9"
+  },
+  {
+   "id": "authorization/v2r/missing-intersection",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "A required intersection partner not held: MISSING_INTERSECTION.",
+   "sha256": "d2d5f00eca6d2c76fa84af8ec68fd2184e1af8aa34f1726e05ae94265b1b58e0"
+  },
+  {
+   "id": "authorization/v2r/prohibited-root",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "A ROOT prohibition blocks the lead's payment from the vault.",
+   "sha256": "e9819125930f505d2456bb37a3b077faa2a6fd5f86a3cbb94385782b1c9b0b03"
+  },
+  {
+   "id": "authorization/v2r/prohibited-global",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "A GLOBAL prohibition blocks an action any grant would allow.",
+   "sha256": "5def69cda5dbff0ab19ea1b7201b7dc8eb8444510d83faf72dee396eb2d7d488"
+  },
+  {
+   "id": "authorization/v2r/revoked",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "A revoked grant fails REVOKED.",
+   "sha256": "d466c9189391623e063363a961fbdc361c73f1dc8f48f29e6ec6cff2b987763b"
+  },
+  {
+   "id": "authorization/v2r/expired",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "An expired grant fails EXPIRED.",
+   "sha256": "ee9410507501519ebba305ec7275e3854e13026126b211b67cac943458cf1942"
+  },
+  {
+   "id": "authorization/v2r/not-yet-valid",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "A grant whose notBefore lies ahead fails NOT_YET_VALID.",
+   "sha256": "45170cded371831ca32cb9d1ba1056d11b804bfcec84da109bb135bb65895c8a"
+  },
+  {
+   "id": "authorization/v2r/amount-required",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "A quantitative grant needs an amount (AMOUNT_REQUIRED).",
+   "sha256": "8731ea3cc0d93d9af51f54ab2c25075522aa89b5efca3a24a5cdc589c2a0c9d2"
+  },
+  {
+   "id": "authorization/v2r/amount-exceeded",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "An amount above the ceiling fails AMOUNT_EXCEEDED; format-2 Amounts are decimal strings.",
+   "sha256": "0a4807f5da26d65ca3227557719696c3817a986cb71ecf452fd69f1d0cbd34af"
+  },
+  {
+   "id": "authorization/v2r/amount-within-cap",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "An amount at the ceiling is allowed.",
+   "sha256": "ac917ad157821e77ff438471a6ad405955bf20e323f8f44c243f03d1dc733173"
+  },
+  {
+   "id": "authorization/v2r/cumulative-amount-exceeded",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "Two admissions used 90 of 100: 20 more fails CUMULATIVE_AMOUNT_EXCEEDED.",
+   "sha256": "7614ee3fb094d70c0540edfd416e458c904cd879d4ff4aa1bcc4fb71b0cd9bd8"
+  },
+  {
+   "id": "authorization/v2r/cumulative-amount-honoured",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "The remaining 10 is allowed.",
+   "sha256": "1f802645cb371c8f221fb14b4e6bb81d3ad3592202ba7cb30c1c4950d5eb3397"
+  },
+  {
+   "id": "authorization/v2r/transaction-count-exceeded",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "One admission exhausted a single-transaction grant (TRANSACTION_COUNT_EXCEEDED).",
+   "sha256": "c830b148c2f5bc82efc770c48fa918c8a15cdbee44efc4e4f97fbd7797ab7b94"
+  },
+  {
+   "id": "authorization/v2r/agent-inactive",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "A terminated agent is refused (AGENT_INACTIVE).",
+   "sha256": "64ef0202d137bc44ef29b2aae0de455aab573d3ebb810973c0531fa59aeb0bd9"
+  },
+  {
+   "id": "authorization/v2r/no-authority",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "An active agent holding no grant fails NO_AUTHORITY.",
+   "sha256": "2ce34ee889b1fea3e5de64165265f9fd2b0b229fbaac118c7ad13bb8e9d7ac78"
+  },
+  {
+   "id": "authorization/v2r/successor-not-yet-appointed",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "The designated successor gains nothing before the transfer.",
+   "sha256": "697d35215a26471b57c0021576a5a14ec88718121f9b0be31bd8a13aa0054129"
+  },
+  {
+   "id": "authorization/v2r/migrated-successor-may-exercise-its-own-grant",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "Decisions on the history migrated from legacy match the legacy fixture: the successor may do what it was separately granted.",
+   "sha256": "75a28707e89139029d6ed8252c5485b25dfbeb5a276f6f702c4159e732303758"
+  },
+  {
+   "id": "authorization/v2r/migrated-successor-does-not-inherit-collection",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "The successor does not inherit the collection power (legacy-migrated history).",
+   "sha256": "f2b8a09465a24e29ce92fb2e54e9e76a6bf056209a87780fdb1cf05006b7a46a"
+  },
+  {
+   "id": "authorization/v2r/indeterminate-output-limit-257-revoked-root-prohibitions",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "G6.5 A-133.7 (the `before` corpus): the winner a-main lists its 257 revoked ROOT prohibitions in checkedProhibitionIds, so the §6.3 preflight refuses: INDETERMINATE / OUTPUT_LIMIT_EXCEEDED (a proof-size refusal, outside ASM-1; E-31 makes it a candidate failure in a later format minor).",
+   "sha256": "98b35c16f1b36f71656a207c6f33160219aa6ea7f4ab7e94a6c55451d3cfd8f5"
+  },
+  {
+   "id": "authorization/v2r/allow-fallback-root-after-oversized-winner-revoked",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "G6.5 A-133.7 (the `after` corpus): revoking a-main makes z-fallback the winner; its proof fits (recognizedRoot z-fallback, checkedProhibitionIds []): ALLOW. Under A-133.2 the pre-preflight verdict was allow on both sides.",
+   "sha256": "5d536643d781554b1be7eff00e1e4f45929138fd2eb6e1b17b855669cbe9a137"
+  },
+  {
+   "id": "authorization/v2r/deny-amount-overflow-single-root",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "G6.5 A-135.4: usage MAX − 1 on the only root (no maxCumulativeAmount), amount \"2\": the candidate fails the §4.2 overflow set: DENY / AMOUNT_OVERFLOW (source CORE, no budget).",
+   "sha256": "403604ecc4307adc835a2b9c487674f6521a41124ebfbe3c42fa05cf760816cd"
+  },
+  {
+   "id": "authorization/v2r/allow-second-root-when-first-would-overflow",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "G6.5 A-135.4: the same, plus a byte-later root with fresh usage: the overflowing candidate fails and the other wins: ALLOW on o-second.",
+   "sha256": "10d452c8d6cb471d2843a8aebc767066033760d596c41c06625c30a6eecc0d15"
+  },
+  {
+   "id": "authorization/v2r/allow-fallback-root-when-winner-usage-at-max",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "G6.5 A-135, Programme 3 ASM-1 family (c): admitted usage at MAX on a-main, a request of 1, zero prohibitions: AMOUNT_OVERFLOW is candidate-local, so z-fallback wins: ALLOW (also after revoking a-main; build1 placed the check after winner selection and answered DENY / AMOUNT_OVERFLOW here).",
+   "sha256": "47779382de947860d224bfd493bd6f955851df6615e9168c3501f61f51a0e7a1"
+  },
+  {
+   "id": "authorization/v2r/indeterminate-request-amount-over-max",
+   "kind": "authorization",
+   "topic": "authorization",
+   "purpose": "G6.5 A-134.1: request.amount = MAX + 1 (a decimal string over MAX) is not a §3.3 Amount: a capture failure before causal time, INDETERMINATE / INVALID_INPUT (SUPPLIED_SCOPE), never DENY INVALID_AMOUNT.",
+   "sha256": "2bf0686f5408c2d08dfcbfb7d45735574caa846db961edb252483eb2753911c1"
+  },
+  {
+   "id": "authorization/v2r/causal-time-beats-named-list-limit",
+   "kind": "authority-evaluation",
+   "topic": "authorization",
+   "purpose": "G6.5 A-136.4: 257 actions (a named limit, §7.1 step 7) with evaluationTime = −1: CAUSAL_TIME_INVALID (step 4) comes first.",
+   "sha256": "c8fb77a6399b3337a1074d83d7576663f7c512fa1c6add61d8f9950e31323705"
+  },
+  {
+   "id": "authorization/v2r/amount-grammar-beats-causal-time",
+   "kind": "authority-evaluation",
+   "topic": "authorization",
+   "purpose": "G6.5 A-136.4: maxAmount = MAX + 1 (the Amount grammar, deep capture) with evaluationTime = −1: INVALID_INPUT comes first.",
+   "sha256": "0844ad3ab3b522f178c7d46b6bb61588ccaa22da898d94e43a4f662ec391e41f"
+  },
+  {
+   "id": "authorization/v2r/deny-count-overflow-single-root",
+   "kind": "authority-evaluation",
+   "topic": "authorization",
+   "purpose": "G6.9 A-166 (the A-156 count disjunct on supplied usage): admittedTransactionCount 2^53 − 1 and admittedCumulativeAmount 0 on the only root, a grant with maxCumulativeAmount 1000 and no maxTransactions, amount 1 within the cap: the candidate fails the §4.2 overflow set: DENY / AMOUNT_OVERFLOW (SUPPLIED_SCOPE).",
+   "sha256": "428935539508b4e0a843ce2942be35c2e11db20b9ff5b6584dcc454984af5256"
+  },
+  {
+   "id": "authorization/v2r/allow-second-root-when-first-count-would-overflow",
+   "kind": "authority-evaluation",
+   "topic": "authorization",
+   "purpose": "G6.9 A-166: the same, plus a byte-later root with fresh usage: the candidate whose count would overflow fails and the other wins: ALLOW on o-second.",
+   "sha256": "7652ec131dd3f0dad15cb39bef3a5a59c6adf5ce3afee24ad315e710973234ce"
+  },
+  {
+   "id": "authorization/v2r/deny-amount-overflow-raw-count-capped-grant",
+   "kind": "authority-evaluation",
+   "topic": "authorization",
+   "purpose": "G6.9 A-166 (the A-135 amount disjunct on supplied usage): admittedCumulativeAmount MAX under a grant with maxTransactions 5 only, the count 1 below the cap, amount 1: DENY / AMOUNT_OVERFLOW (SUPPLIED_SCOPE).",
+   "sha256": "5f464a27eda00d044a2e4aed80dabfa5d34f522fd89390bbaa671adae27dfb22"
+  },
+  {
+   "id": "authorization/v2r/deny-amount-overflow-single-root-supplied-scope",
+   "kind": "authority-evaluation",
+   "topic": "authorization",
+   "purpose": "G6.9 A-166: the supplied-scope twin of deny-amount-overflow-single-root: usage MAX − 1 on the only root (a maxTransactions-only grant, count below the cap), amount 2: DENY / AMOUNT_OVERFLOW (SUPPLIED_SCOPE).",
+   "sha256": "a6ac122d97db9ca443a652b28222dbd98e0afde53f79ab1ab9e4f5be5776247d"
+  },
+  {
+   "id": "authorization/v2r/allow-second-root-when-first-would-overflow-supplied-scope",
+   "kind": "authority-evaluation",
+   "topic": "authorization",
+   "purpose": "G6.9 A-166: the supplied-scope twin of allow-second-root-when-first-would-overflow: usage MAX − 1 on o-first, fresh usage on the byte-later o-second, amount 2: ALLOW on o-second.",
+   "sha256": "936bfa05b06d54adc50953aff5d964cf1644e58743ccdab0482f50c782f6ea23"
+  },
+  {
+   "id": "survives/v2r/predecessor-after-handover",
+   "kind": "survives",
+   "topic": "survives",
+   "purpose": "The terminated predecessor keeps the duty visible; its assignment moved to the successor; its grant was revoked.",
+   "sha256": "0c25ee1225244432d23c8479e078d8ef62d9297d03ec08e57e15560f906c3223"
+  },
+  {
+   "id": "survives/v2r/successor-after-handover",
+   "kind": "survives",
+   "topic": "survives",
+   "purpose": "The successor holds the tenure and the assignment.",
+   "sha256": "65178b7595b75112fe0a8072bdf35bde4907a5ec7356159d89b0197e44952824"
+  },
+  {
+   "id": "survives/v2r/predecessor-before-handover",
+   "kind": "survives",
+   "topic": "survives",
+   "purpose": "Before the succession the predecessor is active and owns the open duty.",
+   "sha256": "68c9946b353716b563c1ae722bb36327becbc672acc268ffd8cd71e12e8c53d6"
+  },
+  {
+   "id": "survives/v2r/unknown-agent",
+   "kind": "survives",
+   "topic": "survives",
+   "purpose": "An agent the history never created is ABSENT.",
+   "sha256": "54c6f9adff934f25f4bc3988e0aae1e7424df0a201d6732045b351fcfac2e88d"
+  },
+  {
+   "id": "survives/v2r/migrated-predecessor-after-handover",
+   "kind": "survives",
+   "topic": "survives",
+   "purpose": "SURVIVES on the legacy-migrated history matches the legacy fixture.",
+   "sha256": "16f77356001fff19c7bc1be6f543a6abbad3c859d51c8131d95a09b6567bb031"
+  },
+  {
+   "id": "attestation/v2r/pre-rotation-head-by-retired-key-verifies",
+   "kind": "attestation",
+   "topic": "attestation",
+   "purpose": "An attestation (/2, with stateRoot and projectionHead) of a head before the rotation, signed by the key then in force, still verifies.",
+   "sha256": "f57371e04c44b76deb74a407734a4f355cc5dffe4560b136af12275f8575b4f9"
+  },
+  {
+   "id": "attestation/v2r/rotation-head-by-retired-key-verifies",
+   "kind": "attestation",
+   "topic": "attestation",
+   "purpose": "The rotation head belongs to the old key set.",
+   "sha256": "225cf46a5a5a434fee8dc5dc6efe076196be8f732b1a913843f6f3d0c79b5296"
+  },
+  {
+   "id": "attestation/v2r/rotation-head-by-new-key-fails",
+   "kind": "attestation",
+   "topic": "attestation",
+   "purpose": "The new key governs only after the rotation.",
+   "sha256": "e874a6e4c066d77e133f54fe43a60c6bf72c5f9177cb7fd34f43768c7e75f77d"
+  },
+  {
+   "id": "attestation/v2r/post-rotation-head-by-retired-key-fails",
+   "kind": "attestation",
+   "topic": "attestation",
+   "purpose": "A head after the rotation signed by the retired key does not verify.",
+   "sha256": "68e8ac31c29041d9e500b87963da6c1f96260e64a21dd4143d807dc62e9c33f0"
+  },
+  {
+   "id": "attestation/v2r/post-rotation-head-by-new-key-verifies",
+   "kind": "attestation",
+   "topic": "attestation",
+   "purpose": "A head after the rotation signed by the new key verifies.",
+   "sha256": "b13385a7c805e1b7d80c61f64e14bd5c534b74a045c063c7ddfc8f1ebd9ebd68"
+  },
+  {
+   "id": "attestation/v2r/foreign-head-by-new-key-fails",
+   "kind": "attestation",
+   "topic": "attestation",
+   "purpose": "A correctly signed attestation of a head this history does not contain: prefix false.",
+   "sha256": "5e5d32a36cb5135aa5883ca21af9235c7743245451ddc437232fca1497e80438"
+  },
+  {
+   "id": "attestation/v2r/wrong-state-root",
+   "kind": "attestation",
+   "topic": "attestation",
+   "purpose": "A valid signature over a wrong stateRoot: stateRootValid false.",
+   "sha256": "d4b686a7410c3f4159c9bc8594303743402295a2e088ba897a0c17874c2e8dd6"
+  },
+  {
+   "id": "replay/v2r/rich-through-sessions",
+   "kind": "replay",
+   "topic": "state-records",
+   "purpose": "The rich history through position 10 (sessions) replays; its stateRoot pins the record set, where the kinds agent, event, genesis, ownerKeyEpoch, principal, role, session, succession, tenure first appear (G2.5 re-derives it from RESULTS/records).",
+   "sha256": "bc6cee5367e4ef1792ff849eec209a2f6677ff14a555a412e6650e8d95167c34"
+  },
+  {
+   "id": "replay/v2r/rich-through-budgets-and-counterparty",
+   "kind": "replay",
+   "topic": "state-records",
+   "purpose": "The rich history through position 19 (budgets-and-counterparty) replays; its stateRoot pins the record set, where the kinds authority, budget, counterparty first appear (G2.5 re-derives it from RESULTS/records).",
+   "sha256": "fd217e834e996d90addae7121e62f2fa96e76acef76b0713f43b209d411591da"
+  },
+  {
+   "id": "replay/v2r/rich-through-intent-consumed",
+   "kind": "replay",
+   "topic": "state-records",
+   "purpose": "The rich history through position 22 (intent-consumed) replays; its stateRoot pins the record set, where the kinds budgetUsage, intent, nonce, usage first appear (G2.5 re-derives it from RESULTS/records).",
+   "sha256": "8401ba2ab40a95eb07f9c350b547e32e9f486e1fc7627ea766b50030a7238344"
+  },
+  {
+   "id": "replay/v2r/rich-through-receipt",
+   "kind": "replay",
+   "topic": "state-records",
+   "purpose": "The rich history through position 23 (receipt) replays; its stateRoot pins the record set, where the kinds receipt first appear (G2.5 re-derives it from RESULTS/records).",
+   "sha256": "ac18592250c9eb8ef8070da0a8c47f6edd967d94982e736a7d94d94efc407d56"
+  },
+  {
+   "id": "replay/v2r/rich-through-budget-usage",
+   "kind": "replay",
+   "topic": "state-records",
+   "purpose": "The rich history through position 26 (budget-usage) replays; its stateRoot pins the record set (G2.5 re-derives it from RESULTS/records).",
+   "sha256": "c303e9e6ba40ecc941d5e2d3b22d880e536e623e77a952eb7e45f4492733393e"
+  },
+  {
+   "id": "replay/v2r/rich-through-outcome",
+   "kind": "replay",
+   "topic": "state-records",
+   "purpose": "The rich history through position 29 (outcome) replays; its stateRoot pins the record set (G2.5 re-derives it from RESULTS/records).",
+   "sha256": "f2bb4e502b498d82f6faf5a4cff92e7826de583daab5e04beec5a1b7ea3a7503"
+  },
+  {
+   "id": "replay/v2r/rich-through-obligation",
+   "kind": "replay",
+   "topic": "state-records",
+   "purpose": "The rich history through position 30 (obligation) replays; its stateRoot pins the record set, where the kinds obligation first appear (G2.5 re-derives it from RESULTS/records).",
+   "sha256": "a5e1b53ab0ca4e4e9d12f7870c138715350415d4a653ef4b3a26e1d6c166c7e7"
+  },
+  {
+   "id": "replay/v2r/rich-through-effects-and-refusal",
+   "kind": "replay",
+   "topic": "state-records",
+   "purpose": "The rich history through position 34 (effects-and-refusal) replays; its stateRoot pins the record set, where the kinds effect, refusal first appear (G2.5 re-derives it from RESULTS/records).",
+   "sha256": "2c4a6dc9ed5e7c6538a1c6054e8a258a06f407d5ee9a090f057f84fdd9c17d29"
+  },
+  {
+   "id": "replay/v2r/rich-through-attempt-duty",
+   "kind": "replay",
+   "topic": "state-records",
+   "purpose": "The rich history through position 42 (attempt-duty) replays; its stateRoot pins the record set, where the kinds duty first appear (G2.5 re-derives it from RESULTS/records).",
+   "sha256": "2dd0f8af606c8e290cb128e2652b23a39692eda5318d7b607e9bd7413b53717e"
+  },
+  {
+   "id": "replay/v2r/rich-through-observation",
+   "kind": "replay",
+   "topic": "state-records",
+   "purpose": "The rich history through position 43 (observation) replays; its stateRoot pins the record set (G2.5 re-derives it from RESULTS/records).",
+   "sha256": "5e83a9c90541ce6657b9326285492f689df939e67860f75d21f0dca1a2e6b67d"
+  },
+  {
+   "id": "replay/v2r/rich-through-checkpoint",
+   "kind": "replay",
+   "topic": "state-records",
+   "purpose": "The rich history through position 45 (checkpoint) replays; its stateRoot pins the record set (G2.5 re-derives it from RESULTS/records).",
+   "sha256": "a9b9f1a566233bff0ecc754762596d7abf756d74eae845a33e3e8777f8967653"
+  },
+  {
+   "id": "replay/v2r/rich-through-succession",
+   "kind": "replay",
+   "topic": "state-records",
+   "purpose": "The rich history through position 49 (succession) replays; its stateRoot pins the record set (G2.5 re-derives it from RESULTS/records).",
+   "sha256": "31cc40f08f01eecee006fe1b83f28db319db01d52e9cbdd63c497b06dea6a7af"
+  },
+  {
+   "id": "replay/v2r/rich-through-assignments",
+   "kind": "replay",
+   "topic": "state-records",
+   "purpose": "The rich history through position 53 (assignments) replays; its stateRoot pins the record set (G2.5 re-derives it from RESULTS/records).",
+   "sha256": "44a0f025b35dbc6be0768731e5f03df6e2365b2c94e39a75ddd5717ca5ed1c7c"
+  },
+  {
+   "id": "replay/v2r/rich-through-owner-key-epoch",
+   "kind": "replay",
+   "topic": "state-records",
+   "purpose": "The rich history through position 57 (owner-key-epoch) replays; its stateRoot pins the record set (G2.5 re-derives it from RESULTS/records).",
+   "sha256": "385444779eaf2fa907d672bdb6f53356a74fac65ce950bd41491a33bf8a8a11f"
+  },
+  {
+   "id": "replay/v2r/rich-through-anchor",
+   "kind": "replay",
+   "topic": "state-records",
+   "purpose": "The rich history through position 59 (anchor) replays; its stateRoot pins the record set, where the kinds anchor first appear (G2.5 re-derives it from RESULTS/records).",
+   "sha256": "bdca38471555407a1bb51e5f1040a0d86e513687845c7f8e73b9df22f8fca61d"
+  },
+  {
+   "id": "replay/v2r/rich-through-witness-binding",
+   "kind": "replay",
+   "topic": "state-records",
+   "purpose": "The rich history through position 60 (witness-binding) replays; its stateRoot pins the record set, where the kinds witnessBinding, witnessPolicy first appear (G2.5 re-derives it from RESULTS/records).",
+   "sha256": "e72d249ef1340d5f0219da955d5431ddd36231af5238d11cc119a038ece7e481"
+  },
+  {
+   "id": "replay/v2r/rich-through-final",
+   "kind": "replay",
+   "topic": "state-records",
+   "purpose": "The rich history through position 61 (final) replays; its stateRoot pins the record set (G2.5 re-derives it from RESULTS/records).",
+   "sha256": "256fe33dbece4509c088c2c97c2beba292a282b2239c0344cb921fc7013c3442"
+  },
+  {
+   "id": "replay/v2r/lifecycle-history",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A run (declaration, admission, consumption) and a receipt record, each type 14–16 event carrying its recordAuthorization (A-51), replay.",
+   "sha256": "f936c40a8151455df875eb7a47ed6b4ea224a598f39dfee87eac9c4efaefb94a"
+  },
+  {
+   "id": "replay/v2r/a51-consumption-wrong-signer",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A-51.3: cal's session signs a consumption of bea's intent (valid signature, wrong signer; also already consumed): RECORD_AUTHORIZATION_INVALID, the binding stage precedes the preconditions.",
+   "sha256": "8f55d683dd0810be896f43e389a23c89cc10ed5494b9db788ba9476df9c84896"
+  },
+  {
+   "id": "replay/v2r/a51-consumption-right-signer-precondition",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "The same consumption signed by bea's own session fails only its precondition (already consumed): TRANSITION_INVALID.",
+   "sha256": "696fed99778e5d355ab8714dc4e79465903a36a7d09d311fa6c23623aae0fdbb"
+  },
+  {
+   "id": "replay/v2r/a60-consumption-unknown-intent",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A-60: a TRANSACTION_INTENT_CONSUMED naming an intent that was never declared, validly signed by bea's session: TRANSITION_INVALID (intent resolution follows the signature check).",
+   "sha256": "af4a184e327d7f5e1f5a4fc5646b93a5e8972cce67a7fa9822ef14540fb00a52"
+  },
+  {
+   "id": "replay/v2r/a60-consumption-unknown-intent-bad-signature",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A-60: the same TRANSACTION_INTENT_CONSUMED with a broken signature: RECORD_AUTHORIZATION_INVALID (the signature is checked before the intent is resolved).",
+   "sha256": "1e8dc759f2c06e69ff854112ae09a9253c224e67fbe36345ca26940e25ac1f40"
+  },
+  {
+   "id": "replay/v2r/a60-consumption-unknown-intent-wrong-signer",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A-60: the same TRANSACTION_INTENT_CONSUMED validly signed by cal's session: still TRANSITION_INVALID (a missing intent never selects the binding code).",
+   "sha256": "de62130f0650ffc6b2880d15c3e13e5a793fd6041d94a7aa90b7fe01028a543d"
+  },
+  {
+   "id": "replay/v2r/a60-outcome-unknown-intent",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A-60: a TRANSACTION_OUTCOME_RECORDED naming an intent that was never declared, validly signed by bea's session: TRANSITION_INVALID (intent resolution follows the signature check).",
+   "sha256": "0e800529060583508d90adad05527a2635ddcd04393fc27b56016de9cff90550"
+  },
+  {
+   "id": "replay/v2r/a60-outcome-unknown-intent-bad-signature",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A-60: the same TRANSACTION_OUTCOME_RECORDED with a broken signature: RECORD_AUTHORIZATION_INVALID (the signature is checked before the intent is resolved).",
+   "sha256": "469cb3bd9db8ba61cfe160098fb852003ef2c4c669016557cc8ecd96f10825d0"
+  },
+  {
+   "id": "replay/v2r/a60-outcome-unknown-intent-wrong-signer",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A-60: the same TRANSACTION_OUTCOME_RECORDED validly signed by cal's session: still TRANSITION_INVALID (a missing intent never selects the binding code).",
+   "sha256": "6cb2475147dc50bc73181d4b5883515ddf9d6c589be1b109d36009461fbb3dad"
+  },
+  {
+   "id": "replay/v2r/a60-receipt-unknown-intent",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A-60: a RECEIPT_RECORDED naming an intent that was never declared, validly signed by bea's session: TRANSITION_INVALID (intent resolution follows the signature check).",
+   "sha256": "e106db69f345fadc224589f4f4e0662b72c65cd6f50c05a5e8570546500cf5cf"
+  },
+  {
+   "id": "replay/v2r/a60-receipt-unknown-intent-bad-signature",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A-60: the same RECEIPT_RECORDED with a broken signature: RECORD_AUTHORIZATION_INVALID (the signature is checked before the intent is resolved).",
+   "sha256": "9eca608ad9c6e3860a07dbbc79304a4fa02431f7d11236878271236a2c8a69d2"
+  },
+  {
+   "id": "replay/v2r/a61-receipt-inherited-session-mismatch",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A-61.3: a RECEIPT_RECORDED whose inherited runtimeSessionId (session:cal) differs from its nested recordAuthorization (session:bea): EVENT_DATA_INVALID.",
+   "sha256": "d7cbe1e1f29ff6fe05124854740a886e918376a62cef59ca284f85a10c96ca3e"
+  },
+  {
+   "id": "replay/v2r/a61-receipt-inherited-epoch-mismatch",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A-61.3: a RECEIPT_RECORDED whose inherited controlEpoch (2) differs from its nested recordAuthorization (1): EVENT_DATA_INVALID.",
+   "sha256": "224d716386d10bd819badbd421585c19783239c6eb13dcda95de68325e53f54c"
+  },
+  {
+   "id": "replay/v2r/a61-receipt-again-accepted",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "The same second receipt record with matching inherited fields, signed by the issuer's own session, is accepted.",
+   "sha256": "17635e2a086fffc032cf4cf3a6819b30f400b51e97775b943969bb172e183c00"
+  },
+  {
+   "id": "replay/v2r/lifecycle-fenced-history",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "bea's control epoch advanced from 1 to 2 after the receipt: the history replays and session:bea (epoch 1) is fenced from here on.",
+   "sha256": "ec5a2a2c5af698ba0377855bd45a915aaec70c120dbcb3baa36cfc4c1d8cef2f"
+  },
+  {
+   "id": "replay/v2r/a61-fence-and-bad-signature",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A-61.1: a consumption by the fenced session:bea with a broken signature: SESSION_FENCED (the fence precedes the hash and the signature).",
+   "sha256": "f5c600b3a20efe525a3f85f891a2d088587d1418f1a13b5fb1f56d66a6e925d7"
+  },
+  {
+   "id": "replay/v2r/a61-credential-mismatch-and-fence",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A-61.1: the fenced session:bea named with credentialKeyId key:cal: the key mismatch fails first with the type's code, RECORD_AUTHORIZATION_INVALID, before the fence is reached.",
+   "sha256": "4c753ea153d7ec3f8f523845dbd0b067392dbf35f23abb1f789c398c8235daf8"
+  },
+  {
+   "id": "replay/v2r/a61-missing-session",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A-61.1: a consumption naming a session that was never admitted: RECORD_AUTHORIZATION_INVALID.",
+   "sha256": "805588823a07792ddf01e919e6a0f5f8c7297858ccd746e8c8ba9b5e3b145682"
+  },
+  {
+   "id": "replay/v2r/a58-refusal-fence-and-wrong-hash",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A-58.5: a refusal by the fenced session:bea whose hash is wrong: SESSION_FENCED, not REFUSAL_AUTHORIZATION_INVALID.",
+   "sha256": "9bffc7c774d5c430a3775951adcbd7299ddb92c08b317d6a62410bff2e4b6b27"
+  },
+  {
+   "id": "replay/v2r/a61-wrapper-fence-valid-envelope",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A wrapper with a valid counterparty envelope signed by the fenced session:bea: SESSION_FENCED.",
+   "sha256": "532c5e3d4eb9fbe8a4a5f208ba7518fd0d628b4f3b295996119ee00680681537"
+  },
+  {
+   "id": "replay/v2r/a61-wrapper-fence-and-bad-counterparty-signature",
+   "kind": "replay",
+   "topic": "lifecycle-authorization",
+   "purpose": "A-61.2: the same wrapper whose envelope signature is not acme's: COUNTERPARTY_SIGNATURE_INVALID — the §11.2 counterparty checks precede session authorization, so the fence is not reached.",
+   "sha256": "ce9afa9c05cb4ba99f4e23459373c0e1268016fb41f7d3b824945d518cb0a059"
+  },
+  {
+   "id": "replay/v2r/duty-through-duty-created",
+   "kind": "replay",
+   "topic": "duty-policy",
+   "purpose": "The duty-policy history through position 12 (duty-created) replays; its stateRoot pins the duty record.",
+   "sha256": "7c5ec74d1bbd90675851688d232204d5f826c8ae7e5b94f98b5afcdf0a957e81"
+  },
+  {
+   "id": "duty-view/v2r/duty-created",
+   "kind": "duty-view",
+   "topic": "duty-policy",
+   "purpose": "SPEC §13.3 view of duty \"duty\" before the activation the duty has no policy view (null).",
+   "sha256": "3d6f654da133c535224688f9c1ced185a1284daf412001f41efd0e77ae256e42"
+  },
+  {
+   "id": "replay/v2r/duty-through-activated",
+   "kind": "replay",
+   "topic": "duty-policy",
+   "purpose": "The duty-policy history through position 14 (activated) replays; its stateRoot pins the duty record.",
+   "sha256": "f4c8c135a29d4ce14877e1a8a6ff6f55b46b67e16fd864c422bae9a44c7208f4"
+  },
+  {
+   "id": "duty-view/v2r/activated",
+   "kind": "duty-view",
+   "topic": "duty-policy",
+   "purpose": "SPEC §13.3 view of duty \"duty\" after the activation: OPEN, outstanding.",
+   "sha256": "73da821436f43cace0ca1a17c2f85fa263c99795ff05180fccbf7c70c2973361"
+  },
+  {
+   "id": "replay/v2r/duty-through-completed",
+   "kind": "replay",
+   "topic": "duty-policy",
+   "purpose": "The duty-policy history through position 17 (completed) replays; its stateRoot pins the duty record.",
+   "sha256": "cd7d97ec16c9622ec35372a1ff456c973cd431505ec5c3b3c5f742c336b06eec"
+  },
+  {
+   "id": "duty-view/v2r/completed",
+   "kind": "duty-view",
+   "topic": "duty-policy",
+   "purpose": "SPEC §13.3 view of duty \"duty\" after the dual-signature COMPLETED_UNDER_POLICY disposition.",
+   "sha256": "3492ba9f233adc33d0eb6ad545ebc93ed9de66a5e43f29f9e2e46eb191ad2a40"
+  },
+  {
+   "id": "replay/v2r/duty-through-needs-review",
+   "kind": "replay",
+   "topic": "duty-policy",
+   "purpose": "The duty-policy history through position 18 (needs-review) replays; its stateRoot pins the duty record.",
+   "sha256": "ddce278619571c0c06a87c5a6f654a5d1488f0b8cf9acd4dbc6601a301560ea6"
+  },
+  {
+   "id": "duty-view/v2r/needs-review",
+   "kind": "duty-view",
+   "topic": "duty-policy",
+   "purpose": "SPEC §13.3 view of duty \"duty\" a later same-duty review stales the completion.",
+   "sha256": "c7c8eef5712388506d9236e556ceec4e5dea8bd791894be2f2d80e30a07a5cb9"
+  },
+  {
+   "id": "replay/v2r/duty-through-contested",
+   "kind": "replay",
+   "topic": "duty-policy",
+   "purpose": "The duty-policy history through position 19 (contested) replays; its stateRoot pins the duty record.",
+   "sha256": "cbae981768267cfcef9030e4c42613456aa10fdbbb06826440ccf31462e8c824"
+  },
+  {
+   "id": "duty-view/v2r/contested",
+   "kind": "duty-view",
+   "topic": "duty-policy",
+   "purpose": "SPEC §13.3 view of duty \"duty\" an accepted contest.",
+   "sha256": "ddc05f75920006cfe45e9326bd30ec10e1ea5f3a794bf173ef1bc8395f66209f"
+  },
+  {
+   "id": "replay/v2r/duty-disposition-unknown-key",
+   "kind": "replay",
+   "topic": "duty-policy",
+   "purpose": "A disposition event with a field the closed schema does not declare: EVENT_DATA_INVALID.",
+   "sha256": "8fdb3e40245a4da15bc77bb511861b8ebc3ef1e720da71adcd84057e1645713d"
+  },
+  {
+   "id": "replay/v2r/duty-disposition-rules-hash",
+   "kind": "replay",
+   "topic": "duty-policy",
+   "purpose": "A disposition whose rulesHash is not the pinned keccak-256 literal of the rules (A-15): EVENT_DATA_INVALID.",
+   "sha256": "130fd69aecd408d258e50d30ed83dd1951e7f2c7389bbf5357942821105c6ecd"
+  },
+  {
+   "id": "replay/v2r/duty-disposition-unknown-disposition",
+   "kind": "replay",
+   "topic": "duty-policy",
+   "purpose": "A finding whose disposition is neither COMPLETED_UNDER_POLICY nor ESCALATED: EVENT_DATA_INVALID.",
+   "sha256": "1633b268f49da75a6a40014faa15a5a3bb928e33d3ec36e8754cb794b45d51b9"
+  },
+  {
+   "id": "replay/v2r/duty-disposition-reason-too-long",
+   "kind": "replay",
+   "topic": "duty-policy",
+   "purpose": "A checklist reason longer than 256 bytes: EVENT_DATA_INVALID.",
+   "sha256": "51b6db5ac24207e3956ede9518d25250085eb7f03248f672a0fe7f17aef721a0"
+  },
+  {
+   "id": "replay/v2r/duty-finding-altered",
+   "kind": "replay",
+   "topic": "duty-policy",
+   "purpose": "The signed finding changed to ESCALATED without a nextStep after signing: the finding no longer validates against the state before it (TRANSITION_INVALID).",
+   "sha256": "82ec5e9b88da72f33d8eb19844234414f2d7660dd66455d43df2f084a1bca25c"
+  },
+  {
+   "id": "replay/v2r/duty-second-activation",
+   "kind": "replay",
+   "topic": "duty-policy",
+   "purpose": "A copy of the activation appended at the end: a duty is activated once (TRANSITION_INVALID).",
+   "sha256": "ac43a8790dbd5cbdc0344505b6a1858bed9ee5f09bbf2f6a6ccf556df91df559"
+  },
+  {
+   "id": "replay/v2r/duty-disposition-replayed",
+   "kind": "replay",
+   "topic": "duty-policy",
+   "purpose": "The disposition appended again under a new id after the contest: its finding was signed over another head (TRANSITION_INVALID).",
+   "sha256": "09659590002f6ad89b59404597044df6e793b0d4ebf7be0b9b4230e022a5f754"
+  },
+  {
+   "id": "replay/v2r/budgets-history",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "A budget whose amountCap is MAX − 10 with a carry cap of 100, an admission of MAX − 50 in period 1 and its receipt record replay.",
+   "sha256": "e9440944c8039d63a99318f71617e38e7923c4e27a7c30b336b3a5a2f52541ec"
+  },
+  {
+   "id": "headroom/v2r/a50-saturated-rollover",
+   "kind": "headroom",
+   "topic": "budgets",
+   "purpose": "A-50: unused(k) = min(MAX, cap + carryIn(k)) − used(k). Period 1: carryIn 100, allowed MAX, used MAX − 50, so unused 50 and period 2 carries 50 (the unsaturated recurrence would carry min(100, 140) = 100).",
+   "sha256": "bc9fb250413ba3666c9ef4a28b0fcbc45e598a4df796fe56384dcb54c2296550"
+  },
+  {
+   "id": "headroom/v2r/a50-period-1",
+   "kind": "headroom",
+   "topic": "budgets",
+   "purpose": "A-50: period 1 of the same budget: carryIn min(100, MAX − 10) = 100, remaining min(MAX, MAX − 10 + 100) − (MAX − 50) = 50.",
+   "sha256": "98e32f486aae7d3aa1f268e2e15e93aa9a790c15a35dcd8df9c9d1355f2d3207"
+  },
+  {
+   "id": "authorization/v2r/budget-set-sixteen-matching",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "Sixteen budgets match the request (b-000…b-015): every one is checked and the request is allowed (SPEC §9.4).",
+   "sha256": "9f6227a882bf10bc0a1e5ef07bbbce71661cd27fdd1d255b99772883f66cf2b6"
+  },
+  {
+   "id": "authorization/v2r/budget-set-too-large",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "Seventeen budgets match the request: DENY BUDGET_SET_TOO_LARGE naming the 17th in byte order of budgetId (b-016), before any budget is evaluated.",
+   "sha256": "6d56e93ea9009d046f34755fb2aac12d26166f1c400b10c1525adf668ffcecdb"
+  },
+  {
+   "id": "authorization/v2r/budget-set-other-resource",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "A request on a resource one budget covers is unaffected by the 256 others.",
+   "sha256": "ac1d250bd6480f778cc610b0fc7eb7f4e9c06a6bea623ad6ab16fd8bbd5a84d4"
+  },
+  {
+   "id": "replay/v2r/budget-256-accepted",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "A history may declare 256 budgets (SPEC §9.1).",
+   "sha256": "0c40ef8990fae2afa4dc4c6ede277b9895027f001103aeee0b1903072bb7a3b9"
+  },
+  {
+   "id": "replay/v2r/budget-257th-refused",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "A correctly owner-signed 257th BUDGET_DECLARED is TRANSITION_INVALID: at most 256 budgets per history, closed ones included (SPEC §9.1).",
+   "sha256": "bf32e223a11cc07dec1cf26688c2eab4cfb1599edc935091c0ac6f1ca6adedd3"
+  },
+  {
+   "id": "replay/v2r/handover-budget-history",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "A roleIds budget (countCap 2) charged by bea, then the handover to alex, then alex's operation charged to the same budget, replays.",
+   "sha256": "53bc91a678aac59ecabe80d48224bd3a24348d7905209f561e70d0c808eead9b"
+  },
+  {
+   "id": "headroom/v2r/role-budget-before-handover",
+   "kind": "headroom",
+   "topic": "budgets",
+   "purpose": "Before the handover the role budget has one use (bea's).",
+   "sha256": "b20b63499a84eaa938f6777d27c8cfcc1d519926b5a83173dcaee9e9df15eee4"
+  },
+  {
+   "id": "headroom/v2r/role-budget-usage-retained",
+   "kind": "headroom",
+   "topic": "budgets",
+   "purpose": "After the handover and alex's operation the same budget shows both uses: usage is retained and the budget follows the role (T6 budget survives handover).",
+   "sha256": "bfcdc39de665b1e77677745bb72288afaf1d75705f71723d39594da814352d58"
+  },
+  {
+   "id": "authorization/v2r/role-budget-follows-successor",
+   "kind": "authorization",
+   "topic": "budgets",
+   "purpose": "A third operation by the successor alex (holding the reviewer role now): DENY BUDGET_COUNT_EXCEEDED on b-role — the budget matched by role, not by agent.",
+   "sha256": "f42e75b53cad8f1cead8816b56648e79bdba32934e5cdd0b8d9102e55e91e05e"
+  },
+  {
+   "id": "replay/v2r/amount-as-json-number",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "A-7: an Amount written as a JSON number is not a §3.3 decimal string: EVENT_DATA_INVALID.",
+   "sha256": "1d89fa93ca5ab8a87ff34b3dcc7842eb481dda1594e08e7fd75d84ab3967d797"
+  },
+  {
+   "id": "replay/v2r/amount-79-digits",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "A-7: an Amount of 79 decimal digits (above the 78 digits of MAX): EVENT_DATA_INVALID.",
+   "sha256": "bb00bff7d267abccb9df19969c9449ee80126722d93c5023acd3fd42a78c5b67"
+  },
+  {
+   "id": "replay/v2r/amount-max-plus-one",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "A-7: MAX + 1 = 2^256 as a decimal string: EVENT_DATA_INVALID.",
+   "sha256": "c7abe916365f3f2a58b5097ea2dd7dcd8a2b74ad6009b43a291b94eb9c3eb320"
+  },
+  {
+   "id": "replay/v2r/projection-null-amount-cap-clears-bit2",
+   "kind": "replay",
+   "topic": "budgets",
+   "purpose": "G6.7 A-148.1: a BUDGET_DECLARED (type 32) with amountCap null and countCap 3: bit 2 of its §12.1 projection row is clear and bytes 84–115 are zero (an explicit null at a nullable slot is not an Amount); the projection head is pinned, and differs from the amountCap \"0\" twin, which sets bit 2.",
+   "sha256": "6fa056044ca7f637b2f15ae5fab26b9f122045d95f73e1313687cf82333ad5dd"
+  },
+  {
+   "id": "replay/v2r/effects-sixty-four",
+   "kind": "replay",
+   "topic": "effects",
+   "purpose": "Sixty-four EFFECT_RECORDED for one admitted intent replay (SPEC §10.2).",
+   "sha256": "f51eabd0badd5791d4d4d58bd60f5653f55a5beea3af63b256f23e98b6483951"
+  },
+  {
+   "id": "replay/v2r/effects-sixty-fifth",
+   "kind": "replay",
+   "topic": "effects",
+   "purpose": "A validly signed 65th EFFECT_RECORDED for the same intent: EFFECT_LIMIT.",
+   "sha256": "6850cf31741ed6c44bcb8a2ef422791f50bf738d32b689899339b68688606493"
+  },
+  {
+   "id": "replay/v2r/counterparty-chain-across-reregistration",
+   "kind": "replay",
+   "topic": "counterparties",
+   "purpose": "acme's first receipt (key acme:1), retirement, re-registration with key acme:2, and a second receipt that cites the first envelope's digest: the chain is kept across the re-registration (SPEC §11.1).",
+   "sha256": "2dc0355ed2055a3aca32d629c27cf38d1f2c459e88f70e2f3fb26a3982eb3d49"
+  },
+  {
+   "id": "replay/v2r/counterparty-chain-restarted",
+   "kind": "replay",
+   "topic": "counterparties",
+   "purpose": "The second receipt with previousReceiptDigest null (a restarted chain): TRANSITION_INVALID.",
+   "sha256": "cf1f330d6c6a907667d84b23b2b07f562b650102659d079d9385aa7cb8c4f668"
+  },
+  {
+   "id": "replay/v2r/counterparty-retired-key-id",
+   "kind": "replay",
+   "topic": "counterparties",
+   "purpose": "The second receipt naming the key acme:1, which the re-registration did not keep: TRANSITION_INVALID (the ACTIVE/keyId check precedes the signature, A-61.2).",
+   "sha256": "b900cf382f170e1b2a115f1cf94f2e3e2d57df953cf30d6875b4581f347303f8"
+  },
+  {
+   "id": "replay/v2r/counterparty-signed-by-retired-key",
+   "kind": "replay",
+   "topic": "counterparties",
+   "purpose": "The second receipt naming acme:2 but signed by the retired acme:1 key: COUNTERPARTY_SIGNATURE_INVALID.",
+   "sha256": "aecd77260d87adf513ad9aa12f436c508b11aa8c6277cb3270e393cf9acd6edb"
+  },
+  {
+   "id": "replay/v2r/counterparty-receipt-while-retired",
+   "kind": "replay",
+   "topic": "counterparties",
+   "purpose": "A receipt while acme is RETIRED: TRANSITION_INVALID.",
+   "sha256": "fc71a790f8205152d8a5472e5ce0733b0d78b6b99878626363f3bc39e3bbf62d"
+  },
+  {
+   "id": "replay/v2r/reserve-nonconrol-at-threshold",
+   "kind": "replay",
+   "topic": "capacity",
+   "purpose": "Founder addendum / A-0.1, testCapacityLimits {maxStateRecords 17, reservedStateRecords 4}: T_R = 13, HARD = 17: a REQUEST_REFUSED (◇) that brings the history exactly to T_R (13 records) is admitted — the reserve is judged after the event, R(p) > T_R.",
+   "sha256": "7ef72f765ecb7969c572b518efa0ea66642a24502fd2d6b76450179806330859"
+  },
+  {
+   "id": "replay/v2r/reserve-nonconrol-above-threshold",
+   "kind": "replay",
+   "topic": "capacity",
+   "purpose": "testCapacityLimits {maxStateRecords 16, reservedStateRecords 4}: T_R = 12, HARD = 16: the same REQUEST_REFUSED (◇) ends one record above T_R: CAPACITY_RESERVED.",
+   "sha256": "d9f4a156fffd73d75dce9efccfad52f3f8116d1fa6003f4623e46ab686ee808b"
+  },
+  {
+   "id": "replay/v2r/reserve-control-admitted-to-cap",
+   "kind": "replay",
+   "topic": "capacity",
+   "purpose": "testCapacityLimits {maxStateRecords 17, reservedStateRecords 4}: T_R = 13, HARD = 17: two AGENT_CREATED (◆) after T_R use the reserve and reach the cap exactly (17 records): admitted.",
+   "sha256": "d82ee6d426c7c1f6890b822fe7e693f831754d2b3ae28f721bf187f407cf03fb"
+  },
+  {
+   "id": "replay/v2r/reserve-control-at-cap",
+   "kind": "replay",
+   "topic": "capacity",
+   "purpose": "testCapacityLimits {maxStateRecords 17, reservedStateRecords 4}: T_R = 13, HARD = 17: a third AGENT_CREATED (◆) would end above the cap: CAPACITY_EXCEEDED, control events included.",
+   "sha256": "7a7690de2064b338a6eb04b566f3418fa4ba2fc646b7a39c0d7727e5fb033e28"
+  },
+  {
+   "id": "replay/v2r/reserve-history-default-limits",
+   "kind": "replay",
+   "topic": "capacity",
+   "purpose": "The same history under the SPEC limits (no override) replays.",
+   "sha256": "9b4e15cde45b99bc5c9b220b732e251d7acf7b29b59d321723a005e9173a4016"
+  },
+  {
+   "id": "replay/v2r/max-state-records-history",
+   "kind": "replay",
+   "topic": "capacity",
+   "purpose": "capacity.maxStateRecords 13: one refusal fits exactly; after it the owner still creates an agent (control events are never refused by a declared limit, A-1).",
+   "sha256": "e6345644e51ddc675f1b8b7f378237cbc4d179e1ce67b20787b04799c1e05c39"
+  },
+  {
+   "id": "replay/v2r/max-state-records-exceeded",
+   "kind": "replay",
+   "topic": "capacity",
+   "purpose": "A second validly signed refusal at the declared cap: CAPACITY_EXCEEDED (non-control events only).",
+   "sha256": "d43965a8d6e06c48fc02f3f8168f62ce393892782a524f9b2b79480cb35bccea"
+  },
+  {
+   "id": "replay/v2r/duty-quota-history",
+   "kind": "replay",
+   "topic": "capacity",
+   "purpose": "capacity.maxEvents 30 = the events after the activation + the lifecycle reservations + the duty quota (6): the grants (control) and a disposition (within the quota) are admitted.",
+   "sha256": "08d1eed32fc73626998a9ae01337a2fe351f1722836f1844fd73f06589b313ce"
+  },
+  {
+   "id": "replay/v2r/duty-quota-growth-refused",
+   "kind": "replay",
+   "topic": "capacity",
+   "purpose": "A validly signed refusal (growth, A-2) when the committed space (events + lifecycle reservations + the remaining duty quota) fills maxEvents: CAPACITY_CONTROL_ONLY.",
+   "sha256": "0ff319f44771e69801f5fd36677d78d4dd128afd3c21102a2256fab8b8076971"
+  },
+  {
+   "id": "replay/v2r/checkpoint-policy-every-events",
+   "kind": "replay",
+   "topic": "checkpoints",
+   "purpose": "A history whose genesis declares checkpointPolicy {everyEvents: 4}: the writer appended STATE_CHECKPOINTs at positions 3, 8, 13 and the history replays.",
+   "sha256": "45fa9ddd872271e021681e57adaa013e2b7915b3f950227c52a195e972898c5b"
+  },
+  {
+   "id": "replay/v2r/checkpoint-policy-prefix-3",
+   "kind": "replay",
+   "topic": "checkpoints",
+   "purpose": "The prefix ending with the automatic checkpoint at 3: its stateRoot pins rootAt(3); the checkpoint carries rootAt(2).",
+   "sha256": "1240fc4a166a41a65a84fb87d2b406be45b640547c2d8a1bc8e1993cfc38ab09"
+  },
+  {
+   "id": "replay/v2r/checkpoint-policy-prefix-8",
+   "kind": "replay",
+   "topic": "checkpoints",
+   "purpose": "The prefix ending with the automatic checkpoint at 8: its stateRoot pins rootAt(8); the checkpoint carries rootAt(7).",
+   "sha256": "17ad18d7c0b76f2e8e3c864136b0191c7d1e88d399a91d7d36d60515de085586"
+  },
+  {
+   "id": "replay/v2r/checkpoint-policy-prefix-13",
+   "kind": "replay",
+   "topic": "checkpoints",
+   "purpose": "The prefix ending with the automatic checkpoint at 13: its stateRoot pins rootAt(13); the checkpoint carries rootAt(12).",
+   "sha256": "9067bf2b73e10c42be39e48a3863265d9b1513aa8e50c39af88b22965af437b5"
+  },
+  {
+   "id": "replay/v2r/checkpoint-policy-wrong-root",
+   "kind": "replay",
+   "topic": "checkpoints",
+   "purpose": "The first automatic checkpoint re-signed with a wrong stateRoot: STATE_ROOT_MISMATCH.",
+   "sha256": "16516ec5223613d23115eba2b36fc709529e36edb49b7aeb6f3c0b7d22a9f5d9"
+  },
+  {
+   "id": "replay/v2r/eip191-declaration-and-admission",
+   "kind": "replay",
+   "topic": "eip191-sessions",
+   "purpose": "A deployment whose genesis declares signatureScheme eip191-personal-sign-keccak256: the session's declaration (§8.6, g3 challenge) and admission (§8.2) are EIP-191 signatures over the challenge hash, recovered to the session's credentialAddress.",
+   "sha256": "e35d8775e4eede2af8f344627247a9e5b20df7ebb53e254a7fd6c4f27ef21331"
+  },
+  {
+   "id": "replay/v2r/eip191-declaration-bad-signature",
+   "kind": "replay",
+   "topic": "eip191-sessions",
+   "purpose": "The declaration's EIP-191 signature with one byte changed recovers another address: DECLARATION_AUTHORIZATION_INVALID.",
+   "sha256": "a4a0fd9991e4d08d8687190d78e8e552cc9314b83a923c7ce246d622b299c49c"
+  },
+  {
+   "id": "replay/v2r/eip191-declaration-moved-id",
+   "kind": "replay",
+   "topic": "eip191-sessions",
+   "purpose": "A-54 (g3): the declaration's event id is bound by the challenge — changing it breaks the EIP-191 signature (DECLARATION_AUTHORIZATION_INVALID).",
+   "sha256": "1e4bd190c38962ab36fbfe289ab4d4de3f653dbdc401b83f6e5295483c9700be"
+  },
+  {
+   "id": "export/v2r/a70-glossary-genesis-hashes",
+   "kind": "export",
+   "topic": "export",
+   "purpose": "A-70.1 glossary fixture: the export view of the genesis alone states genesisEventHash = eventHash(e₀) and historyId = recordHash(0) (= the head hash at position 0, the genesisHash of the envelope); they differ and are never substituted for each other.",
+   "sha256": "2bb07999a46eab387fc190ceb1ad55dd730119deb942ca2ef9c8ba47e3fac2ab"
+  },
+  {
+   "id": "export/v2r/rich-checkpoint-to-head",
+   "kind": "export",
+   "topic": "export",
+   "purpose": "The export view from the manual checkpoint to the head with every evidence selector except attestations: the dependency closure (A-53, A-65.3) in referencedEvents, the owner key rotation in keyEvents.",
+   "sha256": "c96a40ff07f99e85ae93aae95bf32246fd086ef3a0447999bab692801ba6a996"
+  },
+  {
+   "id": "export-verify/v2r/a65-round-trip-with-from-records",
+   "kind": "export-verify",
+   "topic": "export",
+   "purpose": "A-65: a view over the COUNTERPARTY effect (from = its position − 1) with fromRecords, toRecords, referencedEvents and keyEvents, JSON round-tripped: the verifier rebuilds from the records, applies the range and checks both roots (ok).",
+   "sha256": "65ffb782bbcccebc7a818f2cc5cbac108bfc1490b9a5d51c01ab5400a8c248ab"
+  },
+  {
+   "id": "export-verify/v2r/a65-missing-envelope-body",
+   "kind": "export-verify",
+   "topic": "export",
+   "purpose": "A-53.2 / A-65.3: the same view without the type-40 body the COUNTERPARTY effect cites (A-36.1): EXPORT_DEPENDENCIES_MISSING with that position; the transition is not claimed valid.",
+   "sha256": "34ae658b4dec883c98453ee4a6bfe6ca20c897efc69778aba3f2aa35a132e476"
+  },
+  {
+   "id": "export-verify/v2r/a65-unsorted-evidence",
+   "kind": "export-verify",
+   "topic": "export",
+   "purpose": "A-65.1: referencedEvents not sorted ascending by position: INVALID_INPUT.",
+   "sha256": "2a64dff89dd2fd942468448550589aa1692e3abed0f685eddf84cd67bb5cf0d8"
+  },
+  {
+   "id": "export-verify/v2r/a65-null-evidence-field",
+   "kind": "export-verify",
+   "topic": "export",
+   "purpose": "A-65.1: an evidence field present as explicit null: INVALID_INPUT.",
+   "sha256": "b21c5ccdc844a9f80acee1bdc4032867322704f6a99aae615cf9fcf3ca6845a3"
+  },
+  {
+   "id": "export-verify/v2r/a65-unknown-key",
+   "kind": "export-verify",
+   "topic": "export",
+   "purpose": "A-65.1: an unknown top-level key: INVALID_INPUT.",
+   "sha256": "8a4d97c05f838b901c079faceacb7822cef9a018034ef2c8f763912e1089864e"
+  },
+  {
+   "id": "export-verify/v2r/a65-from-zero-without-records",
+   "kind": "export-verify",
+   "topic": "export",
+   "purpose": "A-65.4: from = 0 without fromRecords: the verifier applies the genesis from events[0] once, then 1…to (ok).",
+   "sha256": "6a7d5a1d96b4ef4ef5e3c50e07a7a3887f7fa9052476d4bac4492435d3d8c445"
+  },
+  {
+   "id": "export-verify/v2r/a65-from-zero-with-records",
+   "kind": "export-verify",
+   "topic": "export",
+   "purpose": "A-65.4: from = 0 with fromRecords: the verifier starts from the rebuilt post-genesis state and reaches the same root (ok).",
+   "sha256": "7cd8742b0de6e97a24e8a325c52d3da1df3557b3ae12b7b8fd21668e87d34087"
+  },
+  {
+   "id": "export-verify/v2r/a65-inside-migrated-prefix",
+   "kind": "export-verify",
+   "topic": "export",
+   "purpose": "A-65.3: a view whose from + 1 lies inside a migrated prefix carries every prefix body 1…from (the shadow head is a sequential chain): ok.",
+   "sha256": "cd0383c09961199e6fe3dc144a5ec08afca09fdcaf54551dfcfe8092d9a36b2b"
+  },
+  {
+   "id": "writer-open/v2r/legacy-history-is-read-only",
+   "kind": "writer-open",
+   "topic": "read-only",
+   "purpose": "An owner write to a legacy (continuity-event/0.2) history: FORMAT_READ_ONLY {reason: LEGACY} — migrate it to format 2.",
+   "sha256": "723768057f277f71c6dee46bbc75a5537a6aff65672185526f6a7b3d5bfcd65d"
+  },
+  {
+   "id": "writer-open/v2r/format1-history-is-read-only",
+   "kind": "writer-open",
+   "topic": "read-only",
+   "purpose": "An owner write to a format-1 history (with its pin): FORMAT_READ_ONLY {reason: FORMAT_1}.",
+   "sha256": "07bb724a869598f1a7b158df0c250a1ab6acb980c7039d689eeb233116cfcff8"
+  },
+  {
+   "id": "writer-open/v2r/fenced-legacy-source-is-read-only",
+   "kind": "writer-open",
+   "topic": "read-only",
+   "purpose": "An owner write to a migrated (fenced) legacy source next to its .migrated marker: FORMAT_READ_ONLY {reason: MIGRATED}.",
+   "sha256": "bb1bf83aaa57a3aab06a73bc1c3e77865d560dbf002de622a9538196ffe91d70"
+  },
+  {
+   "id": "writer-open/v2r/fenced-format1-source-is-read-only",
+   "kind": "writer-open",
+   "topic": "read-only",
+   "purpose": "An owner write to a migrated (fenced) format-1 source next to its .migrated marker: FORMAT_READ_ONLY {reason: MIGRATED}.",
+   "sha256": "e85b2389a23a0bedcf44a081ba060732910617bdab78db4ad1680d70e03ec638"
+  },
+  {
+   "id": "writer-open/v2r/format2-target-is-writable",
+   "kind": "writer-open",
+   "topic": "read-only",
+   "purpose": "The format-2 target of the format-1 migration (with its pin) accepts an owner write signed by its owner key.",
+   "sha256": "25c47138a27754219ec77b04bcdf74f09534b0ddea0528a577b5250c47b41266"
+  },
+  {
+   "id": "replay/v2r/a71-accepts-matched-admission",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.3: a MATCHED observation citing an earlier TRANSACTION_INTENT_ADMITTED whose proof.request.actorId is call.actorId is accepted; its observation and reconciliation-cursor records (count 1, A-89.1) enter the root, R + 3 (A-87).",
+   "sha256": "e9bbaa544686d73367e710067a43f517dccffa3cacdfecc6b3f0525b1c75dce8"
+  },
+  {
+   "id": "replay/v2r/a71-accepts-matched-refusal",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.3: a MATCHED observation citing an earlier REQUEST_REFUSED of call.actorId is accepted (R + 2: the cursor of the pair already exists).",
+   "sha256": "5df37be825f8387148d9218ad508996bb2b24a6303022546adc4e46a4d4cad8d"
+  },
+  {
+   "id": "replay/v2r/a71-accepts-unmatched",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.3: an UNMATCHED observation (no match.position) is accepted.",
+   "sha256": "8f3e4e7fac9b06e8f8e726c46b0ba83a1498bbba370822c90b0ecdf24df59663"
+  },
+  {
+   "id": "replay/v2r/a71-accepts-equivocation",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.3 / A-86.1: the same (streamId, eventRef) with another eventDigest is accepted with equivocates = the earliest observation of the key.",
+   "sha256": "a4e49ca3830d046a3f6b00663d9f12881488fa6b73a665309e08b7468d3c3dc2"
+  },
+  {
+   "id": "replay/v2r/a71-accepts-second-equivocation",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-86.4: a third digest of the key, here by another reconciler (A-89.5: one index for the whole history), is accepted; equivocates still names the earliest.",
+   "sha256": "5e2dea59158fc931e2d930f3b12fd8372fef92d34382de937b89509df374fe8f"
+  },
+  {
+   "id": "replay/v2r/a71-accepts-observation-history",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "The whole observation history (A-71.9): every new record kind, an eventRef seen on a second stream as a distinct key; root and projection head pinned (row 42: code 42, flag bit 1, bit 2 iff call.amount).",
+   "sha256": "56abc92939a29f61add38e0e055abd339f84fa89a23d9872af675a6591515a18"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-duplicate",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.3 step 6: a re-emission of an accepted observation (same derived id, fresh envelope and timestamp): OBSERVATION_DUPLICATE.",
+   "sha256": "65a7a22237752c7eb77a71010b541315204ca98dd968010ffee1753074d81592"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-duplicate-after-equivocation",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-86.4: O1 (digest a) then O2 (digest b, an accepted equivocation); O2 re-emitted with a fresh envelope and the same derived id: OBSERVATION_DUPLICATE (any accepted digest of the key, not only the earliest).",
+   "sha256": "0c33e74cb6ce890d66ee4b98d55a99e285201d113cd6f3d90e61cfa0c768851d"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-duplicate-by-another-reconciler",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-89.5: one (streamId, eventRef) index for the whole history: another reconciler's report of the same digest is OBSERVATION_DUPLICATE.",
+   "sha256": "aa68dd8f1867935953e24e60853a777b0e1dbe8a5bef66613c84057216d85792"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-matched-wrong-actor",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.3 step 5: the cited admission's actor is not call.actorId: TRANSITION_INVALID.",
+   "sha256": "c2d77c76f6ec755357be96c30592ef604f7848e8c6fd0fc31cf508723027c5bd"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-matched-later-position",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.3 step 5: match.position is not before the observation's own position: TRANSITION_INVALID.",
+   "sha256": "b49c362272f84587c537f2a119d4016e20f65bd15f7743a9b8ad3c80a1b1eeba"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-matched-non-decision-type",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.3 step 5: the cited event is a TRANSACTION_INTENT_DECLARED, neither an admission nor a refusal: TRANSITION_INVALID.",
+   "sha256": "0a16f8f22ffb90a8f17dee2745ea11e80dc3f33f081a1521e3f61fefb4d195b5"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-stale-head",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.3 step 4: expectedHistoryHead is not the head immediately before the event: TRANSITION_INVALID.",
+   "sha256": "fa8a26cb6fabcd351b1bb13a1ffcb5ea362998d7433409aa441b710582ac4ae5"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-reconciler-not-signer",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.3 step 3: reconcilerAgentId names cal while gateway's session signs: TRANSITION_INVALID.",
+   "sha256": "a3fde02f7e05335c164b666bf4b15722fc99f7f5126b92cc85b8ed630fbb3a8d"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-tampered-digest",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.2: source.eventDigest changed after signing (the challenge binds source as written): OBSERVATION_AUTHORIZATION_INVALID.",
+   "sha256": "70893ac8c8dc523930bb480d942c9cb7d76a3d181915ce9a550b8ed43e1a49ee"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-forged-signature",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-89.3: a well-formed signature that does not verify (\"forged\"): OBSERVATION_AUTHORIZATION_INVALID.",
+   "sha256": "7c4eecb11539f37e0991ddf8b9dc6b882408be7cb127273000878be2675364bb"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-unsigned",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-89.3: no observationAuthorization (\"unsigned\"): EVENT_DATA_INVALID (closed schema).",
+   "sha256": "923e7a33ac914ac435da9aee45f43d492b6da3f89d1b3128cc55b56b9b73e144"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-owner-signed",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.1: an observation carrying a controlAuthorization (an owner key never signs one): EVENT_DATA_INVALID.",
+   "sha256": "681c6ffb4e978ce8f16f2e45b8cd2b23ed0da379964fc61c7f3d48f4cb4cc70d"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-fenced-session",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.3 step 2: cal's epoch advanced; its session signs an observation: SESSION_FENCED (the fence first).",
+   "sha256": "2ecf441bf812e8bd7dca2093efb49395a48fd92a8c79b7142866b1d355cf504b"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-unsupplied-not-matching",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.1: call.action is present and also named in call.unsupplied: EVENT_DATA_INVALID.",
+   "sha256": "dc34cced2fb34a533f1ed8df6c65e122bb5528cff16eba83fe760464e96d3c04"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-unsupplied-unordered",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.1: call.unsupplied not in byte order: EVENT_DATA_INVALID.",
+   "sha256": "e781a4cb54226a6669eff297d69a25f272eecc020302d7aaab6a37cd6cd03526"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-matched-without-position",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.1: match.position is present iff MATCHED: EVENT_DATA_INVALID.",
+   "sha256": "dd12b7c6928537efdbb21204190ba2e133d60d0cd519761d50d08bc75f3b243e"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-resource-129-code-points",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-89.2: call.resource of 129 code points (100 ASCII + 29 astral characters, 158 UTF-16 units): EVENT_DATA_INVALID.",
+   "sha256": "1a8a1064b732a7b8e168fdcf898c7da10a77c4763afaa9a168fd4925dcd63652"
+  },
+  {
+   "id": "replay/v2r/a71-accepts-resource-128-code-points",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-89.2 / A-89.4: call.resource of 128 code points (156 UTF-16 units) and call.observedAt far after the event time (no bound): accepted.",
+   "sha256": "8c68732d51e94cec7e0ba8ce4e91efc14957a8a74c1830d7224d2fa8d9042702"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-at-max-events",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.8: at capacity.maxEvents (S(p) = M) an observation is growth (ΔS = +1): CAPACITY_CONTROL_ONLY.",
+   "sha256": "ff93e67558a913eae1f5512a80c15bdc80e69b77c8c7dc9be8330433826f71fd"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-inside-migrated-prefix",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-78.1: type 42 inside a migrated (format-1) prefix: EVENT_DATA_INVALID at its position (schema stage, coded against migratedFrom).",
+   "sha256": "3340a18cc4a4fdeb3030e8dca77dbd5fc73f10b44b1ce5779ba6fb84ddc675df"
+  },
+  {
+   "id": "replay/v2r/a71-rejects-in-format1-history",
+   "kind": "replay",
+   "topic": "observation",
+   "purpose": "A-71.0: type 42 in a format-1 history: UNSUPPORTED_EVENT_TYPE.",
+   "sha256": "356993062758b4a630b0dc7f04136177e7f550508a55f69aeb80eed0e2df614e"
+  },
+  {
+   "id": "export-verify/v2r/a71-observation-range",
+   "kind": "export-verify",
+   "topic": "observation",
+   "purpose": "A-71.4: a view from the first ch_3 observation to the head with fromRecords, toRecords and referencedEvents: the verifier rebuilds the observation records and the (streamId, eventRef) index, applies the equivocations and reaches the to root (ok).",
+   "sha256": "02f68764a131e8dd487680f63e7872cfd60db10e3d3220f8a0258afc620c8df8"
+  },
+  {
+   "id": "replay/v2r/session-time-horizon/accepts-at-the-bound",
+   "kind": "replay",
+   "topic": "session-time-horizon",
+   "purpose": "A-179.3: H = 1000, ownerTime 100: bea's declaration, admission and consumption at 1100 (= ownerTime + H) are accepted.",
+   "sha256": "6ba7556784d87fb4e728212c745958ea0b507b08cb3c8f1b249ca5958e11c7ae"
+  },
+  {
+   "id": "replay/v2r/session-time-horizon/accepts-refusal-at-the-bound",
+   "kind": "replay",
+   "topic": "session-time-horizon",
+   "purpose": "A-179.3: a validly signed refusal by bea at exactly ownerTime + H is accepted.",
+   "sha256": "922d0949fe8fc2586b1e9ad9bd3351ba66affd1982ed17c8b68949d480bc4b69"
+  },
+  {
+   "id": "replay/v2r/session-time-horizon/rejects-refusal-past-the-bound",
+   "kind": "replay",
+   "topic": "session-time-horizon",
+   "purpose": "A-179.3: the same refusal one ms past ownerTime + H: TRANSITION_INVALID (\"time: a session-signed event may not pass the session time horizon\").",
+   "sha256": "c0596aa2d51c0614d132a3ae077487755e95d59d810c6256798c300ffccdd0ae"
+  },
+  {
+   "id": "replay/v2r/session-time-horizon/accepts-past-the-old-bound-after-a-checkpoint",
+   "kind": "replay",
+   "topic": "session-time-horizon",
+   "purpose": "A-179.2: a STATE_CHECKPOINT at 1500 advances time, so ownerTime moves to 1500 and bea's run at 2500 is accepted.",
+   "sha256": "d4c6308833b1ef2c17f49da98a2f23be6b8b706b03253edc1ba0714f624d896c"
+  },
+  {
+   "id": "replay/v2r/session-time-horizon/accepts-clamped-power-reducing-event",
+   "kind": "replay",
+   "topic": "session-time-horizon",
+   "purpose": "A-179.2 / A-22.3: a power-reducing fence written at the head's time (the owner's clock behind) is accepted and does not move ownerTime.",
+   "sha256": "6232b12c39b467c67fbb9f83dc405e760975ff755116485e8d27528fab6c7379"
+  },
+  {
+   "id": "replay/v2r/session-time-horizon/rejects-past-the-bound-after-a-clamped-fence",
+   "kind": "replay",
+   "topic": "session-time-horizon",
+   "purpose": "A-179.2: after the clamped fence ownerTime is still 1500: bea's refusal at 2501 (past 1500 + H) is TRANSITION_INVALID.",
+   "sha256": "ecb676b3a5cf8c715705e26558a680e730b6af741274f84ef9685af26d662388"
+  },
+  {
+   "id": "replay/v2r/session-time-horizon/rejects-fenced-session-past-the-bound",
+   "kind": "replay",
+   "topic": "session-time-horizon",
+   "purpose": "A-179.3 / A-172.1: cal's session is fenced; its refusal past the bound is TRANSITION_INVALID (T3, an envelope check, precedes the fence), not SESSION_FENCED.",
+   "sha256": "b5c75e0f809bae5e10f9e0439d81422ec9b8caa0853e2a93dd64bc17e42db0b5"
+  },
+  {
+   "id": "replay/v2r/session-time-horizon/rejects-fenced-session-within-the-bound",
+   "kind": "replay",
+   "topic": "session-time-horizon",
+   "purpose": "The same fenced session at the bound: T3 passes and the fence refuses (SESSION_FENCED).",
+   "sha256": "ce03373c25321db5c84a3aacfdd1c852f31ca1aca88aefb3bf3a273061b7ffeb"
+  },
+  {
+   "id": "replay/v2r/session-time-horizon/rejects-admission-past-the-bound",
+   "kind": "replay",
+   "topic": "session-time-horizon",
+   "purpose": "A-179.3: an admission (◇) one ms past ownerTime + H, re-signed by bea's session at that time so that T3 is its only fault: TRANSITION_INVALID, decided before the admission's own checks.",
+   "sha256": "9f28fc5241d319b4d3ba7f0d4a0f8d34ce189de05ba4d4276af706ae6041d3c0"
+  },
+  {
+   "id": "replay/v2r/session-time-horizon/accepts-near-max-at-the-bound",
+   "kind": "replay",
+   "topic": "session-time-horizon",
+   "purpose": "A-179.3 near 2^53 − 1: H = 1, ownerTime 2^53 − 6; a refusal at 2^53 − 5 (difference 1) is accepted.",
+   "sha256": "09ecaf80b44d5caf6ddaf1d057bf3920edb69a84971a93552838aa93ac65301f"
+  },
+  {
+   "id": "replay/v2r/session-time-horizon/rejects-near-max-past-the-bound",
+   "kind": "replay",
+   "topic": "session-time-horizon",
+   "purpose": "A-179.3 near 2^53 − 1: the same refusal at 2^53 − 2 (difference 4 > 1): TRANSITION_INVALID; the difference is exact for U53.",
+   "sha256": "b28ca1f59dcf3e6e0674125cadc2ded06b249007704e108e0c4409ae070cb249"
+  },
+  {
+   "id": "replay/v2r/session-time-horizon/accepts-near-max-when-ownertime-plus-h-exceeds-max",
+   "kind": "replay",
+   "topic": "session-time-horizon",
+   "purpose": "A-179.3, r5.2 rule T3: \"e.timestamp − ownerTime(p−1) ≤ sessionTimeHorizonMs (a difference…)\". H = 10, ownerTime 2^53 − 6; a refusal at 2^53 − 1 (difference 5 ≤ 10) is accepted, although the sum ownerTime + H = 2^53 + 4 is past 2^53 − 1. An implementation that computes that sum and wraps it would refuse this event.",
+   "sha256": "e9acf715b8dcead3cc641804d06cbec0a984f76dc8c2836150c9bd546d3319ec"
+  },
+  {
+   "id": "replay/v2r/session-time-horizon/accepts-migrated-prefix-exempt",
+   "kind": "replay",
+   "topic": "session-time-horizon",
+   "purpose": "A-179.3: the format-1 handover-v1 history migrated with H = 1: its transcribed prefix has session events 2 and 3 ms past ownerTime (positions 15, 16), exempt as prefix events; the history replays.",
+   "sha256": "71aecc3cb1571bd58f8a64d0c9e8cbd9e5c4925a2cd3f8a0e1e5c36b23fc0e01"
+  },
+  {
+   "id": "replay/v2r/session-time-horizon/rejects-first-post-prefix-event-past-the-bound",
+   "kind": "replay",
+   "topic": "session-time-horizon",
+   "purpose": "A-179.3: the legacy handover fixture migrated with H = 1 (ownerTime 24 at the prefix end, 25): the first post-prefix event, a refusal at 27, is subject to T3: TRANSITION_INVALID.",
+   "sha256": "898b85538042078e4a68d1df2e07c679feea2c18b791992fadf21444f251f0d7"
+  }
+ ]
+}

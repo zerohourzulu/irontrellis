@@ -1,0 +1,45 @@
+{
+  "name": "@ramex-labs/irontrellis-policy-composition",
+  "version": "1.0.0-rc.2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/cedar.test.mjs tests/wire-policy.test.mjs",
+    "test:openfga": "node run-openfga-tests.mjs"
+  },
+  "dependencies": {
+    "@cedar-policy/cedar-wasm": "4.13.0",
+    "@openfga/sdk": "0.9.7",
+    "@ramex-labs/irontrellis": "workspace:*",
+    "@ramex-labs/irontrellis-protected-evidence-mcp": "workspace:*"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "node": "^22.18.0 || ^24.0.0"
+  },
+  "exports": {
+    "./cedar": {
+      "types": "./cedar.d.mts",
+      "import": "./cedar.mjs"
+    },
+    "./openfga": {
+      "types": "./openfga.d.mts",
+      "import": "./openfga.mjs"
+    },
+    "./journal": {
+      "types": "./journal.d.mts",
+      "import": "./journal.mjs"
+    }
+  },
+  "files": [
+    "*.mjs",
+    "*.d.mts",
+    "*.cedar",
+    "model.json",
+    "README.md",
+    "LICENSE",
+    "NOTICE",
+    "linux",
+    "tests"
+  ]
+}

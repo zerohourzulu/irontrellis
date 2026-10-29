@@ -1,0 +1,3 @@
+# Legacy semantics (Continuity Core 0.2.2)
+
+These four documents describe, from its source code, the exact behavior of the reference engine that IronTrellis keeps compatible: canonical encoding, replay and the file store (01), the authorization decision procedure (02), the queries, admission and receipts (03) and the cryptography (04). They were written to re-implement the engine and are kept here as the normative record of legacy behavior. The test vectors that accompany 04 live in `conformance/crypto-vectors.json`. Where IronTrellis deliberately deviates (format 1, capacity policy, evaluation time, the RESPONSIBLE crash), `docs/HISTORY-FORMAT.md` and `CHANGELOG.md` are authoritative.

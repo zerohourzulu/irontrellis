@@ -1,0 +1,17 @@
+{
+  "name": "@continuity/core-0.2",
+  "version": "0.2.2",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^22.18.0 || ^24.0.0 || ^26.0.0"
+  },
+  "exports": {
+    ".": "./src/core/index.ts",
+    "./sdk/admission": "./src/sdk/durable-admission.ts",
+    "./sdk/receipt": "./src/sdk/durable-receipt.ts",
+    "./store": "./src/indexer/portable-file-event-store.ts",
+    "./administration": "./src/administration/index.ts",
+    "./adapters": "./src/adapters/index.ts"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "continuity-local-intake-case/0.2",
+  "caseId": "mandate",
+  "domain": {
+    "chainId": "31337",
+    "deploymentId": "core-0.2-reference:mandate",
+    "protocol": "continuity",
+    "verifyingContract": "0x0000000000000000000000000000000000003002",
+    "version": "0.2"
+  },
+  "policyVersion": "local-mandate-policy:mandate/0.2",
+  "note": "Synthetic quantitative fixture retained from contribution abfaacd: 2500 per purchase, 5000 cumulative, 3 purchases."
+}

@@ -1,0 +1,119 @@
+{
+  "utc": "2026-10-25T02:51:58.268254+00:00",
+  "status": "CHAPTER1_STORY3_SHADOWNET_BOTH_READERS_PASS",
+  "reviewedRunnerCommit": "fd0b11f854ce99d670062f2f92445fb16336ba66",
+  "chainId": 127823,
+  "network": "Shadownet TEST",
+  "destination": "0x7961e05d8a3986cc6f13f5d6a50f6843ac6e9cb0",
+  "historyId": "0x6a9d7017f0097c4ab096db2d44722931893685af352a968f3b2350d56695f3c7",
+  "events": 177,
+  "refusals": 23,
+  "bodyCount": 177,
+  "artifactCount": 35,
+  "statementCount": 6,
+  "headPositions": [
+    27,
+    129,
+    133,
+    134,
+    158,
+    176
+  ],
+  "receiptArtifactsVerified": 28,
+  "receiptVerificationScope": "Authentic, historically valid, canonically included and current at each receipt's own RECEIPT_RECORDED prefix/time, not all current at final head.",
+  "negativeControls": {
+    "headAttestation": 9,
+    "receipt": 84
+  },
+  "reader2ReadOnlyRpcCalls": 469,
+  "reader2SigningOrSendCalls": 0,
+  "comparison": {
+    "path": "<RUNS>/shadownet-chapter1-exact-20261025/reader2-01/COMPARISON-01.json",
+    "bytes": 775,
+    "sha256": "b595e14267761213165bbb52e2ebaf97c43bab414e10f41ffc0a9637a7d83240"
+  },
+  "actualFeeWei": "2036660219000000000",
+  "actualFeeTestXtz": "2.036660219",
+  "runCapTestXtz": "5",
+  "knownAggregateTestXtz": "22.516513853",
+  "aggregateOwner": "Coordinator",
+  "transactionCounts": {
+    "artifact": 35,
+    "body": 177,
+    "deployment": 1,
+    "statement": 6
+  },
+  "sendCalls": 219,
+  "duplicateAcknowledgedTransactionHashes": 0,
+  "liveResumes": 0,
+  "crashes": [],
+  "independence": "Separately authored transport/ABI/canonical reconstruction adapted from sealed Reader2. Shared pinned Core replay/cryptography, not a second semantic implementation. Reader1 source/report was seen; no expected reconstructed values imported, comparison after Reader2 completion.",
+  "claimCeiling": "TEST Shadownet only. Six Reader1 TRUSTED_NODE/L1_FINAL reports with refutationResidual OPEN. Reader2 checks EVM RPC retained data, receipts, transactions/logs and shared Core semantics; not independent L1 inclusion/consensus or EVM signature recovery. No production or CONSENSUS_VERIFIED claim.",
+  "pins": [
+    {
+      "path": "<RUNS>/shadownet-chapter1-exact-20261025/INTAKE-03.json",
+      "bytes": 8003,
+      "sha256": "37dc613074e30155179352c3d3c41a1f7e1cac4119e16800daf172741463bab3"
+    },
+    {
+      "path": "<RUNS>/shadownet-chapter1-exact-20261025/LIVE-EXIT-01.json",
+      "bytes": 148,
+      "sha256": "c073bafa12921c3700fddd8147dea9d49ba4cf22e51d5839e4851fdb9e6e8327"
+    },
+    {
+      "path": "<RUNS>/shadownet-chapter1-exact-20261025/live-run-01/summary.json",
+      "bytes": 5111,
+      "sha256": "539e23332c2f65dc683ee773a4551e63fc28d5c9f9c8bde9673f8a2a4a757375"
+    },
+    {
+      "path": "<RUNS>/shadownet-chapter1-exact-20261025/live-run-01/reports.json",
+      "bytes": 13976,
+      "sha256": "4fd3364a5b0e329e1e585cfcba88d665010565cc5682b34655d965ab836da41d"
+    },
+    {
+      "path": "<RUNS>/shadownet-chapter1-exact-20261025/live-run-01/snapshot.json",
+      "bytes": 112992,
+      "sha256": "c4370a9e4e028cde6e1efe77d04c82deaec1c39bf6707e6de5b916517a95b0b0"
+    },
+    {
+      "path": "<RUNS>/shadownet-chapter1-exact-20261025/live-run-01/trust-root.json",
+      "bytes": 1150,
+      "sha256": "dfaa26329c85b2dcccc7da698ef004a89564d16d164b959e45bc0c9e8374885b"
+    },
+    {
+      "path": "<RUNS>/shadownet-chapter1-exact-20261025/reader2-01/ADAPTATION-01.json",
+      "bytes": 1210,
+      "sha256": "97b0ab6c7d6609e644c1ef441e53e29d021ea62f36f980b75484b2a595eba361"
+    },
+    {
+      "path": "<RUNS>/shadownet-chapter1-exact-20261025/reader2-01/TARGET-01.json",
+      "bytes": 624,
+      "sha256": "fb99bdd4d03a21fe41e72f28931f9638ad2daf4b83493d47825fb927802fca83"
+    },
+    {
+      "path": "<RUNS>/shadownet-chapter1-exact-20261025/reader2-01/capture-01/RESULT.json",
+      "bytes": 1825,
+      "sha256": "50dbc64c5becd1bfe0b92863b0ef23388e3ea5d335c415e9d0bb445655ffbe9f"
+    },
+    {
+      "path": "<RUNS>/shadownet-chapter1-exact-20261025/reader2-01/semantic-01/RESULT.json",
+      "bytes": 272451,
+      "sha256": "dc0bb7dbab9b10244ec9d332f640d1f31e0b573f1424db5203cb6cf92307644f"
+    },
+    {
+      "path": "<RUNS>/shadownet-chapter1-exact-20261025/reader2-01/transactions-01/RESULT.json",
+      "bytes": 3361,
+      "sha256": "ad62396759c8958b49a9f2977c917e438b599a750fb089596d7705d24bc10394"
+    },
+    {
+      "path": "<RUNS>/shadownet-chapter1-exact-20261025/FEE-RECONCILIATION-01.json",
+      "bytes": 143401,
+      "sha256": "fa8b3feb9617c2ff95edb07f5dfc8112043a01ed405d6761d12f12814ef9d02b"
+    },
+    {
+      "path": "<RUNS>/shadownet-chapter1-exact-20261025/BUDGET-LEDGER-02.json",
+      "bytes": 644,
+      "sha256": "cb72aa0ce19aba975553fd8ba7b6fbff258fdc79ed06e819916b423644d2e88b"
+    }
+  ]
+}

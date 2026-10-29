@@ -1,0 +1,46 @@
+# nginx in front of the IronTrellis witness: TLS here, plain HTTP to the witness
+# on loopback. Set "trustProxy": true (or ["127.0.0.1"]) in the witness config.
+# X-Forwarded-For is SET to the peer address (not appended), so a client cannot
+# inject addresses that the witness would rate-limit instead of its own.
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
+    server_name witness.example.com;
+
+    ssl_certificate     /etc/letsencrypt/live/witness.example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/witness.example.com/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    add_header Strict-Transport-Security "max-age=31536000" always;
+    server_tokens off;
+
+    # The witness enforces 64 KiB (1 MiB for registration); this only stops abuse early.
+    client_max_body_size 2m;
+    client_body_timeout 10s;
+
+    # /metrics is for your monitoring system, not the internet.
+    location = /metrics {
+        allow 127.0.0.1;
+        deny all;
+        proxy_pass http://127.0.0.1:8411;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:8411;
+        proxy_http_version 1.1;
+        proxy_set_header Connection "";
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 30s;
+        proxy_buffering off;
+    }
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name witness.example.com;
+    return 301 https://$host$request_uri;
+}

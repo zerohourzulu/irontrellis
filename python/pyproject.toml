@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "irontrellis"
+version = "1.0.0rc1"
+description = "IronTrellis verifier and evaluator: replay, verify and query captured authority histories for AI agents. Agents change. The structure holds."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.11"
+authors = [{ name = "Ramex Labs" }]
+keywords = ["ai-agents", "authorization", "delegation", "succession", "audit", "event-sourcing", "verifier"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Security",
+  "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+# Faster Ed25519 verification (OpenSSL) for long format-1 histories; the pure-Python verifier is the default.
+fast = ["cryptography>=42"]
+test = ["pytest>=8"]
+
+[project.urls]
+Homepage = "https://github.com/zerohourzulu/irontrellis"
+Repository = "https://github.com/zerohourzulu/irontrellis"
+Documentation = "https://github.com/zerohourzulu/irontrellis/tree/main/python"
+
+[project.scripts]
+irontrellis-py = "irontrellis.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+irontrellis = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

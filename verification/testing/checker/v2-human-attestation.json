@@ -1,0 +1,1004 @@
+{
+ "tool": "g25/12 (post-A-157 complete; A-127.2, A-128, A-129 defaults; 2026-10-14)",
+ "command": "vectors",
+ "target": "vectors.json",
+ "options": {},
+ "result": {
+  "vectors": 68,
+  "byKind": {
+   "replay": 68
+  },
+  "notCovered": [],
+  "pinnedRoots": [
+   {
+    "source": "replay/v2ha/accepts-attested-floor-genesis",
+    "position": 1,
+    "vector": "0x86a11ed615e8be8f8197c2c1ac97d8a563c2ffa4459cb40b658e78e3ed0b4188",
+    "g25": "0x86a11ed615e8be8f8197c2c1ac97d8a563c2ffa4459cb40b658e78e3ed0b4188",
+    "recordCount": 5,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/builder-accepts-activation-of-attested-floor",
+    "position": 2,
+    "vector": "0x0872d5d1761c8357f660ef2e4308b9650b0a38624971f9b30a4683c970d0a122",
+    "g25": "0x0872d5d1761c8357f660ef2e4308b9650b0a38624971f9b30a4683c970d0a122",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-ordinary-event-attested-plus-agent",
+    "position": 1,
+    "vector": "0x8db4d6b6b96dcf470cc81f7603f29d2dcb68a21578afd266ce71e91858b4fb12",
+    "g25": "0x8db4d6b6b96dcf470cc81f7603f29d2dcb68a21578afd266ce71e91858b4fb12",
+    "recordCount": 5,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-declared-floor-ignores-attestations",
+    "position": 1,
+    "vector": "0xc280f76bf5b24499cd4ff27be3a7dee96bbc07aa1cc94f16af89fd6bee103ec7",
+    "g25": "0xc280f76bf5b24499cd4ff27be3a7dee96bbc07aa1cc94f16af89fd6bee103ec7",
+    "recordCount": 5,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-non-counting-signature-present",
+    "position": 1,
+    "vector": "0xfc114ad67ec71ff624b43325a9ad01fe8278dafa03cb817f4e02c98c7515134a",
+    "g25": "0xfc114ad67ec71ff624b43325a9ad01fe8278dafa03cb817f4e02c98c7515134a",
+    "recordCount": 5,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/builder-accepts-statement-once-started",
+    "position": 1,
+    "vector": "0xc336e415bfc2c3779d6a44878ddeb9c601039299fc9952d124cd53af657ac4f6",
+    "g25": "0xc336e415bfc2c3779d6a44878ddeb9c601039299fc9952d124cd53af657ac4f6",
+    "recordCount": 5,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-power-reducing-by-started-statements-without-agent",
+    "position": 4,
+    "vector": "0x3287266a4501d3eeb22655a594fb458617e5688450fd3fb90bfabda8226a0277",
+    "g25": "0x3287266a4501d3eeb22655a594fb458617e5688450fd3fb90bfabda8226a0277",
+    "recordCount": 10,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-power-reducing-by-lapsed-keys",
+    "position": 5,
+    "vector": "0xd351b163a33e1937e309bd69b314660e1e2e03316763c399aae234ed5a4ad9fd",
+    "g25": "0xd351b163a33e1937e309bd69b314660e1e2e03316763c399aae234ed5a4ad9fd",
+    "recordCount": 12,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-checkpoint-by-lapsed-keys",
+    "position": 5,
+    "vector": "0x7cc20ce1b4c243a802fbf41a73b1a2cbfd7c93bdeeb8c7d2ef5d2dcd03853787",
+    "g25": "0x7cc20ce1b4c243a802fbf41a73b1a2cbfd7c93bdeeb8c7d2ef5d2dcd03853787",
+    "recordCount": 12,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-checkpoint-by-lapsed-keys checkpoint @5 data",
+    "position": 4,
+    "vector": "0x3357c4c03e8d68633133a1d7513c69bdfaac9c1c5aac830670235b468861737b",
+    "g25": "0x3357c4c03e8d68633133a1d7513c69bdfaac9c1c5aac830670235b468861737b",
+    "recordCount": 11,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-fence-by-lapsed-and-agent",
+    "position": 3,
+    "vector": "0xba307be85ee4025844d20a24f563d72ee3de02b1e8873119ad4e7da108ddcaf9",
+    "g25": "0xba307be85ee4025844d20a24f563d72ee3de02b1e8873119ad4e7da108ddcaf9",
+    "recordCount": 8,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-restoration-rotation-by-lapsed-keys",
+    "position": 3,
+    "vector": "0x70865bf0eecdc4bdb3bfba17e9db384eba3ef1b4ca2f0ab1ab4509f4befa7a27",
+    "g25": "0x70865bf0eecdc4bdb3bfba17e9db384eba3ef1b4ca2f0ab1ab4509f4befa7a27",
+    "recordCount": 9,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-restoration-carrying-expired-coowner",
+    "position": 4,
+    "vector": "0x2b4ee10674e263ddc9ab35e98a00e6d1d8845ff9ab361f54c4b4473324261ac2",
+    "g25": "0x2b4ee10674e263ddc9ab35e98a00e6d1d8845ff9ab361f54c4b4473324261ac2",
+    "recordCount": 10,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-restoration-with-pr-bytype-above-renewed",
+    "position": 3,
+    "vector": "0xca8a65cf089bdc17f673ddf9f72f4a7c67366b500601aac3e8eb53f592ab3988",
+    "g25": "0xca8a65cf089bdc17f673ddf9f72f4a7c67366b500601aac3e8eb53f592ab3988",
+    "recordCount": 9,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-renewal-by-policy-rotation",
+    "position": 3,
+    "vector": "0xe64a39f7c575c6c9ea177d2c6195401f2429ee7bee1b724ee47eacf9eef86fca",
+    "g25": "0xe64a39f7c575c6c9ea177d2c6195401f2429ee7bee1b724ee47eacf9eef86fca",
+    "recordCount": 9,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-carried-genesis-statement-without-history-id",
+    "position": 3,
+    "vector": "0x5a403afbd7d79eb02fce93f532c8ac817918a3a4971853c8a75a941e60a15689",
+    "g25": "0x5a403afbd7d79eb02fce93f532c8ac817918a3a4971853c8a75a941e60a15689",
+    "recordCount": 9,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-policy-rotation-carrying-expired-coowner",
+    "position": 4,
+    "vector": "0x833f53b5e21360b25a5347148718e27ff1dc8070415e0337d14c782b80f7bc49",
+    "g25": "0x833f53b5e21360b25a5347148718e27ff1dc8070415e0337d14c782b80f7bc49",
+    "recordCount": 10,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-attestation-history",
+    "position": 5,
+    "vector": "0xe4f342fb2e6cad37dc273b17e2fefad0fa46000997856a038b5ff533fe8480f0",
+    "g25": "0xe4f342fb2e6cad37dc273b17e2fefad0fa46000997856a038b5ff533fe8480f0",
+    "recordCount": 11,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-attestation-history checkpoint @5 data",
+    "position": 4,
+    "vector": "0x408626ca0fe380c704ae68f562799037225d556c84ae5ad898863fca7377e0d8",
+    "g25": "0x408626ca0fe380c704ae68f562799037225d556c84ae5ad898863fca7377e0d8",
+    "recordCount": 10,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-pre-attested-next-key-rotation",
+    "position": 2,
+    "vector": "0xa248330ee9dbc4b49ba11ccdaee512aa6fe9b68f6b9e1328bef8686e969e4674",
+    "g25": "0xa248330ee9dbc4b49ba11ccdaee512aa6fe9b68f6b9e1328bef8686e969e4674",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-session-event-before-expiry",
+    "position": 6,
+    "vector": "0x3893a99557deb17d0c518066846ffded81564c3beb09ab99a729ada2f2a88e67",
+    "g25": "0x3893a99557deb17d0c518066846ffded81564c3beb09ab99a729ada2f2a88e67",
+    "recordCount": 16,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-control-event-crossing-expiry",
+    "position": 7,
+    "vector": "0x95218dfba59dd1c2b2579a73e0aed8f7d07f70d6ba6e5aa85a2f97ae84f70400",
+    "g25": "0x95218dfba59dd1c2b2579a73e0aed8f7d07f70d6ba6e5aa85a2f97ae84f70400",
+    "recordCount": 16,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-session-event-after-owner-crossed",
+    "position": 8,
+    "vector": "0x9de5dd02b471b184663c072bb80f4f775b7249c29c314f4bf3c7283c32ddafb7",
+    "g25": "0x9de5dd02b471b184663c072bb80f4f775b7249c29c314f4bf3c7283c32ddafb7",
+    "recordCount": 19,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-single-signer-advancing-to-horizon",
+    "position": 3,
+    "vector": "0xa6a968c083a7d0742053e8f13c709067861a54b2bd6def8aa832cf4b03ff496e",
+    "g25": "0xa6a968c083a7d0742053e8f13c709067861a54b2bd6def8aa832cf4b03ff496e",
+    "recordCount": 8,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-two-human-signers-advancing-past-horizon",
+    "position": 3,
+    "vector": "0xf5ec8a57f41d2c586eba486a88a67b84f4b871647e7e48956775c3fda22ced0b",
+    "g25": "0xf5ec8a57f41d2c586eba486a88a67b84f4b871647e7e48956775c3fda22ced0b",
+    "recordCount": 9,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-single-signer-at-head-time-past-horizon",
+    "position": 4,
+    "vector": "0xe174dc27f3dadbd875642f88822500dd10b0a21538d3f12a8cae65d1fa94a2ae",
+    "g25": "0xe174dc27f3dadbd875642f88822500dd10b0a21538d3f12a8cae65d1fa94a2ae",
+    "recordCount": 10,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-checkpoint-by-lapsed-key-crossing-expiry",
+    "position": 3,
+    "vector": "0xa26bc6cca4423fc6f5c3104b3e7318d3cd84e4a5862d3435ab6d48dfc039f6fa",
+    "g25": "0xa26bc6cca4423fc6f5c3104b3e7318d3cd84e4a5862d3435ab6d48dfc039f6fa",
+    "recordCount": 8,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/accepts-checkpoint-by-lapsed-key-crossing-expiry checkpoint @3 data",
+    "position": 2,
+    "vector": "0x1bbb36e857269af2b3d25863c2b230004a04b8c2a2e9f93b71a1e7ed39d3a0da",
+    "g25": "0x1bbb36e857269af2b3d25863c2b230004a04b8c2a2e9f93b71a1e7ed39d3a0da",
+    "recordCount": 7,
+    "equal": true
+   },
+   {
+    "source": "replay/v2ha/builder-accepts-single-signer-at-max-time-minus-one",
+    "position": 3,
+    "vector": "0xb85d2939b7db793377dfe09501114dca6e00f63ff10e4eadf2405ebaea9aea82",
+    "g25": "0xb85d2939b7db793377dfe09501114dca6e00f63ff10e4eadf2405ebaea9aea82",
+    "recordCount": 8,
+    "equal": true
+   }
+  ],
+  "distinctPinnedRoots": 29,
+  "pinnedRootsEqual": true
+ },
+ "summary": {
+  "checks": 146,
+  "failures": 0,
+  "firstFailures": []
+ },
+ "limits": [
+  "authority algebra (spec 02: delegation paths, intersections, prohibitions) is not re-derived; admission and administrative proofs are checked for consistency with state (controlling grants exist, are permissions, unrevoked, in time; request/binding/intent/usage/budget), not for byte-equality with an engine-derived proof",
+  "CORE refusals: signature, actor binding, time, head checked; the DENY/INDETERMINATE code is not re-derived (authority algebra)",
+  "adapter acknowledgment / no-effect deep validation (spec 01 \u00a7F.5) is not implemented; evidence references and (A-17.5) the idempotencyKey are checked",
+  "receipt artifacts are outside the history (\u00a78.5) and not verified",
+  "migrated prefixes: runtime/administrative signatures are verified against the shadow heads with the source algorithm; the prefix control-tuple currency (session expiry, epoch, tenure) of administrative events and migratedFrom.recordHash are not checked",
+  "witness registration receipts (signed notes, WITNESS \u00a79.5) are not verified; the field set is",
+  "duty findings: the attester administrative proof hash (authorityProofHash) is taken from the challenge (authority algebra)",
+  "A-17.2: ownerKeys and the option-given genesis fields (nextKeyDigests, capacity, checkpointPolicy, projection) of a migrated genesis cannot be checked without the migration options; migratedFrom.recordHash (A-17.4) is not checkable from the target",
+  "A-40.2 (g25/4): a format-1 sourceAttestation is verified (shape, head = migratedFrom.historyHash/position, signature under migratedFrom.genesis.ownerKeys); its head.canonicalTime is compared with the source event at migratedFrom.position when the prefix ends; whether the /1 body carries `domain` is G3-X-3 (both shapes accepted)",
+  "A-37.2 / A-69 derived ids are an API rule: g25 provides the derivation (api.derive_id) and tests it; replay never derives ids",
+  "writer, API and client rules (A-5, A-6, A-8 to A-14, A-22.3-5, A-23, A-24, A-25, A-30, A-31 Python; G2: A-38, A-41, A-42, A-43.1, A-44.1/3/4, A-45.2, A-46.1-2 and A-66 (reported as an advisory schedule only), A-48, A-52.3, A-55, A-56; G3: A-63 plan-time refusal, A-66, A-68) leave no trace a history file can show",
+  "A-44.2: the snapshot is size-checked before parsing but not parsed in streaming fashion (entries counted after the parse)",
+  "A-39: resume step (1) rollback detection is checked against heads supplied as inputs (pin, anchor log, witness heads); the remote witness protocol itself (WITNESS \u00a71, E-10) is not implemented",
+  "A-71 (g25/5): type 42 is replayed in full (schema, challenge, the eight A-71.3 steps, both record kinds, row 42); source.eventDigest is never recomputed (no provider content in the history); the A-71.6 writer contract (lock, checkpoint ordering, crash re-emission) is a writer rule - api.observation_precheck reproduces only its codes; A-71.7 listings are report-level (advisory.verify_report)",
+  "A-72 (g25/5): the 11-type lifecycle set is g25's own list (job 06); it equals the eleven types A-72.2 names; the builder's DEVIATIONS copy of capacity.ts is not an input"
+ ],
+ "notes": [],
+ "checks": [
+  {
+   "subject": "replay/v2ha/accepts-attested-floor-genesis",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-attested-floor-genesis",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-attested-floor-genesis",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-attested-floor-genesis",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-unknown-attester",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-forged-attestation-signature",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-wrong-audience",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-subject-not-owner-or-next",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-attester-equals-owner",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-agent-classed-subject",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-expired-at-setting",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-attestations-without-attesters",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-single-attester-under-attested",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-lockout-no-valid-attestation-at-set",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-bytype-power-reducing-above-attested",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-bytype-power-reducing-above-started-statements",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-attester-equals-next-key",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-activation-below-rotation-quorum",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/builder-accepts-activation-of-attested-floor",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/builder-accepts-activation-of-attested-floor",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/builder-accepts-activation-of-attested-floor",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/builder-accepts-activation-of-attested-floor",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-ordinary-event-attested-plus-agent",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-ordinary-event-attested-plus-agent",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-ordinary-event-attested-plus-agent",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-ordinary-event-attested-plus-agent",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-declared-floor-ignores-attestations",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-declared-floor-ignores-attestations",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-declared-floor-ignores-attestations",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-declared-floor-ignores-attestations",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-non-counting-signature-present",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-non-counting-signature-present",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-non-counting-signature-present",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-non-counting-signature-present",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-attested-floor-without-attested-signer",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-expired-at-timestamp",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-not-yet-valid",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/builder-accepts-statement-once-started",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/builder-accepts-statement-once-started",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/builder-accepts-statement-once-started",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/builder-accepts-statement-once-started",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-new-attestation-supplies-old-quorum",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-attested-rotation-with-unattested-human",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-power-reducing-by-started-statements-without-agent",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-power-reducing-by-started-statements-without-agent",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-power-reducing-by-started-statements-without-agent",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-power-reducing-by-started-statements-without-agent",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-power-reducing-by-lapsed-keys",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-power-reducing-by-lapsed-keys",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-power-reducing-by-lapsed-keys",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-power-reducing-by-lapsed-keys",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-grant-by-lapsed-keys",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-prohibition-revocation-by-lapsed-keys",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-checkpoint-by-lapsed-keys",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-checkpoint-by-lapsed-keys",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-checkpoint-by-lapsed-keys",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-checkpoint-by-lapsed-keys",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-budget-raise-by-lapsed-keys",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-fence-by-lapsed-and-agent",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-fence-by-lapsed-and-agent",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-fence-by-lapsed-and-agent",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-fence-by-lapsed-and-agent",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-revoked-key-on-power-reducing",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-not-yet-valid-on-power-reducing",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-restoration-rotation-by-lapsed-keys",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-restoration-rotation-by-lapsed-keys",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-restoration-rotation-by-lapsed-keys",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-restoration-rotation-by-lapsed-keys",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-restoration-changing-attesters",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-restoration-changing-threshold",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-key-rotation-by-lapsed-keys",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-restoration-adding-commitment",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-restoration-with-stale-statements",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-restoration-renewal-with-future-notbefore",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-restoration-with-stashed-statement",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-restoration-with-stashed-statement-below-t-set",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-restoration-carrying-expired-coowner",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-restoration-carrying-expired-coowner",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-restoration-carrying-expired-coowner",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-restoration-carrying-expired-coowner",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-restoration-dropping-subject",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-restoration-adding-subject",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-restoration-with-pr-bytype-above-renewed",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-restoration-with-pr-bytype-above-renewed",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-restoration-with-pr-bytype-above-renewed",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-restoration-with-pr-bytype-above-renewed",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-restoration-with-statement-predating-epoch",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-renewal-by-policy-rotation",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-renewal-by-policy-rotation",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-renewal-by-policy-rotation",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-renewal-by-policy-rotation",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-attestation-without-history-id-after-genesis",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-attestation-wrong-history-id",
+   "check": "rejected with EVENT_DATA_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-carried-genesis-statement-without-history-id",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-carried-genesis-statement-without-history-id",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-carried-genesis-statement-without-history-id",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-carried-genesis-statement-without-history-id",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-policy-rotation-carrying-expired-coowner",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-policy-rotation-carrying-expired-coowner",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-policy-rotation-carrying-expired-coowner",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-policy-rotation-carrying-expired-coowner",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-attestation-history",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-attestation-history",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-attestation-history",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-attestation-history",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-pre-attested-next-key-rotation",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-pre-attested-next-key-rotation",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-pre-attested-next-key-rotation",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-pre-attested-next-key-rotation",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-unattested-next-key-recovery",
+   "check": "rejected with CONTROL_AUTHORIZATION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-lapsed-and-agent-advancing-past-horizon",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-session-event-crossing-attestation-expiry",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-session-event-before-expiry",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-session-event-before-expiry",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-session-event-before-expiry",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-session-event-before-expiry",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-control-event-crossing-expiry",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-control-event-crossing-expiry",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-control-event-crossing-expiry",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-control-event-crossing-expiry",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-session-event-after-owner-crossed",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-session-event-after-owner-crossed",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-session-event-after-owner-crossed",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-session-event-after-owner-crossed",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-single-signer-advancing-past-horizon",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-single-signer-advancing-to-horizon",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-single-signer-advancing-to-horizon",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-single-signer-advancing-to-horizon",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-single-signer-advancing-to-horizon",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-two-human-signers-advancing-past-horizon",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-two-human-signers-advancing-past-horizon",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-two-human-signers-advancing-past-horizon",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-two-human-signers-advancing-past-horizon",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-single-signer-at-head-time-past-horizon",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-single-signer-at-head-time-past-horizon",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-single-signer-at-head-time-past-horizon",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-single-signer-at-head-time-past-horizon",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-checkpoint-by-lapsed-key-crossing-expiry",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-checkpoint-by-lapsed-key-crossing-expiry",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-checkpoint-by-lapsed-key-crossing-expiry",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/accepts-checkpoint-by-lapsed-key-crossing-expiry",
+   "check": "projectionHead",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/rejects-single-signer-at-max-time",
+   "check": "rejected with TRANSITION_INVALID",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/builder-accepts-single-signer-at-max-time-minus-one",
+   "check": "accepted",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/builder-accepts-single-signer-at-max-time-minus-one",
+   "check": "head",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/builder-accepts-single-signer-at-max-time-minus-one",
+   "check": "stateRoot = rootAt(last) (\u00a717)",
+   "pass": true
+  },
+  {
+   "subject": "replay/v2ha/builder-accepts-single-signer-at-max-time-minus-one",
+   "check": "projectionHead",
+   "pass": true
+  }
+ ]
+}

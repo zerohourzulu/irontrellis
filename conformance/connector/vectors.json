@@ -1,0 +1,1157 @@
+{
+  "version": "irontrellis-connector-vectors/1",
+  "scope": "SYNTHETIC_GATEWAY_BARRIER_VECTORS",
+  "note": "Synthetic inputs over a pinned history. Not chain evidence, not node qualification, not a live-anchoring claim; a TEST-class result supports no production claim (A-183.2 (iv)).",
+  "source": {
+    "history": "conformance/v2-regenerated/histories/rotation-v2.json",
+    "sha256": "86ff8ee0ad80be589caefc74772fd9230ba5a82503c5375754a730a7f014794a",
+    "head": {
+      "hash": "0x9c3be15096a54c6ef7232cc107a62c4f51f82dc25bbe99aea8b14a296a039d8b",
+      "position": 6,
+      "canonicalTime": 104
+    }
+  },
+  "classTable": [
+    {
+      "chainId": "eip155:42793",
+      "profileId": "irontrellis-anchoring-profile/etherlink-mainnet/1",
+      "class": "PRODUCTION"
+    },
+    {
+      "chainId": "eip155:127823",
+      "profileId": "irontrellis-anchoring-profile/etherlink-shadownet-test/1",
+      "class": "TEST"
+    }
+  ],
+  "operationId": "mcp:abababababababababababababababababababababababababababababababab",
+  "vectors": [
+    {
+      "id": "connector/etherlink/l1-final-consensus-verified",
+      "rulings": [
+        "A-161",
+        "A-150.1"
+      ],
+      "input": {
+        "trustRoot": {
+          "version": "irontrellis-profile-trust-root/1",
+          "manifest": {
+            "version": "irontrellis-profile-manifest/1",
+            "id": "irontrellis-anchoring-profile/etherlink-mainnet/1",
+            "domain": {
+              "deploymentId": "irontrellis-conformance-v2",
+              "protocol": "irontrellis",
+              "version": "2"
+            },
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "genesisEventHash": "0x67f2a42f8a375b7a5e377870ef48b3ea223d157e885bfe7a0484a293c39af3fc",
+            "chain": {
+              "id": "eip155:42793"
+            },
+            "publisher": "0x4444444444444444444444444444444444444444",
+            "operatorKeys": [
+              {
+                "keyId": "public-test-base-point",
+                "scheme": "ed25519",
+                "credential": "0x5866666666666666666666666666666666666666666666666666666666666666"
+              }
+            ],
+            "nodes": {
+              "evm": {
+                "chainId": "eip155:42793",
+                "operator": "synthetic-evm"
+              },
+              "l1": {
+                "chainId": "synthetic-tezos",
+                "operator": "synthetic-l1"
+              },
+              "ownRollup": null
+            },
+            "bodyStore": null,
+            "maxL1HeadLag": null,
+            "supersedes": null
+          },
+          "manifestHash": "0xf28fc6f89d010d32fcc6a88ed10316097e794bc144cddf924c2f0615813b60d8",
+          "namespaceId": "0x247be20ab168785c0bf1dd646b193b6952fac5f9d5fe476fe66c488724b15ac9",
+          "destination": "0x5555555555555555555555555555555555555555"
+        },
+        "options": {},
+        "instanceObservationMode": "CONSENSUS_VERIFIED",
+        "report": {
+          "version": "irontrellis-anchor-verify-report/1",
+          "profileId": "irontrellis-anchoring-profile/etherlink-mainnet/1",
+          "chainId": "eip155:42793",
+          "statement": {
+            "digest": "0x1111111111111111111111111111111111111111111111111111111111111111",
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "head": {
+              "hash": "0x9c3be15096a54c6ef7232cc107a62c4f51f82dc25bbe99aea8b14a296a039d8b",
+              "position": 6
+            }
+          },
+          "tx": {
+            "hash": "0x2222222222222222222222222222222222222222222222222222222222222222",
+            "l2Block": 0,
+            "l2BlockHash": "SYNTHETIC"
+          },
+          "nodes": {
+            "evm": {
+              "chainId": "eip155:42793",
+              "operator": "synthetic-evm",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 0
+            },
+            "l1": {
+              "chainId": "synthetic-tezos",
+              "operator": "synthetic-l1",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 102
+            },
+            "ownRollup": null
+          },
+          "finality": {
+            "label": "L1_FINAL",
+            "mode": "CONSENSUS_VERIFIED",
+            "l1Level": 100,
+            "l1BlockHash": "BKiHLREqU3JkXfzEDYAkmmfX48gBDtYhMrpA98s7Aq4SzbUAB6M",
+            "l1BlockTime": 1760000000000,
+            "operationHash": "oneev3QMfQJd2fEM3zQPdFwwPY1aohkxffttrK8Qrswemnh2nML",
+            "refutationResidual": "OPEN",
+            "cementedAt": null
+          },
+          "sentence": "Synthetic offline vector; not a statement of actual chain finality.",
+          "observedAt": 0,
+          "continuity": {
+            "previousReportDigest": null,
+            "contradiction": false
+          }
+        }
+      },
+      "derived": {
+        "manifestHash": "0xf28fc6f89d010d32fcc6a88ed10316097e794bc144cddf924c2f0615813b60d8",
+        "namespaceId": "0x247be20ab168785c0bf1dd646b193b6952fac5f9d5fe476fe66c488724b15ac9",
+        "profileClass": "PRODUCTION",
+        "report": {
+          "canonicalHex": "7b22636861696e4964223a226569703135353a3432373933222c22636f6e74696e75697479223a7b22636f6e74726164696374696f6e223a66616c73652c2270726576696f75735265706f7274446967657374223a6e756c6c7d2c2266696e616c697479223a7b2263656d656e7465644174223a6e756c6c2c226c31426c6f636b48617368223a22424b69484c52457155334a6b58667a454459416b6d6d665834386742447459684d72704139387337417134537a62554142364d222c226c31426c6f636b54696d65223a313736303030303030303030302c226c314c6576656c223a3130302c226c6162656c223a224c315f46494e414c222c226d6f6465223a22434f4e53454e5355535f5645524946494544222c226f7065726174696f6e48617368223a226f6e65657633514d66514a643266454d337a515064467777505931616f686b7866667474724b3851727377656d6e68326e4d4c222c2272656675746174696f6e526573696475616c223a224f50454e227d2c226e6f646573223a7b2265766d223a7b22636861696e4964223a226569703135353a3432373933222c22686561644c6576656c223a302c226f70657261746f72223a2273796e7468657469632d65766d222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226c31223a7b22636861696e4964223a2273796e7468657469632d74657a6f73222c22686561644c6576656c223a3130322c226f70657261746f72223a2273796e7468657469632d6c31222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226f776e526f6c6c7570223a6e756c6c7d2c226f627365727665644174223a302c2270726f66696c654964223a2269726f6e7472656c6c69732d616e63686f72696e672d70726f66696c652f65746865726c696e6b2d6d61696e6e65742f31222c2273656e74656e6365223a2253796e746865746963206f66666c696e6520766563746f723b206e6f7420612073746174656d656e74206f662061637475616c20636861696e2066696e616c6974792e222c2273746174656d656e74223a7b22646967657374223a22307831313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131222c2268656164223a7b2268617368223a22307839633362653135303936613534633665663732333263633130376136326334663531663832646332356262653939616561386231346132393661303339643862222c22706f736974696f6e223a367d2c22686973746f72794964223a22307837323064306665386132386437633235343563613239323838636662653566333530313439373038336362333136326262373830636265333334633966616164227d2c227478223a7b2268617368223a22307832323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232222c226c32426c6f636b223a302c226c32426c6f636b48617368223a2253594e544845544943227d2c2276657273696f6e223a2269726f6e7472656c6c69732d616e63686f722d7665726966792d7265706f72742f31227d",
+          "bytes": 1252,
+          "reportDigest": "0x7200eaaa9806aac2f51ca7b0255e389ca9d0b0d0806538c70226e727eb464277",
+          "sha256": "0x7200eaaa9806aac2f51ca7b0255e389ca9d0b0d0806538c70226e727eb464277"
+        },
+        "barrierRecord": {
+          "canonicalHex": "7b2261646d697373696f6e48656164223a7b2263616e6f6e6963616c54696d65223a3130342c2268617368223a22307839633362653135303936613534633665663732333263633130376136326334663531663832646332356262653939616561386231346132393661303339643862222c22706f736974696f6e223a367d2c2262617272696572536571223a302c22636861696e4964223a226569703135353a3432373933222c226c6162656c223a224c315f46494e414c222c226d6f6465223a22434f4e53454e5355535f5645524946494544222c226f7065726174696f6e4964223a226d63703a61626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162222c2270726576696f757342617272696572446967657374223a6e756c6c2c2270726f66696c654964223a2269726f6e7472656c6c69732d616e63686f72696e672d70726f66696c652f65746865726c696e6b2d6d61696e6e65742f31222c227265706f7274446967657374223a22307837323030656161613938303661616332663531636137623032353565333839636139643062306430383036353338633730323236653732376562343634323737222c22726573756d6564223a66616c73652c2273746174656d656e74446967657374223a22307831313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131222c2273746174656d656e7448656164223a7b2268617368223a22307839633362653135303936613534633665663732333263633130376136326334663531663832646332356262653939616561386231346132393661303339643862222c22706f736974696f6e223a367d2c2276657273696f6e223a2269726f6e7472656c6c69732d6d63702d626172726965722f31227d",
+          "digest": "0xf162edf3294ddf8b6f8a9e9431d6338ada8b377ebd672822f161705b034b9d6c"
+        }
+      },
+      "expect": {
+        "open": "OPENED",
+        "profileClass": "PRODUCTION",
+        "barrierMode": "CONSENSUS_VERIFIED",
+        "classLabel": null,
+        "eligible": true,
+        "evidenceMode": "CONSENSUS_VERIFIED"
+      }
+    },
+    {
+      "id": "connector/etherlink/trusted-node-not-final",
+      "rulings": [
+        "A-161",
+        "A-150.1"
+      ],
+      "input": {
+        "trustRoot": {
+          "version": "irontrellis-profile-trust-root/1",
+          "manifest": {
+            "version": "irontrellis-profile-manifest/1",
+            "id": "irontrellis-anchoring-profile/etherlink-mainnet/1",
+            "domain": {
+              "deploymentId": "irontrellis-conformance-v2",
+              "protocol": "irontrellis",
+              "version": "2"
+            },
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "genesisEventHash": "0x67f2a42f8a375b7a5e377870ef48b3ea223d157e885bfe7a0484a293c39af3fc",
+            "chain": {
+              "id": "eip155:42793"
+            },
+            "publisher": "0x4444444444444444444444444444444444444444",
+            "operatorKeys": [
+              {
+                "keyId": "public-test-base-point",
+                "scheme": "ed25519",
+                "credential": "0x5866666666666666666666666666666666666666666666666666666666666666"
+              }
+            ],
+            "nodes": {
+              "evm": {
+                "chainId": "eip155:42793",
+                "operator": "synthetic-evm"
+              },
+              "l1": {
+                "chainId": "synthetic-tezos",
+                "operator": "synthetic-l1"
+              },
+              "ownRollup": null
+            },
+            "bodyStore": null,
+            "maxL1HeadLag": null,
+            "supersedes": null
+          },
+          "manifestHash": "0xf28fc6f89d010d32fcc6a88ed10316097e794bc144cddf924c2f0615813b60d8",
+          "namespaceId": "0x247be20ab168785c0bf1dd646b193b6952fac5f9d5fe476fe66c488724b15ac9",
+          "destination": "0x5555555555555555555555555555555555555555"
+        },
+        "options": {},
+        "instanceObservationMode": "CONSENSUS_VERIFIED",
+        "report": {
+          "version": "irontrellis-anchor-verify-report/1",
+          "profileId": "irontrellis-anchoring-profile/etherlink-mainnet/1",
+          "chainId": "eip155:42793",
+          "statement": {
+            "digest": "0x1111111111111111111111111111111111111111111111111111111111111111",
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "head": {
+              "hash": "0x9c3be15096a54c6ef7232cc107a62c4f51f82dc25bbe99aea8b14a296a039d8b",
+              "position": 6
+            }
+          },
+          "tx": {
+            "hash": "0x2222222222222222222222222222222222222222222222222222222222222222",
+            "l2Block": 0,
+            "l2BlockHash": "SYNTHETIC"
+          },
+          "nodes": {
+            "evm": {
+              "chainId": "eip155:42793",
+              "operator": "synthetic-evm",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 0
+            },
+            "l1": {
+              "chainId": "synthetic-tezos",
+              "operator": "synthetic-l1",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 102
+            },
+            "ownRollup": null
+          },
+          "finality": {
+            "label": "L1_FINAL",
+            "mode": "TRUSTED_NODE",
+            "l1Level": 100,
+            "l1BlockHash": "BKiHLREqU3JkXfzEDYAkmmfX48gBDtYhMrpA98s7Aq4SzbUAB6M",
+            "l1BlockTime": null,
+            "operationHash": "oneev3QMfQJd2fEM3zQPdFwwPY1aohkxffttrK8Qrswemnh2nML",
+            "refutationResidual": "OPEN",
+            "cementedAt": null
+          },
+          "sentence": "Synthetic offline vector; not a statement of actual chain finality.",
+          "observedAt": 0,
+          "continuity": {
+            "previousReportDigest": null,
+            "contradiction": false
+          }
+        }
+      },
+      "derived": {
+        "manifestHash": "0xf28fc6f89d010d32fcc6a88ed10316097e794bc144cddf924c2f0615813b60d8",
+        "namespaceId": "0x247be20ab168785c0bf1dd646b193b6952fac5f9d5fe476fe66c488724b15ac9",
+        "profileClass": "PRODUCTION",
+        "report": {
+          "canonicalHex": "7b22636861696e4964223a226569703135353a3432373933222c22636f6e74696e75697479223a7b22636f6e74726164696374696f6e223a66616c73652c2270726576696f75735265706f7274446967657374223a6e756c6c7d2c2266696e616c697479223a7b2263656d656e7465644174223a6e756c6c2c226c31426c6f636b48617368223a22424b69484c52457155334a6b58667a454459416b6d6d665834386742447459684d72704139387337417134537a62554142364d222c226c31426c6f636b54696d65223a6e756c6c2c226c314c6576656c223a3130302c226c6162656c223a224c315f46494e414c222c226d6f6465223a22545255535445445f4e4f4445222c226f7065726174696f6e48617368223a226f6e65657633514d66514a643266454d337a515064467777505931616f686b7866667474724b3851727377656d6e68326e4d4c222c2272656675746174696f6e526573696475616c223a224f50454e227d2c226e6f646573223a7b2265766d223a7b22636861696e4964223a226569703135353a3432373933222c22686561644c6576656c223a302c226f70657261746f72223a2273796e7468657469632d65766d222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226c31223a7b22636861696e4964223a2273796e7468657469632d74657a6f73222c22686561644c6576656c223a3130322c226f70657261746f72223a2273796e7468657469632d6c31222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226f776e526f6c6c7570223a6e756c6c7d2c226f627365727665644174223a302c2270726f66696c654964223a2269726f6e7472656c6c69732d616e63686f72696e672d70726f66696c652f65746865726c696e6b2d6d61696e6e65742f31222c2273656e74656e6365223a2253796e746865746963206f66666c696e6520766563746f723b206e6f7420612073746174656d656e74206f662061637475616c20636861696e2066696e616c6974792e222c2273746174656d656e74223a7b22646967657374223a22307831313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131222c2268656164223a7b2268617368223a22307839633362653135303936613534633665663732333263633130376136326334663531663832646332356262653939616561386231346132393661303339643862222c22706f736974696f6e223a367d2c22686973746f72794964223a22307837323064306665386132386437633235343563613239323838636662653566333530313439373038336362333136326262373830636265333334633966616164227d2c227478223a7b2268617368223a22307832323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232222c226c32426c6f636b223a302c226c32426c6f636b48617368223a2253594e544845544943227d2c2276657273696f6e223a2269726f6e7472656c6c69732d616e63686f722d7665726966792d7265706f72742f31227d",
+          "bytes": 1237,
+          "reportDigest": "0x71391463a8967b39251ada07eeead7b267e7425a0bf4a907b5860d2281b7bfc7",
+          "sha256": "0x71391463a8967b39251ada07eeead7b267e7425a0bf4a907b5860d2281b7bfc7"
+        }
+      },
+      "expect": {
+        "open": "OPENED",
+        "profileClass": "PRODUCTION",
+        "barrierMode": "CONSENSUS_VERIFIED",
+        "classLabel": null,
+        "eligible": false
+      }
+    },
+    {
+      "id": "connector/etherlink/same-administration-nodes",
+      "rulings": [
+        "A-161",
+        "A-150.2"
+      ],
+      "input": {
+        "trustRoot": {
+          "version": "irontrellis-profile-trust-root/1",
+          "manifest": {
+            "version": "irontrellis-profile-manifest/1",
+            "id": "irontrellis-anchoring-profile/etherlink-mainnet/1",
+            "domain": {
+              "deploymentId": "irontrellis-conformance-v2",
+              "protocol": "irontrellis",
+              "version": "2"
+            },
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "genesisEventHash": "0x67f2a42f8a375b7a5e377870ef48b3ea223d157e885bfe7a0484a293c39af3fc",
+            "chain": {
+              "id": "eip155:42793"
+            },
+            "publisher": "0x4444444444444444444444444444444444444444",
+            "operatorKeys": [
+              {
+                "keyId": "public-test-base-point",
+                "scheme": "ed25519",
+                "credential": "0x5866666666666666666666666666666666666666666666666666666666666666"
+              }
+            ],
+            "nodes": {
+              "evm": {
+                "chainId": "eip155:42793",
+                "operator": "synthetic-evm"
+              },
+              "l1": {
+                "chainId": "synthetic-tezos",
+                "operator": "synthetic-evm"
+              },
+              "ownRollup": null
+            },
+            "bodyStore": null,
+            "maxL1HeadLag": null,
+            "supersedes": null
+          },
+          "manifestHash": "0xe7278fc3b3decb47d301b5c5304aa95ed8b003cc5546f0c0b0799a7746bb5b7c",
+          "namespaceId": "0x246fdcdef77d49739c9d130692cd0b96036470159affa64f3ef78e47e4c987d0",
+          "destination": "0x5555555555555555555555555555555555555555"
+        },
+        "options": {},
+        "instanceObservationMode": "CONSENSUS_VERIFIED",
+        "report": {
+          "version": "irontrellis-anchor-verify-report/1",
+          "profileId": "irontrellis-anchoring-profile/etherlink-mainnet/1",
+          "chainId": "eip155:42793",
+          "statement": {
+            "digest": "0x1111111111111111111111111111111111111111111111111111111111111111",
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "head": {
+              "hash": "0x9c3be15096a54c6ef7232cc107a62c4f51f82dc25bbe99aea8b14a296a039d8b",
+              "position": 6
+            }
+          },
+          "tx": {
+            "hash": "0x2222222222222222222222222222222222222222222222222222222222222222",
+            "l2Block": 0,
+            "l2BlockHash": "SYNTHETIC"
+          },
+          "nodes": {
+            "evm": {
+              "chainId": "eip155:42793",
+              "operator": "synthetic-evm",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 0
+            },
+            "l1": {
+              "chainId": "synthetic-tezos",
+              "operator": "synthetic-evm",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 102
+            },
+            "ownRollup": null
+          },
+          "finality": {
+            "label": "L1_FINAL",
+            "mode": "CONSENSUS_VERIFIED",
+            "l1Level": 100,
+            "l1BlockHash": "BKiHLREqU3JkXfzEDYAkmmfX48gBDtYhMrpA98s7Aq4SzbUAB6M",
+            "l1BlockTime": 1760000000000,
+            "operationHash": "oneev3QMfQJd2fEM3zQPdFwwPY1aohkxffttrK8Qrswemnh2nML",
+            "refutationResidual": "OPEN",
+            "cementedAt": null
+          },
+          "sentence": "Synthetic offline vector; not a statement of actual chain finality.",
+          "observedAt": 0,
+          "continuity": {
+            "previousReportDigest": null,
+            "contradiction": false
+          }
+        }
+      },
+      "derived": {
+        "manifestHash": "0xe7278fc3b3decb47d301b5c5304aa95ed8b003cc5546f0c0b0799a7746bb5b7c",
+        "namespaceId": "0x246fdcdef77d49739c9d130692cd0b96036470159affa64f3ef78e47e4c987d0",
+        "profileClass": "PRODUCTION",
+        "report": {
+          "canonicalHex": "7b22636861696e4964223a226569703135353a3432373933222c22636f6e74696e75697479223a7b22636f6e74726164696374696f6e223a66616c73652c2270726576696f75735265706f7274446967657374223a6e756c6c7d2c2266696e616c697479223a7b2263656d656e7465644174223a6e756c6c2c226c31426c6f636b48617368223a22424b69484c52457155334a6b58667a454459416b6d6d665834386742447459684d72704139387337417134537a62554142364d222c226c31426c6f636b54696d65223a313736303030303030303030302c226c314c6576656c223a3130302c226c6162656c223a224c315f46494e414c222c226d6f6465223a22434f4e53454e5355535f5645524946494544222c226f7065726174696f6e48617368223a226f6e65657633514d66514a643266454d337a515064467777505931616f686b7866667474724b3851727377656d6e68326e4d4c222c2272656675746174696f6e526573696475616c223a224f50454e227d2c226e6f646573223a7b2265766d223a7b22636861696e4964223a226569703135353a3432373933222c22686561644c6576656c223a302c226f70657261746f72223a2273796e7468657469632d65766d222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226c31223a7b22636861696e4964223a2273796e7468657469632d74657a6f73222c22686561644c6576656c223a3130322c226f70657261746f72223a2273796e7468657469632d65766d222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226f776e526f6c6c7570223a6e756c6c7d2c226f627365727665644174223a302c2270726f66696c654964223a2269726f6e7472656c6c69732d616e63686f72696e672d70726f66696c652f65746865726c696e6b2d6d61696e6e65742f31222c2273656e74656e6365223a2253796e746865746963206f66666c696e6520766563746f723b206e6f7420612073746174656d656e74206f662061637475616c20636861696e2066696e616c6974792e222c2273746174656d656e74223a7b22646967657374223a22307831313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131222c2268656164223a7b2268617368223a22307839633362653135303936613534633665663732333263633130376136326334663531663832646332356262653939616561386231346132393661303339643862222c22706f736974696f6e223a367d2c22686973746f72794964223a22307837323064306665386132386437633235343563613239323838636662653566333530313439373038336362333136326262373830636265333334633966616164227d2c227478223a7b2268617368223a22307832323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232222c226c32426c6f636b223a302c226c32426c6f636b48617368223a2253594e544845544943227d2c2276657273696f6e223a2269726f6e7472656c6c69732d616e63686f722d7665726966792d7265706f72742f31227d",
+          "bytes": 1253,
+          "reportDigest": "0x30a805aa65cc124845509371d23d66da65de4b77a2d9ad63dbac212e75b7f7fc",
+          "sha256": "0x30a805aa65cc124845509371d23d66da65de4b77a2d9ad63dbac212e75b7f7fc"
+        }
+      },
+      "expect": {
+        "open": "TRUST_ROOT_INVALID",
+        "reason": null
+      }
+    },
+    {
+      "id": "connector/etherlink/shadownet-chain-refused",
+      "rulings": [
+        "A-161",
+        "A-183.1"
+      ],
+      "input": {
+        "trustRoot": {
+          "version": "irontrellis-profile-trust-root/1",
+          "manifest": {
+            "version": "irontrellis-profile-manifest/1",
+            "id": "irontrellis-anchoring-profile/etherlink-mainnet/1",
+            "domain": {
+              "deploymentId": "irontrellis-conformance-v2",
+              "protocol": "irontrellis",
+              "version": "2"
+            },
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "genesisEventHash": "0x67f2a42f8a375b7a5e377870ef48b3ea223d157e885bfe7a0484a293c39af3fc",
+            "chain": {
+              "id": "eip155:127823"
+            },
+            "publisher": "0x4444444444444444444444444444444444444444",
+            "operatorKeys": [
+              {
+                "keyId": "public-test-base-point",
+                "scheme": "ed25519",
+                "credential": "0x5866666666666666666666666666666666666666666666666666666666666666"
+              }
+            ],
+            "nodes": {
+              "evm": {
+                "chainId": "eip155:127823",
+                "operator": "synthetic-evm"
+              },
+              "l1": {
+                "chainId": "synthetic-tezos",
+                "operator": "synthetic-l1"
+              },
+              "ownRollup": null
+            },
+            "bodyStore": null,
+            "maxL1HeadLag": null,
+            "supersedes": null
+          },
+          "manifestHash": "0xe94c937fe4d691afc9fbcda6b9372b12594fefbdd99ee71c114356e45c12cee3",
+          "namespaceId": "0xfb2a0236629101ff5cfc53223960a089c2b3a56d65d6bb3d29484c5eabc6cc87",
+          "destination": "0x5555555555555555555555555555555555555555"
+        },
+        "options": {
+          "allowTestProfile": true
+        },
+        "instanceObservationMode": "CONSENSUS_VERIFIED",
+        "report": {
+          "version": "irontrellis-anchor-verify-report/1",
+          "profileId": "irontrellis-anchoring-profile/etherlink-mainnet/1",
+          "chainId": "eip155:127823",
+          "statement": {
+            "digest": "0x1111111111111111111111111111111111111111111111111111111111111111",
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "head": {
+              "hash": "0x9c3be15096a54c6ef7232cc107a62c4f51f82dc25bbe99aea8b14a296a039d8b",
+              "position": 6
+            }
+          },
+          "tx": {
+            "hash": "0x2222222222222222222222222222222222222222222222222222222222222222",
+            "l2Block": 0,
+            "l2BlockHash": "SYNTHETIC"
+          },
+          "nodes": {
+            "evm": {
+              "chainId": "eip155:127823",
+              "operator": "synthetic-evm",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 0
+            },
+            "l1": {
+              "chainId": "synthetic-tezos",
+              "operator": "synthetic-l1",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 102
+            },
+            "ownRollup": null
+          },
+          "finality": {
+            "label": "L1_FINAL",
+            "mode": "CONSENSUS_VERIFIED",
+            "l1Level": 100,
+            "l1BlockHash": "BKiHLREqU3JkXfzEDYAkmmfX48gBDtYhMrpA98s7Aq4SzbUAB6M",
+            "l1BlockTime": 1760000000000,
+            "operationHash": "oneev3QMfQJd2fEM3zQPdFwwPY1aohkxffttrK8Qrswemnh2nML",
+            "refutationResidual": "OPEN",
+            "cementedAt": null
+          },
+          "sentence": "Synthetic offline vector; not a statement of actual chain finality.",
+          "observedAt": 0,
+          "continuity": {
+            "previousReportDigest": null,
+            "contradiction": false
+          }
+        }
+      },
+      "derived": {
+        "manifestHash": "0xe94c937fe4d691afc9fbcda6b9372b12594fefbdd99ee71c114356e45c12cee3",
+        "namespaceId": "0xfb2a0236629101ff5cfc53223960a089c2b3a56d65d6bb3d29484c5eabc6cc87",
+        "profileClass": null,
+        "report": {
+          "canonicalHex": "7b22636861696e4964223a226569703135353a313237383233222c22636f6e74696e75697479223a7b22636f6e74726164696374696f6e223a66616c73652c2270726576696f75735265706f7274446967657374223a6e756c6c7d2c2266696e616c697479223a7b2263656d656e7465644174223a6e756c6c2c226c31426c6f636b48617368223a22424b69484c52457155334a6b58667a454459416b6d6d665834386742447459684d72704139387337417134537a62554142364d222c226c31426c6f636b54696d65223a313736303030303030303030302c226c314c6576656c223a3130302c226c6162656c223a224c315f46494e414c222c226d6f6465223a22434f4e53454e5355535f5645524946494544222c226f7065726174696f6e48617368223a226f6e65657633514d66514a643266454d337a515064467777505931616f686b7866667474724b3851727377656d6e68326e4d4c222c2272656675746174696f6e526573696475616c223a224f50454e227d2c226e6f646573223a7b2265766d223a7b22636861696e4964223a226569703135353a313237383233222c22686561644c6576656c223a302c226f70657261746f72223a2273796e7468657469632d65766d222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226c31223a7b22636861696e4964223a2273796e7468657469632d74657a6f73222c22686561644c6576656c223a3130322c226f70657261746f72223a2273796e7468657469632d6c31222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226f776e526f6c6c7570223a6e756c6c7d2c226f627365727665644174223a302c2270726f66696c654964223a2269726f6e7472656c6c69732d616e63686f72696e672d70726f66696c652f65746865726c696e6b2d6d61696e6e65742f31222c2273656e74656e6365223a2253796e746865746963206f66666c696e6520766563746f723b206e6f7420612073746174656d656e74206f662061637475616c20636861696e2066696e616c6974792e222c2273746174656d656e74223a7b22646967657374223a22307831313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131222c2268656164223a7b2268617368223a22307839633362653135303936613534633665663732333263633130376136326334663531663832646332356262653939616561386231346132393661303339643862222c22706f736974696f6e223a367d2c22686973746f72794964223a22307837323064306665386132386437633235343563613239323838636662653566333530313439373038336362333136326262373830636265333334633966616164227d2c227478223a7b2268617368223a22307832323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232222c226c32426c6f636b223a302c226c32426c6f636b48617368223a2253594e544845544943227d2c2276657273696f6e223a2269726f6e7472656c6c69732d616e63686f722d7665726966792d7265706f72742f31227d",
+          "bytes": 1254,
+          "reportDigest": "0xfeb25df6904aa673c82b615741642e653d9e65b5c700401307e33b5c69f8cb8a",
+          "sha256": "0xfeb25df6904aa673c82b615741642e653d9e65b5c700401307e33b5c69f8cb8a"
+        }
+      },
+      "expect": {
+        "open": "TRUST_ROOT_INVALID",
+        "reason": "T6"
+      }
+    },
+    {
+      "id": "connector/etherlink/test-profile-refused-without-opt-in",
+      "rulings": [
+        "A-183.2"
+      ],
+      "input": {
+        "trustRoot": {
+          "version": "irontrellis-profile-trust-root/1",
+          "manifest": {
+            "version": "irontrellis-profile-manifest/1",
+            "id": "irontrellis-anchoring-profile/etherlink-shadownet-test/1",
+            "domain": {
+              "deploymentId": "irontrellis-conformance-v2",
+              "protocol": "irontrellis",
+              "version": "2"
+            },
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "genesisEventHash": "0x67f2a42f8a375b7a5e377870ef48b3ea223d157e885bfe7a0484a293c39af3fc",
+            "chain": {
+              "id": "eip155:127823"
+            },
+            "publisher": "0x4444444444444444444444444444444444444444",
+            "operatorKeys": [
+              {
+                "keyId": "public-test-base-point",
+                "scheme": "ed25519",
+                "credential": "0x5866666666666666666666666666666666666666666666666666666666666666"
+              }
+            ],
+            "nodes": {
+              "evm": {
+                "chainId": "eip155:127823",
+                "operator": "synthetic-evm"
+              },
+              "l1": {
+                "chainId": "synthetic-tezos",
+                "operator": "synthetic-l1"
+              },
+              "ownRollup": null
+            },
+            "bodyStore": null,
+            "maxL1HeadLag": null,
+            "supersedes": null
+          },
+          "manifestHash": "0x2260bb4b7e4a5bf7ff1e609433397124959844cfbea454a58279758d25cad578",
+          "namespaceId": "0x8015dd0869dd4aae00229701c67f68c9a50e202a9dad40912e0e95bf44f9ac81",
+          "destination": "0x5555555555555555555555555555555555555555"
+        },
+        "options": {},
+        "instanceObservationMode": "CONSENSUS_VERIFIED",
+        "report": {
+          "version": "irontrellis-anchor-verify-report/1",
+          "profileId": "irontrellis-anchoring-profile/etherlink-shadownet-test/1",
+          "chainId": "eip155:127823",
+          "statement": {
+            "digest": "0x1111111111111111111111111111111111111111111111111111111111111111",
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "head": {
+              "hash": "0x9c3be15096a54c6ef7232cc107a62c4f51f82dc25bbe99aea8b14a296a039d8b",
+              "position": 6
+            }
+          },
+          "tx": {
+            "hash": "0x2222222222222222222222222222222222222222222222222222222222222222",
+            "l2Block": 0,
+            "l2BlockHash": "SYNTHETIC"
+          },
+          "nodes": {
+            "evm": {
+              "chainId": "eip155:127823",
+              "operator": "synthetic-evm",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 0
+            },
+            "l1": {
+              "chainId": "synthetic-tezos",
+              "operator": "synthetic-l1",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 102
+            },
+            "ownRollup": null
+          },
+          "finality": {
+            "label": "L1_FINAL",
+            "mode": "CONSENSUS_VERIFIED",
+            "l1Level": 100,
+            "l1BlockHash": "BKiHLREqU3JkXfzEDYAkmmfX48gBDtYhMrpA98s7Aq4SzbUAB6M",
+            "l1BlockTime": 1760000000000,
+            "operationHash": "oneev3QMfQJd2fEM3zQPdFwwPY1aohkxffttrK8Qrswemnh2nML",
+            "refutationResidual": "OPEN",
+            "cementedAt": null
+          },
+          "sentence": "Synthetic offline vector; not a statement of actual chain finality.",
+          "observedAt": 0,
+          "continuity": {
+            "previousReportDigest": null,
+            "contradiction": false
+          }
+        }
+      },
+      "derived": {
+        "manifestHash": "0x2260bb4b7e4a5bf7ff1e609433397124959844cfbea454a58279758d25cad578",
+        "namespaceId": "0x8015dd0869dd4aae00229701c67f68c9a50e202a9dad40912e0e95bf44f9ac81",
+        "profileClass": "TEST",
+        "report": {
+          "canonicalHex": "7b22636861696e4964223a226569703135353a313237383233222c22636f6e74696e75697479223a7b22636f6e74726164696374696f6e223a66616c73652c2270726576696f75735265706f7274446967657374223a6e756c6c7d2c2266696e616c697479223a7b2263656d656e7465644174223a6e756c6c2c226c31426c6f636b48617368223a22424b69484c52457155334a6b58667a454459416b6d6d665834386742447459684d72704139387337417134537a62554142364d222c226c31426c6f636b54696d65223a313736303030303030303030302c226c314c6576656c223a3130302c226c6162656c223a224c315f46494e414c222c226d6f6465223a22434f4e53454e5355535f5645524946494544222c226f7065726174696f6e48617368223a226f6e65657633514d66514a643266454d337a515064467777505931616f686b7866667474724b3851727377656d6e68326e4d4c222c2272656675746174696f6e526573696475616c223a224f50454e227d2c226e6f646573223a7b2265766d223a7b22636861696e4964223a226569703135353a313237383233222c22686561644c6576656c223a302c226f70657261746f72223a2273796e7468657469632d65766d222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226c31223a7b22636861696e4964223a2273796e7468657469632d74657a6f73222c22686561644c6576656c223a3130322c226f70657261746f72223a2273796e7468657469632d6c31222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226f776e526f6c6c7570223a6e756c6c7d2c226f627365727665644174223a302c2270726f66696c654964223a2269726f6e7472656c6c69732d616e63686f72696e672d70726f66696c652f65746865726c696e6b2d736861646f776e65742d746573742f31222c2273656e74656e6365223a2253796e746865746963206f66666c696e6520766563746f723b206e6f7420612073746174656d656e74206f662061637475616c20636861696e2066696e616c6974792e222c2273746174656d656e74223a7b22646967657374223a22307831313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131222c2268656164223a7b2268617368223a22307839633362653135303936613534633665663732333263633130376136326334663531663832646332356262653939616561386231346132393661303339643862222c22706f736974696f6e223a367d2c22686973746f72794964223a22307837323064306665386132386437633235343563613239323838636662653566333530313439373038336362333136326262373830636265333334633966616164227d2c227478223a7b2268617368223a22307832323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232222c226c32426c6f636b223a302c226c32426c6f636b48617368223a2253594e544845544943227d2c2276657273696f6e223a2269726f6e7472656c6c69732d616e63686f722d7665726966792d7265706f72742f31227d",
+          "bytes": 1261,
+          "reportDigest": "0x82bef09a1a20b5158a77789b57c61461b8e8941ccb84d6ee1b23d028b1a6beaa",
+          "sha256": "0x82bef09a1a20b5158a77789b57c61461b8e8941ccb84d6ee1b23d028b1a6beaa"
+        }
+      },
+      "expect": {
+        "open": "TRUST_ROOT_INVALID",
+        "reason": "TEST_PROFILE_NOT_ALLOWED"
+      }
+    },
+    {
+      "id": "connector/etherlink/test-profile-accepted-with-opt-in",
+      "rulings": [
+        "A-183.2"
+      ],
+      "input": {
+        "trustRoot": {
+          "version": "irontrellis-profile-trust-root/1",
+          "manifest": {
+            "version": "irontrellis-profile-manifest/1",
+            "id": "irontrellis-anchoring-profile/etherlink-shadownet-test/1",
+            "domain": {
+              "deploymentId": "irontrellis-conformance-v2",
+              "protocol": "irontrellis",
+              "version": "2"
+            },
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "genesisEventHash": "0x67f2a42f8a375b7a5e377870ef48b3ea223d157e885bfe7a0484a293c39af3fc",
+            "chain": {
+              "id": "eip155:127823"
+            },
+            "publisher": "0x4444444444444444444444444444444444444444",
+            "operatorKeys": [
+              {
+                "keyId": "public-test-base-point",
+                "scheme": "ed25519",
+                "credential": "0x5866666666666666666666666666666666666666666666666666666666666666"
+              }
+            ],
+            "nodes": {
+              "evm": {
+                "chainId": "eip155:127823",
+                "operator": "synthetic-evm"
+              },
+              "l1": {
+                "chainId": "synthetic-tezos",
+                "operator": "synthetic-l1"
+              },
+              "ownRollup": null
+            },
+            "bodyStore": null,
+            "maxL1HeadLag": null,
+            "supersedes": null
+          },
+          "manifestHash": "0x2260bb4b7e4a5bf7ff1e609433397124959844cfbea454a58279758d25cad578",
+          "namespaceId": "0x8015dd0869dd4aae00229701c67f68c9a50e202a9dad40912e0e95bf44f9ac81",
+          "destination": "0x5555555555555555555555555555555555555555"
+        },
+        "options": {
+          "allowTestProfile": true
+        },
+        "instanceObservationMode": "CONSENSUS_VERIFIED",
+        "report": {
+          "version": "irontrellis-anchor-verify-report/1",
+          "profileId": "irontrellis-anchoring-profile/etherlink-shadownet-test/1",
+          "chainId": "eip155:127823",
+          "statement": {
+            "digest": "0x1111111111111111111111111111111111111111111111111111111111111111",
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "head": {
+              "hash": "0x9c3be15096a54c6ef7232cc107a62c4f51f82dc25bbe99aea8b14a296a039d8b",
+              "position": 6
+            }
+          },
+          "tx": {
+            "hash": "0x2222222222222222222222222222222222222222222222222222222222222222",
+            "l2Block": 0,
+            "l2BlockHash": "SYNTHETIC"
+          },
+          "nodes": {
+            "evm": {
+              "chainId": "eip155:127823",
+              "operator": "synthetic-evm",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 0
+            },
+            "l1": {
+              "chainId": "synthetic-tezos",
+              "operator": "synthetic-l1",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 102
+            },
+            "ownRollup": null
+          },
+          "finality": {
+            "label": "L1_FINAL",
+            "mode": "CONSENSUS_VERIFIED",
+            "l1Level": 100,
+            "l1BlockHash": "BKiHLREqU3JkXfzEDYAkmmfX48gBDtYhMrpA98s7Aq4SzbUAB6M",
+            "l1BlockTime": 1760000000000,
+            "operationHash": "oneev3QMfQJd2fEM3zQPdFwwPY1aohkxffttrK8Qrswemnh2nML",
+            "refutationResidual": "OPEN",
+            "cementedAt": null
+          },
+          "sentence": "Synthetic offline vector; not a statement of actual chain finality.",
+          "observedAt": 0,
+          "continuity": {
+            "previousReportDigest": null,
+            "contradiction": false
+          }
+        }
+      },
+      "derived": {
+        "manifestHash": "0x2260bb4b7e4a5bf7ff1e609433397124959844cfbea454a58279758d25cad578",
+        "namespaceId": "0x8015dd0869dd4aae00229701c67f68c9a50e202a9dad40912e0e95bf44f9ac81",
+        "profileClass": "TEST",
+        "report": {
+          "canonicalHex": "7b22636861696e4964223a226569703135353a313237383233222c22636f6e74696e75697479223a7b22636f6e74726164696374696f6e223a66616c73652c2270726576696f75735265706f7274446967657374223a6e756c6c7d2c2266696e616c697479223a7b2263656d656e7465644174223a6e756c6c2c226c31426c6f636b48617368223a22424b69484c52457155334a6b58667a454459416b6d6d665834386742447459684d72704139387337417134537a62554142364d222c226c31426c6f636b54696d65223a313736303030303030303030302c226c314c6576656c223a3130302c226c6162656c223a224c315f46494e414c222c226d6f6465223a22434f4e53454e5355535f5645524946494544222c226f7065726174696f6e48617368223a226f6e65657633514d66514a643266454d337a515064467777505931616f686b7866667474724b3851727377656d6e68326e4d4c222c2272656675746174696f6e526573696475616c223a224f50454e227d2c226e6f646573223a7b2265766d223a7b22636861696e4964223a226569703135353a313237383233222c22686561644c6576656c223a302c226f70657261746f72223a2273796e7468657469632d65766d222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226c31223a7b22636861696e4964223a2273796e7468657469632d74657a6f73222c22686561644c6576656c223a3130322c226f70657261746f72223a2273796e7468657469632d6c31222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226f776e526f6c6c7570223a6e756c6c7d2c226f627365727665644174223a302c2270726f66696c654964223a2269726f6e7472656c6c69732d616e63686f72696e672d70726f66696c652f65746865726c696e6b2d736861646f776e65742d746573742f31222c2273656e74656e6365223a2253796e746865746963206f66666c696e6520766563746f723b206e6f7420612073746174656d656e74206f662061637475616c20636861696e2066696e616c6974792e222c2273746174656d656e74223a7b22646967657374223a22307831313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131222c2268656164223a7b2268617368223a22307839633362653135303936613534633665663732333263633130376136326334663531663832646332356262653939616561386231346132393661303339643862222c22706f736974696f6e223a367d2c22686973746f72794964223a22307837323064306665386132386437633235343563613239323838636662653566333530313439373038336362333136326262373830636265333334633966616164227d2c227478223a7b2268617368223a22307832323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232222c226c32426c6f636b223a302c226c32426c6f636b48617368223a2253594e544845544943227d2c2276657273696f6e223a2269726f6e7472656c6c69732d616e63686f722d7665726966792d7265706f72742f31227d",
+          "bytes": 1261,
+          "reportDigest": "0x82bef09a1a20b5158a77789b57c61461b8e8941ccb84d6ee1b23d028b1a6beaa",
+          "sha256": "0x82bef09a1a20b5158a77789b57c61461b8e8941ccb84d6ee1b23d028b1a6beaa"
+        },
+        "barrierRecord": {
+          "canonicalHex": "7b2261646d697373696f6e48656164223a7b2263616e6f6e6963616c54696d65223a3130342c2268617368223a22307839633362653135303936613534633665663732333263633130376136326334663531663832646332356262653939616561386231346132393661303339643862222c22706f736974696f6e223a367d2c2262617272696572536571223a302c22636861696e4964223a226569703135353a313237383233222c226c6162656c223a224c315f46494e414c222c226d6f6465223a22434f4e53454e5355535f5645524946494544222c226f7065726174696f6e4964223a226d63703a61626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162222c2270726576696f757342617272696572446967657374223a6e756c6c2c2270726f66696c654964223a2269726f6e7472656c6c69732d616e63686f72696e672d70726f66696c652f65746865726c696e6b2d736861646f776e65742d746573742f31222c227265706f7274446967657374223a22307838326265663039613161323062353135386137373738396235376336313436316238653839343163636238346436656531623233643032386231613662656161222c22726573756d6564223a66616c73652c2273746174656d656e74446967657374223a22307831313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131222c2273746174656d656e7448656164223a7b2268617368223a22307839633362653135303936613534633665663732333263633130376136326334663531663832646332356262653939616561386231346132393661303339643862222c22706f736974696f6e223a367d2c2276657273696f6e223a2269726f6e7472656c6c69732d6d63702d626172726965722f31227d",
+          "digest": "0x382d99a3ab5297d777bcb35a24a5778e541c93ff1b2b914e4c2aa8943bf5454e"
+        }
+      },
+      "expect": {
+        "open": "OPENED",
+        "profileClass": "TEST",
+        "barrierMode": "CONSENSUS_VERIFIED",
+        "classLabel": "test network; no production finality claim",
+        "eligible": true,
+        "evidenceMode": "CONSENSUS_VERIFIED"
+      }
+    },
+    {
+      "id": "connector/etherlink/test-profile-trusted-node-barrier-eligible",
+      "rulings": [
+        "A-195.1",
+        "A-207.1"
+      ],
+      "input": {
+        "trustRoot": {
+          "version": "irontrellis-profile-trust-root/1",
+          "manifest": {
+            "version": "irontrellis-profile-manifest/1",
+            "id": "irontrellis-anchoring-profile/etherlink-shadownet-test/1",
+            "domain": {
+              "deploymentId": "irontrellis-conformance-v2",
+              "protocol": "irontrellis",
+              "version": "2"
+            },
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "genesisEventHash": "0x67f2a42f8a375b7a5e377870ef48b3ea223d157e885bfe7a0484a293c39af3fc",
+            "chain": {
+              "id": "eip155:127823"
+            },
+            "publisher": "0x4444444444444444444444444444444444444444",
+            "operatorKeys": [
+              {
+                "keyId": "public-test-base-point",
+                "scheme": "ed25519",
+                "credential": "0x5866666666666666666666666666666666666666666666666666666666666666"
+              }
+            ],
+            "nodes": {
+              "evm": {
+                "chainId": "eip155:127823",
+                "operator": "synthetic-evm"
+              },
+              "l1": {
+                "chainId": "eip155:127823",
+                "operator": "synthetic-evm"
+              },
+              "ownRollup": null
+            },
+            "bodyStore": null,
+            "maxL1HeadLag": null,
+            "supersedes": null
+          },
+          "manifestHash": "0x967f9345a5c681be78d43dc1df60cf4ff78672ef1b5f9cbd1743d37464fb0ef5",
+          "namespaceId": "0xeb43b581454e86d019dd75ce69d3c2ce1453a4ef03802947943530bdeffd0b4d",
+          "destination": "0x5555555555555555555555555555555555555555"
+        },
+        "options": {
+          "allowTestProfile": true,
+          "testBarrierMode": "TRUSTED_NODE"
+        },
+        "instanceObservationMode": "TRUSTED_NODE",
+        "report": {
+          "version": "irontrellis-anchor-verify-report/1",
+          "profileId": "irontrellis-anchoring-profile/etherlink-shadownet-test/1",
+          "chainId": "eip155:127823",
+          "statement": {
+            "digest": "0x1111111111111111111111111111111111111111111111111111111111111111",
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "head": {
+              "hash": "0x9c3be15096a54c6ef7232cc107a62c4f51f82dc25bbe99aea8b14a296a039d8b",
+              "position": 6
+            }
+          },
+          "tx": {
+            "hash": "0x2222222222222222222222222222222222222222222222222222222222222222",
+            "l2Block": 0,
+            "l2BlockHash": "SYNTHETIC"
+          },
+          "nodes": {
+            "evm": {
+              "chainId": "eip155:127823",
+              "operator": "synthetic-evm",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 0
+            },
+            "l1": {
+              "chainId": "eip155:127823",
+              "operator": "synthetic-evm",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 102
+            },
+            "ownRollup": null
+          },
+          "finality": {
+            "label": "L1_FINAL",
+            "mode": "TRUSTED_NODE",
+            "l1Level": 100,
+            "l1BlockHash": "BKiHLREqU3JkXfzEDYAkmmfX48gBDtYhMrpA98s7Aq4SzbUAB6M",
+            "l1BlockTime": null,
+            "operationHash": "oneev3QMfQJd2fEM3zQPdFwwPY1aohkxffttrK8Qrswemnh2nML",
+            "refutationResidual": "OPEN",
+            "cementedAt": null
+          },
+          "sentence": "Synthetic offline vector; not a statement of actual chain finality.",
+          "observedAt": 0,
+          "continuity": {
+            "previousReportDigest": null,
+            "contradiction": false
+          }
+        }
+      },
+      "derived": {
+        "manifestHash": "0x967f9345a5c681be78d43dc1df60cf4ff78672ef1b5f9cbd1743d37464fb0ef5",
+        "namespaceId": "0xeb43b581454e86d019dd75ce69d3c2ce1453a4ef03802947943530bdeffd0b4d",
+        "profileClass": "TEST",
+        "report": {
+          "canonicalHex": "7b22636861696e4964223a226569703135353a313237383233222c22636f6e74696e75697479223a7b22636f6e74726164696374696f6e223a66616c73652c2270726576696f75735265706f7274446967657374223a6e756c6c7d2c2266696e616c697479223a7b2263656d656e7465644174223a6e756c6c2c226c31426c6f636b48617368223a22424b69484c52457155334a6b58667a454459416b6d6d665834386742447459684d72704139387337417134537a62554142364d222c226c31426c6f636b54696d65223a6e756c6c2c226c314c6576656c223a3130302c226c6162656c223a224c315f46494e414c222c226d6f6465223a22545255535445445f4e4f4445222c226f7065726174696f6e48617368223a226f6e65657633514d66514a643266454d337a515064467777505931616f686b7866667474724b3851727377656d6e68326e4d4c222c2272656675746174696f6e526573696475616c223a224f50454e227d2c226e6f646573223a7b2265766d223a7b22636861696e4964223a226569703135353a313237383233222c22686561644c6576656c223a302c226f70657261746f72223a2273796e7468657469632d65766d222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226c31223a7b22636861696e4964223a226569703135353a313237383233222c22686561644c6576656c223a3130322c226f70657261746f72223a2273796e7468657469632d65766d222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226f776e526f6c6c7570223a6e756c6c7d2c226f627365727665644174223a302c2270726f66696c654964223a2269726f6e7472656c6c69732d616e63686f72696e672d70726f66696c652f65746865726c696e6b2d736861646f776e65742d746573742f31222c2273656e74656e6365223a2253796e746865746963206f66666c696e6520766563746f723b206e6f7420612073746174656d656e74206f662061637475616c20636861696e2066696e616c6974792e222c2273746174656d656e74223a7b22646967657374223a22307831313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131222c2268656164223a7b2268617368223a22307839633362653135303936613534633665663732333263633130376136326334663531663832646332356262653939616561386231346132393661303339643862222c22706f736974696f6e223a367d2c22686973746f72794964223a22307837323064306665386132386437633235343563613239323838636662653566333530313439373038336362333136326262373830636265333334633966616164227d2c227478223a7b2268617368223a22307832323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232222c226c32426c6f636b223a302c226c32426c6f636b48617368223a2253594e544845544943227d2c2276657273696f6e223a2269726f6e7472656c6c69732d616e63686f722d7665726966792d7265706f72742f31227d",
+          "bytes": 1245,
+          "reportDigest": "0x7f5901d418eefcf5f0182c6d0cb3b16d66fa56b2182bf6668fe16496b1defced",
+          "sha256": "0x7f5901d418eefcf5f0182c6d0cb3b16d66fa56b2182bf6668fe16496b1defced"
+        },
+        "barrierRecord": {
+          "canonicalHex": "7b2261646d697373696f6e48656164223a7b2263616e6f6e6963616c54696d65223a3130342c2268617368223a22307839633362653135303936613534633665663732333263633130376136326334663531663832646332356262653939616561386231346132393661303339643862222c22706f736974696f6e223a367d2c2262617272696572536571223a302c22636861696e4964223a226569703135353a313237383233222c226c6162656c223a224c315f46494e414c222c226d6f6465223a22545255535445445f4e4f4445222c226f7065726174696f6e4964223a226d63703a61626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162222c2270726576696f757342617272696572446967657374223a6e756c6c2c2270726f66696c654964223a2269726f6e7472656c6c69732d616e63686f72696e672d70726f66696c652f65746865726c696e6b2d736861646f776e65742d746573742f31222c227265706f7274446967657374223a22307837663539303164343138656566636635663031383263366430636233623136643636666135366232313832626636363638666531363439366231646566636564222c22726573756d6564223a66616c73652c2273746174656d656e74446967657374223a22307831313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131222c2273746174656d656e7448656164223a7b2268617368223a22307839633362653135303936613534633665663732333263633130376136326334663531663832646332356262653939616561386231346132393661303339643862222c22706f736974696f6e223a367d2c2276657273696f6e223a2269726f6e7472656c6c69732d6d63702d626172726965722f31227d",
+          "digest": "0xd3a2e50dc8262533e51fb9fcaee7bcd8e977455f8b01f54d2f85a502107cb2ce"
+        }
+      },
+      "expect": {
+        "open": "OPENED",
+        "profileClass": "TEST",
+        "barrierMode": "TRUSTED_NODE",
+        "classLabel": "test network; trusted-node barrier; no production finality claim",
+        "eligible": true,
+        "evidenceMode": "TRUSTED_NODE"
+      }
+    },
+    {
+      "id": "connector/etherlink/test-profile-trusted-node-barrier-refuses-consensus-claim",
+      "rulings": [
+        "A-195.1",
+        "A-207.1"
+      ],
+      "input": {
+        "trustRoot": {
+          "version": "irontrellis-profile-trust-root/1",
+          "manifest": {
+            "version": "irontrellis-profile-manifest/1",
+            "id": "irontrellis-anchoring-profile/etherlink-shadownet-test/1",
+            "domain": {
+              "deploymentId": "irontrellis-conformance-v2",
+              "protocol": "irontrellis",
+              "version": "2"
+            },
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "genesisEventHash": "0x67f2a42f8a375b7a5e377870ef48b3ea223d157e885bfe7a0484a293c39af3fc",
+            "chain": {
+              "id": "eip155:127823"
+            },
+            "publisher": "0x4444444444444444444444444444444444444444",
+            "operatorKeys": [
+              {
+                "keyId": "public-test-base-point",
+                "scheme": "ed25519",
+                "credential": "0x5866666666666666666666666666666666666666666666666666666666666666"
+              }
+            ],
+            "nodes": {
+              "evm": {
+                "chainId": "eip155:127823",
+                "operator": "synthetic-evm"
+              },
+              "l1": {
+                "chainId": "eip155:127823",
+                "operator": "synthetic-evm"
+              },
+              "ownRollup": null
+            },
+            "bodyStore": null,
+            "maxL1HeadLag": null,
+            "supersedes": null
+          },
+          "manifestHash": "0x967f9345a5c681be78d43dc1df60cf4ff78672ef1b5f9cbd1743d37464fb0ef5",
+          "namespaceId": "0xeb43b581454e86d019dd75ce69d3c2ce1453a4ef03802947943530bdeffd0b4d",
+          "destination": "0x5555555555555555555555555555555555555555"
+        },
+        "options": {
+          "allowTestProfile": true,
+          "testBarrierMode": "TRUSTED_NODE"
+        },
+        "instanceObservationMode": "TRUSTED_NODE",
+        "report": {
+          "version": "irontrellis-anchor-verify-report/1",
+          "profileId": "irontrellis-anchoring-profile/etherlink-shadownet-test/1",
+          "chainId": "eip155:127823",
+          "statement": {
+            "digest": "0x1111111111111111111111111111111111111111111111111111111111111111",
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "head": {
+              "hash": "0x9c3be15096a54c6ef7232cc107a62c4f51f82dc25bbe99aea8b14a296a039d8b",
+              "position": 6
+            }
+          },
+          "tx": {
+            "hash": "0x2222222222222222222222222222222222222222222222222222222222222222",
+            "l2Block": 0,
+            "l2BlockHash": "SYNTHETIC"
+          },
+          "nodes": {
+            "evm": {
+              "chainId": "eip155:127823",
+              "operator": "synthetic-evm",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 0
+            },
+            "l1": {
+              "chainId": "eip155:127823",
+              "operator": "synthetic-evm",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 102
+            },
+            "ownRollup": null
+          },
+          "finality": {
+            "label": "L1_FINAL",
+            "mode": "CONSENSUS_VERIFIED",
+            "l1Level": 100,
+            "l1BlockHash": "BKiHLREqU3JkXfzEDYAkmmfX48gBDtYhMrpA98s7Aq4SzbUAB6M",
+            "l1BlockTime": 1760000000000,
+            "operationHash": "oneev3QMfQJd2fEM3zQPdFwwPY1aohkxffttrK8Qrswemnh2nML",
+            "refutationResidual": "OPEN",
+            "cementedAt": null
+          },
+          "sentence": "Synthetic offline vector; not a statement of actual chain finality.",
+          "observedAt": 0,
+          "continuity": {
+            "previousReportDigest": null,
+            "contradiction": false
+          }
+        }
+      },
+      "derived": {
+        "manifestHash": "0x967f9345a5c681be78d43dc1df60cf4ff78672ef1b5f9cbd1743d37464fb0ef5",
+        "namespaceId": "0xeb43b581454e86d019dd75ce69d3c2ce1453a4ef03802947943530bdeffd0b4d",
+        "profileClass": "TEST",
+        "report": {
+          "canonicalHex": "7b22636861696e4964223a226569703135353a313237383233222c22636f6e74696e75697479223a7b22636f6e74726164696374696f6e223a66616c73652c2270726576696f75735265706f7274446967657374223a6e756c6c7d2c2266696e616c697479223a7b2263656d656e7465644174223a6e756c6c2c226c31426c6f636b48617368223a22424b69484c52457155334a6b58667a454459416b6d6d665834386742447459684d72704139387337417134537a62554142364d222c226c31426c6f636b54696d65223a313736303030303030303030302c226c314c6576656c223a3130302c226c6162656c223a224c315f46494e414c222c226d6f6465223a22434f4e53454e5355535f5645524946494544222c226f7065726174696f6e48617368223a226f6e65657633514d66514a643266454d337a515064467777505931616f686b7866667474724b3851727377656d6e68326e4d4c222c2272656675746174696f6e526573696475616c223a224f50454e227d2c226e6f646573223a7b2265766d223a7b22636861696e4964223a226569703135353a313237383233222c22686561644c6576656c223a302c226f70657261746f72223a2273796e7468657469632d65766d222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226c31223a7b22636861696e4964223a226569703135353a313237383233222c22686561644c6576656c223a3130322c226f70657261746f72223a2273796e7468657469632d65766d222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226f776e526f6c6c7570223a6e756c6c7d2c226f627365727665644174223a302c2270726f66696c654964223a2269726f6e7472656c6c69732d616e63686f72696e672d70726f66696c652f65746865726c696e6b2d736861646f776e65742d746573742f31222c2273656e74656e6365223a2253796e746865746963206f66666c696e6520766563746f723b206e6f7420612073746174656d656e74206f662061637475616c20636861696e2066696e616c6974792e222c2273746174656d656e74223a7b22646967657374223a22307831313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131222c2268656164223a7b2268617368223a22307839633362653135303936613534633665663732333263633130376136326334663531663832646332356262653939616561386231346132393661303339643862222c22706f736974696f6e223a367d2c22686973746f72794964223a22307837323064306665386132386437633235343563613239323838636662653566333530313439373038336362333136326262373830636265333334633966616164227d2c227478223a7b2268617368223a22307832323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232222c226c32426c6f636b223a302c226c32426c6f636b48617368223a2253594e544845544943227d2c2276657273696f6e223a2269726f6e7472656c6c69732d616e63686f722d7665726966792d7265706f72742f31227d",
+          "bytes": 1260,
+          "reportDigest": "0x3d7ff587e15f0bac2da4397daa92b073a19240d5329e314c7afedcd19d426129",
+          "sha256": "0x3d7ff587e15f0bac2da4397daa92b073a19240d5329e314c7afedcd19d426129"
+        }
+      },
+      "expect": {
+        "open": "OPENED",
+        "profileClass": "TEST",
+        "barrierMode": "TRUSTED_NODE",
+        "classLabel": "test network; trusted-node barrier; no production finality claim",
+        "eligible": false
+      }
+    },
+    {
+      "id": "connector/etherlink/production-profile-trusted-node-barrier-refused",
+      "rulings": [
+        "A-195.1"
+      ],
+      "input": {
+        "trustRoot": {
+          "version": "irontrellis-profile-trust-root/1",
+          "manifest": {
+            "version": "irontrellis-profile-manifest/1",
+            "id": "irontrellis-anchoring-profile/etherlink-mainnet/1",
+            "domain": {
+              "deploymentId": "irontrellis-conformance-v2",
+              "protocol": "irontrellis",
+              "version": "2"
+            },
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "genesisEventHash": "0x67f2a42f8a375b7a5e377870ef48b3ea223d157e885bfe7a0484a293c39af3fc",
+            "chain": {
+              "id": "eip155:42793"
+            },
+            "publisher": "0x4444444444444444444444444444444444444444",
+            "operatorKeys": [
+              {
+                "keyId": "public-test-base-point",
+                "scheme": "ed25519",
+                "credential": "0x5866666666666666666666666666666666666666666666666666666666666666"
+              }
+            ],
+            "nodes": {
+              "evm": {
+                "chainId": "eip155:42793",
+                "operator": "synthetic-evm"
+              },
+              "l1": {
+                "chainId": "synthetic-tezos",
+                "operator": "synthetic-l1"
+              },
+              "ownRollup": null
+            },
+            "bodyStore": null,
+            "maxL1HeadLag": null,
+            "supersedes": null
+          },
+          "manifestHash": "0xf28fc6f89d010d32fcc6a88ed10316097e794bc144cddf924c2f0615813b60d8",
+          "namespaceId": "0x247be20ab168785c0bf1dd646b193b6952fac5f9d5fe476fe66c488724b15ac9",
+          "destination": "0x5555555555555555555555555555555555555555"
+        },
+        "options": {
+          "allowTestProfile": true,
+          "testBarrierMode": "TRUSTED_NODE"
+        },
+        "instanceObservationMode": "TRUSTED_NODE",
+        "report": {
+          "version": "irontrellis-anchor-verify-report/1",
+          "profileId": "irontrellis-anchoring-profile/etherlink-mainnet/1",
+          "chainId": "eip155:42793",
+          "statement": {
+            "digest": "0x1111111111111111111111111111111111111111111111111111111111111111",
+            "historyId": "0x720d0fe8a28d7c2545ca29288cfbe5f3501497083cb3162bb780cbe334c9faad",
+            "head": {
+              "hash": "0x9c3be15096a54c6ef7232cc107a62c4f51f82dc25bbe99aea8b14a296a039d8b",
+              "position": 6
+            }
+          },
+          "tx": {
+            "hash": "0x2222222222222222222222222222222222222222222222222222222222222222",
+            "l2Block": 0,
+            "l2BlockHash": "SYNTHETIC"
+          },
+          "nodes": {
+            "evm": {
+              "chainId": "eip155:42793",
+              "operator": "synthetic-evm",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 0
+            },
+            "l1": {
+              "chainId": "synthetic-tezos",
+              "operator": "synthetic-l1",
+              "protocol": "synthetic",
+              "softwareCommit": "vector",
+              "headLevel": 102
+            },
+            "ownRollup": null
+          },
+          "finality": {
+            "label": "L1_FINAL",
+            "mode": "TRUSTED_NODE",
+            "l1Level": 100,
+            "l1BlockHash": "BKiHLREqU3JkXfzEDYAkmmfX48gBDtYhMrpA98s7Aq4SzbUAB6M",
+            "l1BlockTime": null,
+            "operationHash": "oneev3QMfQJd2fEM3zQPdFwwPY1aohkxffttrK8Qrswemnh2nML",
+            "refutationResidual": "OPEN",
+            "cementedAt": null
+          },
+          "sentence": "Synthetic offline vector; not a statement of actual chain finality.",
+          "observedAt": 0,
+          "continuity": {
+            "previousReportDigest": null,
+            "contradiction": false
+          }
+        }
+      },
+      "derived": {
+        "manifestHash": "0xf28fc6f89d010d32fcc6a88ed10316097e794bc144cddf924c2f0615813b60d8",
+        "namespaceId": "0x247be20ab168785c0bf1dd646b193b6952fac5f9d5fe476fe66c488724b15ac9",
+        "profileClass": "PRODUCTION",
+        "report": {
+          "canonicalHex": "7b22636861696e4964223a226569703135353a3432373933222c22636f6e74696e75697479223a7b22636f6e74726164696374696f6e223a66616c73652c2270726576696f75735265706f7274446967657374223a6e756c6c7d2c2266696e616c697479223a7b2263656d656e7465644174223a6e756c6c2c226c31426c6f636b48617368223a22424b69484c52457155334a6b58667a454459416b6d6d665834386742447459684d72704139387337417134537a62554142364d222c226c31426c6f636b54696d65223a6e756c6c2c226c314c6576656c223a3130302c226c6162656c223a224c315f46494e414c222c226d6f6465223a22545255535445445f4e4f4445222c226f7065726174696f6e48617368223a226f6e65657633514d66514a643266454d337a515064467777505931616f686b7866667474724b3851727377656d6e68326e4d4c222c2272656675746174696f6e526573696475616c223a224f50454e227d2c226e6f646573223a7b2265766d223a7b22636861696e4964223a226569703135353a3432373933222c22686561644c6576656c223a302c226f70657261746f72223a2273796e7468657469632d65766d222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226c31223a7b22636861696e4964223a2273796e7468657469632d74657a6f73222c22686561644c6576656c223a3130322c226f70657261746f72223a2273796e7468657469632d6c31222c2270726f746f636f6c223a2273796e746865746963222c22736f667477617265436f6d6d6974223a22766563746f72227d2c226f776e526f6c6c7570223a6e756c6c7d2c226f627365727665644174223a302c2270726f66696c654964223a2269726f6e7472656c6c69732d616e63686f72696e672d70726f66696c652f65746865726c696e6b2d6d61696e6e65742f31222c2273656e74656e6365223a2253796e746865746963206f66666c696e6520766563746f723b206e6f7420612073746174656d656e74206f662061637475616c20636861696e2066696e616c6974792e222c2273746174656d656e74223a7b22646967657374223a22307831313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131222c2268656164223a7b2268617368223a22307839633362653135303936613534633665663732333263633130376136326334663531663832646332356262653939616561386231346132393661303339643862222c22706f736974696f6e223a367d2c22686973746f72794964223a22307837323064306665386132386437633235343563613239323838636662653566333530313439373038336362333136326262373830636265333334633966616164227d2c227478223a7b2268617368223a22307832323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232222c226c32426c6f636b223a302c226c32426c6f636b48617368223a2253594e544845544943227d2c2276657273696f6e223a2269726f6e7472656c6c69732d616e63686f722d7665726966792d7265706f72742f31227d",
+          "bytes": 1237,
+          "reportDigest": "0x71391463a8967b39251ada07eeead7b267e7425a0bf4a907b5860d2281b7bfc7",
+          "sha256": "0x71391463a8967b39251ada07eeead7b267e7425a0bf4a907b5860d2281b7bfc7"
+        }
+      },
+      "expect": {
+        "open": "TRUST_ROOT_INVALID",
+        "reason": "TRUSTED_NODE_BARRIER_NOT_ALLOWED"
+      }
+    }
+  ],
+  "notProduced": [
+    {
+      "id": "connector/etherlink/substring-not-inclusion",
+      "rulings": [
+        "A-161"
+      ],
+      "reason": "needs the connector's inclusion check (statement bytes found as a substring of calldata are not inclusion); no connector producer is built in this release"
+    },
+    {
+      "id": "connector/etherlink/cemented-by-elapsed-time-refused",
+      "rulings": [
+        "A-161",
+        "A-150.0"
+      ],
+      "reason": "needs a report producer that could infer CEMENTED from elapsed time; the gateway only reads reports and no producer is built in this release"
+    }
+  ]
+}

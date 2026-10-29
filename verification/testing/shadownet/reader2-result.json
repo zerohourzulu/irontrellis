@@ -1,0 +1,127 @@
+{
+  "utc": "2026-10-24T17:20:05.851237+00:00",
+  "status": "LIVE_RUN02_READER2_PASS",
+  "sourceCommit": "f2f5dd43a2cfc79ad19c523f38365c686720ee5c",
+  "chainId": 127823,
+  "network": "Shadownet TEST",
+  "contractImmutables": {
+    "namespaceId": "0x1b374bfd4fa4021aa78f3cdcbd19e090a2dbc70978cabf441a50e69a3ffa2feb",
+    "publisher": "0x94fb18d4ba0e657ecca57d402ce5c5a548457148",
+    "historyId": "0xfca13e0cf61052e54706e465717a1beddf6f1375fe9d2edca200d380cc985421",
+    "chainId": 127823,
+    "bodyWriter": "0x78d01d36f86a3e7afbfa8ed5b37025cdcda69a2e"
+  },
+  "bodyCount": 46,
+  "statementCount": 6,
+  "artifactCount": 11,
+  "headAttestationsVerified": 6,
+  "receiptArtifactsVerified": 4,
+  "receiptVerificationScope": "Each receipt is authentic, historically valid, canonically included and current at its own RECEIPT_RECORDED prefix/time; not a claim that all remain current at final history head.",
+  "negativeControls": {
+    "headAttestation": 9,
+    "receipt": 12
+  },
+  "rpcCalls": 159,
+  "readOnlyVerification": true,
+  "reader2SentOrSignedTransactions": 0,
+  "readerAgreement": {
+    "utc": "2026-10-24T17:20:05.851237+00:00",
+    "status": "READERS_AGREE",
+    "comparisonAfterReader2Checks": true,
+    "historyByteEquality": true,
+    "bodyDescriptorsEquality": true,
+    "artifactKindAndCommitmentSetEquality": true,
+    "sixStatementDigestHeadRootProjectionEquality": true,
+    "reader1Block": {
+      "number": 7067377,
+      "hash": "0x661c83919c86c576f61ee0a44a0e20d2de485ca70fa1dc53940fbb3bab89b865",
+      "pinnedBy": "hash"
+    },
+    "reader2Block": {
+      "number": 7067409,
+      "hash": "0x9956209b8ce1ffe6f5373504cd9c7a306ccc6c06bfaacde54ef34ed6091dd95e",
+      "pinnedBy": "number, with block-hash checks before and after capture"
+    },
+    "reader1Snapshot": {
+      "path": "<RUNS>/shadownet-4cr-20261024/live-f2f5dd4-run-02/snapshot.json",
+      "bytes": 34652,
+      "sha256": "05eea7a409d408502ce72bc7a5c6d448e9bc90c0fdf0cb560e7c8aeff2e53d73"
+    },
+    "noConsensusIndependenceClaim": true
+  },
+  "transactions": {
+    "deployments": 1,
+    "bodyTransactions": 46,
+    "artifactTransactions": 11,
+    "statementTransactions": 6
+  },
+  "actualFeeWei": "479853634000000000",
+  "actualFeeTestXtz": "0.479853634",
+  "feeLabelCorrection": "Earlier fee record bodyArtifactTransactions=58 includes 1 deployment, 46 body and 11 artifact transactions; corrected breakdown here, old record retained.",
+  "sameRunResumes": 5,
+  "duplicateAcknowledgedTransactionHashes": 0,
+  "rebroadcastRecords": 0,
+  "independence": "Separately authored sealed Reader2 transport/ABI/canonical reconstruction adapted for this target; shared pinned Core replay/cryptography, not a second semantic implementation. Reader1 source/summary seen before adaptation; no expected reconstructed values imported; comparison only after Reader2 passed.",
+  "claimCeiling": "TEST Shadownet. Reader1 six TRUSTED_NODE/L1_FINAL reports; refutation residual OPEN. Reader2 independently checks EVM RPC transaction/receipt/log/retained-byte consistency and shared Core semantics, not L1 inclusion, EVM signature recovery or consensus. No production or CONSENSUS_VERIFIED claim.",
+  "setupFailuresRetained": [
+    "Initial adaptation indentation error before capture RPC; failed source/log/exit retained; syntax repair and successful edition02 retained.",
+    "Initial report assembly used unsupported zip(strict=True) on system Python; failed before report write, replaced with explicit length equality."
+  ],
+  "pins": [
+    {
+      "path": "<RUNS>/shadownet-4cr-20261024/reader2-live-run02-01/capture-01/RESULT.json",
+      "bytes": 1813,
+      "sha256": "e2df1785a14178668f75bca89f73d2cefe9a5eb92e2c6e7ca7b0213d8b6e9f48"
+    },
+    {
+      "path": "<RUNS>/shadownet-4cr-20261024/reader2-live-run02-01/semantic-01/RESULT.json",
+      "bytes": 45760,
+      "sha256": "780b2f00022747700835dc498c5d1673752c9fb5029d0daaee9103b5898f4648"
+    },
+    {
+      "path": "<RUNS>/shadownet-4cr-20261024/reader2-live-run02-01/transactions-01/RESULT.json",
+      "bytes": 3361,
+      "sha256": "52eaee16feb8e5648dc8dc539b41e2ac1026ede5cdcb279f0cd108e62b97efb6"
+    },
+    {
+      "path": "<RUNS>/shadownet-4cr-20261024/reader2-live-run02-01/COMPARISON-01.json",
+      "bytes": 936,
+      "sha256": "88318ea0ad18ba2e0c4b4c430d66c2e9579aded141c8678a09bd8ec663836beb"
+    },
+    {
+      "path": "<RUNS>/shadownet-4cr-20261024/reader2-live-run02-01/ADAPTATION-02.json",
+      "bytes": 918,
+      "sha256": "d89feda26995b08b4d6655a8179ac83049c8adf8369293b40ccf0150d4221c9b"
+    },
+    {
+      "path": "<RUNS>/shadownet-4cr-20261024/reader2-live-run02-01/WRAPPER-IDENTITY-01.json",
+      "bytes": 786,
+      "sha256": "aa80c253d1866d2541d5ced9917f79710494cd284fd0bfac449f962ffad9bd03"
+    },
+    {
+      "path": "<RUNS>/shadownet-4cr-20261024/live-f2f5dd4-preparation-01/RUN02-FEE-RECONCILIATION-01.json",
+      "bytes": 20557,
+      "sha256": "9fbb2048a88ef1052ff70e113676169baa24350e945289ab453c0e06afd3c8e3"
+    },
+    {
+      "path": "<RUNS>/shadownet-4cr-20261024/live-f2f5dd4-preparation-01/BUDGET-LEDGER-02.json",
+      "bytes": 950,
+      "sha256": "68e725549542fe8d3c9016b2f3a8a17d27cd4d2c32d7344e4e4f81e7e16fbc2d"
+    },
+    {
+      "path": "<RUNS>/shadownet-4cr-20261024/live-f2f5dd4-run-02/summary.json",
+      "bytes": 4968,
+      "sha256": "4dc91218a25a5db7f3d6227a6e682b0c26719b0ccbda3ea8dae12c0d7000d96e"
+    },
+    {
+      "path": "<RUNS>/shadownet-4cr-20261024/live-f2f5dd4-run-02/reports.json",
+      "bytes": 13971,
+      "sha256": "c1f2ea7b387aa3bcf52a084801c27ef1bfc9878a5863c91681500f284f173df6"
+    },
+    {
+      "path": "<RUNS>/shadownet-4cr-20261024/live-f2f5dd4-run-02/trust-root.json",
+      "bytes": 1137,
+      "sha256": "677dbbdf2c63ed97f8e9c774ea5ed1e385dd8269b9ea5641e86294dd769ed213"
+    }
+  ]
+}

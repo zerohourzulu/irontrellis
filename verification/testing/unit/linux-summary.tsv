@@ -1,0 +1,5 @@
+step	exit	started	finished
+test	0	2026-10-26T15:15:37Z	2026-10-26T15:26:18Z
+verify-install	0	2026-10-26T15:26:18Z	2026-10-26T15:28:22Z
+probe-scratchdir	0	2026-10-26T15:28:22Z	2026-10-26T15:28:22Z
+conformance-python	0	2026-10-26T15:28:22Z	2026-10-26T15:28:25Z

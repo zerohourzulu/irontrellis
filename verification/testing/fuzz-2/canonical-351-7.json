@@ -1,0 +1,16 @@
+{
+ "regressions": [],
+ "campaigns": [
+  {
+   "target": "canonical",
+   "seed": 351,
+   "start": 141942746,
+   "iterations": 5812454,
+   "seconds": 3000.3,
+   "execPerSecond": 1937.3,
+   "features": 190621,
+   "python": true,
+   "failures": []
+  }
+ ]
+}

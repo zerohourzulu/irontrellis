@@ -1,0 +1,16 @@
+{
+ "regressions": [],
+ "campaigns": [
+  {
+   "target": "transparency",
+   "seed": 331,
+   "start": 0,
+   "iterations": 438853713,
+   "seconds": 82800,
+   "execPerSecond": 5300.2,
+   "features": 41,
+   "python": true,
+   "failures": []
+  }
+ ]
+}

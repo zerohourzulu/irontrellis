@@ -1,0 +1,38 @@
+{
+  "name": "@ramex-labs/irontrellis-langchain-evidence",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "langchain": "1.5.12",
+    "@langchain/core": "1.2.12",
+    "@modelcontextprotocol/client": "2.2.0",
+    "zod": "4.6.5",
+    "@ramex-labs/irontrellis": "workspace:*",
+    "@ramex-labs/irontrellis-protected-evidence-mcp": "workspace:*"
+  },
+  "version": "1.0.0-rc.2",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": "^22.18.0 || ^24.0.0"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./tool.d.mts",
+      "import": "./tool.mjs"
+    }
+  },
+  "files": [
+    "*.mjs",
+    "*.d.mts",
+    "*.cedar",
+    "model.json",
+    "README.md",
+    "LICENSE",
+    "NOTICE",
+    "linux",
+    "tests"
+  ]
+}

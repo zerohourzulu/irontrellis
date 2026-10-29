@@ -1,0 +1,3403 @@
+{
+ "regressions": [],
+ "campaigns": [
+  {
+   "target": "events",
+   "seed": 341,
+   "start": 0,
+   "iterations": 428576812,
+   "seconds": 82800,
+   "execPerSecond": 5176,
+   "features": 1494893,
+   "python": true,
+   "failures": [
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 2278,
+     "key": "EVENT:ATTEMPT_DUTY_CONTEST_RECORDED:ts=EVENT_DATA_INVALID:py=UNSUPPORTED_EVENT_TYPE",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent continuity-event/0.2 ATTEMPT_DUTY_CONTEST_RECORDED@1048576: TypeScript EVENT_DATA_INVALID ($.data.finding.challenge.domain.chainId: is required), Python UNSUPPORTED_EVENT_TYPE",
+     "count": 54601,
+     "input": {
+      "event": {
+       "id": "duty-contest:challenge",
+       "type": "ATTEMPT_DUTY_CONTEST_RECORDED",
+       "timestamp": 100,
+       "data": {
+        "actorId": "worker",
+        "administrativeAuthorization": {
+         "authorityProof": {
+          "authorityEvidence": [
+           {
+            "authorityId": "disposition",
+            "grantEventId": "event:duty-policy-v2:16",
+            "grantEventPosition": 16
+           }
+          ],
+          "checkedProhibitionIds": [],
+          "consequential": false,
+          "controllingAuthorityIds": [
+           "disposition"
+          ],
+          "domain": {
+           "deploymentId": "irontrellis-conformance-v2",
+           "protocol": "irontrellis",
+           "version": "2"
+          },
+          "effectiveConstraints": {
+           "actions": [
+            "RECORD_DUTY_DISPOSITION"
+           ],
+           "expiresAt": 1000,
+           "maxDelegationDepth": 0,
+           "quantitative": false,
+           "requiredIntersectionIds": [],
+           "resources": [
+            "duty:0x5623038e25ce10e69020b2c539e8fd0fc1632d70ea04106bf7ad61b040ffb674"
+           ]
+          },
+          "evaluationTime": 100,
+          "historyHead": {
+           "canonicalTime": 100,
+           "hash": "0xcd6529f34943210cfec29307ea906f9cd10fd93e1652d9684b1778f18ecd90c5",
+           "position": 18
+          },
+          "intersections": [],
+          "permissionPath": [
+           {
+            "authorityId": "disposition",
+            "constraints": {
+             "actions": [
+              "RECORD_DUTY_DISPOSITION"
+             ],
+             "expiresAt": 1000,
+             "maxDelegationDepth": 0,
+             "quantitative": [],
+             "requiredIntersectionIds": false,
+             "resources": [
+              "duty:0x5623038e25ce10e69020b2c539e8fd0fc1632d70ea04106bf7ad61b040ffb674"
+             ]
+            },
+            "granteeId": "worker",
+            "grantorId": "owner",
+            "independent": true,
+            "kind": "PERMISSION",
+            "rootAuthorityId": "disposition",
+            "purpose": true
+           }
+          ],
+          "policyVersion": "irontrellis-local-owner/2",
+          "proofVersion": "irontrellis-authorization-proof/2",
+          "recognizedRoot": {
+           "principalId": "owner",
+           "principalRecognitionEventId": "event:duty-policy-v2:4",
+           "rootAuthorityId": "disposition",
+           "rootGrantEventId": "event:duty-policy-v2:16"
+          },
+          "request": {
+           "action": "RECORD_DUTY_DISPOSITION",
+           "actorId": "worker",
+           "claimedAt": 100,
+           "resource": "duty:0x5623038e25ce10e69020b2c539e8fd0fc1632d70ea04106bf7ad61b040ffb674"
+          },
+          "rootRecognitionPolicy": "declared-principal-root/0.2",
+          "usageSnapshot": {
+           "$continuity.bigint": "-1"
+          }
+         },
+         "challenge": {
+          "authoritative": true,
+          "authorityProofHash": "0x703f08af90368f65da9bbabdd4bbee19b4e6cd7284522147e1de603a2da7959a",
+          "consequential": true,
+          "controlEpoch": 1,
+          "credentialKeyId": "key",
+          "domain": {
+           "deploymentId": "irontrellis-conformance-v2",
+           "protocol": "irontrellis",
+           "version": "2"
+          },
+          "evaluationTime": 100,
+          "eventHistoryHash": "0xcd6529f34943210cfec29307ea906f9cd10fd93e1652d9684b1778f18ecd90c5",
+          "eventHistoryPosition": 18,
+          "policyVersion": "irontrellis-local-owner/2",
+          "request": {
+           "action": "RECORD_DUTY_DISPOSITION",
+           "actorId": "worker",
+           "claimedAt": {
+            "$continuity.bigint": "100"
+           },
+           "resource": "duty:0x5623038e25ce10e69020b2c539e8fd0fc1632d70ea04106bf7ad61b040ffb674"
+          },
+          "roleId": "role",
+          "roleTenureId": "tenure",
+          "rootRecognitionPolicy": "declared-principal-root/0.2",
+          "runtimeSessionId": "session",
+          "transitionEffectHash": "0xfb24d143b9e41c507a6465bf75f4f6753535d41d82984f862dbcc34ede5b35bb",
+          "transitionEventId": "duty-contest:challenge",
+          "transitionEventType": "ATTEMPT_DUTY_CONTEST_RECORDED",
+          "version": "irontrellis-administrative-authorization/2"
+         },
+         "runtimeSignature": "0x8ed570e390ccd6e3954ea97fbb27f91c828f395f4ddaa4c50c68d4345f6ea296378c51873b0fac4ff28b17a88bfb1a4ab75bb765552238a745e802b19e5728d11b"
+        },
+        "dispositionAuthorityId": "disposition",
+        "dutyId": "duty",
+        "finding": {
+         "challenge": {
+          "activationEventId": "duty-policy:activate",
+          "attestationAuthorityId": "finding",
+          "attesterId": "worker",
+          "authorityProofHash": null,
+          "controlEpoch": 1,
+          "credentialKeyId": "key",
+          "descriptorHash": "0x5623038e25ce10e69020b2c539e8fd0fc1632d70ea04106bf7ad61b040ffb674",
+          "dispositionAuthorityId": "disposition",
+          "domain": {
+           "deploymentId": "irontrellis-conformance-v2",
+           "protocol": "irontrellis",
+           "version": "2"
+          },
+          "dutyId": "duty",
+          "evaluationTime": 100,
+          "evidenceIndexHash": "0x2f091032d0479db884fb2c1d9768d68b2582abcfd25a9bbb86c9efca7b15ddd9",
+          "latestAssignmentEventId": "attempt-duty:duty:create",
+          "operation": {
+           "reason": "Incident material may have been incomplete.",
+           "reportDigest": {
+            "algorithm": "sha256",
+            "value": "0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+           },
+           "targetDispositionEventId": "duty-disposition:complete"
+          },
+          "previousDispositionEventId": "duty-disposition:complete",
+          "priorHead": {
+           "canonicalTime": 100,
+           "hash": "0xcd6529f34943210cfec29307ea906f9cd10fd93e1652d9684b1778f18ecd90c5",
+           "position": 18
+          },
+          "purpose": "CONTEST",
+          "roleId": "role",
+          "roleTenureId": "tenure",
+          "rulesHash": "0xf7fb2b7de27abb77c6c3d03af6f61dce11afda5a510af20c8036085cd10a5f94",
+          "runtimeSessionId": "session",
+          "sourceAdmissionEventId": "admission:0x15c8f1e7582ee1316e9df1c77a57679114d9a4fa362974fe032170cd9075276b",
+          "transitionEventId": "duty-contest:challenge",
+          "transitionEventType": "ATTEMPT_DUTY_CONTEST_RECORDED",
+          "version": "continuity-duty-finding/1"
+         },
+         "runtimeSignature": "0xd7052c7e686c714ad81461247f8fa07dcada71d1d64cf0378051509adf0ab3fa7729b681f4a5a42ca1b5213561e77d6587bef32ba6662ed33e1c12b4b896d9a31c"
+        },
+        "rulesHash": "0xf7fb2b7de27abb77c6c3d03af6f61dce11afda5a510af20c8036085cd10a5f94",
+        "version": "continuity-attempt-disposition/1"
+       }
+      },
+      "format": "continuity-event/0.2",
+      "position": 1048576
+     },
+     "minimized": {
+      "event": {
+       "id": "e",
+       "type": "ATTEMPT_DUTY_CONTEST_RECORDED",
+       "timestamp": 0,
+       "data": {}
+      },
+      "format": "continuity-event/0.2",
+      "position": ""
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 3863,
+     "key": "EVENT:ATTEMPT_DUTY_DISPOSITION_RECORDED:ts=EVENT_DATA_INVALID:py=UNSUPPORTED_EVENT_TYPE",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent continuity-event/0.2 ATTEMPT_DUTY_DISPOSITION_RECORDED@17: TypeScript EVENT_DATA_INVALID ($.data.finding.challenge.domain.chainId: is required), Python UNSUPPORTED_EVENT_TYPE",
+     "count": 74868,
+     "input": {
+      "event": {
+       "id": "duty-disposition:complete",
+       "type": "ATTEMPT_DUTY_DISPOSITION_RECORDED",
+       "timestamp": 100,
+       "data": {
+        "actorId": "worker",
+        "administrativeAuthorization": {
+         "authorityProof": {
+          "authorityEvidence": [
+           {
+            "authorityId": "disposition",
+            "grantEventId": "event:duty-capacity-v2:16",
+            "grantEventPosition": 16
+           }
+          ],
+          "checkedProhibitionIds": [],
+          "consequential": false,
+          "controllingAuthorityIds": [
+           "disposition"
+          ],
+          "domain": {
+           "deploymentId": "irontrellis-conformance-v2",
+           "protocol": "irontrellis",
+           "version": "2"
+          },
+          "effectiveConstraints": {
+           "actions": [
+            "RECORD_DUTY_DISPOSITION"
+           ],
+           "expiresAt": 1000,
+           "maxDelegationDepth": 0,
+           "quantitative": false,
+           "requiredIntersectionIds": [],
+           "resources": [
+            "duty:0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149"
+           ]
+          },
+          "evaluationTime": 100,
+          "historyHead": {
+           "canonicalTime": 100,
+           "hash": "0x471a6f3f6473928c1e6a106ef1efcc365dbf7f7b22f0f592f859ec2e3daca3fb",
+           "position": 16
+          },
+          "intersections": [],
+          "permissionPath": [
+           {
+            "authorityId": "disposition",
+            "constraints": {
+             "actions": [
+              "RECORD_DUTY_DISPOSITION"
+             ],
+             "expiresAt": 1000,
+             "maxDelegationDepth": 0,
+             "quantitative": false,
+             "requiredIntersectionIds": [],
+             "resources": {
+              "0": "duty:0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149"
+             }
+            },
+            "granteeId": "worker",
+            "grantorId": "owner",
+            "independent": true,
+            "kind": "PERMISSION",
+            "rootAuthorityId": "disposition"
+           }
+          ],
+          "policyVersion": "irontrellis-local-owner/2",
+          "proofVersion": "irontrellis-authorization-proof/2",
+          "recognizedRoot": {
+           "principalId": "owner",
+           "principalRecognitionEventId": "event:duty-capacity-v2:4",
+           "rootAuthorityId": "disposition",
+           "rootGrantEventId": "event:duty-capacity-v2:16"
+          },
+          "request": {
+           "action": "RECORD_DUTY_DISPOSITION",
+           "actorId": "worker",
+           "claimedAt": 100,
+           "resource": "duty:0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149"
+          },
+          "rootRecognitionPolicy": "declared-principal-root/0.2",
+          "usageSnapshot": []
+         },
+         "challenge": {
+          "authoritative": true,
+          "authorityProofHash": "0x56d0279070dc9db87ccf69fc2553772577c89bc95e1d14d6fcbcdf2d583c7220",
+          "consequential": true,
+          "controlEpoch": 1,
+          "credentialKeyId": "key",
+          "domain": {
+           "deploymentId": "irontrellis-conformance-v2",
+           "protocol": "irontrellis",
+           "version": "2"
+          },
+          "evaluationTime": 100,
+          "eventHistoryHash": "0x471a6f3f6473928c1e6a106ef1efcc365dbf7f7b22f0f592f859ec2e3daca3fb",
+          "eventHistoryPosition": 16,
+          "policyVersion": "irontrellis-local-owner/2",
+          "request": {
+           "action": "RECORD_DUTY_DISPOSITION",
+           "actorId": "worker",
+           "claimedAt": 100,
+           "resource": "duty:0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149"
+          },
+          "roleId": "role",
+          "roleTenureId": "tenure",
+          "rootRecognitionPolicy": "declared-principal-root/0.2",
+          "runtimeSessionId": "session",
+          "transitionEventId": "duty-disposition:complete",
+          "transitionEventType": "ATTEMPT_DUTY_DISPOSITION_RECORDED",
+          "version": "irontrellis-administrative-authorization/2"
+         },
+         "runtimeSignature": "0xfa885dc461e406bb9146511d50612a20442c649bb06e06f5d8122f4567c559f2738db9683b8c67fdb3c6d90398781ba81ddc67faafc2118636f0123faa329a9d1c"
+        },
+        "dispositionAuthorityId": "disposition",
+        "dutyId": "duty",
+        "finding": {
+         "challenge": {
+          "activationEventId": "duty-policy:activate",
+          "attestationAuthorityId": "finding",
+          "attesterId": "worker",
+          "authorityProofHash": "0xf5e5401da6b5fe2be0cf86bd13526c414b5269786165698590b3e43196894408",
+          "controlEpoch": 1,
+          "credentialKeyId": "key",
+          "descriptorHash": "0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149",
+          "dispositionAuthorityId": "disposition",
+          "domain": {
+           "deploymentId": "irontrellis-conformance-v2",
+           "protocol": "irontrellis",
+           "version": "2"
+          },
+          "dutyId": "duty",
+          "evaluationTime": 100,
+          "evidenceIndexHash": "0x2e761a018d3a458e6b1aeab352812fd1701d4e232289637a4f4787c6b084d7b0",
+          "latestAssignmentEventId": "attempt-duty:duty:create",
+          "operation": {
+           "checklist": {
+            "CONTROL_REVIEWED": {
+             "reason": "Reviewed; remaining outside uncertainty stated.",
+             "state": "SATISFIED"
+            },
+            "FINDING_RECORDED": {
+             "reason": "Reviewed; remaining outside uncertainty stated.",
+             "state": "SATISFIED"
+            },
+            "HISTORY_REVIEWED": {
+             "reason": "Reviewed; remaining outside uncertainty stated.",
+             "state": "SATISFIED"
+            },
+            "SOURCE_REVIEWED": {
+             "reason": "Reviewed; remaining outside uncertainty stated.",
+             "state": "SATISFIED"
+            }
+           },
+           "disposition": "COMPLETED_UNDER_POLICY",
+           "nextStep": null,
+           "reportDigest": {
+            "algorithm": "sha256",
+            "value": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+           }
+          },
+          "previousDispositionEventId": null,
+          "priorHead": {
+           "canonicalTime": 100,
+           "hash": "0x471a6f3f6473928c1e6a106ef1efcc365dbf7f7b22f0f592f859ec2e3daca3fb",
+           "position": 16
+          },
+          "purpose": "DISPOSITION",
+          "roleId": "role",
+          "roleTenureId": "tenure",
+          "rulesHash": "0xf7fb2b7de27abb77c6c3d03af6f61dce11afda5a510af20c8036085cd10a5f94",
+          "runtimeSessionId": "session",
+          "sourceAdmissionEventId": "admission:0x0e677cd49a634c08d263ea835ba81899e7c761d43aaa8bf5c0e43558b90b5f33",
+          "transitionEventId": "duty-disposition:complete",
+          "transitionEventType": "ATTEMPT_DUTY_DISPOSITION_RECORDED",
+          "version": "continuity-duty-finding/1"
+         },
+         "runtimeSignature": "0x552d9e192bef59073155c3d5f93768820c6d17772873534bbed8f9934af0d372307134f7e09e36c9fed3b7ea4cdb0dcb2b796e8c59975db45f036e9edadad7cb1c"
+        },
+        "rulesHash": "0xf7fb2b7de27abb77c6c3d03af6f61dce11afda5a510af20c8036085cd10a5f94",
+        "version": "continuity-attempt-disposition/1"
+       }
+      },
+      "format": "continuity-event/0.2",
+      "position": 17
+     },
+     "minimized": {
+      "event": {
+       "id": "e",
+       "type": "ATTEMPT_DUTY_DISPOSITION_RECORDED",
+       "timestamp": 0,
+       "data": {}
+      },
+      "format": "continuity-event/0.2",
+      "position": 17
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 17942,
+     "key": "EVENT:ATTEMPT_DUTY_POLICY_ACTIVATED:ts=EVENT_DATA_INVALID:py=UNSUPPORTED_EVENT_TYPE",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent continuity-event/0.2 ATTEMPT_DUTY_POLICY_ACTIVATED@14: TypeScript EVENT_DATA_INVALID ($.data.descriptor.domain.chainId: is required), Python UNSUPPORTED_EVENT_TYPE",
+     "count": 24636,
+     "input": {
+      "event": {
+       "id": "duty-policy:activate",
+       "type": "ATTEMPT_DUTY_POLICY_ACTIVATED",
+       "timestamp": 100,
+       "data": {
+        "activationAuthorityId": "activation",
+        "actorId": "worker",
+        "administrativeAuthorization": {
+         "authorityProof": {
+          "authorityEvidence": [
+           {
+            "authorityId": "activation",
+            "grantEventId": "event:duty-capacity-v2:14",
+            "grantEventPosition": 13
+           }
+          ],
+          "checkedProhibitionIds": [],
+          "consequential": false,
+          "controllingAuthorityIds": [
+           "activation"
+          ],
+          "domain": {
+           "deploymentId": "irontrellis-conformance-v2",
+           "protocol": "irontrellis",
+           "version": "2"
+          },
+          "effectiveConstraints": {
+           "actions": [
+            "ACTIVATE_DUTY_POLICY"
+           ],
+           "expiresAt": 1000,
+           "maxDelegationDepth": 0,
+           "quantitative": false,
+           "requiredIntersectionIds": [],
+           "resources": [
+            "duty-policy:0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149"
+           ]
+          },
+          "evaluationTime": 100,
+          "historyHead": "b-208",
+          "intersections": [],
+          "permissionPath": [
+           {
+            "authorityId": "activation",
+            "constraints": {
+             "actions": [
+              "ACTIVATE_DUTY_POLICY"
+             ],
+             "expiresAt": 1000,
+             "maxDelegationDepth": 0,
+             "quantitative": false,
+             "requiredIntersectionIds": [],
+             "resources": [
+              "duty-policy:0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149"
+             ]
+            },
+            "granteeId": "worker",
+            "grantorId": "owner",
+            "independent": true,
+            "kind": "PERMISSION",
+            "rootAuthorityId": "activation"
+           }
+          ],
+          "policyVersion": "irontrellis-local-owner/2",
+          "proofVersion": "irontrellis-authorization-proof/2",
+          "recognizedRoot": {
+           "principalId": "owner",
+           "principalRecognitionEventId": "event:duty-capacity-v2:4",
+           "rootAuthorityId": "activation",
+           "rootGrantEventId": "event:duty-capacity-v2:14"
+          },
+          "request": {
+           "action": "ACTIVATE_DUTY_POLICY",
+           "actorId": "worker",
+           "claimedAt": 100,
+           "resource": "duty-policy:0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149"
+          },
+          "rootRecognitionPolicy": "declared-principal-root/0.2",
+          "usageSnapshot": []
+         },
+         "challenge": {
+          "authoritative": true,
+          "authorityProofHash": "0xdb90469875eb0444b87253c7736f86ec3dde035f78f4cc8539e485d87b841030",
+          "consequential": true,
+          "controlEpoch": 1,
+          "credentialKeyId": "key",
+          "domain": {
+           "deploymentId": "irontrellis-conformance-v2",
+           "protocol": "irontrellis",
+           "version": "2"
+          },
+          "evaluationTime": 100,
+          "eventHistoryHash": "0x3b9fa08be087f220da15711271c1d839bbccb9b5f3fca3af17396cda9ff491b7",
+          "eventHistoryPosition": 13,
+          "policyVersion": "irontrellis-local-owner/2",
+          "request": {
+           "action": "ACTIVATE_DUTY_POLICY",
+           "actorId": "worker",
+           "claimedAt": 100,
+           "resource": "duty-policy:0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149"
+          },
+          "roleId": "role",
+          "roleTenureId": "tenure",
+          "rootRecognitionPolicy": "declared-principal-root/0.2",
+          "runtimeSessionId": "session",
+          "transitionEffectHash": "0x5e87e34f0a8313888f163963bf9e2ac1d358284f8632da822d9ea9737e223c33",
+          "transitionEventId": "duty-policy:activate",
+          "transitionEventType": "ATTEMPT_DUTY_POLICY_ACTIVATED",
+          "version": "irontrellis-administrative-authorization/2"
+         },
+         "runtimeSignature": "0xa0b19a53c29e9dd34c865c156eb89eed10d32fa31eb3f569384f97d7ead0d0cf337f4c71257bd8b21794a994a3eb389159ed1a143021d3c3cd262dac590a19a01b"
+        },
+        "descriptor": {
+         "acceptedAttesterRoleId": "role",
+         "baseAdapterPolicyHash": "0xa90baac702f22f5a5f71141318a7651c1d963bbbee28138bbea835d942d0114c",
+         "contestLimit": 2,
+         "criteriaProfile": "local-investigation/1",
+         "dispositionLimit": 4,
+         "domain": {
+          "deploymentId": "irontrellis-conformance-v2",
+          "protocol": "irontrellis",
+          "version": "2"
+         },
+         "durableRoleId": "role",
+         "dutyCreationEventId": "attempt-duty:duty:create",
+         "dutyId": "duty",
+         "dutyRecordHash": "0x1fe6ad51fc2c35735288efbd4164226c28f1e45eaf821790a2446d4da98266f7",
+         "genesisHash": "0xeb177f4349e1a655ca29835d36a6fa2aec0b0960fe8dee35bd06c3e1635d9321",
+         "incidentSourceDigest": {
+          "algorithm": "sha256",
+          "value": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+         },
+         "principalId": "owner",
+         "rulesHash": "0xf7fb2b7de27abb77c6c3d03af6f61dce11afda5a510af20c8036085cd10a5f94",
+         "sourceAdmissionEventId": "admission:0x0e677cd49a634c08d263ea835ba81899e7c761d43aaa8bf5c0e43558b90b5f33",
+         "sourceIntentId": "job",
+         "version": "continuity-attempt-disposition/1"
+        },
+        "descriptorHash": "0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149"
+       }
+      },
+      "format": "continuity-event/0.2",
+      "position": 14
+     },
+     "minimized": {
+      "event": {
+       "id": "e",
+       "type": "ATTEMPT_DUTY_POLICY_ACTIVATED",
+       "timestamp": 0,
+       "data": {}
+      },
+      "format": "continuity-event/0.2",
+      "position": 14
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 870274,
+     "key": "EVENT:ATTEMPT_DUTY_CONTEST_RECORDED:ts=INVALID_INPUT:py=UNSUPPORTED_EVENT_TYPE",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent continuity-event/0.2 ATTEMPT_DUTY_CONTEST_RECORDED@1048576: TypeScript INVALID_INPUT ($.data.administrativeAuthorization.challenge.roleId: must be an Identifier), Python UNSUPPORTED_EVENT_TYPE",
+     "count": 126,
+     "input": {
+      "event": {
+       "id": "duty-contest:challenge",
+       "type": "ATTEMPT_DUTY_CONTEST_RECORDED",
+       "timestamp": 100,
+       "data": {
+        "actorId": "worker",
+        "administrativeAuthorization": {
+         "authorityProof": {
+          "authorityEvidence": [
+           {
+            "authorityId": "disposition",
+            "grantEventId": "event:duty-policy-v2:16",
+            "grantEventPosition": 16
+           }
+          ],
+          "checkedProhibitionIds": [],
+          "consequential": false,
+          "controllingAuthorityIds": [
+           "disposition"
+          ],
+          "domain": {
+           "deploymentId": "irontrellis-conformance-v2",
+           "protocol": "irontrellis",
+           "version": "2"
+          },
+          "effectiveConstraints": {
+           "actions": [
+            "RECORD_DUTY_DISPOSITION"
+           ],
+           "expiresAt": 1000,
+           "maxDelegationDepth": 0,
+           "quantitative": false,
+           "requiredIntersectionIds": [],
+           "resources": [
+            "duty:0x5623038e25ce10e69020b2c539e8fd0fc1632d70ea04106bf7ad61b040ffb674"
+           ]
+          },
+          "evaluationTime": 100,
+          "historyHead": {
+           "canonicalTime": 100,
+           "hash": "0xcd6529f34943210cfec29307ea906f9cd10fd93e1652d9684b1778f18ecd90c5",
+           "position": 18
+          },
+          "intersections": [],
+          "permissionPath": [
+           {
+            "authorityId": "disposition",
+            "constraints": {
+             "actions": [
+              "RECORD_DUTY_DISPOSITION"
+             ],
+             "expiresAt": 1000,
+             "maxDelegationDepth": 0,
+             "quantitative": [],
+             "requiredIntersectionIds": false,
+             "resources": [
+              "duty:0x5623038e25ce10e69020b2c539e8fd0fc1632d70ea04106bf7ad61b040ffb674"
+             ]
+            },
+            "granteeId": "worker",
+            "grantorId": "owner",
+            "independent": true,
+            "kind": "PERMISSION",
+            "rootAuthorityId": "disposition",
+            "purpose": true
+           }
+          ],
+          "policyVersion": "irontrellis-local-owner/2",
+          "proofVersion": "irontrellis-authorization-proof/2",
+          "recognizedRoot": {
+           "principalId": "owner",
+           "principalRecognitionEventId": "event:duty-policy-v2:4",
+           "rootAuthorityId": "disposition",
+           "rootGrantEventId": "event:duty-policy-v2:16"
+          },
+          "request": {
+           "action": "RECORD_DUTY_DISPOSITION",
+           "actorId": "worker",
+           "claimedAt": 100,
+           "resource": "duty:0x5623038e25ce10e69020b2c539e8fd0fc1632d70ea04106bf7ad61b040ffb674"
+          },
+          "rootRecognitionPolicy": "declared-principal-root/0.2",
+          "usageSnapshot": {
+           "$continuity.bigint": "-1"
+          }
+         },
+         "challenge": {
+          "authoritative": true,
+          "authorityProofHash": "0x703f08af90368f65da9bbabdd4bbee19b4e6cd7284522147e1de603a2da7959a",
+          "consequential": true,
+          "controlEpoch": 1,
+          "credentialKeyId": "key",
+          "domain": {
+           "deploymentId": "irontrellis-conformance-v2",
+           "protocol": "irontrellis",
+           "version": "2"
+          },
+          "evaluationTime": 100,
+          "eventHistoryHash": "0xcd6529f34943210cfec29307ea906f9cd10fd93e1652d9684b1778f18ecd90c5",
+          "eventHistoryPosition": 18,
+          "policyVersion": "irontrellis-local-owner/2",
+          "request": {
+           "action": "RECORD_DUTY_DISPOSITION",
+           "actorId": "worker",
+           "claimedAt": {
+            "$continuity.bigint": "100"
+           },
+           "resource": "duty:0x5623038e25ce10e69020b2c539e8fd0fc1632d70ea04106bf7ad61b040ffb674"
+          },
+          "roleId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "roleTenureId": "tenure",
+          "rootRecognitionPolicy": "declared-principal-root/0.2",
+          "runtimeSessionId": "session",
+          "transitionEffectHash": "0xfb24d143b9e41c507a6465bf75f4f6753535d41d82984f862dbcc34ede5b35bb",
+          "transitionEventId": "duty-contest:challenge",
+          "transitionEventType": "ATTEMPT_DUTY_CONTEST_RECORDED",
+          "version": "irontrellis-administrative-authorization/2"
+         },
+         "runtimeSignature": "0x8ed570e390ccd6e3954ea97fbb27f91c828f395f4ddaa4c50c68d4345f6ea296378c51873b0fac4ff28b17a88bfb1a4ab75bb765552238a745e802b19e5728d11b"
+        },
+        "dispositionAuthorityId": "disposition",
+        "dutyId": "duty",
+        "finding": {
+         "challenge": {
+          "activationEventId": "duty-policy:activate",
+          "attestationAuthorityId": "finding",
+          "attesterId": "worker",
+          "authorityProofHash": null,
+          "controlEpoch": 1,
+          "credentialKeyId": "key",
+          "descriptorHash": "0x5623038e25ce10e69020b2c539e8fd0fc1632d70ea04106bf7ad61b040ffb674",
+          "dispositionAuthorityId": "disposition",
+          "domain": {
+           "deploymentId": "irontrellis-conformance-v2",
+           "protocol": "irontrellis",
+           "version": "2"
+          },
+          "dutyId": "duty",
+          "evaluationTime": 100,
+          "evidenceIndexHash": "0x2f091032d0479db884fb2c1d9768d68b2582abcfd25a9bbb86c9efca7b15ddd9",
+          "latestAssignmentEventId": "attempt-duty:duty:create",
+          "operation": {
+           "reason": "Incident material may have been incomplete.",
+           "reportDigest": {
+            "algorithm": "sha256",
+            "value": "0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+           },
+           "targetDispositionEventId": "duty-disposition:complete"
+          },
+          "previousDispositionEventId": "duty-disposition:complete",
+          "priorHead": {
+           "canonicalTime": 100,
+           "hash": "0xcd6529f34943210cfec29307ea906f9cd10fd93e1652d9684b1778f18ecd90c5",
+           "position": 18
+          },
+          "purpose": "CONTEST",
+          "roleId": "role",
+          "roleTenureId": "tenure",
+          "rulesHash": "0xf7fb2b7de27abb77c6c3d03af6f61dce11afda5a510af20c8036085cd10a5f94",
+          "runtimeSessionId": "session",
+          "sourceAdmissionEventId": "admission:0x15c8f1e7582ee1316e9df1c77a57679114d9a4fa362974fe032170cd9075276b",
+          "transitionEventId": "duty-contest:challenge",
+          "transitionEventType": "ATTEMPT_DUTY_CONTEST_RECORDED",
+          "version": "continuity-duty-finding/1"
+         },
+         "runtimeSignature": "0xd7052c7e686c714ad81461247f8fa07dcada71d1d64cf0378051509adf0ab3fa7729b681f4a5a42ca1b5213561e77d6587bef32ba6662ed33e1c12b4b896d9a31c"
+        },
+        "rulesHash": "0xf7fb2b7de27abb77c6c3d03af6f61dce11afda5a510af20c8036085cd10a5f94",
+        "version": "continuity-attempt-disposition/1"
+       }
+      },
+      "format": "continuity-event/0.2",
+      "position": 1048576
+     },
+     "minimized": {
+      "event": {
+       "id": "duty-contest:challenge",
+       "type": "ATTEMPT_DUTY_CONTEST_RECORDED",
+       "timestamp": 100,
+       "data": {
+        "administrativeAuthorization": {
+         "challenge": {
+          "roleId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+         }
+        }
+       }
+      },
+      "format": "continuity-event/0.2",
+      "position": 1048576
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 1124292,
+     "key": "EVENT:ROLE_CREATED:ts=EVENT_DATA_INVALID:py=INVALID_INPUT",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent irontrellis-event/1 ROLE_CREATED@4: TypeScript EVENT_DATA_INVALID ($.data.sourceControlAuthorization: is not a declared field), Python INVALID_INPUT",
+     "count": 24,
+     "input": {
+      "event": {
+       "id": "event:handover:7",
+       "type": "ROLE_CREATED",
+       "timestamp": 102,
+       "data": {
+        "controlAuthorization": {
+         "keyId": "owner:1",
+         "signature": "0x5e8fd22888861f5a2894df4a16c7b1b850d68d850422a2cbdafe46ee55594f2054be05e7c2c7b4d92532ca422e5fc8c9d52a5826f32b920b34de9fa6b3a46806"
+        },
+        "exclusive": true,
+        "principalId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "roleId": "reviewer",
+        "sourceControlAuthorization": {
+         "$continuity.bigint": "1"
+        },
+        "migrationId": true
+       }
+      },
+      "format": "irontrellis-event/1",
+      "position": 4
+     },
+     "minimized": {
+      "event": {
+       "id": "er:7",
+       "type": "ROLE_CREATED",
+       "timestamp": 102,
+       "data": {
+        "principalId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sourceControlAuthorization": {}
+       }
+      },
+      "format": "nt/1",
+      "position": 4
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 1195697,
+     "key": "EVENT:AUTHORITY_GRANTED:ts=EVENT_DATA_INVALID:py=INVALID_INPUT",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent irontrellis-event/1 AUTHORITY_GRANTED@20: TypeScript EVENT_DATA_INVALID ($.data.sourceControlAuthorization: is not a declared field), Python INVALID_INPUT",
+     "count": 28,
+     "input": {
+      "event": {
+       "id": "event:authority:23",
+       "type": "AUTHORITY_GRANTED",
+       "timestamp": 118,
+       "data": {
+        "controlAuthorization": {
+         "keyId": "owner:1",
+         "signature": "0x52ec307fcd7cdaa0537098003dd3f51101c68aafcc88a08dd31747a0747b95ee44399689c860b5095c872e3e0b94d5a57fdab659560b68ff8de2d4f7f0af5203"
+        },
+        "grant": {
+         "authorityId": "write-needs-approval",
+         "constraints": {
+          "actions": [
+           "write"
+          ],
+          "expiresAt": 800,
+          "maxDelegationDepth": 0,
+          "quantitative": false,
+          "requiredIntersectionIds": [
+           "approval"
+          ],
+          "resources": [
+           1
+          ]
+         },
+         "granteeId": "clerk",
+         "grantorId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+         "independent": true,
+         "kind": "PERMISSION",
+         "rootAuthorityId": "\n"
+        },
+        "sourceControlAuthorization": {
+         "keyId": "owner:1",
+         "signature": "0x098ca98cd1b4e08672facb50f7919e14ecda88c559836e49b4f9278b8886dc2bdcd5a6f874837e9205a126829b16e4650a0cd325fa215ce2ed690c5de1d9d209"
+        }
+       }
+      },
+      "format": "irontrellis-event/1",
+      "position": 20
+     },
+     "minimized": {
+      "event": {
+       "id": "y:23",
+       "type": "AUTHORITY_GRANTED",
+       "timestamp": 118,
+       "data": {
+        "grant": {
+         "grantorId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "sourceControlAuthorization": {}
+       }
+      },
+      "format": "nt/1",
+      "position": 20
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 1246406,
+     "key": "EVENT:ATTEMPT_DUTY_DISPOSITION_RECORDED:ts=INVALID_INPUT:py=UNSUPPORTED_EVENT_TYPE",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent continuity-event/0.2 ATTEMPT_DUTY_DISPOSITION_RECORDED@17: TypeScript INVALID_INPUT ($.data.administrativeAuthorization.authorityProof.usageSnapshot: exceeds the 256-member authority-usage set bound), Python UNSUPPORTED_EVENT_TYPE",
+     "count": 126,
+     "input": {
+      "event": {
+       "id": "duty-disposition:complete",
+       "type": "ATTEMPT_DUTY_DISPOSITION_RECORDED",
+       "timestamp": 100,
+       "data": {
+        "actorId": "worker",
+        "administrativeAuthorization": {
+         "authorityProof": {
+          "checkedProhibitionIds": [],
+          "consequential": false,
+          "controllingAuthorityIds": [
+           "disposition"
+          ],
+          "domain": {
+           "deploymentId": "irontrellis-conformance-v2",
+           "protocol": "irontrellis",
+           "version": "2"
+          },
+          "effectiveConstraints": {
+           "actions": [
+            "RECORD_DUTY_DISPOSITION"
+           ],
+           "expiresAt": 1000,
+           "maxDelegationDepth": 0,
+           "quantitative": false,
+           "requiredIntersectionIds": [],
+           "resources": [
+            "duty:0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149"
+           ]
+          },
+          "evaluationTime": 100,
+          "historyHead": {
+           "canonicalTime": 100,
+           "hash": "0x471a6f3f6473928c1e6a106ef1efcc365dbf7f7b22f0f592f859ec2e3daca3fb",
+           "position": 16
+          },
+          "intersections": [],
+          "permissionPath": [
+           {
+            "authorityId": "disposition",
+            "constraints": {
+             "actions": [
+              "RECORD_DUTY_DISPOSITION"
+             ],
+             "expiresAt": 1000,
+             "maxDelegationDepth": 0,
+             "quantitative": false,
+             "requiredIntersectionIds": [],
+             "resources": [
+              "duty:0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149"
+             ]
+            },
+            "granteeId": "worker",
+            "grantorId": "owner",
+            "independent": true,
+            "kind": "PERMISSION",
+            "rootAuthorityId": "disposition"
+           }
+          ],
+          "policyVersion": "irontrellis-local-owner/2",
+          "proofVersion": "irontrellis-authorization-proof/2",
+          "recognizedRoot": {
+           "principalId": "event:duty-capacity-v2:16",
+           "principalRecognitionEventId": "event:duty-capacity-v2:4",
+           "rootAuthorityId": "disposition",
+           "rootGrantEventId": "owner"
+          },
+          "request": {
+           "action": "RECORD_DUTY_DISPOSITION",
+           "actorId": "worker",
+           "claimedAt": 100,
+           "resource": "duty:0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149"
+          },
+          "rootRecognitionPolicy": "declared-principal-root/0.2",
+          "usageSnapshot": [
+           "id:0",
+           "id:1",
+           "id:2",
+           "id:3",
+           "id:4",
+           "id:5",
+           "id:6",
+           "id:7",
+           "id:8",
+           "id:9",
+           "id:10",
+           "id:11",
+           "id:12",
+           "id:13",
+           "id:14",
+           "id:15",
+           "id:16",
+           "id:17",
+           "id:18",
+           "id:19",
+           "id:20",
+           "id:21",
+           "id:22",
+           "id:23",
+           "id:24",
+           "id:25",
+           "id:26",
+           "id:27",
+           "id:28",
+           "id:29",
+           "id:30",
+           "id:31",
+           "id:32",
+           "id:33",
+           "id:34",
+           "id:35",
+           "id:36",
+           "id:37",
+           "id:38",
+           "id:39",
+           "id:40",
+           "id:41",
+           "id:42",
+           "id:43",
+           "id:44",
+           "id:45",
+           "id:46",
+           "id:47",
+           "id:48",
+           "id:49",
+           "id:50",
+           "id:51",
+           "id:52",
+           "id:53",
+           "id:54",
+           "id:55",
+           "id:56",
+           "id:57",
+           "id:58",
+           "id:59",
+           "id:60",
+           "id:61",
+           "id:62",
+           "id:63",
+           "id:64",
+           "id:65",
+           "id:66",
+           "id:67",
+           "id:68",
+           "id:69",
+           "id:70",
+           "id:71",
+           "id:72",
+           "id:73",
+           "id:74",
+           "id:75",
+           "id:76",
+           "id:77",
+           "id:78",
+           "id:79",
+           "id:80",
+           "id:81",
+           "id:82",
+           "id:83",
+           "id:84",
+           "id:85",
+           "id:86",
+           "id:87",
+           "id:88",
+           "id:89",
+           "id:90",
+           "id:91",
+           "id:92",
+           "id:93",
+           "id:94",
+           "id:95",
+           "id:96",
+           "id:97",
+           "id:98",
+           "id:99",
+           "id:100",
+           "id:101",
+           "id:102",
+           "id:103",
+           "id:104",
+           "id:105",
+           "id:106",
+           "id:107",
+           "id:108",
+           "id:109",
+           "id:110",
+           "id:111",
+           "id:112",
+           "id:113",
+           "id:114",
+           "id:115",
+           "id:116",
+           "id:117",
+           "id:118",
+           "id:119",
+           "id:120",
+           "id:121",
+           "id:122",
+           "id:123",
+           "id:124",
+           "id:125",
+           "id:126",
+           "id:127",
+           "id:128",
+           "id:129",
+           "id:130",
+           "id:131",
+           "id:132",
+           "id:133",
+           "id:134",
+           "id:135",
+           "id:136",
+           "id:137",
+           "id:138",
+           "id:139",
+           "id:140",
+           "id:141",
+           "id:142",
+           "id:143",
+           "id:144",
+           "id:145",
+           "id:146",
+           "id:147",
+           "id:148",
+           "id:149",
+           "id:150",
+           "id:151",
+           "id:152",
+           "id:153",
+           "id:154",
+           "id:155",
+           "id:156",
+           "id:157",
+           "id:158",
+           "id:159",
+           "id:160",
+           "id:161",
+           "id:162",
+           "id:163",
+           "id:164",
+           "id:165",
+           "id:166",
+           "id:167",
+           "id:168",
+           "id:169",
+           "id:170",
+           "id:171",
+           "id:172",
+           "id:173",
+           "id:174",
+           "id:175",
+           "id:176",
+           "id:177",
+           "id:178",
+           "id:179",
+           "id:180",
+           "id:181",
+           "id:182",
+           "id:183",
+           "id:184",
+           "id:185",
+           "id:186",
+           "id:187",
+           "id:188",
+           "id:189",
+           "id:190",
+           "id:191",
+           "id:192",
+           "id:193",
+           "id:194",
+           "id:195",
+           "id:196",
+           "id:197",
+           "id:198",
+           "id:199",
+           "id:200",
+           "id:201",
+           "id:202",
+           "id:203",
+           "id:204",
+           "id:205",
+           "id:206",
+           "id:207",
+           "id:208",
+           "id:209",
+           "id:210",
+           "id:211",
+           "id:212",
+           "id:213",
+           "id:214",
+           "id:215",
+           "id:216",
+           "id:217",
+           "id:218",
+           "id:219",
+           "id:220",
+           "id:221",
+           "id:222",
+           "id:223",
+           "id:224",
+           "id:225",
+           "id:226",
+           "id:227",
+           "id:228",
+           "id:229",
+           "id:230",
+           "id:231",
+           "id:232",
+           "id:233",
+           "id:234",
+           "id:235",
+           "id:236",
+           "id:237",
+           "id:238",
+           "id:239",
+           "id:240",
+           "id:241",
+           "id:242",
+           "id:243",
+           "id:244",
+           "id:245",
+           "id:246",
+           "id:247",
+           "id:248",
+           "id:249",
+           "id:250",
+           "id:251",
+           "id:252",
+           "id:253",
+           "id:254",
+           "id:255",
+           "id:256"
+          ]
+         },
+         "challenge": {
+          "authoritative": true,
+          "authorityProofHash": "0x56d0279070dc9db87ccf69fc2553772577c89bc95e1d14d6fcbcdf2d583c7220",
+          "consequential": true,
+          "controlEpoch": 1,
+          "credentialKeyId": "key",
+          "domain": {
+           "deploymentId": "irontrellis-conformance-v2",
+           "version": "2"
+          },
+          "evaluationTime": 100,
+          "eventHistoryHash": "0x471a6f3f6473928c1e6a106ef1efcc365dbf7f7b22f0f592f859ec2e3daca3fb",
+          "eventHistoryPosition": 16,
+          "policyVersion": "irontrellis-local-owner/2",
+          "request": [
+           {
+            "authorityId": "assign",
+            "grantEventId": "event:handover:16",
+            "grantEventPosition": 19
+           }
+          ],
+          "roleId": "role",
+          "roleTenureId": "tenure",
+          "rootRecognitionPolicy": "declared-principal-root/0.2",
+          "runtimeSessionId": "session",
+          "transitionEffectHash": "0x8ee9cf52770541c74e1ba31b078e1737cd768132894644a58ba554276a271d2e",
+          "transitionEventId": "duty-disposition:complete",
+          "transitionEventType": "ATTEMPT_DUTY_DISPOSITION_RECORDED",
+          "version": "irontrellis-administrative-authorization/2"
+         },
+         "runtimeSignature": "0xfa885dc461e406bb9146511d50612a20442c649bb06e06f5d8122f4567c559f2738db9683b8c67fdb3c6d90398781ba81ddc67faafc2118636f0123faa329a9d1c"
+        },
+        "dispositionAuthorityId": "disposition",
+        "dutyId": "duty",
+        "finding": {
+         "challenge": {
+          "activationEventId": "duty-policy:activate",
+          "attestationAuthorityId": "finding",
+          "attesterId": "worker",
+          "authorityProofHash": "0xf5e5401da6b5fe2be0cf86bd13526c414b5269786165698590b3e43196894408",
+          "controlEpoch": 1,
+          "credentialKeyId": "key",
+          "descriptorHash": "0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149",
+          "dispositionAuthorityId": "disposition",
+          "domain": {
+           "deploymentId": "irontrellis-conformance-v2",
+           "protocol": "irontrellis",
+           "version": "2"
+          },
+          "dutyId": "duty",
+          "evaluationTime": 100,
+          "evidenceIndexHash": "0x2e761a018d3a458e6b1aeab352812fd1701d4e232289637a4f4787c6b084d7b0",
+          "latestAssignmentEventId": "attempt-duty:duty:create",
+          "operation": {
+           "checklist": {
+            "CONTROL_REVIEWED": {
+             "reason": "Reviewed; remaining outside uncertainty stated.",
+             "state": "SATISFIED"
+            },
+            "FINDING_RECORDED": {
+             "reason": "Reviewed; remaining outside uncertainty stated.",
+             "state": "SATISFIED"
+            },
+            "HISTORY_REVIEWED": {
+             "reason": "Reviewed; remaining outside uncertainty stated.",
+             "state": "SATISFIED"
+            },
+            "SOURCE_REVIEWED": {
+             "reason": "Reviewed; remaining outside uncertainty stated.",
+             "state": "SATISFIED"
+            }
+           },
+           "disposition": "COMPLETED_UNDER_POLICY",
+           "nextStep": null,
+           "reportDigest": {
+            "algorithm": "sha256",
+            "value": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+           }
+          },
+          "previousDispositionEventId": null,
+          "priorHead": {
+           "canonicalTime": 100,
+           "hash": "0x471a6f3f6473928c1e6a106ef1efcc365dbf7f7b22f0f592f859ec2e3daca3fb",
+           "position": 16
+          },
+          "purpose": "DISPOSITION",
+          "roleId": "role",
+          "roleTenureId": "tenure",
+          "rulesHash": "0xf7fb2b7de27abb77c6c3d03af6f61dce11afda5a510af20c8036085cd10a5f94",
+          "runtimeSessionId": "session",
+          "sourceAdmissionEventId": "admission:0x0e677cd49a634c08d263ea835ba81899e7c761d43aaa8bf5c0e43558b90b5f33",
+          "transitionEventId": "duty-disposition:complete",
+          "transitionEventType": "ATTEMPT_DUTY_DISPOSITION_RECORDED",
+          "version": "continuity-duty-finding/1",
+          "sourceAttestation": 255
+         },
+         "runtimeSignature": "0x552d9e192bef59073155c3d5f93768820c6d17772873534bbed8f9934af0d372307134f7e09e36c9fed3b7ea4cdb0dcb2b796e8c59975db45f036e9edadad7cb1c"
+        },
+        "version": "continuity-attempt-disposition/1"
+       }
+      },
+      "format": "continuity-event/0.2",
+      "position": 17
+     },
+     "minimized": {
+      "event": {
+       "id": "duty-disposition:complete",
+       "type": "ATTEMPT_DUTY_DISPOSITION_RECORDED",
+       "timestamp": 100,
+       "data": {
+        "administrativeAuthorization": {
+         "authorityProof": {
+          "usageSnapshot": [
+           "id:0",
+           "id:1",
+           "id:2",
+           "id:3",
+           "id:4",
+           "id:5",
+           "id:6",
+           "id:7",
+           "id:8",
+           "id:9",
+           "id:10",
+           "id:11",
+           "id:12",
+           "id:13",
+           "id:14",
+           "id:15",
+           "id:16",
+           "id:17",
+           "id:18",
+           "id:19",
+           "id:20",
+           "id:21",
+           "id:22",
+           "id:23",
+           "id:24",
+           "id:25",
+           "id:26",
+           "id:27",
+           "id:28",
+           "id:29",
+           "id:30",
+           "id:31",
+           "id:32",
+           "id:33",
+           "id:34",
+           "id:35",
+           "id:36",
+           "id:37",
+           "id:38",
+           "id:39",
+           "id:40",
+           "id:41",
+           "id:42",
+           "id:43",
+           "id:44",
+           "id:45",
+           "id:46",
+           "id:47",
+           "id:48",
+           "id:49",
+           "id:50",
+           "id:51",
+           "id:52",
+           "id:53",
+           "id:54",
+           "id:55",
+           "id:56",
+           "id:57",
+           "id:58",
+           "id:59",
+           "id:60",
+           "id:61",
+           "id:62",
+           "id:63",
+           "id:64",
+           "id:65",
+           "id:66",
+           "id:67",
+           "id:68",
+           "id:69",
+           "id:70",
+           "id:71",
+           "id:72",
+           "id:73",
+           "id:74",
+           "id:75",
+           "id:76",
+           "id:77",
+           "id:78",
+           "id:79",
+           "id:80",
+           "id:81",
+           "id:82",
+           "id:83",
+           "id:84",
+           "id:85",
+           "id:86",
+           "id:87",
+           "id:88",
+           "id:89",
+           "id:90",
+           "id:91",
+           "id:92",
+           "id:93",
+           "id:94",
+           "id:95",
+           "id:96",
+           "id:97",
+           "id:98",
+           "id:99",
+           "id:100",
+           "id:101",
+           "id:102",
+           "id:103",
+           "id:104",
+           "id:105",
+           "id:106",
+           "id:107",
+           "id:108",
+           "id:109",
+           "id:110",
+           "id:111",
+           "id:112",
+           "id:113",
+           "id:114",
+           "id:115",
+           "id:116",
+           "id:117",
+           "id:118",
+           "id:119",
+           "id:120",
+           "id:121",
+           "id:122",
+           "id:123",
+           "id:124",
+           "id:125",
+           "id:126",
+           "id:127",
+           "id:128",
+           "id:129",
+           "id:130",
+           "id:131",
+           "id:132",
+           "id:133",
+           "id:134",
+           "id:135",
+           "id:136",
+           "id:137",
+           "id:138",
+           "id:139",
+           "id:140",
+           "id:141",
+           "id:142",
+           "id:143",
+           "id:144",
+           "id:145",
+           "id:146",
+           "id:147",
+           "id:148",
+           "id:149",
+           "id:150",
+           "id:151",
+           "id:152",
+           "id:153",
+           "id:154",
+           "id:155",
+           "id:156",
+           "id:157",
+           "id:158",
+           "id:159",
+           "id:160",
+           "id:161",
+           "id:162",
+           "id:163",
+           "id:164",
+           "id:165",
+           "id:166",
+           "id:167",
+           "id:168",
+           "id:169",
+           "id:170",
+           "id:171",
+           "id:172",
+           "id:173",
+           "id:174",
+           "id:175",
+           "id:176",
+           "id:177",
+           "id:178",
+           "id:179",
+           "id:180",
+           "id:181",
+           "id:182",
+           "id:183",
+           "id:184",
+           "id:185",
+           "id:186",
+           "id:187",
+           "id:188",
+           "id:189",
+           "id:190",
+           "id:191",
+           "id:192",
+           "id:193",
+           "id:194",
+           "id:195",
+           "id:196",
+           "id:197",
+           "id:198",
+           "id:199",
+           "id:200",
+           "id:201",
+           "id:202",
+           "id:203",
+           "id:204",
+           "id:205",
+           "id:206",
+           "id:207",
+           "id:208",
+           "id:209",
+           "id:210",
+           "id:211",
+           "id:212",
+           "id:213",
+           "id:214",
+           "id:215",
+           "id:216",
+           "id:217",
+           "id:218",
+           "id:219",
+           "id:220",
+           "id:221",
+           "id:222",
+           "id:223",
+           "id:224",
+           "id:225",
+           "id:226",
+           "id:227",
+           "id:228",
+           "id:229",
+           "id:230",
+           "id:231",
+           "id:232",
+           "id:233",
+           "id:234",
+           "id:235",
+           "id:236",
+           "id:237",
+           "id:238",
+           "id:239",
+           "id:240",
+           "id:241",
+           "id:242",
+           "id:243",
+           "id:244",
+           "id:245",
+           "id:246",
+           "id:247",
+           "id:248",
+           "id:249",
+           "id:250",
+           "id:251",
+           "id:252",
+           "id:253",
+           "id:254",
+           "id:255",
+           "id:256"
+          ]
+         }
+        }
+       }
+      },
+      "format": "continuity-event/0.2",
+      "position": 17
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 3320496,
+     "key": "EVENT:AGENT_CREATED:ts=EVENT_DATA_INVALID:py=INVALID_INPUT",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent irontrellis-event/1 AGENT_CREATED@9: TypeScript EVENT_DATA_INVALID ($.data.additionalControlAuthorizations: is not a declared field), Python INVALID_INPUT",
+     "count": 46,
+     "input": {
+      "event": {
+       "id": "event:authority:12",
+       "type": "AGENT_CREATED",
+       "timestamp": 107,
+       "data": {
+        "agentId": "buyer",
+        "controlAuthorization": {
+         "keyId": "owner:1",
+         "signature": "0xa2a58ddeb7e5115eac5d81067b6b5817b8beb67bb9f74cf2fbfb76605e3cb63025977cc5ab4ac18a81763174bf5068d7fd594ad48211debeb623a494df5b580f"
+        },
+        "controllerId": "operator",
+        "initialControlEpoch": 1,
+        "principalId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "additionalControlAuthorizations": [
+         "0xababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab1b"
+        ]
+       }
+      },
+      "format": "irontrellis-event/1",
+      "position": 9
+     },
+     "minimized": {
+      "event": {
+       "id": "y:12",
+       "type": "AGENT_CREATED",
+       "timestamp": 107,
+       "data": {
+        "principalId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "additionalControlAuthorizations": []
+       }
+      },
+      "format": "nt/1",
+      "position": 9
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 5648659,
+     "key": "EVENT:DEPLOYMENT_INITIALIZED:ts=INVALID_INPUT:py=EVENT_DATA_INVALID",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent continuity-event/0.2 DEPLOYMENT_INITIALIZED@0: TypeScript INVALID_INPUT ($.data.versions.recordChainVersion: must be an Identifier), Python EVENT_DATA_INVALID",
+     "count": 30,
+     "input": {
+      "event": {
+       "id": "first-look:genesis",
+       "type": "DEPLOYMENT_INITIALIZED",
+       "timestamp": 0,
+       "data": {
+        "adapterPolicyHash": "0x00c3498e2744943663475d0187ca979cdd09763b88427781883693c4b8c163a7",
+        "canonicalLineageId": "lineage:first-look",
+        "domain": {
+         "chainId": "31337",
+         "deploymentId": "core-0.2-reference:first-look",
+         "protocol": "continuity",
+         "verifyingContract": "0x0000000000000000000000000000000000003002",
+         "version": "0.2"
+        },
+        "finality": "LOCAL_ONLY",
+        "globalPolicySourceId": "policy-source:first-look",
+        "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+        "rootRecognitionPolicy": "declared-principal-root/0.2",
+        "timeSource": "EVENT_TIMESTAMP",
+        "versions": {
+         "administrativeAuthorizationVersion": "continuity-administrative-authorization/0.2",
+         "authorizationProofVersion": "continuity-authorization-proof/0.2",
+         "eventSchemaVersion": "continuity-event/0.2",
+         "queryEnvelopeVersion": "continuity-query-envelope/0.2",
+         "receiptSchemaVersion": "continuity-receipt/0.2",
+         "runtimeAuthorizationVersion": "continuity-runtime-authorization/0.2",
+         "signatureScheme": "eip191-personal-sign-keccak256",
+         "recordChainVersion": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+       }
+      },
+      "format": "continuity-event/0.2",
+      "position": 0
+     },
+     "minimized": {
+      "event": {
+       "id": "k:genesis",
+       "type": "DEPLOYMENT_INITIALIZED",
+       "timestamp": 0,
+       "data": {
+        "versions": {
+         "recordChainVersion": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+       }
+      },
+      "format": "t/0.2",
+      "position": 0
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 6372085,
+     "key": "EVENT:ATTEMPT_DUTY_POLICY_ACTIVATED:ts=INVALID_INPUT:py=UNSUPPORTED_EVENT_TYPE",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent continuity-event/0.2 ATTEMPT_DUTY_POLICY_ACTIVATED@14: TypeScript INVALID_INPUT ($.data.administrativeAuthorization.authorityProof.usageSnapshot: exceeds the 256-member authority-usage set bound), Python UNSUPPORTED_EVENT_TYPE",
+     "count": 62,
+     "input": {
+      "event": {
+       "id": "duty-policy:activate",
+       "type": "ATTEMPT_DUTY_POLICY_ACTIVATED",
+       "timestamp": 100,
+       "data": {
+        "activationAuthorityId": "activation",
+        "actorId": "worker",
+        "administrativeAuthorization": {
+         "authorityProof": {
+          "authorityEvidence": [
+           {
+            "authorityId": "activation",
+            "grantEventId": "event:duty-capacity-v2:14",
+            "grantEventPosition": 13
+           }
+          ],
+          "checkedProhibitionIds": [],
+          "consequential": false,
+          "controllingAuthorityIds": [
+           "activation"
+          ],
+          "domain": {
+           "deploymentId": "irontrellis-conformance-v2",
+           "protocol": "irontrellis",
+           "version": "2"
+          },
+          "effectiveConstraints": {
+           "actions": [
+            "ACTIVATE_DUTY_POLICY"
+           ],
+           "expiresAt": 1000,
+           "maxDelegationDepth": 0,
+           "quantitative": false,
+           "requiredIntersectionIds": [],
+           "resources": [
+            "duty-policy:0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149"
+           ]
+          },
+          "evaluationTime": 100,
+          "historyHead": {
+           "canonicalTime": 100,
+           "hash": "0x3b9fa08be087f220da15711271c1d839bbccb9b5f3fca3af17396cda9ff491b7",
+           "position": 13
+          },
+          "intersections": [],
+          "permissionPath": [
+           {
+            "authorityId": "activation",
+            "constraints": {
+             "actions": [
+              "ACTIVATE_DUTY_POLICY"
+             ],
+             "expiresAt": 1000,
+             "maxDelegationDepth": 0,
+             "quantitative": false,
+             "requiredIntersectionIds": [],
+             "resources": [
+              "duty-policy:0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149"
+             ]
+            },
+            "granteeId": "worker",
+            "grantorId": "owner",
+            "independent": true,
+            "kind": "PERMISSION",
+            "rootAuthorityId": "activation"
+           }
+          ],
+          "policyVersion": "irontrellis-local-owner/2",
+          "proofVersion": "irontrellis-authorization-proof/2",
+          "recognizedRoot": {
+           "principalId": "owner",
+           "principalRecognitionEventId": "event:duty-capacity-v2:4",
+           "rootAuthorityId": "activation",
+           "rootGrantEventId": "event:duty-capacity-v2:14"
+          },
+          "request": {
+           "action": "ACTIVATE_DUTY_POLICY",
+           "actorId": "worker",
+           "claimedAt": 100,
+           "resource": "duty-policy:0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149"
+          },
+          "rootRecognitionPolicy": "declared-principal-root/0.2",
+          "usageSnapshot": [
+           "id:0",
+           "id:1",
+           "id:2",
+           "id:3",
+           "id:4",
+           "id:5",
+           "id:6",
+           "id:7",
+           "id:8",
+           "id:9",
+           "id:10",
+           "id:11",
+           "id:12",
+           "id:13",
+           "id:14",
+           "id:15",
+           "id:16",
+           "id:17",
+           "id:18",
+           "id:19",
+           "id:20",
+           "id:21",
+           "id:22",
+           "id:23",
+           "id:24",
+           "id:25",
+           "id:26",
+           "id:27",
+           "id:28",
+           "id:29",
+           "id:30",
+           "id:31",
+           "id:32",
+           "id:33",
+           "id:34",
+           "id:35",
+           "id:36",
+           "id:37",
+           "id:38",
+           "id:39",
+           "id:40",
+           "id:41",
+           "id:42",
+           "id:43",
+           "id:44",
+           "id:45",
+           "id:46",
+           "id:47",
+           "id:48",
+           "id:49",
+           "id:50",
+           "id:51",
+           "id:52",
+           "id:53",
+           "id:54",
+           "id:55",
+           "id:56",
+           "id:57",
+           "id:58",
+           "id:59",
+           "id:60",
+           "id:61",
+           "id:62",
+           "id:63",
+           "id:64",
+           "id:65",
+           "id:66",
+           "id:67",
+           "id:68",
+           "id:69",
+           "id:70",
+           "id:71",
+           "id:72",
+           "id:73",
+           "id:74",
+           "id:75",
+           "id:76",
+           "id:77",
+           "id:78",
+           "id:79",
+           "id:80",
+           "id:81",
+           "id:82",
+           "id:83",
+           "id:84",
+           "id:85",
+           "id:86",
+           "id:87",
+           "id:88",
+           "id:89",
+           "id:90",
+           "id:91",
+           "id:92",
+           "id:93",
+           "id:94",
+           "id:95",
+           "id:96",
+           "id:97",
+           "id:98",
+           "id:99",
+           "id:100",
+           "id:101",
+           "id:102",
+           "id:103",
+           "id:104",
+           "id:105",
+           "id:106",
+           "id:107",
+           "id:108",
+           "id:109",
+           "id:110",
+           "id:111",
+           "id:112",
+           "id:113",
+           "id:114",
+           "id:115",
+           "id:116",
+           "id:117",
+           "id:118",
+           "id:119",
+           "id:120",
+           "id:121",
+           "id:122",
+           "id:123",
+           "id:124",
+           "id:125",
+           "id:126",
+           "id:127",
+           "id:128",
+           "id:129",
+           "id:130",
+           "id:131",
+           "id:132",
+           "id:133",
+           "id:134",
+           "id:135",
+           "id:136",
+           "id:137",
+           "id:138",
+           "id:139",
+           "id:140",
+           "id:141",
+           "id:142",
+           "id:143",
+           "id:144",
+           "id:145",
+           "id:146",
+           "id:147",
+           "id:148",
+           "id:149",
+           "id:150",
+           "id:151",
+           "id:152",
+           "id:153",
+           "id:154",
+           "id:155",
+           "id:156",
+           "id:157",
+           "id:158",
+           "id:159",
+           "id:160",
+           "id:161",
+           "id:162",
+           "id:163",
+           "id:164",
+           "id:165",
+           "id:166",
+           "id:167",
+           "id:168",
+           "id:169",
+           "id:170",
+           "id:171",
+           "id:172",
+           "id:173",
+           "id:174",
+           "id:175",
+           "id:176",
+           "id:177",
+           "id:178",
+           "id:179",
+           "id:180",
+           "id:181",
+           "id:182",
+           "id:183",
+           "id:184",
+           "id:185",
+           "id:186",
+           "id:187",
+           "id:188",
+           "id:189",
+           "id:190",
+           "id:191",
+           "id:192",
+           "id:193",
+           "id:194",
+           "id:195",
+           "id:196",
+           "id:197",
+           "id:198",
+           "id:199",
+           "id:200",
+           "id:201",
+           "id:202",
+           "id:203",
+           "id:204",
+           "id:205",
+           "id:206",
+           "id:207",
+           "id:208",
+           "id:209",
+           "id:210",
+           "id:211",
+           "id:212",
+           "id:213",
+           "id:214",
+           "id:215",
+           "id:216",
+           "id:217",
+           "id:218",
+           "id:219",
+           "id:220",
+           "id:221",
+           "id:222",
+           "id:223",
+           "id:224",
+           "id:225",
+           "id:226",
+           "id:227",
+           "id:228",
+           "id:229",
+           "id:230",
+           "id:231",
+           "id:232",
+           "id:233",
+           "id:234",
+           "id:235",
+           "id:236",
+           "id:237",
+           "id:238",
+           "id:239",
+           "id:240",
+           "id:241",
+           "id:242",
+           "id:243",
+           "id:244",
+           "id:245",
+           "id:246",
+           "id:247",
+           "id:248",
+           "id:249",
+           "id:250",
+           "id:251",
+           "id:252",
+           "id:253",
+           "id:254",
+           "id:255",
+           "id:256"
+          ]
+         },
+         "challenge": {
+          "authoritative": true,
+          "authorityProofHash": "0xdb90469875eb0444b87253c7736f86ec3dde035f78f4cc8539e485d87b841030",
+          "consequential": true,
+          "controlEpoch": 1,
+          "credentialKeyId": "key",
+          "domain": {
+           "deploymentId": "irontrellis-conformance-v2",
+           "protocol": "irontrellis",
+           "version": "2"
+          },
+          "evaluationTime": 100,
+          "eventHistoryHash": "0x3b9fa08be087f220da15711271c1d839bbccb9b5f3fca3af17396cda9ff491b7",
+          "eventHistoryPosition": 13,
+          "policyVersion": "irontrellis-local-owner/2",
+          "request": {
+           "action": "ACTIVATE_DUTY_POLICY",
+           "actorId": "worker",
+           "claimedAt": 100,
+           "resource": "duty-policy:0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149"
+          },
+          "roleId": "role",
+          "roleTenureId": "tenure",
+          "rootRecognitionPolicy": "declared-principal-root/0.2",
+          "runtimeSessionId": "session",
+          "transitionEffectHash": "0x5e87e34f0a8313888f163963bf9e2ac1d358284f8632da822d9ea9737e223c33",
+          "transitionEventId": "duty-policy:activate",
+          "transitionEventType": "ATTEMPT_DUTY_POLICY_ACTIVATED",
+          "version": "irontrellis-administrative-authorization/2"
+         },
+         "runtimeSignature": "0xa0b19a53c29e9dd34c865c156eb89eed10d32fa31eb3f569384f97d7ead0d0cf337f4c71257bd8b21794a994a3eb389159ed1a143021d3c3cd262dac590a19a01b"
+        },
+        "descriptor": {
+         "acceptedAttesterRoleId": "role",
+         "baseAdapterPolicyHash": "0xa90baac702f22f5a5f71141318a7651c1d963bbbee28138bbea835d942d0114c",
+         "contestLimit": 2,
+         "criteriaProfile": "local-investigation/1",
+         "dispositionLimit": 4,
+         "domain": {
+          "deploymentId": "irontrellis-conformance-v2",
+          "protocol": "irontrellis",
+          "version": "2"
+         },
+         "durableRoleId": "role",
+         "dutyCreationEventId": "attempt-duty:duty:create",
+         "dutyId": "duty",
+         "dutyRecordHash": "0x1fe6ad51fc2c35735288efbd4164226c28f1e45eaf821790a2446d4da98266f7",
+         "genesisHash": "0xeb177f4349e1a655ca29835d36a6fa2aec0b0960fe8dee35bd06c3e1635d9321",
+         "incidentSourceDigest": {
+          "algorithm": "sha256",
+          "value": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+         },
+         "principalId": "owner",
+         "rulesHash": "0xf7fb2b7de27abb77c6c3d03af6f61dce11afda5a510af20c8036085cd10a5f94",
+         "sourceAdmissionEventId": "admission:0x0e677cd49a634c08d263ea835ba81899e7c761d43aaa8bf5c0e43558b90b5f33",
+         "sourceIntentId": "job",
+         "version": "continuity-attempt-disposition/1"
+        },
+        "descriptorHash": "0x6f5983b097f6d17344d6383bc7fb65c9ad8db96471fe400f0f5d00110f42c149"
+       }
+      },
+      "format": "continuity-event/0.2",
+      "position": 14
+     },
+     "minimized": {
+      "event": {
+       "id": "duty-policy:activate",
+       "type": "ATTEMPT_DUTY_POLICY_ACTIVATED",
+       "timestamp": 100,
+       "data": {
+        "administrativeAuthorization": {
+         "authorityProof": {
+          "usageSnapshot": [
+           "id:0",
+           "id:1",
+           "id:2",
+           "id:3",
+           "id:4",
+           "id:5",
+           "id:6",
+           "id:7",
+           "id:8",
+           "id:9",
+           "id:10",
+           "id:11",
+           "id:12",
+           "id:13",
+           "id:14",
+           "id:15",
+           "id:16",
+           "id:17",
+           "id:18",
+           "id:19",
+           "id:20",
+           "id:21",
+           "id:22",
+           "id:23",
+           "id:24",
+           "id:25",
+           "id:26",
+           "id:27",
+           "id:28",
+           "id:29",
+           "id:30",
+           "id:31",
+           "id:32",
+           "id:33",
+           "id:34",
+           "id:35",
+           "id:36",
+           "id:37",
+           "id:38",
+           "id:39",
+           "id:40",
+           "id:41",
+           "id:42",
+           "id:43",
+           "id:44",
+           "id:45",
+           "id:46",
+           "id:47",
+           "id:48",
+           "id:49",
+           "id:50",
+           "id:51",
+           "id:52",
+           "id:53",
+           "id:54",
+           "id:55",
+           "id:56",
+           "id:57",
+           "id:58",
+           "id:59",
+           "id:60",
+           "id:61",
+           "id:62",
+           "id:63",
+           "id:64",
+           "id:65",
+           "id:66",
+           "id:67",
+           "id:68",
+           "id:69",
+           "id:70",
+           "id:71",
+           "id:72",
+           "id:73",
+           "id:74",
+           "id:75",
+           "id:76",
+           "id:77",
+           "id:78",
+           "id:79",
+           "id:80",
+           "id:81",
+           "id:82",
+           "id:83",
+           "id:84",
+           "id:85",
+           "id:86",
+           "id:87",
+           "id:88",
+           "id:89",
+           "id:90",
+           "id:91",
+           "id:92",
+           "id:93",
+           "id:94",
+           "id:95",
+           "id:96",
+           "id:97",
+           "id:98",
+           "id:99",
+           "id:100",
+           "id:101",
+           "id:102",
+           "id:103",
+           "id:104",
+           "id:105",
+           "id:106",
+           "id:107",
+           "id:108",
+           "id:109",
+           "id:110",
+           "id:111",
+           "id:112",
+           "id:113",
+           "id:114",
+           "id:115",
+           "id:116",
+           "id:117",
+           "id:118",
+           "id:119",
+           "id:120",
+           "id:121",
+           "id:122",
+           "id:123",
+           "id:124",
+           "id:125",
+           "id:126",
+           "id:127",
+           "id:128",
+           "id:129",
+           "id:130",
+           "id:131",
+           "id:132",
+           "id:133",
+           "id:134",
+           "id:135",
+           "id:136",
+           "id:137",
+           "id:138",
+           "id:139",
+           "id:140",
+           "id:141",
+           "id:142",
+           "id:143",
+           "id:144",
+           "id:145",
+           "id:146",
+           "id:147",
+           "id:148",
+           "id:149",
+           "id:150",
+           "id:151",
+           "id:152",
+           "id:153",
+           "id:154",
+           "id:155",
+           "id:156",
+           "id:157",
+           "id:158",
+           "id:159",
+           "id:160",
+           "id:161",
+           "id:162",
+           "id:163",
+           "id:164",
+           "id:165",
+           "id:166",
+           "id:167",
+           "id:168",
+           "id:169",
+           "id:170",
+           "id:171",
+           "id:172",
+           "id:173",
+           "id:174",
+           "id:175",
+           "id:176",
+           "id:177",
+           "id:178",
+           "id:179",
+           "id:180",
+           "id:181",
+           "id:182",
+           "id:183",
+           "id:184",
+           "id:185",
+           "id:186",
+           "id:187",
+           "id:188",
+           "id:189",
+           "id:190",
+           "id:191",
+           "id:192",
+           "id:193",
+           "id:194",
+           "id:195",
+           "id:196",
+           "id:197",
+           "id:198",
+           "id:199",
+           "id:200",
+           "id:201",
+           "id:202",
+           "id:203",
+           "id:204",
+           "id:205",
+           "id:206",
+           "id:207",
+           "id:208",
+           "id:209",
+           "id:210",
+           "id:211",
+           "id:212",
+           "id:213",
+           "id:214",
+           "id:215",
+           "id:216",
+           "id:217",
+           "id:218",
+           "id:219",
+           "id:220",
+           "id:221",
+           "id:222",
+           "id:223",
+           "id:224",
+           "id:225",
+           "id:226",
+           "id:227",
+           "id:228",
+           "id:229",
+           "id:230",
+           "id:231",
+           "id:232",
+           "id:233",
+           "id:234",
+           "id:235",
+           "id:236",
+           "id:237",
+           "id:238",
+           "id:239",
+           "id:240",
+           "id:241",
+           "id:242",
+           "id:243",
+           "id:244",
+           "id:245",
+           "id:246",
+           "id:247",
+           "id:248",
+           "id:249",
+           "id:250",
+           "id:251",
+           "id:252",
+           "id:253",
+           "id:254",
+           "id:255",
+           "id:256"
+          ]
+         }
+        }
+       }
+      },
+      "format": "continuity-event/0.2",
+      "position": 14
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 6561993,
+     "key": "EVENT:TRANSACTION_INTENT_DECLARED:ts=INVALID_INPUT:py=EVENT_DATA_INVALID",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent continuity-event/0.2 TRANSACTION_INTENT_DECLARED@34: TypeScript INVALID_INPUT ($.data.declarationAuthorization.credentialKeyId: must be an Identifier), Python EVENT_DATA_INVALID",
+     "count": 125,
+     "input": {
+      "event": {
+       "id": "operation:0xb6dd064482928138a5c864f7254bc2f69dfddb769281da7882edca80006a7e2b",
+       "type": "TRANSACTION_INTENT_DECLARED",
+       "timestamp": 1100,
+       "data": {
+        "action": null,
+        "actorId": "spender",
+        "adapterProfile": {
+         "descriptorHash": "0xa9f3354121fdbc4d983093e34684d5ddc841874f8fccadbafe30df65f2e16ac2",
+         "profileId": "adapter:simulated",
+         "profileVersion": "1"
+        },
+        "amount": "55",
+        "intentId": "spend:4",
+        "nonce": "operation:spend:4",
+        "resource": "petty-cash",
+        "roleId": "cashier",
+        "roleTenureId": "cashier:1",
+        "termsCommitment": "0xa161ae6d6129b96db0e7e0435c05b41960304ff71284d0062df357ed593702f3",
+        "declarationAuthorization": {
+         "runtimeSessionId": "session:spender",
+         "credentialKeyId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+         "controlEpoch": 1,
+         "hash": "0x0632e72f7af1bc9167a70bca2078d9d5f1830cc7b1373a9bf13842dd37add791",
+         "signature": "0x36286ac1e227ea48a8a98e02962cdefd9c28b0c84a042ac83b6274fdcbbf6dfbdfd13791d4766e493f4da6e9f51c072c5a77a932063de54c4bfd0dd045590a0e",
+         "runtimeAuthorizationHash": "lineage:budgets:1"
+        }
+       }
+      },
+      "format": "continuity-event/0.2",
+      "position": 34
+     },
+     "minimized": {
+      "event": {
+       "id": "0006a7e2b",
+       "type": "TRANSACTION_INTENT_DECLARED",
+       "timestamp": 1100,
+       "data": {
+        "declarationAuthorization": {
+         "credentialKeyId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+       }
+      },
+      "format": "-event/0.2",
+      "position": 34
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 10273661,
+     "key": "EVENT:AGENT_APPOINTED:ts=EVENT_DATA_INVALID:py=INVALID_INPUT",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent irontrellis-event/1 AGENT_APPOINTED@4: TypeScript EVENT_DATA_INVALID ($.data.additionalControlAuthorizations: is not a declared field), Python INVALID_INPUT",
+     "count": 2,
+     "input": {
+      "event": {
+       "id": "event:budget:7",
+       "type": "AGENT_APPOINTED",
+       "timestamp": 102,
+       "data": {
+        "agentId": "spender",
+        "controlAuthorization": {
+         "keyId": "owner:1",
+         "signature": "0xa864e8db85649198339de59018030939ac6cd5c3dd4ce664c966fb94b29a3730feb68bab01a974b827c1e7bfca9892b1a5b272ac7c578e5d2945faa229a9a509"
+        },
+        "principalId": "operations",
+        "roleId": "cashier",
+        "roleTenureId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "tenureNumber": 1,
+        "additionalControlAuthorizations": [
+         {
+          "keyId": "owner:3",
+          "signature": "0xf00f1d238e39558b9c4ef2109e42c6c36ffe8e8833019609f172f72121289cb707e23510df2064abc4f7667ee74d51cb64e8026e916cb03f0f8db8d12955a801"
+         },
+         {
+          "keyId": "agent:1",
+          "signature": "0xf7c961bc8e3ea5f4eaebfe04b12d8b591e628bd266531a37e2c16033c77d753b9edfcf2251e738dd468d49bf2516e2e37ad8e06962f63d8a090555defde0bb0f"
+         }
+        ]
+       }
+      },
+      "format": "irontrellis-event/1",
+      "position": 4
+     },
+     "minimized": {
+      "event": {
+       "id": "udget:7",
+       "type": "AGENT_APPOINTED",
+       "timestamp": 102,
+       "data": {
+        "roleTenureId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "additionalControlAuthorizations": []
+       }
+      },
+      "format": "nt/1",
+      "position": 4
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 19017165,
+     "key": "EVENT:RUNTIME_SESSION_ADMITTED:ts=EVENT_DATA_INVALID:py=INVALID_INPUT",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent irontrellis-event/1 RUNTIME_SESSION_ADMITTED@8: TypeScript EVENT_DATA_INVALID ($.data.additionalControlAuthorizations: is not a declared field), Python INVALID_INPUT",
+     "count": 3,
+     "input": {
+      "event": {
+       "id": "event:handover:11",
+       "type": "RUNTIME_SESSION_ADMITTED",
+       "timestamp": 106,
+       "data": {
+        "agentId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "controlAuthorization": {
+         "keyId": "fuzz:owner:1",
+         "signature": "0x2227d42b160dbd2947088ceb680c7dc869ae332b59f75ae0254f40eed94687813e18758860717bb51baa80dcf085b73a439669d7bd6d8b18b8d5daac70a6780a"
+        },
+        "controlEpoch": 1,
+        "controllerId": "operator",
+        "credentialKeyId": "key:alex",
+        "credentialPublicKey": "0xf899b47395acd0a3917a5692cd23adf18932bf979c5bf611c3c28233a8f3b6df",
+        "credentialScheme": "ed25519",
+        "expiresAt": 900,
+        "sessionId": "session:alex",
+        "eventHistoryPosition": "key:alex",
+        "additionalControlAuthorizations": "operator"
+       }
+      },
+      "format": "irontrellis-event/1",
+      "position": 8
+     },
+     "minimized": {
+      "event": {
+       "id": "r:11",
+       "type": "RUNTIME_SESSION_ADMITTED",
+       "timestamp": 106,
+       "data": {
+        "agentId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "additionalControlAuthorizations": "ator"
+       }
+      },
+      "format": "nt/1",
+      "position": 8
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 21580595,
+     "key": "EVENT:OBLIGATION_CREATED:ts=INVALID_INPUT:py=EVENT_DATA_INVALID",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent continuity-event/0.2 OBLIGATION_CREATED@18: TypeScript INVALID_INPUT ($.data.administrativeAuthorization.authorityProof.request.metric: must be an Identifier), Python EVENT_DATA_INVALID",
+     "count": 1,
+     "input": {
+      "event": {
+       "data": {
+        "actorId": "a:first-look",
+        "administrativeAuthorization": {
+         "authorityProof": {
+          "authorityEvidence": [
+           {
+            "authorityId": "obligate-authority:first-look",
+            "grantEventId": "first-look:obligate-authority",
+            "grantEventPosition": 9
+           }
+          ],
+          "checkedProhibitionIds": [],
+          "consequential": false,
+          "controllingAuthorityIds": [
+           "obligate-authority:first-look"
+          ],
+          "domain": {
+           "chainId": "31337",
+           "deploymentId": "core-0.2-reference:first-look",
+           "protocol": "continuity",
+           "verifyingContract": "0x0000000000000000000000000000000000003002",
+           "version": "0.2"
+          },
+          "effectiveConstraints": {
+           "actions": [
+            "OBLIGATE"
+           ],
+           "expiresAt": 1000,
+           "maxDelegationDepth": 0,
+           "quantitative": false,
+           "requiredIntersectionIds": [],
+           "resources": [
+            "resource:first-look"
+           ]
+          },
+          "evaluationTime": 18,
+          "historyHead": {
+           "canonicalTime": 17,
+           "hash": "0xadc662a1f5f23cf8281acff2c7356297af8e4a156ffde1fc9fe9af222d77123e",
+           "position": 17
+          },
+          "intersections": [],
+          "permissionPath": [
+           {
+            "authorityId": "obligate-authority:first-look",
+            "constraints": null,
+            "granteeId": "a:first-look",
+            "grantorId": "principal:first-look",
+            "independent": true,
+            "kind": "PERMISSION",
+            "rootAuthorityId": "obligate-authority:first-look"
+           }
+          ],
+          "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+          "proofVersion": "continuity-authorization-proof/0.2",
+          "recognizedRoot": {
+           "principalId": "principal:first-look",
+           "principalRecognitionEventId": "first-look:principal",
+           "rootAuthorityId": "obligate-authority:first-look",
+           "rootGrantEventId": "first-look:obligate-authority"
+          },
+          "request": {
+           "action": "OBLIGATE",
+           "actorId": "a:first-look",
+           "claimedAt": 18,
+           "resource": "resource:first-look",
+           "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b",
+           "metric": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          },
+          "rootRecognitionPolicy": "declared-principal-root/0.2",
+          "usageSnapshot": []
+         },
+         "challenge": {
+          "authoritative": true,
+          "authorityProofHash": "0x90932d00231b62facbe5813793b871781fe8f20fed13c5497cd4f7b448f4660d",
+          "consequential": true,
+          "controlEpoch": {
+           "$continuity.bigint": "-1"
+          },
+          "credentialKeyId": "key:first-look:a",
+          "domain": {
+           "chainId": "31337",
+           "deploymentId": "core-0.2-reference:first-look",
+           "protocol": "continuity",
+           "verifyingContract": "0x0000000000000000000000000000000000003002",
+           "version": "0.2"
+          },
+          "evaluationTime": 18,
+          "eventHistoryHash": "0xadc662a1f5f23cf8281acff2c7356297af8e4a156ffde1fc9fe9af222d77123e",
+          "eventHistoryPosition": 17,
+          "policyVersion": "local-evidence-intake-policy:first-look/0.2",
+          "request": {
+           "action": "OBLIGATE",
+           "actorId": "a:first-look",
+           "claimedAt": 18,
+           "resource": "resource:first-look",
+           "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b"
+          },
+          "roleId": "role:first-look",
+          "roleTenureId": "tenure-a:first-look",
+          "rootRecognitionPolicy": "declared-principal-root/0.2",
+          "runtimeSessionId": "session:first-look:a",
+          "transitionEffectHash": "0x08fc7e035f726d0e6ec6e2c2e2cd3a8576e264f99e57b834fd415e212be970b8",
+          "transitionEventId": "first-look:obligation",
+          "transitionEventType": "OBLIGATION_CREATED",
+          "version": "continuity-administrative-authorization/0.2"
+         },
+         "runtimeSignature": "0x794838943cbb9f9505c28cb0b48658376d004b0f65822bfa7dba35757d5220ae3e0699bd108042e6d67e2d49b0c61d19800a8f302df7766ae64f86ad3a52fa221c"
+        },
+        "record": {
+         "beneficiaryId": "principal:first-look",
+         "causalReceiptContentHash": "0xae4e8e6ee4b07e75c3532a80187a240e59a429f339a5a340787270efd75c1189",
+         "creationRoleTenureId": "tenure-a:first-look",
+         "deadline": 1000,
+         "description": "Review the collected synthetic packet; account for the unresolved investigation.",
+         "durableRoleId": "role:first-look",
+         "obligationId": "obligation:first-look",
+         "performanceAssigneeId": "a:first-look",
+         "sourceIntentId": "intent:first-look",
+         "status": "OPEN",
+         "successionRuleId": "succession:first-look",
+         "termsCommitment": "0x46dfd94583181f406ab2d963fcbb8acb108b1f821264cea6959d62cfe6e5485b",
+         "transitionPolicies": [
+          {
+           "acceptedAttesterIds": [
+            "adapter:simulated"
+           ],
+           "action": "record-collection-disposition",
+           "fromStatus": "OPEN",
+           "requiredAuthorityIds": [
+            "review-authority:first-look"
+           ],
+           "toStatus": "OUTCOME_UNKNOWN"
+          }
+         ],
+         "trigger": "event:local:consumption:255274cebd9fb214e56f695233b855b9d459f0c2c1ca6113a4d16f98b0891e55"
+        }
+       },
+       "id": "first-look:obligation",
+       "timestamp": 18,
+       "type": "OBLIGATION_CREATED"
+      },
+      "format": "continuity-event/0.2",
+      "position": 18
+     },
+     "minimized": {
+      "event": {
+       "data": {
+        "administrativeAuthorization": {
+         "authorityProof": {
+          "request": {
+           "metric": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+         }
+        }
+       },
+       "id": "first-look:obligation",
+       "timestamp": 18,
+       "type": "OBLIGATION_CREATED"
+      },
+      "format": "continuity-event/0.2",
+      "position": 18
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 33687073,
+     "key": "EVENT:ROLE_TRANSFERRED:ts=EVENT_DATA_INVALID:py=INVALID_INPUT",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent irontrellis-event/1 ROLE_TRANSFERRED@20: TypeScript EVENT_DATA_INVALID ($.data.additionalControlAuthorizations: is not a declared field), Python INVALID_INPUT",
+     "count": 3,
+     "input": {
+      "event": {
+       "id": "handover:handover:42:transfer",
+       "type": "ROLE_TRANSFERRED",
+       "timestamp": 115,
+       "data": {
+        "controlAuthorization": {
+         "keyId": "fuzz:owner:1",
+         "signature": "0x8befd8830e653763a82ca5a880d4c6a2d63b6c140fb36be4f01740ac0ab2f1eac7964a403008f7ed77575260431a57bfdbb5a13cf1402e1d8c5dd6fcd43fb704"
+        },
+        "fromAgentId": "bea",
+        "fromRoleTenureId": "shift:1",
+        "principalId": "operations",
+        "roleId": "reviewer",
+        "toAgentId": "éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé",
+        "toRoleTenureId": "shift:2",
+        "toTenureNumber": 2,
+        "transferKind": "SUCCESSION",
+        "additionalControlAuthorizations": "handover"
+       }
+      },
+      "format": "irontrellis-event/1",
+      "position": 20
+     },
+     "minimized": {
+      "event": {
+       "id": "ransfer",
+       "type": "ROLE_TRANSFERRED",
+       "timestamp": 115,
+       "data": {
+        "toAgentId": "ééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé",
+        "additionalControlAuthorizations": "handover"
+       }
+      },
+      "format": "nt/1",
+      "position": 20
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 64395375,
+     "key": "EVENT:PRINCIPAL_CREATED:ts=EVENT_DATA_INVALID:py=INVALID_INPUT",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent irontrellis-event/1 PRINCIPAL_CREATED@1: TypeScript EVENT_DATA_INVALID ($.data.additionalControlAuthorizations: is not a declared field), Python INVALID_INPUT",
+     "count": 2,
+     "input": {
+      "event": {
+       "id": "event:rotation:4",
+       "type": "PRINCIPAL_CREATED",
+       "timestamp": 100,
+       "data": {
+        "controlAuthorization": {
+         "keyId": "owner:1",
+         "signature": "0xbf2a8d9e11a6a5f1867b41bbc49d689ad8ed4c81733f54a8175faef352908589e9de9126c00eeac0aaac38d8bcca73fcb4c56f7aefc5a60273944b16d4c13700"
+        },
+        "principalId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "additionalControlAuthorizations": [
+         {
+          "keyId": "owner:3",
+          "signature": "0x6820583a061de6dd3602517436c2a97d1882e43add391d13824fb0d3a75da177e9cf675d723b15cca2b645020d0ad41259030ecd10c4ac15bd59a9389c5d790d"
+         }
+        ]
+       }
+      },
+      "format": "irontrellis-event/1",
+      "position": 1
+     },
+     "minimized": {
+      "event": {
+       "id": "on:4",
+       "type": "PRINCIPAL_CREATED",
+       "timestamp": 100,
+       "data": {
+        "principalId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "additionalControlAuthorizations": []
+       }
+      },
+      "format": "nt/1",
+      "position": 1
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 83758487,
+     "key": "EVENT:AGENT_TERMINATED:ts=EVENT_DATA_INVALID:py=INVALID_INPUT",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent irontrellis-event/1 AGENT_TERMINATED@19: TypeScript EVENT_DATA_INVALID ($.data.sourceControlAuthorization: is not a declared field), Python INVALID_INPUT",
+     "count": 7,
+     "input": {
+      "event": {
+       "id": "handover:handover:42:retire",
+       "type": "AGENT_TERMINATED",
+       "timestamp": 115,
+       "data": {
+        "agentId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "controlAuthorization": {
+         "keyId": "fuzz:owner:1",
+         "signature": "0xfde3595761b986e048d1123605afb85c547a18bf7598c3b55abd279ed9632a0d923e59c8540bccbdcbd303ee34fb79426949662bc7c5ad5caf375694e7b58f05"
+        },
+        "principalId": "operations",
+        "roleId": "reviewer",
+        "roleTenureId": "shift:1",
+        "successionRuleId": "handover",
+        "sourceControlAuthorization": {
+         "keyId": "owner:1",
+         "signature": "0x7b6ae77344bbd53444e061a1df84e8b3923495453254b527a3df3eda01c59583f8f1a8ce1c788c6ea86891685673c3c0572282d92b70f4a41ae85fa60f388c06"
+        }
+       }
+      },
+      "format": "irontrellis-event/1",
+      "position": 19
+     },
+     "minimized": {
+      "event": {
+       "id": "retire",
+       "type": "AGENT_TERMINATED",
+       "timestamp": 115,
+       "data": {
+        "agentId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sourceControlAuthorization": {}
+       }
+      },
+      "format": "nt/1",
+      "position": 19
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 93672685,
+     "key": "EVENT:AUTHORITY_REVOKED:ts=EVENT_DATA_INVALID:py=INVALID_INPUT",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent irontrellis-event/1 AUTHORITY_REVOKED@21: TypeScript EVENT_DATA_INVALID ($.data.sourceControlAuthorization: is not a declared field), Python INVALID_INPUT",
+     "count": 2,
+     "input": {
+      "event": {
+       "id": "event:handover:17",
+       "type": "AUTHORITY_REVOKED",
+       "timestamp": 116,
+       "data": {
+        "authorityId": "éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé",
+        "controlAuthorization": {
+         "keyId": "owner:1",
+         "signature": "0xed654b0babaac2a7aae60457e9c615c69e15b031bb31c2b73ce98ad165977af311fd0b8c5845f89a8373e058068c67816eccc85c734772a3759ed8fbe2892600"
+        },
+        "revokerId": "operations",
+        "sourceControlAuthorization": {
+         "keyId": true,
+         "signature": "0xff977226800e372f8e654e5b5217a18ae34c9e17864e20dba5728406f37540fe192d92707bb3e1048945d27e73121dfade902847f1d6352b47556a8f8f366307"
+        }
+       }
+      },
+      "format": "irontrellis-event/1",
+      "position": 21
+     },
+     "minimized": {
+      "event": {
+       "id": "r:17",
+       "type": "AUTHORITY_REVOKED",
+       "timestamp": 116,
+       "data": {
+        "authorityId": "ééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé",
+        "sourceControlAuthorization": {}
+       }
+      },
+      "format": "nt/1",
+      "position": 21
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 118680839,
+     "key": "EVENT:TRANSACTION_INTENT_ADMITTED:ts=INVALID_INPUT:py=EVENT_DATA_INVALID",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent irontrellis-event/1 TRANSACTION_INTENT_ADMITTED@19: TypeScript INVALID_INPUT ($.data.authorizationProof.request.metric: must be an Identifier), Python EVENT_DATA_INVALID",
+     "count": 2,
+     "input": {
+      "event": {
+       "id": "admission:0x9b4b1b5490d6793634e88e306b7efbf65d027af22b16b428ba5c4853a9d52496",
+       "type": "TRANSACTION_INTENT_ADMITTED",
+       "timestamp": 1100,
+       "data": {
+        "authorizationProof": {
+         "authorityEvidence": [
+          {
+           "authorityId": "metered",
+           "grantEventId": "event:budget:11",
+           "grantEventPosition": 8
+          }
+         ],
+         "checkedProhibitionIds": [],
+         "consequential": true,
+         "controlEpoch": 1,
+         "controllingAuthorityIds": [
+          "metered"
+         ],
+         "credentialKeyId": "key:spender",
+         "domain": {
+          "deploymentId": "irontrellis-conformance-v2",
+          "protocol": "irontrellis",
+          "version": "1"
+         },
+         "effectiveConstraints": {
+          "actions": [
+           "spend"
+          ],
+          "expiresAt": 5000,
+          "maxAmount": {
+           "$continuity.bigint": "100"
+          },
+          "maxDelegationDepth": 0,
+          "quantitative": true,
+          "requiredIntersectionIds": [],
+          "resources": [
+           "petty-cash",
+           "petty-cash-2",
+           "petty-cash-3",
+           "petty-cash-4"
+          ]
+         },
+         "evaluationTime": 1100,
+         "historyHead": {
+          "canonicalTime": 1100,
+          "hash": "0x4a45cb42e5ec294743c0492914deadcde1814f2e3451e669614764c6ab8ff1f4",
+          "position": 18
+         },
+         "intentId": "spend:4",
+         "intersections": [],
+         "nonce": "operation:spend:4",
+         "permissionPath": [
+          {
+           "authorityId": "metered",
+           "constraints": {
+            "actions": [
+             "spend"
+            ],
+            "expiresAt": 5000,
+            "maxAmount": {
+             "$continuity.bigint": "100"
+            },
+            "maxDelegationDepth": 0,
+            "quantitative": true,
+            "requiredIntersectionIds": "0xe5dab0f60459ba6234a90fc272331324ea301201f0646adad7b8e24194307176",
+            "resources": [
+             "petty-cash",
+             "petty-cash-2",
+             "petty-cash-3",
+             "petty-cash-4"
+            ]
+           },
+           "granteeId": "spender",
+           "grantorId": "operations",
+           "independent": true,
+           "kind": "PERMISSION",
+           "rootAuthorityId": "metered"
+          }
+         ],
+         "policyVersion": "irontrellis-local-owner/1",
+         "proofVersion": "continuity-authorization-proof/0.2",
+         "recognizedRoot": {
+          "": 1
+         },
+         "request": {
+          "action": "spend",
+          "actorId": "spender",
+          "amount": {
+           "$continuity.bigint": "55"
+          },
+          "claimedAt": 1100,
+          "resource": "petty-cash",
+          "termsCommitment": "0xa161ae6d6129b96db0e7e0435c05b41960304ff71284d0062df357ed593702f3",
+          "metric": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+         },
+         "roleId": "cashier",
+         "roleTenureId": "cashier:1",
+         "rootRecognitionPolicy": "declared-principal-root/0.2",
+         "runtimeSessionId": "session:spender",
+         "usageSnapshot": []
+        },
+        "evaluationTime": 1100,
+        "expectedHistoryHead": {
+         "canonicalTime": 1100,
+         "hash": "0x4a45cb42e5ec294743c0492914deadcde1814f2e3451e669614764c6ab8ff1f4",
+         "position": 18
+        },
+        "intentId": "spend:4",
+        "runtimeAuthorizationHash": "0xc98b8830a4fab963b636a351ba43f80ca69ca99738d4da0468482edc985aef08",
+        "runtimeSignature": "0xae81febfe496dbbc3b62c037860dded5ce99f194763366ab9fb52d399691a72e07aa4fba0403e663e5364c3342e9cf2822acc3ecbd8d01304dd14f3b69bc160e"
+       }
+      },
+      "format": "irontrellis-event/1",
+      "position": 19
+     },
+     "minimized": {
+      "event": {
+       "id": "admission:0x9b4b1b5490d6793634e88e306b7efbf65d027af22b16b428ba5c4853a9d52496",
+       "type": "TRANSACTION_INTENT_ADMITTED",
+       "timestamp": 1100,
+       "data": {
+        "authorizationProof": {
+         "request": {
+          "metric": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+         }
+        }
+       }
+      },
+      "format": "irontrellis-event/1",
+      "position": 19
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 120253254,
+     "key": "EVENT:OWNER_KEYS_ROTATED:ts=EVENT_DATA_INVALID:py=INVALID_INPUT",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent irontrellis-event/1 OWNER_KEYS_ROTATED@7: TypeScript EVENT_DATA_INVALID ($.data.additionalControlAuthorizations: is not a declared field), Python INVALID_INPUT",
+     "count": 4,
+     "input": {
+      "event": {
+       "id": "event:rotation:9",
+       "type": "OWNER_KEYS_ROTATED",
+       "timestamp": 104,
+       "data": {
+        "controlAuthorization": {
+         "keyId": "",
+         "signature": "0x3bc6064dfc574888880dccba9addc9677ba5e3263cd8d6237ba2022d2faf4e5749e7e06b28dd91ab29c77c906b559eea4cc2f24cc4c49b21584f05ea4b3bb60a"
+        },
+        "nextKeyAuthorizations": [
+         {
+          "keyId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "scheme": "ed25519",
+          "signature": "0x529ef56510ef1dbb8967de6eca4eadd93d53791ee1c47a242349f969d133e04cd655444dbd405f50bf6e9b038f0aee97e8d41e4e9563cb52b4968076af14f907"
+         }
+        ],
+        "nextKeyDigests": [
+         "0xede377bf894e6f3a22908185dfc5f56c8bd39a357f6918a970a78478823d894a"
+        ],
+        "ownerKeys": [
+         {
+          "credential": "0x15f7391c849e50cae7e09d263c7e604de72f169347992e0cf7953499bfb01461",
+          "keyId": "fuzz:rot:2",
+          "scheme": "ed25519"
+         }
+        ],
+        "reason": "fuzz seed pre-rotated rotation",
+        "additionalControlAuthorizations": {
+         "amountCap": "1000",
+         "budgetId": "b-166",
+         "controlAuthorization": {
+          "keyId": "owner:1",
+          "signature": "0xa1a322ecc73b8bcbd1a5cb150ec4ec503b8cde1b1dfaba309b791d3c9ffe38635e8989620851825afaa4f1d732bb03cd97005b4ec7c61d3603a06565dad85f07"
+         },
+         "countCap": null,
+         "expiresAt": null,
+         "metric": "amount",
+         "notBefore": null,
+         "perOperationCap": null,
+         "period": {
+          "kind": "NONE"
+         },
+         "subjects": {
+          "actions": [
+           "spend"
+          ],
+          "actorIds": null,
+          "resources": [
+           "r-166"
+          ],
+          "roleIds": null
+         }
+        }
+       }
+      },
+      "format": "irontrellis-event/1",
+      "position": 7
+     },
+     "minimized": {
+      "event": {
+       "id": "event:rotation:9",
+       "type": "OWNER_KEYS_ROTATED",
+       "timestamp": 104,
+       "data": {
+        "nextKeyAuthorizations": [
+         {
+          "keyId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+         }
+        ],
+        "additionalControlAuthorizations": {
+         "notBefore": null,
+         "perOperationCap": null,
+         "period": {
+          "kind": "NONE"
+         },
+         "subjects": {
+          "actions": [
+           "spend"
+          ],
+          "actorIds": null,
+          "resources": [
+           "r-166"
+          ],
+          "roleIds": null
+         }
+        }
+       }
+      },
+      "format": "irontrellis-event/1",
+      "position": 7
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 178570114,
+     "key": "EVENT:OBLIGATION_PERFORMANCE_ASSIGNED:ts=INVALID_INPUT:py=EVENT_DATA_INVALID",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent irontrellis-event/1 OBLIGATION_PERFORMANCE_ASSIGNED@22: TypeScript INVALID_INPUT ($.data.administrativeAuthorization.authorityProof.request.metric: must be an Identifier), Python EVENT_DATA_INVALID",
+     "count": 1,
+     "input": {
+      "event": {
+       "id": "assignment:assign:42",
+       "type": "OBLIGATION_PERFORMANCE_ASSIGNED",
+       "timestamp": 117,
+       "data": {
+        "actorId": "alex",
+        "administrativeAuthorization": {
+         "authorityProof": {
+          "authorityEvidence": [
+           {
+            "authorityId": "assign",
+            "grantEventId": "event:handover:18",
+            "grantEventPosition": 21
+           }
+          ],
+          "checkedProhibitionIds": [],
+          "consequential": false,
+          "controllingAuthorityIds": [
+           "assign"
+          ],
+          "domain": {
+           "deploymentId": "fuzz:handover",
+           "protocol": null,
+           "version": "1"
+          },
+          "effectiveConstraints": {
+           "actions": [
+            "ASSIGN_PERFORMANCE"
+           ],
+           "expiresAt": 800,
+           "maxDelegationDepth": 0,
+           "requiredIntersectionIds": [],
+           "resources": [
+            "duty:42"
+           ],
+           "deadline": false
+          },
+          "evaluationTime": 117,
+          "historyHead": {
+           "canonicalTime": 116,
+           "hash": "0xb1e3485a66cbaff8f878a7c29199708c50a8cc7c61512e2d94b699fbe010e8bd",
+           "position": 21
+          },
+          "intersections": [],
+          "permissionPath": [
+           {
+            "authorityId": "assign",
+            "constraints": {
+             "actions": [
+              "ASSIGN_PERFORMANCE"
+             ],
+             "expiresAt": 800,
+             "maxDelegationDepth": 0,
+             "quantitative": false,
+             "resources": [
+              "duty:42"
+             ],
+             "purpose": []
+            },
+            "granteeId": "\u001f",
+            "grantorId": "operations",
+            "independent": true,
+            "kind": "PERMISSION",
+            "rootAuthorityId": "assign"
+           }
+          ],
+          "policyVersion": "irontrellis-local-owner/1",
+          "proofVersion": "continuity-authorization-proof/0.2",
+          "recognizedRoot": {
+           "principalId": "operations",
+           "principalRecognitionEventId": "event:handover:4",
+           "rootAuthorityId": "assign",
+           "rootGrantEventId": "event:handover:18"
+          },
+          "request": {
+           "action": "ASSIGN_PERFORMANCE",
+           "actorId": "alex",
+           "claimedAt": 117,
+           "resource": "duty:42",
+           "metric": "éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé"
+          },
+          "rootRecognitionPolicy": "declared-principal-root/0.2",
+          "usageSnapshot": []
+         },
+         "challenge": {
+          "authoritative": true,
+          "authorityProofHash": "0xa0d5a9fc8c62948f120d5378dca8697466d1ff3e4741541f4e87eb9b85f9e812",
+          "consequential": true,
+          "controlEpoch": 1,
+          "credentialKeyId": "key:alex",
+          "domain": {
+           "deploymentId": "fuzz:handover",
+           "protocol": "irontrellis",
+           "version": "1"
+          },
+          "evaluationTime": 117,
+          "eventHistoryHash": "0xb1e3485a66cbaff8f878a7c29199708c50a8cc7c61512e2d94b699fbe010e8bd",
+          "eventHistoryPosition": 21,
+          "policyVersion": "irontrellis-local-owner/1",
+          "request": {
+           "action": "ASSIGN_PERFORMANCE",
+           "actorId": "alex",
+           "claimedAt": 117,
+           "resource": "duty:42"
+          },
+          "roleId": "reviewer",
+          "roleTenureId": "shift:2",
+          "rootRecognitionPolicy": "declared-principal-root/0.2",
+          "runtimeSessionId": "session:alex",
+          "transitionEffectHash": "0x195d379a2da31e91430b63e2939e7b510141a84b4faffdef9f25aedea2f90248",
+          "transitionEventId": "assignment:assign:42",
+          "transitionEventType": "OBLIGATION_PERFORMANCE_ASSIGNED",
+          "version": "continuity-administrative-authorization/0.2"
+         },
+         "runtimeSignature": "0x939a75e8a504c2800aa8f28a2aaaf922e4e1b85d169b144ebe9a861e42c6f22ffd381c7cbe7b1a0280c6fc7ea565f61bec7c751f0ab91a79dab065f889bb6601"
+        },
+        "fromAgentId": "bea",
+        "obligationId": "obligation:first-look",
+        "successionRuleId": "handover",
+        "toAgentId": "alex"
+       }
+      },
+      "format": "irontrellis-event/1",
+      "position": 22
+     },
+     "minimized": {
+      "event": {
+       "id": "assignment:assign:42",
+       "type": "OBLIGATION_PERFORMANCE_ASSIGNED",
+       "timestamp": 117,
+       "data": {
+        "administrativeAuthorization": {
+         "authorityProof": {
+          "request": {
+           "metric": "éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé"
+          }
+         }
+        }
+       }
+      },
+      "format": "irontrellis-event/1",
+      "position": 22
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 198617434,
+     "key": "EVENT:CONTROL_EPOCH_ADVANCED:ts=EVENT_DATA_INVALID:py=INVALID_INPUT",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent irontrellis-event/1 CONTROL_EPOCH_ADVANCED@11: TypeScript EVENT_DATA_INVALID ($.data.additionalControlAuthorizations: is not a declared field), Python INVALID_INPUT",
+     "count": 1,
+     "input": {
+      "event": {
+       "id": "event:rotation:13",
+       "type": "CONTROL_EPOCH_ADVANCED",
+       "timestamp": 108,
+       "data": {
+        "agentId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "controlAuthorization": {
+         "keyId": "fuzz:rot:3",
+         "signature": "0xa39a8b131e7fc2a4b64614b74a8d6345efabce8efa84fcc0390d28d1119d67b9b44fd97330014933591509d804f610a066a6f1466ed85c8b946da165e15ee904"
+        },
+        "controllerId": "operator",
+        "fromEpoch": 1,
+        "toEpoch": 2,
+        "additionalControlAuthorizations": {
+         "keyId": "fuzz:rot:3",
+         "signature": "0xa39a8b131e7fc2a4b64614b74a8d6345efabce8efa84fcc0390d28d1119d67b9b44fd97330014933591509d804f610a066a6f1466ed85c8b946da165e15ee904"
+        }
+       }
+      },
+      "format": "irontrellis-event/1",
+      "position": 11
+     },
+     "minimized": {
+      "event": {
+       "id": "ation:13",
+       "type": "CONTROL_EPOCH_ADVANCED",
+       "timestamp": 108,
+       "data": {
+        "agentId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "additionalControlAuthorizations": {}
+       }
+      },
+      "format": "s-event/1",
+      "position": 11
+     }
+    },
+    {
+     "target": "events",
+     "seed": 341,
+     "iteration": 314405496,
+     "key": "EVENT:SUCCESSION_RULE_DECLARED:ts=EVENT_DATA_INVALID:py=INVALID_INPUT",
+     "invariant": "TS_PY_DISAGREE",
+     "message": "validateEvent irontrellis-event/1 SUCCESSION_RULE_DECLARED@5: TypeScript EVENT_DATA_INVALID ($.data.additionalControlAuthorizations: is not a declared field), Python INVALID_INPUT",
+     "count": 1,
+     "input": {
+      "event": {
+       "id": "event:handover:8",
+       "type": "SUCCESSION_RULE_DECLARED",
+       "timestamp": 103,
+       "data": {
+        "controlAuthorization": {
+         "keyId": "owner:1",
+         "signature": "0xa4b3c2242a96e1e125cfaa51f8c1383326ad99a33b7686ee209bee064b42fdcc53ffbae38e2e0c6a36d77394bc3de60015a39aa179ba4d4926055d60403ca903"
+        },
+        "permittedEventTypes": [
+         "OBLIGATION_PERFORMANCE_ASSIGNED",
+         "AGENT_TERMINATED",
+         "ROLE_TRANSFERRED",
+         "éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé"
+        ],
+        "predecessorAgentId": "éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé",
+        "principalId": "operations",
+        "roleId": "reviewer",
+        "ruleId": "handover",
+        "successorAgentId": "alex",
+        "trigger": "AGENT_TERMINATED",
+        "additionalControlAuthorizations": "witnessed rotation"
+       }
+      },
+      "format": "irontrellis-event/1",
+      "position": 5
+     },
+     "minimized": {
+      "event": {
+       "id": "ndover:8",
+       "type": "SUCCESSION_RULE_DECLARED",
+       "timestamp": 103,
+       "data": {
+        "predecessorAgentId": "ééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé",
+        "additionalControlAuthorizations": " rotation"
+       }
+      },
+      "format": "s-event/1",
+      "position": 5
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+ "id": "negative-zero-literal",
+ "target": "canonical",
+ "found": "pre-release fuzzing, 2026-09-26 (canonical target, seed 1)",
+ "description": "The JSON number literal -0 is JavaScript negative zero, which the canonical form rejects; Python must reject it too.",
+ "rootCause": "Python json.loads reads the literal -0 as the integer 0 (Python ints have no negative zero), so the Python canonical encoder accepted what the TypeScript one rejects (docs/HISTORY-FORMAT.md §2: -0 is rejected).",
+ "fix": "python canonical.json_loads parses the literal -0 as the float -0.0 (which every protocol check rejects, like the TypeScript -0); used for store lines, .json histories and json_loads_with_bigints.",
+ "input": {
+  "text": "{\"id\":\"x\",\"timestamp\":-0}"
+ },
+ "expect": {
+  "ts": {
+   "ok": false,
+   "stage": "encode"
+  }
+ }
+}

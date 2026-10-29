@@ -1,0 +1,41 @@
+{
+  "name": "@ramex-labs/irontrellis",
+  "version": "1.0.0-rc.2",
+  "description": "IronTrellis core: a signed, replayable record of authority, duties and succession for AI agents. Agents change. The structure holds.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": { "node": ">=22.18.0" },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./local": { "types": "./dist/local.d.ts", "default": "./dist/local.js" },
+    "./attempts": { "types": "./dist/attempts.d.ts", "default": "./dist/attempts.js" },
+    "./store": { "types": "./dist/store-public.d.ts", "default": "./dist/store-public.js" },
+    "./internal-format1": { "types": "./dist/internal-format1.d.ts", "default": "./dist/internal-format1.js" },
+    "./transparency": { "types": "./dist/transparency/index.d.ts", "default": "./dist/transparency/index.js" },
+    "./platform": { "types": "./dist/platform.d.ts", "default": "./dist/platform.js" },
+    "./custody": { "types": "./dist/custody/index.d.ts", "default": "./dist/custody/index.js" },
+    "./adapter": { "types": "./dist/adapter.d.ts", "default": "./dist/adapter.js" },
+    "./duties": { "types": "./dist/duties.d.ts", "default": "./dist/duties.js" },
+    "./evidence": { "types": "./dist/evidence.d.ts", "default": "./dist/evidence.js" },
+    "./policy": { "types": "./dist/policy.d.ts", "default": "./dist/policy.js" },
+    "./runtime": { "types": "./dist/runtime.d.ts", "default": "./dist/runtime.js" },
+    "./simulation": { "types": "./dist/simulation.d.ts", "default": "./dist/simulation.js" },
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "README.md", "LICENSE", "NOTICE"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test --experimental-strip-types \"test/**/*.test.mjs\"",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test:async-signers": "node ../../scripts/test-async-signers.mjs core"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "typescript": "^5.9.2"
+  },
+  "publishConfig": { "access": "public", "provenance": true },
+  "repository": { "type": "git", "url": "https://github.com/zerohourzulu/irontrellis.git", "directory": "packages/core" },
+  "keywords": ["ai-agents", "authorization", "delegation", "succession", "audit", "event-sourcing", "mcp"]
+}

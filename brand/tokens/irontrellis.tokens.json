@@ -1,0 +1,224 @@
+{
+  "$description": "IronTrellis design tokens · BRAND-001 rev 0.1 · September 23, 2026. Format: W3C Design Tokens Community Group.",
+  "color": {
+    "iron": {
+      "$type": "color",
+      "$value": "#15181C",
+      "$description": "Primary dark. Text on light, dark surfaces, the mark on light."
+    },
+    "gunmetal": {
+      "$type": "color",
+      "$value": "#2A3038",
+      "$description": "Secondary dark surfaces, panels, code blocks on dark."
+    },
+    "steel": {
+      "$type": "color",
+      "$value": "#5C6773",
+      "$description": "“TRELLIS” on light, secondary text on light (AA)."
+    },
+    "pewter": {
+      "$type": "color",
+      "$value": "#9AA4AE",
+      "$description": "“TRELLIS” on dark, secondary text on dark (AA)."
+    },
+    "alloy": {
+      "$type": "color",
+      "$value": "#C9CFD5",
+      "$description": "The mark on dark, rules and borders on light."
+    },
+    "plate": {
+      "$type": "color",
+      "$value": "#F3F2EE",
+      "$description": "Primary light background (warm paper)."
+    },
+    "forge": {
+      "$type": "color",
+      "$value": "#E8692A",
+      "$description": "Signature accent: the Core, one rule, one highlight. Never text on light grounds."
+    },
+    "ember": {
+      "$type": "color",
+      "$value": "#B24C14",
+      "$description": "Orange for text and links on light backgrounds (AA)."
+    },
+    "state": {
+      "allow": {
+        "$description": "Permission established",
+        "on-light": {
+          "$type": "color",
+          "$value": "#1E6E43"
+        },
+        "on-dark": {
+          "$type": "color",
+          "$value": "#45B57A"
+        }
+      },
+      "deny": {
+        "$description": "Refused by current rules",
+        "on-light": {
+          "$type": "color",
+          "$value": "#B12F29"
+        },
+        "on-dark": {
+          "$type": "color",
+          "$value": "#F0675D"
+        }
+      },
+      "indeterminate": {
+        "$description": "Cannot decide from the evidence",
+        "on-light": {
+          "$type": "color",
+          "$value": "#8A6207"
+        },
+        "on-dark": {
+          "$type": "color",
+          "$value": "#D9A21B"
+        }
+      },
+      "open": {
+        "$description": "A duty still owed",
+        "on-light": {
+          "$type": "color",
+          "$value": "#2A62A0"
+        },
+        "on-dark": {
+          "$type": "color",
+          "$value": "#6FA6DE"
+        }
+      }
+    }
+  },
+  "font": {
+    "display": {
+      "$type": "fontFamily",
+      "$value": [
+        "Barlow Condensed",
+        "Arial Narrow",
+        "sans-serif"
+      ]
+    },
+    "text": {
+      "$type": "fontFamily",
+      "$value": [
+        "IBM Plex Sans",
+        "system-ui",
+        "sans-serif"
+      ]
+    },
+    "mono": {
+      "$type": "fontFamily",
+      "$value": [
+        "IBM Plex Mono",
+        "ui-monospace",
+        "Menlo",
+        "monospace"
+      ]
+    }
+  },
+  "typescale": {
+    "display": {
+      "$type": "typography",
+      "$description": "Uppercase",
+      "$value": {
+        "fontFamily": "{font.display}",
+        "fontWeight": 700,
+        "fontSize": "48px",
+        "lineHeight": 1.0833,
+        "letterSpacing": "0.06em"
+      }
+    },
+    "heading-1": {
+      "$type": "typography",
+      "$description": "Uppercase",
+      "$value": {
+        "fontFamily": "{font.display}",
+        "fontWeight": 700,
+        "fontSize": "32px",
+        "lineHeight": 1.125,
+        "letterSpacing": "0.05em"
+      }
+    },
+    "heading-2": {
+      "$type": "typography",
+      "$description": "Uppercase",
+      "$value": {
+        "fontFamily": "{font.display}",
+        "fontWeight": 600,
+        "fontSize": "22px",
+        "lineHeight": 1.1818,
+        "letterSpacing": "0.06em"
+      }
+    },
+    "body": {
+      "$type": "typography",
+      "$description": "Sentence case, as written",
+      "$value": {
+        "fontFamily": "{font.text}",
+        "fontWeight": 400,
+        "fontSize": "16px",
+        "lineHeight": 1.5,
+        "letterSpacing": "0em"
+      }
+    },
+    "small": {
+      "$type": "typography",
+      "$description": "Sentence case, as written",
+      "$value": {
+        "fontFamily": "{font.text}",
+        "fontWeight": 400,
+        "fontSize": "13px",
+        "lineHeight": 1.5385,
+        "letterSpacing": "0em"
+      }
+    },
+    "label": {
+      "$type": "typography",
+      "$description": "Uppercase",
+      "$value": {
+        "fontFamily": "{font.mono}",
+        "fontWeight": 500,
+        "fontSize": "11px",
+        "lineHeight": 1.4545,
+        "letterSpacing": "0.12em"
+      }
+    },
+    "code": {
+      "$type": "typography",
+      "$description": "Sentence case, as written",
+      "$value": {
+        "fontFamily": "{font.mono}",
+        "fontWeight": 400,
+        "fontSize": "14px",
+        "lineHeight": 1.5714,
+        "letterSpacing": "0em"
+      }
+    }
+  },
+  "ansi256": {
+    "forge": {
+      "$type": "number",
+      "$value": 208,
+      "$description": "xterm-256 fallback for terminals"
+    },
+    "allow": {
+      "$type": "number",
+      "$value": 35,
+      "$description": "xterm-256 fallback for terminals"
+    },
+    "deny": {
+      "$type": "number",
+      "$value": 203,
+      "$description": "xterm-256 fallback for terminals"
+    },
+    "indeterminate": {
+      "$type": "number",
+      "$value": 178,
+      "$description": "xterm-256 fallback for terminals"
+    },
+    "open": {
+      "$type": "number",
+      "$value": 74,
+      "$description": "xterm-256 fallback for terminals"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@ramex-labs/irontrellis-reference-0.3",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Frozen Continuity v0.3.0-preview.10.2 source and tests, kept as the duty-policy and history reference oracle for IronTrellis Core (format 2). Never published.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": { "node": ">=22.18.0" },
+  "scripts": {
+    "build": "echo \"reference-0.3: frozen sources, nothing to build\"",
+    "verify-freeze": "node verify-freeze.mjs",
+    "test": "node verify-freeze.mjs",
+    "test:oracle": "node verify-freeze.mjs && node --experimental-strip-types --test-concurrency=1 --test packages/core-0.2/test/*.test.mjs tests/core-0.3/duty-activation.test.mjs tests/core-0.3/duty-capacity.test.mjs tests/core-0.3/duty-disposition-capacity.test.mjs tests/core-0.3/duty-store.test.mjs tests/core-0.3/duty-workflow.test.mjs tests/core-0.3/history.test.mjs tests/core-0.3/capacity.test.mjs",
+    "test:oracle:slow": "node verify-freeze.mjs && node --experimental-strip-types --test-concurrency=1 --test tests/core-0.3/history-store.test.mjs tests/core-0.3/duty-disposition.test.mjs",
+    "lint": "echo \"reference-0.3: frozen sources are not linted\""
+  },
+  "devDependencies": {
+    "viem": "2.55.19"
+  }
+}
