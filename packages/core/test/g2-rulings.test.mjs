@@ -2,7 +2,7 @@
 // One test (or more) per ruling; each fails without the ruling.
 import test from "node:test";
 import assert from "node:assert/strict";
-import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, readdirSync, realpathSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
@@ -844,10 +844,11 @@ test("A-41: enforcement callers refuse a fenced history always and a never-migra
   assert.ok(openLocalSimulation({ ...base, format: "irontrellis-event/1", [FORMAT1_TEST_TOOLING]: true }), "the earlier writer named (A-30)");
   assert.equal(core.enforcementWarning(source, "irontrellis-event/2", false), undefined);
   assert.throws(() => core.enforcementWarning(source, core.LEGACY_FORMAT, false), (e) => e.detail.reason === "LEGACY");
-  // Fenced: no opt-in; reads (open, verify) still work.
+  // Fenced: no opt-in; reads (open, verify) still work. The marker names the canonical target (realpath: macOS's
+  // tmpdir() is /var/folders/..., a symlink into /private/var/...).
   await migrateHistory({ source, target: join(dir, "f2.jsonl"), now: () => 5000, signer: migrationOwner(), nextKey: false, migrationId: MIGRATION_ID });
   for (const extra of [{ enforceFromReadOnlyHistory: true }, { format: "irontrellis-event/1", [FORMAT1_TEST_TOOLING]: true }]) {
-    assert.throws(() => openLocalSimulation({ ...base, ...extra }), (e) => e.code === "FORMAT_READ_ONLY" && e.detail.reason === "MIGRATED" && e.detail.target === join(dir, "f2.jsonl"));
+    assert.throws(() => openLocalSimulation({ ...base, ...extra }), (e) => e.code === "FORMAT_READ_ONLY" && e.detail.reason === "MIGRATED" && e.detail.target === join(realpathSync(dir), "f2.jsonl"));
   }
   assert.equal(openStore(source, { allowUnpinned: true }).state().format, "irontrellis-event/1");
 });
