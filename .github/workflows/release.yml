@@ -142,7 +142,7 @@ jobs:
     name: publish to npm (the verified tarballs)
     needs: [verify, test]
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 40   # room for the verify step's retries while npm's index catches up
     environment: npm
     permissions:
       contents: read
@@ -216,7 +216,15 @@ jobs:
             name="$(node -p 'JSON.parse(process.argv[1]).name' "$manifest")"
             version="$(node -p 'JSON.parse(process.argv[1]).version' "$manifest")"
             integrity="sha512-$(openssl dgst -sha512 -binary "$file" | base64 -w0)"
-            served="$(npm view "$name@$version" dist.integrity 2>/dev/null || true)"
+            # npm's index can lag the publish by minutes (the first 1.0.0-rc.2 run failed here on "serves nothing"). Retry while it
+            # serves nothing, with backoff, about 5 minutes in all; a DIFFERENT integrity fails at once.
+            served=""
+            for wait in 0 10 20 30 40 50 60 90; do
+              sleep "$wait"
+              served="$(npm view "$name@$version" dist.integrity 2>/dev/null || true)"
+              [ -z "$served" ] || break
+              echo "$name@$version: npm serves nothing yet; retrying" >&2
+            done
             if [ "$served" != "$integrity" ]; then
               echo "$name@$version: npm serves ${served:-nothing}, the verified tarball is $integrity" >&2
               exit 1
