@@ -20,6 +20,7 @@ This is **1.0.0-rc.2, history format 2**, a release candidate. Its first worked 
 | Try it with your own coding agent | [The agent hook](packages/hooks/README.md) runs Claude Code, OpenAI Codex CLI or Cursor under IronTrellis. To see it first, run the demo in [See it work](#see-it-work). |
 | Read the model and the format | [The specification](docs/spec/SPEC-IRONTRELLIS-CORE-v2-EFFECTIVE-r5.2.md) and the [conformance suites](docs/CONFORMANCE.md) |
 | Check the claims | [How IronTrellis was tested](docs/TESTING.md), the [published Lean proofs](verification/SelectLeanProofs/) and [why we check IronTrellis with Lean](docs/FORMAL-VERIFICATION.md) |
+| Read our IETF proposal | [Replayable Authority Histories for Auditing Automated Agents](https://datatracker.ietf.org/doc/draft-rampertab-audit-agent-authority-history/), the model written up as an Internet-Draft: a public proposal to the Internet Engineering Task Force (IETF), offered for discussion in its AUDIT effort (Agent Use of Delegation and Interaction Traceability). See [docs/ietf](docs/ietf/) |
 | Understand how it was built | [How this is built](docs/HOW-THIS-IS-BUILT.md) and the [historical reviews](docs/history/README.md) |
 | Set it up for an organization | The [Commissioning Disclosure](docs/COMMISSIONING-DISCLOSURE.md), read and signed before commissioning, and the [Install Checklist](docs/INSTALL-CHECKLIST.md) |
 | Know why it exists | [Why IronTrellis, why now](docs/WHY-IRONTRELLIS.md) and [the origin of IronTrellis](docs/ORIGIN.md) |
@@ -100,7 +101,7 @@ The packaged Python verifier/evaluator is frozen at 1.0.0rc1 and the legacy/form
 ## Evidence
 
 - **Tests.** At this commit, on Linux, every package and integration test suite passes, and `scripts/verify-install.mjs` reports 70 passed, 0 failed, 0 skipped. These are build checks, not production qualification. [Conformance](docs/CONFORMANCE.md) identifies the suites and their limits; [benchmarks](docs/BENCHMARKS.md) separates historical format-1 measurements from current format-2 claims.
-- **Lean.** Selected Lean model properties have been checked; they do not prove the entire implementation, cryptography, host or external effects. [Why we check IronTrellis with Lean](docs/FORMAL-VERIFICATION.md) says what was checked and what was not; the proof sources are not in this repository yet.
+- **Lean.** Selected Lean model properties have been checked; they do not prove the entire implementation, cryptography, host or external effects. [Why we check IronTrellis with Lean](docs/FORMAL-VERIFICATION.md) says what was checked and what was not; a selection of the proof sources is in [verification/SelectLeanProofs](verification/SelectLeanProofs/), with the commands to rebuild them.
 - **Review.** [How this is built](docs/HOW-THIS-IS-BUILT.md) explains the evidence and human review process. [Historical reviews](docs/history/README.md) are preserved as dated evidence.
 
 ## Limits

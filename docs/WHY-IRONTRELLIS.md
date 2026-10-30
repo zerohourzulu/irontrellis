@@ -107,7 +107,7 @@ IronTrellis does not compete with these. It asks a different question that sits 
 
 In 2026 the Internet Engineering Task Force, the body that maintains many of the Internet's core protocols, approved a working session on auditing the actions of automated agents. Its proposal names the need to establish "how permissions evolved during execution." That is almost word for word the problem IronTrellis was built to solve.
 
-We are submitting IronTrellis's model to the IETF as an individual Internet-Draft, *Replayable Authority Histories for Auditing Automated Agents*. A draft is an invitation, not an endorsement: it puts the idea where the people who build the Internet's plumbing can examine it, argue with it, and improve it. Even if it never becomes a standard, it may bring the right eyes to a problem that will not wait.
+We have submitted IronTrellis's model to the IETF as an individual Internet-Draft, [*Replayable Authority Histories for Auditing Automated Agents*](ietf/). A draft is an invitation, not an endorsement: it puts the idea where the people who build the Internet's plumbing can examine it, argue with it, and improve it. Even if it never becomes a standard, it may bring the right eyes to a problem that will not wait.
 
 ## Conventions harden early
 

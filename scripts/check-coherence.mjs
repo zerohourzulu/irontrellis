@@ -19,7 +19,7 @@
  * What it does not scan: tests (any `test/` or `tests/` directory and `*.test.*` files, which may keep provenance
  * comments), docs/reviews/ and docs/history/ (the labelled pre-release review record), docs/spec/ and docs/records/ (the
  * architect's specification and the dated records, kept verbatim; the publication-gate scanner still scans them for host
- * data, secrets and the old name), docs/legacy-semantics/ and
+ * data, secrets and the old name), the posted Internet-Draft files (docs/ietf/draft-*), docs/legacy-semantics/ and
  * packages/reference-0.2/ and packages/reference-0.3/ (Continuity's own specification and code, frozen),
  * conformance/legacy/ (byte-frozen Continuity vectors), conformance/v2/ and conformance/inputs-ref/ (the frozen
  * format-2 suite and its reference inputs, checked byte for byte by scripts/check-frozen-vectors.mjs), generated
@@ -54,6 +54,8 @@ const SKIP_PREFIXES = [
   "fuzz/out/", "fuzz/regressions/", "bench/out/", "bench/results/",
   // the chapter 1 record's evidence files, verbatim: their sha256 are published on its page (the publication gate still scans them)
   "docs/examples/chapter-1/",
+  // the Internet-Draft files exactly as posted to the IETF (docs/ietf/README.md is still scanned)
+  "docs/ietf/draft-",
 ];
 /** The dated results page: its counts come from the records, and it names the reviews and their findings by design, so
  * vector-count, finding-id and review-talk skip it (every other rule still applies). */
