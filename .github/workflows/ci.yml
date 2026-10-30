@@ -74,8 +74,13 @@ jobs:
       - name: Two OS users (doctor --as-agent and planted references, as root with the agent as uid 65534)
         # packages/cli/test/doctor-users.test.mjs needs root to run a child as another user; the runner has passwordless
         # sudo. The agent is nobody/nogroup (65534), present on the runner image.
+        # The agent's child loads the CLI from the checkout, so uid 65534 must be able to traverse every directory above it:
+        # the ubuntu-24.04 image makes /home/runner 0750 (MODULE_NOT_FOUND otherwise). Search (o+x) only, no listing.
         if: matrix.os == 'ubuntu-latest'
-        run: sudo --preserve-env=PATH "$(command -v node)" --test packages/cli/test/doctor-users.test.mjs
+        run: |
+          d="$GITHUB_WORKSPACE"
+          while [ "$d" != "/" ]; do sudo chmod o+x "$d"; d="$(dirname "$d")"; done
+          sudo --preserve-env=PATH "$(command -v node)" --test packages/cli/test/doctor-users.test.mjs
 
       - name: Conformance (IronTrellis node adapter, legacy and format-1 vectors)
         if: hashFiles('conformance/run.mjs', 'conformance/adapters/node.mjs') != ''
