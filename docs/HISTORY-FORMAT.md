@@ -41,7 +41,7 @@ Owner approval policies and the PHL attestation policy ship in 1.0.0-rc.2: thres
 
 Migration targets format 2, with a plan, a fence and resumable phases; see [§11](#11-migration-and-read-only-sources) and [MIGRATION](MIGRATION.md). Upgrading a reader does not convert a historical file in place or authorize an old-format writer.
 
-### Read-only compatibility catalogue
+### Read-only compatibility catalog
 
 This table identifies the historical formats for reading and verification. Their source export described older writing workflows; those commands and byte examples are **historical**, not current 1.0.0-rc.2 write recipes.
 
@@ -56,7 +56,7 @@ This table identifies the historical formats for reading and verification. Their
 | Historical file cap | 64 MiB | 1 GiB |
 | Whole-history capture bound | 4,096 events / 16 MiB canonical text | no equivalent whole-history canonical bound |
 
-The [encoding](reference/history-encoding.md) and [event](reference/history-events.md) references keep this older catalogue, its domain shapes and exact literals. Don't treat their field tables, scalar grammars, event count or writer behavior as a complete format-2 specification.
+The [encoding](reference/history-encoding.md) and [event](reference/history-events.md) references keep this older catalog, its domain shapes and exact literals. Don't treat their field tables, scalar grammars, event count or writer behavior as a complete format-2 specification.
 
 ## 2. Canonical encoding
 
@@ -112,7 +112,7 @@ For the legacy and format-1 path, replay checks, in this order:
 
 A rejected event leaves state unchanged and reports its position. Schema errors and named-limit capture errors have different codes, so the order matters when an input has several defects.
 
-The [envelope and event reference](reference/history-events.md) keeps every field, scalar definition and rejection code. Its 29-type count is the format-1 catalogue (legacy has the first 25, plus types 29–31); format 2 has 42.
+The [envelope and event reference](reference/history-events.md) keeps every field, scalar definition and rejection code. Its 29-type count is the format-1 catalog (legacy has the first 25, plus types 29–31); format 2 has 42.
 
 ## 6. Reading genesis, grants and evidence
 
@@ -242,7 +242,7 @@ Side files share the history path as a prefix. They don't all have the same trus
 | Writable cache, validated before use | the witness state (`.witness.json`) |
 | Locks and records | the writer lock (`.writer-lock`), the witness state's lock (`.witness.json.lock`), the hook's handovers (`.handovers/`) |
 
-The [side-file reference](reference/history-storage.md#13-side-files-and-limits) keeps the exported names, schemas, file modes, atomic-write procedures and crash-settlement rules, plus the catalogue's capture, evidence and file bounds. It does not supply a complete current snapshot or state-record specification. Interpret pending files against the actual history; deleting them as general cleanup can interrupt recovery. A writer also checks that it still owns its lock before appending.
+The [side-file reference](reference/history-storage.md#13-side-files-and-limits) keeps the exported names, schemas, file modes, atomic-write procedures and crash-settlement rules, plus the catalog's capture, evidence and file bounds. It does not supply a complete current snapshot or state-record specification. Interpret pending files against the actual history; deleting them as general cleanup can interrupt recovery. A writer also checks that it still owns its lock before appending.
 
 ### 13.1 Key references
 

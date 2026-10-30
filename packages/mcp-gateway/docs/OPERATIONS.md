@@ -16,7 +16,7 @@ A case is one history file plus one private record directory (`storage`). The hi
 
 Run one gateway host per case: the host claims `storage/gateway-host.lock.json` before serving, and a second host using the same directory refuses to start (`HOST_ALREADY_OWNED`). Embedded users of `createGateway` in exactly-once mode wrap their host with `acquireHostLease(storage)` and release it after all work stops. The lease is a process-ownership guard, not core authority and not a distributed lock.
 
-Owner administration (`irontrellis` commands, `irontrellis-mcp-ops revoke`) may run alongside a live host: the store serialises writers through the history's own writer lock, and the gateway reads the history afresh on every call.
+Owner administration (`irontrellis` commands, `irontrellis-mcp-ops revoke`) may run alongside a live host: the store serializes writers through the history's own writer lock, and the gateway reads the history afresh on every call.
 
 ## Inspect a case
 

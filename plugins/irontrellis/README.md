@@ -80,18 +80,18 @@ A refused tool call starts "IronTrellis · DENY:", then the plain fact and, in p
 - A refusal the guard records is signed with a session key, not the owner key. It carries no owner attestation, and no remote witness covers it, until the owner's next write, such as the admission of the next session.
 - The guard needs the single owner key beside the history (the key file, or a reference to the signer that holds it) to admit each new session. It cannot collect co-signatures, so it can't yet be used with an owner approval policy that needs two or more signatures, or with an owner key kept offline.
 - If the node, the launcher or the guard's built code (`dist/`) is deleted, or the guard crashes, both routes refuse tool calls; the other events only warn.
-- The PreToolUse hook sets `"onFailure": "block"` on both routes, so a guard that times out, cannot start or fails refuses the call. Claude Code 2.1.309 honours it. Claude Code 2.1.100, 2.1.200 and 2.1.250 load the hooks file with it and run its hooks; whether a timed-out hook blocks there was not tested.
+- The PreToolUse hook sets `"onFailure": "block"` on both routes, so a guard that times out, cannot start or fails refuses the call. Claude Code 2.1.309 honors it. Claude Code 2.1.100, 2.1.200 and 2.1.250 load the hooks file with it and run its hooks; whether a timed-out hook blocks there was not tested.
 - Claude Code's ConfigChange hook could block settings edits during a session. IronTrellis does not use it yet.
 - `"failOpen": true` in `irontrellis-hook.json` (off by default, and only you can set it) trades safety for availability: when the guard cannot check a tool call, the call goes to Claude Code's own permissions with a warning instead of being refused. A guard that cannot start at all still refuses.
 - A script, or a `git config` textconv or filter, written earlier and run later is not seen by the shell rules.
 - Extraction into a folder that holds no Claude Code configuration yet is allowed, even if that folder later becomes one.
-- Archives other than tar and zip (7z, cpio, pax) are not recognised.
+- Archives other than tar and zip (7z, cpio, pax) are not recognized.
 
 ## The MCP gateway
 
 The plugin does not start the IronTrellis MCP gateway. To route tools through it, register the gateway yourself with its own config (see the gateway's README).
 
-## Licence
+## License
 
 Apache-2.0. See LICENSE.
 

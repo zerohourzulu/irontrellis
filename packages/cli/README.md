@@ -166,7 +166,7 @@ irontrellis migrate --status new.jsonl.migration-plan.json
 | 3 | `authorize`: INDETERMINATE |
 | 4 | `WRITTEN_UNATTESTED`: the event is recorded, but the signer did not attest the new head; run `repin` later, do not retry |
 
-A failure prints `error: <CODE> — <sentence>` on stderr, followed by the engine's own message on a second line when the sentence does not already carry it; with `--json`, `{ "error": { "code", "message", "detail"?, "context"? } }` on stdout, where `detail` is that engine message and `context` its machine-readable details (a lock path, for example). `--json` prints one document in the core's result shapes, bigints as decimal strings. Colour appears only on a terminal; `--no-color` or `NO_COLOR` (any value) turns it off, and `FORCE_COLOR` turns it on without a terminal (`FORCE_COLOR=0` turns it off).
+A failure prints `error: <CODE> — <sentence>` on stderr, followed by the engine's own message on a second line when the sentence does not already carry it; with `--json`, `{ "error": { "code", "message", "detail"?, "context"? } }` on stdout, where `detail` is that engine message and `context` its machine-readable details (a lock path, for example). `--json` prints one document in the core's result shapes, bigints as decimal strings. Color appears only on a terminal; `--no-color` or `NO_COLOR` (any value) turns it off, and `FORCE_COLOR` turns it on without a terminal (`FORCE_COLOR=0` turns it off).
 
 Write commands read the owner and domain from the file and retry while another writer holds the lock. The controller comes from `--controller`, `IRONTRELLIS_CONTROLLER`, the first `AGENT_CREATED` event, or the owner.
 

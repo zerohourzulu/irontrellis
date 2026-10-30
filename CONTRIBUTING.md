@@ -58,14 +58,14 @@ Frozen material is what the new engine is checked against, so it is never edited
 flowchart TD
     Q{"What does the<br/>change touch?"}
     Q -->|"Documentation, tests,<br/>a focused fix"| PR["Open a pull request"]
-    Q -->|"Protocol behaviour, a public interface,<br/>a security boundary, the history format<br/>or compatibility"| RFC["Start with an RFC"]
+    Q -->|"Protocol behavior, a public interface,<br/>a security boundary, the history format<br/>or compatibility"| RFC["Start with an RFC"]
     RFC --> D["Maintainers discuss it in public,<br/>and record the decision and its reasons"]
     D --> I["The implementation is<br/>reviewed separately"]
 ```
 
 The RFC process and template are in [docs/RFC.md](docs/RFC.md).
 
-A pull request explains the problem, the changed behaviour and how it was verified. It is not merged just because CI passes.
+A pull request explains the problem, the changed behavior and how it was verified. It is not merged just because CI passes.
 
 ## One git identity
 
@@ -78,11 +78,11 @@ Conventional commit prefixes, imperative mood, subject <= 72 characters:
 | prefix | use |
 | --- | --- |
 | `feat:` | a new capability visible to users of a package |
-| `fix:` | a behaviour correction |
+| `fix:` | a behavior correction |
 | `docs:` | documentation only |
 | `test:` | tests only (including differential and conformance vectors) |
-| `refactor:` | no behaviour change |
-| `perf:` | performance with no behaviour change (attach the benchmark) |
+| `refactor:` | no behavior change |
+| `perf:` | performance with no behavior change (attach the benchmark) |
 | `build:` / `ci:` | tooling, workspace, workflows |
 | `chore:` | everything else (dependency bumps, release housekeeping) |
 
@@ -98,7 +98,7 @@ For documentation and anything else written for readers:
 - Specifications and machine-readable output use ISO 8601: 2026-01-01, and 2026-01-01T08:23:00Z in UTC.
 - Dated records in docs/records/ and docs/history/ are kept as they were written.
 
-## Licence
+## License
 
 IronTrellis is Apache-2.0. Contributions intentionally submitted for inclusion are covered by Apache-2.0 section 5 unless explicitly stated otherwise. Preserve third-party notices ([NOTICE](NOTICE), [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)).
 

@@ -44,6 +44,6 @@ A selection of the Lean proofs is in `verification/SelectLeanProofs/`, with the 
 | Python coverage that depends on the profile: legacy and format 1 only | [Conformance](CONFORMANCE.md) |
 | The gap between abstract models and the code's behavior | [Why we check IronTrellis with Lean](FORMAL-VERIFICATION.md) |
 
-Public deployment, an external cryptographic audit and production qualification each need evidence of their own. [Security](SECURITY.md) describes the boundaries, and the [historical reviews](history/README.md) keep their dated findings as they were, without relabelling them as current results.
+Public deployment, an external cryptographic audit and production qualification each need evidence of their own. [Security](SECURITY.md) describes the boundaries, and the [historical reviews](history/README.md) keep their dated findings as they were, without relabeling them as current results.
 
 *Last reviewed: 24 October 2026. This page is revisited at each release.*

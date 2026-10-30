@@ -55,7 +55,7 @@ flowchart TD
 | --- | --- |
 | Bindings | At most 16 |
 | Denial files | At most 1,024; exhaustion refuses another mutation (`POLICY_CAPACITY_EXHAUSTED`) and never prunes |
-| Administrative calls | Serialise them |
+| Administrative calls | Serialize them |
 
 ## Where it fits
 

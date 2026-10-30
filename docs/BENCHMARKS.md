@@ -2,7 +2,7 @@
 
 IronTrellis (formerly Continuity) checks a history whenever it reads one: every signature, every hash, every event's rules. This page records what that costs, as measured on named machines on known dates.
 
-There are two sets of numbers. The **format-2** set was measured on the 1.0.0-rc.2 engine on 12 October 2026. The **September 2026** sets measured legacy and format-1 implementations; they are kept as historical evidence, not relabelled as current performance. No benchmark has been run since October 12.
+There are two sets of numbers. The **format-2** set was measured on the 1.0.0-rc.2 engine on 12 October 2026. The **September 2026** sets measured legacy and format-1 implementations; they are kept as historical evidence, not relabeled as current performance. No benchmark has been run since October 12.
 
 ## One check, in numbers
 

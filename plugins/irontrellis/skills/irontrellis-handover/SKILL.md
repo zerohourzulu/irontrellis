@@ -21,7 +21,7 @@ The session's opening context lists the actions it may and may not take. Use it 
 
 ## When the session ends
 
-IronTrellis writes a handover record of open duties, live grants and sessions. Before you stop, summarise for the user what is finished, what is open, and anything the next session needs to know.
+IronTrellis writes a handover record of open duties, live grants and sessions. Before you stop, summarize for the user what is finished, what is open, and anything the next session needs to know.
 
 ## Settings that are not yours
 

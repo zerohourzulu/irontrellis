@@ -30,7 +30,7 @@ Reference for the [API guide](../API.md) §2. It covers one narrow problem. An o
 2. The request must be plain own data with exactly these five fields.
 3. The admission must exist, with the same event id and the same head (hash, position and time).
 4. The current history must still contain that admission head (otherwise `HISTORY_DIVERGED`).
-5. The intent must still be open: no consumption, outcome, terminal record or effect, and no cancelled obligation (otherwise `INTENT_NOT_OPEN`).
+5. The intent must still be open: no consumption, outcome, terminal record or effect, and no canceled obligation (otherwise `INTENT_NOT_OPEN`).
 6. The submission identity is recomputed from the history and must match the caller's.
 7. `noDispatchStart()` must return exactly `true` (otherwise `DISPATCH_STARTED`).
 

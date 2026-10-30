@@ -22,7 +22,7 @@ IronTrellis begins with this ordinary problem. Software can now act quickly and 
 
 ## People solved this once, for themselves
 
-Human beings are temporary, and we built a world that is not. A person can resign, retire, or die, and still the company continues, the office is filled by someone else, the contract is honoured, the debt is paid, and the estate is settled. Authority can be delegated and taken back. Powers can be limited. Records outlive the people who wrote them. A dispute can trace who did what, and on whose say-so.
+Human beings are temporary, and we built a world that is not. A person can resign, retire, or die, and still the company continues, the office is filled by someone else, the contract is honored, the debt is paid, and the estate is settled. Authority can be delegated and taken back. Powers can be limited. Records outlive the people who wrote them. A dispute can trace who did what, and on whose say-so.
 
 None of this is technology in the usual sense. It is centuries of practice: offices that are separate from the people who hold them, signatures, ledgers, successors, the idea that a power has to come from somewhere. These practices are what let short-lived individuals create long-lived institutions.
 
@@ -151,7 +151,7 @@ From those parts one can imagine a long-lived research group whose agents keep r
 
 ## Effects outlive their makers
 
-Agents will create things of value, and relationships and obligations, that outlast the software that made them. When an agent is permanently switched off, someone has to settle what it leaves behind: authority ends, permissions that cannot be passed on disappear, open obligations are assigned, and anyone with a declared interest receives it. We call this an agent's estate. The phrase is not meant to treat software as a person. It recognises a plain fact: economic effects can outlive the process that caused them, and the world will need orderly ways to handle that.
+Agents will create things of value, and relationships and obligations, that outlast the software that made them. When an agent is permanently switched off, someone has to settle what it leaves behind: authority ends, permissions that cannot be passed on disappear, open obligations are assigned, and anyone with a declared interest receives it. We call this an agent's estate. The phrase is not meant to treat software as a person. It recognizes a plain fact: economic effects can outlive the process that caused them, and the world will need orderly ways to handle that.
 
 ## A human at the root
 

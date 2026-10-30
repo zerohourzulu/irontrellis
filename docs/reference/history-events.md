@@ -4,7 +4,7 @@
 
 Source section numbers are retained for cross-reference with [HISTORY-FORMAT.md](../HISTORY-FORMAT.md). Operational guidance stays in the narrative page. Format-2 owner-policy rules remain in the unchanged [owner-policy reference](owner-policy.md).
 
-**Edition boundary:** Historical legacy/format-1 catalogue, not the current format-2 type/field catalogue. Retained writer descriptions apply to the historical profile only.
+**Edition boundary:** Historical legacy/format-1 catalog, not the current format-2 type/field catalog. Retained writer descriptions apply to the historical profile only.
 
 <!-- source: HISTORY-FORMAT.md:112-245; exact text except relative Markdown links -->
 

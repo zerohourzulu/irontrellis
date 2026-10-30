@@ -43,7 +43,7 @@ A `ROLLBACK` or `MISSING` status beside a *valid* file is re-read up to three ti
 
 ## 10. Anchors
 
-Beyond the pin, two mechanisms catch a restored or cut-back copy. The **remote witnesses** a history binds (§10.1, docs/WITNESS.md) are the rollback defence: services the file's writers cannot rewrite. **Anchors** (this section) are owner-signed evidence about a head kept elsewhere; the local anchor log is the offline fallback that every `verify()` reads.
+Beyond the pin, two mechanisms catch a restored or cut-back copy. The **remote witnesses** a history binds (§10.1, docs/WITNESS.md) are the rollback defense: services the file's writers cannot rewrite. **Anchors** (this section) are owner-signed evidence about a head kept elsewhere; the local anchor log is the offline fallback that every `verify()` reads.
 
 An **anchor** is an owner-signed head attestation (the `attestation` structure of §9) handed to an anchor target, whose receipt is recorded back into the history as `ANCHOR_RECORDED`. Replay accepts the event iff `anchoredHead.position < <event position>` and `anchoredHead.hash` equals the history hash at that position; anchors are otherwise informational (they grant nothing). `verify()` reports every anchor as `PREFIX_OK` or `MISMATCH` (`anchors[].anchor` echoes `data.anchor`). An anchor binds, unbinds and re-policies no remote witness, whatever its receipt holds: only the events of §10.1 do.
 
