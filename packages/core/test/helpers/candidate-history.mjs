@@ -83,6 +83,8 @@ if (process.argv[1] !== undefined && fileURLToPath(import.meta.url) === process.
   const dist = new URL("../../dist/", import.meta.url);
   const core = await import(new URL("index.js", dist).href);
   const { signerFromKeyPair } = await import(new URL("signer.js", dist).href);
-  const events = await generateCandidateHistory({ ...core, signerFromKeyPair }, Number(process.argv[2] ?? 1), Number(process.argv[3] ?? 90));
+  // A-206.1: the format-1 mark from the same dist copy as the API (the public index does not export it).
+  const { FORMAT1_TEST_TOOLING } = await import(new URL("internal-format1.js", dist).href);
+  const events = await generateCandidateHistory({ ...core, signerFromKeyPair, FORMAT1_TEST_TOOLING },Number(process.argv[2] ?? 1), Number(process.argv[3] ?? 90));
   process.stdout.write(core.jsonStringifyWithBigints(events));
 }
