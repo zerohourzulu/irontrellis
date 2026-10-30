@@ -44,7 +44,7 @@
     "@ramex-labs/irontrellis-remote-tools": "workspace:*"
   },
   "peerDependencies": {
-    "@langchain/core": "1.2.12",
+    "@langchain/core": "^1.2.18",
     "zod": "4.6.5"
   },
   "peerDependenciesMeta": {
@@ -59,7 +59,7 @@
     "test": "node --test test/*.test.mjs"
   },
   "devDependencies": {
-    "@langchain/core": "1.2.12",
+    "@langchain/core": "1.3.2",
     "zod": "4.6.5"
   },
   "publishConfig": {

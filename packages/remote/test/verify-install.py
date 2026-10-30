@@ -36,11 +36,11 @@ for directory,name in [('core','irontrellis'),('remote-tools','irontrellis-remot
     file=tarballs/f'ramex-labs-{name}-1.0.0-rc.2.tgz'
     assert file.is_file(),file
     dependencies['@ramex-labs/'+name]='file:'+str(file)
-dependencies.update({'@langchain/core':'1.2.12','zod':'4.6.5','typescript':'5.9.3','@types/node':'24.6.0'})
+dependencies.update({'@langchain/core':'1.3.2','zod':'4.6.5','typescript':'5.9.3','@types/node':'24.6.0'})
 (consumer/'package.json').write_text(json.dumps({'name':'irontrellis-remote-packed-verification','private':True,'type':'module','dependencies':dependencies},indent=2)+'\n')
-# LangSmith 0.10.10/0.10.11 contain an unresolved NullableHeaders declaration.
-# 0.9.0 is within @langchain/core 1.2.12's >=0.5.0 <1.0.0 range.
-(consumer/'pnpm-workspace.yaml').write_text("packages:\n  - '.'\noverrides:\n  langsmith: 0.9.0\n"+"".join(f"  {json.dumps(k)}: {json.dumps(v)}\n" for k,v in dependencies.items() if k.startswith("@ramex-labs/")))
+# LangSmith is held at the workspace's override (pnpm-workspace.yaml): 0.11.5, within @langchain/core 1.3.2's
+# >=0.11.0 <1.0.0 range (0.10.10/0.10.11 lacked a NullableHeaders declaration).
+(consumer/'pnpm-workspace.yaml').write_text("packages:\n  - '.'\noverrides:\n  langsmith: 0.11.5\n"+"".join(f"  {json.dumps(k)}: {json.dumps(v)}\n" for k,v in dependencies.items() if k.startswith("@ramex-labs/")))
 install=[a.pnpm,'install','--ignore-scripts','--config.update-notifier=false','--config.fetch-retries=0']
 if a.store_dir:install+=['--store-dir',a.store_dir.resolve()]
 if a.offline:install+=['--offline']

@@ -12,8 +12,9 @@
  * printed (and written to --json), so the log shows what was verified.
  *
  * Third-party tooling is pinned: the MCP SDK, TypeScript and @types/node the consumer projects install are the
- * versions in pnpm-lock.yaml (exact, never a range); the optional peers our packages declare (exact versions) are
- * installed as declared, and the workspace's `overrides` (pnpm-workspace.yaml) apply in every consumer; and the Python build frontend, backend and twine come from
+ * versions in pnpm-lock.yaml (exact, never a range); the optional peers our packages declare are
+ * installed as declared (an exact version) or, for a "^X.Y.Z" range, at the package's exact devDependency and, in a
+ * separate project, at the floor X.Y.Z; and the workspace's `overrides` (pnpm-workspace.yaml) apply in every consumer; and the Python build frontend, backend and twine come from
  * scripts/requirements-release.txt (exact versions with hashes, `pip install --require-hashes`).
  *
  * Steps (each one row of the PASS/FAIL table printed at the end; exit 1 when any row fails):
@@ -489,15 +490,31 @@ const WORKSPACE_OVERRIDES = (() => {
   }
   return out;
 })();
-/** The optional peers our publishable packages declare (exact versions only: a consumer installs exactly these). */
-const PEER_SPECS = (() => {
+/**
+ * The optional peers our publishable packages declare: an exact version, or a caret range "^X.Y.Z". For a range, the
+ * consumers install the exact version the workspace tests with (the same package's devDependency, which must be exact
+ * and inside the range), and PEER_FLOORS holds X.Y.Z, the lowest version the range admits, for the floor check.
+ */
+const { PEER_SPECS, PEER_FLOORS } = (() => {
+  const exact = /^\d+\.\d+\.\d+(-[\w.]+)?$/;
   const peers = new Map();
+  const floors = new Map();
   for (const { manifest } of workspace) for (const [name, spec] of Object.entries(manifest.peerDependencies ?? {})) {
-    if (!/^\d+\.\d+\.\d+(-[\w.]+)?$/.test(spec)) throw new Error(`${manifest.name}: peer ${name} "${spec}" is not an exact version`);
-    if (peers.has(name) && peers.get(name) !== spec) throw new Error(`peer ${name} is ${peers.get(name)} and ${spec} in different packages`);
-    peers.set(name, spec);
+    let tested = spec;
+    const caret = /^\^(\d+)\.(\d+)\.(\d+)$/.exec(spec);
+    if (caret !== null) {
+      tested = manifest.devDependencies?.[name];
+      const t = exact.test(tested ?? "") ? tested.split(/[.-]/).slice(0, 3).map(Number) : undefined;
+      const f = caret.slice(1).map(Number);
+      const inside = t !== undefined && t[0] === f[0] && (t[1] > f[1] || (t[1] === f[1] && t[2] >= f[2]));
+      if (!inside) throw new Error(`${manifest.name}: peer ${name} "${spec}" needs an exact devDependency inside the range (found ${tested})`);
+      if (floors.has(name) && floors.get(name) !== caret.slice(1).join(".")) throw new Error(`peer ${name} has different floors in different packages`);
+      floors.set(name, caret.slice(1).join("."));
+    } else if (!exact.test(spec)) throw new Error(`${manifest.name}: peer ${name} "${spec}" is neither an exact version nor ^X.Y.Z`);
+    if (peers.has(name) && peers.get(name) !== tested) throw new Error(`peer ${name} is tested at ${peers.get(name)} and ${tested} in different packages`);
+    peers.set(name, tested);
   }
-  return [...peers].map(([name, spec]) => `${name}@${spec}`);
+  return { PEER_SPECS: [...peers].map(([name, spec]) => `${name}@${spec}`), PEER_FLOORS: [...floors].map(([name, spec]) => `${name}@${spec}`) };
 })();
 
 /** Every public subpath of every packed package, as import specifiers. */
@@ -814,6 +831,23 @@ const npmInstalled = await check("npm", "npm install <tarball files> (no registr
 await check("npm", "every bin: --help and --version", () => binsRespond(join(npmProject, "node_modules", ".bin"), npmEnv), npmInstalled);
 await check("npm", "ESM import and require() of every public subpath", () => importsWork(npmProject, npmEnv), npmInstalled);
 await check("npm", "consumer type-check (tsc --noEmit)", () => typesResolve(npmProject, npmEnv), npmInstalled);
+
+// A ranged peer is tested at both ends: above at the version the workspace tests with, here at the range's floor
+// (a fresh project, today's registry for everything else, so a transitive package that raises its own peer floor
+// past ours shows up as an npm ls problem).
+const floorProject = join(TMP, "npm-peer-floor");
+await check("npm", `ranged peers at their floor (${PEER_FLOORS.join(", ") || "none"}): npm ls --all, every public subpath imports`, async () => {
+  if (PEER_FLOORS.length === 0) return "no ranged peers";
+  makeProject(floorProject, { "@ramex-labs:registry": "http://127.0.0.1:9/", "fetch-retries": "0" });
+  const floorEnv = envWith([join(floorProject, "node_modules", ".bin")]);
+  const floorNames = new Set(PEER_FLOORS.map((spec) => spec.slice(0, spec.lastIndexOf("@"))));
+  const others = PEER_SPECS.filter((spec) => !floorNames.has(spec.slice(0, spec.lastIndexOf("@"))));
+  const tarballs = [...packed.values()].map(({ file }) => file);
+  await run("npm", ["install", "--no-audit", "--no-fund", ...tarballs, ...PEER_FLOORS, ...others, `@modelcontextprotocol/client@${MCP_CLIENT_VERSION}`], { cwd: floorProject, env: floorEnv, timeout: 600_000 });
+  const ls = await run("npm", ["ls", "--all", "--json"], { cwd: floorProject, env: floorEnv, codes: [0, 1] });
+  if (ls.code !== 0) return problems([`npm ls --all reports problems: ${JSON.stringify(parseJson(ls.stdout, "npm ls").problems ?? tail(ls.stderr))}`], "");
+  return `npm ls --all clean; ${await importsWork(floorProject, floorEnv)}`;
+}, didPack);
 
 await check("anchor-outbox", "installed public exports, raw-call preparation and closed inputs", async () => {
   writeFileSync(join(npmProject, "anchor-outbox-smoke.mjs"), readFileSync(join(ROOT, "scripts/anchor-outbox-install-smoke.mjs")));
