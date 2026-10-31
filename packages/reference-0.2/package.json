@@ -12,6 +12,6 @@
     "lint": "echo \"reference-0.2: frozen sources are not linted\""
   },
   "devDependencies": {
-    "viem": "2.55.19"
+    "viem": "2.57.11"
   }
 }
