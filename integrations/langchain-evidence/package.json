@@ -6,7 +6,7 @@
     "langchain": "1.5.12",
     "@langchain/core": "1.2.12",
     "@modelcontextprotocol/client": "2.2.0",
-    "zod": "4.6.5",
+    "zod": "4.6.7",
     "@ramex-labs/irontrellis": "workspace:*",
     "@ramex-labs/irontrellis-protected-evidence-mcp": "workspace:*"
   },
