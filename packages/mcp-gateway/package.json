@@ -33,7 +33,7 @@
   "dependencies": {
     "@ramex-labs/irontrellis": "workspace:*",
     "@ramex-labs/irontrellis-remote": "workspace:*",
-    "@modelcontextprotocol/client": "2.2.0",
+    "@modelcontextprotocol/client": "2.4.0",
     "@modelcontextprotocol/server": "2.2.0",
     "jose": "6.2.12"
   },
