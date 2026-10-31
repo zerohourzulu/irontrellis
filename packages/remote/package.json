@@ -45,7 +45,7 @@
   },
   "peerDependencies": {
     "@langchain/core": "^1.2.18",
-    "zod": "4.6.5"
+    "zod": "4.6.7"
   },
   "peerDependenciesMeta": {
     "@langchain/core": {
@@ -60,7 +60,7 @@
   },
   "devDependencies": {
     "@langchain/core": "1.3.2",
-    "zod": "4.6.5"
+    "zod": "4.6.7"
   },
   "publishConfig": {
     "access": "public",
