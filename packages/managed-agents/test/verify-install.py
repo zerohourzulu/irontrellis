@@ -12,7 +12,7 @@ def run(name,args,**kw):
  return r
 balls=out/'tarballs';balls.mkdir(exist_ok=True)
 for name in ['core','managed-agents','agent-shims']:run('pack-'+name,[a.pnpm,'--dir',str(package.parent/name),'pack','--pack-destination',str(balls)])
-pins={name:'file:'+str(balls/('ramex-labs-'+name.split('/')[1]+'-1.0.0-rc.2.tgz')) for name in ['@ramex-labs/irontrellis','@ramex-labs/irontrellis-managed-agents','@ramex-labs/irontrellis-agent-shims']}
+pins={name:'file:'+str(balls/('ramex-labs-'+name.split('/')[1]+'-1.0.0-rc.2.1.tgz')) for name in ['@ramex-labs/irontrellis','@ramex-labs/irontrellis-managed-agents','@ramex-labs/irontrellis-agent-shims']}
 consumer=out/'consumer';consumer.mkdir(exist_ok=True)
 (consumer/'package.json').write_text(json.dumps({'name':'adapters-packed-consumer','type':'module','private':True,'dependencies':{**pins,'@openai/agents':'0.20.0','@langchain/langgraph':'1.4.21','@langchain/core':'1.3.2','zod':'4.6.5'}},indent=2)+'\n')
 (consumer/'pnpm-workspace.yaml').write_text(json.dumps({'overrides':{**pins,'langsmith':'0.11.5'},'autoInstallPeers':False},indent=2)+'\n')

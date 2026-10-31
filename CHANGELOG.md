@@ -2,6 +2,20 @@
 
 All notable changes to the IronTrellis (formerly Continuity) packages are recorded here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); every publishable package shares one version (`scripts/check-versions.mjs` enforces it, for the npm packages, the MCP Registry entries and this file). The Python package is the exception: `check-versions` holds it at 1.0.0rc1 until it is ported to format 2. Findings quoted below are from the independent evaluation of Continuity dated 23 September 2026.
 
+## [1.0.0-rc.2.1] — LangChain peer fix
+
+1.0.0-rc.2 with one dependency fix. Nothing else changes: the history format, the commands, the hooks and the gateway are as in 1.0.0-rc.2, and everything the documentation says of 1.0.0-rc.2 applies to this release too. Published to npm under the `next` tag.
+
+### Fixed
+
+- Installing `@ramex-labs/irontrellis-agent-shims` together with `@ramex-labs/irontrellis-remote` or `@ramex-labs/irontrellis-remote-tools` gave an invalid dependency tree from 30 October 2026. That day LangChain released `@langchain/langgraph-sdk` 1.12.9, which agent-shims reaches through `@langchain/langgraph` and which needs `@langchain/core` 1.2.18 or later, while remote and remote-tools 1.0.0-rc.2 asked for exactly `@langchain/core` 1.2.12. npm warned and `npm ls` reported the tree as invalid; installs with strict peer checks refused it.
+- remote and remote-tools now accept `@langchain/core` 1.2.18 or any later 1.x (the peer is still optional). The packages are tested with `@langchain/core` 1.3.2. LangSmith, which `@langchain/core` pulls in, is tested at 0.11.5.
+- If you stay on 1.0.0-rc.2 for now, add `"overrides": { "@langchain/langgraph-sdk": "1.12.8" }` to your `package.json` and keep `@langchain/core` at 1.2.12.
+
+### Release checks
+
+- The install check (`scripts/verify-install.mjs`) accepts a peer range of the form `^X.Y.Z`. The consumer projects install the version the workspace tests with, and a new row installs the packed packages with the peer at the bottom of its range, X.Y.Z, against the registry as it is that day. It requires a clean `npm ls --all` and an import of every public subpath.
+
 ## [1.0.0-rc.2] — IronTrellis Core
 
 IronTrellis Core: a new history format (format 2, `irontrellis-event/2`) and the commands, hooks and gateway that write it. Published to npm as a release candidate, under the `next` tag.

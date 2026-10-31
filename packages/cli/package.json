@@ -1,6 +1,6 @@
 {
   "name": "irontrellis",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.2.1",
   "description": "The irontrellis command: init, inspect, verify, grant, hand over and anchor an IronTrellis history. Agents change. The structure holds.",
   "license": "Apache-2.0",
   "type": "module",

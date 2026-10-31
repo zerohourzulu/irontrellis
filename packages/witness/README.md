@@ -1,6 +1,6 @@
 # IronTrellis witness server
 
-IronTrellis (formerly Continuity) keeps a checkable record of who may act for whom, and which duties survive when an AI agent is replaced. `@ramex-labs/irontrellis-witness` provides `irontrellis-witness`, a small, self-hostable HTTP server that records owner-signed head statements for IronTrellis histories in an append-only RFC 6962 Merkle log and returns signed receipts. With it, a history file cannot be rolled back to an older attested state without the owner's own tools noticing. This is version 1.0.0-rc.2, installed from the `next` tag.
+IronTrellis (formerly Continuity) keeps a checkable record of who may act for whom, and which duties survive when an AI agent is replaced. `@ramex-labs/irontrellis-witness` provides `irontrellis-witness`, a small, self-hostable HTTP server that records owner-signed head statements for IronTrellis histories in an append-only RFC 6962 Merkle log and returns signed receipts. With it, a history file cannot be rolled back to an older attested state without the owner's own tools noticing. This is version 1.0.0-rc.2.1, installed from the `next` tag.
 
 ## The problem: a genuine copy that is only old
 

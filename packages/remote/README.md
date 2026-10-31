@@ -2,7 +2,7 @@
 
 IronTrellis (formerly Continuity) keeps a checkable record of who may act for whom, and which duties survive when an AI agent is replaced. `@ramex-labs/irontrellis-remote` is the public SDK for the format-2 cooperative remote executor: it lets an agent's tool call run at a remote service that cooperates with that record. The service, called the destination, receives the history itself and checks each operation against it before acting.
 
-This 1.0.0-rc.2 port requires Node.js 22.18 or later and the exact 1.0.0-rc.2 Core and remote-tools packages named in `package.json`.
+This 1.0.0-rc.2.1 port requires Node.js 22.18 or later and the exact 1.0.0-rc.2.1 Core and remote-tools packages named in `package.json`.
 
 ## One call, start to finish
 
@@ -20,7 +20,7 @@ An application lets an agent open a ticket at a remote service. The agent suppli
 | Import | Surface |
 | --- | --- |
 | `@ramex-labs/irontrellis-remote` | Tool registry, pinned cooperative client, synthetic destination, executor, recovery and protected evidence |
-| `@ramex-labs/irontrellis-remote/langchain` | LangChain tool wrappers; requires the optional pinned peers `@langchain/core` 1.2.12 and `zod` 4.6.5 |
+| `@ramex-labs/irontrellis-remote/langchain` | LangChain tool wrappers; requires the optional peers `@langchain/core` (1.2.18 or a later 1.x; tested with 1.3.2) and `zod` 4.6.5 |
 | `@ramex-labs/irontrellis-remote/local` | Core privileged local owner and execution APIs |
 | `@ramex-labs/irontrellis-remote/runtime` | Core runtime session APIs |
 | `@ramex-labs/irontrellis-remote/attempts` | Core durable attempt APIs |

@@ -30,7 +30,7 @@ def run(name,args,cwd):
 names=['protected-evidence-mcp','policy-composition','langchain-evidence']
 run('pack-core',[a.pnpm,'pack','--pack-destination',tarballs],workspace/'packages/core')
 for name in names:run('pack-'+name,[a.pnpm,'pack','--pack-destination',tarballs],workspace/'integrations'/name)
-dependencies={'@ramex-labs/irontrellis'+('-'+n if n else ''):'file:'+str(tarballs/('ramex-labs-irontrellis'+('-'+n if n else '')+'-1.0.0-rc.2.tgz')) for n in ['',*names]}
+dependencies={'@ramex-labs/irontrellis'+('-'+n if n else ''):'file:'+str(tarballs/('ramex-labs-irontrellis'+('-'+n if n else '')+'-1.0.0-rc.2.1.tgz')) for n in ['',*names]}
 dependencies.update({'typescript':'5.9.3','@types/node':'24.6.0','@modelcontextprotocol/client':'2.2.0','@modelcontextprotocol/server':'2.2.0','langchain':'1.5.12','@langchain/core':'1.2.12','zod':'4.6.5','@cedar-policy/cedar-wasm':'4.13.0','@openfga/sdk':'0.9.7'})
 (consumer/'package.json').write_text(json.dumps({'name':'irontrellis-integrations-packed-verification','private':True,'type':'module','dependencies':dependencies},indent=2)+'\n')
 (consumer/'pnpm-workspace.yaml').write_text("packages:\n  - '.'\noverrides:\n  langsmith: 0.9.0\n  axios: 1.20.0\n"+''.join('  '+json.dumps(k)+': '+json.dumps(v)+'\n' for k,v in dependencies.items() if k.startswith('@ramex-labs/')))

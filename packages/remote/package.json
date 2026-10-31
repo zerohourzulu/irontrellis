@@ -1,6 +1,6 @@
 {
   "name": "@ramex-labs/irontrellis-remote",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.2.1",
   "description": "IronTrellis remote tools SDK with format-2 history authority",
   "type": "module",
   "license": "Apache-2.0",

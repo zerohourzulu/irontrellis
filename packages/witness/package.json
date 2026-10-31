@@ -1,6 +1,6 @@
 {
   "name": "@ramex-labs/irontrellis-witness",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.2.1",
   "description": "IronTrellis witness server: a small self-hostable HTTP service that records owner-signed head statements in an append-only RFC 6962 Merkle log and returns signed receipts, so a history cannot be rolled back unnoticed. Agents change. The structure holds.",
   "license": "Apache-2.0",
   "type": "module",

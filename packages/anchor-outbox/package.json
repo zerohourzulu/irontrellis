@@ -1,6 +1,6 @@
 {
   "name": "@ramex-labs/irontrellis-anchor-outbox",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.2.1",
   "description": "Durable local anchor outbox with replay-bound statements and single-callback fences.",
   "license": "Apache-2.0",
   "type": "module",

@@ -1,12 +1,12 @@
 # IronTrellis agent shims
 
-IronTrellis (formerly Continuity) keeps a checkable record of who may act for whom, and which duties survive when an AI agent is replaced. This package, `@ramex-labs/irontrellis-agent-shims` 1.0.0-rc.2, connects the OpenAI Agents SDK (0.20.0) and LangGraph (1.4.21) to the [managed-agents adapter](../managed-agents/README.md). The framework's own approval or interrupt pauses a tool call; when it resumes, IronTrellis checks the agent's authority again before anything runs. An approval, or a resumed checkpoint, is never permission to run.
+IronTrellis (formerly Continuity) keeps a checkable record of who may act for whom, and which duties survive when an AI agent is replaced. This package, `@ramex-labs/irontrellis-agent-shims` 1.0.0-rc.2.1, connects the OpenAI Agents SDK (0.20.0) and LangGraph (1.4.21) to the [managed-agents adapter](../managed-agents/README.md). The framework's own approval or interrupt pauses a tool call; when it resumes, IronTrellis checks the agent's authority again before anything runs. An approval, or a resumed checkpoint, is never permission to run.
 
 ```sh
 npm install @ramex-labs/irontrellis-agent-shims@next
 ```
 
-The frameworks need `@langchain/core` and `zod` as peers; this release is tested with `@langchain/core` 1.2.12 and `zod` 4.6.5.
+The frameworks need `@langchain/core` and `zod` as peers; this release accepts `@langchain/core` 1.2.18 or a later 1.x (tested with 1.3.2) and is tested with `zod` 4.6.5.
 
 ## A stale approval, caught
 

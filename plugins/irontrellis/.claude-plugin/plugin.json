@@ -1,6 +1,6 @@
 {
   "name": "irontrellis",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.2.1",
   "description": "Run Claude Code under IronTrellis: each session admitted as a runtime, side-effecting tool calls checked against the recorded grants, a handover record when the session ends. The same guard as irontrellis-hook install claude-code; choose one route per project.",
   "author": {
     "name": "RAmEx Labs"

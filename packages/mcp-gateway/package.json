@@ -1,6 +1,6 @@
 {
   "name": "@ramex-labs/irontrellis-mcp-gateway",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.2.1",
   "description": "IronTrellis MCP gateway: operator-approved upstream MCP tools behind a recorded authority check, as exactly-once jobs (reconciled, never repeated) or as per-call authorized tools. Agents change. The structure holds.",
   "license": "Apache-2.0",
   "type": "module",

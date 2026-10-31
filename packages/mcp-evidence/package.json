@@ -1,6 +1,6 @@
 {
   "name": "@ramex-labs/irontrellis-mcp",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.2.1",
   "description": "IronTrellis evidence MCP server: one bounded local tool that copies operator-selected files into an evidence packet when the configured agent still holds the authority, exactly once per operation id. Agents change. The structure holds.",
   "license": "Apache-2.0",
   "type": "module",

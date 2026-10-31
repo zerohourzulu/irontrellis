@@ -1,6 +1,6 @@
 # IronTrellis MCP Gateway
 
-`@ramex-labs/irontrellis-mcp-gateway` **1.0.0-rc.2** puts the MCP tools you approve behind IronTrellis (formerly Continuity), which keeps a signed, replayable history of what each AI agent may do. Before a call reaches an upstream tool, the gateway checks the agent's current authority in that history (format 2); for exactly-once jobs and recorded calls, it also keeps the state of the attempt on disk. MCP client and server dependencies are pinned to **2.2.0**.
+`@ramex-labs/irontrellis-mcp-gateway` **1.0.0-rc.2.1** puts the MCP tools you approve behind IronTrellis (formerly Continuity), which keeps a signed, replayable history of what each AI agent may do. Before a call reaches an upstream tool, the gateway checks the agent's current authority in that history (format 2); for exactly-once jobs and recorded calls, it also keeps the state of the attempt on disk. MCP client and server dependencies are pinned to **2.2.0**.
 
 ## What it is for
 

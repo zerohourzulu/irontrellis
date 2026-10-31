@@ -33,7 +33,7 @@ for directory in ['core','remote-tools','remote']:
     run('pack-'+directory,[a.pnpm,'pack','--pack-destination',tarballs],workspace/'packages'/directory)
 dependencies={}
 for directory,name in [('core','irontrellis'),('remote-tools','irontrellis-remote-tools'),('remote','irontrellis-remote')]:
-    file=tarballs/f'ramex-labs-{name}-1.0.0-rc.2.tgz'
+    file=tarballs/f'ramex-labs-{name}-1.0.0-rc.2.1.tgz'
     assert file.is_file(),file
     dependencies['@ramex-labs/'+name]='file:'+str(file)
 dependencies.update({'@langchain/core':'1.3.2','zod':'4.6.5','typescript':'5.9.3','@types/node':'24.6.0'})

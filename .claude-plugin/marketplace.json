@@ -11,7 +11,7 @@
       "name": "irontrellis",
       "source": "./plugins/irontrellis",
       "description": "The IronTrellis guard for Claude Code (the same guard as the irontrellis-hook settings route; choose one per project).",
-      "version": "1.0.0-rc.2"
+      "version": "1.0.0-rc.2.1"
     }
   ]
 }

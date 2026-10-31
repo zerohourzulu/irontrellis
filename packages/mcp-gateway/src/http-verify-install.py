@@ -16,14 +16,14 @@ for name in ['dist','docs']:
  if(package/name).exists():shutil.copytree(package/name,fixture/name,ignore=shutil.ignore_patterns('*-test*'))
 for name in ['README.md','LICENSE','NOTICE','server.json']:
  if(package/name).exists():shutil.copy2(package/name,fixture/name)
-manifest=json.loads((package/'package.json').read_text());manifest['dependencies'].update({'@ramex-labs/irontrellis':'1.0.0-rc.2','@ramex-labs/irontrellis-remote':'1.0.0-rc.2','@modelcontextprotocol/client':'2.2.0','@modelcontextprotocol/server':'2.2.0','jose':'6.2.12'})
+manifest=json.loads((package/'package.json').read_text());manifest['dependencies'].update({'@ramex-labs/irontrellis':'1.0.0-rc.2.1','@ramex-labs/irontrellis-remote':'1.0.0-rc.2.1','@modelcontextprotocol/client':'2.2.0','@modelcontextprotocol/server':'2.2.0','jose':'6.2.12'})
 for name in ['http','cooperative','tasks','access-http']:manifest['exports']['./'+name]={'types':'./dist/'+name+'.d.mts','default':'./dist/'+name+'.mjs'}
 (fixture/'package.json').write_text(json.dumps(manifest,indent=2)+'\n');(out/'proposed-package.json').write_text(json.dumps(manifest,indent=2)+'\n')
 tarballs=out/'tarballs';tarballs.mkdir(exist_ok=True)
 for directory in ['core','remote-tools','remote']:run('pack-'+directory,[a.pnpm,'pack','--pack-destination',tarballs],workspace/'packages'/directory)
 run('pack-gateway',[a.pnpm,'pack','--pack-destination',tarballs],fixture)
 consumer=Path(tempfile.mkdtemp(prefix='consumer-',dir=out))
-deps={f'@ramex-labs/{name}':'file:'+str(tarballs/f'ramex-labs-{name}-1.0.0-rc.2.tgz')for name in ['irontrellis','irontrellis-remote-tools','irontrellis-remote','irontrellis-mcp-gateway']};deps.update({'@modelcontextprotocol/client':'2.2.0','jose':'6.2.12','typescript':'5.9.3','@types/node':'24.6.0'})
+deps={f'@ramex-labs/{name}':'file:'+str(tarballs/f'ramex-labs-{name}-1.0.0-rc.2.1.tgz')for name in ['irontrellis','irontrellis-remote-tools','irontrellis-remote','irontrellis-mcp-gateway']};deps.update({'@modelcontextprotocol/client':'2.2.0','jose':'6.2.12','typescript':'5.9.3','@types/node':'24.6.0'})
 (consumer/'package.json').write_text(json.dumps({'name':'isolated-gateway-consumer','private':True,'type':'module','dependencies':deps},indent=2)+'\n')
 (consumer/'pnpm-workspace.yaml').write_text("packages:\n - '.'\nautoInstallPeers: false\noverrides:\n"+''.join(' '+json.dumps(k)+': '+json.dumps(v)+'\n'for k,v in deps.items()if k.startswith('@ramex-labs/')))
 install=[a.pnpm,'install','--ignore-scripts']

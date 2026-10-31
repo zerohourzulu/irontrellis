@@ -6,7 +6,7 @@ IronTrellis (formerly Continuity) keeps a checkable record of who may act for wh
 
 Need several approved tools, or tools the model may call repeatedly? Use [`@ramex-labs/irontrellis-mcp-gateway`](../mcp-gateway/README.md) (exactly-once jobs and per-call mode). This package is the smallest complete example of the same boundary: your application chooses the agent, the source files, the destination and the key before launching the server; none of them is a tool argument. Concepts: [docs/PRINCIPLES.md](../../docs/PRINCIPLES.md), [docs/GLOSSARY.md](../../docs/GLOSSARY.md).
 
-This is 1.0.0-rc.2; install it from the `next` tag.
+This is 1.0.0-rc.2.1; install it from the `next` tag.
 
 ## What happens, call by call
 

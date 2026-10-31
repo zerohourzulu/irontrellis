@@ -1,6 +1,6 @@
 {
   "name": "@ramex-labs/irontrellis-hooks",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.2.1",
   "description": "The irontrellis-hook command: run Claude Code, OpenAI Codex CLI and Cursor sessions under IronTrellis — each session admitted as a runtime, side-effecting tool calls checked against the recorded grants, a handover record written when the session ends. Agents change. The structure holds.",
   "license": "Apache-2.0",
   "type": "module",

@@ -1,6 +1,6 @@
 {
   "name": "@ramex-labs/irontrellis-remote-tools",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.2.1",
   "type": "module",
   "license": "Apache-2.0",
   "engines": {

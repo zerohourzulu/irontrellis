@@ -17,7 +17,7 @@ def run(name,command,**kw):
  return result
 for name,source in [('core',package.parent/'core'),('remote-tools',package)]:
  run('pack-'+name,[a.pnpm,'--dir',str(source),'pack','--pack-destination',str(tarballs)])
-core=tarballs/'ramex-labs-irontrellis-1.0.0-rc.2.tgz';tools=tarballs/'ramex-labs-irontrellis-remote-tools-1.0.0-rc.2.tgz'
+core=tarballs/'ramex-labs-irontrellis-1.0.0-rc.2.1.tgz';tools=tarballs/'ramex-labs-irontrellis-remote-tools-1.0.0-rc.2.1.tgz'
 consumer=out/'consumer';consumer.mkdir(exist_ok=True)
 (consumer/'package.json').write_text(json.dumps({'name':'irontrellis-remote-tools-packed-consumer','type':'module','private':True,'dependencies':{'@ramex-labs/irontrellis':'file:'+str(core),'@ramex-labs/irontrellis-remote-tools':'file:'+str(tools),'@langchain/core':'1.3.2','zod':'4.6.5'}},indent=2)+'\n')
 (consumer/'pnpm-workspace.yaml').write_text(json.dumps({'overrides':{'@ramex-labs/irontrellis':'file:'+str(core),'langsmith':'0.11.5'},'autoInstallPeers':False},indent=2)+'\n')

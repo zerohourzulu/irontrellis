@@ -1,6 +1,6 @@
 {
   "name": "@ramex-labs/irontrellis",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.2.1",
   "description": "IronTrellis core: a signed, replayable record of authority, duties and succession for AI agents. Agents change. The structure holds.",
   "license": "Apache-2.0",
   "type": "module",
