@@ -34,11 +34,15 @@ import { mapTool, rendersToolInput, staticCapabilities } from "./policy.ts";
 import { recordToolRefusal } from "./refusals.ts";
 import { canonicalProject, handoversDir, readPrivateJson, removePrivateFile, routeSessionFile, sessionFileName, sessionsDir, withLockFile, writePrivateFile } from "./paths.ts";
 import { hookRoute, pluginEnabled, readRouteSession, writeRouteSession } from "./route.ts";
-import { protection } from "./protect.ts";
+import { protection, type Protection } from "./protect.ts";
 import type { HookEvent, Protocol, Reply, ToolDecision, Verdict } from "./protocols/types.ts";
 
 /** `via`: "plugin" when the IronTrellis plugin's entry point runs this guard (cli.ts `plugin`), else a settings hook. */
-export type HookIo = Readonly<{ env: Readonly<Record<string, string | undefined>>; cwd: string; now: () => number; via?: "plugin" | "hook" }>;
+export type HookIo = Readonly<{ env: Readonly<Record<string, string | undefined>>; cwd: string; now: () => number; via?: "plugin" | "hook";
+  /** EXPERIMENTAL (the resident guard, daemon.ts): the owner handle for an event; default openOwner(config, now, "enforce", onWarning). */
+  ownerFor?: (config: HookConfig, now: () => number, onWarning: (warning: string) => void) => LocalOwner;
+  /** EXPERIMENTAL (the resident guard): the environment the protective rules read, the client's; default process.env. */
+  protectEnv?: Readonly<Record<string, string | undefined>> }>;
 export const HANDOVER_VERSION = "irontrellis-hook-handover/1";
 export const SESSION_KEY_VERSION = "irontrellis-session-key/1";
 
@@ -372,6 +376,13 @@ export type DecideOptions = Readonly<{
   /** Check the host session against the history (default true; `check` turns it off). */ checkSession?: boolean;
   /** The route's project, protected beside the config's (protect.ts guardProjects): CLAUDE_PROJECT_DIR, else the project the session was admitted in. */ routeProject?: string;
   /** The clock, for deciding again (bounded) when another writer moved the head past `now` (CAUSAL_TIME_INVALID); see authorizeAtReading. */ clock?: () => number;
+  /**
+   * The protective rules' result for this call (null: none applies), when the caller already evaluated them for the same
+   * call, route project and environment: answer() does, before the history is opened, so a protected call is refused
+   * even when the history cannot be read. Given, decideTool does not evaluate them a second time.
+   */
+  protection?: Protection | null;
+  /** EXPERIMENTAL (the resident guard): the environment the protective rules read (default process.env, the hook's own). */ env?: Readonly<Record<string, string | undefined>>;
 }>;
 
 const passed = (config: HookConfig, which: "onAllow" | "onReadOnly", reason: string): ToolDecision =>
@@ -406,7 +417,8 @@ export function authorizeAtReading<D extends Readonly<{ evidence: Readonly<{ dec
 
 export function decideTool(owner: LocalOwner, config: HookConfig, event: Extract<HookEvent, { kind: "tool" }>, now: number, options: DecideOptions = {}): ToolDecision {
   // 1. Protective rules: IronTrellis state and control commands. Not configurable, not affected by failOpen.
-  const guard = protection(config, event.toolName, event.toolInput, event.cwd, options.routeProject === undefined ? process.env : { ...process.env, CLAUDE_PROJECT_DIR: options.routeProject });
+  const guard = options.protection !== undefined ? options.protection ?? undefined
+    : protection(config, event.toolName, event.toolInput, event.cwd, options.routeProject === undefined ? options.env ?? process.env : { ...(options.env ?? process.env), CLAUDE_PROJECT_DIR: options.routeProject });
   if (guard !== undefined) return { verdict: "deny", reason: denyText(guard.reason, guard.code) };
   if (event.deferTo !== undefined) return { verdict: "defer", reason: `IronTrellis: ${event.toolName} is checked by the ${event.deferTo} hook` };
   // 2. Session fencing: the session admitted at SessionStart must still be current.
@@ -597,12 +609,15 @@ export async function runHook(protocol: Protocol, eventName: string, payload: Re
 async function answer(protocol: Protocol, event: Exclude<HookEvent, { kind: "ignored" | "malformed" }>, config: HookConfig, io: HookIo, now: number, onWarning: (warning: string) => void): Promise<Reply> {
   // The protective rules need only the config and the call (independent review A, RA-06): they decide before the history is
   // opened, so a history that cannot be read (failOpen or not) never lets a protected call through.
+  // The route project the protective rules found nothing for: decideTool, given the same project, does not evaluate them again.
+  let checkedFor: string | undefined;
   if (event.kind === "tool") {
     const recorded = readRouteSession(io.env, event.sessionId);
     const routeProject = io.env.CLAUDE_PROJECT_DIR || recorded?.project || io.cwd;
     try {
-      const guard = protection(config, event.toolName, event.toolInput, event.cwd, { ...process.env, CLAUDE_PROJECT_DIR: routeProject });
+      const guard = protection(config, event.toolName, event.toolInput, event.cwd, { ...(io.protectEnv ?? process.env), CLAUDE_PROJECT_DIR: routeProject });
       if (guard !== undefined) return protocol.replyTool(event, { verdict: "deny", reason: denyText(guard.reason, guard.code) });
+      checkedFor = routeProject;
     } catch (error) {
       return protocol.replyTool(event, { verdict: "deny", reason: denyText(`the protective rules could not check this call (${error instanceof Error ? error.message : String(error)})`, "PROTECTION_FAILED") });
     }
@@ -615,7 +630,7 @@ async function answer(protocol: Protocol, event: Exclude<HookEvent, { kind: "ign
     }
   }
   try {
-    const owner = openOwner(config, io.now, "enforce", onWarning);
+    const owner = io.ownerFor !== undefined ? io.ownerFor(config, io.now, onWarning) : openOwner(config, io.now, "enforce", onWarning);
     // Remote witnesses come from <history>.witness.json and the history's own bindings. A policy with requireOnOpen is checked
     // here, before any decision reads the history: a rollback the witnesses show refuses the event (fail closed for tools).
     if (owner.witnessStatus()?.checkRequired === true) await owner.checkWitnesses();
@@ -649,7 +664,7 @@ async function answer(protocol: Protocol, event: Exclude<HookEvent, { kind: "ign
         const routeProject = io.env.CLAUDE_PROJECT_DIR || readRouteSession(io.env, event.sessionId)?.project || io.cwd;
         // Decide at a reading taken after the history is open (not the larger of it and `now`: a clock that stepped back must
         // still show a head ahead of it, A-22.4). authorizeAtReading mitigates, bounded, a head another copy of the guard moves.
-        const decision = decideTool(owner, config, event, io.now(), { routeProject, clock: io.now });
+        const decision = decideTool(owner, config, event, io.now(), { routeProject, clock: io.now, ...(checkedFor === routeProject ? { protection: null } : {}), ...(io.protectEnv === undefined ? {} : { env: io.protectEnv }) });
         // A-38: verdict first; a format-2 history records the grant DENY through the agent's session, bounded by
         // recordBudgetMs (spooled past it), and a CONNECTOR refusal through the hook's own session (A-42, A-38.4);
         // nothing is recorded for format 1 or legacy (as in format 1).

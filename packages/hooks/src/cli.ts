@@ -48,6 +48,9 @@ usage:
   irontrellis-hook statusline                      one line for Claude Code's statusLine setting: whether IronTrellis guards this project
   irontrellis-hook pin-runtime                     record this node and launcher for the IronTrellis plugin (init does it too)
   irontrellis-hook plugin claude-code <event>      the IronTrellis plugin's entry point in Claude Code (reads the event JSON from stdin)
+  irontrellis-hook daemon [--socket <path>]        EXPERIMENTAL, off by default: the resident guard; hosts then run
+                                                   irontrellis-hook-client <agent> <event>, which runs this hook when the
+                                                   daemon cannot answer (socket default ~/.irontrellis/run/irontrellisd.sock)
 
 agents:  ${PROTOCOL_IDS.join(", ")}
 events:  claude-code: SessionStart PreToolUse Stop SessionEnd (PostToolUse, UserPromptSubmit accepted, ignored)
@@ -208,6 +211,16 @@ export async function main(argv: readonly string[], io: CliIo): Promise<number> 
   try {
     switch (first) {
       case "init": return await initCommand(o, io, now, false);
+      case "daemon": {
+        // EXPERIMENTAL resident guard (daemon.ts); loaded only here, so a hook call pays nothing for it.
+        const { defaultSocketPath, startDaemon } = await import("./daemon.ts");
+        const daemon = await startDaemon(str(o, "socket") ?? defaultSocketPath(io.env));
+        out(`irontrellis-hook daemon: EXPERIMENTAL; listening on ${daemon.socketPath} (pid ${process.pid}); same-user mode\n`);
+        await new Promise<void>((resolve) => { process.once("SIGINT", resolve); process.once("SIGTERM", resolve); });
+        await daemon.close();
+        err(`irontrellis-hook daemon: stopped (${daemon.stats.answered} answered, ${daemon.stats.fallbacks} sent to the hook; ${daemon.cache.stats.opens} opens, ${daemon.cache.stats.hits} warm)`);
+        return 0;
+      }
       case "install": {
         const protocol = protocolFor(second ?? "");
         if (protocol === undefined) throw new Error(`install needs an agent: ${PROTOCOL_IDS.join(", ")}`);

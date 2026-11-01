@@ -260,10 +260,10 @@ function inspected(toolName: string, toolInput: Readonly<Record<string, unknown>
 }
 
 /** Rule 1: does the tool input reference protected state? Returns what it references. */
-export function referencesProtected(config: HookConfig, toolName: string, toolInput: Readonly<Record<string, unknown>>, cwd: string | undefined): string | undefined {
+export function referencesProtected(config: HookConfig, toolName: string, toolInput: Readonly<Record<string, unknown>>, cwd: string | undefined, env: Env = process.env): string | undefined {
   const uncheckable = uncheckablePathKeys(toolName, toolInput);
   if (uncheckable.length > 0) return `a path that is not a string (${uncheckable.join(", ")}), which cannot be checked`;
-  const targets = protectedTargets(config);
+  const targets = protectedTargets(config, env);
   const base = cwd !== undefined && isAbsolute(cwd) ? cwd : config.project;
   // Each value also in its quote-normalized spellings (`cat ~/.iron''trellis/…`, `type C:\\x\\.iron^trellis\\…`).
   // A file tool's path is a literal name: quotes and backslashes in it are characters of the name, not shell quoting (RA-09).
@@ -819,11 +819,11 @@ export function protection(config: HookConfig, toolName: string, toolInput: Read
       const hit = controlCommand(command);
       if (hit !== undefined) return { code: "PROTECTED_COMMAND", reason: setupRefusal(hit, config.protocol) ?? `${CONTROL_REASON} (${hit})` };
     }
-    const custody = custodyOf(config);
+    const custody = custodyOf(config, env);
     if (custody.sshAgent && commands.some((command) => custodyCommand(command) !== undefined || matchesAny(command, SSH_AGENT_PATTERNS))) return { code: "PROTECTED_COMMAND", reason: CUSTODY_REASON };
     if (custody.vault && commands.some((command) => custodyCommand(command, VAULT_BINARIES) !== undefined || matchesAny(command, VAULT_PATTERNS))) return { code: "PROTECTED_COMMAND", reason: VAULT_REASON };
   }
-  const ref = referencesProtected(config, toolName, toolInput, cwd);
+  const ref = referencesProtected(config, toolName, toolInput, cwd, env);
   if (ref !== undefined) return { code: "PROTECTED_PATH", reason: `protected: the tool input references ${ref}; IronTrellis state is for the operator, not the agent` };
   const guarded = configProtection(guardProjects(config, env), isShell && !SHELL_TOOLS.includes(toolName) ? "Bash" : toolName, toolInput, cwd, env, protectedTargets(config, env));
   if (guarded !== undefined) return { code: "PROTECTED_PATH", reason: `protected: ${guarded}. In a guarded project the agent cannot change Claude Code's own configuration; the user changes it in their own terminal` };

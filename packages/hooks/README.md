@@ -116,7 +116,11 @@ The hook uses the history's bound witnesses and `<history>.witness.json`. A hist
 
 ## Cost per call
 
-Each call is a separate process that replays the history from a valid snapshot, else from the start. At 10,000 events a check takes about a second (docs/BENCHMARKS.md). Keep histories small.
+Each call is a separate process that replays the history from a valid snapshot, else from the start. At 10,000 events a check takes about a second (docs/BENCHMARKS.md). Keep histories small, or try the resident guard below.
+
+## Experimental: the resident guard (off by default)
+
+`irontrellis-hook daemon` keeps the history open in one process of your own user, and the host runs `irontrellis-hook-client <agent> <event>`, which gives this hook's own answer whenever the daemon can't. On a 10,000-event history one allowed call took 493 ms with today's hook, 22 ms with the Node client and 3.2 ms with the C client; only the C client meets the 20 ms budget. It runs as you, so it adds no boundary. Setup, measurements and limits: docs/reference/hooks-resident-guard.md.
 
 ## Limitations
 
@@ -138,6 +142,8 @@ irontrellis-hook choose 1 | 2 | 3 | --status | --decline | --use-hook | --reset 
 irontrellis-hook statusline [--dir p]
 irontrellis-hook pin-runtime
 irontrellis-hook plugin claude-code <event>
+irontrellis-hook daemon [--socket path]          (experimental)
+irontrellis-hook-client <agent> <event>          (experimental; runs irontrellis-hook when the daemon can't answer)
 ```
 
 `check` evaluates one call without a host or the session check. Depends on `@ramex-labs/irontrellis` only. Apache-2.0.
