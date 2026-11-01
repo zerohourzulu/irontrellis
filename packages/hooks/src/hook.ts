@@ -510,6 +510,15 @@ const historyFinding = (error: unknown): string | undefined => {
   return `irontrellis-hook: ${error.code} (${String(reason)}): ${plain}. Every tool call is refused until an operator checks the history with irontrellis verify, then restores the latest copy or re-pins it deliberately (verify --accept-rollback). Engine: ${error.message}`;
 };
 
+/**
+ * Findings against the history, not unavailability: a rollback behind its pin, anchor log or witness; a fork or split
+ * view; a substituted history; an owner attestation of a state the history does not have; or a means of ruling a
+ * rollback out that cannot be read (the anchor log, the witness state or policy). Like a protective-rule refusal, they
+ * are never failed open: failOpen is for unreadable events, missing histories and replay errors.
+ */
+const TAMPER_CODES: ReadonlySet<string> = new Set(["ROLLBACK_DETECTED", "WITNESS_SPLIT_VIEW", "WITNESS_UNREADABLE", "ANCHOR_LOG_UNREADABLE", "HISTORY_IDENTITY_MISMATCH", "ATTESTED_STATE_ROOT_MISMATCH"]);
+const tamperFinding = (error: unknown): boolean => (error instanceof IronTrellisError || error instanceof EngineError) && TAMPER_CODES.has(error.code);
+
 const describe = (error: unknown): string => {
   if (error instanceof HookConfigError) return `irontrellis-hook: ${error.message}`;
   const finding = historyFinding(error);
@@ -663,6 +672,7 @@ async function answer(protocol: Protocol, event: Exclude<HookEvent, { kind: "ign
       }
     }
   } catch (error) {
-    return replyFailure(protocol, describe(error), event.kind === "tool", failOpenForRoute(io.env, io.cwd, event.sessionId));
+    // A tamper finding refuses a tool call even with failOpen (TAMPER_CODES).
+    return replyFailure(protocol, describe(error), event.kind === "tool", !tamperFinding(error) && failOpenForRoute(io.env, io.cwd, event.sessionId));
   }
 }

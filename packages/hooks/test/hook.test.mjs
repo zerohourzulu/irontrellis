@@ -1327,6 +1327,53 @@ test("protective rules: a file tool's path that is not a string is refused, what
   assert.equal(write.json.hookSpecificOutput.permissionDecisionReason, "IronTrellis · DENY: protected: the tool input's file_path is not a string, so IronTrellis cannot check which file the call touches (PROTECTED_PATH)");
 });
 
+test("tamper findings: with failOpen true, a rolled-back history (an unattested pin; an older copy behind the anchor log) and an unreadable anchor log still refuse a tool call (exit 2); a missing history still fails open", async () => {
+  const dir = project();
+  run(["init", "--allow", "run-shell", "--expires", "+1d", RISK], { cwd: dir });
+  hook("claude-code", "SessionStart", claude.sessionStart(dir), dir);
+  const history = historyOf(dir);
+  const owner = ownerOf(dir);
+  await owner.grant({ id: "grant:mcp", to: "claude-code", actions: ["call-mcp"], resources: ["mcp:github"], expiresAt: Date.now() + DAY });
+  const call = () => hook("claude-code", "PreToolUse", claude.preToolUse(dir, "mcp__github__create_issue", { title: "x" }), dir);
+  const beforeRevoke = { file: readFileSync(history), pin: readFileSync(`${history}.head`) };
+  await owner.revoke("grant:mcp");
+  const revoked = { file: readFileSync(history), pin: readFileSync(`${history}.head`) };
+  setConfig(dir, { failOpen: true });
+  // The revocation cut, with an unattested pin at the new head (as in the R1 test above).
+  const kept = readFileSync(history, "utf8").split("\n").filter(Boolean).slice(0, -1);
+  writeFileSync(history, `${kept.join("\n")}\n`);
+  const head = openHistoryStore(history, { inspect: true }).head();
+  writeFileSync(`${history}.head`, JSON.stringify({ version: "irontrellis-pinned-head/1", ...head, recordHash: JSON.parse(kept.at(-1)).recordHash, pinnedAt: Date.now() }));
+  const forged = call();
+  assert.equal(forged.code, 2, forged.stderr);
+  assert.equal(forged.stdout, "");
+  assert.match(forged.stderr, /^\nIronTrellis · DENY: ROLLBACK_DETECTED \(PIN_UNATTESTED\)/);
+  assert.doesNotMatch(forged.stderr, /failOpen/);
+  assert.equal(hook("codex", "PreToolUse", codex.preToolUse(dir, "Bash", { command: "ls" }), dir).code, 2);
+  // An older copy restored behind the anchor log (as in R2).
+  writeFileSync(history, revoked.file);
+  writeFileSync(`${history}.head`, revoked.pin);
+  const { anchorHead, loadOwnerKeyFile, openHistoryStore: open } = await import("@ramex-labs/irontrellis");
+  await anchorHead(open(history), loadOwnerKeyFile(`${history}.owner-key.json`), undefined, { id: "anchor:hook", anchoredAt: Date.now() });
+  writeFileSync(history, beforeRevoke.file);
+  writeFileSync(`${history}.head`, beforeRevoke.pin);
+  const restored = call();
+  assert.equal(restored.code, 2, restored.stderr);
+  assert.match(restored.stderr, /^\nIronTrellis · DENY: ROLLBACK_DETECTED \(ANCHOR_LOG_ROLLBACK\)/);
+  // The current copy back, with an anchor log that cannot be read: a rollback can no longer be ruled out.
+  writeFileSync(history, revoked.file);
+  writeFileSync(`${history}.head`, revoked.pin);
+  writeFileSync(`${history}.anchors`, "not an anchor log entry\n");
+  const unreadable = call();
+  assert.equal(unreadable.code, 2, unreadable.stderr);
+  assert.match(unreadable.stderr, /^\nIronTrellis · DENY: ANCHOR_LOG_UNREADABLE/);
+  // failOpen still covers unavailability: a missing history goes to the host's own permissions, with the warning.
+  setConfig(dir, { history: join(dir, "missing.jsonl") });
+  const missing = call();
+  assert.equal(missing.code, 0, missing.stderr);
+  assert.match(missing.json.systemMessage, /READ_UNAVAILABLE: no history at/);
+});
+
 test("A-38.4: a side-effecting call of an agent whose session was released is refused and recorded as a CONNECTOR refusal of the hook's own session; init admits that session once and reuses it", async () => {
   const dir = project();
   const init = run(["init", "--allow", "run-shell", "--expires", "+1d", RISK], { cwd: dir });
