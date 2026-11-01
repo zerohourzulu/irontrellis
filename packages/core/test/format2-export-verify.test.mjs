@@ -108,6 +108,39 @@ test("verifyExportView: a rich history through the owner handle (rotation, check
   owner.close?.();
 });
 
+test("verifyExportView: an end attestation signed by the owner key a rotation retired is never authenticated: noted when keyEvents is left out, a failure when keyEvents leaves the rotation out", async (t) => {
+  const dir = histories.tempDir("irontrellis-export-retired-");
+  t.after(() => rmSync(dir, { recursive: true, force: true }));
+  const { config, events } = await histories.richHistory(dir);
+  const owner = histories.openLocalOwner({ ...config, witness: false });
+  const head = events.length - 1, rotation = events.findIndex((e) => e.type === "OWNER_KEYS_ROTATED");
+  const [retiredFile] = core.retiredOwnerKeyFilesFor(config.historyFile);
+  assert.ok(rotation > 0 && retiredFile !== undefined, "the rotation keeps the retired key file");
+  const retired = core.loadOwnerKeyFile(retiredFile);
+  for (const from of [0, rotation - 1]) {
+    const view = roundTrip(owner.exportView({ fromPosition: from, toPosition: head, include: ALL }));
+    assert.equal(core.verifyExportView(view).to.authenticated, "HEAD_ATTESTATION", `${from}: the genuine attestation`);
+    const forged = core.attestHeadSync(retired, view.domain, view.to.head, "sha256", { stateRoot: view.to.stateRoot, projectionHead: view.to.projectionHead });
+    assert.notEqual(forged.keyId, view.attestations.to.keyId, "signed by the retired key");
+    const keyed = { ...view, attestations: { ...view.attestations, to: forged } };
+    const withKeyEvents = core.verifyExportView(keyed);
+    assert.deepEqual([withKeyEvents.ok, withKeyEvents.to.authenticated], [true, null], `${from}: ${withKeyEvents.failures.join("; ")}`);
+    // keyEvents left out: the rotation the events show leaves the epochs short, so the retired key's signature is not taken.
+    const unkeyed = { ...keyed };
+    delete unkeyed.keyEvents;
+    const without = core.verifyExportView(unkeyed);
+    assert.equal(without.ok, true, without.failures.join("; "));
+    assert.equal(without.to.authenticated, null, `${from}: ${without.notes.join("; ")}`);
+    assert.match(without.notes.join("\n"), new RegExp(`attestations\\.to: the owner keys in force at ${head} are not established: the view shows a key rotation at ${rotation} that no verified key event covers`));
+    // keyEvents present but without the rotation: the view contradicts itself (A-65.1).
+    const dropped = core.verifyExportView({ ...keyed, keyEvents: [] });
+    assert.equal(dropped.ok, false);
+    assert.match(dropped.failures.join("\n"), new RegExp(`keyEvents does not list the owner key rotation at ${rotation} that the view shows`));
+    assert.equal(dropped.to.authenticated, null);
+  }
+  owner.close?.();
+});
+
 test("verifyExportView: tampering with records, events, roots, bodies, key events and attestations is caught, never thrown", async (t) => {
   const dir = histories.tempDir("irontrellis-export-tamper-");
   t.after(() => rmSync(dir, { recursive: true, force: true }));

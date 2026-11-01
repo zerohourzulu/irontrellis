@@ -417,8 +417,10 @@ export function verifyExportView(view: unknown, options: ExportVerificationOptio
       openedAt.push(genesis.timestamp);
     }
   }
+  // The rotations whose key events verified (each opens the epoch after it).
+  const applied = new Set<number>();
   if (view.keyEvents !== undefined) {
-    const isShortHead = (v: unknown): v is { hash: ContentHash; position: number } => isRec(v) && isContentHash(v.hash) && isPosition(v.position) && Object.keys(v).length === 2;
+    const isShortHead =(v: unknown): v is { hash: ContentHash; position: number } => isRec(v) && isContentHash(v.hash) && isPosition(v.position) && Object.keys(v).length === 2;
     if (!Array.isArray(view.keyEvents) || !view.keyEvents.every((k) => isRec(k) && isPosition(k.position) && isRec(k.event) && isShortHead(k.headBefore) && Object.keys(k).length === 3)) return bad("keyEvents is malformed (A-65.1: [{position, event, headBefore}])");
     if (!ascending(view.keyEvents as readonly Rec[])) return bad("keyEvents is not sorted by position without duplicates");
     // The chain binding (A-58.10): an in-range key event against `events`, an earlier one against the `event` records of fromRecords.
@@ -451,7 +453,25 @@ export function verifyExportView(view: unknown, options: ExportVerificationOptio
       if (!verdict.ok) { fail(`keyEvents[${k.position}]: ${verdict.reason}`); continue; }
       epochs = verdict.epochs;
       openedAt.push(verdict.openedAt);
+      applied.add(k.position);
     }
+  }
+  // A-27.1: an end is authenticated only under epochs established through every OWNER_KEYS_ROTATED before the signed
+  // position. A rotation the view itself shows (in events, or as an event record of fromRecords) that no verified key
+  // event covers leaves those epochs short: a key it retired would still pass. With keyEvents present, leaving such a
+  // rotation out is a failure (A-65.1: keyEvents lists every rotation at positions ≤ to); without them, an end signed
+  // after it is not authenticated (authenticate, below).
+  const shown = new Set<number>();
+  for (const e of entries) if (e.event.type === "OWNER_KEYS_ROTATED") shown.add(e.position);
+  for (const r of fromRecords ?? []) {
+    const record = r.record as Rec;
+    if (r.kind === "event" && isRec(record) && record.type === "OWNER_KEYS_ROTATED" && isPosition(record.position)) shown.add(record.position as number);
+  }
+  const unestablished = [...shown].filter((q) => !applied.has(q)).sort((a, b) => a - b);
+  if (view.keyEvents !== undefined) {
+    const listed = new Set((view.keyEvents as readonly ExportKeyEvent[]).map((k) => k.position));
+    const dropped = unestablished.filter((q) => !listed.has(q));
+    if (dropped.length > 0) fail(`keyEvents does not list the owner key rotation at ${dropped.join(", ")} that the view shows (A-65.1: every OWNER_KEYS_ROTATED at positions ≤ to)`);
   }
 
   // ---- from: the genesis, or the records (root recomputed, event records re-chained: A-27.2)
@@ -595,6 +615,8 @@ export function verifyExportView(view: unknown, options: ExportVerificationOptio
         if (event.type !== "STATE_CHECKPOINT" || c.position !== end.position + 1 || eventHashOf(event) !== c.eventHash || chainedRecordHash(end.head.hash, c.eventHash as ContentHash, end.position + 1) !== c.recordHash) { fail(`attestations.${label}: the checkpoint does not sit at ${end.position + 1} after ${label}.head`); continue; }
         if (d.head?.hash !== end.head.hash || d.head.position !== end.position || d.stateRoot !== end.stateRoot || (d.projectionHead ?? null) !== end.projectionHead || d.recordCount !== end.recordCount) { fail(`attestations.${label}: the checkpoint signs another root than ${label}.stateRoot`); continue; }
         if (epochs.length === 0) { notes.push(`attestations.${label}: a checkpoint is present but no owner keys are established (include referencedEvents and keyEvents)`); continue; }
+        const short = unestablished.find((q) => q < end.position + 1);
+        if (short !== undefined) { notes.push(`attestations.${label}: the owner keys in force at ${end.position + 1} are not established: the view shows a key rotation at ${short} that no verified key event covers (include keyEvents)`); continue; }
         const keys = ownerKeysAt(epochs, end.position + 1), keyId = (event.data.controlAuthorization as { keyId?: unknown } | undefined)?.keyId;
         if (!keys.some((k) => k.keyId === keyId)) { notes.push(`attestations.${label}: the checkpoint is signed by ${String(keyId)}, not a key the established epochs know (include keyEvents)`); continue; }
         // A-101.1: A-92.2 under the pre-event policy (the epoch in force at end + 1): M_eff(35) counting signatures.
@@ -606,6 +628,8 @@ export function verifyExportView(view: unknown, options: ExportVerificationOptio
         if (!attestsHead(a, end.head)) { fail(`attestations.${label}: the head attestation does not name ${label}.head`); continue; }
         if (a.stateRoot !== end.stateRoot || (a.projectionHead ?? null) !== end.projectionHead || JSON.stringify(a.domain) !== JSON.stringify(domain)) { fail(`attestations.${label}: the head attestation signs another root or domain than ${label}`); continue; }
         if (epochs.length === 0) { notes.push(`attestations.${label}: a head attestation is present but no owner keys are established (include referencedEvents and keyEvents)`); continue; }
+        const short = unestablished.find((q) => q < end.position);
+        if (short !== undefined) { notes.push(`attestations.${label}: the owner keys in force at ${end.position} are not established: the view shows a key rotation at ${short} that no verified key event covers (include keyEvents)`); continue; }
         const keys = ownerKeysAt(epochs, end.position), keyId = (a as { keyId?: unknown }).keyId;
         if (!keys.some((k) => k.keyId === keyId)) { notes.push(`attestations.${label}: the head attestation is signed by ${String(keyId)}, not a key the established epochs know (include keyEvents)`); continue; }
         if (!verifyHeadAttestation(a, domain, keys, "sha256")) { fail(`attestations.${label}: the head attestation does not verify under the owner keys in force at ${end.position}`); continue; }
