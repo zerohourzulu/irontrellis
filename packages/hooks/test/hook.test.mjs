@@ -13,7 +13,7 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { commitTerms, createLocalDomain, createLocalOwner, keyPairFromPrivateKey, openHistoryStore, openLocalOwner, openLocalRuntime, openLocalSimulation, signHashWith } from "@ramex-labs/irontrellis";
-import { mergeSettings, planSettings, writeSettingsAtomically, validateConfig, renderTemplate, mapTool, PROTOCOLS, controlCommand, protection, protectedTargets, hookEntryProgram, runHook } from "../dist/index.js";
+import { mergeSettings, planSettings, writeSettingsAtomically, validateConfig, renderTemplate, mapTool, PROTOCOLS, controlCommand, protection, protectedTargets, hookEntryProgram, runHook, FILE_TOOLS } from "../dist/index.js";
 const { FORMAT1_TEST_TOOLING } = await import("@ramex-labs/irontrellis/internal-format1"); // A-185.3 / A-194: older formats are test tooling
 
 const BIN = resolve(fileURLToPath(new URL("../bin/irontrellis-hook.mjs", import.meta.url)));
@@ -1288,6 +1288,43 @@ test("INDETERMINATE: a head dated after this host's clock but inside the 300 s b
   assert.equal(r.json.hookSpecificOutput.permissionDecision, "deny");
   assert.match(r.json.hookSpecificOutput.permissionDecisionReason, /^IronTrellis · DENY: the history's newest event is dated after this host's clock, so whether claude-code may run shell commands in \S+ cannot be decided now; the call is refused, not referred to you \(check the clocks, or retry shortly\) \(CAUSAL_TIME_INVALID; INDETERMINATE; run-shell on repo:\S+; head \d+\)$/);
   assert.equal(existsSync(`${historyOf(dir)}.refusals.spool`), false, "nothing is left in the spool");
+});
+
+test("protective rules: a file tool's path that is not a string is refused, whatever it holds; every path key is checked; on path keys the file-tool check is never weaker than the generic scan", () => {
+  const config = validateConfig({ history: "/s/h.jsonl", owner: "o", agentId: "a", policy: { sideEffecting: [], readOnly: [] } }, "/p/irontrellis-hook.json");
+  const harmless = "/p/src/a.ts", settings = "/p/.claude/settings.json", ownerKey = "/s/h.jsonl.owner-key.json";
+  const shapes = { string: (p) => p, array: (p) => [p], nested: (p) => [[p]], object: (p) => ({ path: p }), key: (p) => ({ [p]: 1 }) };
+  assert.deepEqual([...FILE_TOOLS], ["Write", "Edit", "MultiEdit", "NotebookEdit", "Delete"]);
+  for (const tool of FILE_TOOLS) {
+    for (const key of ["file_path", "notebook_path", "path", "target_file"]) {
+      for (const [shape, make] of Object.entries(shapes)) {
+        for (const target of [ownerKey, "/s/h.jsonl", "/p/irontrellis-hook.json", settings]) {
+          const input = { [key]: make(target) };
+          // The generic scan (any other tool) finds the target in every shape; the file-tool check must refuse it too.
+          assert.equal(protection(config, "mcp__fs__write", input, "/p")?.code, "PROTECTED_PATH", `generic: ${key} ${shape} ${target}`);
+          assert.equal(protection(config, tool, input, "/p")?.code, "PROTECTED_PATH", `${tool}: ${key} ${shape} ${target}`);
+        }
+        // A harmless path is allowed as a string and refused in any other shape: it cannot be checked.
+        const r = protection(config, tool, { [key]: make(harmless) }, "/p");
+        if (shape === "string") assert.equal(r, undefined, `${tool}: ${key} string`);
+        else assert.equal(r?.reason, `protected: the tool input's ${key} is not a string, so IronTrellis cannot check which file the call touches`, `${tool}: ${key} ${shape}`);
+      }
+      for (const odd of [null, 7, true, {}, []]) assert.equal(protection(config, tool, { [key]: odd }, "/p")?.code, "PROTECTED_PATH", `${tool}: ${key} ${JSON.stringify(odd)}`);
+    }
+    assert.match(protection(config, tool, { file_path: [harmless], path: { a: 1 } }, "/p")?.reason ?? "", /the tool input's file_path and path are not a string/);
+    // Every string path key is checked, not only the first one the input names.
+    assert.equal(protection(config, tool, { file_path: harmless, path: settings }, "/p")?.code, "PROTECTED_PATH", `${tool}: settings under the second key`);
+    assert.equal(protection(config, tool, { file_path: harmless, target_file: ownerKey }, "/p")?.code, "PROTECTED_PATH", `${tool}: the owner key under the fourth key`);
+  }
+  // A file tool's other keys are still not scanned: a file that mentions IronTrellis state can be written.
+  assert.equal(protection(config, "Write", { file_path: harmless, content: ownerKey }, "/p"), undefined);
+  assert.equal(protection(config, "MultiEdit", { file_path: harmless, edits: [{ old_string: "a", new_string: settings }] }, "/p"), undefined);
+  // End to end: Claude Code's Write with an array path is refused (exit 2) before any policy or session check.
+  const dir = project();
+  run(["init", "--allow", "run-shell", "--expires", "+1d", RISK], { cwd: dir });
+  const write = hook("claude-code", "PreToolUse", claude.preToolUse(dir, "Write", { file_path: [join(dir, ".claude", "settings.json")], content: "{\"disableAllHooks\": true}" }, "no-session"), dir);
+  assert.equal(write.code, 2, write.stderr);
+  assert.equal(write.json.hookSpecificOutput.permissionDecisionReason, "IronTrellis · DENY: protected: the tool input's file_path is not a string, so IronTrellis cannot check which file the call touches (PROTECTED_PATH)");
 });
 
 test("A-38.4: a side-effecting call of an agent whose session was released is refused and recorded as a CONNECTOR refusal of the hook's own session; init admits that session once and reuses it", async () => {

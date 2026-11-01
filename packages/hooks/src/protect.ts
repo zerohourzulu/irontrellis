@@ -240,6 +240,13 @@ const expandHome = (s: string): string => (s === "~" || s.startsWith("~/") || s.
 export const FILE_TOOLS: readonly string[] = Object.freeze(["Write", "Edit", "MultiEdit", "NotebookEdit", "Delete"]);
 const PATH_KEYS = ["file_path", "notebook_path", "path", "target_file"];
 const PATCH_TOOLS: readonly string[] = Object.freeze(["apply_patch"]);
+/**
+ * A file tool's path keys that are present but hold no string (an array, an object, a number, null). The rules compare
+ * strings, so such a path is never checked, and a host that coerced it would write where the guard did not look: both
+ * checks fail closed on it, and protection() refuses the call before either runs.
+ */
+const uncheckablePathKeys = (toolName: string, toolInput: Readonly<Record<string, unknown>>): string[] =>
+  FILE_TOOLS.includes(toolName) ? PATH_KEYS.filter((k) => Object.hasOwn(toolInput, k) && typeof toolInput[k] !== "string") : [];
 
 /** The strings of a tool input that name what the call touches. */
 function inspected(toolName: string, toolInput: Readonly<Record<string, unknown>>): string[] {
@@ -254,6 +261,8 @@ function inspected(toolName: string, toolInput: Readonly<Record<string, unknown>
 
 /** Rule 1: does the tool input reference protected state? Returns what it references. */
 export function referencesProtected(config: HookConfig, toolName: string, toolInput: Readonly<Record<string, unknown>>, cwd: string | undefined): string | undefined {
+  const uncheckable = uncheckablePathKeys(toolName, toolInput);
+  if (uncheckable.length > 0) return `a path that is not a string (${uncheckable.join(", ")}), which cannot be checked`;
   const targets = protectedTargets(config);
   const base = cwd !== undefined && isAbsolute(cwd) ? cwd : config.project;
   // Each value also in its quote-normalized spellings (`cat ~/.iron''trellis/…`, `type C:\\x\\.iron^trellis\\…`).
@@ -734,9 +743,14 @@ export function configProtection(projects: readonly string[], toolName: string, 
   };
   const holds = (raw: string): Target | undefined => { const [abs, real] = at(raw); return protect.find((t) => strictlyInside(t.path, abs) || strictlyInside(t.path, real)); };
   if (FILE_TOOLS.includes(toolName)) {
-    const raw = PATH_KEYS.map((k) => toolInput[k]).find((v): v is string => typeof v === "string");
-    if (raw === undefined) return undefined;
-    return hit(raw) ?? (toolName === "Delete" ? holds(raw)?.what : undefined);
+    const uncheckable = uncheckablePathKeys(toolName, toolInput);
+    if (uncheckable.length > 0) return `a file path that is not a string (${uncheckable.join(", ")}), which cannot be checked`;
+    // Every path key the input names, not only the first: a host may act on any of them.
+    for (const raw of PATH_KEYS.map((k) => toolInput[k]).filter((v): v is string => typeof v === "string")) {
+      const found = hit(raw) ?? (toolName === "Delete" ? holds(raw)?.what : undefined);
+      if (found !== undefined) return found;
+    }
+    return undefined;
   }
   if (NO_WRITE_TOOLS.includes(toolName)) return undefined;
   const words = (s: string): string[] => (s.length <= 16_384 ? shellWords(s) : []).filter((w) => looksLikePath(w));
@@ -793,6 +807,11 @@ export const guardProjects = (config: HookConfig, env: Env = process.env): reado
 
 /** All three rules for one tool call; undefined when none applies. */
 export function protection(config: HookConfig, toolName: string, toolInput: Readonly<Record<string, unknown>>, cwd: string | undefined, env: Env = process.env): Protection | undefined {
+  // A file tool's path that is not a string cannot be checked: refused first, whatever it holds.
+  const uncheckable = uncheckablePathKeys(toolName, toolInput);
+  if (uncheckable.length > 0) {
+    return { code: "PROTECTED_PATH", reason: `protected: the tool input's ${uncheckable.join(" and ")} ${uncheckable.length === 1 ? "is" : "are"} not a string, so IronTrellis cannot check which file the call touches` };
+  }
   const isShell = SHELL_TOOLS.includes(toolName) || config.policy.sideEffecting.some((r) => r.action === "run-shell" && r.tool === toolName);
   if (isShell) {
     const commands = shellCommands(toolInput);
