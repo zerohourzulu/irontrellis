@@ -44,6 +44,8 @@ Credential separation, committed-key recovery and the lapse and restoration rule
 
 A key-event verifier that does not replay the history checks only its stated subset. `stateChecked: false` means state-dependent credential separation was not judged there. Snapshot resume and export authentication have additional signer, epoch and threshold requirements; a valid isolated signature cannot replace them. Full replay remains the authority for state-dependent checks.
 
+**An export view that starts after the genesis proves a transition, not its starting state.** `verifyExportView` reports `ok` when every hash, both roots and every event between them check out. The state the view carries at `from` is the owner's only when `from.authenticated` names an owner signature over it: a checkpoint at `from + 1`, or a head attestation of `from`. When it is `null`, that state is consistent only with itself, and a view with an invented record can still report `ok`. A gateway, prover or other program that consumes views through the library must check `from.authenticated`, or anchor `from.stateRoot` itself, before it relies on what the view states. `irontrellis export verify` refuses such a view (`START_NOT_AUTHENTICATED`, exit 1) unless you pass `--allow-unauthenticated-start`.
+
 ### Pins and witnesses
 
 A pin (the latest head, recorded in a file beside the history) and its owner attestation provide evidence against truncation. Readers compare the file with the pinned prefix, and `verify` also reports the anchor and witness evidence it examined. A signature on an older head remains valid after a key rotation. So a valid chain and a valid old pin do not establish that the file is the latest copy.

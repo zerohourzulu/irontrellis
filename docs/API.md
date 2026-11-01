@@ -259,6 +259,8 @@ Decide on `report.ok`, which means `failures` is empty. `verifyHistory` checks t
 | `verifyHistoryAsync(historyFile, options?)` | The same as a promise, for an asynchronous signer with `acceptRollback` |
 | `verifyHistoryWithWitnesses(historyFile, options?)` | A promise of the same, with the remote witnesses checked |
 
+`verifyExportView(view)` checks an export view on its own. Its `ok` means the transition verifies: every hash, both roots and every event between them (SPEC §15). It does not mean the starting state is the owner's. For a view that starts after the genesis, check `from.authenticated` (an owner checkpoint at `from + 1` or head attestation of `from`), or anchor `from.stateRoot` yourself; when it is `null`, the state at `from` is consistent only with itself ([SECURITY](SECURITY.md) §1). `irontrellis export verify` refuses such a view unless `--allow-unauthenticated-start` is given.
+
 `acceptRollback` writes a new pin and records acceptance; it is not a normal verification option to enable by default. `allowUnpinned` permits specified inspection cases without authorizing writes. Neither replaces investigation of missing history. Historical migration output fields and exported verification and store options are in the [migration and store reference](reference/api-migration-store.md); response procedures are in [OPERATOR](OPERATOR.md).
 
 ## 4. The store: `openHistoryStore`, `createHistoryStore`

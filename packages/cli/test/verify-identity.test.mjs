@@ -176,6 +176,58 @@ test("4cb: export verify checks the view's history id first and its first owner 
   assert.deepEqual(wrongKey.doc.identity.mismatches[0].found, [o1.credential]);
 });
 
+test("export verify: a view that starts after the genesis with no owner signature over its state there fails (START_NOT_AUTHENTICATED), a fabricated start too; --allow-unauthenticated-start checks the transition alone and never confirms the identity", async (t) => {
+  const core = await import("@ramex-labs/irontrellis");
+  const dir = tempDir(t), o1 = pair("owner:1", 0x4cb51);
+  const file = join(dir, "h.jsonl");
+  const handle = await createLocalOwner({ historyFile: file, domain: createLocalDomain(), owner: "operations", controller: "operator", now: () => 1000, signer: { ...publicKey(o1), signHash: signHashWith(o1) } });
+  for (const id of ["bea", "cal", "dee"]) await handle.createAgent({ id });
+  await handle.flush(); handle.close();
+  const id = json(verifyArgs(file)).doc.identity.historyId;
+  const exported = run(["export", "--history", file, "--from", "2", "--records"]);
+  assert.equal(exported.status, 0, exported.stderr);
+  const view = JSON.parse(exported.stdout);
+  assert.equal(view.fromAuthenticated, false);
+  const write = (name, v) => { const path = join(dir, name); writeFileSync(path, JSON.stringify(v)); return path; };
+  const genuine = write("range.json", view);
+  // The engine's report keeps the spec's ok (SPEC §15: the transition verifies); the CLI does not call the view verified.
+  assert.deepEqual([core.verifyExportView(view).ok, core.verifyExportView(view).from.authenticated], [true, null]);
+  const refused = json(["export", "verify", genuine]);
+  assert.equal(refused.code, 1);
+  assert.deepEqual([refused.doc.ok, refused.doc.code], [false, "START_NOT_AUTHENTICATED"]);
+  assert.match(refused.doc.failures[0], /^START_NOT_AUTHENTICATED: the view starts at position 2 with no owner signature over its state there \(a checkpoint at 3 or a head attestation of 2\)/);
+  assert.deepEqual([refused.doc.from.verified, refused.doc.from.authenticated, refused.doc.to.verified], [true, null, true]);
+  assert.match(run(["export", "verify", genuine]).stdout, /^FAILED {2}export view/m);
+  // The transition alone, on request: exit 0, said plainly, and the identity is not confirmed even when both values match.
+  const transition = json(["export", "verify", genuine, "--allow-unauthenticated-start", "--expect-history-id", id, "--expect-owner-key", o1.credential]);
+  assert.equal(transition.code, 0, transition.stderr);
+  assert.equal(transition.doc.ok, true);
+  assert.deepEqual([transition.doc.identity.confirmed, transition.doc.identity.ownerKeys], [false, null]);
+  const plain = run(["export", "verify", genuine, "--allow-unauthenticated-start"]);
+  assert.equal(plain.status, 0, plain.stderr);
+  assert.match(plain.stdout, /^VERIFIED {2}export view/m);
+  assert.match(plain.stdout, /Only the transition was checked \(--allow-unauthenticated-start\)/);
+  // A fabricated start: an agent that never existed added to fromRecords, the root recomputed over them, the end set to
+  // what the replay then gives. The engine's transition check passes it; export verify refuses it.
+  const real = view.fromRecords.find((r) => r.kind === "agent");
+  assert.ok(real !== undefined, "the start state holds an agent");
+  const fromRecords = [...view.fromRecords, { kind: "agent", key: "mallory", record: { ...real.record, agentId: "mallory", eventId: "event:forged" } }];
+  const recomputed = core.recomputeRoot(fromRecords);
+  const forged = { ...view, fromRecords, from: { ...view.from, stateRoot: recomputed.root, recordCount: recomputed.count } };
+  delete forged.toRecords;
+  for (const [pattern, field, number] of [[/to\.stateRoot (0x[0-9a-f]+) is not the replayed root (0x[0-9a-f]+)/, "stateRoot", false], [/to\.recordCount (\d+) is not the replayed record count (\d+)/, "recordCount", true]]) {
+    const m = core.verifyExportView(forged).failures.join("\n").match(pattern);
+    if (m) forged.to = { ...forged.to, [field]: number ? Number(m[2]) : m[2] };
+  }
+  assert.equal(core.verifyExportView(forged).ok, true, "the fabricated start is consistent with itself");
+  const fabricated = json(["export", "verify", write("forged.json", forged), "--expect-history-id", id, "--expect-owner-key", o1.credential]);
+  assert.equal(fabricated.code, 1);
+  assert.deepEqual([fabricated.doc.ok, fabricated.doc.code, fabricated.doc.identity.confirmed], [false, "START_NOT_AUTHENTICATED", false]);
+  // A view from the genesis needs no flag (its start is the genesis).
+  const whole = run(["export", "--history", file, "--view", "--records"]);
+  assert.equal(json(["export", "verify", write("whole.json", JSON.parse(whole.stdout))]).code, 0);
+});
+
 // ---------------------------------------------------------------- post5-09: the re-check and what init publishes
 
 const { main } = await import("../dist/cli.js");

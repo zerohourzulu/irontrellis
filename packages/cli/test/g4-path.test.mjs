@@ -89,7 +89,10 @@ test("G4: init → grant → budget declare → authorize → refusal recorded �
   const file = join(dir, "view.json");
   writeFileSync(file, view.stdout);
   assert.equal(JSON.parse(view.stdout).version, "irontrellis-export/2");
-  const exported = ok(it(["export", "verify", file]));
+  // Its start (position 2) carries no owner signature, so the view verifies as a transition only, on request.
+  const unsigned = it(["export", "verify", file]);
+  assert.deepEqual([unsigned.code, unsigned.json.ok, unsigned.json.code], [1, false, "START_NOT_AUTHENTICATED"]);
+  const exported = ok(it(["export", "verify", file, "--allow-unauthenticated-start"]));
   assert.equal(exported.json.ok, true);
   assert.equal(exported.json.to.verified, true);
   // Plain export still prints the events.

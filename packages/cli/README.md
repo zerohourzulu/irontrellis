@@ -145,7 +145,7 @@ irontrellis duty inspect duty:incident-42
 
 ### Export
 
-`export` prints the events as a JSON array. `export --view` (or `--from <n> --to <n>`) prints the export view of a range; `--records` adds the state records at both ends, `--attestations` the owner attestations. `export verify <file>` checks a view on its own: every hash, both roots, every event between them. With `--expect-history-id` it first checks the history id of the genesis the view states; with `--expect-owner-key(s)` it compares the first owner keys once the view has verified (a view that carries no genesis has none).
+`export` prints the events as a JSON array. `export --view` (or `--from <n> --to <n>`) prints the export view of a range; `--records` adds the state records at both ends, `--attestations` the owner attestations. `export verify <file>` checks a view on its own: every hash, both roots, every event between them. A view that starts after the genesis also needs an owner signature over its starting state, a checkpoint or head attestation (`export --attestations`); without one, that state is consistent only with itself, so the view fails with `START_NOT_AUTHENTICATED`. `--allow-unauthenticated-start` checks the transition alone, and then the history's identity is never confirmed. With `--expect-history-id` it first checks the history id of the genesis the view states; with `--expect-owner-key(s)` it compares the first owner keys once the view has verified (a view that carries no genesis has none).
 
 ### migrate
 

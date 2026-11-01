@@ -590,6 +590,7 @@ const exportView = command("export", "export [--view | --from <n> --to <n>] [--r
 
 const exportVerify = command("export verify", "export verify <file> [--genesis-event-hash <0x…>] [--expect-history-id <0x…>] [--expect-owner-key <0x…> | --expect-owner-keys <file>]", "check an export view file on its own: its history id against the value you give, the chain, both state roots, every event between them and what it carries, then its first owner keys against the values you give (exit 1 on any failure)", ["file"], [
   o("genesis-event-hash", "string", "the genesis event hash you trust for this history (default: the one the view states)", { value: "<0x…>" }),
+  o("allow-unauthenticated-start", "boolean", "accept a view that starts after the genesis with no owner signature over its state there: only the transition from it is checked, and you anchor the start's root yourself"),
   ...IDENTITY_OPTIONS(o),
 ], async (p, g) => {
   const [file] = positionals(p, ["file"], false);
@@ -609,15 +610,23 @@ const exportVerify = command("export verify", "export verify <file> [--genesis-e
     : mismatchesOf({ historyId: expected.historyId }, { historyId: statedId, ownerKeys: [] });
   const report = early.length > 0 ? undefined : verifyExportView(view, genesis === undefined ? {} : { genesisEventHash: genesis as ContentHash });
   const found = statedId === undefined ? undefined : report === undefined ? { historyId: statedId, ownerKeys: [] } : identityOfView(stated!, report.ownerKeyEpochs);
-  const late = report?.ok === true && expected?.ownerKeys !== undefined && found !== undefined ? mismatchesOf({ ownerKeys: expected.ownerKeys }, found) : [];
+  // SPEC §15 (A-27.1, A-27.4): the view states a transition; its start is the owner's only at the genesis or under an owner
+  // signature over the state there. Without one, the state at `from` is consistent only with itself, so the CLI does not
+  // call the view verified unless asked to check the transition alone; the engine's report keeps the spec's `ok`.
+  const startSigned = report !== undefined && (report.from.position === 0 || report.from.authenticated !== null);
+  const startRefused = report?.ok === true && !startSigned && !flag(p, "allow-unauthenticated-start");
+  // The first owner keys are established only by a view that verified from a start the owner signed.
+  const established = report?.ok === true && startSigned;
+  const late = established && expected?.ownerKeys !== undefined && found !== undefined ? mismatchesOf({ ownerKeys: expected.ownerKeys }, found) : [];
   const mismatches = [...early, ...late];
-  // The first owner keys are established only by a view that verified.
-  const identity = identityView(expected, { historyId: statedId ?? null, ownerKeys: report?.ok === true && found !== undefined ? found.ownerKeys : null }, mismatches);
-  const ok = report?.ok === true && mismatches.length === 0;
-  const failures = [...mismatches.map((m) => m.line), ...(report?.failures ?? [])];
+  const identity = identityView(expected, { historyId: statedId ?? null, ownerKeys: established && found !== undefined ? found.ownerKeys : null }, mismatches);
+  const ok = report?.ok === true && mismatches.length === 0 && !startRefused;
+  const start = report === undefined ? "" : `START_NOT_AUTHENTICATED: the view starts at position ${report.from.position} with no owner signature over its state there (a checkpoint at ${report.from.position + 1} or a head attestation of ${report.from.position}), so that state is consistent only with itself; export the view with --attestations, or pass --allow-unauthenticated-start to check the transition alone`;
+  const failures = [...mismatches.map((m) => m.line), ...(startRefused ? [start] : []), ...(report?.failures ?? [])];
+  const code = mismatches.length > 0 ? mismatches[0]!.code : startRefused ? "START_NOT_AUTHENTICATED" : undefined;
   void g;
   return {
-    json: { ...(report ?? { notes: [] }), ok, ...(mismatches.length > 0 ? { code: mismatches[0]!.code } : {}), failures, identity },
+    json: { ...(report ?? { notes: [] }), ok, ...(code === undefined ? {} : { code }), failures, identity },
     render: (s, out) => {
       out.add(`${ok ? "VERIFIED" : s.strong("FAILED")}  export view ${path}`);
       out.add(...rows(s, [
@@ -627,13 +636,14 @@ const exportVerify = command("export verify", "export verify <file> [--genesis-e
           ["to", `position ${report.to.position} · ${report.to.verified ? "root recomputed" : "not verified"} · ${report.to.authenticated ?? "not authenticated"}`] as const,
           ["events", String(report.eventCount)] as const,
         ]),
-        ...(mismatches.length > 0 ? [["code", mismatches[0]!.code] as const] : report?.code === undefined ? [] : [["code", report.code] as const]),
+        ...(code !== undefined ? [["code", code] as const] : report?.code === undefined ? [] : [["code", report.code] as const]),
       ]));
       for (const f of failures) out.add(`  ${s.strong("·")} ${f}`);
       for (const n of report?.notes ?? []) out.add(`  ${s.paint("·", "secondary")} ${n}`);
       out.blank();
-      out.add(s.paint(ok ? "Every hash and root the view states was recomputed from what it carries. An end marked not authenticated is checked against the chain only, not against an owner signature."
-        : "The view did not pass; treat what it states as unestablished.", "secondary"));
+      out.add(s.paint(!ok ? "The view did not pass; treat what it states as unestablished."
+        : !startSigned ? `Only the transition was checked (--allow-unauthenticated-start): every hash and root was recomputed from what the view carries, but no owner signature covers its state at position ${report!.from.position}, so the view shows only what follows from that state. Anchor its root yourself.`
+        : "Every hash and root the view states was recomputed from what it carries. An end marked not authenticated is checked against the chain only, not against an owner signature.", "secondary"));
       out.add(s.paint(identityCaveat(identity), "secondary"));
     },
     exit: ok ? 0 : 1,
