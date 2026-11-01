@@ -1215,6 +1215,81 @@ test("A-22.4 with a clock that stepped back between the guard's two readings: th
   assert.ok(readings >= 2, "the guard took a reading after opening the history");
 });
 
+/**
+ * A long-lived agent's grant set (one grant per MCP server), granted through the owner, then the grant `grant:ops`
+ * for mcp:github. A refusal cites every failing candidate's evidence, so about 80 candidates × 80 references pass the
+ * engine's output bound (MAX_RESULT_EVIDENCE, 4,096) and the refusal comes back INDETERMINATE OUTPUT_LIMIT_EXCEEDED.
+ */
+async function largeGrantSet(dir, agent, n = 80) {
+  const owner = ownerOf(dir);
+  for (let i = 0; i < n; i += 1) await owner.grant({ id: `grant:server-${i}`, to: agent, actions: ["call-mcp"], resources: [`mcp:server-${i}`], expiresAt: Date.now() + DAY });
+  await owner.grant({ id: "grant:ops", to: agent, actions: ["call-mcp"], resources: ["mcp:github"], expiresAt: Date.now() + DAY });
+  return owner;
+}
+
+test("INDETERMINATE: past the evidence bound a revoked grant is denied and its refusal recorded (INDETERMINATE OUTPUT_LIMIT_EXCEEDED), not referred to the user; an ungranted action too; a granted call still passes", async () => {
+  const dir = project();
+  const init = run(["init", "--allow", "run-shell", "--expires", "+1d", RISK], { cwd: dir });
+  assert.equal(init.code, 0, init.stderr);
+  hook("claude-code", "SessionStart", claude.sessionStart(dir), dir);
+  const owner = await largeGrantSet(dir, "claude-code");
+  const call = () => hook("claude-code", "PreToolUse", claude.preToolUse(dir, "mcp__github__create_issue", { title: "x" }), dir);
+  assertDefer(call(), /IronTrellis · ALLOW: claude-code call-mcp on mcp:github \(authority grant:ops/);
+  await owner.revoke("grant:ops");
+  // The setup reaches the bound: the engine itself answers INDETERMINATE (on a small history this is DENY REVOKED; see the MCP test above).
+  const engine = ownerOf(dir).authorize({ actor: "claude-code", action: "call-mcp", resource: "mcp:github" }).evidence;
+  assert.deepEqual([engine.decision, engine.code], ["INDETERMINATE", "OUTPUT_LIMIT_EXCEEDED"]);
+  const refusals = () => events(dir).filter((e) => e.type === "REQUEST_REFUSED");
+  const before = refusals().length;
+  const revoked = call();
+  assert.equal(revoked.code, 2, revoked.stderr);
+  assert.equal(revoked.json.hookSpecificOutput.permissionDecision, "deny");
+  assert.match(revoked.json.hookSpecificOutput.permissionDecisionReason, /^IronTrellis · DENY: the history's evidence on whether claude-code may call MCP tools on the MCP server github is too large to list, as a revoked or ungranted call's can be on a large history, so the call is refused, not referred to you \(OUTPUT_LIMIT_EXCEEDED; INDETERMINATE; call-mcp on mcp:github; head \d+\)$/);
+  const recorded = refusals().slice(before);
+  assert.equal(recorded.length, 1, "the refusal is recorded");
+  assert.deepEqual([recorded[0].data.refusalSource, recorded[0].data.request.actorId, recorded[0].data.request.action, recorded[0].data.request.resource, recorded[0].data.decision, recorded[0].data.code],
+    ["CORE", "claude-code", "call-mcp", "mcp:github", "INDETERMINATE", "OUTPUT_LIMIT_EXCEEDED"]);
+  // An action with no grant reaches the same bound: denied and recorded (its own tool-call id, as a host gives each call:
+  // the refusal id is derived from it).
+  const write = hook("claude-code", "PreToolUse", { ...claude.preToolUse(dir, "Write", { file_path: `${dir}/a.txt`, content: "x" }), tool_use_id: "toolu_02DEF" }, dir);
+  assert.equal(write.json.hookSpecificOutput.permissionDecision, "deny");
+  assert.match(write.json.hookSpecificOutput.permissionDecisionReason, /\(OUTPUT_LIMIT_EXCEEDED; INDETERMINATE; write-file on repo:\S+; head \d+\)$/);
+  assert.ok(refusals().some((e) => e.data.request.action === "write-file" && e.data.decision === "INDETERMINATE" && e.data.code === "OUTPUT_LIMIT_EXCEEDED"));
+  // A granted call on the same history still passes: the winner is found before any refusal is built.
+  assertDefer(hook("claude-code", "PreToolUse", claude.preToolUse(dir, "Bash", { command: "ls" }), dir), /IronTrellis · ALLOW: claude-code run-shell/);
+  assert.equal(existsSync(`${historyOf(dir)}.refusals.spool`), false, "nothing is left in the spool");
+});
+
+test("INDETERMINATE (Codex, askFallback allow): an ungranted call past the evidence bound is denied; it was allowed with no one asked. An unmapped tool still gets askFallback", async () => {
+  const dir = project();
+  run(["init", "--agent", "codex", "--allow", "run-shell", "--expires", "+1d", RISK], { cwd: dir });
+  hook("codex", "SessionStart", codex.sessionStart(dir), dir);
+  await largeGrantSet(dir, "codex");
+  setConfig(dir, { askFallback: "allow" });
+  const patch = hook("codex", "PreToolUse", codex.preToolUse(dir, "apply_patch", { command: "*** Begin Patch\n*** Update File: a.rs\n*** End Patch" }), dir);
+  assert.equal(patch.json.hookSpecificOutput.permissionDecision, "deny");
+  assert.match(patch.json.hookSpecificOutput.permissionDecisionReason, /refused, not referred to you \(OUTPUT_LIMIT_EXCEEDED; INDETERMINATE; write-file on repo:/);
+  assert.doesNotMatch(patch.json.hookSpecificOutput.permissionDecisionReason, /askFallback/);
+  const unmapped = hook("codex", "PreToolUse", codex.preToolUse(dir, "spawn_agent", {}), dir);
+  assert.equal(unmapped.json.hookSpecificOutput.permissionDecision, "allow");
+  assert.match(unmapped.json.hookSpecificOutput.permissionDecisionReason, /askFallback "allow"/);
+});
+
+test("INDETERMINATE: a head dated after this host's clock but inside the 300 s bound (CAUSAL_TIME_INVALID) is refused, not referred to the user", async () => {
+  const dir = project();
+  run(["init", "--allow", "run-shell", "--expires", "+1d", RISK], { cwd: dir });
+  hook("claude-code", "SessionStart", claude.sessionStart(dir), dir);
+  const config = configOf(dir);
+  // As an owner whose clock runs 120 s ahead would write it (the A-22.4 test above uses 600 s, past the bound).
+  const ahead = openLocalOwner({ historyFile: historyOf(dir), domain: config.domain, owner: config.owner, controller: config.controller, now: () => Date.now() + 120_000 });
+  await ahead.createRole({ id: "role:soon" });
+  const r = hook("claude-code", "PreToolUse", claude.preToolUse(dir, "Bash", { command: "npm test", description: "Run tests" }), dir);
+  assert.equal(r.code, 2, r.stderr);
+  assert.equal(r.json.hookSpecificOutput.permissionDecision, "deny");
+  assert.match(r.json.hookSpecificOutput.permissionDecisionReason, /^IronTrellis · DENY: the history's newest event is dated after this host's clock, so whether claude-code may run shell commands in \S+ cannot be decided now; the call is refused, not referred to you \(check the clocks, or retry shortly\) \(CAUSAL_TIME_INVALID; INDETERMINATE; run-shell on repo:\S+; head \d+\)$/);
+  assert.equal(existsSync(`${historyOf(dir)}.refusals.spool`), false, "nothing is left in the spool");
+});
+
 test("A-38.4: a side-effecting call of an agent whose session was released is refused and recorded as a CONNECTOR refusal of the hook's own session; init admits that session once and reuses it", async () => {
   const dir = project();
   const init = run(["init", "--allow", "run-shell", "--expires", "+1d", RISK], { cwd: dir });

@@ -199,6 +199,13 @@ test("doctor and the hooks: config not found, invalid, for another history, not 
   mkdirSync(join(project, ".claude"));
   writeFileSync(join(project, ".claude", "settings.json"), JSON.stringify({ hooks: { PreToolUse: [{ hooks: [{ type: "command", command: "irontrellis-hook pre-tool-use" }] }] } }));
   assert.match(has(await hooks(), "OK", "HOOKS_INSTALLED").message, /Claude Code/);
+  // askFallback "allow" is a WARN (where the host cannot ask, every referred call runs with no one asked); the default is silent.
+  assert.equal((await hooks()).stdout.includes("HOOKS_ASK_FALLBACK_ALLOW"), false, "no askFallback: no warning");
+  writeFileSync(config, JSON.stringify({ version: "irontrellis-hook-config/1", history: "../h.jsonl", askFallback: "allow" }));
+  assert.match(has(await hooks(), "WARN", "HOOKS_ASK_FALLBACK_ALLOW").message, /askFallback "allow": where the host cannot ask .* runs with no one asked/);
+  writeFileSync(config, JSON.stringify({ version: "irontrellis-hook-config/1", history: "../h.jsonl", askFallback: "deny" }));
+  assert.equal((await hooks()).stdout.includes("HOOKS_ASK_FALLBACK_ALLOW"), false, "askFallback deny: no warning");
+  writeFileSync(config, JSON.stringify({ version: "irontrellis-hook-config/1", history: "../h.jsonl" }));
   // post5-13 (live check B of the Codex route): Codex hooks installed, but a Codex config turns hooks off; the project's wins.
   mkdirSync(join(project, ".codex"));
   writeFileSync(join(project, ".codex", "hooks.json"), JSON.stringify({ hooks: { PreToolUse: [{ hooks: [{ type: "command", command: "irontrellis-hook codex PreToolUse" }] }] } }));

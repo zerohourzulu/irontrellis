@@ -13,13 +13,15 @@
  *                  and authorize it at now(): ALLOW → defer (no decision; the
  *                  host's own permission check runs) or allow when
  *                  decisions.onAllow is "allow", DENY → deny with the failing
- *                  code and authority, INDETERMINATE or unmapped → ask
+ *                  code and authority, INDETERMINATE → deny (ask only for
+ *                  the codes about the request itself, see
+ *                  REFERRED_INDETERMINATE), unmapped → ask
  *   session-end    write `<history>.handovers/<sha256(session)>.json` from
  *                  handover(agent) and print a summary; the final
  *                  end also releases the session key
  *
- * Decisions read the history; nothing here executes anything. A tool decision
- * writes only a refusal (a deny by the grants, or a call without a current session); an allowed call is not recorded.
+ * Decisions read the history; nothing here executes anything. A tool decision writes only a refusal (a deny by the
+ * grants, an INDETERMINATE the hook refuses, or a call without a current session); an allowed call is not recorded.
  */
 import { existsSync, readdirSync } from "node:fs";
 import { basename, isAbsolute, join } from "node:path";
@@ -347,6 +349,25 @@ export function plainAction(action: string, resource: string): string {
 /** The IronTrellis plugin's own skill, as Claude Code's Skill tool names it (plugins/irontrellis/skills/irontrellis-handover). */
 export const OWN_SKILL = "irontrellis:irontrellis-handover";
 
+/**
+ * The INDETERMINATE codes a person can answer. They are about the request itself (the engine could not read it), so
+ * the grants were never consulted and the call is referred to the user, as an unmapped tool is. Every other INDETERMINATE
+ * is about the history: its evidence is too large to list (OUTPUT_LIMIT_EXCEEDED, which a revoked or ungranted call reaches
+ * on a large history), it cannot be evaluated at this host's time (CAUSAL_TIME_INVALID), or its grants are not valid
+ * authority (STATE_NOT_AUTHORITATIVE). A person at a prompt cannot answer those, so the call is refused and the refusal
+ * recorded (the core re-derives and records the INDETERMINATE). A code added later is refused too.
+ */
+export const REFERRED_INDETERMINATE: ReadonlySet<string> = new Set(["INVALID_INPUT", "UNSUPPORTED_VERSION"]);
+/** Why an INDETERMINATE the hook refuses gives no usable answer, in plain words (`may` is "<agent> may <action>"). */
+function unsettled(code: string, may: string): string {
+  switch (code) {
+    case "OUTPUT_LIMIT_EXCEEDED": return `the history's evidence on whether ${may} is too large to list, as a revoked or ungranted call's can be on a large history, so the call is refused, not referred to you`;
+    case "CAUSAL_TIME_INVALID": return `the history's newest event is dated after this host's clock, so whether ${may} cannot be decided now; the call is refused, not referred to you (check the clocks, or retry shortly)`;
+    case "STATE_NOT_AUTHORITATIVE": return `the history's grants are not valid authority, so whether ${may} cannot be decided; the call is refused, not referred to you`;
+    default: return `the history cannot decide whether ${may}, so the call is refused, not referred to you`;
+  }
+}
+
 export type DecideOptions = Readonly<{
   /** Check the host session against the history (default true; `check` turns it off). */ checkSession?: boolean;
   /** The route's project, protected beside the config's (protect.ts guardProjects): CLAUDE_PROJECT_DIR, else the project the session was admitted in. */ routeProject?: string;
@@ -432,8 +453,12 @@ export function decideTool(owner: LocalOwner, config: HookConfig, event: Extract
       } else if (e.decision === "DENY") {
         const failing = e.failures.map((f) => `${f.code}${f.failingAuthorityId === undefined ? "" : ` at ${f.failingAuthorityId}`}`).slice(0, 4);
         decision = { verdict: "deny", reason: denyText(`${config.agentId} may not ${plainAction(mapping.action, mapping.resource)}`, [e.code, ...failing.filter((f) => f !== e.code), `${mapping.action} on ${mapping.resource}`, `head ${d.head.position}`].join("; ")), refusal: { action: mapping.action, resource: mapping.resource, code: e.code, template: mapping.rule.resource, rendersToolInput: rendersToolInput(mapping.rule.resource) } };
-      } else {
+      } else if (REFERRED_INDETERMINATE.has(e.code)) {
         decision = { verdict: "ask", reason: `IronTrellis · INDETERMINATE: ${subject} cannot be decided from the history (${e.code})` };
+      } else {
+        // Refused and recorded, never referred: a person cannot answer for the history.
+        const fact = unsettled(e.code, `${config.agentId} may ${plainAction(mapping.action, mapping.resource)}`);
+        decision = { verdict: "deny", reason: denyText(fact, [e.code, "INDETERMINATE", `${mapping.action} on ${mapping.resource}`, `head ${d.head.position}`].join("; ")), refusal: { action: mapping.action, resource: mapping.resource, code: e.code, template: mapping.rule.resource, rendersToolInput: rendersToolInput(mapping.rule.resource) } };
       }
       break;
     }

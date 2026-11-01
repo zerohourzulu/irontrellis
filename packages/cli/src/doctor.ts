@@ -199,7 +199,7 @@ async function signerFindings(role: string, ref: OwnerKeyReference, asAgent: boo
 
 // ---------------------------------------------------------------- hooks
 
-type HookView = Readonly<{ path: string; history: string; project: string }>;
+type HookView = Readonly<{ path: string; history: string; project: string; askFallback: unknown }>;
 
 function findHookConfig(explicit: string | undefined, env: Env): string | undefined {
   if (explicit !== undefined) return resolve(explicit);
@@ -239,10 +239,10 @@ function hookFindings(history: string, explicit: string | undefined, env: Env, s
   }
   let view: HookView;
   try {
-    const raw = JSON.parse(readFileSync(file, "utf8")) as { history?: unknown };
+    const raw = JSON.parse(readFileSync(file, "utf8")) as { history?: unknown; askFallback?: unknown };
     if (typeof raw.history !== "string") throw new Error("no history field");
     const project = dirname(resolve(file));
-    view = { path: resolve(file), project, history: isAbsolute(raw.history) ? raw.history : resolve(project, raw.history) };
+    view = { path: resolve(file), project, history: isAbsolute(raw.history) ? raw.history : resolve(project, raw.history), askFallback: raw.askFallback };
   } catch (error) {
     return [finding(area, "WARN", "HOOKS_CONFIG_INVALID", `${file} cannot be read as a hook config (${error instanceof Error ? error.message : String(error)})`, "fix it or re-create it with irontrellis-hook init")];
   }
@@ -273,6 +273,9 @@ function hookFindings(history: string, explicit: string | undefined, env: Env, s
   }
   if (claude.plugin && claude.hookEvents.length === 4) out.push(finding(area, "WARN", "HOOKS_INSTALLED_TWICE", `the IronTrellis plugin for Claude Code and the hook entries in ${view.project}/.claude are both present; the plugin steps aside and the hook is the one guard`, "choose one route per project: disable the plugin, or remove the hook entries"));
   for (const entry of claude.unrecognized) out.push(finding(area, "WARN", "HOOKS_ENTRY_UNRECOGNIZED", `unrecognized IronTrellis hook entry: ${entry}; it is not the entry irontrellis-hook install writes, so it does not count as the hook route`, "remove it, or re-run irontrellis-hook install claude-code --write"));
+  // Where the host event cannot ask (every Codex tool event, Cursor's preToolUse), askFallback answers each
+  // question the hook would put to the user; "allow" lets those calls run with no one asked.
+  if (view.askFallback === "allow") out.push(finding(area, "WARN", "HOOKS_ASK_FALLBACK_ALLOW", `${view.path} sets askFallback "allow": where the host cannot ask (Codex, and Cursor's preToolUse), every call IronTrellis would refer to you runs with no one asked, including any tool the policy does not map`, `remove "askFallback" from ${view.path} (the default is "deny"), and grant or map what the agent needs`));
   // The protect list: the history path is a prefix (every <history>.* side file, key files and references included),
   // the hook config, and the signer paths of the current, next and retired key references.
   const covered = new Set([
