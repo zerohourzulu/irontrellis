@@ -6,9 +6,16 @@ name: Release
 # publishes those files (npm publish <file>.tgz --provenance): it never builds or repacks. The tag must equal the shared package version (v1.0.0-rc.2 ↔ "1.0.0-rc.2"); a
 # pre-release version is published under the `next` dist-tag, a stable one under `latest`.
 #
-# Required repository secret: NPM_TOKEN (an npm granular access token with publish rights on
-# the @ramex-labs scope and the unscoped `irontrellis` package, 2FA mode "automation").
-# Provenance needs `id-token: write` and a public repository.
+# No stored npm token: the publish job uses npm trusted publishing (OIDC) for `npm publish` and `npm dist-tag`
+# (npm >= 11.21.0; the job installs npm 11.21.1). Every package's trusted publisher on npmjs.com names owner
+# zerohourzulu, repository irontrellis, workflow release.yml, environment `npm`. Provenance and trusted publishing need
+# `id-token: write` and a public repository. After publishing, the workflow points both the `latest` and the `next`
+# dist-tags at the release itself.
+#
+# Release-day fallback (temporary): if the OIDC exchange fails, add an npm token as the secret NPM_TOKEN_FALLBACK in the
+# `npm` environment and re-run the failed job; npm uses the token only when OIDC does not authenticate. A re-run never
+# republishes a version npm already serves. Delete the secret straight afterwards. Normally the secret does not exist,
+# so a broken trusted-publisher setup fails loudly instead of quietly using a token.
 
 on:
   push:
@@ -146,7 +153,7 @@ jobs:
     environment: npm
     permissions:
       contents: read
-      id-token: write   # OIDC token for npm provenance attestations
+      id-token: write   # OIDC: npm trusted publishing (publish, dist-tag) and provenance attestations
     steps:
       # No checkout, no install, no build, no pack: this job publishes the files the verify job packed and verified.
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
@@ -158,6 +165,14 @@ jobs:
         with:
           name: release-tarballs
           path: release-tarballs
+
+      # npm 11.21.0 added OIDC authentication to `npm dist-tag` (npm/cli#10056); 11.21.1 is its bug-fix release.
+      - name: npm CLI 11.21.1 (trusted publishing for publish and dist-tag)
+        run: |
+          set -euo pipefail
+          npm install -g npm@11.21.1
+          npm --version
+          node -e 'const [a,b]=process.argv[1].split(".").map(Number); if (a<11||(a===11&&b<21)) { console.error(`npm ${process.argv[1]}: trusted publishing for dist-tag needs npm >= 11.21.0`); process.exit(1); }' -- "$(npm --version)"
 
       - name: The tarballs are exactly the verified ones
         working-directory: release-tarballs
@@ -183,11 +198,14 @@ jobs:
       # never reads it as a git shorthand. The core goes first (every other package depends on it). A version already
       # on npm is skipped only when npm serves exactly this tarball (same integrity), so a re-run after a partial
       # publish finishes the release and never publishes different bytes.
+      # Trusted publishing (docs.npmjs.com/trusted-publishers): npm exchanges this job's OIDC token (id-token: write
+      # above) for a short-lived publish credential, so no stored token is used. Each package's trusted publisher on
+      # npmjs.com names this repository, release.yml and the `npm` environment.
       - name: Publish (public, provenance, dist-tag ${{ needs.verify.outputs.dist_tag }})
         working-directory: release-tarballs
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           DIST_TAG: ${{ needs.verify.outputs.dist_tag }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_FALLBACK }}   # empty unless the release-day fallback is in use (header)
         run: |
           set -euo pipefail
           npm --version
@@ -230,6 +248,27 @@ jobs:
               exit 1
             fi
             echo "ok  $name@$version $integrity"
+          done
+
+      # Both tags point at this release; nothing is tagged by hand afterwards. `npm dist-tag add` authenticates through the
+      # same trusted publisher (OIDC, npm >= 11.21.0). Re-running is safe: adding a tag that already points here changes nothing.
+      - name: Point the latest and next dist-tags at ${{ needs.verify.outputs.version }}
+        working-directory: release-tarballs
+        env:
+          VERSION: ${{ needs.verify.outputs.version }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_FALLBACK }}   # empty unless the release-day fallback is in use (header)
+        run: |
+          set -euo pipefail
+          for file in *.tgz; do
+            name="$(tar -xOzf "$file" package/package.json | node -p 'JSON.parse(require("fs").readFileSync(0, "utf8")).name')"
+            for tag in latest next; do
+              npm dist-tag add "$name@$VERSION" "$tag"
+            done
+            tags="$(npm dist-tag ls "$name")"
+            echo "$tags"
+            for tag in latest next; do
+              grep -qx "$tag: $VERSION" <<<"$tags" || { echo "$name: $tag does not point at $VERSION" >&2; exit 1; }
+            done
           done
 
   github-release:
