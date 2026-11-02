@@ -6,7 +6,7 @@ There are two sets of numbers. The **format-2** set was measured on the 1.0.0-rc
 
 ## One check, in numbers
 
-A coding agent asks to write a file. The IronTrellis hook opens the history and checks the call against the agent's grants. Its budget is 20 ms; on a 10,000-event history it took 871 ms.
+A coding agent asks to write a file. The IronTrellis hook opens the history and checks the call against the agent's grants. Its budget is 20 ms; on a 10,000-event history the check took 871 ms, before process start-up (see the table).
 
 The hook never replayed the history from the start (0 of 14 checks did). It resumed from a saved snapshot, and the cost is that resume: it recomputes every leaf of the state root from the snapshot's records, and the format forbids trusting a saved root instead. Meeting 20 ms at this size needs a format change or a hook process that stays running between tool calls.
 
@@ -23,7 +23,7 @@ The code was development commit `e2991bf`, which predates this repository's hist
 | Path | Budget | Measured | Result |
 | --- | --- | --- | --- |
 | Control-event append at 10,000 events, fsync on, signer latency excluded | ≤ 5 ms | 4.10 ms | met |
-| Hook `PreToolUse` check (one budget, two cases) | ≤ 20 ms | 871 ms with the snapshot at the head; 1,182 ms with 256 events after the snapshot's signed root | **missed** |
+| Hook `PreToolUse` check (one budget, two cases) | ≤ 20 ms | 871 ms with the snapshot at the head; 1,182 ms with 256 events after the snapshot's signed root. These time the check inside a running process. A real hook call also starts a new process: on a 2026 Mac laptop, the 871 ms case took 260 ms in-process and 480 ms as a real hook call (profile, 1 Nov 2026) | **missed** |
 | Full replays during those hook checks | never with a valid snapshot | 0 of 14 | met |
 | Full replay (`core.replay`) | ≤ 0.30 ms/event | 0.562 ms/event | **missed** |
 | State root from scratch, 12,000 records | ≤ 5 ms | 173.1 ms | **missed** |

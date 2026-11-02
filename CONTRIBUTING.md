@@ -69,7 +69,7 @@ A pull request explains the problem, the changed behavior and how it was verifie
 
 ## One git identity
 
-Commits and tags are made with **one** git identity per contributor: the same `user.name` and `user.email` across every machine, matching the GitHub account that opens the pull request, with commit signing on. Release tags are signed by a maintainer. Mixed identities muddle the provenance and `Co-Authored-By` trail. Once `.github/allowed-identities.txt` lists the project's identities, CI refuses any commit whose author or committer is not on it ([CHECKLIST.md](CHECKLIST.md), section A).
+Commits and tags are made with **one** git identity per contributor: the same `user.name` and `user.email` across every machine, matching the GitHub account that opens the pull request. Commit signing is welcome but not yet required, and the project's own commits are not signed yet; release tags are signed by a maintainer with a hardware key. Mixed identities muddle the provenance and `Co-Authored-By` trail. Once `.github/allowed-identities.txt` lists the project's identities, CI refuses any commit whose author or committer is not on it ([CHECKLIST.md](CHECKLIST.md), section A).
 
 ## Commit messages
 
