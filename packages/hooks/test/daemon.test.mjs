@@ -15,7 +15,7 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { openLocalOwner } from "@ramex-labs/irontrellis";
-import { CLIENT_ENV, startDaemon } from "../dist/daemon.js";
+import { CLIENT_ENV, ENGINE_ENV, startDaemon } from "../dist/daemon.js";
 
 const BIN = resolve(fileURLToPath(new URL("../bin/irontrellis-hook.mjs", import.meta.url)));
 const CLIENT = resolve(fileURLToPath(new URL("../bin/irontrellis-hook-client.mjs", import.meta.url)));
@@ -47,6 +47,8 @@ const startChild = (env, socket) => new Promise((resolveStart, reject) => {
   child.once("exit", (code) => reject(new Error(`daemon exited ${code}: ${out}${err}`)));
 });
 const stopChild = ({ child, stderr }) => new Promise((done) => { child.removeAllListeners("exit"); child.once("exit", () => done(stderr())); child.kill("SIGTERM"); });
+/** This process's engine settings (ENGINE_ENV), for a client of a daemon started in this process (startDaemon). */
+const engineEnv = () => Object.fromEntries(ENGINE_ENV.filter((name) => process.env[name] !== undefined).map((name) => [name, process.env[name]]));
 
 test("both clients' lists of variables are the daemon's (CLIENT_ENV)", () => {
   for (const [file, start, end] of [[CLIENT, "const CLIENT_ENV", "]);"], [C_CLIENT, "CLIENT_ENV[] = {", "};"]]) {
@@ -70,7 +72,10 @@ test("a socket directory under a directory others can write: the daemon refuses 
   const dir = socketDir(t), parent = join(dir, "..");
   const daemon = await startDaemon(join(dir, "s.sock"));
   t.after(() => daemon.close());
-  const env = { PATH: process.env.PATH ?? "/usr/bin:/bin", HOME: process.env.HOME ?? "/", NO_COLOR: "1", IRONTRELLISD_SOCKET: join(dir, "s.sock") };
+  // The daemon runs in this process, so it keeps this process's engine settings (ENGINE_ENV), and it sends a client with
+  // other values to the hook by design. macOS sets SSH_AUTH_SOCK for every login session, so the client must carry the
+  // same values or the "safe directory" run is a fallback, not an answer.
+  const env = { PATH: process.env.PATH ?? "/usr/bin:/bin", HOME: process.env.HOME ?? "/", NO_COLOR: "1", IRONTRELLISD_SOCKET: join(dir, "s.sock"), ...engineEnv() };
   // Asynchronous, so this process's daemon could answer if the client (wrongly) connected.
   const client = () => new Promise((done) => {
     const c = spawn(process.execPath, [CLIENT, "claude-code", "PreToolUse"], { env, stdio: ["pipe", "pipe", "pipe"] });
@@ -89,6 +94,25 @@ test("a socket directory under a directory others can write: the daemon refuses 
     assert.equal(daemon.stats.answered, 1, "the client did not use the daemon");
     await assert.rejects(startDaemon(join(dir, "t.sock")), /is writable by others \(mode 777\)/);
   } finally { chmodSync(parent, 0o700); }
+});
+
+test("a client whose engine settings (ENGINE_ENV) differ from the daemon's is sent to the hook; with the same settings the daemon answers", { skip: !unix || process.getuid?.() === 0 }, async (t) => {
+  // Whatever this host sets (macOS sets SSH_AUTH_SOCK for every login session; Linux runners often do not), a client with
+  // another SSH_AUTH_SOCK is a fallback and a client with this process's engine settings is answered.
+  const dir = socketDir(t);
+  const daemon = await startDaemon(join(dir, "s.sock"));
+  t.after(() => daemon.close());
+  const base = { PATH: process.env.PATH ?? "/usr/bin:/bin", HOME: process.env.HOME ?? "/", NO_COLOR: "1", IRONTRELLISD_SOCKET: join(dir, "s.sock") };
+  const client = (env) => new Promise((done) => {
+    const c = spawn(process.execPath, [CLIENT, "claude-code", "PreToolUse"], { env, stdio: ["pipe", "pipe", "pipe"] });
+    c.stdout.resume(); c.stderr.resume();
+    c.once("exit", (status) => done(status));
+    c.stdin.end("not json");
+  });
+  assert.equal(await client({ ...base, ...engineEnv(), SSH_AUTH_SOCK: `${process.env.SSH_AUTH_SOCK ?? ""}/differs` }), 2);
+  assert.deepEqual([daemon.stats.answered, daemon.stats.fallbacks], [0, 1], "another SSH_AUTH_SOCK: sent to the hook");
+  assert.equal(await client({ ...base, ...engineEnv() }), 2);
+  assert.deepEqual([daemon.stats.answered, daemon.stats.fallbacks], [1, 1], "the same engine settings: the daemon answers");
 });
 
 test("agreement (release gate): the daemon answers a host-event sequence byte for byte as the hook does, from the same saved state", { skip: !unix }, async (t) => {
