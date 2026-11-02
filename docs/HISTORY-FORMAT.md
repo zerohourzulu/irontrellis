@@ -76,43 +76,23 @@ The [encoding reference](reference/history-encoding.md#2-canonical-encoding) kee
 
 ## 3. Historical store lines
 
-For the legacy and format-1 read path, a store is UTF-8 JSON Lines without a byte-order mark. Every record ends in a newline; an incomplete final record is invalid. A line has exactly `version`, `previousHash`, `event` and `recordHash`. The first `previousHash` is `null`; each later one names the preceding record hash.
-
-`recordHash` hashes the canonical record containing the line version, the previous hash and the **decoded event**, not the raw line's spacing or the legacy tagged representation. Readers check the field set, version, chain, stored encoding and record hash, then apply the event to replay state. A defect in any of those checks, or a rejected replay, invalidates the history as a whole.
-
-Legacy tagged tuples must decode and re-encode identically. Format-1 writers sort record keys recursively, but readers accept other key orders because hashing canonicalizes them. Arrays keep their order. CRLF conversion does not change a record's hash: lines split at the newline, and the carriage return is JSON whitespace. See the [complete stored encodings and two-event file](reference/history-encoding.md#3-store-lines).
+For the legacy and format-1 read path, a store is UTF-8 JSON Lines. Each line has exactly `version`, `previousHash`, `event` and `recordHash`, and the record hash covers the **decoded** event, so key order and a CRLF conversion do not change it. A defect in the chain, the stored encoding or a record hash, or a rejected replay, invalidates the history as a whole. The exact rules and a complete two-event file are in the [encoding reference](reference/history-encoding.md#3-store-lines).
 
 Removing a complete suffix can leave a valid hash chain. That is why reading the pin and consulting external evidence are separate from replay.
 
 ## 4. Historical history hash and head
 
-For legacy and format 1, the record hash links store lines. The **history hash** instead covers the canonical wrapper and every decoded event through a position; its wrapper and hash algorithm depend on the format. An incremental implementation absorbs each canonical event and finalizes a copy of its hasher to obtain each prefix hash. The exact wrappers and empty-history values are in the [hash reference](reference/history-encoding.md#4-history-hash-and-head).
+For legacy and format 1, the **history hash** covers a canonical wrapper and every decoded event through a position, and the head is `{hash, position, canonicalTime}`. Format 2 uses its record-chain tip instead. The wrappers, the empty-history values and the incremental method are in the [hash reference](reference/history-encoding.md#4-history-hash-and-head). Compare heads field by field.
 
-The historical head is `{hash, position, canonicalTime}`: the prefix hash, the zero-based position of the last event, and that event's timestamp. Format 2 uses its record-chain tip instead of this whole-history wrapper hash. Compare heads field by field.
-
-A challenge may bind the head **before** an event or the head **including** it; the two are not substitutes. Control authorization signs the previous head. Runtime authorization and admission use the head required by their own recorded challenge and proof.
+The head **before** an event and the head **including** it are not substitutes. Control authorization signs the previous head; runtime authorization and admission use the head their own recorded challenge and proof require.
 
 A hash establishes correspondence to bytes under the chosen algorithm. It does not establish that the named history is the newest copy, or that an external outcome occurred.
 
 ## 5. Historical event envelope and rejection order
 
-An event has exactly `id`, `type`, `timestamp` and `data`. IDs are bounded, well-formed identifiers and must be unique across the history. Position zero must be genesis, and genesis cannot recur. Timestamps are non-negative safe integers and cannot regress; their units belong to the application, and the local API uses milliseconds. `data` is a captured plain record with a closed schema for its type.
+An event has exactly `id`, `type`, `timestamp` and `data`. IDs are unique across the history, position zero is the only genesis, and timestamps are non-negative safe integers that never regress; their units belong to the application, and the local API uses milliseconds.
 
-For the legacy and format-1 path, replay checks, in this order:
-
-1. envelope and capture;
-2. genesis position and version;
-3. event type;
-4. closed schema;
-5. duplicate genesis;
-6. duplicate ID;
-7. time regression;
-8. format-1 control authorization;
-9. transition preconditions.
-
-A rejected event leaves state unchanged and reports its position. Schema errors and named-limit capture errors have different codes, so the order matters when an input has several defects.
-
-The [envelope and event reference](reference/history-events.md) keeps every field, scalar definition and rejection code. Its 29-type count is the format-1 catalog (legacy has the first 25, plus types 29–31); format 2 has 42.
+For the legacy and format-1 path, replay checks the envelope, genesis, type, schema, duplicates, time and format-1 control authorization, in a fixed order, before the transition's preconditions. A rejected event leaves state unchanged and reports its position. The order matters when an input has several defects; it and every rejection code are in the [envelope and event reference](reference/history-events.md). Its 29-type count is the format-1 catalog (legacy has the first 25, plus types 29–31); format 2 has 42.
 
 ## 6. Reading genesis, grants and evidence
 
@@ -155,11 +135,9 @@ The [epoch and pre-rotation reference](reference/history-signatures.md#71-owner-
 
 ## 8. Historical runtime signatures and receipts
 
-The byte reference for this section is legacy and format 1; current format-2 declarations, challenges, receipts and admission bindings need their current versioned definitions. The signature suite receives the history algorithm's hash of a signed structure. Ed25519 signs the raw 32 hash bytes; EIP-191 uses its specified Ethereum prefix and recovery rules. The scheme of the particular owner key or admitted session selects the verifier; byte length alone is not the authorization decision.
+The byte reference for this section is legacy and format 1; current format-2 declarations, challenges, receipts and admission bindings need their current versioned definitions. A signature covers the history algorithm's hash of the signed structure. The scheme of the particular owner key or admitted session selects the verifier; byte length alone is not the authorization decision.
 
-A consequential runtime challenge binds the request, evaluation time, policy, history head, session and control epoch, role tenure, intent and nonce. Admission records the runtime hash and signature. Replay recomputes the challenge and re-derives the authorization proof from the appropriate pre-event state, and requires the recorded values to match.
-
-Administrative events bind the transition ID and type, effect hash and authority-proof hash as well as the session context. The action and resource used for the policy query are derived from the transition, and implementers must reproduce those literals. A receipt artifact binds its payload hash and the issuing session's signature; its recorded commitment binds the hash and signature together. Receipt limits also differ between legacy and format 1.
+A consequential runtime challenge binds the request, evaluation time, policy, history head, session and control epoch, role tenure, intent and nonce. Replay re-derives the challenge and the authorization proof from the pre-event state and requires the recorded values to match. Administrative events and receipts have bindings of their own.
 
 See [signature suites, complete challenges, proof fields and receipt commitments](reference/history-signatures.md#8-signatures). An external signer produces the same protocol signature as a local key; its custody mechanism is not encoded in the history.
 
@@ -223,7 +201,7 @@ Some format-1 sources are refused at plan time with `MIGRATION_UNSUPPORTED`. Eac
 
 Amount conversion follows the specified field-path list and its inverse. It is not a global rewrite of every decimal-looking string or nested signed value. Use [MIGRATION](MIGRATION.md) for the current operational path; a changed package version alone is not a migration.
 
-The old export also describes a **legacy-to-format-1** migration. That historical construction carried the original genesis and endpoint in `migratedFrom`, kept a legacy shadow for signed runtime data, and required the shadow hash to match at the declared endpoint. Its exact fields and checks are kept in the [historical migration reference](reference/history-migration-examples.md#11-migration-and-the-legacy-shadow), only to interpret those existing histories. It is not the current target or writer API: `migrateHistory` and `irontrellis migrate` write format 2 only.
+The older **legacy-to-format-1** migration and its legacy shadow are kept in the [historical migration reference](reference/history-migration-examples.md#11-migration-and-the-legacy-shadow), only to interpret existing histories. `migrateHistory` and `irontrellis migrate` write format 2 only.
 
 ## 12. Historical worked history
 
