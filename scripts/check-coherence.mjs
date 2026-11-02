@@ -69,7 +69,7 @@ const SCAN_DIRS = ["docs", "packages", "integrations", "plugins", "python", "con
 
 const coreVersion = JSON.parse(readFileSync(join(ROOT, "packages/core/package.json"), "utf8")).version;
 const currentRc = /-rc\.(\d+)(?:\.\d+)?$/.exec(coreVersion)?.[1];
-// A fix release of a release candidate (1.0.0-rc.2.1) ships that candidate's documentation: the docs may name the
+// A fix release of a release candidate (1.0.0-rc.2.2) ships that candidate's documentation: the docs may name the
 // candidate it fixes (1.0.0-rc.2) as well as the fix release itself.
 const RC_VERSIONS = new Set([coreVersion, coreVersion.replace(/^(\d+\.\d+\.\d+-rc\.\d+)\.\d+$/, "$1")]);
 

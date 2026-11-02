@@ -2,7 +2,7 @@
 
 IronTrellis (formerly Continuity) keeps a checkable record of who may act for whom, and which duties survive when an AI agent is replaced. `@ramex-labs/irontrellis-remote` is the public SDK for the format-2 cooperative remote executor: it lets an agent's tool call run at a remote service that cooperates with that record. The service, called the destination, receives the history itself and checks each operation against it before acting.
 
-This 1.0.0-rc.2.1 port requires Node.js 22.18 or later and the exact 1.0.0-rc.2.1 Core and remote-tools packages named in `package.json`.
+This 1.0.0-rc.2.2 port requires Node.js 22.18 or later and the exact 1.0.0-rc.2.2 Core and remote-tools packages named in `package.json`.
 
 ## One call, start to finish
 

@@ -2,6 +2,33 @@
 
 All notable changes to the IronTrellis (formerly Continuity) packages are recorded here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); every publishable package shares one version (`scripts/check-versions.mjs` enforces it, for the npm packages, the MCP Registry entries and this file). The Python package is the exception: `check-versions` holds it at 1.0.0rc1 until it is ported to format 2. Findings quoted below are from the independent evaluation of Continuity dated 23 September 2026.
 
+## [1.0.0-rc.2.2] — Security fixes
+
+Security and documentation fixes on 1.0.0-rc.2.1. The history format, the commands, the hooks and the gateway are unchanged; histories written by earlier versions read exactly as before. Published to npm under the `next` tag. Everyone running the coding-agent hook (`irontrellis-hook`) or using `irontrellis export verify` should upgrade.
+
+### Fixed
+
+- The hook no longer refers to you an answer the engine could not decide (INDETERMINATE), including when a refusal's evidence grows past the engine's output limit on a large history (`OUTPUT_LIMIT_EXCEEDED`). A revoked or never-granted action could appear this way. The hook now refuses the call and records the refusal; it asks you only when the request itself cannot be read.
+- A problem found in the history now refuses the call even with `failOpen` on. `failOpen` covers an unreadable or missing history, not one whose check failed.
+- A file tool's path must be a string, and every path key is checked. A path given in another form could otherwise slip past the protective rules that guard IronTrellis's own files; it is now refused.
+- `irontrellis export verify` refuses a view whose starting state no owner signature covers (`START_NOT_AUTHENTICATED`, exit 1); such a view shows a correct transition, not that its starting state is the owner's. Pass `--allow-unauthenticated-start` only if you check that state yourself. Library users of `verifyExportView` should check `from.authenticated` (SECURITY §1).
+- `verifyExportView` treats an end as authenticated only under key epochs that include every owner-key rotation the view shows.
+
+### Changed
+
+- More refusals, fewer questions: a call the hook used to refer to you may now be refused and recorded, including a granted action whose authorizing proof is too large to produce on a very large grant set (narrow or consolidate the grants if you see this).
+- While the history's newest event is dated after the agent host's clock, the hook refuses side-effecting calls until the clock passes it (`CAUSAL_TIME_INVALID`); more than 300 seconds ahead remains `CLOCK_AHEAD_OF_READER`.
+
+### Added
+
+- An experimental resident guard (`irontrellis-hook daemon`), off by default: one long-running process answers the hook's checks instead of starting a fresh process per tool call. Same-user mode only; it does not add a security boundary between the agent and the guard.
+
+### Documentation
+
+- The README shows the quickest route (`npx irontrellis@next demo`) and how to build from source with corepack.
+- The benchmark page says plainly that its hook figure times the check inside a running process; a real hook call also starts a process (on a 2026 Mac laptop, 260 ms in-process and 480 ms as a real call).
+- The testing page describes the published demonstration proofs as validity proofs: they show the released program ran its checks correctly on test data, are not designed to hide their inputs, and make no privacy claim yet.
+
 ## [1.0.0-rc.2.1] — LangChain peer fix
 
 1.0.0-rc.2 with one dependency fix. Nothing else changes: the history format, the commands, the hooks and the gateway are as in 1.0.0-rc.2, and everything the documentation says of 1.0.0-rc.2 applies to this release too. Published to npm under the `next` tag.
