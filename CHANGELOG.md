@@ -4,7 +4,7 @@ All notable changes to the IronTrellis (formerly Continuity) packages are record
 
 ## [1.0.0-rc.2.2] — Security fixes
 
-Security and documentation fixes on 1.0.0-rc.2.1. The history format, the commands, the hooks and the gateway are unchanged; histories written by earlier versions read exactly as before. Published to npm under the `next` tag. Everyone running the coding-agent hook (`irontrellis-hook`) or using `irontrellis export verify` should upgrade.
+Security and documentation fixes on 1.0.0-rc.2.1. The history format is unchanged: histories written by earlier versions read exactly as before. What changes is how the hook decides some calls and what `irontrellis export verify` accepts (below). Published to npm under the `next` tag. Everyone running the coding-agent hook (`irontrellis-hook`) or using `irontrellis export verify` should upgrade.
 
 ### Fixed
 
