@@ -1,6 +1,6 @@
 # IronTrellis remote tools
 
-IronTrellis (formerly Continuity) keeps a checkable record of who may act for whom, and which duties survive when an AI agent is replaced. `@ramex-labs/irontrellis-remote-tools` 1.0.0-rc.2.2 supplies the implementation behind the five-subpath `@ramex-labs/irontrellis-remote` SDK: the cooperative destination, the client that talks to it, the executor that runs admitted work, and recovery.
+IronTrellis (formerly Continuity) keeps a checkable record of who may act for whom, and which duties survive when an AI agent is replaced. `@ramex-labs/irontrellis-remote-tools` 1.0.0-rc.2.3 supplies the implementation behind the five-subpath `@ramex-labs/irontrellis-remote` SDK: the cooperative destination, the client that talks to it, the executor that runs admitted work, and recovery.
 
 This port uses the format-2 engine and Core's adapter storage interface, and needs Node.js 22.18 or later. It performs synthetic local effects; service reports never prove an outside outcome.
 

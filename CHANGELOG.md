@@ -2,6 +2,22 @@
 
 All notable changes to the IronTrellis (formerly Continuity) packages are recorded here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); every publishable package shares one version (`scripts/check-versions.mjs` enforces it, for the npm packages, the MCP Registry entries and this file). The Python package is the exception: `check-versions` holds it at 1.0.0rc1 until it is ported to format 2. Findings quoted below are from the independent evaluation of Continuity dated 23 September 2026.
 
+## [1.0.0-rc.2.3] — Dependency updates
+
+Dependency and release-workflow updates on 1.0.0-rc.2.2. The history format is unchanged: histories written by earlier versions read exactly as before. IronTrellis's own code is unchanged; what changes is the versions of four libraries it uses, one optional peer range, and how releases reach npm (below). Users of `@ramex-labs/irontrellis-mcp`, `@ramex-labs/irontrellis-mcp-gateway`, `@ramex-labs/irontrellis-remote` or `@ramex-labs/irontrellis-remote-tools` should upgrade to pick up the fixed libraries.
+
+### Security
+
+- `@modelcontextprotocol/client` and `@modelcontextprotocol/server` 2.2.0 → 2.3.0 in `irontrellis-mcp` and `irontrellis-mcp-gateway`, for GHSA-6prh-2h8m-c8cw, GHSA-jm63-cq47-j5jp, GHSA-46jr-4wx8-v453 and GHSA-rvq5-wwqv-78pq.
+- `zod` 4.6.5 → 4.6.6, for GHSA-mrhx-c7xc-m3w5: the version `irontrellis-remote` and `irontrellis-remote-tools` are tested with, and the bottom of their optional peer range (below).
+- `follow-redirects` 1.16.1 → 1.16.2, for GHSA-mrwp-f3q8-3g9p, in the development workspace only (it reaches the private OpenFGA example through `axios`); no published package depends on it.
+- These advisories are in the libraries. This release takes their fixed versions; it does not establish whether IronTrellis's own use of the older versions was affected.
+
+### Changed
+
+- `irontrellis-remote` and `irontrellis-remote-tools` accept `zod` 4.6.6 or any later 4.x as their optional peer (it was exactly 4.6.5), so installing them never holds a project on a version with a known advisory.
+- Releases are published to npm with trusted publishing (OIDC) instead of a stored npm token, with provenance as before. The release workflow now points both the `latest` and the `next` dist-tags at the new version itself.
+
 ## [1.0.0-rc.2.2] — Security fixes
 
 Security and documentation fixes on 1.0.0-rc.2.1. The history format is unchanged: histories written by earlier versions read exactly as before. What changes is how the hook decides some calls and what `irontrellis export verify` accepts (below). Published to npm under the `next` tag. Everyone running the coding-agent hook (`irontrellis-hook`) or using `irontrellis export verify` should upgrade.
