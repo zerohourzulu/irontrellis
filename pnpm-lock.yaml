@@ -28,8 +28,8 @@ importers:
         specifier: workspace:*
         version: link:../protected-evidence-mcp
       langchain:
-        specifier: 1.5.12
-        version: 1.5.12(@langchain/core@1.2.12(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0))(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0)
+        specifier: 1.6.0
+        version: 1.6.0(@langchain/core@1.2.12(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0))(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0)
       zod:
         specifier: 4.6.6
         version: 4.6.6
@@ -278,6 +278,12 @@ packages:
 
   '@langchain/langgraph-checkpoint@1.1.6':
     resolution: {integrity: sha512-CpDMGTY4Y6qzoGewMoL8MS9Ej35vyrrchbRpKCtUDWnHhrf4lbHp7wnu9dsHaavB3Z+M6aVRl+9GNQbIJVV1dg==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@langchain/core': ^1.1.48
+
+  '@langchain/langgraph-checkpoint@1.2.2':
+    resolution: {integrity: sha512-KL3nzi7I61ll5nANCQe5RoJ5SqTFrE+si9IK6k7IIj9OrPkIKT/Dz0w8CyJF+K7OEuJfA33HvPrZqfzzW1DXDA==}
     engines: {node: '>=18'}
     peerDependencies:
       '@langchain/core': ^1.1.48
@@ -531,11 +537,11 @@ packages:
   js-tiktoken@1.0.21:
     resolution: {integrity: sha512-biOj/6M5qdgx5TKjDnFT1ymSpM5tbd3ylwDtrQvFQSu0Z7bBYko2dF+W/aUkXUPuk6IVpRxk/3Q2sHOzGlS36g==}
 
-  langchain@1.5.12:
-    resolution: {integrity: sha512-cWNsKiRLyv0NN1e9IR+0CUyS4cBn1LSJ7OhqTa0RQGK735cb4l1+wd4/lQJz4imJ4sojOl+VfHw6kKZwWFNYlQ==}
+  langchain@1.6.0:
+    resolution: {integrity: sha512-3zKLH17Baacw+MtVcKj3f6onstPzmVSI2yfmABdClqVofsifOIt/Ypw7wyMyjFkyOzJTJePVb8hUWILxYpUhKw==}
     engines: {node: '>=20'}
     peerDependencies:
-      '@langchain/core': ^1.2.12
+      '@langchain/core': ^1.3.1
 
   langsmith@0.11.5:
     resolution: {integrity: sha512-sKKiRmQIogYR2w5KREP9cHF5LWwa+DJAkLwl9G0sTBQE6v5DaWA/ekBS0rZGlDoo6A8TFz37wRkESI+jF2XqDg==}
@@ -750,6 +756,10 @@ snapshots:
   '@langchain/langgraph-checkpoint@1.1.6(@langchain/core@1.3.2(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0))':
     dependencies:
       '@langchain/core': 1.3.2(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0)
+
+  '@langchain/langgraph-checkpoint@1.2.2(@langchain/core@1.2.12(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0))':
+    dependencies:
+      '@langchain/core': 1.2.12(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0)
 
   '@langchain/langgraph-sdk@1.12.3(@langchain/core@1.2.12(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0))':
     dependencies:
@@ -1064,11 +1074,11 @@ snapshots:
     dependencies:
       base64-js: 1.5.1
 
-  langchain@1.5.12(@langchain/core@1.2.12(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0))(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0):
+  langchain@1.6.0(@langchain/core@1.2.12(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0))(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0):
     dependencies:
       '@langchain/core': 1.2.12(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0)
       '@langchain/langgraph': 1.4.21(@langchain/core@1.2.12(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0))(zod@4.6.6)
-      '@langchain/langgraph-checkpoint': 1.1.6(@langchain/core@1.2.12(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0))
+      '@langchain/langgraph-checkpoint': 1.2.2(@langchain/core@1.2.12(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0))
       langsmith: 0.11.5(@opentelemetry/api@1.9.1)(openai@7.32.0(ws@8.22.0)(zod@4.6.6))(ws@8.22.0)
       zod: 4.6.6
     transitivePeerDependencies:
