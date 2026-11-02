@@ -37,9 +37,20 @@ An AI agent acts on authority that changes while it runs. Later, someone asks ab
 
 ## See it work
 
-Use Node.js 22.18 or later and the repository's pinned pnpm version.
+Use Node.js 22.18 or later.
+
+The quickest way to see it is from npm:
 
 ```sh
+npx irontrellis@next demo
+```
+
+To build it from source instead, get the code and let Node's corepack fetch the pinned pnpm version:
+
+```sh
+git clone https://github.com/zerohourzulu/irontrellis.git
+cd irontrellis
+corepack enable
 pnpm install
 pnpm -r build
 node packages/cli/bin/irontrellis.mjs demo
@@ -100,7 +111,7 @@ The packaged Python verifier/evaluator is frozen at 1.0.0rc1 and the legacy/form
 
 ## Evidence
 
-- **Tests.** At this commit, on Linux, every package and integration test suite passes, and `scripts/verify-install.mjs` reports 70 passed, 0 failed, 0 skipped. These are build checks, not production qualification. [Conformance](docs/CONFORMANCE.md) identifies the suites and their limits; [benchmarks](docs/BENCHMARKS.md) separates historical format-1 measurements from current format-2 claims.
+- **Tests.** At this commit, on Linux, every package and integration test suite passes, and `scripts/verify-install.mjs` reports 71 passed, 0 failed, 0 skipped. The install check also needs `python3` and its `venv` module (on Ubuntu: `apt install python3 python3-venv`); see [platforms](docs/PLATFORMS.md). These are build checks, not production qualification. [Conformance](docs/CONFORMANCE.md) identifies the suites and their limits; [benchmarks](docs/BENCHMARKS.md) separates historical format-1 measurements from current format-2 claims.
 - **Lean.** Selected Lean model properties have been checked; they do not prove the entire implementation, cryptography, host or external effects. [Why we check IronTrellis with Lean](docs/FORMAL-VERIFICATION.md) says what was checked and what was not; a selection of the proof sources is in [verification/SelectLeanProofs](verification/SelectLeanProofs/), with the commands to rebuild them.
 - **Review.** [How this is built](docs/HOW-THIS-IS-BUILT.md) explains the evidence and human review process. [Historical reviews](docs/history/README.md) are preserved as dated evidence.
 
