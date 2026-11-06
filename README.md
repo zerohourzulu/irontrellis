@@ -13,6 +13,8 @@ IronTrellis (formerly Continuity) is open-source software that keeps a checkable
 
 This is **1.0.0-rc.2.3, history format 2**, a release candidate: 1.0.0-rc.2 with dependency fixes and security fixes ([CHANGELOG](CHANGELOG.md)). Its first worked example is anchored on Etherlink mainnet: [chapter 1](docs/examples/chapter-1-record.md), an agent-authority scenario that plays out as a storyboard, ten working days of an AI assistant at an invented company, including a refused attempt to copy files out. Finality for that record is reported by nodes we chose. A stronger mode, consensus-verified anchoring, is defined and partly vectored but is not part of this release, because the code that confirms finality against independently run Tezos nodes is not finished yet. Installation checks and passing tests do not establish production readiness, public deployment or certification.
 
+> **Warning (releases 1.0.0-rc.2 to 1.0.0-rc.2.3):** don't re-run `irontrellis migrate` against a history that has already been migrated and used. These releases delete and rewrite the migrated history, losing any events recorded after the migration. Fixed in the next release.
+
 ## Start here
 
 | If you want to | Go to |
