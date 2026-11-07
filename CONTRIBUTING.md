@@ -33,6 +33,7 @@ Before a pull request, run the other checks too:
 | `pnpm -r lint` | `tsc --noEmit` |
 | `pnpm test:conformance` | The IronTrellis node adapter against the legacy and format-1 vectors (CI also runs it against each format-2 suite by name) |
 | `node scripts/check-frozen-vectors.mjs` | The frozen vectors are unchanged |
+| `node scripts/check-suite-index.mjs` | Each format-2 suite matches its `INDEX.sha256` |
 | `pnpm test:conformance:legacy` | The frozen legacy vectors (`conformance/README.md` has the counts) |
 | `pnpm test:python` | The Python verifier |
 | `node scripts/check-versions.mjs` | One version and one `engines` field across every publishable package and both `server.json` files; the Python package stays at its frozen `1.0.0rc1` |

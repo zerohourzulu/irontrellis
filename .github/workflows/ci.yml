@@ -60,6 +60,9 @@ jobs:
       - name: Frozen vectors are unchanged (conformance/FROZEN.sha256, conformance/v2/FROZEN.sha256, the architect's v2 MANIFEST)
         run: node scripts/check-frozen-vectors.mjs
 
+      - name: Format-2 suites match their INDEX.sha256 (conformance/v2-*/INDEX.sha256)
+        run: node scripts/check-suite-index.mjs
+
       - name: Lint (docs, help text and comments describe this release)
         run: node scripts/check-coherence.mjs
 

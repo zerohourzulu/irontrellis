@@ -165,6 +165,7 @@ Most vector sets here are either frozen or reproduced by a generator, and each o
 | `v1/` and the count table above | `node conformance/v1/generate.mjs --check` (`pnpm conformance:check`) | Fails at one vector, `replay/v1/rejects-shortened-migrated-prefix`, an expected failure for a known reason ([known issue 19](../docs/records/KNOWN-ISSUES-r2.5.md)) |
 | `v2-g3/` | Its generator, run with a build of the previous release candidate's core | See [v2-g3/README.md](v2-g3/README.md) |
 | `v2-regenerated/`, `v2-owner-policy/`, `v2-human-attestation/` | `node conformance/<suite>/generate.mjs --check` | |
+| Every `v2-<name>/` suite | `node scripts/check-suite-index.mjs` | Each suite's `INDEX.sha256` lists every file in it (sha256sum format, sorted by path, itself excluded), so its sha256 pins the whole suite: vectors, expected results, histories and generator. Part of `pnpm lint` and CI. After a deliberate regeneration, run it with `--write` and commit the new index. The frozen `v2/` is pinned by `v2/FROZEN.sha256` |
 | `transparency/` | `node conformance/transparency/generate.mjs --check` (`pnpm conformance:transparency`) | |
 | The anchoring vectors | `pnpm conformance:check:anchors` | The `--check` of the five anchoring generators: statement, namespace, descriptor, attempt and connector |
 

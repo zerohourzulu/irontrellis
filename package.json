@@ -11,7 +11,7 @@
   "scripts": {
     "build": "pnpm -r run build",
     "test": "pnpm -r run test",
-    "lint": "node scripts/check-frozen-vectors.mjs && pnpm -r run lint",
+    "lint": "node scripts/check-frozen-vectors.mjs && node scripts/check-suite-index.mjs && pnpm -r run lint",
     "test:conformance": "node conformance/run.mjs --suite all --adapter conformance/adapters/node.mjs",
     "test:conformance:format2": "node conformance/run.mjs --suite v2 --adapter conformance/adapters/node.mjs && node conformance/run.mjs --suite v2-g3 --adapter conformance/adapters/node.mjs && node conformance/run.mjs --suite v2-regenerated --adapter conformance/adapters/node.mjs && node conformance/run.mjs --suite v2-owner-policy --adapter conformance/adapters/node.mjs && node conformance/run.mjs --suite v2-human-attestation --adapter conformance/adapters/node.mjs",
     "test:conformance:python": "node conformance/run.mjs --suite all --adapter conformance/adapters/python.py",
@@ -29,6 +29,7 @@
     "check:pack": "node scripts/check-pack.mjs",
     "check:coherence": "node scripts/check-coherence.mjs",
     "check:frozen": "node scripts/check-frozen-vectors.mjs",
+    "check:suite-index": "node scripts/check-suite-index.mjs",
     "verify:install": "node scripts/verify-install.mjs",
     "bench": "node bench/run.mjs --quick",
     "bench:quick": "node bench/run.mjs --quick",
