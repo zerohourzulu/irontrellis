@@ -19,7 +19,7 @@
   "dependencies": {
     "@ramex-labs/irontrellis": "workspace:*",
     "@ramex-labs/irontrellis-managed-agents": "workspace:*",
-    "@openai/agents": "0.20.0",
+    "@openai/agents": "0.21.0",
     "@langchain/langgraph": "1.4.21"
   },
   "scripts": {
