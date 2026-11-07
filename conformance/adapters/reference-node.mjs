@@ -3,7 +3,8 @@
  * Reference conformance adapter: the frozen Continuity core-0.2 engine (packages/reference-0.2).
  * Expected to pass the legacy suite only; it does not understand format 1.
  *
- * The adapter contract (conformance/ADAPTER.md) is deliberately tiny so that a
+ * The adapter contract (conformance/legacy/ADAPTER.md; conformance/README.md#adapters)
+ * is deliberately tiny so that a
  * second implementation in any language can satisfy it: read one JSON request per
  * line on stdin, write one JSON response per line on stdout. Nothing else.
  *
