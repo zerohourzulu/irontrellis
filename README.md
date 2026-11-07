@@ -127,6 +127,6 @@ Read the threat model for the chosen deployment and keep its trust assumptions e
 
 ## See for yourself
 
-Run the demo, then check its history with the `verify` command it prints. To report a vulnerability, see [SECURITY.md](SECURITY.md); to contribute, [CONTRIBUTING.md](CONTRIBUTING.md).
+Run the demo, then check its history with the `verify` command it prints. To report a vulnerability, see [SECURITY.md](SECURITY.md); to contribute, [CONTRIBUTING.md](CONTRIBUTING.md); to build your own checker from the text, [conformance/IMPLEMENTERS.md](conformance/IMPLEMENTERS.md).
 
 *Last reviewed: 24 October 2026. This page is revisited at each release.*

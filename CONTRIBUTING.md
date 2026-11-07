@@ -6,6 +6,8 @@ IronTrellis (formerly Continuity) is a signed, replayable record of authority, d
 
 Report vulnerabilities privately, as [SECURITY.md](SECURITY.md) describes; do not open a public issue for anything exploitable. The [code of conduct](CODE_OF_CONDUCT.md) applies in every project space.
 
+To build your own checker from the specification, or contribute test vectors, start at [conformance/IMPLEMENTERS.md](conformance/IMPLEMENTERS.md).
+
 ## Build and test
 
 | Requirement | Version |
